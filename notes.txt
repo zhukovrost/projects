@@ -1,0 +1,29 @@
+sudo /opt/lampp/lampp start
+exercises.json
+153х142
+
+522 поз
+111х120
+100х141
+
+"": [
+
+	"",
+
+	"../img/exercises/",
+
+	[
+		false,
+		"",
+		30,
+		"../img/exercises/"
+	]
+
+]
+
+$result_array = [question, num of questions, num of right answer, answers, form type, img]
+
+
+if ($form_type == "definite"){
+	$variant = str_replace(' ', '', mb_strtoupper($variant));
+}
