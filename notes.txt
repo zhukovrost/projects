@@ -6,6 +6,10 @@ git checkout --track origin/branch --- pull an existing branch
 
 git config credential.helper cache --- cache the password
 
+------------------------ lampp ----------------------------
+
+sudo /opt/lampp/lampp start --- start xampp
+
 ------------------------ exercises.json ------------------------------
 
 "": [
@@ -22,6 +26,8 @@ git config credential.helper cache --- cache the password
 	]
 
 ]
+
+--- exercise pattern
 
 ------------------------- construct.php ----------------------------
 
