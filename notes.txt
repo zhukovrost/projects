@@ -1,10 +1,12 @@
-sudo /opt/lampp/lampp start
-exercises.json
-153х142
+----------------------- git --------------------------------
 
-522 поз
-111х120
-100х141
+git push --set-upstream origin branch --- push a new branch
+
+git checkout --track origin/branch --- pull an existing branch
+
+git config credential.helper cache --- cache the password
+
+------------------------ exercises.json ------------------------------
 
 "": [
 
@@ -21,9 +23,6 @@ exercises.json
 
 ]
 
+------------------------- construct.php ----------------------------
+
 $result_array = [question, num of questions, num of right answer, answers, form type, img]
-
-
-if ($form_type == "definite"){
-	$variant = str_replace(' ', '', mb_strtoupper($variant));
-}
