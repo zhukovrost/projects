@@ -1,0 +1,235 @@
+/* ============= BASE ===============*/
+html {
+	overflow: scroll;
+	overflow-x: hidden;
+	min-height: 100%;
+}
+
+body {
+		margin: 0px;
+}
+	
+header{
+	width: 100%;
+	height: 70px;
+}
+
+nav{
+	position: fixed;
+	width: 93%;
+	height: 70px;
+	padding-right: 5%;
+	padding-left: 2%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
+	background-color: lightgrey;
+}
+
+footer{
+	width: 98%;
+	height: 70px;
+	padding-left: 2%;
+	display: flex;
+	flex-direction: column;
+	background-color: lightgrey;
+}
+
+.nav_menu{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	width: 300px;
+	margin: 0px;
+}
+
+div, form {
+	transition: 0.5s;
+}
+
+p, a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+article {
+	background-size: cover;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #FF0000;
+}
+
+.container {
+	margin: auto;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.container * {
+	margin: auto;
+}
+/* ============ func.php ================ */
+
+.warning{
+	color: #FF0000;
+}
+
+.success{
+	color: lime;
+}
+
+/* ============ regenlog.php ============== */
+
+.container.regenlog{
+	flex-direction:row;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.login_form, .registration_form{
+	background-color: white;
+	border: black 1px solid;
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+	width: 500px;
+}
+
+.registration_form{
+	height: 400px;
+}
+
+.login_form{
+	height: 200px;
+}
+
+.nav_without_menu{
+	position: fixed;
+	width: 93%;
+	height: 70px;
+	padding-right: 5%;
+	padding-left: 2%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
+	background-color: lightgrey;
+}
+/* =================== constructor	===============*/
+
+.c_all_forms_block{
+	width: 95%;
+	border: black 2px solid;
+	margin: 5px;
+	padding: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+.c_checkbox_block{
+	display: flex;	
+	margin: 1px;
+}
+
+.c_form_1{
+	border: black 2px solid;
+	width: 40%;
+	margin: 5px;
+	padding: 5px;
+}
+.c_form_2{
+	border: black 2px solid;
+	width: 10%;
+	margin: 5px;
+	padding: 5px;
+}
+
+.c_form_2 input, textarea{
+	width: 90%;
+	margin: 2px;
+}
+
+.c_form_3{
+	border: black 2px solid;
+	width: 20%;
+	margin: 5px;
+	padding: 5px;
+}
+
+.c_preview_all{
+  width: 90%;
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+ 
+.c_preview{
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+}
+ 
+.c_preview_info{
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px; 
+}
+ 
+.c_preview_info p{
+  margin-top: 7px;
+  margin-bottom: 2px;
+}
+ 
+.c_preview.radio{
+  width: 80%;
+}
+ 
+.c_preview_info.radio{
+  width: 17%;
+}
+ 
+.c_preview.checkbox{
+  width: 70%;
+}
+ 
+.c_preview_info.checkbox{
+  width: 27%;
+}
+ 
+.c_preview.definite{
+  width: 49%;
+}
+ 
+.c_preview_info.definite{
+  width: 49%;
+}
+ 
+.c_preview.definite_mc{
+  width: 80%;
+}
+ 
+.c_preview_info.definite_mc{
+  width: 17%;
+}
+
+.c_error_array{
+  width: 95%;
+  border: 2px solid lime;
+  margin: 5px;
+  padding: 5px;
+}
