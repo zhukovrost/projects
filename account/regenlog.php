@@ -1,15 +1,10 @@
 <?php
 
 include '../func.php';
-
-# Host settings
-$dbconn_host = 'localhost';
-$dbconn_username = 'root';
-$dbconn_userpassword = '';
-$dbconn_name = 'sport';
+include '../settings.php';
 
 if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
-	$conn = new mysqli($dbconn_host, $dbconn_username, $dbconn_userpassword, $dbconn_name);
+	$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 	conn_check($conn);
 }	
 

@@ -3,14 +3,9 @@ if (!isset($_SESSION)) {
 	session_start(); 
 }
 include '../func.php';
+include '../settings.php';
 
-# Host settings
-$dbconn_host = 'localhost';
-$dbconn_username = 'root';
-$dbconn_userpassword = '';
-$dbconn_name = 'english';
-
-$conn = new mysqli($dbconn_host, $dbconn_username, $dbconn_userpassword, $dbconn_name);
+$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 
 $error_array = array(
 	"success_add_test" => false,
@@ -156,11 +151,9 @@ if (isset($_POST['add_questions_to_db']) || isset($_POST['add_test_to_db'])){
 	if (conn_check($conn)){
 		foreach ($result_array as $question_to_db){
 			$add_questions_sql = "INSERT INTO questions(question) VALUES('".json_encode($question_to_db, JSON_UNESCAPED_UNICODE)."')";
-			if ($conn->query($add_questions_sql)){
-				
-			}else{
-				echo "Ошибка: " . $conn->error;
-			}
+			if (!$conn->query($add_questions_sql)) {
+              echo "Ошибка: " . $conn->error;
+            }
 		}
 		unset($_POST['test_name']);
 		$error_array["success_add_questions"] = true;
