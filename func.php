@@ -19,10 +19,6 @@
 		header('Location: ../index.php');
 	}
 
-	function success_reg($success){
-		echo "<p class='reg_success'>Регистрация прошла успешно</p>";
-	}	
-
 	function log_warning($if, $warning){
 		if (isset($_POST['log_done'])){
 			if ($if){

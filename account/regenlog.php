@@ -5,19 +5,18 @@ include '../settings.php';
 
 if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
 	$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+	conn_check($conn);
 }
 
 $error_array = array(
-	"reg_fill_all_input_fields" => false,
-	"reg_login_is_used" => false,
-	"reg_passwords_are_not_the_same" => false,
-	"reg_conn_error" => false,
-	"log_conn_error" => false,
-	"log_fill_all_input_fields" => false,
-	"log_incorrect_login_or_password" => false
+  "reg_fill_all_input_fields" => false,
+  "reg_login_is_used" => false,
+  "reg_passwords_are_not_the_same" => false,
+  "reg_conn_error" => false,
+  "log_conn_error" => false,
+  "log_fill_all_input_fields" => false,
+  "log_incorrect_login_or_password" => false,
+  "reg_success" => false
 );
 
 # ------------------ login -----------------------
@@ -62,22 +61,17 @@ if (isset($_POST['reg_done'])){
 				if($reg_result = $conn->query($reg_sql)){
 					$rowsCount = $reg_result->num_rows;
 					if ($rowsCount == 0){
-						if (isset($_POST['reg_thirdname'])){
-							$reg_thirdname = $_POST['reg_thirdname'];
-							$reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."', '".$reg_email."', 'null')";
-							if($conn->query($reg_sql2)){
-								$reg_success = true;
-							}else{
-								$error_array['reg_conn_error'] = true;
-							}
-						}else{
-							$reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', 'null', '".$reg_email."', 'null')";
-							if($conn->query($reg_sql2)){
-								$reg_success = true;
-							}else{
-								$error_array['reg_conn_error'] = true;
-							}
-						}
+                      if (isset($_POST['reg_thirdname'])){
+                          $reg_thirdname = $_POST['reg_thirdname'];
+                          $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."', '".$reg_email."')";
+                      }else{
+                          $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', null, '".$reg_email."')";
+                      }
+                      if($conn->query($reg_sql2)){
+                          $error_array['reg_success'] = true;
+                      }else{
+                          $error_array['reg_conn_error'] = true;
+                      }
 					}else{
 						$error_array['reg_login_is_used'] = true;
 					}
@@ -109,9 +103,9 @@ if (isset($_POST['reg_done'])){
 				<form class="login_form" method="post">
 					<h1 class="login_title">Вход в систему</h1>
 					<p>Логин</p>
-					<input class="login_item" type="text" name="log_login" value="<?php if (isset($reg_success)){ echo $reg_login; } ?>">
+					<input class="login_item" type="text" name="log_login" value="<?php if ($error_array['reg_success']){ echo $reg_login; } ?>">
 					<p>Пароль</p>
-					<input class="login_item" type="password" name="log_password" value="<?php if (isset($reg_success)){ echo $reg_password; } ?>">
+					<input class="login_item" type="password" name="log_password" value="<?php if ($error_array['reg_success']){ echo $reg_password; } ?>">
 					<?php 
 					log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
 					log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
@@ -137,14 +131,14 @@ if (isset($_POST['reg_done'])){
 				<input class="" type="password" name="reg_password">
 				<p>Подтвердите пароль</p>
 				<input class="" type="password" name="reg_password2">
-				<?php 
-				reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают, попробуйте ещё раз");
-				reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
-				if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
-				if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields']){
-					echo '<input class="button_login" type="submit" name="reg_done" value="Зарегистрироваться">';
-				}
-				if (isset($reg_success)){ success_reg($reg_success); }
+				<?php
+                reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают, попробуйте ещё раз");
+                reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
+                if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
+                if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields']){
+                  echo '<input class="button_login" type="submit" name="reg_done" value="Зарегистрироваться">';
+                }
+                if ($error_array['reg_success']){ echo "<p class='success'>Регистрация прошла успешно</p>"; }
 				?>
 			</form>
 		</main>
