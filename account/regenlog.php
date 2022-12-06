@@ -118,7 +118,6 @@ if (isset($_POST['reg_done'])){
 				<h1 class="">Регистрация</h1>
 				<p>Логин</p>
 				<input class="" type="text" name="reg_login">
-				<?php reg_warning($error_array['reg_login_is_used'], "Данный логин занят"); ?>
 				<p>Фамилия</p>
 				<input class="" type="text" name="reg_surname">
 				<p>Имя</p>
@@ -132,13 +131,14 @@ if (isset($_POST['reg_done'])){
 				<p>Подтвердите пароль</p>
 				<input class="" type="password" name="reg_password2">
 				<?php
-                reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают, попробуйте ещё раз");
-                reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
-                if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
-                if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields']){
-                  echo '<input class="button_login" type="submit" name="reg_done" value="Зарегистрироваться">';
-                }
-                if ($error_array['reg_success']){ echo "<p class='success'>Регистрация прошла успешно</p>"; }
+        reg_warning($error_array['reg_login_is_used'], "Данный логин занят");
+        reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают, попробуйте ещё раз");
+        reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
+        if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
+        if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields']){
+          echo '<input class="button_login" type="submit" name="reg_done" value="Зарегистрироваться">';
+        }
+        if ($error_array['reg_success']){ echo "<p class='success'>Регистрация прошла успешно</p>"; }
 				?>
 			</form>
 		</main>
