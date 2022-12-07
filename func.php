@@ -22,6 +22,28 @@ function check_the_login($way = ""){
   }
 }
 
+function session_set_variable($variable, $default = ""){
+    if (empty($_SESSION[$variable])){
+      if (isset($_POST[$variable])){
+        $_SESSION[$variable] = $_POST[$variable];
+        return true;
+      }else{
+        $_SESSION[$variable] = $default;
+        return false;
+      }
+    }else if ($_SESSION[$variable] == ""){
+      if (isset($_POST[$variable])){
+        $_SESSION[$variable] = $_POST[$variable];
+        return true;
+      }else{
+        $_SESSION[$variable] = $default;
+        return false;
+      }
+    }else{
+      return true;
+    }
+}
+
 	function success_log($login){
 		setcookie("login", $login);
 		# header('Location: ../index.php');
