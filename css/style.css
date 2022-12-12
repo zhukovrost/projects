@@ -55,6 +55,8 @@ article {
 	color: lime;
 }
 
+/* ============ ACCOUNT FOLDER ============= */
+
 /* ============ regenlog.php ============== */
 
 .regenlog{
@@ -111,4 +113,35 @@ article {
 .button_login:hover{
 	background-color: #262401 !important;
 	color: #D9D9D9 !important;
+}
+
+/* ============ account.php ============= */
+
+.profile_card {
+	height: auto;
+	width: 80%;
+	background-color: white;
+	margin: auto;
+	padding: 20px;
+	border-radius: 40px;
+	border: black solid 2px;
+}
+
+.avatar {
+	border: black solid 1px;
+	border-radius: 100px;
+	height: 200px;
+	width: 200px;
+}
+
+.together {
+	display: flex;
+	width: 70%;
+	padding: 0px;
+}
+
+.card_input {
+	height: 50%;
+	margin-top: auto;
+	margin-bottom: auto;
 }
