@@ -78,9 +78,10 @@ $name = "Ростислав";
     </div>
     <p style="margin-right: 10px;">Электронная почта: <?php echo $email ?></p>
       <p style="margin-right: 10px;">Пароль: <?php echo $password ?></p>
-    <form method="post">
-      <input type="submit" value="Выйти из аккаунта" name="exit">
+    <form method="post" id="exit">
+      <input type="hidden" value="true" name="exit">
     </form>
+    <button form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="../img/images/logout.png"> <label>Выйти из аккаунта</label></button>
   </main>
 </body>
 </html>
