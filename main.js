@@ -28,3 +28,23 @@ document.body.addEventListener('click', function(e){
     
    
 }, true)
+
+
+let InputsReg = document.body.querySelectorAll('main input');
+let main = document.body.querySelector('main');
+
+for(let i = 0; i < InputsReg.length; i++){
+    InputsReg[i].oninput = function(){
+        if(document.body.querySelector('#save_button') == null){
+            let btn = document.createElement('button');
+            btn.innerHTML = "Сохранить изменения";
+            btn.id = "save_button";
+            btn.type = "submit";
+            main.appendChild(btn);
+            document.body.querySelector('#save_button').addEventListener('click', function(){
+                this.remove();
+            })
+        }
+        
+    };
+}
