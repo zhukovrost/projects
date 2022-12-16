@@ -12,7 +12,8 @@ $error_array = array(
   "empty_form" => false,
   "select_error" => false,
   "update_error" => false,
-  "update_success" => false
+  "update_success" => false,
+  "too_long_string" => false
 );
 
 if (isset($_POST['exit'])){
@@ -24,13 +25,17 @@ $login = $_COOKIE['login'];
 
 # ---------------------------- update user data ------------------------------
 
-if  (not_empty($_POST['name'])){
+if  (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['thirdname'])){
   if ($_POST['name'] != "" && $_POST['surname'] != "" && $_POST['thirdname'] != ""){
-    $update_sql = "UPDATE users SET name='".$_POST['name']."', surname='".$_POST['surname']."', thirdname='".$_POST['thirdname']."' WHERE login='".$login."'";
-    if ($conn -> query($update_sql)){
-      $error_array["update_success"] = true;
+    if (strlen($_POST['name']) <= 32 && strlen($_POST['surname']) <= 32 && strlen($_POST['thirdname']) <= 32){
+      $update_sql = "UPDATE users SET name='".$_POST['name']."', surname='".$_POST['surname']."', thirdname='".$_POST['thirdname']."' WHERE login='".$login."'";
+      if ($conn -> query($update_sql)){
+        $error_array["update_success"] = true;
+      }else{
+        $error_array["update_error"] = true;
+      }
     }else{
-      $error_array["update_error"] = true;
+      $error_array["too_long_string"] = true;
     }
   }else{
     $error_array["empty_form"] = true;
@@ -95,8 +100,7 @@ if ($data_array = $conn -> query($select_sql)){
           <input class="card_input" name="thirdname" value="<?php echo $thirdname; ?>">
       </div>
     </form>
-    <p style="margin-right: 10px;">Электронная почта: <?php echo $email ?></p>
-    <p style="margin-right: 10px;">Пароль: <?php echo $password ?></p>
+
     <?php
     # --------------------- errors -------------------------
 
@@ -104,7 +108,13 @@ if ($data_array = $conn -> query($select_sql)){
     if ($error_array["update_error"]){ echo "<p style='color: #FF0000'>Ошибка обновления данных</p>"; }
     if ($error_array["empty_form"]){ echo "<p style='color: #FF0000'>Ошибка: заполните форму</p>"; }
     if ($error_array["select_error"]){ echo "<p style='color: #FF0000'>Ошибка: не удалось найти пользователя</p>"; }
+    if ($error_array["too_long_string"]){ echo "<p style='color: #FF0000'>Ошибка: слишком длинное имя/фамилия/отчество</p>"; }
+
     ?>
+
+    <p style="margin-right: 10px;">Электронная почта: <?php echo $email ?></p>
+    <p style="margin-right: 10px;">Пароль: <?php echo $password ?></p>
+
     <form method="post" id="exit">
       <input type="hidden" value="true" name="exit">
     </form>
