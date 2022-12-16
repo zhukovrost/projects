@@ -16,7 +16,8 @@ $error_array = array(
   "log_conn_error" => false,
   "log_fill_all_input_fields" => false,
   "log_incorrect_login_or_password" => false,
-  "reg_success" => false
+  "reg_success" => false,
+  "too_long_string" => false
 );
 
 # ------------------ login -----------------------
@@ -57,27 +58,36 @@ if (isset($_POST['reg_done'])){
 				$reg_name = trim($_POST['reg_name']);
 				$reg_surname = trim($_POST['reg_surname']);
 				$reg_email = trim($_POST['reg_email']);
-				$reg_sql = "SELECT * FROM users WHERE login='".$reg_login."'";
-				if($reg_result = $conn->query($reg_sql)){
-					$rowsCount = $reg_result->num_rows;
-					if ($rowsCount == 0){
-                      if (isset($_POST['reg_thirdname'])){
-                          $reg_thirdname = $_POST['reg_thirdname'];
-                          $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."', '".$reg_email."')";
-                      }else{
-                          $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', null, '".$reg_email."')";
-                      }
-                      if($conn->query($reg_sql2)){
-                          $error_array['reg_success'] = true;
-                      }else{
-                          $error_array['reg_conn_error'] = true;
-                      }
-					}else{
-						$error_array['reg_login_is_used'] = true;
-					}
-				}else{
-					$error_array['reg_conn_error'] = true;
-				}
+        if (strlen($reg_login) <= 32 && strlen($reg_password) <= 32 && strlen($reg_surname) <= 32 && strlen($reg_email) <= 32) {
+          $reg_sql = "SELECT * FROM users WHERE login='" . $reg_login . "'";
+          if ($reg_result = $conn->query($reg_sql)) {
+            $rowsCount = $reg_result->num_rows;
+            if ($rowsCount == 0) {
+              if (isset($_POST['reg_thirdname'])) {
+                $reg_thirdname = trim($_POST['reg_thirdname']);
+                if (strlen($reg_thirdname) <= 32){ $error_array["too_long_string"] = true; }
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email . "')";
+              } else {
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "')";
+              }
+
+              if (!$error_array["too_long_string"]){
+                if ($conn->query($reg_sql2)) {
+                  $error_array['reg_success'] = true;
+                } else {
+                  $error_array['reg_conn_error'] = true;
+                }
+              }
+
+            } else {
+              $error_array['reg_login_is_used'] = true;
+            }
+          } else {
+            $error_array['reg_conn_error'] = true;
+          }
+        }else{
+          $error_array["too_long_string"] = true;
+        }
 				$conn->close();
 		}else{
 				$error_array['reg_passwords_are_not_the_same'] = true;
@@ -134,6 +144,7 @@ if (isset($_POST['reg_done'])){
         reg_warning($error_array['reg_login_is_used'], "Данный логин занят");
         reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают, попробуйте ещё раз");
         reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
+        reg_warning($error_array["too_long_string"], "Слишком много символов");
         if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
         if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields']){
           echo '<input class="button_login" type="submit" name="reg_done" value="Зарегистрироваться">';
