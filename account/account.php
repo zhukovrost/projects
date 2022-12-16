@@ -60,11 +60,11 @@ $name = "Ростислав";
 
 <body style="height: 100vh">
   <main class="profile_card">
-    <form method="post" id="user">
       <div class="together">
         <img class="avatar" src="../img/images/user.png" style="margin-right: 30px;">
         <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль <span style="color: #FF0000"><?php echo $login; ?></span></label>
       </div>
+    <form method="post" id="user">
       <div class="together">
         <p style="margin-right: 10px;">Имя</p>
         <input class="card_input" value="<?php echo $name; ?>">
