@@ -1,5 +1,5 @@
 <?php
-/*
+
 include "../func.php";
 include '../settings.php';
 
@@ -9,7 +9,10 @@ $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
 
 $error_array = array(
-
+  "empty_form" => false,
+  "select_error" => false,
+  "update_error" => false,
+  "update_success" => false
 );
 
 if (isset($_POST['exit'])){
@@ -17,9 +20,27 @@ if (isset($_POST['exit'])){
   header("Location: regenlog.php");
 }
 
+$login = $_COOKIE['login'];
+
+# ---------------------------- update user data ------------------------------
+
+if  (not_empty($_POST['name'])){
+  if ($_POST['name'] != "" && $_POST['surname'] != "" && $_POST['thirdname'] != ""){
+    $update_sql = "UPDATE users SET name='".$_POST['name']."', surname='".$_POST['surname']."', thirdname='".$_POST['thirdname']."' WHERE login='".$login."'";
+    if ($conn -> query($update_sql)){
+      $error_array["update_success"] = true;
+    }else{
+      $error_array["update_error"] = true;
+    }
+  }else{
+    $error_array["empty_form"] = true;
+  }
+}
+
+# ------------------------- select user data -----------------------------
+
 $select_sql = "SELECT name, surname, thirdname, email, LENGTH(password) FROM users WHERE login='".$_COOKIE['login']."'";
 if ($data_array = $conn -> query($select_sql)){
-  $login = $_COOKIE['login'];
   foreach ($data_array as $data) {
     $name = $data['name'];
     $surname = $data['surname'];
@@ -36,15 +57,11 @@ if ($data_array = $conn -> query($select_sql)){
 
   }
   $data_array -> free();
+}else{
+  $error_array["select_error"] = true;
 }
-*/
 
-$login = "rostik_krutoy_chel";
-$password = "*******";
-$email = "rostik@gmail.com";
-$surname = "Жуков";
-$thirdname = "Сергеевич";
-$name = "Ростислав";
+
 ?>
 
 <!DOCTYPE html>
@@ -65,23 +82,29 @@ $name = "Ростислав";
         <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль <span style="color: #FF0000"><?php echo $login; ?></span></label>
       </div>
     <form method="post" id="user">
-      <div>
         <div class="together">
           <p style="margin-right: 10px;">Имя</p>
-          <input class="card_input" value="<?php echo $name; ?>">
+          <input class="card_input" name="name" value="<?php echo $name; ?>">
         </div>
         <div class="together">
           <p style="margin-right: 10px;">Фамилия</p>
-          <input class="card_input" value="<?php echo $surname; ?>">
+          <input class="card_input" name="surname" value="<?php echo $surname; ?>">
         </div>
         <div class="together">
           <p style="margin-right: 10px;">Отчество</p>
-          <input class="card_input" value="<?php echo $thirdname; ?>">
-        </div>
+          <input class="card_input" name="thirdname" value="<?php echo $thirdname; ?>">
       </div>
-      <p style="margin-right: 10px;">Электронная почта: <?php echo $email ?></p>
-        <p style="margin-right: 10px;">Пароль: <?php echo $password ?></p>
     </form>
+    <p style="margin-right: 10px;">Электронная почта: <?php echo $email ?></p>
+    <p style="margin-right: 10px;">Пароль: <?php echo $password ?></p>
+    <?php
+    # --------------------- errors -------------------------
+
+    if ($error_array["update_success"]){ echo "<p style='color: lime'>Данные пользователя успешно обновлены</p>"; }
+    if ($error_array["update_error"]){ echo "<p style='color: #FF0000'>Ошибка обновления данных</p>"; }
+    if ($error_array["empty_form"]){ echo "<p style='color: #FF0000'>Ошибка: заполните форму</p>"; }
+    if ($error_array["select_error"]){ echo "<p style='color: #FF0000'>Ошибка: не удалось найти пользователя</p>"; }
+    ?>
     <form method="post" id="exit">
       <input type="hidden" value="true" name="exit">
     </form>
@@ -91,3 +114,5 @@ $name = "Ростислав";
   <script src="../main.js"></script>
 </body>
 </html>
+
+<?php $conn->close(); ?>

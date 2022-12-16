@@ -167,3 +167,17 @@ article {
 	margin-top: auto;
 	font-size: 17px;
 }
+
+#save_button{
+	height: 30px;
+	width: auto;
+	padding: 10px 10px 25px 10px;
+	border-radius: 10px;
+	background-color: #F0F0F0;
+	border: green solid 1px;
+	transition: 0.5s;
+}
+
+#save_button:hover {
+	background-color: #DFDFDF;
+}

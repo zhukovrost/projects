@@ -31,7 +31,7 @@ document.body.addEventListener('click', function(e){
 
 
 let InputsAcc = document.body.querySelectorAll('main input');
-let form = document.body.querySelector('form div');
+let form = document.body.querySelector('form');
 let InputsAccText = [];
 console.log(InputsAcc)
 
@@ -44,7 +44,7 @@ for(let i = 0; i < InputsAcc.length; i++){
     InputsAcc[i].oninput = function(){
         if(document.body.querySelector('#save_button') == null){
             let btn = document.createElement('input');
-            btn.innerHTML = "Сохранить изменения";
+            btn.value = "Сохранить изменения";
             btn.id = "save_button";
             btn.type = "submit";
             form.appendChild(btn);
