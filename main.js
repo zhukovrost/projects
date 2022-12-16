@@ -51,7 +51,6 @@ for(let i = 0; i < InputsAcc.length; i++){
 
             document.body.querySelector('#save_button').addEventListener('click', function(){
                 InputsAccText[i] = InputsAcc[i].value;
-                this.remove();
             })
         }
         
