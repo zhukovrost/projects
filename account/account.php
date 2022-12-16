@@ -60,24 +60,27 @@ $name = "Ростислав";
 
 <body style="height: 100vh">
   <main class="profile_card">
-    <div class="together">
-      <img class="avatar" src="../img/images/user.png" style="margin-right: 30px;">
-      <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль <span style="color: #FF0000"><?php echo $login; ?></span></label>
-    </div>
-    <div class="together">
-      <p style="margin-right: 10px;">Имя</p>
-      <input class="card_input" value="<?php echo $name; ?>">
-    </div>
-    <div class="together">
-      <p style="margin-right: 10px;">Фамилия</p>
-      <input class="card_input" value="<?php echo $surname; ?>">
-    </div>
-    <div class="together">
-      <p style="margin-right: 10px;">Отчество</p>
-      <input class="card_input" value="<?php echo $thirdname; ?>">
-    </div>
-    <p style="margin-right: 10px;">Электронная почта: <?php echo $email ?></p>
-      <p style="margin-right: 10px;">Пароль: <?php echo $password ?></p>
+    <form method="post" id="user">
+      <div class="together">
+        <img class="avatar" src="../img/images/user.png" style="margin-right: 30px;">
+        <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль <span style="color: #FF0000"><?php echo $login; ?></span></label>
+      </div>
+      <div class="together">
+        <p style="margin-right: 10px;">Имя</p>
+        <input class="card_input" value="<?php echo $name; ?>">
+      </div>
+      <div class="together">
+        <p style="margin-right: 10px;">Фамилия</p>
+        <input class="card_input" value="<?php echo $surname; ?>">
+      </div>
+      <div class="together">
+        <p style="margin-right: 10px;">Отчество</p>
+        <input class="card_input" value="<?php echo $thirdname; ?>">
+      </div>
+      <p style="margin-right: 10px;">Электронная почта: <?php echo $email ?></p>
+        <p style="margin-right: 10px;">Пароль: <?php echo $password ?></p>
+    </form>
+    <script src="../main.js"></script>
     <form method="post" id="exit">
       <input type="hidden" value="true" name="exit">
     </form>
