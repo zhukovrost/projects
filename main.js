@@ -30,21 +30,43 @@ document.body.addEventListener('click', function(e){
 }, true)
 
 
-let InputsReg = document.body.querySelectorAll('main input');
-let main = document.body.querySelector('main');
+let InputsAcc = document.body.querySelectorAll('main input');
+let form = document.body.querySelector('form div');
+let InputsAccText = [];
+console.log(InputsAcc)
 
-for(let i = 0; i < InputsReg.length; i++){
-    InputsReg[i].oninput = function(){
+
+for(let i = 0; i < InputsAcc.length; i++){
+    InputsAccText.push(InputsAcc[i].value);
+}
+
+for(let i = 0; i < InputsAcc.length; i++){
+    InputsAcc[i].oninput = function(){
         if(document.body.querySelector('#save_button') == null){
-            let btn = document.createElement('button');
+            let btn = document.createElement('input');
             btn.innerHTML = "Сохранить изменения";
             btn.id = "save_button";
             btn.type = "submit";
-            main.appendChild(btn);
+            form.appendChild(btn);
+
             document.body.querySelector('#save_button').addEventListener('click', function(){
+                InputsAccText[i] = InputsAcc[i].value;
                 this.remove();
             })
         }
         
+        for(let i = 0; i < InputsAcc.length; i++){
+            InputsAccText.push(InputsAcc[i].value);
+        }
+        
+        let flag = true;
+        for(let i = 0; i < InputsAcc.length; i++){
+            if(InputsAccText[i] != InputsAcc[i].value){
+                flag = false;
+            }
+        }
+        if(flag){
+            document.body.querySelector('#save_button').remove();
+        }
     };
 }
