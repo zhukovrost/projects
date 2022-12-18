@@ -27,6 +27,27 @@
 		return $tpl;
 	}
 
+
+function check_the_login($way = ""){
+  if (empty($_COOKIE['login'])){
+    header('Location: '.$way.'regenlog.php?please_log=1');
+  }else if ($_COOKIE['login'] == ""){
+    header('Location: '.$way.'regenlog.php?please_log=1');
+  }
+}
+
+function not_empty($cond){
+  if (isset($cond)){
+    if ($cond != "" || $cond != null){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    return false;
+  }
+}
+
 #---------------- reg and log ----------------------
 
 	function success_log($login){
@@ -47,12 +68,6 @@
 			if ($if){
 				echo "<p class='warning'>".$warning."</p>";
 			}
-		}
-	}
-	
-	function check_the_login($way = ""){
-		if (empty($_COOKIE['login'])){
-			header('Location: '.$way.'regenlog.php?please_log=1');
 		}
 	}
 
