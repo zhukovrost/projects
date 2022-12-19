@@ -43,8 +43,8 @@ for(let i = 0; i < InputsAcc.length; i++){
 for(let i = 0; i < InputsAcc.length; i++){
     InputsAcc[i].oninput = function(){
         if(document.body.querySelector('#save_button') == null){
-            let btn = document.createElement('input');
-            btn.value = "Сохранить изменения";
+            let btn = document.createElement('button');
+            btn.innerHTML = "<img style='height: 30px; margin-right: 5px;' src='../img/images/save.png'><label>Сохранить изменения</label>";
             btn.id = "save_button";
             btn.type = "submit";
             form.appendChild(btn);
