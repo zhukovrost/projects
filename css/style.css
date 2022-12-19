@@ -128,7 +128,7 @@ article {
 }
 
 .avatar {
-	border: black solid 1px;
+	border: black solid 3px;
 	border-radius: 100px;
 	height: 200px;
 	width: 200px;
@@ -136,7 +136,6 @@ article {
 
 .together {
 	display: flex;
-	width: 70%;
 	padding: 0px;
 }
 
@@ -146,7 +145,7 @@ article {
 	margin-bottom: auto;
 }
 
-.exit_button {
+.exit_button, #save_button{
 	height: 50px;
 	width: auto;
 	display: flex;
@@ -158,26 +157,19 @@ article {
 	transition: 0.5s;
 }
 
-.exit_button:hover {
+.exit_button:hover, #save_button {
 	background-color: #DFDFDF;
 }
 
-.exit_button * {
+.exit_button *, #save_button * {
 	margin-bottom: auto;
 	margin-top: auto;
 	font-size: 17px;
 }
 
-#save_button{
-	height: 30px;
-	width: auto;
-	padding: 10px 10px 25px 10px;
-	border-radius: 10px;
-	background-color: #F0F0F0;
-	border: green solid 1px;
-	transition: 0.5s;
-}
-
-#save_button:hover {
-	background-color: #DFDFDF;
+#save_button {
+	border-color: green;
+	padding: 5px;
+	border-radius: 5px;
+	height: 40px;
 }
