@@ -49,7 +49,7 @@ if (isset($_POST['log_done'])){
 # ------------------ registration ------------------------
 
 if (isset($_POST['reg_done'])){
-	if ($_POST['reg_login'] == "" || $_POST['reg_password'] == "" || $_POST['reg_password2'] == "" || $_POST['reg_name'] == "" || $_POST['reg_surname'] == "" || $_POST['reg_email'] == ""){
+	if ($_POST['reg_date_of_birth'] == null || $_POST['reg_login'] == "" || $_POST['reg_password'] == "" || $_POST['reg_password2'] == "" || $_POST['reg_name'] == "" || $_POST['reg_surname'] == "" || $_POST['reg_email'] == ""){
 		$error_array['reg_fill_all_input_fields'] = true;
 	}else{
 			if ($_POST['reg_password'] == $_POST['reg_password2']){
@@ -58,17 +58,18 @@ if (isset($_POST['reg_done'])){
 				$reg_name = trim($_POST['reg_name']);
 				$reg_surname = trim($_POST['reg_surname']);
 				$reg_email = trim($_POST['reg_email']);
-        if (strlen($reg_login) <= 32 && strlen($reg_password) <= 32 && strlen($reg_surname) <= 32 && strlen($reg_email) <= 32) {
+        $reg_date_of_birth = $_POST['reg_date_of_birth'];
+        if (strlen($reg_login) < 33 && strlen($reg_password) < 33 && strlen($reg_surname) < 33 && strlen($reg_email) < 33) {
           $reg_sql = "SELECT * FROM users WHERE login='" . $reg_login . "'";
           if ($reg_result = $conn->query($reg_sql)) {
             $rowsCount = $reg_result->num_rows;
             if ($rowsCount == 0) {
               if (isset($_POST['reg_thirdname'])) {
                 $reg_thirdname = trim($_POST['reg_thirdname']);
-                if (strlen($reg_thirdname) <= 32){ $error_array["too_long_string"] = true; }
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email . "')";
+                if (strlen($reg_thirdname) > 32){ $error_array["too_long_string"] = true; }
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email ."', '".$reg_date_of_birth."')";
               } else {
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "', '".$reg_date_of_birth."')";
               }
 
               if (!$error_array["too_long_string"]){
@@ -134,6 +135,8 @@ if (isset($_POST['reg_done'])){
 				<input class="" type="text" name="reg_name">
 				<p>Отчество (опционально)</p>
 				<input class="" type="text" name="reg_thirdname">
+        <p>Дата рождения</p>
+        <input type="date" name="reg_date_of_birth">
 				<p>Почта</p>
 				<input class="" type="email" name="reg_email">
 				<p>Пароль</p>
@@ -146,7 +149,7 @@ if (isset($_POST['reg_done'])){
         reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
         reg_warning($error_array["too_long_string"], "Слишком много символов");
         if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
-        if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields']){
+        if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields'] || $error_array['too_long_string']){
           echo '<input class="button_login" type="submit" name="reg_done" value="Зарегистрироваться">';
         }
         if ($error_array['reg_success']){ echo "<p class='success'>Регистрация прошла успешно</p>"; }
