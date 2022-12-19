@@ -141,6 +141,7 @@ if (isset($_POST['reg_done'])){
           <option value="Укажите ваш пол">Укажите ваш пол</option>
           <option value="man">Мужской</option>
           <option value="woman">Женский</option>
+        </select>
         <p>Дата рождения</p>
         <input type="date" name="reg_date_of_birth">
 				<p>Почта</p>
