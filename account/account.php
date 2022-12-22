@@ -56,13 +56,14 @@ if  (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['thirdnam
 
 # ------------------------- select user data -----------------------------
 
-$select_sql = "SELECT name, surname, thirdname, email, LENGTH(password), date_of_birth, sex, weight, height FROM users WHERE login='".$login."'";
+$select_sql = "SELECT name, surname, thirdname, email, LENGTH(password), date_of_birth, sex, weight, height, programs FROM users WHERE login='".$login."'";
 if ($data_array = $conn -> query($select_sql)){
   foreach ($data_array as $data) {
     $name = $data['name'];
     $surname = $data['surname'];
     $email = $data['email'];
     $date_of_birth = $data['date_of_birth'];
+    $programs = json_decode($data['programs']);
     if ($data['sex'] == "man"){
       $sex = "Мужской";
     }elseif ($data['sex'] == "woman"){
@@ -148,6 +149,7 @@ if ($data_array = $conn -> query($select_sql)){
         <label>Пол: <?php echo $sex; ?></label>
         <br>
       </form>
+
       <?php
       # --------------------- errors -------------------------
 
@@ -157,6 +159,15 @@ if ($data_array = $conn -> query($select_sql)){
       if ($error_array["select_error"]){ echo "<p style='color: #FF0000'>Ошибка: не удалось найти пользователя</p>"; }
       if ($error_array["too_long_string"]){ echo "<p style='color: #FF0000'>Ошибка: слишком длинное имя/фамилия/отчество</p>"; }
 
+      ?>
+    </div>
+
+    <div style="width: 100%; border: black dashed 1px">
+      <label>Программы спортсмена:</label>
+      <?php
+      if ($programs == []){
+        echo "<label>Програм пока нет</label>";
+      }
       ?>
     </div>
 
