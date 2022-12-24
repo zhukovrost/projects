@@ -1,8 +1,9 @@
-{
-  "press": {
+[
+  [
 
-    "top": [
+    "Пресс",
 
+    [
       "Верхний сегмент прямой мышцы",
 
       "../img/exercises/press/top.jpg",
@@ -51,7 +52,7 @@
 
     ],
 
-    "bottom": [
+    [
 
       "Нижний сегмент прямой мышцы.jpg",
 
@@ -101,7 +102,7 @@
 
     ],
 
-    "straight": [
+    [
 
       "Прямая мышца",
 
@@ -151,7 +152,7 @@
 
     ],
 
-    "external-side": [
+    [
 
       "Внешние косые мышцы",
 
@@ -201,7 +202,7 @@
 
     ],
 
-    "all-abdominal": [
+    [
 
       "Все абдоминальные мышцы",
 
@@ -251,7 +252,7 @@
 
     ],
 
-    "interior-side": [
+    [
 
       "Внутренние косые мышцы",
 
@@ -302,11 +303,13 @@
 
     ]
 
-  },
+  ],
 
-  "legs":{
+  [
 
-    "quadriceps": [
+    "Ноги",
+
+    [
 
       "Квадрицепсы",
 
@@ -356,7 +359,7 @@
 
     ],
 
-    "bottocks": [
+    [
 
       "Ягодицы",
 
@@ -406,11 +409,13 @@
 
     ]
 
-  },
+  ],
 
-  "arms": {
+  [
 
-    "triceps": [
+    "Руки",
+
+    [
 
       "Трицепс",
 
@@ -453,7 +458,7 @@
 
     ],
 
-    "biceps": [
+    [
 
       "Бицепс",
 
@@ -496,103 +501,116 @@
 
     ]
 
-  },
+  ],
 
-  "back": [
+  [
 
     "Спина",
 
-    "../img/exercises/back/back.jpg",
-
     [
-      false,
-      "Подтягивания обычным хватом",
-      30,
-      "../img/exercises/back/back_2.jpg"
-    ],
 
-    [
-      false,
-      "Подъём корпуса локтями в положении лёжа",
-      30,
-      "../img/exercises/back/back_3.jpg"
-    ],
+      "Упражнения на спину",
 
-    [
-      false,
-      "Лодочка",
-      30,
-      "../img/exercises/back/back_4.jpg"
-    ],
+      "../img/exercises/back/back.jpg",
 
-    [
-      false,
-      "Планка звезда",
-      30,
-      "../img/exercises/back/back_5.jpg"
-    ],
+      [
+        false,
+        "Подтягивания обычным хватом",
+        30,
+        "../img/exercises/back/back_2.jpg"
+      ],
 
-    [
-      false,
-      "Планка на руках с поочерёдным поднятием ног и рук",
-      30,
-      "../img/exercises/back/back_6.jpg"
-    ],
+      [
+        false,
+        "Подъём корпуса локтями в положении лёжа",
+        30,
+        "../img/exercises/back/back_3.jpg"
+      ],
 
-    [
-      false,
-      "Мостик",
-      30,
-      "../img/exercises/back/back_7.jpg"
+      [
+        false,
+        "Лодочка",
+        30,
+        "../img/exercises/back/back_4.jpg"
+      ],
+
+      [
+        false,
+        "Планка звезда",
+        30,
+        "../img/exercises/back/back_5.jpg"
+      ],
+
+      [
+        false,
+        "Планка на руках с поочерёдным поднятием ног и рук",
+        30,
+        "../img/exercises/back/back_6.jpg"
+      ],
+
+      [
+        false,
+        "Мостик",
+        30,
+        "../img/exercises/back/back_7.jpg"
+      ]
     ]
+
+
   ],
 
-  "chest": [
+  [
 
     "Грудь и плечи",
 
-    "../img/exercises/chest/chest.jpg",
-
     [
-      false,
-      "Классические отжимания",
-      30,
-      "../img/exercises/chest/chest_2.jpg"
-    ],
+      "Упражнения на грудь и плечи",
 
-    [
-      false,
-      "Разворот корпуса в планке на руках",
-      30,
-      "../img/exercises/chest/chest_3.jpg"
-    ],
+      "../img/exercises/chest/chest.jpg",
 
-    [
-      true,
-      "Давление ладонями друг на друга",
-      60,
-      "../img/exercises/chest/chest_4.jpg"
-    ],
+      [
+        false,
+        "Классические отжимания",
+        30,
+        "../img/exercises/chest/chest_2.jpg"
+      ],
 
-    [
-      false,
-      "Отжимания с поднятым тазом",
-      30,
-      "../img/exercises/chest/chest_5.jpg"
-    ],
+      [
+        false,
+        "Разворот корпуса в планке на руках",
+        30,
+        "../img/exercises/chest/chest_3.jpg"
+      ],
 
-    [
-      false,
-      "Поочерёдные касания плеч в упоре лёжа",
-      30,
-      "../img/exercises/chest/chest_6.jpg"
-    ],
+      [
+        true,
+        "Давление ладонями друг на друга",
+        60,
+        "../img/exercises/chest/chest_4.jpg"
+      ],
 
-    [
-      false,
-      "Отжимания с хлопком",
-      30,
-      "../img/exercises/chest/chest_7.jpg"
+      [
+        false,
+        "Отжимания с поднятым тазом",
+        30,
+        "../img/exercises/chest/chest_5.jpg"
+      ],
+
+      [
+        false,
+        "Поочерёдные касания плеч в упоре лёжа",
+        30,
+        "../img/exercises/chest/chest_6.jpg"
+      ],
+
+      [
+        false,
+        "Отжимания с хлопком",
+        30,
+        "../img/exercises/chest/chest_7.jpg"
+      ]
     ]
+
+
   ]
-}
+]
