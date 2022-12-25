@@ -173,3 +173,11 @@ article {
 	border-radius: 5px;
 	height: 40px;
 }
+
+/* ============= exercise.php ================= */
+
+.main_exercise_block {
+	width: 90%;
+	border: 2px black solid;
+	margin-bottom: 10px;
+}
