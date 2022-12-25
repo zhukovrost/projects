@@ -34,6 +34,7 @@ if (empty($_GET['page'])){
   echo "<h1>Coming soon...</h1>";
   # тут возня с сессиями жоская потом сделаю
 }else{
+  # вывод упражнений
   $name = $_GET['page'];
   echo "<h1>".$exercises_array[$name][0]."</h1>";
   for ($i = 1; $i < count($exercises_array[$name]); $i++){
