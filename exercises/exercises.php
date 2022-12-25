@@ -3,6 +3,7 @@ include "../templates/settings.php";
 include "../templates/func.php";
 $data = file_get_contents("exercises.json");
 $exercises_array = json_decode($data, true);
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,33 +28,42 @@ $exercises_array = json_decode($data, true);
   <a href="exercises.php?page=chest_and_shoulders">Грудь и плечи</a>
 </nav>
 <?php
-
-include "../templates/welcome_to_constructor.html";
-/*
-$exercises_array[group_of_muscles][muscle][exercise]
-$exercises_array[$i][0] = group of muscles name
-$exercises_array[$i][$j][0] = muscle
-$exercises_array[$i][$j][1] = muscle image
-$exercises_array[$i][$j][$k][0] = if static - true, if not - false
-$exercises_array[$i][$j][$k][1] = exercise name
-$exercises_array[$i][$j][$k][2] = if static - seconds, if not - repeats
-$exercises_array[$i][$j][$k][3] = exercise image
-
-  for ($i = 0; $i < count($exercises_array); $i++){
-    echo "<div class='main_exercise_block'>";
-    echo "<h2>".$exercises_array[$i][0]."</h2>";
-    echo "<div>";
-    for ($j = 1; $j < count($exercises_array[$i]); $j++){
-      echo "<label>".$exercises_array[$i][$j][0]."</label><br>";
-      echo "<img src='".$exercises_array[$i][$j][1]."'><br>";
-      for ($k = 2; $k < count($exercises_array[$i][$j]); $k++){
-        echo "<label>".$exercises_array[$i][$j][$k][1]."</label><br>";
-        echo "<img src='".$exercises_array[$i][$j][$k][3]."'><br>";
-      }
+if (empty($_GET['page'])){
+  include "../templates/welcome_to_constructor.html";
+}elseif ($_GET['page'] == "my_program") {
+  echo "<h1>Coming soon...</h1>";
+  # тут возня с сессиями жоская потом сделаю
+}else{
+  $name = $_GET['page'];
+  echo "<h1>".$exercises_array[$name][0]."</h1>";
+  for ($i = 1; $i < count($exercises_array[$name]); $i++){
+    echo "<div style='border: black 1px dashed'>";
+    echo
+    "<div class='together'>
+      <img src='".$exercises_array[$name][$i][1]."'>
+      <h3>".$exercises_array[$name][$i][0]."</h3>
+    </div>";
+    for ($j = 2; $j < count($exercises_array[$name][$i]); $j++){
+      echo
+        "<div class='together'>
+          <img src='".$exercises_array[$name][$i][$j][3]."'>
+          <h4>".$exercises_array[$name][$i][$j][1]."</h4>
+        </div>";
     }
     echo "</div>";
-    echo "</div>";
   }
+
+
+}
+/*
+$exercises_array[group_of_muscles][muscle][exercise]
+$exercises_array[$name][0] = group of muscles name
+$exercises_array[$name][$i][0] = muscle
+$exercises_array[$name][$i][1] = muscle image
+$exercises_array[$name][$i][$j][0] = if static - true, if not - false
+$exercises_array[$name][$i][$j][1] = exercise name
+$exercises_array[$name][$i][$j][2] = if static - seconds, if not - repeats
+$exercises_array[$name][$i][$j][3] = exercise image
 */
 ?>
 </body>
