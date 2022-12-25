@@ -54,7 +54,7 @@
 
     [
 
-      "Нижний сегмент прямой мышцы.jpg",
+      "Нижний сегмент прямой мышцы",
 
       "../img/exercises/press/bottom.jpg",
 
@@ -106,7 +106,7 @@
 
       "Прямая мышца",
 
-      "../img/exercises/straight.jpg",
+      "../img/exercises/press/straight.jpg",
 
       [
         false,
@@ -206,7 +206,7 @@
 
       "Все абдоминальные мышцы",
 
-      "../img/exercises/press/all-abdominal.jpg",
+      "../img/exercises/press/all_abdominal.jpg",
 
       [
         false,
