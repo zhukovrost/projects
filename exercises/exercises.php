@@ -1,4 +1,6 @@
 <?php
+include "../templates/settings.php";
+include "../templates/func.php";
 $data = file_get_contents("exercises.json");
 $exercises_array = json_decode($data, true);
 ?>
@@ -12,8 +14,21 @@ $exercises_array = json_decode($data, true);
   <link rel="stylesheet" href="../css/style.css">
   <title>Document</title>
 </head>
+
+<?php include "../templates/header.html"; ?>
+
 <body>
+<nav>
+  <a href="exercises.php?page=my_program">Моя программа</a>
+  <a href="exercises.php?page=press">Пресс</a>
+  <a href="exercises.php?page=legs">Ноги</a>
+  <a href="exercises.php?page=arms">Руки</a>
+  <a href="exercises.php?page=back">Спина</a>
+  <a href="exercises.php?page=chest_and_shoulders">Грудь и плечи</a>
+</nav>
 <?php
+
+include "../templates/welcome_to_constructor.html";
 /*
 $exercises_array[group_of_muscles][muscle][exercise]
 $exercises_array[$i][0] = group of muscles name
@@ -23,7 +38,6 @@ $exercises_array[$i][$j][$k][0] = if static - true, if not - false
 $exercises_array[$i][$j][$k][1] = exercise name
 $exercises_array[$i][$j][$k][2] = if static - seconds, if not - repeats
 $exercises_array[$i][$j][$k][3] = exercise image
-*/
 
   for ($i = 0; $i < count($exercises_array); $i++){
     echo "<div class='main_exercise_block'>";
@@ -40,6 +54,8 @@ $exercises_array[$i][$j][$k][3] = exercise image
     echo "</div>";
     echo "</div>";
   }
+*/
 ?>
 </body>
+<?php include "../templates/footer.html"; ?>
 </html>

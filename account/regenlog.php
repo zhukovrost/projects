@@ -1,7 +1,7 @@
 <?php
 
-include '../func.php';
-include '../settings.php';
+include '../templates/func.php';
+include '../templates/settings.php';
 
 if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
 	$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
@@ -108,6 +108,7 @@ if (isset($_POST['reg_done'])){
 	<link rel="stylesheet" href="../css/style.css">
   <title>Document</title>
 </head>
+<?php include "../templates/header.html"; ?>
 <body>
 	<main>
 		
@@ -164,4 +165,5 @@ if (isset($_POST['reg_done'])){
 			</form>
 		</main>
 	</body>
+<?php include "../templates/footer.html"; ?>
 </html>

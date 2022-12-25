@@ -1,7 +1,7 @@
 <?php
 
-include "../func.php";
-include '../settings.php';
+include "../templates/func.php";
+include '../templates/settings.php';
 
 check_the_login();
 
@@ -108,7 +108,7 @@ if ($data_array = $conn -> query($select_sql)){
   <title>Sport - account</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-
+<?php include "../templates/header.html"; ?>
 <body style="height: 100vh">
   <main class="profile_card">
     <!-- first string -->
@@ -169,6 +169,7 @@ if ($data_array = $conn -> query($select_sql)){
         echo "<label>Програм пока нет</label>";
       }
       ?>
+      <a href="../exercises/exercises.php">Создать программу</a>
     </div>
 
     <form method="post" id="exit">
@@ -179,6 +180,8 @@ if ($data_array = $conn -> query($select_sql)){
 
   <script src="../main.js"></script>
 </body>
+<?php
+include "../templates/footer.html";
+$conn->close();
+?>
 </html>
-
-<?php $conn->close(); ?>
