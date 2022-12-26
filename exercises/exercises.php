@@ -3,7 +3,20 @@ include "../templates/settings.php";
 include "../templates/func.php";
 $data = file_get_contents("exercises.json");
 $exercises_array = json_decode($data, true);
+$error_array = array(
+  "add_success" => false
+);
 session_start();
+# pushing the array with all selected exercises, if it does not exist - creating it
+if (isset($_SESSION['construct_array'])){
+  if (isset($_POST['add'])){
+    $push_exercise = $_POST['exercise'].$_POST['repeats'];
+    array_push($_SESSION['construct_array'], $push_exercise);
+    $error_array['add_success'] = true;
+  }
+}else{
+  $_SESSION['construct_array'] = array();
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,7 +33,7 @@ session_start();
 
 <body>
 <nav>
-  <a href="exercises.php?page=my_program">Моя программа</a>
+  <a href="exercises.php?page=my_program">Моя программа(<?php echo count($_SESSION['construct_array']); # amount of selected exercises ?>)</a>
   <a href="exercises.php?page=press">Пресс</a>
   <a href="exercises.php?page=legs">Ноги</a>
   <a href="exercises.php?page=arms">Руки</a>
@@ -29,27 +42,39 @@ session_start();
 </nav>
 <?php
 if (empty($_GET['page'])){
+  # welcome to constructor page
   include "../templates/welcome_to_constructor.html";
 }elseif ($_GET['page'] == "my_program") {
-  echo "<h1>Coming soon...</h1>";
-  # тут возня с сессиями жоская потом сделаю
+  # my program page
+  print_r($_SESSION['construct_array']);
 }else{
-  # вывод упражнений
+  # exercises pages
   $name = $_GET['page'];
-  echo "<h1>".$exercises_array[$name][0]."</h1>";
+  echo "<h1>".$exercises_array[$name][0]."</h1>"; # header
   for ($i = 1; $i < count($exercises_array[$name]); $i++){
     echo "<div style='border: black 1px dashed'>";
     echo
     "<div class='together'>
-      <img src='".$exercises_array[$name][$i][1]."'>
-      <h3>".$exercises_array[$name][$i][0]."</h3>
+      <img src='".$exercises_array[$name][$i][1]."'> <!-- group of muscules image -->
+      <h3>".$exercises_array[$name][$i][0]."</h3> <!-- group of muscules -->
     </div>";
     for ($j = 2; $j < count($exercises_array[$name][$i]); $j++){
       echo
-        "<div class='together'>
-          <img src='".$exercises_array[$name][$i][$j][3]."'>
-          <h4>".$exercises_array[$name][$i][$j][1]."</h4>
-        </div>";
+        "<form method='post' class='together'>
+          <button type='submit' name='add'>
+            <img src='".$exercises_array[$name][$i][$j][3]."'>  <!-- exercise image + submit button -->
+          </button>
+          <h4>".$exercises_array[$name][$i][$j][1]."</h4> <!-- exercise -->";
+      # repeats input
+      if ($exercises_array[$name][$i][$j][0]){
+        $exercise_id = $name."/".$i."/".$j."/s/";
+        echo "<label>Длительность (в секундах)<input name='repeats' type='number' value='".$exercises_array[$name][$i][$j][2]."'></label>";
+      }else{
+        $exercise_id = $name."/".$i."/".$j."/r/";
+        echo "<label>Повторения<input type='number' name='repeats' value='".$exercises_array[$name][$i][$j][2]."'></label>";
+      }
+      # posting an id of the exercise
+      echo "<input type='hidden' name='exercise' value='".$exercise_id."'></form>";
     }
     echo "</div>";
   }

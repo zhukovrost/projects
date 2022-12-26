@@ -181,3 +181,9 @@ article {
 	border: 2px black solid;
 	margin-bottom: 10px;
 }
+
+.exercise_image {
+	width: 100px;
+	height: 100px;
+	padding: 0;
+}
