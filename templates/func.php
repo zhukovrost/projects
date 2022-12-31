@@ -33,6 +33,11 @@ function not_empty($cond){
   }
 }
 
+function clear_all(){
+  $_SESSION = array();
+  $_POST = array();
+}
+
 function success_log($login){
   setcookie("login", $login);
   # header('Location: ../index.php');
