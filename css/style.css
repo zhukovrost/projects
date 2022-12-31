@@ -6,10 +6,10 @@ html {
 }
 
 body {
-	background-color: #b1b4e4;
+	background-color: #F2F2F2;
 	margin: 0px;
 }
-	
+
 div, form {
 	transition: 0.5s;
 }
@@ -186,4 +186,109 @@ article {
 	width: 100px;
 	height: 100px;
 	padding: 0;
+}
+
+/* ===============INDEX.html===================== */
+
+header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 20px;
+}
+
+header .Corporation{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #0D0D0D;
+	color: #dbd4d0;
+	margin-left: 10px;
+	-webkit-box-shadow: -1px 4px 50px 3px rgba(34, 60, 80, 0.69);
+	-moz-box-shadow: -1px 4px 50px 3px rgba(34, 60, 80, 0.69);
+	box-shadow: -1px 4px 50px 3px rgba(34, 60, 80, 0.69);
+
+	width: 300px;
+	height: 70px;
+	border-radius: 20px;
+
+	font-size: 20px;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 600;
+}
+
+header .title{
+	width: 300px;
+	text-align: center;
+}
+
+header .title h1{
+	font-family: 'Rubik Mono One', sans-serif;
+	font-weight: 400;
+	font-size: 65px;
+	text-transform: uppercase;
+	letter-spacing: 7px;
+}
+
+header .title h2{
+	font-family: 'Rubik Mono One', sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+}
+
+header .reglog_buttons a{
+	display: inline-block;
+	text-align: center;
+	height: 45px;
+	margin-right: 15px;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	text-transform: uppercase;
+	border: 2px solid #0D0D0D;
+	border-radius: 5px;
+	padding: 10px 20px;
+	position: relative;
+	overflow: hidden;
+	background: transparent;
+	transition: .3s;
+}
+
+header .reglog_buttons a::before{
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #595959;
+	top: -100%;
+	left: 0;
+	z-index: -1;
+	transition: .3s;
+}
+
+header .reglog_buttons a::after{
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #0D0D0D;
+	top: -100%;
+	left: 0;
+	z-index: -1;
+	transition: .3s;
+	transition-delay: .2s;
+}
+
+header .reglog_buttons a:hover{
+	color: #e2e0e0;
+}
+
+header .reglog_buttons a:hover::before{
+	top: 0;
+}
+
+header .reglog_buttons a:hover::after{
+	top: 0;
 }
