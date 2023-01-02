@@ -68,8 +68,9 @@ if (empty($_GET['page'])){
 
   # my program page
 
-  if (count($_SESSION['construct_array']) == 0){
-    include "../templates/welcome_to_constructor.html";
+  if (!isset($_SESSION['construct_array']) || count($_SESSION['construct_array']) == 0){
+    echo "<label>Вы не выбрали упражнений</label>";
+    echo "<label>Помните: выходные для слабаков!</label>";
   }else{
     for ($i = 0; $i < count($_SESSION['construct_array']); $i++){
       $exercise_id_explode = explode("/", $_SESSION['construct_array'][$i]); # making an id as array by splitting a string
@@ -90,14 +91,23 @@ if (empty($_GET['page'])){
       # posting an id of the exercise
       echo "
       <input type='hidden' name='change_repeats_id' value='".$i."'>
-      <input type='submit' value='Изменить'>
+      <button type='submit'><img style='width: 100px; height: 100px' src='../img/images/edit.png'></button>
       <input type='hidden' name='delete_exercise_id' value='".$i."'>
-      <input type='submit' value='Удалить' name='delete_exercise'>
+      <button type='submit' name='delete_exercise'><img style='width: 100px; height: 100px' src='../img/images/bin.png'></button>
     </form>";
     }
     echo "
     <form method='post'>
       <input type='submit' name='clear' value='Очистить конструктор полностью'>
+      <div>
+        <label><input type='checkbox' name='day' value='0'>Понедельник</label>
+        <label><input type='checkbox' name='day' value='1'>Фторник</label>
+        <label><input type='checkbox' name='day' value='2'>Среда</label>
+        <label><input type='checkbox' name='day' value='3'>Четверг</label>
+        <label><input type='checkbox' name='day' value='4'>Пятница</label>
+        <label><input type='checkbox' name='day' value='5'>Суббота</label>
+        <label><input type='checkbox' name='day' value='6'>Воскресениье</label>
+      </div>
     </form>";
   }
 
