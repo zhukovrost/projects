@@ -69,3 +69,8 @@ for(let i = 0; i < InputsAcc.length; i++){
         }
     };
 }
+
+
+var path = document.querySelector('.info_line2');
+var length = path.getTotalLength();
+console.log(length)

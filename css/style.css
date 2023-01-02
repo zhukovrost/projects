@@ -180,35 +180,20 @@ a:visited {
 /* =======HEADER====== */
 header{
 	display: flex;
-	padding: 70px 20px;
+	padding: 70px 50px;
 	max-height: 10vh;
 	align-items: center;
 	justify-content: space-between;
 	border-bottom: 1px solid #0D0D0D;
 }
 
-header .Corporation{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #0D0D0D;
-	color: #dbd4d0;
-	margin-left: 10px;
-	-webkit-box-shadow: -1px 4px 50px 3px rgba(34, 60, 80, 0.69);
-	-moz-box-shadow: -1px 4px 50px 3px rgba(34, 60, 80, 0.69);
-	box-shadow: -1px 4px 50px 3px rgba(34, 60, 80, 0.69);
-
-	width: 300px;
-	height: 70px;
-	border-radius: 20px;
-
-	font-size: 20px;
+header .company_name{
+	font-size: 30px;
 	font-family: 'Ubuntu', sans-serif;
-	font-weight: 600;
+	font-weight: 300;
 }
 
 header .title{
-	width: 300px;
 	text-align: center;
 }
 
@@ -228,22 +213,25 @@ header .title h2{
 	letter-spacing: 5px;
 }
 
+.reglog_buttons{
+	width: 320px;
+}
+
 header .reglog_buttons a{
 	display: inline-block;
+	position: relative;
 	text-align: center;
-	height: 45px;
 	margin-right: 15px;
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 400;
 	font-size: 18px;
 	text-transform: uppercase;
 	border: 2px solid #0D0D0D;
-	border-radius: 5px;
-	padding: 10px 20px;
-	position: relative;
-	overflow: hidden;
-	background: transparent;
+	border-radius: 7px;
+	padding: 10px 25px;
 	transition: .3s;
+	transition-delay: .3s;
+	overflow: hidden;
 }
 
 header .reglog_buttons a::before{
@@ -320,9 +308,123 @@ main{
 	width: 500px;
 	height: 200px;
 	background-color: #0D0D0D;
+	border-radius: 20px;
 	color: #D9D9D9;
 }
 
 .info_block3 p{
 	color: #D9D9D9;
+}
+
+
+/* =====Decorative lines */
+
+.info_svg1{
+	position: absolute;
+	top: 32%;
+	left: 22%;
+}
+
+.info_line1 {
+	stroke-dasharray: 527;
+	stroke-dashoffset: 527;
+	animation: line1 .7s linear forwards;
+	animation-delay: .6s;
+  }
+  
+@keyframes line1 {
+	to {
+	  stroke-dashoffset: 0;
+	}
+}
+
+.info_svg2{
+	position: absolute;
+	z-index: -1;
+	top: 55%;
+	left: 33%;
+}
+
+.info_line2 {
+	stroke-dasharray: 510;
+	stroke-dashoffset: 510;
+	animation: line2 .8s linear forwards;
+	animation-delay: 1.35s;
+  }
+  
+@keyframes line2 {
+	to {
+	  stroke-dashoffset: 0;
+	}
+}
+
+/* ===Animated svgs==== */
+
+.info_scores{
+	position: absolute;
+	opacity: 0;
+	top: -150%;
+	left: -25%;
+	transform: scale(0.3) rotateZ(-25deg);
+	animation: info_el1 .7s ease-in-out forwards;
+	animation-delay: 2.2s;
+}
+
+@keyframes info_el1 {
+	from{
+		opacity: 0;
+		top: -150%;
+		left: -25%;
+	}
+	to {
+		opacity: 1;
+		top: -200%;
+		left: -45%;
+	}
+}
+
+
+.info_sportsman{
+	position: absolute;
+	opacity: 0;
+	top: -150%;
+	left: 0%;
+	transform: scale(0.3);
+	animation: info_el2 .7s ease-in-out forwards;
+	animation-delay: 2.2s;
+}
+
+@keyframes info_el2 {
+	from{
+		opacity: 0;
+		top: -150%;
+	}
+	to {
+		opacity: 1;
+		top: -180%;
+	}
+}
+
+
+.info_diagramm{
+	position: absolute;
+	opacity: 0;
+	top: -150%;
+	left: 25%;
+	transform: scale(0.3) rotateZ(15deg);
+	animation: info_el3 .7s ease-in-out forwards;
+	animation-delay: 2.2s;
+}
+
+@keyframes info_el3 {
+	from{
+		opacity: 0;
+		top: -150%;
+		left: 25%;
+	}
+	to {
+		opacity: 1;
+		top: -190%;
+		left: 45%;
+	}
 }
