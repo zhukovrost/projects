@@ -53,7 +53,7 @@
                 </svg>
             </div>
         </div>
-        <div class="progress_info">
+        <div class="workout_info">
             <div class="container">
                 <h2>Создавайте собственную тренировку</h2>
                 <div class="workout_content">
@@ -89,8 +89,44 @@
                 </div>
             </div>
         </div>
+
+        <div class="progress_info">
+            <div class="container">
+                <h2>Следите за прогрессом</h2>
+                <div class="progress_cover">
+                    <div class="progress_block">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 100 100" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g><path d="m12.257 25.375 11.421 6.594c5.314-7.744 13.957-13.017 23.868-13.772v-13.197c-14.669.732-27.32 8.037-35.289 20.375z" fill="#e57e25" data-original="#e57e25"></path><path d="m18.093 50c0-4.938 1.122-9.611 3.124-13.784l-11.414-6.59c-6.701 13.07-6.701 27.678 0 40.748l11.414-6.589c-2.002-4.174-3.124-8.847-3.124-13.785z" fill="#894b9d" data-original="#894b9d"></path><path d="m23.678 68.031-11.421 6.594c7.969 12.338 20.62 19.643 35.289 20.375v-13.196c-9.911-.755-18.554-6.028-23.868-13.773z" fill="#e64c3c" data-original="#e64c3c"></path><path d="m52.454 81.804v13.196c14.669-.732 27.321-8.037 35.289-20.375l-11.422-6.595c-5.315 7.746-13.959 13.019-23.867 13.774z" fill="#26b99a" data-original="#26b99a"></path><path d="m90.198 29.626-11.415 6.59c2.002 4.172 3.124 8.846 3.124 13.783s-1.123 9.611-3.124 13.784l11.415 6.591c6.699-13.069 6.699-27.677 0-40.748z" fill="#2980ba" data-original="#2980ba"></path><path d="m76.321 31.97 11.422-6.595c-7.968-12.338-20.62-19.643-35.289-20.375v13.196c9.908.755 18.552 6.028 23.867 13.774z" fill="#f0c419" data-original="#f0c419"></path></g></g></svg>
+                        <p>Группы тренируемых мышц</p>
+                    </div>
+                    <div class="progress_block">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="m434 157.8h54v42h-54z" fill="#5fcda4" data-original="#5fcda4"></path><path d="m488 407.3v.3h-54v-.3-207.5h54z" fill="#6994fe" data-original="#6994fe"></path><path d="m388.1 407.3v.3h-54v-.3-143h54z" fill="#6994fe" data-original="#6994fe"></path><path d="m334.1 222.3h54v42h-54z" fill="#5fcda4" data-original="#5fcda4"></path><path d="m234.2 253.4h54v42h-54z" fill="#5fcda4" data-original="#5fcda4"></path><path d="m288.2 407.3v.3h-54v-.3-111.9h54z" fill="#6994fe" data-original="#6994fe"></path><path d="m134.2 223.3h54v42h-54z" fill="#5fcda4" data-original="#5fcda4"></path><path d="m188.3 407.3v.3h-54.1v-.3-142h54.1z" fill="#6994fe" data-original="#6994fe"></path><path d="m34.3 293.4h54v42h-54z" fill="#5fcda4" data-original="#5fcda4"></path><path d="m88.3 407.3v.3h-54v-.3-71.9h54z" fill="#6994fe" data-original="#6994fe"></path><path d="m452.7 78.1-40.5-7c-3.3-.5-6.4 1.7-6.9 5-.5 3.2 1.6 6.3 4.8 6.9l26.9 4.7-176.3 123.1-100.3-53c-2.2-1.2-4.9-.8-6.8.8l-106.3 94.3c-2.5 2.2-2.7 6-.5 8.5s6 2.7 8.5.5l103.2-91.5 99.9 52.8c2 1.1 4.4.9 6.2-.4l178.6-124.9-4.4 25.6c-.6 3.3 1.6 6.4 4.9 6.9s6.4-1.6 6.9-4.9l7-40.5c.6-3.3-1.6-6.4-4.9-6.9z" fill="#b0b5ca" data-original="#b0b5ca"></path><path d="m34.3 293.3h28v42h-28z" fill="#549b7e" data-original="#549b7e"></path><path d="m62.3 335.3h-28v72 .3h28v-.3z" fill="#5f81b7" data-original="#5f81b7"></path><path d="m11 407h490v27h-490z" fill="#7d8595" data-original="#7d8595"></path><path d="m11 407h31v27h-31z" fill="#697077" data-original="#697077"></path></g></svg>
+                        <p>Количество тренировок</p>
+                    </div>
+                </div>
+                <p class="progress_end_text">и не только...</p>
+            </div>
+        </div>
+
+        <div class="registration_info">
+            <div class="container">
+                <h2>Войдите и испытайте все возможности платформы</h2>
+            </div>
+            <div class="reg_cover">
+                <div class="reg_block">
+                    <h3>Еще не зарегистрированны?</h3>
+                    <a href="">Зарегистрироваться</a>
+                </div>
+                <div class="reg_block">
+                    <h3>Уже есть аккаунт?</h3>
+                    <a class="second" href="">Войти</a>
+                </div>
+            </div>
+        </div>
     </main>
 
+    <?php
+    include "templates/footer.html";
+    ?>
 
     <script src="main.js"></script>
 </body>
