@@ -4,25 +4,44 @@ include "../templates/func.php";
 $data = file_get_contents("exercises.json");
 $exercises_array = json_decode($data, true);
 $error_array = array(
-  "add_success" => false
+  "add_to_construct_success" => false,
+  "add_to_program_success" => false,
+  "set_date_error" => true
 );
 session_start();
 # pushing the array with all selected exercises, if it does not exist - creating it
 if (isset($_SESSION['construct_array'])){
-  if (isset($_POST['add'])){
+  if (isset($_POST['add_to_construct_array'])){
     $push_exercise = $_POST['exercise'].$_POST['repeats'];
     array_push($_SESSION['construct_array'], $push_exercise);
-    $error_array['add_success'] = true;
+    $error_array['add_to_construct_success'] = true;
   }
 }else{
   $_SESSION['construct_array'] = array();
 }
 
+# pushing exercises to program
+if (isset($_SESSION['program_array'])){
+  if (isset($_POST['add_to_program_array'])){
+    if (isset($_POST['day'])){
+      foreach ($_POST['day'] as $item){
+        foreach ($_SESSION['construct_array'] as $exercise_id) {
+          array_push($_SESSION['program_array'][$item], $exercise_id);
+        }
+      }
+    }else{
+      $error_array['set_date_error'] = true;
+    }
+  }
+}else{
+  $_SESSION['program_array'] = [[], [], [], [], [], [], []];
+}
+
 # delete and change exercises
 
-if ($_GET['page'] == "my_program"){
+if ($_GET['page'] == "constructor"){
   if (isset($_POST['clear'])){
-    clear_all();
+    $_SESSION['construct_array'] = array();
   } elseif (isset($_POST['delete_exercise'])){
     $new_construct_array = array();
     for ($i = 0; $i < $_POST['delete_exercise_id']; $i++){ array_push($new_construct_array, $_SESSION['construct_array'][$i]); }
@@ -50,7 +69,8 @@ if ($_GET['page'] == "my_program"){
 
 <body>
 <nav>
-  <a href="exercises.php?page=my_program">Моя программа(<?php if (isset($_SESSION['construct_array'])) { echo count($_SESSION['construct_array']); } else { echo "0"; } # amount of selected exercises ?>)</a>
+  <a href="exercises.php?page=my_program">Моя программа</a>
+  <a href="exercises.php?page=constructor">Конструктор(<?php if (isset($_SESSION['construct_array'])) { echo count($_SESSION['construct_array']); } else { echo "0"; } # amount of selected exercises ?>)</a>
   <a href="exercises.php?page=press">Пресс</a>
   <a href="exercises.php?page=legs">Ноги</a>
   <a href="exercises.php?page=arms">Руки</a>
@@ -68,8 +88,53 @@ if (empty($_GET['page'])){
 
   # my program page
 
+  echo "
+    <table>
+      <tr class='program_table'>
+        <td></td>
+        <th>Понедельник</th>
+        <th>Вторник</th>
+        <th>Среда</th>
+        <th>Четверг</th>
+        <th>Пятница</th>
+        <th>Суббота</th>
+        <th>Воскресенье</th>
+      </tr>
+      <tr class='program_table'>
+        <th>Тренировка</th>
+    ";
+
+  for ($i = 0; $i < 7; $i++){
+    $program = $_SESSION['program_array'][$i];
+    echo "<td>";
+    if (empty($program)){
+      echo "<label>Выходной</label>";
+    }else{
+      echo "<ul>";
+      foreach ($program as $exercise_id){
+        $exercise_id_explode = explode("/", $exercise_id);
+        $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]];
+        echo "<li>";
+        echo $exercise[1]." - ".$exercise_id_explode[3]." ";
+        if ($exercise[0]){
+          echo "секунд(а)";
+        }else{
+          echo "повторений(ие)";
+        }
+        echo "</li>";
+      }
+      echo "</ul>";
+    }
+    echo "</td>";
+  }
+
+  echo "</tr></table>";
+
+} elseif ($_GET['page'] == "constructor") {
+
+  # constructor page
   if (!isset($_SESSION['construct_array']) || count($_SESSION['construct_array']) == 0){
-    echo "<label>Вы не выбрали упражнений</label>";
+    echo "<label>Вы не выбрали упражнения</label><br>";
     echo "<label>Помните: выходные для слабаков!</label>";
   }else{
     for ($i = 0; $i < count($_SESSION['construct_array']); $i++){
@@ -91,23 +156,24 @@ if (empty($_GET['page'])){
       # posting an id of the exercise
       echo "
       <input type='hidden' name='change_repeats_id' value='".$i."'>
-      <button type='submit'><img style='width: 100px; height: 100px' src='../img/images/edit.png'></button>
+      <button type='submit'><img style='width: 100px; height: 100px' src='../img/icons/edit.png'></button>
       <input type='hidden' name='delete_exercise_id' value='".$i."'>
-      <button type='submit' name='delete_exercise'><img style='width: 100px; height: 100px' src='../img/images/bin.png'></button>
+      <button type='submit' name='delete_exercise'><img style='width: 100px; height: 100px' src='../img/icons/bin.png'></button>
     </form>";
     }
     echo "
     <form method='post'>
       <input type='submit' name='clear' value='Очистить конструктор полностью'>
       <div>
-        <label><input type='checkbox' name='day' value='0'>Понедельник</label>
-        <label><input type='checkbox' name='day' value='1'>Фторник</label>
-        <label><input type='checkbox' name='day' value='2'>Среда</label>
-        <label><input type='checkbox' name='day' value='3'>Четверг</label>
-        <label><input type='checkbox' name='day' value='4'>Пятница</label>
-        <label><input type='checkbox' name='day' value='5'>Суббота</label>
-        <label><input type='checkbox' name='day' value='6'>Воскресениье</label>
+        <label><input type='checkbox' name='day[]' value='0'>Понедельник</label>
+        <label><input type='checkbox' name='day[]' value='1'>Фторник</label>
+        <label><input type='checkbox' name='day[]' value='2'>Среда</label>
+        <label><input type='checkbox' name='day[]' value='3'>Четверг</label>
+        <label><input type='checkbox' name='day[]' value='4'>Пятница</label>
+        <label><input type='checkbox' name='day[]' value='5'>Суббота</label>
+        <label><input type='checkbox' name='day[]' value='6'>Воскресениье</label>
       </div>
+      <input type='submit' name='add_to_program_array' value='Добавить в программу'>
     </form>";
   }
 
@@ -129,7 +195,7 @@ if (empty($_GET['page'])){
       $exercise_id = $name."/".$i."/".$j."/";
       echo
         "<form method='post' class='together'>
-          <button type='submit' name='add'>
+          <button type='submit' name='add_to_construct_array'>
             <img src='".$exercise[3]."'>  <!-- exercise image + submit button -->
           </button>
           <h4>".$exercise[1]."</h4> <!-- exercise name -->";
