@@ -1,8 +1,12 @@
 <?php
 include "../templates/settings.php";
 include "../templates/func.php";
+
+# getting array of all exercises ($exercises_array)
+
 $data = file_get_contents("exercises.json");
 $exercises_array = json_decode($data, true);
+
 $error_array = array(
   "add_to_construct_success" => false,
   "add_to_program_success" => false,
@@ -12,6 +16,9 @@ $error_array = array(
 session_start();
 
 if (isset($_POST['edit_construct_array'])){
+
+  # select exercises on construct page if we edit program
+
   $_SESSION['edit_day'] = json_decode($_POST['edit_day'])[0];
   $_SESSION['construct_array'] = json_decode($_POST['edit_construct_array']);
 }else{
@@ -29,7 +36,7 @@ if (isset($_POST['edit_construct_array'])){
   }
 }
 
-# pushing exercises to program
+# pushing selected exercises($_SESSION['construct_array']) to program($_SESSION['program_array']), creating $_SESSION['program_array'] if it does not exist
 
 if (isset($_SESSION['program_array'])){
   if (isset($_POST['add_to_program_array'])){
@@ -51,18 +58,25 @@ if (isset($_SESSION['program_array'])){
 # delete and change exercises
 
 if ($_GET['page'] == "constructor"){
+
   if (isset($_POST['clear'])){
+    # clear selected exercises ($_SESSION['construct_array'])
     $_SESSION['construct_array'] = array();
-  } elseif (isset($_POST['delete_exercise'])){
+  }
+  elseif (isset($_POST['delete_exercise'])){
+    # deleting an exercise from $_SESSION['construct_array']
     $new_construct_array = array();
     for ($i = 0; $i < $_POST['delete_exercise_id']; $i++){ array_push($new_construct_array, $_SESSION['construct_array'][$i]); }
     for ($i = $_POST['delete_exercise_id'] + 1; $i < count($_SESSION['construct_array']); $i++){ array_push($new_construct_array, $_SESSION['construct_array'][$i]); }
     $_SESSION['construct_array'] = $new_construct_array;
-  } elseif (not_empty($_POST['change_repeats'])){
+  }
+  elseif (not_empty($_POST['change_repeats'])){
+    # changing exercise from $_SESSION['construct_array']
     $change = explode("/", $_SESSION['construct_array'][$_POST['change_repeats_id']]);
     $change[3] = $_POST['change_repeats'];
     $_SESSION['construct_array'][$_POST['change_repeats_id']] = $change[0]."/".$change[1]."/".$change[2]."/".$change[3];
   }
+
 }
 
 # delete workouts
@@ -70,6 +84,7 @@ if ($_GET['page'] == "constructor"){
 if (isset($_POST['delete_workout'])){
   $_SESSION['program_array'][$_POST['delete_workout']] = array();
 }
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -110,34 +125,44 @@ if (empty($_GET['page'])){
       <tr class='program_table'>
         <td></td>";
   foreach ($week as $weekday){
-    echo "<th>".$weekday."</th>";
+    echo "<th>".$weekday."</th>"; # columns headers
   }
   echo "
       </tr>
       <tr class='program_table'>
-        <th>Тренировка</th>";
+        <th>Тренировка</th>"; # row header
 
   for ($i = 0; $i < 7; $i++){
-    $program = $_SESSION['program_array'][$i];
+    $program = $_SESSION['program_array'][$i]; # selecting workout from $_SESSION['program_array'] of the $i's day
     echo "<td>";
     if (empty($program)){
-      echo "<label>Выходной</label>";
+      echo "<label>Выходной</label>"; # print Выходной if program is empty
     }else{
+
+      # printing workout of the day
+
       echo "<ul>";
       foreach ($program as $exercise_id){
-        $exercise_id_explode = explode("/", $exercise_id);
-        $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]];
+
+        $exercise_id_explode = explode("/", $exercise_id); # split id by '/'
+        $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
+
         echo "<li>";
-        echo $exercise[1]." - ".$exercise_id_explode[3]." ";
+        echo $exercise[1]." - ".$exercise_id_explode[3]." "; # exercise name - repeats
+
         if ($exercise[0]){
           echo "секунд(а)";
         }else{
           echo "повторений(ие)";
         }
+
         echo "</li>";
       }
       echo "</ul>";
     }
+
+    # edit and delete workout buttons
+
     echo "
       <form action='exercises.php?page=constructor' method='post'>
         <input type='hidden' name='edit_construct_array' value='".json_encode($program)."'>
@@ -158,13 +183,21 @@ if (empty($_GET['page'])){
   # constructor page
 
   if (!isset($_SESSION['construct_array']) || count($_SESSION['construct_array']) == 0){
+
+    # printing some text if there are no selected exercises
+
     echo "<label>Вы не выбрали упражнения</label><br>";
     echo "<label>Помните: выходные для слабаков!</label>";
+
   }else{
     for ($i = 0; $i < count($_SESSION['construct_array']); $i++){
-      $exercise_id_explode = explode("/", $_SESSION['construct_array'][$i]); # making an id as array by splitting a string
+
+      # printing selected exercises ($_SESSION['construct_array'])
+
+      $exercise_id_explode = explode("/", $_SESSION['construct_array'][$i]); # split array by '/'
       $repeats = $exercise_id_explode[3];
-      $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]];
+      $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
+
       echo "
     <form method='post' class='together'>
       <img src='".$exercise[3]."'>
@@ -178,7 +211,7 @@ if (empty($_GET['page'])){
         echo "<label>Повторения<input type='number' name='change_repeats' value='".$repeats."'></label>";
       }
 
-      # posting an id of the exercise
+      # edit and delete exercise buttons
 
       echo "
       <input type='hidden' name='change_repeats_id' value='".$i."'>
@@ -188,11 +221,12 @@ if (empty($_GET['page'])){
     </form>";
     }
 
+    # add to program menu
 
     echo "
     <form method='post'>
-      <input type='submit' name='clear' value='Очистить конструктор полностью'>
       <div>";
+    # printing days menu
     for ($i = 0; $i < 7; $i++){
       if (isset($_SESSION['edit_day'])){
         if ($_SESSION['edit_day'] == $i){
@@ -204,8 +238,11 @@ if (empty($_GET['page'])){
         echo "<label><input id='".$i."' type='checkbox' name='day[]' value='".$i."'>".$week[$i]."</label>";
       }
     }
-      echo "</div>
+
+    echo "
+         </div>
       <input type='submit' name='add_to_program_array' value='Добавить в программу'>
+      <input type='submit' name='clear' value='Очистить конструктор полностью'>
     </form>";
   }
 
