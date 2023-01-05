@@ -1,7 +1,7 @@
 <?php
 
-include "../templates/func.php";
-include '../templates/settings.php';
+include "templates/func.php";
+include 'templates/settings.php';
 
 check_the_login();
 
@@ -56,7 +56,7 @@ if  (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['thirdnam
 
 # ------------------------- select user data -----------------------------
 
-$select_sql = "SELECT name, surname, thirdname, email, LENGTH(password), date_of_birth, sex, weight, height, programs FROM users WHERE login='".$login."'";
+$select_sql = "SELECT name, surname, thirdname, email, LENGTH(password), date_of_birth, sex, weight, height, program, program_duration FROM users WHERE login='".$login."'";
 if ($data_array = $conn -> query($select_sql)){
   foreach ($data_array as $data) {
     $name = $data['name'];
@@ -95,7 +95,6 @@ if ($data_array = $conn -> query($select_sql)){
   $error_array["select_error"] = true;
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -106,16 +105,16 @@ if ($data_array = $conn -> query($select_sql)){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sport - account</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/format.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/format.css">
 </head>
-<?php include "../templates/header.html"; ?>
+<?php include "templates/header.html"; ?>
 <body style="height: 100vh">
   <main class="profile_card">
     <!-- first string -->
     <div class="together">
-      <img class="avatar" src="../img/icons/user.png" style="margin-right: 30px;">
+      <img class="avatar" src="img/icons/user.png" style="margin-right: 30px;">
       <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль спортсмена <span style="color: #FF0000"><?php echo $login; ?></span></label>
     </div>
     <div style="width: 100%; border: black dashed 1px">
@@ -169,21 +168,23 @@ if ($data_array = $conn -> query($select_sql)){
       <?php
       if ($programs == []){
         echo "<label>Програм пока нет</label>";
+      }else{
+        print_r($programs);
       }
       ?>
-      <a href="../exercises/exercises.php">Создать программу</a>
+      <a href="exercises/exercises.php">Создать программу</a>
     </div>
 
     <form method="post" id="exit">
       <input type="hidden" value="true" name="exit">
     </form>
-    <button form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="../img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
+    <button form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
   </main>
 
-  <script src="../main.js"></script>
+  <script src="main.js"></script>
 </body>
 <?php
-include "../templates/footer.html";
+include "templates/footer.html";
 $conn->close();
 ?>
 </html>
