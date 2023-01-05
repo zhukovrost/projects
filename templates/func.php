@@ -13,11 +13,22 @@ function conn_check($conn){
   }
 }
 
-function check_the_login($way = ""){
+function check_the_login($way = "", $header = true){
   if (empty($_COOKIE['login'])){
-    header('Location: '.$way.'regenlog.php?please_log=1');
+    if ($header){
+      header('Location: '.$way.'regenlog.php?please_log=1');
+    }else{
+      return false;
+    }
   }else if ($_COOKIE['login'] == ""){
-    header('Location: '.$way.'regenlog.php?please_log=1');
+    if ($header){
+      header('Location: '.$way.'regenlog.php?please_log=1');
+    }else{
+      return false;
+    }
+  }
+  if (!$header){
+    return true;
   }
 }
 
@@ -38,11 +49,6 @@ function clear_all(){
   $_POST = array();
 }
 
-function success_log($login){
-  setcookie("login", $login);
-  # header('Location: ../index.php');
-  header('Location: account.php');
-}
 
 function log_warning($if, $warning){
   if (isset($_POST['log_done'])){
