@@ -36,18 +36,6 @@ function check_the_login($way = ""){
   }
 }
 
-function not_empty($cond){
-  if (isset($cond)){
-    if ($cond != "" || $cond != null){
-      return true;
-    }else{
-      return false;
-    }
-  }else{
-    return false;
-  }
-}
-
 #---------------- reg and log ----------------------
 
 	function success_log($login){

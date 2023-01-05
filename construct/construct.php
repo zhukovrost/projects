@@ -72,56 +72,62 @@ if (empty($_GET['num_of_questions'])){
 
 #--------------- delete question -------------------
 
-if (not_empty($_POST['num_for_delete'])){
-  $num_del = $_POST['num_for_delete'] - 1;
+if (isset($_POST['num_for_delete'])){
+  if ($_POST['num_for_delete'] != "" || $_POST['num_for_delete'] != null){
+    $num_del = $_POST['num_for_delete'] - 1;
 
-	$nwra1 = array();
-	for ($i = 0; $i < $num_del; $i++){ array_push($nwra1, $result_array[$i]); }
-	for ($i = $num_del + 1; $i < count($result_array); $i++){ array_push($nwra1, $result_array[$i]); }
-  $result_array = $nwra1;
-  $_SESSION['result_array'] = $nwra1;
+    $nwra1 = array();
+    for ($i = 0; $i < $num_del; $i++){ array_push($nwra1, $result_array[$i]); }
+    for ($i = $num_del + 1; $i < count($result_array); $i++){ array_push($nwra1, $result_array[$i]); }
+    $result_array = $nwra1;
+    $_SESSION['result_array'] = $nwra1;
 
-  $nwra2 = array();
-  for ($i = 0; $i < $num_del; $i++){ array_push($nwra2, $_SESSION['to_send'][$i]); }
-  for ($i = $num_del + 1; $i < count($_SESSION['to_send']); $i++){ array_push($nwra2, $_SESSION['to_send'][$i]); }
-  $_SESSION['to_send'] = $nwra2;
+    $nwra2 = array();
+    for ($i = 0; $i < $num_del; $i++){ array_push($nwra2, $_SESSION['to_send'][$i]); }
+    for ($i = $num_del + 1; $i < count($_SESSION['to_send']); $i++){ array_push($nwra2, $_SESSION['to_send'][$i]); }
+    $_SESSION['to_send'] = $nwra2;
 
-  unset($_POST['num_for_delete']);
+    unset($_POST['num_for_delete']);
+  }
 }
 
 # ----------------------- add random questions -----------------------
 
-if (not_empty($_POST['num_of_rand_questions'])){
-  if ($_POST['theme_of_rand_questions'] == "all_themes"){
-    $select_rand_sql = "SELECT * FROM questions ORDER BY RAND() LIMIT 1";
-  }else{
-    $select_rand_sql = "SELECT * FROM questions WHERE theme='".$_POST['theme_of_rand_questions']."' ORDER BY RAND() LIMIT 1";
-  }
-  for ($i = 0; $i < $_POST['num_of_rand_questions']; $i++){
-    if ($result = $conn->query($select_rand_sql)){
-      foreach ($result as $rand_question_query){
-        $rand_question = json_decode($rand_question_query['question'], null, 512, JSON_UNESCAPED_UNICODE);
-        array_push($result_array, $rand_question);
-        array_push($_SESSION['to_send'], false);
-        array_push($themes_array, $rand_question_query['theme']);
-      }
+if (isset($_POST['num_of_rand_questions'])){
+  if ($_POST['theme_of_rand_questions'] != "" || $_POST['theme_of_rand_questions'] != null){
+    if ($_POST['theme_of_rand_questions'] == "all_themes"){
+      $select_rand_sql = "SELECT * FROM questions ORDER BY RAND() LIMIT 1";
     }else{
-      $error_array["random_error"] = true;
+      $select_rand_sql = "SELECT * FROM questions WHERE theme='".$_POST['theme_of_rand_questions']."' ORDER BY RAND() LIMIT 1";
     }
+    for ($i = 0; $i < $_POST['num_of_rand_questions']; $i++){
+      if ($result = $conn->query($select_rand_sql)){
+        foreach ($result as $rand_question_query){
+          $rand_question = json_decode($rand_question_query['question'], null, 512, JSON_UNESCAPED_UNICODE);
+          array_push($result_array, $rand_question);
+          array_push($_SESSION['to_send'], false);
+          array_push($themes_array, $rand_question_query['theme']);
+        }
+      }else{
+        $error_array["random_error"] = true;
+      }
+    }
+    $result->free();
+    $_SESSION['themes_array'] = $themes_array;
+    $_SESSION['result_array'] = $result_array;
   }
-  $result->free();
-  $_SESSION['themes_array'] = $themes_array;
-  $_SESSION['result_array'] = $result_array;
 }
 
 #-------------- add to db ----------------
 
-if (not_empty($_POST['add_theme'])){
-  $add_theme_sql = "INSERT INTO themes(theme) VALUES('".$_POST['add_theme']."')";
-  if($conn->query($add_theme_sql)){
-    $error_array['theme_success'] = true;
-  }else{
-    $error_array['theme_error'] = true;
+if (isset($_POST['add_theme'])){
+  if ($_POST['add_theme'] != "" || $_POST['add_theme'] != null){
+    $add_theme_sql = "INSERT INTO themes(theme) VALUES('".$_POST['add_theme']."')";
+    if($conn->query($add_theme_sql)){
+      $error_array['theme_success'] = true;
+    }else{
+      $error_array['theme_error'] = true;
+    }
   }
 }
 
@@ -167,8 +173,12 @@ if (isset($_POST['form_add_done'])){
 	
 #------------------ add question ----------------------------
 
-  if (not_empty($_POST['theme'])){
-    $theme_to_push = $_POST['theme'];
+  if (isset($_POST['theme'])){
+    if ($_POST['theme'] != ""){
+      $theme_to_push = $_POST['theme'];
+    }else{
+      $theme_to_push = null;
+    }
   }else{
     $theme_to_push = null;
   }
