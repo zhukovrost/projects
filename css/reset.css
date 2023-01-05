@@ -24,14 +24,6 @@ article {
 	background-size: cover;
 }
 
-::-webkit-scrollbar {
-	width: 0px;
-	background: transparent;
-}
-::-webkit-scrollbar-thumb {
-	background: #FF0000;
-}
-
 /* Links */
 
 a, a:link, a:visited  { 

@@ -25,8 +25,8 @@
             </h2>
         </div>
         <div class="reglog_buttons">
-            <a href="">Вход</a>
-            <a href="">Регистрация</a>
+            <a href="account/regenlog.php">Вход</a>
+            <a href="account/regenlog.php">Регистрация</a>
         </div>
     </header>
     <main>
@@ -114,11 +114,11 @@
             <div class="reg_cover">
                 <div class="reg_block">
                     <h3>Еще не зарегистрированны?</h3>
-                    <a href="">Зарегистрироваться</a>
+                    <a href="account/regenlog.php">Зарегистрироваться</a>
                 </div>
                 <div class="reg_block">
                     <h3>Уже есть аккаунт?</h3>
-                    <a class="second" href="">Войти</a>
+                    <a class="second" href="account/regenlog.php">Войти</a>
                 </div>
             </div>
         </div>
