@@ -187,11 +187,11 @@ if (isset($_POST['form_add_done'])){
 
 	if ($form_type != "definite_mc"){
 		if ($form_type != "checkbox"){
-			$construct = [$_POST['question'], $num_of_questions, intval($_POST['num_of_right_answer']) - 1, [], $form_type, $img_id];
+			$construct = [$_POST['question'], $num_of_questions, (int)$_POST['num_of_right_answer'] - 1, [], $form_type, $img_id];
 		}else{
       $nums_of_right_answers = explode(" ", $_POST['num_of_right_answer']);
       for ($i = 0; $i < count($nums_of_right_answers); $i++){
-        $nums_of_right_answers[$i] = intval($nums_of_right_answers[$i]) - 1;
+        $nums_of_right_answers[$i] = (int)$nums_of_right_answers[$i] - 1;
       }
 			$construct = [$_POST['question'], $num_of_questions, $nums_of_right_answers, [], $form_type, $img_id];
 		}
