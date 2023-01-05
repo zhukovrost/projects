@@ -85,6 +85,44 @@ if (isset($_POST['delete_workout'])){
   $_SESSION['program_array'][$_POST['delete_workout']] = array();
 }
 
+# adding program to bd and to account
+
+if (isset($_POST['weeks'])){
+  if ($_POST['weeks'] > 0){
+    check_the_login("../");
+    $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
+    conn_check($conn);
+    $login = $_COOKIE['login'];
+    $new_program = json_encode($_SESSION['program_array']);
+    $check_existing_program_sql = "SELECT id FROM userprograms WHERE program='" . $new_program . "'";
+    if ($check_existing_program_result = $conn->query($check_existing_program_sql)) {
+      $rowsCount = $check_existing_program_result->num_rows;
+      if ($rowsCount == 0) {
+        $insert_sql = "INSERT INTO userprograms(program) VALUES('".$new_program."')";
+        if ($conn->query($insert_sql)) {
+          if ($check_existing_program_result2 = $conn->query($check_existing_program_sql)) {
+            foreach ($check_existing_program_result2 as $select_id){
+              $id = $select_id['id'];
+            }
+            $check_existing_program_result2->free();
+          }
+        }
+      }else {
+        foreach ($check_existing_program_result as $select_id) {
+          $id = $select_id['id'];
+        }
+      }
+      $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."' WHERE login='".$login."'";
+      if ($conn->query($update_account_sql)){
+        $_SESSION['program_array'] = array();
+        $_SESSION['construct_array'] = array();
+      }
+    }
+    $check_existing_program_result->free();
+  }
+  $conn->close();
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -100,6 +138,7 @@ if (isset($_POST['delete_workout'])){
 <?php include "../templates/header.html"; ?>
 
 <body>
+<a href="../account.php">Назад</a>
 <nav>
   <a href="exercises.php?page=my_program">Моя программа</a>
   <a href="exercises.php?page=constructor">Конструктор(<?php if (isset($_SESSION['construct_array'])) { echo count($_SESSION['construct_array']); } else { echo "0"; } # amount of selected exercises ?>)</a>
@@ -112,13 +151,13 @@ if (isset($_POST['delete_workout'])){
 <?php
 if (empty($_GET['page'])){
 
-  # welcome to constructor page
+  # ---------------------------- WELCOME PAGE ---------------------------------
 
   include "../templates/welcome_to_constructor.html";
 
 }elseif ($_GET['page'] == "my_program") {
 
-  # my program page
+  # ----------------------------- MY PROGRAM PAGE -----------------------------------
 
   echo "
     <table>
@@ -178,9 +217,15 @@ if (empty($_GET['page'])){
 
   echo "</tr></table>";
 
+  echo "
+    <form method='post'>
+      <label>Укажите продолжительность выполнения данной програмы в неделях <input name='weeks' type='number'></label>
+      <button type='submit'>Начать данную програму</button>
+    </form>";
+
 } elseif ($_GET['page'] == "constructor") {
 
-  # constructor page
+  # ------------------ CONSTRUCTOR PAGE -------------------------
 
   if (!isset($_SESSION['construct_array']) || count($_SESSION['construct_array']) == 0){
 
@@ -248,7 +293,7 @@ if (empty($_GET['page'])){
 
 }else{
 
-  # exercises pages
+  # ---------------------------- EXERCISES PAGES -------------------------------------
 
   $name = $_GET['page'];
   echo "<h1>".$exercises_array[$name][0]."</h1>"; # header

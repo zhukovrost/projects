@@ -57,8 +57,6 @@ a:visited {
 }
 
 .login_form, .registration_form{
-	background-color: #28305e;
-	color: #F2F2F2;
 	border: black 1px solid;
 	border-radius: 30px;
 	font-family: 'Comfortaa', cursive;
@@ -69,16 +67,11 @@ a:visited {
 	width: 500px;
 }
 
-.login_form p, .registration_form p{
-	color: #F2F2F2;
-}
-
 .login_form h1, .registration_form h1{
 	margin: 15px auto;
 }
 
 .login_form input, .registration_form input{
-	color: #D9D9D9;
 	margin-bottom: 20px;
 	padding: 5px 15px;
 	border-radius: 5px;
