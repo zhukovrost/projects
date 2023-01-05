@@ -372,7 +372,7 @@ $count_result->free();
 		  <?php
 #---------------- errors and successes ---------------------------
 
-	if ($error_array['theme_error'] || $error_array['theme_success'] || $error_array["success_add"] || $error_array["image_error"] || $error_array["image_success"] || $error_array["success_add_questions"]){
+	if ($error_array['theme_error'] || $error_array['theme_success'] || $error_array["success_add_test"] || $error_array["image_error"] || $error_array["image_success"] || $error_array["success_add_questions"]){
 
 		echo "<div class='c_error_array'>\n";
 
