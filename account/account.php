@@ -115,7 +115,7 @@ if ($data_array = $conn -> query($select_sql)){
   <main class="profile_card">
     <!-- first string -->
     <div class="together">
-      <img class="avatar" src="../img/images/user.png" style="margin-right: 30px;">
+      <img class="avatar" src="../img/icons/user.png" style="margin-right: 30px;">
       <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль спортсмена <span style="color: #FF0000"><?php echo $login; ?></span></label>
     </div>
     <div style="width: 100%; border: black dashed 1px">
@@ -177,7 +177,7 @@ if ($data_array = $conn -> query($select_sql)){
     <form method="post" id="exit">
       <input type="hidden" value="true" name="exit">
     </form>
-    <button form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="../img/images/logout.png"> <label>Выйти из аккаунта</label></button>
+    <button form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="../img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
   </main>
 
   <script src="../main.js"></script>
