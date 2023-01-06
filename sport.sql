@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 05, 2023 at 09:26 PM
+-- Generation Time: Jan 06, 2023 at 04:02 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -52,7 +52,8 @@ INSERT INTO `userprograms` (`id`, `program`) VALUES
 (2, '[[\"press/1/3/30\",\"press/1/5/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/2/30\"],[],[],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/2/30\"],[],[]]'),
 (3, '[[],[],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[],[]]'),
 (4, '[[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[],[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[]]'),
-(5, '[[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"]]');
+(5, '[[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"]]'),
+(6, '[[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"legs/2/6/30\",\"legs/1/2/30\",\"chest_and_shoulders/1/3/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[]]');
 
 -- --------------------------------------------------------
 
@@ -68,12 +69,12 @@ CREATE TABLE `users` (
   `thirdname` varchar(32) DEFAULT NULL,
   `email` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `avatar_id` int(32) DEFAULT NULL,
+  `avatar_id` int(32) UNSIGNED DEFAULT NULL,
   `weight` float(6,3) UNSIGNED NOT NULL,
   `height` float(6,3) UNSIGNED NOT NULL,
   `sex` varchar(16) NOT NULL,
   `date_of_birth` date NOT NULL,
-  `program` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `program` int(11) UNSIGNED NOT NULL,
   `program_duration` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -82,7 +83,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `avatar_id`, `weight`, `height`, `sex`, `date_of_birth`, `program`, `program_duration`) VALUES
-(1, 'test1', 'testsurname', 'te', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1998-08-12', '5', 2);
+(1, 'test1', 'testsurname', 'te', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1998-08-12', 6, 4);
 
 --
 -- Indexes for dumped tables
@@ -120,7 +121,7 @@ ALTER TABLE `avatars`
 -- AUTO_INCREMENT for table `userprograms`
 --
 ALTER TABLE `userprograms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
