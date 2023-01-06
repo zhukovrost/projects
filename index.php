@@ -12,33 +12,42 @@ include "templates/func.php";
     <link rel="stylesheet" href="css/format.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <header>
-        <h1 class="company_name">Название &#174;</h1>
-        <div class="title">
-            <h1>
-                Сполт
-            </h1>
-            <h2>
-                это зызнь
-            </h2>
+        <div class="header_info">
+            <h1 class="company_name">Название &#174;</h1>
+            <div class="title">
+                <h1>
+                    Сполт
+                </h1>
+                <h2>
+                    это зызнь
+                </h2>
+            </div>
+            <div class="reglog_buttons">
+            <?php
+            if (check_the_login("", false)){
+                echo '<a href="account.php">'.$_COOKIE["login"].'</a>';
+            }else{
+                echo '
+                <a href="regenlog.php">Вход</a>
+                <a href="regenlog.php">Регистрация</a>
+                ';
+            }
+            ?>
+            </div>
         </div>
-        <div class="reglog_buttons">
-          <?php
-          if (check_the_login("", false)){
-            echo '<a href="account.php">'.$_COOKIE["login"].'</a>';
-          }else{
-            echo '
-            <a href="regenlog.php">Вход</a>
-            <a href="regenlog.php">Регистрация</a>
-            ';
-          }
-          ?>
-        </div>
+        <nav>
+            <a href="index.php">Главная</a>
+            <a href="exercises/workout.php">Мои тренировки</a>
+            <a href="">Lorem</a>
+            <a href="">Lorem</a>
+            <a href="">Lorem</a>
+        </nav>
     </header>
     <main>
         <div class="info_cover">

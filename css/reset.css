@@ -37,7 +37,7 @@ a:hover  {
 
 /* Common */
 
-aside, nav, footer, section, main {
+aside, footer, section, main {
 	display: block;
 }
 

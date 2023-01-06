@@ -76,6 +76,13 @@ if (isset($_POST['finish'])){
 </head>
 <?php include "../templates/header.html"; ?>
 <body>
+    <nav>
+      <a href="../index.php">Главная</a>
+      <a href="workout.php">Мои тренировки</a>
+      <a href="">Lorem</a>
+      <a href="">Lorem</a>
+      <a href="">Lorem</a>
+    </nav>
   <main>
     <?php
     if ($error_array['no_program']){
