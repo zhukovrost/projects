@@ -63,7 +63,8 @@ if ($data_array = $conn -> query($select_sql)){
     $surname = $data['surname'];
     $email = $data['email'];
     $date_of_birth = $data['date_of_birth'];
-    $programs = json_decode($data['programs']);
+    $program_id = $data['program'];
+    $program_duration = $data['program_duration'];
     if ($data['sex'] == "man"){
       $sex = "Мужской";
     }elseif ($data['sex'] == "woman"){
@@ -164,12 +165,49 @@ if ($data_array = $conn -> query($select_sql)){
     </div>
 
     <div style="width: 100%; border: black dashed 1px">
-      <label>Программы спортсмена:</label>
+      <label>Программa спортсмена:</label>
       <?php
-      if ($programs == []){
+      if ($program_id == 0){
         echo "<label>Програм пока нет</label>";
       }else{
-        print_r($programs);
+        $select_program_sql = "SELECT program FROM userprograms WHERE id=".$program_id;
+        if ($select_program_result = $conn->query($select_program_sql)){
+          foreach ($select_program_result as $data){
+            $program = json_decode($data['program']);
+          }
+          $select_program_result->free();
+          $exercises_array = json_decode(file_get_contents("./exercises/exercises.json"), true);
+          echo "<table><th></th>";
+          foreach ($week as $weekday){
+            echo "<th>".$weekday."</th>"; # columns headers
+          }
+          echo "</tr><tr><th>Тренировки</th>";
+
+          for ($i = 0; $i < 7; $i++){
+            $workout = $program[$i];
+            echo "<td>";
+            if (empty($workout)){
+              echo "<label>Выходной</label>"; # print Выходной if program is empty
+            }else{
+              echo "<ul>";
+              foreach ($workout as $exercise_id){
+                $exercise_id_explode = explode("/", $exercise_id); # split id by '/'
+                $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
+                echo "<li>";
+                echo $exercise[1]." - ".$exercise_id_explode[3]." "; # exercise name - repeats
+                if ($exercise[0]){
+                  echo "секунд(а)";
+                }else{
+                  echo "повторений(ие)";
+                }
+                echo "</li>";
+              }
+              echo "</ul>";
+            }
+            echo "</td>";
+          }
+          echo "</tr></table>";
+        }
       }
       ?>
       <a href="exercises/exercises.php">Создать программу</a>
