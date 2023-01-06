@@ -110,7 +110,9 @@ if ($data_array = $conn -> query($select_sql)){
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/format.css">
 </head>
-<?php include "templates/header.html"; ?>
+<header>
+  <a href="index.php">Назад</a>
+</header>
 <body style="height: 100vh">
   <main class="profile_card">
     <!-- first string -->
