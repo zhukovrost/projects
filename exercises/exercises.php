@@ -104,8 +104,8 @@ if (isset($_POST['weeks'])){
             foreach ($check_existing_program_result2 as $select_id){
               $id = $select_id['id'];
             }
-            $check_existing_program_result2->free();
           }
+          $check_existing_program_result2->free();
         }
       }else {
         foreach ($check_existing_program_result as $select_id) {
