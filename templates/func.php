@@ -32,6 +32,34 @@ function check_the_login($way = "", $header = true){
   }
 }
 
+function get_week_day() {
+  $week_day = date("l");
+  switch ($week_day){
+    case "Monday":
+      $week_day = 0;
+      break;
+    case "Tuesday":
+      $week_day = 1;
+      break;
+    case "Wednesday":
+      $week_day = 2;
+      break;
+    case "Thursday":
+      $week_day = 3;
+      break;
+    case "Friday":
+      $week_day = 4;
+      break;
+    case "Saturday":
+      $week_day = 5;
+      break;
+    case "Sunday":
+      $week_day = 6;
+      break;
+  }
+  return $week_day;
+}
+
 function not_empty($cond){
   if (isset($cond)){
     if ($cond != "" || $cond != null){
