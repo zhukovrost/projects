@@ -2,10 +2,14 @@
 if (!isset($_SESSION)) { 
 	session_start(); 
 }
-include '../func.php';
-include '../settings.php';
+include '../templates/func.php';
+include '../templates/settings.php';
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
+
+if (!(check_if_admin($conn, $_COOKIE['login']))){
+  header("Location: ../index.php");
+}
 
 $error_array = array(
 	"success_add_test" => false,
