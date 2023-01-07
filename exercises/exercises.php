@@ -41,10 +41,12 @@ if (isset($_POST['edit_construct_array'])){
 if (isset($_SESSION['program_array'])){
   if (isset($_POST['add_to_program_array'])){
     if (isset($_POST['day'])){
-      foreach ($_POST['day'] as $item){
-        foreach ($_SESSION['construct_array'] as $exercise_id) {
-          array_push($_SESSION['program_array'][$item], $exercise_id);
-          $_SESSION['edit_day'] = '';
+      if ($_POST['day'] != ''){
+        foreach ($_POST['day'] as $item){
+          foreach ($_SESSION['construct_array'] as $exercise_id) {
+            array_push($_SESSION['program_array'][$item], $exercise_id);
+            $_SESSION['edit_day'] = '';
+          }
         }
       }
     }else{
@@ -112,9 +114,45 @@ if (isset($_POST['weeks'])){
           $id = $select_id['id'];
         }
       }
-      $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."' WHERE login='".$login."'";
+
+      # calendar
+      for ($j = 0; $j < get_week_day(); $j++){
+        $calendar[0][$j] = 2;
+      }
+      for ($j = get_week_day(); $j < 7; $j++){
+        if ((int)count($_SESSION['program_array'][$j]) == 0){
+          $calendar[0][$j] = 0;
+        }else{
+          $calendar[0][$j] = 1;
+        }
+      }
+
+      for ($i = 1; $i < $_POST['weeks']; $i++){
+        for ($j = 0; $j < 7; $j++){
+          if ((int)count($_SESSION['program_array'][$j]) == 0){
+            $calendar[$i][$j] = 0;
+          }else{
+            $calendar[$i][$j] = 1;
+          }
+        }
+      }
+
+      for ($j = 0; $j < get_week_day(); $j++) {
+        if ((int)count($_SESSION['program_array'][$j]) == 0) {
+          $calendar[$_POST['weeks']][$j] = 0;
+        } else {
+          $calendar[$_POST['weeks']][$j] = 1;
+        }
+      }
+      if (get_week_day() != 0){
+        for ($j = get_week_day(); $j < 7; $j++){
+          $calendar[$_POST['weeks']][$j] = 2;
+        }
+      }
+
+      $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."', calendar='".json_encode($calendar)."' WHERE login='".$login."'";
       if ($conn->query($update_account_sql)){
-        $_SESSION['program_array'] = array();
+        $_SESSION['program_array'] = [[], [], [], [], [], [], []];
         $_SESSION['construct_array'] = array();
       }
     }
@@ -135,10 +173,11 @@ if (isset($_POST['weeks'])){
   <title>Document</title>
 </head>
 
-<?php include "../templates/header.html"; ?>
+<header class="default_header">
+  <a href="../account.php">Назад</a>
+</header>
 
 <body>
-<a href="../account.php">Назад</a>
 <nav>
   <a href="exercises.php?page=my_program">Моя программа</a>
   <a href="exercises.php?page=constructor">Конструктор(<?php if (isset($_SESSION['construct_array'])) { echo count($_SESSION['construct_array']); } else { echo "0"; } # amount of selected exercises ?>)</a>
