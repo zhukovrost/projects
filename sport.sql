@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 07, 2023 at 01:17 PM
+-- Generation Time: Jan 07, 2023 at 04:30 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -60,7 +60,10 @@ INSERT INTO `userprograms` (`id`, `program`) VALUES
 (10, '[[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[]]'),
 (11, '[[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[],[],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"]]'),
 (12, '[[],[],[],[],[],[],[]]'),
-(13, '[[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[]]');
+(13, '[[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[]]'),
+(14, '[[\"press/1/3/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/4/30\"],[],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/4/30\"],[],[],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/4/30\"],[]]'),
+(15, '[[],[],[],[\"press/4/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/4/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/4/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[]]'),
+(16, '[[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"]]');
 
 -- --------------------------------------------------------
 
@@ -83,15 +86,18 @@ CREATE TABLE `users` (
   `date_of_birth` date NOT NULL,
   `program` int(11) UNSIGNED NOT NULL,
   `program_duration` int(10) UNSIGNED DEFAULT NULL,
-  `calendar` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`calendar`))
+  `calendar` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `start_program` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `avatar_id`, `weight`, `height`, `sex`, `date_of_birth`, `program`, `program_duration`, `calendar`) VALUES
-(1, 'test1', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1111-11-11', 12, 4, '[[2,2,2,2,2,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,2,2]]');
+INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `avatar_id`, `weight`, `height`, `sex`, `date_of_birth`, `program`, `program_duration`, `calendar`, `start_program`) VALUES
+(1, 'test1', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1111-11-11', 15, 3, '[[2,2,2,2,2,1,0],[0,0,0,1,1,1,0],[0,0,0,1,1,1,0],[0,0,0,1,1,2,2]]', '2023-01-07'),
+(2, 'test2', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1110-11-11', 14, 5, '[[2,2,2,2,2,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,2,2]]', '2023-01-07'),
+(3, 'test3', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'woman', '2221-03-12', 16, 3, '[[2,2,2,2,2,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,2,2]]', '2023-01-07');
 
 --
 -- Indexes for dumped tables
@@ -129,13 +135,13 @@ ALTER TABLE `avatars`
 -- AUTO_INCREMENT for table `userprograms`
 --
 ALTER TABLE `userprograms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
