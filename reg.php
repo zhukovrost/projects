@@ -42,9 +42,9 @@ if (isset($_POST['reg_done'])){
               if (isset($_POST['reg_thirdname'])) {
                 $reg_thirdname = trim($_POST['reg_thirdname']);
                 if (strlen($reg_thirdname) > 32){ $error_array["too_long_string"] = true; }
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program, program_duration, calendar) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email ."', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0, 0, '[]')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email ."', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0)";
               } else {
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program, program_duration, calendar) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0, 0, '[]')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0)";
               }
 
               if (!$error_array["too_long_string"]){
@@ -87,7 +87,7 @@ if (isset($_POST['reg_done'])){
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
 	<title>Document</title>
 </head>
-<header>
+<header class="default_header">
   <a href="index.php">Назад</a>
 </header>
 <body>
