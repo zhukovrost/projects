@@ -63,8 +63,11 @@ if (isset($_POST['log_done'])){
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
 	<title>Document</title>
 </head>
-<?php include "templates/header.html"; ?>
 <body class="regenlog_body">
+	<header class="default_header">
+		<a href="">Назад</a>
+		<a class="log" href="reg.php">Зарегистрироваться</a>
+	</header>
 	<main class="regenlog">
 		    <form class="login_form" method="post">
 				<h1 class="login_title">Вход в систему</h1>

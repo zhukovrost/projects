@@ -87,10 +87,11 @@ if (isset($_POST['reg_done'])){
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
 	<title>Document</title>
 </head>
+<body>
 <header class="default_header">
   <a href="index.php">Назад</a>
+  <a href="log.php">Войти</a>
 </header>
-<body>
 	<main>
 		<div class="container regenlog">
             <form class="registration_form" method="post">
