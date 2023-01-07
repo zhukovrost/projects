@@ -112,7 +112,9 @@ if (isset($_POST['reg_done'])){
 	<link rel="stylesheet" href="css/format.css">
 	<title>Document</title>
 </head>
-<?php include "templates/header.html"; ?>
+<header>
+  <a href="index.php">Назад</a>
+</header>
 <body>
 	<main>
 		
