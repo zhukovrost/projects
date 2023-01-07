@@ -9,15 +9,9 @@ if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
 }
 
 $error_array = array(
-  "reg_fill_all_input_fields" => false,
-  "reg_login_is_used" => false,
-  "reg_passwords_are_not_the_same" => false,
-  "reg_conn_error" => false,
   "log_conn_error" => false,
   "log_fill_all_input_fields" => false,
-  "log_incorrect_login_or_password" => false,
-  "reg_success" => false,
-  "too_long_string" => false
+  "log_incorrect_login_or_password" => false
 );
 
 # ------------------ login -----------------------
@@ -35,7 +29,7 @@ if (isset($_POST['log_done'])){
 				$rowsCount = $log_result->num_rows;
 				if ( $rowsCount != 0 ){
           setcookie("login", $log_login);
-          header('Location: index.php');
+          header('Location: account.php');
           #header('Location: account.php');
 				}else{
 						$error_array['log_incorrect_login_or_password'] = true;
@@ -72,14 +66,15 @@ if (isset($_POST['log_done'])){
 		    <form class="login_form" method="post">
 				<h1 class="login_title">Вход в систему</h1>
 				<p>Логин</p>
-				<input class="login_item" type="text" name="log_login" value="<?php if ($error_array['reg_success']){ echo $reg_login; } ?>">
+				<input class="login_item" type="text" name="log_login" value="<?php if (isset($_COOKIE['reg_login'])){ echo $_COOKIE['reg_login']; } ?>">
 				<p>Пароль</p>
-				<input class="login_item" type="password" name="log_password" value="<?php if ($error_array['reg_success']){ echo $reg_password; } ?>">
+				<input class="login_item" type="password" name="log_password" value="<?php if (isset($_COOKIE['reg_password'])){ echo $_COOKIE['reg_password']; } ?>">
 				<?php 
 					log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
 					log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
 					if ($error_array['log_conn_error']){ log_warning($error_array['log_conn_error'], "Ошибка: " . $conn->error); };
 					if (isset($_GET['please_log'])){ echo "<p class=''> Пожалуйста авторизуйтесь</p>"; }
+          if (isset($_GET['reg'])){ echo "<p class=''>Регистрация прошла успешно, пожалуйста авторизуйтесь</p>"; }
 				?>
                 <div class="button_login">
                     <input type="submit" class="button" value="Войти" name="log_done">

@@ -13,9 +13,6 @@ $error_array = array(
   "reg_login_is_used" => false,
   "reg_passwords_are_not_the_same" => false,
   "reg_conn_error" => false,
-  "log_conn_error" => false,
-  "log_fill_all_input_fields" => false,
-  "log_incorrect_login_or_password" => false,
   "reg_success" => false,
   "too_long_string" => false
 );
@@ -49,7 +46,9 @@ if (isset($_POST['reg_done'])){
 
               if (!$error_array["too_long_string"]){
                 if ($conn->query($reg_sql2)) {
-                  $error_array['reg_success'] = true;
+                  setcookie("reg_login", $reg_login, time()+300);
+                  setcookie("reg_password", $reg_password, time()+300);
+                  header("Location: log.php?reg=1");
                 } else {
                   $error_array['reg_conn_error'] = true;
                 }
@@ -124,14 +123,13 @@ if (isset($_POST['reg_done'])){
                     reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
                     reg_warning($error_array["too_long_string"], "Слишком много символов");
                     if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
-                    if (empty($_POST['reg_done']) || $error_array['reg_passwords_are_not_the_same'] || $error_array['reg_login_is_used'] || $error_array['reg_fill_all_input_fields'] || $error_array['too_long_string']){
                     echo '<input class="button_login" type="submit" name="reg_done" value="Зарегистрироваться">';
-                    }
-                    if ($error_array['reg_success']){ echo "<p class='success'>Регистрация прошла успешно</p>"; }
+
 				?>
 		    </form>
         </div>         
 	</main>
 </body>
-<?php include "templates/footer.html"; ?>
+<?php include "templates/footer.html";
+$conn->close();?>
 </html>
