@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 06, 2023 at 04:02 PM
+-- Generation Time: Jan 07, 2023 at 01:17 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -53,7 +53,14 @@ INSERT INTO `userprograms` (`id`, `program`) VALUES
 (3, '[[],[],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[],[]]'),
 (4, '[[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[],[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[]]'),
 (5, '[[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"]]'),
-(6, '[[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"legs/2/6/30\",\"legs/1/2/30\",\"chest_and_shoulders/1/3/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[]]');
+(6, '[[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"legs/2/6/30\",\"legs/1/2/30\",\"chest_and_shoulders/1/3/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[]]'),
+(7, '[[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"back/1/2/30\",\"back/1/3/30\",\"back/1/4/30\",\"back/1/6/30\",\"back/1/5/30\"],[\"arms/1/2/30\",\"arms/1/3/30\",\"arms/1/4/30\",\"arms/1/5/30\"],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"back/1/2/30\",\"back/1/3/30\",\"back/1/4/30\",\"back/1/6/30\",\"back/1/5/30\"],[\"arms/1/2/30\",\"arms/1/3/30\",\"arms/1/4/30\",\"arms/1/5/30\"],[\"legs/2/7/30\",\"legs/1/2/30\",\"legs/1/3/60\",\"legs/1/4/20\",\"legs/1/5/60\"]]'),
+(8, '[[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[]]'),
+(9, '[[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"],[],[],[],[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"]]'),
+(10, '[[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[]]'),
+(11, '[[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[],[],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"]]'),
+(12, '[[],[],[],[],[],[],[]]'),
+(13, '[[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[]]');
 
 -- --------------------------------------------------------
 
@@ -75,15 +82,16 @@ CREATE TABLE `users` (
   `sex` varchar(16) NOT NULL,
   `date_of_birth` date NOT NULL,
   `program` int(11) UNSIGNED NOT NULL,
-  `program_duration` int(10) UNSIGNED DEFAULT NULL
+  `program_duration` int(10) UNSIGNED DEFAULT NULL,
+  `calendar` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`calendar`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `avatar_id`, `weight`, `height`, `sex`, `date_of_birth`, `program`, `program_duration`) VALUES
-(1, 'test1', 'testsurname', 'te', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1998-08-12', 6, 4);
+INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `avatar_id`, `weight`, `height`, `sex`, `date_of_birth`, `program`, `program_duration`, `calendar`) VALUES
+(1, 'test1', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1111-11-11', 12, 4, '[[2,2,2,2,2,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,0,0],[0,0,0,0,0,2,2]]');
 
 --
 -- Indexes for dumped tables
@@ -121,7 +129,7 @@ ALTER TABLE `avatars`
 -- AUTO_INCREMENT for table `userprograms`
 --
 ALTER TABLE `userprograms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
