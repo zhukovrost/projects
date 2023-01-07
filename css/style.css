@@ -275,6 +275,11 @@ p, a {
 	height: 40px;
 }
 
+.calendar_image{
+	height: 100px;
+	width: 100px;
+}
+
 /* ============= exercise.php ================= */
 
 .main_exercise_block {

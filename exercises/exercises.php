@@ -150,7 +150,10 @@ if (isset($_POST['weeks'])){
         }
       }
 
-      $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."', calendar='".json_encode($calendar)."' WHERE login='".$login."'";
+      date_default_timezone_set('UTC+3');
+      $date = date("Y-m-d");
+
+      $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."', calendar='".json_encode($calendar)."', start_program='".$date."' WHERE login='".$login."'";
       if ($conn->query($update_account_sql)){
         $_SESSION['program_array'] = [[], [], [], [], [], [], []];
         $_SESSION['construct_array'] = array();
