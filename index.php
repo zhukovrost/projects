@@ -34,8 +34,8 @@ include "templates/func.php";
                 echo '<a href="account.php">'.$_COOKIE["login"].'</a>';
             }else{
                 echo '
-                <a href="regenlog.php">Вход</a>
-                <a href="regenlog.php">Регистрация</a>
+                <a href="log.php">Вход</a>
+                <a href="reg.php">Регистрация</a>
                 ';
             }
             ?>
@@ -134,11 +134,11 @@ include "templates/func.php";
             <div class="reg_cover">
                 <div class="reg_block">
                     <h3>Еще не зарегистрированны?</h3>
-                    <a href="regenlog.php">Зарегистрироваться</a>
+                    <a href="reg.php">Зарегистрироваться</a>
                 </div>
                 <div class="reg_block">
                     <h3>Уже есть аккаунт?</h3>
-                    <a class="second" href="regenlog.php">Войти</a>
+                    <a class="second" href="log.php">Войти</a>
                 </div>
             </div>
         </div>

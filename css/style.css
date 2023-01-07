@@ -12,6 +12,30 @@ body {
 	font-family: 'Ubuntu', sans-serif;
 }
 
+.default_header{
+	height: 8vh;
+	padding: 20px 40px;
+	border: none;
+}
+
+.default_header a{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 40px;
+	background-color: #0D0D0D;
+	border: 2px solid #0D0D0D;
+	color: #D9D9D9;
+	border-radius: 5px;
+	transition: .3s ease;
+}
+
+.default_header a:hover{
+	background-color:#D9D9D9;
+	color: #0D0D0D;
+}
+
 footer{
 	height: 30vh;
 	max-height: 30vh;
@@ -23,11 +47,7 @@ div, form {
 
 p, a {
     text-decoration: none;
-    color: black;
-}
-
-a:visited {
-    color: black;
+	color: #0D0D0D;
 }
 
 .container {
@@ -45,57 +65,149 @@ a:visited {
 	color: lime;
 }
 
-/* ============ ACCOUNT FOLDER ============= */
+/* ============ sqrt ============= */
 
-/* ============ regenlog.php ============== */
+/* ============ reg.php and log.php ============== */
 
 .regenlog{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+	height: 62vh;
+	max-height: 62vh;
+	padding: 50px 0px;
 }
 
-.login_form, .registration_form{
-	border: black 1px solid;
-	border-radius: 30px;
-	font-family: 'Comfortaa', cursive;
-	display: flex;
-	flex-direction: column;
-	padding: 5px;
-	margin-top: 50px;
+
+.login_form{
+	position: relative;
 	width: 500px;
+	padding: 40px 50px;
+	border: 4px solid #3F2140;
+	border-radius: 15px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+
+	font-size: 23px;
 }
 
-.login_form h1, .registration_form h1{
-	margin: 15px auto;
+
+.login_form svg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 170px;
+	height: 170px;
 }
 
-.login_form input, .registration_form input{
-	margin-bottom: 20px;
+.login_form .first_svg{
+	top: -25%;
+	left: -45%;
+	transform: rotateZ(-35deg);
+}
+
+.login_form .second_svg{
+	top: 20%;
+	left: -60%;
+	transform: rotateZ(-25deg);
+}
+
+.login_form .third_svg{
+	top: 65%;
+	left: -40%;
+	transform: rotateZ(-15deg);
+}
+
+.login_form .fourth_svg{
+	top: -22%;
+	left: 110%;
+	transform: rotateZ(30deg);
+}
+
+.login_form .fifth_svg{
+	top: 25%;
+	left: 110%;
+	transform: rotateZ(15deg);
+}
+
+.login_form .sixth_svg{
+	top: 70%;
+	left: 115%;
+	transform: rotateZ(25deg);
+}
+
+.login_form h1{
+	font-size: 30px;
+	font-family: 'Rubik Mono One', sans-serif;
+	margin-bottom: 40px;
+}
+
+.login_form input{
+	margin: 10px 0px 40px 0px;
 	padding: 5px 15px;
-	border-radius: 5px;
+	border-radius: 8px;
 	color: #262401;
+	border: 2px solid #3F2140;
+}
 
-	box-shadow: 2px 5px 7px rgb(97, 97, 97);
+.button_login input{
+	width: 100%;
+	position: absolute;
+	top: 20%;
+	left: 0;
+	border: none;
+	margin: 0px 0px 0px 0px;
+	font-size: 30px;
+	z-index: 5;
 }
 
 .button_login{
-	margin-top: 10px;
-	padding: 15px 30px;
-	border-radius: 10px;
-	cursor: pointer;
-	font-size: 25px;
-	background-color: #D9D9D9 !important;
-	color: #262401 !important;
+	margin-top: 20px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+	height: 70px;
+	background-color: #7f49f2;
+	color: #0d0d0dda;
+	font-size: 23px;
+	font-weight: 700;
+	padding: 30px 40px;
+	border: 3px solid #3F2140;
+	border-radius: 15px;
+	transform-style: preserve-3d;
+	transition: .2s ease-in-out;
+}
 
-	transition: color .4s linear;
-	transition: background-color .4s linear;
+.button_login::before{
+	content: '';
+	width: 103.5%;
+	height: 100%;
+	position: absolute;
+	left: -1.5%;
+	top: 0;
+	border-radius: inherit;
+	border: 3px solid #3F2140;
+	background-color: #7E49F2;
+	-webkit-transform: translate3d(0, 0.75em, -1em);
+	transform: translate3d(0, 0.75em, -1em);
+	transition: .2s ease-in-out;
 }
 
 .button_login:hover{
-	background-color: #262401 !important;
-	color: #D9D9D9 !important;
+	color: #000000;
+	background-color: #673ac9;
+	transform: translate(0, 0.25em);
+}
+
+.button_login:hover::before{
+	transform: translate3d(0, 0.5em, -1em);
+}
+
+.button_login:active{
+	transform: translate(0, 0.75em);
+}
+
+.button_login:active::before{
+	transform: translate3d(0, 0em, -1em);
 }
 
 /* ============ account.php ============= */
@@ -726,7 +838,6 @@ header .reglog_buttons a:hover::after{
 
 /* ================FOOTER============== */
 footer{
-    height: 300px;
     padding: 50px 0px;
 }
 

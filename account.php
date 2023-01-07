@@ -18,7 +18,7 @@ $error_array = array(
 
 if (isset($_POST['exit'])){
   setcookie("login", "");
-  header("Location: regenlog.php");
+  header("Location: reg.php");
 }
 
 $login = $_COOKIE['login'];
