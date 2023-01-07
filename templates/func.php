@@ -16,13 +16,13 @@ function conn_check($conn){
 function check_the_login($way = "", $header = true){
   if (empty($_COOKIE['login'])){
     if ($header){
-      header('Location: '.$way.'regenlog.php?please_log=1');
+      header('Location: '.$way.'log.php?please_log=1');
     }else{
       return false;
     }
   }else if ($_COOKIE['login'] == ""){
     if ($header){
-      header('Location: '.$way.'regenlog.php?please_log=1');
+      header('Location: '.$way.'log.php?please_log=1');
     }else{
       return false;
     }

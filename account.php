@@ -110,7 +110,7 @@ if ($data_array = $conn -> query($select_sql)){
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/format.css">
 </head>
-<header>
+<header class="default_header">
   <a href="index.php">Назад</a>
 </header>
 <body style="height: 100vh">
