@@ -78,12 +78,12 @@ p, a {
 .regenlog{
 	height: 62vh;
 	max-height: 62vh;
-	padding: 50px 0px;
 }
 
 
-.login_form{
+.login_form, .registration_form{
 	position: relative;
+	transform: translateY(50px);
 	width: 500px;
 	padding: 40px 50px;
 	border: 4px solid #3F2140;
@@ -95,8 +95,23 @@ p, a {
 	font-size: 23px;
 }
 
+.registration_form{
+	width: 1000px;
+	padding: 30px 50px;
+	transform: translateY(-50px);
+}
 
-.login_form svg{
+.regform_cover{
+	display: flex;
+	justify-content: space-between;
+}
+
+.regform_cover .reg_item{
+	width: 500px;
+}
+
+
+.login_form svg, .registration_form svg{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -140,13 +155,57 @@ p, a {
 	transform: rotateZ(25deg);
 }
 
+
+.registration_form .first_svg{
+	top: -5%;
+	left: -20%;
+	transform: rotateZ(-30deg);
+}
+
+.registration_form .second_svg{
+	top: 30%;
+	left: -23%;
+	transform: rotateZ(-20deg);
+}
+
+.registration_form .third_svg{
+	top: 68%;
+	left: -21%;
+	transform: rotateZ(-15deg);
+}
+
+.registration_form .fourth_svg{
+	top: 1%;
+	left: 105%;
+	transform: rotateZ(20deg);
+}
+
+.registration_form .fifth_svg{
+	top: 35%;
+	left: 106%;
+	transform: rotateZ(10deg);
+}
+
+.registration_form .sixth_svg{
+	top: 70%;
+	left: 103%;
+	transform: rotateZ(5deg);
+}
+
+
 .login_form h1{
 	font-size: 30px;
 	font-family: 'Rubik Mono One', sans-serif;
 	margin-bottom: 40px;
 }
 
-.login_form input{
+.registration_form h1{
+	font-size: 40px;
+	font-family: 'Rubik Mono One', sans-serif;
+	margin-bottom: 20px; 
+}
+
+.login_form input, .registration_form input , .registration_form select{
 	margin: 10px 0px 40px 0px;
 	padding: 5px 15px;
 	border-radius: 8px;
@@ -154,10 +213,15 @@ p, a {
 	border: 2px solid #3F2140;
 }
 
+.registration_form input , .registration_form select{
+	margin: 10px 0px 23px 0px;
+}
+
 .button_login input{
 	width: 100%;
+	height: 100%;
 	position: absolute;
-	top: 20%;
+	top: 0%;
 	left: 0;
 	border: none;
 	margin: 0px 0px 0px 0px;
@@ -183,6 +247,10 @@ p, a {
 	transition: .2s ease-in-out;
 }
 
+.button_reg{
+	width: 350px;
+}
+
 .button_login::before{
 	content: '';
 	width: 103.5%;
@@ -196,6 +264,11 @@ p, a {
 	-webkit-transform: translate3d(0, 0.75em, -1em);
 	transform: translate3d(0, 0.75em, -1em);
 	transition: .2s ease-in-out;
+}
+
+.button_reg::before{
+	width: 102%;
+	left: -1.15%;
 }
 
 .button_login:hover{
