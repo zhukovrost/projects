@@ -94,4 +94,8 @@ function reg_warning($if, $warning){
   }
 }
 
+check_if_passed(){
+
+}
+
 ?>
