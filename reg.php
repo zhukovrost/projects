@@ -141,6 +141,5 @@ if (isset($_POST['reg_done'])){
     </div>         
 	</main>
 </body>
-<?php include "templates/footer.html";
-$conn->close();?>
+<?php include "templates/footer.html"; ?>
 </html>
