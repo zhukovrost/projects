@@ -28,11 +28,23 @@
 	}
 
 
-function check_the_login($way = ""){
+
+function check_the_login($way = "", $header = true){
   if (empty($_COOKIE['login'])){
-    header('Location: '.$way.'regenlog.php?please_log=1');
+    if ($header){
+      header('Location: '.$way.'log.php?please_log=1');
+    }else{
+      return false;
+    }
   }else if ($_COOKIE['login'] == ""){
-    header('Location: '.$way.'regenlog.php?please_log=1');
+    if ($header){
+      header('Location: '.$way.'log.php?please_log=1');
+    }else{
+      return false;
+    }
+  }
+  if (!$header){
+    return true;
   }
 }
 
