@@ -593,6 +593,7 @@ footer a:hover{
 	top: 15%;
 }
 
+
 .log_button, .reg_button, .back_button{
     letter-spacing: 0.5px;
     font-size: 21px;
@@ -629,6 +630,11 @@ footer a:hover{
 .regenlog{
 	height: 67vh;
 	max-height: 67vh;
+}
+
+
+.regenlog::after{
+    background-image: none;
 }
 
 .login_form, .registration_form{
