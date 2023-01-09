@@ -13,12 +13,18 @@
 </head>
 <body>
 <header>
+    <div class="regenlog_cover">
+      <a class="log_button" href="log.php">Войти</a>
+      <a class="reg_button" href="reg.php">Зарегистрироваться</a>
+    </div>
+    <a href=""><img class="header_question" src="img/question.png" alt=""></a>
   <div class="container">
     <div class="header_title_block">
       <p class="header_subtitle">Lorem ipsum</p>
       <h1 class="header_title">LOREM</h1>
       <p class="header_subtitle">dolor sit amet</p>
     </div>
+    
     <nav>
       <ul>
         <li><a href="#">Lorem</a>

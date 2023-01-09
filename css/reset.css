@@ -56,6 +56,11 @@ img, svg {
 	height: auto;
 }
 
+button, input[type="submit"] {
+    display: inline-block;
+    cursor: pointer;
+}
+
 /* Form */
 
 /* input, textarea, button, select {
@@ -67,11 +72,6 @@ img, svg {
 
 input::-ms-clear {
 	display: none;
-}
-
-button, input[type="submit"] {
-    display: inline-block;
-    cursor: pointer;
 }
 
 input:focus, input:active,
