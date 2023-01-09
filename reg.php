@@ -92,7 +92,7 @@ if (isset($_POST['reg_done'])){
 	<main class="regenlog">
 		<div class="container regenlog">
         <form class="registration_form" method="post">
-        <h1 class="">Регистрация</h1>
+        <h1>Регистрация</h1>
           <div class="regform_cover">
             <div class="reg_item">
               <p>Фамилия</p>
