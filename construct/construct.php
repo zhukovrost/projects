@@ -7,9 +7,7 @@ include '../templates/settings.php';
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 
-if (!(check_if_admin($conn, $_COOKIE['login']))){
-  header("Location: ../index.php");
-}
+# if (!(check_if_admin($conn, $_COOKIE['login'], "../"))){ header("Location: ../index.php"); }
 
 $error_array = array(
 	"success_add_test" => false,
@@ -162,17 +160,19 @@ if (isset($_POST['form_add_done'])){
 
 	$img_id = null; 
 
-	if ($error_array["image_success"] && conn_check($conn)){
-		$get_img_id_sql = "SELECT id FROM test_images ORDER BY id DESC LIMIT 1";
-		if($result = $conn->query($get_img_id_sql)){
-			foreach($result as $note){
-				$img_id = $note["id"];
-			}
-			$result -> free();
-		} else{
-			$img_id = null; 
-			$error_array["image_error"] = true;
-		}
+	if ($error_array["image_success"]){
+    if (conn_check($conn)){
+      $get_img_id_sql = "SELECT id FROM test_images ORDER BY id DESC LIMIT 1";
+      if($result = $conn->query($get_img_id_sql)){
+        foreach($result as $note){
+          $img_id = $note["id"];
+        }
+      } else{
+        $img_id = null;
+        $error_array["image_error"] = true;
+      }
+      $result -> free();
+    }
 	}
 	
 #------------------ add question ----------------------------
@@ -205,7 +205,7 @@ if (isset($_POST['form_add_done'])){
 			unset($_POST[$i]);
 		}
 	}else{
-		$construct = [$_POST['question'], null, null, null, $form_type];
+		$construct = [$_POST['question'], null, null, null, $form_type, $img_id];
 	}
 	unset($_POST['question'], $_POST['c_form_add_done']);
 	array_push($result_array, $construct);
@@ -447,7 +447,6 @@ $count_result->free();
     }else{
       echo "<p>Тема не задана</p>";
     }
-
 		if ($question[5] != null){
 			echo "<p>ID картинки: ".$question[5]."</p>";
 		}else{

@@ -20,7 +20,7 @@ $error_array = array(
 # ------------------ registration ------------------------
 
 if (isset($_POST['reg_done'])){
-	if ($_POST['reg_sex'] == "Укажите ваш пол" || $_POST['reg_date_of_birth'] == null || $_POST['reg_login'] == "" || $_POST['reg_password'] == "" || $_POST['reg_password2'] == "" || $_POST['reg_name'] == "" || $_POST['reg_surname'] == "" || $_POST['reg_email'] == ""){
+	if ($_POST['reg_login'] == "" || $_POST['reg_password'] == "" || $_POST['reg_password2'] == "" || $_POST['reg_name'] == "" || $_POST['reg_surname'] == "" || $_POST['reg_email'] == ""){
 		$error_array['reg_fill_all_input_fields'] = true;
 	}else{
 			if ($_POST['reg_password'] == $_POST['reg_password2']){
@@ -29,8 +29,6 @@ if (isset($_POST['reg_done'])){
 				$reg_name = trim($_POST['reg_name']);
 				$reg_surname = trim($_POST['reg_surname']);
 				$reg_email = trim($_POST['reg_email']);
-        $reg_sex = $_POST['reg_sex'];
-        $reg_date_of_birth = $_POST['reg_date_of_birth'];
         if (strlen($reg_login) < 33 && strlen($reg_password) < 33 && strlen($reg_surname) < 33 && strlen($reg_email) < 33) {
           $reg_sql = "SELECT * FROM users WHERE login='" . $reg_login . "'";
           if ($reg_result = $conn->query($reg_sql)) {
@@ -39,9 +37,9 @@ if (isset($_POST['reg_done'])){
               if (isset($_POST['reg_thirdname'])) {
                 $reg_thirdname = trim($_POST['reg_thirdname']);
                 if (strlen($reg_thirdname) > 32){ $error_array["too_long_string"] = true; }
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."', '".$reg_email."', 'user')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."', '".$reg_email."', 'test')";
               } else {
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_email."', 'user')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_email."', 'test')";
               }
 
               if (!$error_array["too_long_string"]){
