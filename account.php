@@ -218,7 +218,7 @@ if ($data_array = $conn -> query($select_sql)){
     <form method="post" id="exit">
       <input type="hidden" value="true" name="exit">
     </form>
-    <button form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
+    <button name="exit" form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
   </main>
 
   <script src="main.js"></script>
