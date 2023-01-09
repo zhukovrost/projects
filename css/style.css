@@ -50,12 +50,19 @@ header{
     position: relative;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     height: auto;
     padding: 30px 0px 30px;
     background-color: #262626;
     color: #F2F2F2;
+}
+
+header .user_name{
+    position: absolute;
+    z-index: 10;
+	right: 3%;
+	top: 15%;
 }
 
 .header_title_block{
@@ -112,6 +119,7 @@ nav li ul{
     display: block;
     height: 0px;
     position: absolute;
+    z-index: 20;
     overflow: hidden;
     background-color: #262626;
     min-width: 150px;
@@ -180,7 +188,7 @@ main::after {
 
 .card_cover{
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     width: 600px;
     display: flex;
     justify-content: center;
@@ -632,14 +640,10 @@ footer a:hover{
 	max-height: 67vh;
 }
 
-
-.regenlog::after{
-    background-image: none;
-}
-
 .login_form, .registration_form{
 	position: relative;
-    top: 20%;
+    background-color: #F2F2F2;
+    top: 17%;
 	width: 500px;
 	padding: 40px 0px;
 	border: 4px solid #3F2140;
@@ -733,7 +737,7 @@ footer a:hover{
 }
 
 
-.login_form svg, .registration_form svg{
+.login_form img, .registration_form img{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -741,37 +745,37 @@ footer a:hover{
 	height: 170px;
 }
 
-.login_form .first_svg{
+.login_form .first_img{
 	top: -25%;
 	left: -45%;
 	transform: rotateZ(-35deg);
 }
 
-.login_form .second_svg{
+.login_form .second_img{
 	top: 20%;
 	left: -60%;
 	transform: rotateZ(-25deg);
 }
 
-.login_form .third_svg{
+.login_form .third_img{
 	top: 65%;
 	left: -40%;
 	transform: rotateZ(-15deg);
 }
 
-.login_form .fourth_svg{
+.login_form .fourth_img{
 	top: -22%;
 	left: 110%;
 	transform: rotateZ(30deg);
 }
 
-.login_form .fifth_svg{
+.login_form .fifth_img{
 	top: 25%;
 	left: 110%;
 	transform: rotateZ(15deg);
 }
 
-.login_form .sixth_svg{
+.login_form .sixth_img{
 	top: 70%;
 	left: 115%;
 	transform: rotateZ(25deg);
@@ -810,37 +814,37 @@ footer a:hover{
 }
 
 
-.registration_form .first_svg{
+.registration_form .first_img{
 	top: -5%;
 	left: -20%;
 	transform: rotateZ(-30deg);
 }
 
-.registration_form .second_svg{
+.registration_form .second_img{
 	top: 30%;
 	left: -23%;
 	transform: rotateZ(-20deg);
 }
 
-.registration_form .third_svg{
+.registration_form .third_img{
 	top: 68%;
 	left: -21%;
 	transform: rotateZ(-15deg);
 }
 
-.registration_form .fourth_svg{
+.registration_form .fourth_img{
 	top: 1%;
 	left: 105%;
 	transform: rotateZ(20deg);
 }
 
-.registration_form .fifth_svg{
+.registration_form .fifth_img{
 	top: 35%;
 	left: 106%;
 	transform: rotateZ(10deg);
 }
 
-.registration_form .sixth_svg{
+.registration_form .sixth_img{
 	top: 70%;
 	left: 103%;
 	transform: rotateZ(5deg);

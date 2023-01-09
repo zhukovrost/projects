@@ -34,7 +34,7 @@ $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
         $name = $item['name'];
         $surname = $item['surname'];
       }
-      echo '<p>'.$surname.' '.$name.'</p>';
+      echo '<p class="user_name">'.$surname.' '.$name.'</p>';
       $select_result->free();
     }
 
