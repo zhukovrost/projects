@@ -39,9 +39,9 @@ if (isset($_POST['reg_done'])){
               if (isset($_POST['reg_thirdname'])) {
                 $reg_thirdname = trim($_POST['reg_thirdname']);
                 if (strlen($reg_thirdname) > 32){ $error_array["too_long_string"] = true; }
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."', '".$reg_email."', 'user')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."', '".$reg_email."', 'test')";
               } else {
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_email."', 'user')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, email, status) VALUES('".$reg_login."', '".$reg_password."', '".$reg_name."', '".$reg_surname."', '".$reg_email."', 'test')";
               }
 
               if (!$error_array["too_long_string"]){
