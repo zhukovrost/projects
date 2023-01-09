@@ -1,3 +1,8 @@
+<?php
+include "templates/settings.php";
+include "templates/func.php";
+$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +18,30 @@
 </head>
 <body>
 <header>
+  <?php
+  if (empty($_COOKIE['login']) || $_COOKIE['login'] == '') {
+    echo '
     <div class="regenlog_cover">
-      <a class="log_button" href="log.php">Войти</a>
-      <a class="reg_button" href="reg.php">Зарегистрироваться</a>
+        <a class="log_button" href="log.php">Войти</a>
+        <a class="reg_button" href="reg.php">Зарегистрироваться</a>
     </div>
+    ';
+  }else{
+    $select_sql = "SELECT name, surname FROM users WHERE login='".$_COOKIE['login']."'";
+    conn_check($conn);
+    if ($select_result = $conn->query($select_sql)){
+      foreach ($select_result as $item){
+        $name = $item['name'];
+        $surname = $item['surname'];
+      }
+      echo '<p>'.$surname.' '.$name.'</p>';
+      $select_result->free();
+    }
+
+  }
+  $conn->close();
+  ?>
+
     <a href=""><img class="header_question" src="img/question.png" alt=""></a>
   <div class="container">
     <div class="header_title_block">

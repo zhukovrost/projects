@@ -29,7 +29,7 @@ if (isset($_POST['log_done'])){
 				$rowsCount = $log_result->num_rows;
 				if ( $rowsCount != 0 ){
           setcookie("login", $log_login);
-          header('Location: account.php');
+          header('Location: index.php');
           #header('Location: account.php');
 				}else{
 						$error_array['log_incorrect_login_or_password'] = true;
