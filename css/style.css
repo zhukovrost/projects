@@ -944,6 +944,10 @@ footer{
     color: #F2F2F2;
 }
 
+.reglog_footer{
+    border: none;
+}
+
 .container_footer{
     display: flex;
     align-items: center;
