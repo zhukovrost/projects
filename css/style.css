@@ -82,6 +82,7 @@ p, a {
 
 
 .login_form, .registration_form{
+    background-color: #D9D9D9;
 	position: relative;
 	transform: translateY(50px);
 	width: 500px;
@@ -111,7 +112,7 @@ p, a {
 }
 
 
-.login_form svg, .registration_form svg{
+.login_form svg, .registration_form svg, .login_form img, .registration_form img{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -512,6 +513,18 @@ header .reglog_buttons a:hover::after{
 
 
 /* =======MAIN========= */
+
+main::after {
+    content: '';
+    background: url('../img/background.png');
+    opacity: 0.14;  
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 
 .info_cover{
 	height: 80vh;
