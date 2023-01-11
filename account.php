@@ -56,7 +56,7 @@ if  (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['thirdnam
 
 # ------------------------- select user data -----------------------------
 
-$select_sql = "SELECT name, surname, thirdname, email, LENGTH(password), date_of_birth, sex, weight, height, program, program_duration FROM users WHERE login='".$login."'";
+$select_sql = "SELECT * FROM users WHERE login='".$login."'";
 if ($data_array = $conn -> query($select_sql)){
   foreach ($data_array as $data) {
     $name = $data['name'];
@@ -65,6 +65,8 @@ if ($data_array = $conn -> query($select_sql)){
     $date_of_birth = $data['date_of_birth'];
     $program_id = $data['program'];
     $program_duration = $data['program_duration'];
+    $calendar = json_decode($data['calendar']);
+    $start_program = $data['start_program'];
     if ($data['sex'] == "man"){
       $sex = "Мужской";
     }elseif ($data['sex'] == "woman"){
@@ -210,9 +212,46 @@ if ($data_array = $conn -> query($select_sql)){
           }
           echo "</tr></table>";
         }
+        echo "<a href='exercises/exercises.php'>Создать программу</a>";
+
+        check_if_passed();
+
+        echo "
+        <table><tr><th>Неделя</th>";
+        foreach ($week as $weekday){
+          echo "<th>".$weekday."</th>";
+        }
+        echo "</tr>";
+
+        for ($i = 0; $i < count($calendar); $i++){
+          echo "<tr><th>".($i + 1)."</th>";
+          for ($j = 0; $j < 7; $j++){
+            echo "<td>";
+            switch ($calendar[$i][$j]){
+              case 0:
+                echo "<img class='calendar_image' src='img/icons/holiday.png'>";
+                break;
+              case 1:
+                echo "<img class='calendar_image' src='img/icons/workout.png'>";
+                break;
+              case 2:
+                echo "<img class='calendar_image' src='img/icons/out_of_program.png'>";
+                break;
+              case 3:
+                echo "<img class='calendar_image' src='img/icons/complete.png'>";
+                break;
+              case 4:
+                echo "<img class='calendar_image' src='img/icons/passed.png'>";
+                break;
+            }
+            echo "</td>";
+          }
+          echo "</tr>";
+        }
+
+        echo "</table>";
       }
       ?>
-      <a href="exercises/exercises.php">Создать программу</a>
     </div>
 
     <form method="post" id="exit">
