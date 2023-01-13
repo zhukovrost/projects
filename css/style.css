@@ -39,7 +39,7 @@ body{
     opacity: 1;
 }
 
-.regenlog_header{
+.regenlog_header, .question_header{
     display: flex;
     justify-content: space-between;
     padding: 30px 40px 30px 40px;
@@ -848,4 +848,49 @@ footer a:hover{
 	top: 70%;
 	left: 103%;
 	transform: rotateZ(5deg);
+}
+
+
+/* ============Question.html============= */
+.question_main{
+	height: auto;
+}
+
+.test_output_form{
+	margin: 100px auto;
+	width: 80%;
+	background-color: #F2F2F2;
+	border: 5px solid #0D0D0D;
+	border-radius: 5px;
+	padding: 30px 40px;
+}
+
+.test_output_item{
+	margin-bottom: 40px;
+}
+
+.test_output_item p{
+	margin-bottom: 15px;
+}
+
+.test_output_item input{
+	margin-left: 20px;
+}
+
+.test_output_input_text{
+	width: 250px;
+	height: 30px;
+}
+
+.test_output_input_textarea{
+	padding: 10px;
+	width: 500px;
+	height: 200px;
+}
+
+.test_output_item img{
+	width: 350px;
+	height: 200px;
+	margin-bottom: 20px;
+	border: 3px solid #000000;
 }
