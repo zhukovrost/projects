@@ -1,29 +1,8 @@
-sudo /opt/lampp/lampp start
-exercises.json
-153х142
-
-522 поз
-111х120
-100х141
-
-"": [
-
-	"",
-
-	"../img/exercises/",
-
-	[
-		false,
-		"",
-		30,
-		"../img/exercises/"
-	]
-
-]
-
-$result_array = [question, num of questions, num of right answer, answers, form type, img]
-
-
-if ($form_type == "definite"){
-	$variant = str_replace(' ', '', mb_strtoupper($variant));
-}
+$exercises_array[group_of_muscles][muscle][exercise]
+$exercises_array[$name][0] = group of muscles name
+$exercises_array[$name][$i][0] = muscle
+$exercises_array[$name][$i][1] = muscle image
+$exercises_array[$name][$i][$j][0] = if static - true, if not - false
+$exercises_array[$name][$i][$j][1] = exercise name
+$exercises_array[$name][$i][$j][2] = if static - seconds, if not - repeats
+$exercises_array[$name][$i][$j][3] = exercise image
