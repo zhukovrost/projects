@@ -172,7 +172,8 @@ if ($data_array = $conn -> query($select_sql)){
       <label>Программa спортсмена:</label>
       <?php
       if ($program_id == 0){
-        echo "<label>Програм пока нет</label>";
+        echo "<label>Програм пока нет</label><a href='exercises/exercises.php'>Создать программу</a>";
+
       }else{
         $select_program_sql = "SELECT program FROM userprograms WHERE id=".$program_id;
         if ($select_program_result = $conn->query($select_program_sql)){
@@ -212,9 +213,8 @@ if ($data_array = $conn -> query($select_sql)){
           }
           echo "</tr></table>";
         }
-        echo "<a href='exercises/exercises.php'>Создать программу</a>";
 
-        check_if_passed();
+        # check_if_passed();
 
         echo "
         <table><tr><th>Неделя</th>";
