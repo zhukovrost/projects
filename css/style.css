@@ -671,7 +671,7 @@ footer a:hover{
     font-size: 20px;
 }
 
-.button_login input{
+.button_login input, .test_finish_button input{
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -686,7 +686,7 @@ footer a:hover{
     transition: .3s ease;
 }
 
-.button_login{
+.button_login, .test_finish_button{
 	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
@@ -699,7 +699,7 @@ footer a:hover{
 	transition: .2s ease-in-out;
 }
 
-.button_login::before{
+.button_login::before, .test_finish_button::before{
 	content: '';
 	width: 103.5%;
 	height: 100%;
@@ -714,25 +714,25 @@ footer a:hover{
 	transition: .2s ease-in-out;
 }
 
-.button_login:hover{
+.button_login:hover, .test_finish_button:hover{
 	color: #000000;
 	background-color: #673ac9;
 	transform: translate(0, 0.25em);
 }
 
-.button_login:hover input{
+.button_login:hover input, .test_finish_button:hover input{
     background-color: #7645df;
 }
 
-.button_login:hover::before{
+.button_login:hover::before, .test_finish_button:hover::before{
 	transform: translate3d(0, 0.5em, -1em);
 }
 
-.button_login:active{
+.button_login:active, .test_finish_button:active{
 	transform: translate(0, 0.75em);
 }
 
-.button_login:active::before{
+.button_login:active::before, .test_finish_button:active::before{
 	transform: translate3d(0, 0em, -1em);
 }
 
@@ -893,4 +893,14 @@ footer a:hover{
 	height: 200px;
 	margin-bottom: 20px;
 	border: 3px solid #000000;
+}
+
+.test_finish_button{
+	margin: 50px auto 20px auto;
+	width: 400px;
+}
+
+.test_finish_button::before{
+	width: 101.6%;
+	left: -1%;
 }
