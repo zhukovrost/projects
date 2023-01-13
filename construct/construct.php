@@ -288,6 +288,9 @@ $count_result->free();
 	<title>Constructor</title>
 </head>
 <body>
+<header class="question_header">
+  <a class="back_button" href="post_test.php">Выложить тест</a><a class="back_button" href="../index.php">На главную</a>
+</header>
 	<div class="c_all_forms_block">
 		<form enctype="multipart/form-data" method="post" class="c_form_1">
 			<h3>Добавить вопрос</h3>
