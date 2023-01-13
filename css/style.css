@@ -63,6 +63,7 @@ header .user_name{
     z-index: 10;
 	right: 3%;
 	top: 15%;
+    color: white;
 }
 
 .header_title_block{
@@ -857,7 +858,7 @@ footer a:hover{
 }
 
 .test_output_form{
-	margin: 100px auto;
+	margin: 30px auto;
 	width: 80%;
 	background-color: #F2F2F2;
 	border: 5px solid #0D0D0D;

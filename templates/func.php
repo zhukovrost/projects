@@ -49,22 +49,20 @@ function check_the_login($way = "", $header = true){
 }
 
 function check_if_admin($conn, $login, $way=""){
-  if (check_the_login($way)) {
+  if (check_the_login($way, false)) {
     $check_sql = "SELECT status FROM users WHERE login='".$login."'";
     if ($check = $conn->query($check_sql)){
       foreach ($check as $user){
         $status = $user['status'];
       }
-      if ($staus == 'admin'){
+      if ($status == 'admin'){
         return true;
-      }else if ($staus == 'test'){
+      }else if ($status == 'test'){
         return false;
       }
     }else{
       return false;
     }
-  }else{
-    return false;
   }
 }
 

@@ -34,7 +34,12 @@ $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
         $name = $item['name'];
         $surname = $item['surname'];
       }
-      echo '<p class="user_name">'.$surname.' '.$name.'</p>';
+
+      if (check_if_admin($conn, $_COOKIE['login'])){
+        echo '<a class="user_name" href="construct/construct.php">'.$surname.' '.$name.'(админ)</a>';
+      }else{
+        echo '<p class="user_name">'.$surname.' '.$name.'</p>';
+      }
       $select_result->free();
     }
 
