@@ -1,7 +1,4 @@
 <?php
-if (!isset($_SESSION)) {
-  session_start();
-}
 include '../templates/func.php';
 include '../templates/settings.php';
 
@@ -50,8 +47,9 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
           $push_id = (int)$_POST['push_id'];
           array_push($tests_array, $push_id);
           array_push($tests_completed, 0);
+          $time_to_do = (int)$_POST['time_to_do'] * 60;
 
-          $update_sql = "UPDATE users SET user_tests_ids='".json_encode($tests_array)."', user_tests_completed='".json_encode($tests_completed)."' WHERE login='".$login."'";
+          $update_sql = "UPDATE users SET user_tests_ids='".json_encode($tests_array)."', user_tests_completed='".json_encode($tests_completed)."', time_to_do=".$time_to_do." WHERE login='".$login."'";
           if ($conn->query($update_sql)){
             $error_array['post_test_success'] = true;
           }
@@ -90,10 +88,12 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
           echo "<p><input type='checkbox' name='users_array[]' value='".$userdata['login']."'>".$userdata['surname']." ".$userdata['name']."</p>";
         }
         echo '
+        <input name="time_to_do" type="number" value="15">
+        <label for="time_to_do">Время на тест (в минутах)</label>
         <div class="test_finish_button">
           <input type="submit" class="button" value="Выложить тест" name="finish_test">
-          <input type="hidden" name="push_id" value="'.$_GET['test_id'].'">
         </div>   
+        <input type="hidden" name="push_id" value="'.$_GET['test_id'].'">
         ';
         echo "</form>";
 
