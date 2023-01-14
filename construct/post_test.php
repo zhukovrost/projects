@@ -38,18 +38,19 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
 
     if (isset($_POST['push_id'])){
       foreach ($_POST['users_array'] as $login){
-        $select_arrays_sql = "SElECT user_tests_ids, user_tests_completed FROM users WHERE login='".$login."'";
+        $select_arrays_sql = "SElECT user_tests_ids, user_tests_completed, time_to_do FROM users WHERE login='".$login."'";
         if ($select_arrays_result = $conn->query($select_arrays_sql)){
           foreach ($select_arrays_result as $item){
             $tests_array = json_decode($item['user_tests_ids']);
             $tests_completed = json_decode($item['user_tests_completed']);
+            $tests_time = json_decode($item['time_to_do']);
           }
           $push_id = (int)$_POST['push_id'];
           array_push($tests_array, $push_id);
           array_push($tests_completed, 0);
-          $time_to_do = (int)$_POST['time_to_do'] * 60;
+          array_push($tests_time, (int)$_POST['time_to_do'] * 60);
 
-          $update_sql = "UPDATE users SET user_tests_ids='".json_encode($tests_array)."', user_tests_completed='".json_encode($tests_completed)."', time_to_do=".$time_to_do." WHERE login='".$login."'";
+          $update_sql = "UPDATE users SET user_tests_ids='".json_encode($tests_array)."', user_tests_completed='".json_encode($tests_completed)."', time_to_do='".json_encode($tests_time)."' WHERE login='".$login."'";
           if ($conn->query($update_sql)){
             $error_array['post_test_success'] = true;
           }
