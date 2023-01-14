@@ -74,5 +74,6 @@ $login = $_COOKIE['login'];
   $select_result->free();
   ?>
 </main>
+<?php include "../templates/footer.html"; ?>
 </body>
 </html>
