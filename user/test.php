@@ -52,7 +52,6 @@ $end - время окончания тестирования формата tim
   <div class="container">
 
     <?php
-    /*
     $select_test_sql = "SELECT name, test FROM tests WHERE id='".$_SESSION['id']."'";
     if ($select_test_result = $conn->query($select_test_sql)){
       foreach ($select_test_result as $item) {
@@ -60,51 +59,70 @@ $end - время окончания тестирования формата tim
         $name = $item['name'];
       }
 
-      echo "<div class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$_GET['test_id'].": ".$name."</h2>";
-
-      for ($i = 0; $i < count($test); $i++){
-        $question = $test[$i];
-        $preview_type = $question[4];
-        echo '<div class="test_output_item">';
-
-        # ------------------ IMAGE ------------------------
-        if ($question[5] != null){
-          $image_id = $question[5];
-          $select_image_sql = "SELECT image FROM test_images where id='".$image_id."'";
-          if ($select_image_result = $conn->query($select_image_sql)){
-            foreach ($select_image_result as $item){
-              $image = $item['image'];
+      if (isset($_POST['test_input'])){
+        $answer = $_POST['test_input'];
+        $all_questions = count($test);
+        $right_answers = 0;
+        $to_check = 0;
+        for ($i = 0; $i < $all_questions; $i++){
+          if (isset($answer[$i])){
+            if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox"){
+              if ($test[$i][2] == $answer[$i]){ $right_answers++; }
+            }else if ($test[$i][4] == "definite"){
+              if (array_search($answer[$i], $test[$i][3])){ $right_answers++; }
+            }else if ($test[$i][4] == "definite_mc"){
+              $to_check++;
             }
-            echo '<img src="data:image;base64,'.base64_encode($image).'"/>'; # image
           }
-          $select_image_result->free();
         }
-        # ----------------- TEST ---------------------
-        echo '<p>'.($i + 1).'. '.$question[0].'</p>';
-        if ($preview_type == "radio"){
-          foreach ($question[3] as $answer){
-            echo '<input class="test_output_input" type="radio"><label>'.$answer.'</label>';
-          }
-        } else if ($preview_type == "checkbox"){
-          foreach ($question[3] as $answer){
-            echo '<input class="test_output_input2" type="checkbox"><label>'.$answer.'</label>';
-          }
-        }else if ($preview_type == "definite"){
-          echo '<input class="test_output_input test_output_input_text" type="text" >';
-        }else if ($preview_type == "definite_mc"){
-          echo '<textarea class="test_output_input test_output_input_textarea"></textarea>';
-        }
-        echo '</div>';
-      }
-      echo '
-      <div class="test_finish_button">
-        <input type="submit" class="button" value="Завершить тестирование" name="finish_test">
-      </div>
-      ';
+        $wrong_answers = $all_questions - $to_check - $right_answers;
+        echo $right_answers."/".$all_questions.", ".$to_check." на проверке";
+      }else{
+        echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$_GET['test_id'].": ".$name."</h2>";
 
-      echo "</div>";
+        for ($i = 0; $i < count($test); $i++){
+          $question = $test[$i];
+          $preview_type = $question[4];
+          echo '<div class="test_output_item">';
+
+          # ------------------ IMAGE ------------------------
+          if ($question[5] != null){
+            $image_id = $question[5];
+            $select_image_sql = "SELECT image FROM test_images where id='".$image_id."'";
+            if ($select_image_result = $conn->query($select_image_sql)){
+              foreach ($select_image_result as $item){
+                $image = $item['image'];
+              }
+              echo '<img src="data:image;base64,'.base64_encode($image).'"/>'; # image
+            }
+            $select_image_result->free();
+          }
+          # ----------------- TEST ---------------------
+          echo '<p>'.($i + 1).'. '.$question[0].'</p>';
+          if ($preview_type == "radio"){
+            for ($j = 0; $j < count($question[3]); $j++){
+              echo '<input name="test_input['.$i.']" class="test_output_input" value="'.$j.'" type="radio"><label>'.$question[3][$j].'</label>';
+            }
+          } else if ($preview_type == "checkbox"){
+            for ($j = 0; $j < count($question[3]); $j++){
+              echo '<input name="test_input['.$i.'][]" class="test_output_input2" value="'.$j.'" type="checkbox"><label>'.$question[3][$j].'</label>';
+            }
+          }else if ($preview_type == "definite"){
+            echo '<input name="test_input['.$i.']" class="test_output_input test_output_input_text" type="text">';
+          }else if ($preview_type == "definite_mc"){
+            echo '<textarea name="test_input['.$i.']" class="test_output_input test_output_input_textarea"></textarea>';
+          }
+          echo '</div>';
+        }
+        echo '
+        <div class="test_finish_button">
+          <input type="submit" class="button" value="Завершить тестирование">
+        </div>
+        ';
+      }
+      echo "</form>";
     }
-    */
+
     ?>
   </div>
 </main>
