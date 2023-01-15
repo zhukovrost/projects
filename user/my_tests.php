@@ -56,6 +56,7 @@ $login = $_COOKIE['login'];
           <label>Вы ещё не прошли этот тест</label>
           <form method='post' action='test.php'>
             <input type='hidden' name='id' value='".$id."'>
+            <input type='hidden' name='duration' value='".$time."'>
             <input type='submit' value='Начать тестирование'>
           </form>
           ";
