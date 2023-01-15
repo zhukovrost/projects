@@ -4,7 +4,7 @@ include '../templates/settings.php';
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
-
+session_start();
 check_the_login("../");
 
 $login = $_COOKIE['login'];
@@ -16,16 +16,21 @@ if (empty($_POST['id']) || $_POST['id'] == ''){
 }else{
   $_SESSION['id'] = $_POST['id'];
   $_SESSION['duration'] = $_POST['duration'];
+  header("Location: test.php");
 }
 # ------------------- TIME ---------------------------
+
 if (empty($_SESSION['start'])){
   $_SESSION['start'] = time();
 }
+$start = $_SESSION['start'];
+$duration = $_SESSION['duration'];
 $end = (int)$_SESSION['start'] + (int)$_SESSION['duration'];
 /*
-$_SESSION['duration'] - время отведённое на тест в секундах
-$_SESSION['start'] - время начала тестирования формата timestamp
-<?php echo $_SESSION['duration'] ?> - вывод переменной в HTML/JS код
+$start - время начала тестирования формата timestamp (секунды)
+$duration - время отведённое на тест в секундах
+$end - время окончания тестирования формата timestamp (секунды)
+<?php echo $duration ?> - вывод переменной в HTML/JS код
 */
 ?>
 
@@ -45,8 +50,9 @@ $_SESSION['start'] - время начала тестирования форма
 <body>
 <main class="question_main">
   <div class="container">
-    <p id="demo"></p>
+
     <?php
+    /*
     $select_test_sql = "SELECT name, test FROM tests WHERE id='".$_SESSION['id']."'";
     if ($select_test_result = $conn->query($select_test_sql)){
       foreach ($select_test_result as $item) {
@@ -98,10 +104,10 @@ $_SESSION['start'] - время начала тестирования форма
 
       echo "</div>";
     }
+    */
     ?>
   </div>
 </main>
-
 <?php include "../templates/footer.html"; ?>
 </body>
 </html>
