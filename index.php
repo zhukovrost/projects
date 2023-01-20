@@ -2,6 +2,7 @@
 include "templates/settings.php";
 include "templates/func.php";
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
+conn_check($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
