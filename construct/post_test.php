@@ -4,7 +4,8 @@ include '../templates/settings.php';
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
-# if (!(check_if_admin($conn, $_COOKIE['login'], "../"))){ header("Location: ../index.php"); }
+
+if (!(check_if_admin($conn, $_COOKIE['login'], "../"))){ header("Location: ../index.php"); }
 
 $error_array = array(
   "post_test_success" => false
@@ -24,7 +25,10 @@ $error_array = array(
 <header class="question_header">
 <?php
 if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
-  echo '<a class="back_button" href="construct.php">Конструктор</a><a class="back_button" href="../index.php">На главную</a>';
+  echo '  <a class="back_button" href="construct.php">Конструктор</a>
+  <a class="back_button" href="post_test.php">Выложить тест</a>
+  <a class="back_button" href="ver.php">К ручной проверке</a>
+  <a class="back_button" href="../index.php">На главную</a>';
 }else{
   echo '<a class="back_button" href="post_test.php?test_id">Назад</a>';
 }
@@ -38,19 +42,18 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
 
     if (isset($_POST['push_id'])){
       foreach ($_POST['users_array'] as $login){
-        $select_arrays_sql = "SElECT user_tests_ids, user_tests_completed, time_to_do FROM users WHERE login='".$login."'";
+        $select_arrays_sql = "SElECT user_tests_ids, user_tests_marks, user_tests_durations FROM users WHERE login='".$login."'";
         if ($select_arrays_result = $conn->query($select_arrays_sql)){
           foreach ($select_arrays_result as $item){
             $tests_array = json_decode($item['user_tests_ids']);
-            $tests_completed = json_decode($item['user_tests_completed']);
-            $tests_time = json_decode($item['time_to_do']);
+            $tests_marks = json_decode($item['user_tests_marks']);
+            $tests_durations = json_decode($item['user_tests_durations']);
           }
           $push_id = (int)$_POST['push_id'];
           array_push($tests_array, $push_id);
-          array_push($tests_completed, 0);
-          array_push($tests_time, (int)$_POST['time_to_do'] * 60);
-
-          $update_sql = "UPDATE users SET user_tests_ids='".json_encode($tests_array)."', user_tests_completed='".json_encode($tests_completed)."', time_to_do='".json_encode($tests_time)."' WHERE login='".$login."'";
+          array_push($tests_marks, 0);
+          array_push($tests_durations, (int)$_POST['time_to_do'] * 60);
+          $update_sql = "UPDATE users SET user_tests_ids='".json_encode($tests_array)."', user_tests_marks='".json_encode($tests_marks)."', user_tests_durations='".json_encode($tests_durations)."' WHERE login='".$login."'";
           if ($conn->query($update_sql)){
             $error_array['post_test_success'] = true;
           }

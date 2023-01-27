@@ -289,7 +289,10 @@ $count_result->free();
 </head>
 <body>
 <header class="question_header">
-  <a class="back_button" href="post_test.php">Выложить тест</a><a class="back_button" href="../index.php">На главную</a>
+  <a class="back_button" href="construct.php">Конструктор</a>
+  <a class="back_button" href="post_test.php">Выложить тест</a>
+  <a class="back_button" href="ver.php">К ручной проверке</a>
+  <a class="back_button" href="../index.php">На главную</a>
 </header>
 	<div class="c_all_forms_block">
 		<form enctype="multipart/form-data" method="post" class="c_form_1">

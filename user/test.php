@@ -8,6 +8,9 @@ session_start();
 check_the_login("../");
 
 $login = $_COOKIE['login'];
+$error_array = array(
+  "success_verification" => false
+);
 
 if (empty($_POST['id']) || $_POST['id'] == ''){
   if (empty($_SESSION['id']) || $_SESSION['id'] == ''){
@@ -16,8 +19,11 @@ if (empty($_POST['id']) || $_POST['id'] == ''){
 }else{
   $_SESSION['id'] = $_POST['id'];
   $_SESSION['duration'] = $_POST['duration'];
+  $_SESSION['position'] = $_POST['position'];
   header("Location: test.php");
 }
+
+$test_id = $_SESSION['id'];
 # ------------------- TIME ---------------------------
 
 if (empty($_SESSION['start'])){
@@ -25,6 +31,7 @@ if (empty($_SESSION['start'])){
 }
 $start = $_SESSION['start'];
 $duration = $_SESSION['duration'];
+$position = $_SESSION['position'];
 $end = (int)$_SESSION['start'] + (int)$_SESSION['duration'];
 /*
 $start - время начала тестирования формата timestamp (секунды)
@@ -52,31 +59,63 @@ $end - время окончания тестирования формата tim
   <div class="container">
 
     <?php
-    $select_test_sql = "SELECT name, test FROM tests WHERE id='".$_SESSION['id']."'";
+    $select_test_sql = "SELECT name, test FROM tests WHERE id='".$test_id."'";
     if ($select_test_result = $conn->query($select_test_sql)){
       foreach ($select_test_result as $item) {
         $test = json_decode($item['test']);
         $name = $item['name'];
       }
-
       if (isset($_POST['test_input'])){
         $answer = $_POST['test_input'];
         $all_questions = count($test);
         $right_answers = 0;
-        $to_check = 0;
+        $ids_to_check = array();
+        $answers_to_check = array();
         for ($i = 0; $i < $all_questions; $i++){
           if (isset($answer[$i])){
             if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox"){
               if ($test[$i][2] == $answer[$i]){ $right_answers++; }
             }else if ($test[$i][4] == "definite"){
-              if (array_search($answer[$i], $test[$i][3])){ $right_answers++; }
+              foreach ($test[$i][3] as $item){
+                if (strtoupper(trim($item)) == strtoupper(trim($answer[$i]))){
+                    $right_answers += 1;
+                }
+              }
             }else if ($test[$i][4] == "definite_mc"){
-              $to_check++;
+                array_push($ids_to_check, $i);
+                array_push($answers_to_check, $answer[$i]);
             }
           }
         }
-        $wrong_answers = $all_questions - $to_check - $right_answers;
-        echo $right_answers."/".$all_questions.", ".$to_check." на проверке";
+        $wrong_answers = $all_questions - count($ids_to_check) - $right_answers;
+        echo $right_answers."/".$all_questions.", ".count($ids_to_check)." на проверке";
+        echo "<a href='my_tests.php'>Назад</a>";
+        $amount = count($ids_to_check);
+
+        $select_user_sql = "SELECT user_tests_marks FROM users WHERE login='".$login."'";
+        if ($select_user_result = $conn->query($select_user_sql)) {
+          foreach ($select_user_result as $item) {
+            $user_tests_marks = json_decode($item['user_tests_marks']);
+          }
+        }
+        $select_user_result->free();
+        if ($amount == 0){
+          $mark = mark($right_answers/$all_questions);
+
+          $user_tests_marks[$position] = $mark;
+          $update_sql = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
+        }else{
+          # ---------------- FAST VERIFICATION ------------------------
+          $user_tests_marks[$position] = -1;
+          $insert_and_upadate_sql = "INSERT INTO verification_tests (login, test_id, right_answers, amount, answers, answers_ids, position) VALUES ('".$login."', '".$test_id."', '".$right_answers."', '".$all_questions."', '".json_encode($answers_to_check, JSON_UNESCAPED_UNICODE)."', '".json_encode($ids_to_check, JSON_UNESCAPED_UNICODE)."', '".$position."')";
+          if ($conn->query($insert_and_upadate_sql)){
+            $update_sql2 = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
+            if ($conn->query($update_sql2)){
+              $error_array['success_verification'] = true;
+            }
+          }
+
+        }
       }else{
         echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$_GET['test_id'].": ".$name."</h2>";
 
@@ -122,6 +161,8 @@ $end - время окончания тестирования формата tim
       }
       echo "</form>";
     }
+    $select_test_result->free();
+    $conn->close();
 
     ?>
   </div>

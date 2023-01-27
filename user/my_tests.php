@@ -27,12 +27,12 @@ $login = $_COOKIE['login'];
 <main>
   <h1>Мои тесты</h1>
   <?php
-  $select_sql = "SELECT user_tests_ids, user_tests_completed, time_to_do FROM users WHERE login='".$login."'";
+  $select_sql = "SELECT user_tests_ids, user_tests_marks, user_tests_durations FROM users WHERE login='".$login."'";
   if ($select_result = $conn->query($select_sql)){
     foreach ($select_result as $item){
       $ids = json_decode($item['user_tests_ids']);
-      $completed = json_decode($item['user_tests_completed']);
-      $time_to_do = json_decode($item['time_to_do']);
+      $completed = json_decode($item['user_tests_marks']);
+      $time_to_do = json_decode($item['user_tests_durations']);
     }
 
     for ($i = count($ids) - 1; $i >= 0; $i--){
@@ -53,18 +53,21 @@ $login = $_COOKIE['login'];
         ";
         if ($mark == 0){
           echo "
-          <label>Вы ещё не прошли этот тест</label>
+          <label>Статус: не пройден</label>
           <form method='post' action='test.php'>
             <input type='hidden' name='id' value='".$id."'>
+            <input type='hidden' name='position' value='".$i."'>
             <input type='hidden' name='duration' value='".$time."'>
             <input type='submit' value='Начать тестирование'>
           </form>
           ";
         }else{
-          echo "
-          <label>Этот тест пройден</label>
-          <label>Ваша оценка: ".$mark."</label>
-          ";
+          if ($mark != -1){
+            echo "<label>Статус: пройден</label>";
+            echo "<label>Ваша оценка: ".$mark."</label>";
+          }else{
+            echo "<label>Статус: на проверке</label>";
+          }
         }
         echo "</div>";
       }
