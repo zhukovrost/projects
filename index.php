@@ -37,9 +37,19 @@ conn_check($conn);
       }
 
       if (check_if_admin($conn, $_COOKIE['login'])){
-        echo '<a class="user_name" href="construct/construct.php">'.$surname.' '.$name.'(админ)</a>';
+        echo '
+        <div class="user_cover">
+          <a class="user_name" href="construct/construct.php">'.$surname.' '.$name.'(админ)</a>
+          <button class="header_logout_btn">Выйти</button>
+        </div>
+        ';
       }else{
-        echo '<p class="user_name">'.$surname.' '.$name.'</p>';
+        echo '
+        <div class="user_cover">
+          <p class="user_name">'.$surname.' '.$name.'</p>
+          <button class="header_logout_btn">Выйти</button>
+        </div>
+        ';
       }
       $select_result->free();
     }
@@ -48,7 +58,7 @@ conn_check($conn);
   $conn->close();
   ?>
 
-    <a href=""><img class="header_question" src="img/question.png" alt=""></a>
+  <a href=""><img class="header_question" src="img/question.png" alt=""></a>
   <div class="container">
     <div class="header_title_block">
       <p class="header_subtitle">Lorem ipsum</p>
