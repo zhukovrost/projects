@@ -23,6 +23,8 @@ if (empty($_POST['id']) || $_POST['id'] == ''){
   header("Location: test.php");
 }
 
+if (empty($_SESSION['result'])){ $_SESSION['result'] = false; }
+
 $test_id = $_SESSION['id'];
 # ------------------- TIME ---------------------------
 
@@ -66,6 +68,10 @@ $end - время окончания тестирования формата tim
         $name = $item['name'];
       }
       if (isset($_POST['test_input'])){
+        # ------------ RESULTS ----------------------
+
+        $_SESSION['result'] = true;
+
         $answer = $_POST['test_input'];
         $all_questions = count($test);
         $right_answers = 0;
@@ -121,7 +127,13 @@ $end - время окончания тестирования формата tim
         echo $right_answers."/".$all_questions.", ".count($ids_to_check)." на проверке";
         echo "<a href='my_tests.php'>Назад</a>";
 
-      }else{
+      } elseif ($_SESSION['result']) {
+        # --------- bug fix ----------
+        $_SESSION = array();
+        header("Location: my_tests.php");
+
+      } else {
+        # -------------------- TEST PAGE ----------------------
         echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$_GET['test_id'].": ".$name."</h2>";
 
         for ($i = 0; $i < count($test); $i++){
