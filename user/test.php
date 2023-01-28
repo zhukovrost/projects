@@ -88,10 +88,8 @@ $end - время окончания тестирования формата tim
           }
         }
         $wrong_answers = $all_questions - count($ids_to_check) - $right_answers;
-        echo $right_answers."/".$all_questions.", ".count($ids_to_check)." на проверке";
-        echo "<a href='my_tests.php'>Назад</a>";
         $amount = count($ids_to_check);
-
+        # ---------- GETTING THE LIST OF MARKS ------------------
         $select_user_sql = "SELECT user_tests_marks FROM users WHERE login='".$login."'";
         if ($select_user_result = $conn->query($select_user_sql)) {
           foreach ($select_user_result as $item) {
@@ -104,18 +102,25 @@ $end - время окончания тестирования формата tim
 
           $user_tests_marks[$position] = $mark;
           $update_sql = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
+          if ($conn->query($update_sql)){
+            $error_array['success_verification'] = true;
+          }
         }else{
           # ---------------- FAST VERIFICATION ------------------------
           $user_tests_marks[$position] = -1;
-          $insert_and_upadate_sql = "INSERT INTO verification_tests (login, test_id, right_answers, amount, answers, answers_ids, position) VALUES ('".$login."', '".$test_id."', '".$right_answers."', '".$all_questions."', '".json_encode($answers_to_check, JSON_UNESCAPED_UNICODE)."', '".json_encode($ids_to_check, JSON_UNESCAPED_UNICODE)."', '".$position."')";
-          if ($conn->query($insert_and_upadate_sql)){
+          $insert_sql = "INSERT INTO verification_tests (login, test_id, right_answers, amount, answers, answers_ids, position) VALUES ('".$login."', '".$test_id."', '".$right_answers."', '".$all_questions."', '".json_encode($answers_to_check, JSON_UNESCAPED_UNICODE)."', '".json_encode($ids_to_check, JSON_UNESCAPED_UNICODE)."', '".$position."')";
+          if ($conn->query($insert_sql)){
             $update_sql2 = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
             if ($conn->query($update_sql2)){
               $error_array['success_verification'] = true;
             }
           }
-
         }
+
+        # ----------------- TEXT OUTPUT ----------------
+        echo $right_answers."/".$all_questions.", ".count($ids_to_check)." на проверке";
+        echo "<a href='my_tests.php'>Назад</a>";
+
       }else{
         echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$_GET['test_id'].": ".$name."</h2>";
 
