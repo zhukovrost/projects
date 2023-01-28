@@ -83,7 +83,7 @@ $end - время окончания тестирования формата tim
               if ($test[$i][2] == $answer[$i]){ $right_answers++; }
             }else if ($test[$i][4] == "definite"){
               foreach ($test[$i][3] as $item){
-                if (strtoupper(trim($item)) == strtoupper(trim($answer[$i]))){
+                if (mb_strtoupper(str_replace(" ", "", $item)) == mb_strtoupper(str_replace(" ", "", $answer[$i]))){
                     $right_answers += 1;
                 }
               }
