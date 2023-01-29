@@ -8,6 +8,14 @@ conn_check($conn);
 check_the_login("../");
 
 $login = $_COOKIE['login'];
+session_start();
+
+if ($_SESSION['refresh'] == null){
+  $_SESSION['refresh'] = " ";
+  header("Refresh: 0");
+}else{
+  $_SESSION['refresh'] = null;
+}
 ?>
 
 <!doctype html>
@@ -27,6 +35,12 @@ $login = $_COOKIE['login'];
 <main>
   <h1>Мои тесты</h1>
   <?php
+  # -------- errors -------------
+  if (isset($_GET['error_completed'])){
+    print_warning("Ошибка: Тест уже пройден.");
+  }
+
+  # ---------- tests output -------------
   $select_sql = "SELECT user_tests_ids, user_tests_marks, user_tests_durations FROM users WHERE login='".$login."'";
   if ($select_result = $conn->query($select_sql)){
     foreach ($select_result as $item){

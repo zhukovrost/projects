@@ -66,7 +66,7 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
 
     if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
       if ($error_array['post_test_success']){
-        echo "<div class='success_block'><label style='color: white;'>Тест был успешно выложен для выбранных учеников</label></div>";
+        print_success_message("Тест был успешно выложен для выбранных учеников");
       }
       $select_tests_sql = "SELECT id, name FROM tests ORDER BY id DESC";
       if ($select_tests_result = $conn->query($select_tests_sql)){

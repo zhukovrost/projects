@@ -23,6 +23,21 @@ if (empty($_POST['id']) || $_POST['id'] == ''){
   header("Location: test.php");
 }
 
+$position = $_SESSION['position'];
+
+# -------------- CHECK IF COMPLETED ------------------
+
+$check_sql = "SELECT user_tests_marks FROM users WHERE login='".$login."'";
+if ($check_result = $conn->query($check_sql)){
+  foreach ($check_result as $item){
+    $marks = json_decode($item['user_tests_marks']);
+  }
+  if ((int)$marks[$position] != 0){
+    header("Location: my_tests.php?error_completed=1");
+  }
+}
+$check_result->free();
+
 if (empty($_SESSION['result'])){ $_SESSION['result'] = false; }
 
 $test_id = $_SESSION['id'];
@@ -33,7 +48,6 @@ if (empty($_SESSION['start'])){
 }
 $start = $_SESSION['start'];
 $duration = $_SESSION['duration'];
-$position = $_SESSION['position'];
 $end = (int)$_SESSION['start'] + (int)$_SESSION['duration'];
 /*
 $start - время начала тестирования формата timestamp (секунды)

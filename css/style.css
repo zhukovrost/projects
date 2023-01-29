@@ -481,6 +481,34 @@ footer a:hover{
 .success{
 	color: lime;
 }
+
+.warning_block{
+    width: 80%;
+    padding: 5px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    margin: 10px auto;
+}
+
+.warning_block label{
+    color: white;
+}
+
+.success_block {
+    width: 80%;
+    padding: 5px;
+    margin: 10px auto;
+    background-color: limegreen;
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+}
+
+.success_block label{
+    color: white;
+}
 /* =================== constructor	===============*/
 
 .c_all_forms_block{
@@ -586,17 +614,6 @@ footer a:hover{
   margin: 5px;
   padding: 5px;
 }
-
-.success_block {
-    width: 60%;
-    padding: 5px;
-    margin: 10px auto;
-    background-color: limegreen;
-    display: flex;
-    justify-content: center;
-}
-
-
 
 /* ======================REGENLOG==================== */
 

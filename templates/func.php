@@ -89,6 +89,14 @@ function check_if_admin($conn, $login, $way=""){
 		}
 	}
 
+  function print_warning($message){
+    echo "<div class='warning_block'><label>".$message."</label></div>";
+  }
+
+  function print_success_message($message){
+    echo "<div class='success_block'><label>".$message."</label></div>";
+  }
+
 #------------------ construct ------------------------
 
 function mark($points){
