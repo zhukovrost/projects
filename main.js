@@ -3,7 +3,6 @@
 // =========ЭТО ФОРМЫ=========
 function add_answer (button){
     let el_ans = button.parentNode.lastElementChild;
-    console.log(el_ans)
 
     let input_ans = document.createElement("input");
     input_ans.setAttribute("type","text");
@@ -30,3 +29,10 @@ document.body.addEventListener('click', function(e){
     
    
 }, true)
+
+
+// ========header_logout_btn========
+document.addEventListener("DOMContentLoaded", function() {
+    let width_of_user_name = this.querySelector('header .user_name').getBoundingClientRect().width;
+    this.querySelector('header .header_logout_btn').style.width = width_of_user_name + 'px';
+});
