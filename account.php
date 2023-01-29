@@ -67,9 +67,9 @@ if ($data_array = $conn -> query($select_sql)){
     $program_duration = $data['program_duration'];
     $calendar = json_decode($data['calendar']);
     $start_program = $data['start_program'];
-    if ($data['sex'] == "man"){
+    if ($data['sex'] == "m"){
       $sex = "Мужской";
-    }elseif ($data['sex'] == "woman"){
+    }elseif ($data['sex'] == "f"){
       $sex = "Женский";
     }
     if ($data['weight'] == 0){

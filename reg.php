@@ -108,8 +108,8 @@ if (isset($_POST['reg_done'])){
             <p>Пол</p>
                   <select name="reg_sex">
                       <option value="Укажите ваш пол">Укажите ваш пол</option>
-                      <option value="man">Мужской</option>
-                      <option value="woman">Женский</option>
+                      <option value="m">Мужской</option>
+                      <option value="f">Женский</option>
                   </select>
             </div>
             <div class="reg_item">

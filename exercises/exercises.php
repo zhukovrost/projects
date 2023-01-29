@@ -150,7 +150,7 @@ if (isset($_POST['weeks'])){
         }
       }
 
-      date_default_timezone_set('UTC+3');
+      date_default_timezone_set('Europe/Moscow');
       $date = time();
 
       $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."', calendar='".json_encode($calendar)."', start_program='".$date."' WHERE login='".$login."'";

@@ -19,13 +19,13 @@ include "templates/func.php";
 <body>
     <header>
         <div class="header_info">
-            <h1 class="company_name">Название &#174;</h1>
+            <h1 class="company_name">sport_is_life &#174;</h1>
             <div class="title">
                 <h1>
-                    Сполт
+                    Спорт
                 </h1>
                 <h2>
-                    это зызнь
+                    это жизнь
                 </h2>
             </div>
             <div class="reglog_buttons">
@@ -44,9 +44,8 @@ include "templates/func.php";
         <nav>
             <a href="index.php">Главная</a>
             <a href="exercises/workout.php">Мои тренировки</a>
-            <a href="">Lorem</a>
-            <a href="">Lorem</a>
-            <a href="">Lorem</a>
+            <a href="">Пользователи</a>
+            <a href="">Новости</a>
         </nav>
     </header>
     <main>
