@@ -60,42 +60,42 @@ header{
 
 .user_cover{
     position: absolute;
-    z-index: 8;
+    top: 11%;
     right: 3%;
-	top: 15%;
+    display: inline-block;
 }
 
-header .user_name{
+.user_name{
     position: relative;
+    font-size: 21px;
+    background-color: #000000;
+    border: 2px solid #F2F2F2;
+    padding: 10px 40px;
     z-index: 10;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    color: white;
-    background-color: #000000;
-    border: 2px solid #F2F2F2;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: .2s ease;
 }
 
-header .header_logout_btn{
-    position: relative;
+.header_logout_btn{
+    background-color: #000000;
+    color: #f2f2f2cb;
+    border: solid #F2F2F2;
+    border-top: none;
+    position: absolute;
     z-index: 9;
-    height: 100%;
-    top: 0;
-    left: 0;
-    color: white;
-    background-color: #000000;
-    border: 2px solid #F2F2F2;
+    transform: translateY(-100%);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 0px;
     text-align: center;
-    cursor: pointer;
     text-transform: uppercase;
+    transition: .4s cubic-bezier(0.51, 0.14, 0.12, 1.02);
 }
 
-header .user_name:hover, .header_logout_btn:hover .user_name{
-    transform: translateY(100%);
+.header_logout_btn:hover{
+    color: #f2f2f2;
+}
+
+.user_cover:hover .header_logout_btn{
+    transform: translateY(0%);
 }
 
 .header_title_block{
