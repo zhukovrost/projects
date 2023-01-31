@@ -72,7 +72,7 @@ if ($_GET['page'] == "constructor"){
     for ($i = $_POST['delete_exercise_id'] + 1; $i < count($_SESSION['construct_array']); $i++){ array_push($new_construct_array, $_SESSION['construct_array'][$i]); }
     $_SESSION['construct_array'] = $new_construct_array;
   }
-  elseif (not_empty($_POST['change_repeats'])){
+  elseif (isset($_POST['change_repeats'])){
     # changing exercise from $_SESSION['construct_array']
     $change = explode("/", $_SESSION['construct_array'][$_POST['change_repeats_id']]);
     $change[3] = $_POST['change_repeats'];
@@ -153,7 +153,7 @@ if (isset($_POST['weeks'])){
       date_default_timezone_set('Europe/Moscow');
       $date = time();
 
-      $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."', calendar='".json_encode($calendar)."', start_program='".$date."' WHERE login='".$login."'";
+      $update_account_sql = "UPDATE users SET program='".$id."', program_duration='".$_POST['weeks']."', calendar='".json_encode($calendar)."', start_program='".$date."', completed_program=false WHERE login='".$login."'";
       if ($conn->query($update_account_sql)){
         $_SESSION['program_array'] = [[], [], [], [], [], [], []];
         $_SESSION['construct_array'] = array();

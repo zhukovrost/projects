@@ -18,7 +18,7 @@ $error_array = array(
 
 if (isset($_POST['exit'])){
   setcookie("login", "");
-  header("Location: reg.php");
+  header("Location: index.php");
 }
 
 $login = $_COOKIE['login'];
@@ -214,42 +214,43 @@ if ($data_array = $conn -> query($select_sql)){
           echo "</tr></table>";
         }
 
-        # check_if_passed();
-
-        echo "
+        if (check_if_passed($conn, $login)){
+          echo "
         <table><tr><th>Неделя</th>";
-        foreach ($week as $weekday){
-          echo "<th>".$weekday."</th>";
-        }
-        echo "</tr>";
-
-        for ($i = 0; $i < count($calendar); $i++){
-          echo "<tr><th>".($i + 1)."</th>";
-          for ($j = 0; $j < 7; $j++){
-            echo "<td>";
-            switch ($calendar[$i][$j]){
-              case 0:
-                echo "<img class='calendar_image' src='img/icons/holiday.png'>";
-                break;
-              case 1:
-                echo "<img class='calendar_image' src='img/icons/workout.png'>";
-                break;
-              case 2:
-                echo "<img class='calendar_image' src='img/icons/out_of_program.png'>";
-                break;
-              case 3:
-                echo "<img class='calendar_image' src='img/icons/complete.png'>";
-                break;
-              case 4:
-                echo "<img class='calendar_image' src='img/icons/passed.png'>";
-                break;
-            }
-            echo "</td>";
+          foreach ($week as $weekday){
+            echo "<th>".$weekday."</th>";
           }
           echo "</tr>";
-        }
 
-        echo "</table>";
+          for ($i = 0; $i < count($calendar); $i++){
+            echo "<tr><th>".($i + 1)."</th>";
+            for ($j = 0; $j < 7; $j++){
+              echo "<td>";
+              switch ($calendar[$i][$j]){
+                case 0:
+                  echo "<img class='calendar_image' src='img/icons/holiday.png'>";
+                  break;
+                case 1:
+                  echo "<img class='calendar_image' src='img/icons/workout.png'>";
+                  break;
+                case 2:
+                  echo "<img class='calendar_image' src='img/icons/out_of_program.png'>";
+                  break;
+                case 3:
+                  echo "<img class='calendar_image' src='img/icons/complete.png'>";
+                  break;
+                case 4:
+                  echo "<img class='calendar_image' src='img/icons/passed.png'>";
+                  break;
+              }
+              echo "</td>";
+            }
+            echo "</tr>";
+          }
+          echo "</table>";
+        }else{
+          echo "<label style='color: #FF0000'>Ошибка: не удалось загрузить календарь</label>";
+        }
       }
       ?>
     </div>
@@ -265,5 +266,6 @@ if ($data_array = $conn -> query($select_sql)){
 <?php
 include "templates/footer.html";
 $conn->close();
+header("Refresh: 300");
 ?>
 </html>

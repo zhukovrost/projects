@@ -3,6 +3,7 @@ include "../templates/func.php";
 include "../templates/settings.php";
 
 check_the_login("../");
+$login = $_COOKIE['login'];
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
@@ -27,7 +28,29 @@ if (isset($_POST['start'])){
   }
 }
 
-$select_id_sql = "SELECT program FROM users WHERE login='".$_COOKIE['login']."'";
+$select_calendar_sql = "SELECT calendar, start_program FROM users WHERE login='".$login."'";
+if ($select_result = $conn->query($select_calendar_sql)) {
+  $now = time();
+  foreach ($select_result as $item) {
+    $calendar = json_decode($item['calendar']);
+    $start_program = $item['start_program'];
+  }
+
+  for ($i = 0; $i < 7; $i++) {
+    if ($calendar[0][$i] != 2) {
+      $start_weekday_num = $i;
+    }
+  }
+
+  $day_now = $start_weekday_num;
+  for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
+    $day_now++;
+  }
+  $week_now = $day_now % 7;
+  $day_now = (int)($day_now / 7);
+}
+
+$select_id_sql = "SELECT program FROM users WHERE login='".$login."'";
 if ($select_id_result = $conn->query($select_id_sql)){
   foreach ($select_id_result as $user){
     $program_id = $user['program'];
@@ -55,7 +78,14 @@ if (isset($_POST['finish'])){
   $_SESSION['current_exercise'] = 0;
   $_SESSION['start'] = 0;
   $_SESSION['passed'] = 0;
-  header("Location: ../index.php");
+
+  $calendar[$week_now][$day_now] = 3;
+
+  $update_sql = "UPDATE users SET calendar='" . json_encode($calendar) . "' WHERE login='" . $login . "'";
+  if ($conn->query($update_sql)){
+    header("Location: ../account.php");
+  }
+
 }
 
 ?>

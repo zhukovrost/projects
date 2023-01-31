@@ -6,3 +6,15 @@ $exercises_array[$name][$i][$j][0] = if static - true, if not - false
 $exercises_array[$name][$i][$j][1] = exercise name
 $exercises_array[$name][$i][$j][2] = if static - seconds, if not - repeats
 $exercises_array[$name][$i][$j][3] = exercise image
+
+CALENDAR
+0 - holiday
+1 - workout
+2 - out of range
+3 - completed
+4 - passed
+
+86400 seconds = 1 day
+604800 seconds = 1 week
+
+[[2,2,2,2,2,2,1],[0,1,1,0,1,1,0],[0,1,1,0,1,1,0],[0,1,1,0,1,1,0],[0,1,1,0,1,1,0],[0,1,1,0,1,1,2]]
