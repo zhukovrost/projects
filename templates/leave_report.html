@@ -1,0 +1,24 @@
+<section style="width: 70%; border: black 2px solid; background-color: white; padding: 10px; margin: 5px auto">
+  <form class="user_feedaback_form" method="post">
+    <h2 class="user_feedback_title">Поделитесь отзывом</h2>
+    <!-- это типо звёзды -->
+    <h3 class="user_feedback_rating_title">Ваша оценка</h3>
+    <div class="user_feedback_rating_wrapper">
+      <div class="user_feedback_rating">
+        <input id="user_feedback_rating_5" class="user_feedback_rating_item" type="radio" name="rate" value="5">
+        <label for="user_feedback_rating_5" class="user_feedback_label"></label>
+        <input id="user_feedback_rating_4" class="user_feedback_rating_item" type="radio" name="rate" value="4">
+        <label for="user_feedback_rating_4" class="user_feedback_label"></label>
+        <input id="user_feedback_rating_3" class="user_feedback_rating_item" type="radio" name="rate" value="3">
+        <label for="user_feedback_rating_3" class="user_feedback_label"></label>
+        <input id="user_feedback_rating_2" class="user_feedback_rating_item" type="radio" name="rate" value="2">
+        <label for="user_feedback_rating_2" class="user_feedback_label"></label>
+        <input id="user_feedback_rating_1" class="user_feedback_rating_item" type="radio" name="rate" value="1">
+        <label for="user_feedback_rating_1" class="user_feedback_label"></label>
+      </div>
+    </div>
+    <!-- сам отзыв -->
+    <textarea class="user_feedback_textarea" placeholder="Ваш отзыв" name="message"></textarea>
+    <input class="user_feedback_button" type="submit" value="Поделиться">
+  </form>
+</section>
