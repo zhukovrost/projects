@@ -8,6 +8,8 @@ if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
 	conn_check($conn);
 }
 
+date_default_timezone_set('Europe/Moscow');
+
 $error_array = array(
   "reg_fill_all_input_fields" => false,
   "reg_login_is_used" => false,
@@ -38,10 +40,11 @@ if (isset($_POST['reg_done'])){
             if ($rowsCount == 0) {
               if (isset($_POST['reg_thirdname'])) {
                 $reg_thirdname = trim($_POST['reg_thirdname']);
+                $now = '['.time().']';
                 if (strlen($reg_thirdname) > 32){ $error_array["too_long_string"] = true; }
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email ."', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0)";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program, personal_news) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email ."', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0, '".$now."')";
               } else {
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0)";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program, personal_news) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0, '".$now."')";
               }
 
               if (!$error_array["too_long_string"]){

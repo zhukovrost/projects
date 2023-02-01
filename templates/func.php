@@ -89,60 +89,68 @@ function check_if_passed($conn, $login){
       $completed_program = $item['completed_program'];
       $completed2 = $completed_program;
     }
+    if ($start_program - $now >= 86400){
+      if (!$completed_program) {
 
-    if (!$completed_program) {
-
-      for ($i = 0; $i < 7; $i++) {
-        if ($calendar[0][$i] != 2) {
-          $start_weekday_num = $i;
-        }
-      }
-
-      $day_now = $start_weekday_num;
-      for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
-        $day_now++;
-      }
-      $week_now = $day_now % 7;
-      $day_now = (int)($day_now / 7);
-
-
-      if ($week_now > $program_duration || ($week_now == $program_duration && $day_now >= $start_weekday_num)) {
-        $week_now = $program_duration;
-        if ($start_weekday_num == 0) {
-          $day_now = 7;
-        } else {
-          $day_now = $start_weekday_num;
-        }
-        $completed = 1;
-      } else {
-        $completed = 0;
-      }
-
-
-      for ($week = $week_now; $week >= 0; $week--) {
-        if ($week == $week_now) {
-          for ($day = $day_now - 1; $day >= 0; $day--) {
-            if ($calendar[$week][$day] == 1) {
-              $calendar[$week][$day] = 4;
-            }
-          }
-        } else {
-          for ($day = 6; $day >= 0; $day--) {
-            if ($calendar[$week][$day] == 1) {
-              $calendar[$week][$day] = 4;
-            }
+        for ($i = 0; $i < 7; $i++) {
+          if ($calendar[0][$i] != 2) {
+            $start_weekday_num = $i;
           }
         }
-      }
 
-      if ($calendar != $calendar2 || $completed != $completed2) {
-        $update_sql = "UPDATE users SET calendar='" . json_encode($calendar) . "', completed_program=$completed WHERE login='" . $login . "'";
-        if ($conn->query($update_sql)) {
+        $day_now = $start_weekday_num;
+        for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
+          $day_now++;
+        }
+        $week_now = $day_now % 7;
+        $day_now = (int)($day_now / 7);
+
+
+        if ($week_now > $program_duration || ($week_now == $program_duration && $day_now >= $start_weekday_num)) {
+          $week_now = $program_duration;
+          if ($start_weekday_num == 0) {
+            $day_now = 7;
+          } else {
+            $day_now = $start_weekday_num;
+          }
+          $completed = 1;
+        } else {
+          $completed = 0;
+        }
+
+
+        for ($week = $week_now; $week >= 0; $week--) {
+          if ($week == $week_now) {
+            for ($day = $day_now - 1; $day >= 0; $day--) {
+              if ($calendar[$week][$day] == 1) {
+                $calendar[$week][$day] = 4;
+              }
+            }
+          } else {
+            for ($day = 6; $day >= 0; $day--) {
+              if ($calendar[$week][$day] == 1) {
+                $calendar[$week][$day] = 4;
+              }
+            }
+          }
+        }
+
+        if ($calendar != $calendar2 || $completed != $completed2) {
+          $update_sql = "UPDATE users SET calendar='" . json_encode($calendar) . "', completed_program=$completed WHERE login='" . $login . "'";
+          if ($conn->query($update_sql)) {
+            $insert_sql = "INSERT INTO news (new_id, user, date) VALUES(1, '".$login."', $now)";
+            if ($conn->query($insert_sql)){
+              return true;
+            }else{
+              return false;
+            }
+          } else {
+            return false;
+          }
+        } else {
           return true;
-        } else {
-          return false;
         }
-      } else {
+      }else{
         return true;
       }
     }else{
@@ -152,5 +160,25 @@ function check_if_passed($conn, $login){
     return false;
   }
 }
+
+function check_if_sub($conn, $your_login, $user_login){
+  $select_sql = "SELECT subscriptions FROM users WHERE login='".$your_login."'";
+  if ($select_result = $conn->query($select_sql)){
+    foreach ($select_result as $item) {
+      $subscriptions = json_decode($item['subscriptions']);
+    }
+    $return = false;
+    foreach ($subscriptions as $user){
+      if ($user == $user_login){
+        $return = true;
+        break;
+      }
+    }
+    return $return;
+  }
+  $select_result->free();
+}
+
+# check existing user function (404)
 
 ?>

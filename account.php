@@ -3,17 +3,17 @@
 include "templates/func.php";
 include 'templates/settings.php';
 
-check_the_login();
-
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
+date_default_timezone_set('Europe/Moscow');
 
 $error_array = array(
   "empty_form" => false,
   "select_error" => false,
   "update_error" => false,
   "update_success" => false,
-  "too_long_string" => false
+  "too_long_string" => false,
+  "success_sub" => false
 );
 
 if (isset($_POST['exit'])){
@@ -21,11 +21,46 @@ if (isset($_POST['exit'])){
   header("Location: index.php");
 }
 
-$login = $_COOKIE['login'];
+if (isset($_GET['user']) && $_GET['user'] != $_COOKIE['login']){
+  $login = $_GET['user'];
+  $all_info = false;
+}else{
+  check_the_login();
+  $login = $_COOKIE['login'];
+  $all_info = true;
+}
 
+if (isset($_POST['sub']) && !check_if_sub($conn, $_COOKIE['login'], $login)){
+  check_the_login();
+  $select_sub_sql = "SELECT subscriptions FROM users WHERE login='".$_COOKIE['login']."'";
+  if ($select_sub_result = $conn->query($select_sub_sql)){
+    foreach ($select_sub_result as $item){
+      $subs = json_decode($item['subscriptions']);
+    }
+    array_push($subs, $login);
+    $update_subs_sql = "UPDATE users SET subscriptions='".json_encode($subs)."' WHERE login='".$_COOKIE['login']."'";
+    if ($conn->query($update_subs_sql)){
+
+      $news_id = "0:".time().":".$_COOKIE['login'];
+      $select_news_sql = "SELECT personal_news FROM users WHERE login='".$login."'";
+      if ($select_news_result = $conn->query($select_news_sql)) {
+        foreach ($select_news_result as $item) {
+          $news = json_decode($item['personal_news']);
+        }
+        array_push($news, $news_id);
+        $update_news_sql = "UPDATE users SET personal_news='" . json_encode($news) . "' WHERE login='" . $login . "'";
+        if ($conn->query($update_news_sql)) {
+          $error_array['success_sub'] = true;
+        }
+      }
+      $select_news_result->free();
+    }
+  }
+  $select_sub_result->free();
+}
 # ---------------------------- update user data ------------------------------
 
-if  (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['thirdname']) && isset($_POST['weight']) && isset($_POST['height'])){
+if  ($all_info && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['thirdname']) && isset($_POST['weight']) && isset($_POST['height'])){
   if ($_POST['name'] != "" && $_POST['surname'] != "" && $_POST['thirdname'] != "" && $_POST['weight'] != "" && $_POST['height'] != ""){
     if (strlen($_POST['name']) <= 32 && strlen($_POST['surname']) <= 32 && strlen($_POST['thirdname']) <= 32){
       $weight_to_push = 0;
@@ -88,8 +123,8 @@ if ($data_array = $conn -> query($select_sql)){
       $thirdname = $data['thirdname'];
     }
     $password = "";
-    for ($i = 0; $i < $data['LENGTH(password)']; $i++) {
-      $password .= '*';
+    for ($i = 0; $i < strlen($data['password']); $i++) {
+      $password = $password.'*';
     }
 
   }
@@ -118,44 +153,83 @@ if ($data_array = $conn -> query($select_sql)){
 <body style="height: 100vh">
   <main class="profile_card">
     <!-- first string -->
-    <div class="together">
+    <form class="together" method="post">
       <img class="avatar" src="img/icons/user.png" style="margin-right: 30px;">
       <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль спортсмена <span style="color: #FF0000"><?php echo $login; ?></span></label>
-    </div>
+      <?php
+      if (!$all_info){
+        if (check_if_sub($conn, $_COOKIE['login'], $login)){
+          echo "<label>Вы подписаны</label>";
+        }else {
+          echo '
+        <input type="submit" value="Подписаться" name="sub">
+        ';
+        }
+      }
+      ?>
+    </form>
     <div style="width: 100%; border: black dashed 1px">
       <form method="post" id="user">
         <label>Даннные аккаунта спортсмена</label>
-        <div class="together">
-          <label style="margin-right: 10px;">Имя</label>
-          <input class="card_input" name="name" value="<?php echo $name; ?>">
-        </div>
-        <div class="together">
-          <label style="margin-right: 10px;">Фамилия</label>
-          <input class="card_input" name="surname" value="<?php echo $surname; ?>">
-        </div>
-        <div class="together">
-          <label style="margin-right: 10px;">Отчество</label>
-          <input class="card_input" name="thirdname" value="<?php echo $thirdname; ?>">
-        </div>
-        <label>Дата рождения: <?php echo $date_of_birth ?></label>
-        <br>
-        <label>Электронная почта: <?php echo $email ?></label>
-        <br>
-        <label>Пароль: <?php echo $password ?></label>
-        <br>
-        <label>Физические данные спортсмена</label>
-        <div class="together">
-          <label style="margin-right: 10px;">Вес (кг): </label>
-          <input type="text" class="card_input" name="weight" value="<?php echo $weight ?>">
-        </div>
-        <div class="together">
-          <label style="margin-right: 10px;">Рост (см): </label>
-          <input type="text" class="card_input" name="height" value="<?php echo $height; ?>">
-        </div>
-        <label>Пол: <?php echo $sex; ?></label>
-        <br>
+        <?php
+          if ($all_info){
+            echo '
+            <div class="together">
+              <label style="margin-right: 10px;">Имя</label>
+              <input class="card_input" name="name" value="'.$name.'">
+            </div>
+            <div class="together">
+              <label style="margin-right: 10px;">Фамилия</label>
+              <input class="card_input" name="surname" value="'.$surname.'">
+            </div>
+            <div class="together">
+              <label style="margin-right: 10px;">Отчество</label>
+              <input class="card_input" name="thirdname" value="'.$thirdname.'">
+            </div>
+            <label>Дата рождения: '.$date_of_birth.'</label>
+            <br>
+            <label>Электронная почта: '.$email.'</label>
+            <br>
+            <label>Пароль: '.$password.'</label>
+            <br>
+            <label>Физические данные спортсмена</label>
+            <div class="together">
+              <label style="margin-right: 10px;">Вес (кг): </label>
+              <input type="text" class="card_input" name="weight" value="'.$weight.'">
+            </div>
+            <div class="together">
+              <label style="margin-right: 10px;">Рост (см): </label>
+              <input type="text" class="card_input" name="height" value="'.$height.'">
+            </div>
+            <label>Пол: '.$sex .'</label>
+            <br>
+            ';
+          }else{
+            echo '
+            <div class="together">
+              <label style="margin-right: 10px;">Имя: '.$name.'</label>
+            </div>
+            <div class="together">
+              <label style="margin-right: 10px;">Фамилия: '.$surname.'</label>
+            </div>
+            <div class="together">
+              <label style="margin-right: 10px;">Отчество: '.$thirdname.'</label>
+            </div>
+            <label>Дата рождения: '.$date_of_birth.'</label>
+            <br>
+            <label>Физические данные спортсмена</label>
+            <div class="together">
+              <label style="margin-right: 10px;">Вес (кг): '.$weight.'</label>
+            </div>
+            <div class="together">
+              <label style="margin-right: 10px;">Рост (см): '.$height.'</label>
+            </div>
+            <label>Пол: '.$sex .'</label>
+            <br>
+            ';
+          }
+        ?>
       </form>
-
       <?php
       # --------------------- errors -------------------------
 
@@ -254,11 +328,16 @@ if ($data_array = $conn -> query($select_sql)){
       }
       ?>
     </div>
-
-    <form method="post" id="exit">
-      <input type="hidden" value="true" name="exit">
-    </form>
-    <button name="exit" form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
+    <?php
+    if ($all_info){
+      echo '
+      <form method="post" id="exit">
+        <input type="hidden" value="true" name="exit">
+      </form>
+      <button name="exit" form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
+      ';
+    }
+    ?>
   </main>
 
   <script src="main.js"></script>
@@ -266,6 +345,5 @@ if ($data_array = $conn -> query($select_sql)){
 <?php
 include "templates/footer.html";
 $conn->close();
-header("Refresh: 300");
 ?>
 </html>
