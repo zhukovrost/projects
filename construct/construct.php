@@ -287,7 +287,7 @@ $count_result->free();
 	<link rel="stylesheet" href="../css/style.css">
 	<title>Constructor</title>
 </head>
-<body>
+<body id="construct_body">
 <header class="question_header">
   <a class="back_button" href="construct.php">Конструктор</a>
   <a class="back_button" href="post_test.php">Выложить тест</a>
@@ -489,6 +489,65 @@ $count_result->free();
 			<input type="submit" value="очистить всё">
 		</form>
 	
-		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+				// ============Save content in forms============
+				let ConstructBlock = document.querySelector(".c_all_forms_block");
+				let ConstructArrayInputs = ConstructBlock.querySelectorAll("input");
+				let ConstructArraytextAreas = ConstructBlock.querySelectorAll("textarea");
+				let ConstructArraytextSelects = ConstructBlock.querySelectorAll("select");
+
+
+				for(let i = 0; i < ConstructArrayInputs.length; i++){
+					if(ConstructArrayInputs[i].type == "text"){
+						ConstructArrayInputs[i].addEventListener('keyup', function(){
+							let id = i;
+							let value = ConstructArrayInputs[i].value;
+							localStorage.setItem(id, value);
+						});
+					}
+					else if(ConstructArrayInputs[i].type == "number"){
+						ConstructArrayInputs[i].addEventListener('change', function(){
+							let id = i;
+							let value = ConstructArrayInputs[i].value;
+							localStorage.setItem(id, value);
+						});
+					}
+					
+				}
+
+				for(let i = 0; i < ConstructArraytextAreas.length; i++){
+					ConstructArraytextAreas[i].addEventListener('keyup', function(){
+						console.log(ConstructArrayInputs.length);
+						let id = ConstructArrayInputs.length + i;
+						let value = ConstructArraytextAreas[i].value;
+						localStorage.setItem(id, value);
+					});
+				}
+
+				for(let i = 0; i < ConstructArraytextSelects.length; i++){
+					ConstructArraytextSelects[i].addEventListener('change', function(){
+						let id = ConstructArraytextAreas.length + ConstructArrayInputs.length + i;
+						let value = ConstructArraytextSelects[i].value;
+						localStorage.setItem(id, value);
+					});
+				}
+
+				for(let i = 0; i < ConstructArrayInputs.length + ConstructArraytextAreas.length + ConstructArraytextSelects.length; i++){
+					if (localStorage.getItem(i) != null) {
+						if(i < ConstructArrayInputs.length){
+							ConstructArrayInputs[i].value = localStorage.getItem(i);
+						}
+						else if(i >= ConstructArrayInputs.length && i < ConstructArrayInputs.length + ConstructArraytextAreas.length){
+							ConstructArraytextAreas[i-ConstructArrayInputs.length].value = localStorage.getItem(i);
+						}
+						else if(i >= ConstructArrayInputs.length + ConstructArraytextAreas.length){
+							ConstructArraytextSelects[i - ConstructArrayInputs.length - ConstructArraytextAreas.length].value = localStorage.getItem(i);
+						}
+					}
+				}
+			});
+		</script>
 </body>
 </html>
