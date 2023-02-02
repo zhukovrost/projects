@@ -146,6 +146,10 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
             echo '<input class="test_output_input test_output_input_text" type="text" >';
           }else if ($preview_type == "definite_mc"){
             echo '<textarea class="test_output_input test_output_input_textarea"></textarea>';
+          }else if ($preview_type == "missing_words"){
+            for ($j = 0; $j < $question[1]; $j++){
+              echo "<label>".($j + 1)." word - </label><input type='text' class='test_output_input test_output_input_text'><br>";
+            }
           }
           echo '</div>';
         }

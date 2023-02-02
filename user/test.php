@@ -93,7 +93,7 @@ $end - время окончания тестирования формата tim
         $answers_to_check = array();
         for ($i = 0; $i < $all_questions; $i++){
           if (isset($answer[$i])){
-            if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox"){
+            if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox" || $test[$i][4] == "missing_words"){
               if ($test[$i][2] == $answer[$i]){ $right_answers++; }
             }else if ($test[$i][4] == "definite"){
               foreach ($test[$i][3] as $item){
@@ -181,6 +181,10 @@ $end - время окончания тестирования формата tim
             echo '<input name="test_input['.$i.']" class="test_output_input test_output_input_text" type="text">';
           }else if ($preview_type == "definite_mc"){
             echo '<textarea name="test_input['.$i.']" class="test_output_input test_output_input_textarea"></textarea>';
+          }else if ($preview_type == "missing_words"){
+            for ($j = 0; $j < $question[1]; $j++){
+              echo "<label>".($j + 1)." word - </label><input type='text' name='test_input[".$i."][]' class='test_output_input test_output_input_text'><br>";
+            }
           }
           echo '</div>';
         }

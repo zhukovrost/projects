@@ -7,7 +7,7 @@ include '../templates/settings.php';
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 
-# if (!(check_if_admin($conn, $_COOKIE['login'], "../"))){ header("Location: ../index.php"); }
+if (!(check_if_admin($conn, $_COOKIE['login'], "../"))){ header("Location: ../index.php"); }
 
 $error_array = array(
 	"success_add_test" => false,
@@ -177,6 +177,12 @@ if (isset($_POST['form_add_done'])){
 	
 #------------------ add question ----------------------------
 
+  if ($form_type == "radio") {
+    $num_of_right_answer = (int)$_POST['num_of_right_answer'] - 1;
+  }else{
+    $num_of_right_answer = -1;
+  }
+
   if (isset($_POST['theme'])){
     if ($_POST['theme'] != ""){
       $theme_to_push = $_POST['theme'];
@@ -191,7 +197,7 @@ if (isset($_POST['form_add_done'])){
 
 	if ($form_type != "definite_mc"){
 		if ($form_type != "checkbox"){
-			$construct = [$_POST['question'], $num_of_questions, (int)$_POST['num_of_right_answer'] - 1, [], $form_type, $img_id];
+			$construct = [$_POST['question'], $num_of_questions, $num_of_right_answer, [], $form_type, $img_id];
 		}else{
       $nums_of_right_answers = explode(" ", $_POST['num_of_right_answer']);
       for ($i = 0; $i < count($nums_of_right_answers); $i++){
@@ -301,9 +307,15 @@ $count_result->free();
 			<br>
 			<?php 
 			if ($form_type != "definite_mc"){
-				for ($i = 0; $i < $num_of_questions; $i++){
-					echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Вариант ответа №".(intval($i) + 1)."'>\n<br>";
-				}
+        if ($form_type != "missing_words"){
+          for ($i = 0; $i < $num_of_questions; $i++){
+            echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Вариант ответа №".(intval($i) + 1)."'>\n<br>";
+          }
+        }else{
+          for ($i = 0; $i < $num_of_questions; $i++){
+            echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Пропущенное слово №".(intval($i) + 1)."'>\n<br>";
+          }
+        }
 			} 
 			?>
 			<h4>Добавить картинку</h4>
@@ -336,6 +348,7 @@ $count_result->free();
 			<p><input type="radio" name="form_type" value="checkbox"<?php if ($form_type == "checkbox"){ echo " checked"; } ?>>С несколькими вариантами ответа</p>
 			<p><input type="radio" name="form_type" value="definite"<?php if ($form_type == "definite"){ echo " checked"; } ?>>С определённым ответом</p>
 			<p><input type="radio" name="form_type" value="definite_mc"<?php if ($form_type == "definite_mc"){ echo " checked"; } ?>>С определённым ответом (Ручная проверка)</p>
+      <p><input type="radio" name="form_type" value="missing_words"<?php if ($form_type == "missing_words"){ echo " checked"; } ?>>Пропущенные слова</p>
 			<input type="submit" value="изменить" style="width: 90%">
 		</form>
     <div class="c_form_2">
@@ -423,13 +436,17 @@ $count_result->free();
 		echo '<p>Вопрос №'.($i + 1).': '.$question[0].'</p>';
 		if ($preview_type == "radio" || $preview_type == "checkbox"){
 			foreach ($question[3] as $answer){
-				echo '<p><input type="'.$preview_type.'">'.$answer.'</p>';
+				echo '<p><input type="'.$preview_type.'" name="preview'.$i.'">'.$answer.'</p>';
 			}
 		}else if ($preview_type == "definite"){
 			echo '<input type="text" style="width: 70%">';
 		}else if ($preview_type == "definite_mc"){
 			echo "<textarea style='width: 70%; height: 100px'></textarea>";
-		}
+		}else if ($preview_type == "missing_words"){
+      for ($j = 0; $j < $question[1]; $j++){
+        echo "<input type='text' style='width: 50%;' placeholder='Вставьте пропущеное слово №".($j + 1)."'><br>";
+      }
+    }
 		echo '</form><div class="c_preview_info '.$preview_type.'">';
 		echo ' <p>Тип вопроса: ';
 		switch($preview_type){
@@ -445,6 +462,9 @@ $count_result->free();
 			case "definite_mc":
 				echo "c определённым ответом (ручная проверка).";
 				break;
+      case "missing_words":
+        echo "пропущенные слова";
+        break;
 		}
 		echo "</p>";
 
@@ -477,6 +497,13 @@ $count_result->free();
 				}
         echo "</ul>";
 				break;
+      case "missing_words":
+        echo "<p>Ответы:</p><ul>";
+        for ($j = 0; $j < $question[1]; $j++){
+          echo "<li>".($j + 1)." - ".$question[3][$j]."</li>";
+        }
+        echo "</ul>";
+        break;
 		}
 
 		echo '</div></div>';

@@ -640,6 +640,13 @@ footer a:hover{
   width: 17%;
 }
 
+.c_preview.missing_words {
+    width: 70%;
+}
+.c_preview_info.missing_words {
+    width: 28%;
+}
+
 .c_error_array{
   width: 95%;
   border: 2px solid lime;
