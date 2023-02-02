@@ -297,12 +297,12 @@ $count_result->free();
 	<div class="c_all_forms_block">
 		<form enctype="multipart/form-data" method="post" class="c_form_1">
 			<h3>Добавить вопрос</h3>
-			<textarea name="question"></textarea>
+			<textarea id="add_question_input" name="question"></textarea>
 			<br>
 			<?php 
 			if ($form_type != "definite_mc"){
 				for ($i = 0; $i < $num_of_questions; $i++){
-					echo "<input style='width: 90%' name='".$i."' type='text' placeholder='Вариант ответа №".(intval($i) + 1)."'>\n<br>";
+					echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Вариант ответа №".(intval($i) + 1)."'>\n<br>";
 				}
 			} 
 			?>
@@ -310,15 +310,15 @@ $count_result->free();
 			<input type="file" name="add_img">
 			<?php
 			if ($form_type == "radio"){
-				echo '<h4>Номер правильного ответа</h4><input type="number" name="num_of_right_answer" style="width: 30%">';
+				echo '<h4>Номер правильного ответа</h4><input id="num_of_right_answer_number" type="number" name="num_of_right_answer" style="width: 30%">';
 			}	
 			if ($form_type == "checkbox"){
-				echo '<h4>Номера правильных ответов</h4><input type="text" name="num_of_right_answer" style="width: 30%"><p>Записывать через пробел</p>';
+				echo '<h4>Номера правильных ответов</h4><input id="num_of_right_answer_text" type="text" name="num_of_right_answer" style="width: 30%"><p>Записывать через пробел</p>';
 			}	
 			?>
 
       <h3>Выберите тему вопроса</h3>
-      <select style="width: 90%" name="theme">
+      <select id="theme_select" style="width: 90%" name="theme">
         <option></option>
         <?php
         # ----------------- options ---------------------------
@@ -358,7 +358,7 @@ $count_result->free();
     <div class="c_form_3">
       <form method="post">
         <h3>Добавить рандомные вопросы</h3>
-        <select name="theme_of_rand_questions" style="width: 90%; margin-bottom: 10px">
+        <select id="theme_of_rand_questions" name="theme_of_rand_questions" style="width: 90%; margin-bottom: 10px">
           <option value="all_themes">Any(<?php echo $num_of_all_questions; ?>)</option>
           <?php
           # ---------------- options -----------------
@@ -368,12 +368,12 @@ $count_result->free();
           }
           ?>
         </select>
-        <input type="number" placeholder="Количество вопросов" name="num_of_rand_questions">
+        <input id="number_of_random_questions" type="number" placeholder="Количество вопросов" name="num_of_rand_questions">
         <input type="submit" value="Добавить">
       </form>
       <form method="post">
         <h3>Задайте название тестирования</h3>
-        <textarea name="test_name"></textarea>
+        <textarea id="name_of_test" name="test_name"></textarea>
         <input type="submit" name="add_test_to_db" value="Добавить тест в бд">
         <input type="submit" name="add_questions_to_db" value="Добавить вопросы в бд">
       </form>
@@ -493,59 +493,120 @@ $count_result->free();
 			document.addEventListener("DOMContentLoaded", function() {
 
 				// ============Save content in forms============
-				let ConstructBlock = document.querySelector(".c_all_forms_block");
-				let ConstructArrayInputs = ConstructBlock.querySelectorAll("input");
-				let ConstructArraytextAreas = ConstructBlock.querySelectorAll("textarea");
-				let ConstructArraytextSelects = ConstructBlock.querySelectorAll("select");
+				// First Column
+				let AddQuestionInput = document.getElementById('add_question_input');
+
+				AddQuestionInput.addEventListener('keyup', function(){
+						let id = 'add_question_input';
+						let value = AddQuestionInput.value;
+						localStorage.setItem(id, value);
+				});
+
+				if (localStorage.getItem('add_question_input') != null) {
+					AddQuestionInput.value = localStorage.getItem('add_question_input');
+				}
 
 
-				for(let i = 0; i < ConstructArrayInputs.length; i++){
-					if(ConstructArrayInputs[i].type == "text"){
-						ConstructArrayInputs[i].addEventListener('keyup', function(){
-							let id = i;
-							let value = ConstructArrayInputs[i].value;
+				let AnswersVariantsArray = document.querySelectorAll('#answer_input');
+
+				if(AnswersVariantsArray != null){
+					for(let i = 0; i < AnswersVariantsArray.length; i++){
+						AnswersVariantsArray[i].addEventListener('keyup', function(){
+							let id = 'answer_input' + i.toString();
+							let value = AnswersVariantsArray[i].value;
 							localStorage.setItem(id, value);
 						});
 					}
-					else if(ConstructArrayInputs[i].type == "number"){
-						ConstructArrayInputs[i].addEventListener('change', function(){
-							let id = i;
-							let value = ConstructArrayInputs[i].value;
-							localStorage.setItem(id, value);
-						});
-					}
-					
-				}
 
-				for(let i = 0; i < ConstructArraytextAreas.length; i++){
-					ConstructArraytextAreas[i].addEventListener('keyup', function(){
-						console.log(ConstructArrayInputs.length);
-						let id = ConstructArrayInputs.length + i;
-						let value = ConstructArraytextAreas[i].value;
-						localStorage.setItem(id, value);
-					});
-				}
-
-				for(let i = 0; i < ConstructArraytextSelects.length; i++){
-					ConstructArraytextSelects[i].addEventListener('change', function(){
-						let id = ConstructArraytextAreas.length + ConstructArrayInputs.length + i;
-						let value = ConstructArraytextSelects[i].value;
-						localStorage.setItem(id, value);
-					});
-				}
-
-				for(let i = 0; i < ConstructArrayInputs.length + ConstructArraytextAreas.length + ConstructArraytextSelects.length; i++){
-					if (localStorage.getItem(i) != null) {
-						if(i < ConstructArrayInputs.length){
-							ConstructArrayInputs[i].value = localStorage.getItem(i);
-						}
-						else if(i >= ConstructArrayInputs.length && i < ConstructArrayInputs.length + ConstructArraytextAreas.length){
-							ConstructArraytextAreas[i-ConstructArrayInputs.length].value = localStorage.getItem(i);
-						}
-						else if(i >= ConstructArrayInputs.length + ConstructArraytextAreas.length){
-							ConstructArraytextSelects[i - ConstructArrayInputs.length - ConstructArraytextAreas.length].value = localStorage.getItem(i);
+					for(let i = 0; i < AnswersVariantsArray.length; i++){
+						if (localStorage.getItem(AnswersVariantsArray[i].id + i.toString()) != null) {
+							AnswersVariantsArray[i].value = localStorage.getItem(AnswersVariantsArray[i].id + i.toString());
 						}
 					}
+				}
+
+
+				let NumOfRightAnswerNumber = document.getElementById('num_of_right_answer_number');
+
+				if(NumOfRightAnswerNumber != null){
+					NumOfRightAnswerNumber.addEventListener('keyup', function(){
+						let id = 'num_of_right_answer_number';
+						let value = NumOfRightAnswerNumber.value;
+						localStorage.setItem(id, value);
+					});
+
+					if (localStorage.getItem('num_of_right_answer_number') != null) {
+						NumOfRightAnswerNumber.value = localStorage.getItem('num_of_right_answer_number');
+					}
+				}
+
+
+				let NumOfRightAnswerText = document.getElementById('num_of_right_answer_text');
+
+				if(NumOfRightAnswerText != null){
+					NumOfRightAnswerText.addEventListener('keyup', function(){
+						let id = 'num_of_right_answer_text';
+						let value = NumOfRightAnswerText.value;
+						localStorage.setItem(id, value);
+					});
+
+					if (localStorage.getItem('num_of_right_answer_text') != null) {
+						NumOfRightAnswerText.value = localStorage.getItem('num_of_right_answer_text');
+					}
+				}
+
+
+				let ThemeSelect = document.getElementById('theme_select');
+
+				ThemeSelect.addEventListener('change', function(){
+						let id = 'theme_select';
+						let value = ThemeSelect.value;
+						localStorage.setItem(id, value);
+				});
+
+				if (localStorage.getItem('theme_select') != null) {
+					ThemeSelect.value = localStorage.getItem('theme_select');
+				}
+
+
+
+				// Second column
+				let ThemeOfRandQuestions = document.getElementById('theme_of_rand_questions');
+
+				ThemeOfRandQuestions.addEventListener('change', function(){
+						let id = 'theme_of_rand_questions';
+						let value = ThemeOfRandQuestions.value;
+						localStorage.setItem(id, value);
+				});
+
+				if (localStorage.getItem('theme_of_rand_questions') != null) {
+					ThemeOfRandQuestions.value = localStorage.getItem('theme_of_rand_questions');
+				}
+
+
+				let NumberOfRandQuestions = document.getElementById('number_of_random_questions');
+
+				NumberOfRandQuestions.addEventListener('keyup', function(){
+						let id = 'number_of_random_questions';
+						let value = NumberOfRandQuestions.value;
+						localStorage.setItem(id, value);
+				});
+
+				if (localStorage.getItem('number_of_random_questions') != null) {
+					NumberOfRandQuestions.value = localStorage.getItem('number_of_random_questions');
+				}
+
+
+				let NameOfTest = document.getElementById('name_of_test');
+
+				NameOfTest.addEventListener('keyup', function(){
+						let id = 'name_of_test';
+						let value = NameOfTest.value;
+						localStorage.setItem(id, value);
+				});
+
+				if (localStorage.getItem('name_of_test') != null) {
+					NameOfTest.value = localStorage.getItem('name_of_test');
 				}
 			});
 		</script>
