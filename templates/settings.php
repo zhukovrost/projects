@@ -17,4 +17,6 @@ $week = array(
   "Воскресенье"
 );
 
+date_default_timezone_set('Europe/Moscow');
+
 ?>

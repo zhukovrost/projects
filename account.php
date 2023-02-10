@@ -5,7 +5,6 @@ include 'templates/settings.php';
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
-date_default_timezone_set('Europe/Moscow');
 
 $error_array = array(
   "empty_form" => false,
@@ -16,10 +15,7 @@ $error_array = array(
   "success_sub" => false
 );
 
-if (isset($_POST['exit'])){
-  setcookie("login", "");
-  header("Location: index.php");
-}
+session_start();
 
 if (isset($_GET['user']) && $_GET['user'] != $_COOKIE['login']){
   $login = $_GET['user'];
@@ -32,33 +28,26 @@ if (isset($_GET['user']) && $_GET['user'] != $_COOKIE['login']){
 
 if (isset($_POST['sub']) && !check_if_sub($conn, $_COOKIE['login'], $login)){
   check_the_login();
+
   $select_sub_sql = "SELECT subscriptions FROM users WHERE login='".$_COOKIE['login']."'";
   if ($select_sub_result = $conn->query($select_sub_sql)){
     foreach ($select_sub_result as $item){
       $subs = json_decode($item['subscriptions']);
     }
+
     array_push($subs, $login);
     $update_subs_sql = "UPDATE users SET subscriptions='".json_encode($subs)."' WHERE login='".$_COOKIE['login']."'";
     if ($conn->query($update_subs_sql)){
-
-      $news_id = "0:".time().":".$_COOKIE['login'];
-      $select_news_sql = "SELECT personal_news FROM users WHERE login='".$login."'";
-      if ($select_news_result = $conn->query($select_news_sql)) {
-        foreach ($select_news_result as $item) {
-          $news = json_decode($item['personal_news']);
-        }
-        array_push($news, $news_id);
-        $update_news_sql = "UPDATE users SET personal_news='" . json_encode($news) . "' WHERE login='" . $login . "'";
-        if ($conn->query($update_news_sql)) {
-          $error_array['success_sub'] = true;
-        }
+      $insert_news_sql = "INSERT INTO news (new_id, user, date, personal, additional_info) VALUES (0, '".$login."', '".time()."', 1, '".$_COOKIE['login']."')";
+      if ($conn->query($insert_news_sql)){
+        $error_array['success_sub'] = true;
       }
-      $select_news_result->free();
     }
+
   }
   $select_sub_result->free();
+
 }
-# ---------------------------- update user data ------------------------------
 
 if  ($all_info && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['thirdname']) && isset($_POST['weight']) && isset($_POST['height'])){
   if ($_POST['name'] != "" && $_POST['surname'] != "" && $_POST['thirdname'] != "" && $_POST['weight'] != "" && $_POST['height'] != ""){
@@ -288,53 +277,55 @@ if ($data_array = $conn -> query($select_sql)){
           echo "</tr></table>";
         }
 
-        if (check_if_passed($conn, $login)){
-          echo "
+        check_if_passed($conn, $login);
+
+        if ($_SESSION['refresh'] == null){
+          $_SESSION['refresh'] = " ";
+          header("Refresh: 0");
+        }else{
+          $_SESSION['refresh'] = null;
+        }
+        
+        echo "
         <table><tr><th>Неделя</th>";
-          foreach ($week as $weekday){
-            echo "<th>".$weekday."</th>";
+        foreach ($week as $weekday){
+          echo "<th>".$weekday."</th>";
+        }
+        echo "</tr>";
+
+        for ($i = 0; $i < count($calendar); $i++){
+          echo "<tr><th>".($i + 1)."</th>";
+          for ($j = 0; $j < 7; $j++){
+            echo "<td>";
+            switch ($calendar[$i][$j]){
+              case 0:
+                echo "<img class='calendar_image' src='img/icons/holiday.png'>";
+                break;
+              case 1:
+                echo "<img class='calendar_image' src='img/icons/workout.png'>";
+                break;
+              case 2:
+                echo "<img class='calendar_image' src='img/icons/out_of_program.png'>";
+                break;
+              case 3:
+                echo "<img class='calendar_image' src='img/icons/complete.png'>";
+                break;
+              case 4:
+                echo "<img class='calendar_image' src='img/icons/passed.png'>";
+                break;
+            }
+            echo "</td>";
           }
           echo "</tr>";
-
-          for ($i = 0; $i < count($calendar); $i++){
-            echo "<tr><th>".($i + 1)."</th>";
-            for ($j = 0; $j < 7; $j++){
-              echo "<td>";
-              switch ($calendar[$i][$j]){
-                case 0:
-                  echo "<img class='calendar_image' src='img/icons/holiday.png'>";
-                  break;
-                case 1:
-                  echo "<img class='calendar_image' src='img/icons/workout.png'>";
-                  break;
-                case 2:
-                  echo "<img class='calendar_image' src='img/icons/out_of_program.png'>";
-                  break;
-                case 3:
-                  echo "<img class='calendar_image' src='img/icons/complete.png'>";
-                  break;
-                case 4:
-                  echo "<img class='calendar_image' src='img/icons/passed.png'>";
-                  break;
-              }
-              echo "</td>";
-            }
-            echo "</tr>";
-          }
-          echo "</table>";
-        }else{
-          echo "<label style='color: #FF0000'>Ошибка: не удалось загрузить календарь</label>";
         }
+        echo "</table>";
       }
       ?>
     </div>
     <?php
     if ($all_info){
       echo '
-      <form method="post" id="exit">
-        <input type="hidden" value="true" name="exit">
-      </form>
-      <button name="exit" form="exit" type="submit" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></button>
+      <a href="clear.php" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></a>
       ';
     }
     ?>

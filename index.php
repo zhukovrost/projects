@@ -45,7 +45,7 @@ include "templates/func.php";
             <a href="index.php">Главная</a>
             <a href="exercises/workout.php">Мои тренировки</a>
             <a href="">Пользователи</a>
-            <a href="">Новости</a>
+            <a href="news/news.php">Новости</a>
         </nav>
     </header>
     <main>

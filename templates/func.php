@@ -77,7 +77,6 @@ function reg_warning($if, $warning){
 }
 
 function check_if_passed($conn, $login){
-  date_default_timezone_set('Europe/Moscow');
   $now = time();
   $select_sql = "SELECT program_duration, calendar, start_program, completed_program FROM users WHERE login='".$login."'";
   if ($select_result = $conn->query($select_sql)){
@@ -89,14 +88,14 @@ function check_if_passed($conn, $login){
       $completed_program = $item['completed_program'];
       $completed2 = $completed_program;
     }
-    if ($start_program - $now >= 86400){
+    if ($now - $start_program >= 86400){
       if (!$completed_program) {
-
         for ($i = 0; $i < 7; $i++) {
-          if ($calendar[0][$i] != 2) {
-            $start_weekday_num = $i;
+          if ($calendar[0][$i] == 2) {
+            $start_weekday_num = $i + 1;
           }
         }
+        if ($start_weekday_num == 7){ $start_weekday_num = 0; }
 
         $day_now = $start_weekday_num;
         for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
@@ -104,9 +103,7 @@ function check_if_passed($conn, $login){
         }
         $week_now = $day_now % 7;
         $day_now = (int)($day_now / 7);
-
-
-        if ($week_now > $program_duration || ($week_now == $program_duration && $day_now >= $start_weekday_num)) {
+        if ($week_now > $program_duration || ($week_now == $program_duration && $day_now >= $start_weekday_num)) { # check if completed
           $week_now = $program_duration;
           if ($start_weekday_num == 0) {
             $day_now = 7;
@@ -118,46 +115,35 @@ function check_if_passed($conn, $login){
           $completed = 0;
         }
 
+        # current week
+        for ($day = $day_now - 1; $day >= 0; $day--) {
+          if ($calendar[$week_now][$day] == 1) {
+            $calendar[$week_now][$day] = 4;
+          }
+        }
 
-        for ($week = $week_now; $week >= 0; $week--) {
-          if ($week == $week_now) {
-            for ($day = $day_now - 1; $day >= 0; $day--) {
-              if ($calendar[$week][$day] == 1) {
-                $calendar[$week][$day] = 4;
-              }
-            }
-          } else {
-            for ($day = 6; $day >= 0; $day--) {
-              if ($calendar[$week][$day] == 1) {
-                $calendar[$week][$day] = 4;
-              }
+         # all other weeks
+        for ($week = $week_now - 1; $week >= 0; $week--) {
+          for ($day = 6; $day >= 0; $day--) {
+            if ($calendar[$week][$day] == 1) {
+              $calendar[$week][$day] = 4;
             }
           }
         }
 
+
+        # update db
         if ($calendar != $calendar2 || $completed != $completed2) {
           $update_sql = "UPDATE users SET calendar='" . json_encode($calendar) . "', completed_program=$completed WHERE login='" . $login . "'";
           if ($conn->query($update_sql)) {
-            $insert_sql = "INSERT INTO news (new_id, user, date) VALUES(1, '".$login."', $now)";
-            if ($conn->query($insert_sql)){
+            $insert_sql = "INSERT INTO news (new_id, user, date) VALUES(1, '".$login."', '".$now."')";
+            if ($conn->query($insert_sql) && $completed){
               return true;
-            }else{
-              return false;
             }
-          } else {
-            return false;
           }
-        } else {
-          return true;
         }
-      }else{
-        return true;
       }
-    }else{
-      return true;
     }
-  }else{
-    return false;
   }
 }
 
@@ -179,6 +165,17 @@ function check_if_sub($conn, $your_login, $user_login){
   $select_result->free();
 }
 
-# check existing user function (404)
+function sort_news_array($array){
+  for ($j = 0; $j < count($array) - 1; $j++){
+    for ($i = 0; $i < count($array) - $j - 1; $i++){
+      if ((int)$array[$i]['id'] < (int)$array[$i + 1]['id']){
+        $tmp_var = $array[$i + 1];
+        $array[$i + 1] = $array[$i];
+        $array[$i] = $tmp_var;
+      }
+    }
+  }
+  return $array;
+}
 
 ?>

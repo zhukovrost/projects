@@ -8,15 +8,14 @@ if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
 	conn_check($conn);
 }
 
-date_default_timezone_set('Europe/Moscow');
-
 $error_array = array(
   "reg_fill_all_input_fields" => false,
   "reg_login_is_used" => false,
   "reg_passwords_are_not_the_same" => false,
   "reg_conn_error" => false,
   "reg_success" => false,
-  "too_long_string" => false
+  "too_long_string" => false,
+  "news_error" => false
 );
 
 # ------------------ registration ------------------------
@@ -32,7 +31,7 @@ if (isset($_POST['reg_done'])){
 				$reg_surname = trim($_POST['reg_surname']);
 				$reg_email = trim($_POST['reg_email']);
         $reg_sex = $_POST['reg_sex'];
-        $reg_date_of_birth = $_POST['reg_date_of_birth'];
+        $reg_date_of_birth = strtotime($_POST['reg_date_of_birth']);
         if (strlen($reg_login) < 33 && strlen($reg_password) < 33 && strlen($reg_surname) < 33 && strlen($reg_email) < 33) {
           $reg_sql = "SELECT * FROM users WHERE login='" . $reg_login . "'";
           if ($reg_result = $conn->query($reg_sql)) {
@@ -40,18 +39,23 @@ if (isset($_POST['reg_done'])){
             if ($rowsCount == 0) {
               if (isset($_POST['reg_thirdname'])) {
                 $reg_thirdname = trim($_POST['reg_thirdname']);
-                $now = '['.time().']';
                 if (strlen($reg_thirdname) > 32){ $error_array["too_long_string"] = true; }
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program, personal_news) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email ."', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0, '".$now."')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', '" . $reg_thirdname . "', '" . $reg_email ."', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0)";
               } else {
-                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program, personal_news) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0, '".$now."')";
+                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname, email, date_of_birth, sex, weight, height, program) VALUES('" . $reg_login . "', '" . $reg_password . "', '" . $reg_name . "', '" . $reg_surname . "', null, '" . $reg_email . "', '".$reg_date_of_birth."', '".$reg_sex."', 0, 0, 0)";
               }
 
               if (!$error_array["too_long_string"]){
                 if ($conn->query($reg_sql2)) {
-                  setcookie("reg_login", $reg_login, time()+300);
-                  setcookie("reg_password", $reg_password, time()+300);
-                  header("Location: log.php?reg=1");
+                  setcookie("reg_login", $reg_login, 300);
+                  setcookie("reg_password", $reg_password, 300);
+                  $now = time();
+                  $reg_sql3 = "INSERT INTO news(new_id, user, date, personal) VALUES (4, '".$reg_login."', '".$now."', TRUE)";
+                  if ($conn->query($reg_sql3)) {
+                    header("Location: log.php?reg=1");
+                  }else{
+                    $error_array['news_error'] = true;
+                  }
                 } else {
                   $error_array['reg_conn_error'] = true;
                 }
@@ -117,7 +121,7 @@ if (isset($_POST['reg_done'])){
             </div>
             <div class="reg_item">
                   <p>Дата рождения</p>
-                  <input type="date" name="reg_date_of_birth">
+                  <input type="date" name="reg_date_of_birth" placeholder="dd-mm-yyyy">
               <p>Почта</p>
               <input class="" type="email" name="reg_email">
               <p>Пароль</p>
@@ -125,12 +129,13 @@ if (isset($_POST['reg_done'])){
               <p>Подтвердите пароль</p>
               <input class="" type="password" name="reg_password2">
               <?php
-                      reg_warning($error_array['reg_login_is_used'], "Данный логин занят");
-                      reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают, попробуйте ещё раз");
-                      reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
-                      reg_warning($error_array["too_long_string"], "Слишком много символов");
-                      if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
-                      echo '<div class="button_login button_reg"><input class="button" type="submit" name="reg_done" value="Зарегистрироваться"></div>';
+              reg_warning($error_array['reg_login_is_used'], "Данный логин занят");
+              reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают, попробуйте ещё раз");
+              reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
+              reg_warning($error_array["too_long_string"], "Слишком много символов");
+              reg_warning($error_array["news_error"], "Ошибка");
+              if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
+              echo '<div class="button_login button_reg"><input class="button" type="submit" name="reg_done" value="Зарегистрироваться"></div>';
               ?>
             </div>
           </div>
