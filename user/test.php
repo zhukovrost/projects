@@ -81,13 +81,13 @@ $end - время окончания тестирования формата tim
         $test = json_decode($item['test']);
         $name = $item['name'];
       }
+      $all_questions = count($test);
       if (isset($_POST['test_input'])){
         # ------------ RESULTS ----------------------
 
         $_SESSION['result'] = true;
 
         $answer = $_POST['test_input'];
-        $all_questions = count($test);
         $right_answers = 0;
         $ids_to_check = array();
         $answers_to_check = array();
@@ -150,7 +150,7 @@ $end - время окончания тестирования формата tim
         # -------------------- TEST PAGE ----------------------
         echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$test_id.": ".$name."</h2>";
 
-        for ($i = 0; $i < count($test); $i++){
+        for ($i = 0; $i < $all_questions; $i++){
           $question = $test[$i];
           $preview_type = $question[4];
           echo '<div class="test_output_item">';
