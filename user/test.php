@@ -148,7 +148,7 @@ $end - время окончания тестирования формата tim
 
       } else {
         # -------------------- TEST PAGE ----------------------
-        echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$_GET['test_id'].": ".$name."</h2>";
+        echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$test_id.": ".$name."</h2>";
 
         for ($i = 0; $i < count($test); $i++){
           $question = $test[$i];
