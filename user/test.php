@@ -80,121 +80,124 @@ $end - время окончания тестирования формата tim
       foreach ($select_test_result as $item) {
         $test = json_decode($item['test']);
         $name = $item['name'];
-      }
-      $all_questions = count($test);
-      if (isset($_POST['test_input'])){
-        # ------------ RESULTS ----------------------
 
-        $_SESSION['result'] = true;
+        $all_questions = count($test);
+        if (isset($_POST['test_input'])) {
+          # ------------ RESULTS ----------------------
 
-        $answer = $_POST['test_input'];
-        $right_answers = 0;
-        $ids_to_check = array();
-        $answers_to_check = array();
-        for ($i = 0; $i < $all_questions; $i++){
-          if (isset($answer[$i])){
-            if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox" || $test[$i][4] == "missing_words"){
-              if ($test[$i][2] == $answer[$i]){ $right_answers++; }
-            }else if ($test[$i][4] == "definite"){
-              foreach ($test[$i][3] as $item){
-                if (mb_strtoupper(str_replace(" ", "", $item)) == mb_strtoupper(str_replace(" ", "", $answer[$i]))){
-                    $right_answers += 1;
+          $_SESSION['result'] = true;
+
+          $answer = $_POST['test_input'];
+          $right_answers = 0;
+          $ids_to_check = array();
+          $answers_to_check = array();
+          for ($i = 0; $i < $all_questions; $i++) {
+            if (isset($answer[$i])) {
+              if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox" || $test[$i][4] == "missing_words") {
+                if ($test[$i][2] == $answer[$i]) {
+                  $right_answers++;
                 }
-              }
-            }else if ($test[$i][4] == "definite_mc"){
+              } else if ($test[$i][4] == "definite") {
+                foreach ($test[$i][3] as $item) {
+                  if (mb_strtoupper(str_replace(" ", "", $item)) == mb_strtoupper(str_replace(" ", "", $answer[$i]))) {
+                    $right_answers += 1;
+                  }
+                }
+              } else if ($test[$i][4] == "definite_mc") {
                 array_push($ids_to_check, $i);
                 array_push($answers_to_check, $answer[$i]);
+              }
             }
           }
-        }
-        $wrong_answers = $all_questions - count($ids_to_check) - $right_answers;
-        $amount = count($ids_to_check);
-        # ---------- GETTING THE LIST OF MARKS ------------------
-        $select_user_sql = "SELECT user_tests_marks FROM users WHERE login='".$login."'";
-        if ($select_user_result = $conn->query($select_user_sql)) {
-          foreach ($select_user_result as $item) {
-            $user_tests_marks = json_decode($item['user_tests_marks']);
+          $wrong_answers = $all_questions - count($ids_to_check) - $right_answers;
+          $amount = count($ids_to_check);
+          # ---------- GETTING THE LIST OF MARKS ------------------
+          $select_user_sql = "SELECT user_tests_marks FROM users WHERE login='" . $login . "'";
+          if ($select_user_result = $conn->query($select_user_sql)) {
+            foreach ($select_user_result as $item) {
+              $user_tests_marks = json_decode($item['user_tests_marks']);
+            }
           }
-        }
-        $select_user_result->free();
-        if ($amount == 0){
-          $mark = mark($right_answers/$all_questions);
+          $select_user_result->free();
+          if ($amount == 0) {
+            $mark = mark($right_answers / $all_questions);
 
-          $user_tests_marks[$position] = $mark;
-          $update_sql = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
-          if ($conn->query($update_sql)){
-            $error_array['success_verification'] = true;
-          }
-        }else{
-          # ---------------- FAST VERIFICATION ------------------------
-          $user_tests_marks[$position] = -1;
-          $insert_sql = "INSERT INTO verification_tests (login, test_id, right_answers, amount, answers, answers_ids, position) VALUES ('".$login."', '".$test_id."', '".$right_answers."', '".$all_questions."', '".json_encode($answers_to_check, JSON_UNESCAPED_UNICODE)."', '".json_encode($ids_to_check, JSON_UNESCAPED_UNICODE)."', '".$position."')";
-          if ($conn->query($insert_sql)){
-            $update_sql2 = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
-            if ($conn->query($update_sql2)){
+            $user_tests_marks[$position] = $mark;
+            $update_sql = "UPDATE users SET user_tests_marks='" . json_encode($user_tests_marks) . "' WHERE login='" . $login . "'";
+            if ($conn->query($update_sql)) {
               $error_array['success_verification'] = true;
             }
-          }
-        }
-
-        # ----------------- TEXT OUTPUT ----------------
-        echo $right_answers."/".$all_questions.", ".count($ids_to_check)." на проверке";
-        echo "<a href='my_tests.php'>Назад</a>";
-
-      } elseif ($_SESSION['result']) {
-        # --------- bug fix ----------
-        $_SESSION = array();
-        header("Location: my_tests.php");
-
-      } else {
-        # -------------------- TEST PAGE ----------------------
-        echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$test_id.": ".$name."</h2>";
-
-        for ($i = 0; $i < $all_questions; $i++){
-          $question = $test[$i];
-          $preview_type = $question[4];
-          echo '<div class="test_output_item">';
-
-          # ------------------ IMAGE ------------------------
-          if ($question[5] != null){
-            $image_id = $question[5];
-            $select_image_sql = "SELECT image FROM test_images where id='".$image_id."'";
-            if ($select_image_result = $conn->query($select_image_sql)){
-              foreach ($select_image_result as $item){
-                $image = $item['image'];
+          } else {
+            # ---------------- FAST VERIFICATION ------------------------
+            $user_tests_marks[$position] = -1;
+            $insert_sql = "INSERT INTO verification_tests (login, test_id, right_answers, amount, answers, answers_ids, position) VALUES ('" . $login . "', '" . $test_id . "', '" . $right_answers . "', '" . $all_questions . "', '" . json_encode($answers_to_check, JSON_UNESCAPED_UNICODE) . "', '" . json_encode($ids_to_check, JSON_UNESCAPED_UNICODE) . "', '" . $position . "')";
+            if ($conn->query($insert_sql)) {
+              $update_sql2 = "UPDATE users SET user_tests_marks='" . json_encode($user_tests_marks) . "' WHERE login='" . $login . "'";
+              if ($conn->query($update_sql2)) {
+                $error_array['success_verification'] = true;
               }
-              echo '<img src="data:image;base64,'.base64_encode($image).'"/>'; # image
-            }
-            $select_image_result->free();
-          }
-          # ----------------- TEST ---------------------
-          echo '<p>'.($i + 1).'. '.$question[0].'</p>';
-          if ($preview_type == "radio"){
-            for ($j = 0; $j < count($question[3]); $j++){
-              echo '<input name="test_input['.$i.']" class="test_output_input" value="'.$j.'" type="radio"><label>'.$question[3][$j].'</label>';
-            }
-          } else if ($preview_type == "checkbox"){
-            for ($j = 0; $j < count($question[3]); $j++){
-              echo '<input name="test_input['.$i.'][]" class="test_output_input2" value="'.$j.'" type="checkbox"><label>'.$question[3][$j].'</label>';
-            }
-          }else if ($preview_type == "definite"){
-            echo '<input name="test_input['.$i.']" class="test_output_input test_output_input_text" type="text">';
-          }else if ($preview_type == "definite_mc"){
-            echo '<textarea name="test_input['.$i.']" class="test_output_input test_output_input_textarea"></textarea>';
-          }else if ($preview_type == "missing_words"){
-            for ($j = 0; $j < $question[1]; $j++){
-              echo "<label>".($j + 1)." word - </label><input type='text' name='test_input[".$i."][]' class='test_output_input test_output_input_text'><br>";
             }
           }
-          echo '</div>';
+
+          # ----------------- TEXT OUTPUT ----------------
+          echo $right_answers . "/" . $all_questions . ", " . count($ids_to_check) . " на проверке";
+          echo "<a href='my_tests.php'>Назад</a>";
+
+        } elseif ($_SESSION['result']) {
+          # --------- bug fix ----------
+          $_SESSION = array();
+          header("Location: my_tests.php");
+
+        } else {
+          # -------------------- TEST PAGE ----------------------
+          echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №" . $test_id . ": " . $name . "</h2>";
+
+          for ($i = 0; $i < $all_questions; $i++) {
+            $question = $test[$i];
+            $preview_type = $question[4];
+            echo '<div class="test_output_item">';
+
+            # ------------------ IMAGE ------------------------
+            if ($question[5] != null) {
+              $image_id = $question[5];
+              $select_image_sql = "SELECT image FROM test_images where id='" . $image_id . "'";
+              if ($select_image_result = $conn->query($select_image_sql)) {
+                foreach ($select_image_result as $item) {
+                  $image = $item['image'];
+                }
+                echo '<img src="data:image;base64,' . base64_encode($image) . '"/>'; # image
+              }
+              $select_image_result->free();
+            }
+            # ----------------- TEST ---------------------
+            echo '<p>' . ($i + 1) . '. ' . $question[0] . '</p>';
+            if ($preview_type == "radio") {
+              for ($j = 0; $j < count($question[3]); $j++) {
+                echo '<input name="test_input[' . $i . ']" class="test_output_input" value="' . $j . '" type="radio"><label>' . $question[3][$j] . '</label>';
+              }
+            } else if ($preview_type == "checkbox") {
+              for ($j = 0; $j < count($question[3]); $j++) {
+                echo '<input name="test_input[' . $i . '][]" class="test_output_input2" value="' . $j . '" type="checkbox"><label>' . $question[3][$j] . '</label>';
+              }
+            } else if ($preview_type == "definite") {
+              echo '<input name="test_input[' . $i . ']" class="test_output_input test_output_input_text" type="text">';
+            } else if ($preview_type == "definite_mc") {
+              echo '<textarea name="test_input[' . $i . ']" class="test_output_input test_output_input_textarea"></textarea>';
+            } else if ($preview_type == "missing_words") {
+              for ($j = 0; $j < $question[1]; $j++) {
+                echo "<label>" . ($j + 1) . " word - </label><input type='text' name='test_input[" . $i . "][]' class='test_output_input test_output_input_text'><br>";
+              }
+            }
+            echo '</div>';
+          }
+          echo '
+          <div class="test_finish_button">
+            <input type="submit" class="button" value="Завершить тестирование">
+          </div>
+          ';
         }
-        echo '
-        <div class="test_finish_button">
-          <input type="submit" class="button" value="Завершить тестирование">
-        </div>
-        ';
+        echo "</form>";
       }
-      echo "</form>";
     }
     $select_test_result->free();
     $conn->close();
