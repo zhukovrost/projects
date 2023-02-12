@@ -75,11 +75,10 @@ $end - время окончания тестирования формата tim
   <div class="container">
 
     <?php
-    $select_test_sql = "SELECT name, test FROM tests WHERE id='".$test_id."'";
+    $select_test_sql = "SELECT name, test FROM tests WHERE id=$test_id";
     if ($select_test_result = $conn->query($select_test_sql)){
       foreach ($select_test_result as $item) {
         $test = json_decode($item['test']);
-        var_dump($test);
         $name = $item['name'];
       }
       if (isset($_POST['test_input'])){
