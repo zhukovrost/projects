@@ -69,6 +69,7 @@ $end - время окончания тестирования формата tim
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Montserrat+Alternates:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,800&display=swap" rel="stylesheet">
+  <script src='https://cdn.plot.ly/plotly-2.18.0.min.js'></script>
 </head>
 <body>
 <main class="question_main">
@@ -138,7 +139,8 @@ $end - время окончания тестирования формата tim
         }
 
         # ----------------- TEXT OUTPUT ----------------
-        echo $right_answers."/".$all_questions.", ".count($ids_to_check)." на проверке";
+
+        echo "<div id='result_pie'></div>"; # pie diagram
         echo "<a href='my_tests.php'>Назад</a>";
 
       } elseif ($_SESSION['result']) {
@@ -203,5 +205,27 @@ $end - время окончания тестирования формата tim
   </div>
 </main>
 <?php include "../templates/footer.html"; ?>
+<script>
+    var data = [{
+        values: [<?php
+          if ($right_answers != 0){ echo $right_answers; }
+          if ($wrong_answers != 0){ if ($right_answers != 0){ echo ", "; } echo $wrong_answers; }
+          if (count($ids_to_check) != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo count($ids_to_check); }
+          ?>],
+        labels: [<?php
+          if ($right_answers != 0){ echo "'Правильные ответы'"; }
+          if ($wrong_answers != 0){ if ($right_answers != 0){ echo ", "; } echo "'Неправильные ответы'"; }
+          if (count($ids_to_check) != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo "'На проверке'"; }
+          ?>],
+        type: 'pie'
+    }];
+
+    var layout = {
+        height: 400,
+        width: 500
+    };
+
+    Plotly.newPlot('result_pie', data, layout);
+</script>
 </body>
 </html>
