@@ -120,6 +120,16 @@ if (isset($_POST['num_of_rand_questions'])){
   }
 }
 
+# -------------------- add questions from db ----------------
+
+if (isset($_POST['add_question_from_db'])){
+  if ($_POST['add_question_from_db'] != "" || $_POST['add_question_from_db'] != null){
+    array_push($result_array, json_decode($_POST['add_question_from_db']));
+    array_push($_SESSION['to_send'], false);
+    array_push($themes_array, $_POST['add_question_from_db_theme']);
+  }
+}
+
 #-------------- add to db ----------------
 
 if (isset($_POST['add_theme'])){
@@ -389,6 +399,7 @@ $count_result->free();
         <textarea id="name_of_test" name="test_name"></textarea>
         <input type="submit" name="add_test_to_db" value="Добавить тест в бд">
         <input type="submit" name="add_questions_to_db" value="Добавить вопросы в бд">
+        <a href="questions.php">Добавить из бд</a>
       </form>
     </div>
   </div>
