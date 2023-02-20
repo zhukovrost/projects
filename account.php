@@ -17,6 +17,11 @@ $error_array = array(
 
 session_start();
 
+$back_way = "index.php";
+if (isset($_GET['back'])){
+  $back_way = $_GET['back'];
+}
+
 if (isset($_GET['user']) && $_GET['user'] != $_COOKIE['login']){
   $login = $_GET['user'];
   $all_info = false;
@@ -137,7 +142,7 @@ if ($data_array = $conn -> query($select_sql)){
   <link rel="stylesheet" href="css/format.css">
 </head>
 <header class="default_header">
-  <a href="index.php">Назад</a>
+  <a href="<?php echo $back_way; ?>">Назад</a>
 </header>
 <body style="height: 100vh">
   <main class="profile_card">
@@ -279,13 +284,6 @@ if ($data_array = $conn -> query($select_sql)){
 
         check_if_passed($conn, $login);
 
-        if ($_SESSION['refresh'] == null){
-          $_SESSION['refresh'] = " ";
-          header("Refresh: 0");
-        }else{
-          $_SESSION['refresh'] = null;
-        }
-        
         echo "
         <table><tr><th>Неделя</th>";
         foreach ($week as $weekday){
