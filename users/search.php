@@ -18,7 +18,6 @@ conn_check($conn);
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <header>
@@ -58,7 +57,7 @@ conn_check($conn);
     <button type="submit">Искать</button>
     <?php
     if (isset($_GET['user'])){
-      # -------------- searching algorithm ---------------------
+      # -------------- searching algorithm (creating a query depending on an input) ---------------------
       $search_user = $_GET['user'];
       if ($search_user[0] == '@'){
         $search_sql = "SELECT login, name, surname, thirdname, avatar_id FROM users WHERE login LIKE '%".substr($search_user, 1)."%' ORDER BY id DESC";
