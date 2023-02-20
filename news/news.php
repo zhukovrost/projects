@@ -55,58 +55,59 @@ $news_content = json_decode(file_get_contents("news.json"));
   </nav>
 </header>
 <main>
-  <?php
-  if (check_the_login("../", false)){
-    $news_array = array();
-    $login = $_COOKIE['login'];
+  <div class="container">
+    <?php
+    if (check_the_login("../", false)){
+      $news_array = array();
+      $login = $_COOKIE['login'];
 
-    $select_sql = "SELECT * FROM news WHERE user='".$login."' AND personal=1";
-    if ($select_result = $conn->query($select_sql)){
-      foreach ($select_result as $news){
-        array_push($news_array, $news);
-      }
-    }
-    $select_result->free();
-
-    $select_subscriptions_sql = "SELECT subscriptions FROM users where login='".$login."'";
-    if ($select_subscriptions_result = $conn->query($select_subscriptions_sql)){
-      foreach ($select_subscriptions_result as $item){
-        $subscriptions = json_decode($item['subscriptions']);
-      }
-
-      foreach ($subscriptions as $sub){
-        $select_news_sql = "SELECT * FROM news WHERE user='".$sub."' AND personal!=0";
-        if ($select_news_result = $conn->query($select_news_sql)){
-          foreach ($select_news_result as $news){
-            array_push($news_array, $news);
-          }
+      $select_sql = "SELECT * FROM news WHERE user='".$login."' AND personal=1";
+      if ($select_result = $conn->query($select_sql)){
+        foreach ($select_result as $news){
+          array_push($news_array, $news);
         }
-        $select_news_result->free();
       }
-    }
-    $select_subscriptions_result->free();
+      $select_result->free();
 
-    $news_array = sort_news_array($news_array);
-    foreach ($news_array as $news){
-      $date = date("m.d.Y H:i", $news['date']);
-      echo "
-      <div class='new_block'> 
-        <label class='new_label'>".$news_content[$news["new_id"]]."
-      ";
-      if ($news['additional_info'] != null){
-        echo ": ".$news['additional_info'];
+      $select_subscriptions_sql = "SELECT subscriptions FROM users where login='".$login."'";
+      if ($select_subscriptions_result = $conn->query($select_subscriptions_sql)){
+        foreach ($select_subscriptions_result as $item){
+          $subscriptions = json_decode($item['subscriptions']);
+        }
+
+        foreach ($subscriptions as $sub){
+          $select_news_sql = "SELECT * FROM news WHERE user='".$sub."' AND personal!=0";
+          if ($select_news_result = $conn->query($select_news_sql)){
+            foreach ($select_news_result as $news){
+              array_push($news_array, $news);
+            }
+          }
+          $select_news_result->free();
+        }
       }
-      echo "
-        </label>
-        <label class='new_data_label'>".$date."</label>
+      $select_subscriptions_result->free();
+
+      $news_array = sort_news_array($news_array);
+      foreach ($news_array as $news){
+        $date = date("m.d.Y H:i", $news['date']);
+        echo "
+      <div class='news_block'> 
+        <p class='new_label'>".$news_content[$news["new_id"]]."
+      ";
+        if ($news['additional_info'] != null){
+          echo ": ".$news['additional_info'];
+        }
+        echo "
+        </p>
+        <p class='news_date'>".$date."</p>
       </div>
       ";
+      }
+    }else{
+      include "../templates/news.html";
     }
-  }else{
-    include "../templates/news.html";
-  }
-  ?>
-
+    ?>
+  </div>
 </main>
 </body>
 </html>

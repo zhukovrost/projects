@@ -990,5 +990,24 @@ footer a:hover{
 
 .about_company h4{
 	font-size: 25px;
-    margin: 20px 0px;
+    margin: 20px 0;
+}
+
+/* ============= news.php ============== */
+
+.news_block {
+	position: relative;
+	padding: 10px;
+	padding-right: 15%;
+	background-color: #f2f2f2;
+	margin: 10px 0;
+	border: black solid 2px;
+	border-radius: 1px;
+}
+
+.news_block .news_date {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 5px 10px;
 }
