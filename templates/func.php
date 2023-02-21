@@ -178,4 +178,32 @@ function sort_news_array($array){
   return $array;
 }
 
+function get_program_day($conn, $login){
+  $select_calendar_sql = "SELECT calendar, start_program FROM users WHERE login='".$login."'";
+  if ($select_result = $conn->query($select_calendar_sql)) {
+    $now = time();
+    foreach ($select_result as $item) {
+      $calendar = json_decode($item['calendar']);
+      $start_program = $item['start_program'];
+    }
+
+    for ($i = 0; $i < 7; $i++) {
+      if ($calendar[0][$i] != 2) {
+        $start_weekday_num = $i;
+      }
+    }
+
+    $day_now = $start_weekday_num;
+    for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
+      $day_now++;
+    }
+    $week_now = $day_now % 7;
+    $day_now = (int)($day_now / 7);
+    return array(
+      'week_now' => $week_now,
+      'day_now' => $day_now
+    );
+  }
+}
+
 ?>

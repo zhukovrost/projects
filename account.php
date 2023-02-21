@@ -150,77 +150,85 @@ if ($data_array = $conn -> query($select_sql)){
     <form class="together" method="post">
       <img class="avatar" src="img/icons/user.png" style="margin-right: 30px;">
       <label style="font-size: 50px; margin-top: auto; margin-bottom: auto;">Профиль спортсмена <span style="color: #FF0000"><?php echo $login; ?></span></label>
-      <?php
-      if (!$all_info){
-        if (check_if_sub($conn, $_COOKIE['login'], $login)){
-          echo "<label>Вы подписаны</label>";
-        }else {
-          echo '
-        <input type="submit" value="Подписаться" name="sub">
-        ';
-        }
-      }
-      ?>
     </form>
-    <div style="width: 100%; border: black dashed 1px">
-      <form method="post" id="user">
-        <label>Даннные аккаунта спортсмена</label>
+      <form method="post" id="user" style="display: flex;">
         <?php
           if ($all_info){
             echo '
-            <div class="together">
-              <label style="margin-right: 10px;">Имя</label>
-              <input class="card_input" name="name" value="'.$name.'">
+            <div class="personal_data">
+              <h2>Даннные аккаунта спортсмена</h2>
+              <div class="together">
+                <label style="margin-right: 10px;">Имя</label>
+                <input class="card_input" name="name" value="'.$name.'">
+              </div>
+              <div class="together">
+                <label style="margin-right: 10px;">Фамилия</label>
+                <input class="card_input" name="surname" value="'.$surname.'">
+              </div>
+              <div class="together">
+                <label style="margin-right: 10px;">Отчество</label>
+                <input class="card_input" name="thirdname" value="'.$thirdname.'">
+              </div>
+              <label>Дата рождения: <span>'.date("d-m-Y" ,$date_of_birth).'</span></label>
+              <br>
+              <label>Электронная почта: <span>'.$email.'</span></label>
+              <br>
+              <label>Пароль: <span>'.$password.'</span></label>
+              <br>
+              <label>Загрузить новую аватарку: </label>
+              <input type="file" name="load_avatar">
+              <br>
             </div>
-            <div class="together">
-              <label style="margin-right: 10px;">Фамилия</label>
-              <input class="card_input" name="surname" value="'.$surname.'">
+            <div class="physical_data">
+              <h2>Физические данные спортсмена</h2>
+              <div class="together">
+                <label style="margin-right: 10px;">Вес (кг): </label>
+                <input type="text" class="card_input" name="weight" value="'.$weight.'">
+              </div>
+              <div class="together">
+                <label style="margin-right: 10px;">Рост (см): </label>
+                <input type="text" class="card_input" name="height" value="'.$height.'">
+              </div>
+              <label>Пол: <span>'.$sex .'</span></label>
+              <br>
+              <a href="clear.php" class="exit_button">Выйти из аккаунта</a> <!-- logout png -->
             </div>
-            <div class="together">
-              <label style="margin-right: 10px;">Отчество</label>
-              <input class="card_input" name="thirdname" value="'.$thirdname.'">
-            </div>
-            <label>Дата рождения: '.$date_of_birth.'</label>
-            <br>
-            <label>Электронная почта: '.$email.'</label>
-            <br>
-            <label>Пароль: '.$password.'</label>
-            <br>
-            <label>Физические данные спортсмена</label>
-            <div class="together">
-              <label style="margin-right: 10px;">Вес (кг): </label>
-              <input type="text" class="card_input" name="weight" value="'.$weight.'">
-            </div>
-            <div class="together">
-              <label style="margin-right: 10px;">Рост (см): </label>
-              <input type="text" class="card_input" name="height" value="'.$height.'">
-            </div>
-            <label>Пол: '.$sex .'</label>
-            <br>
             ';
           }else{
             echo '
-            <div class="together">
-              <label style="margin-right: 10px;">Имя: '.$name.'</label>
+            <div class="personal_data">
+              <h2>Даннные аккаунта спортсмена</h2>
+              <div class="together">
+                <label style="margin-right: 10px;">Имя: <span>'.$name.'</span></label>
+              </div>
+              <div class="together">
+                <label style="margin-right: 10px;">Фамилия: <span>'.$surname.'</span></label>
+              </div>
+              <div class="together">
+                <label style="margin-right: 10px;">Отчество: <span>'.$thirdname.'</span></label>
+              </div>
+              <label>Дата рождения: <span>'.date("d-m-Y" ,$date_of_birth).'</span></label>
+              <br>
             </div>
-            <div class="together">
-              <label style="margin-right: 10px;">Фамилия: '.$surname.'</label>
-            </div>
-            <div class="together">
-              <label style="margin-right: 10px;">Отчество: '.$thirdname.'</label>
-            </div>
-            <label>Дата рождения: '.$date_of_birth.'</label>
-            <br>
-            <label>Физические данные спортсмена</label>
-            <div class="together">
-              <label style="margin-right: 10px;">Вес (кг): '.$weight.'</label>
-            </div>
-            <div class="together">
-              <label style="margin-right: 10px;">Рост (см): '.$height.'</label>
-            </div>
-            <label>Пол: '.$sex .'</label>
-            <br>
-            ';
+            <div class="physical_data">
+              <h2>Физические данные спортсмена</h2>
+              <div class="together">
+                <label style="margin-right: 10px;">Вес (кг): <span>'.$weight.'</span></label>
+              </div>
+              <div class="together">
+                <label style="margin-right: 10px;">Рост (см): <span>'.$height.'</span></label>
+              </div>
+              <label>Пол: <span>'.$sex .'</span></label>
+              <br>
+              ';
+            if (check_if_sub($conn, $_COOKIE['login'], $login)){
+              echo "<label>Вы подписаны</label>";
+            }else {
+              echo '
+              <input type="submit" value="Подписаться" name="sub">
+              ';
+            }
+            echo '</div>';
           }
         ?>
       </form>
@@ -234,15 +242,18 @@ if ($data_array = $conn -> query($select_sql)){
       if ($error_array["too_long_string"]){ echo "<p style='color: #FF0000'>Ошибка: слишком длинное имя/фамилия/отчество</p>"; }
 
       ?>
-    </div>
 
-    <div style="width: 100%; border: black dashed 1px">
-      <label>Программa спортсмена:</label>
+    <section class="user_program_block">
       <?php
       if ($program_id == 0){
-        echo "<label>Програм пока нет</label><a href='exercises/exercises.php'>Создать программу</a>";
-
+        echo '
+      <h2>Програм пока нет</h2>
+      <div class="button"> 
+        <a href="exercises/exercises.php" class="button">Создать программу</a> <!-- сделай здесть эту кнопку -->
+      </div>
+      ';
       }else{
+        echo "<h2>Программа спортсмена:</h2>";
         $select_program_sql = "SELECT program FROM userprograms WHERE id=".$program_id;
         if ($select_program_result = $conn->query($select_program_sql)){
           foreach ($select_program_result as $data){
@@ -250,32 +261,34 @@ if ($data_array = $conn -> query($select_sql)){
           }
           $select_program_result->free();
           $exercises_array = json_decode(file_get_contents("./exercises/exercises.json"), true);
-          echo "<table><th></th>";
+          echo "<table class='program_table'><tr>";
           foreach ($week as $weekday){
-            echo "<th>".$weekday."</th>"; # columns headers
+            echo "<th class='weekday_cell'>".$weekday."</th>"; # columns headers
           }
-          echo "</tr><tr><th>Тренировки</th>";
+          echo "</tr>";
 
           for ($i = 0; $i < 7; $i++){
             $workout = $program[$i];
-            echo "<td>";
+            if (get_week_day() == $i){
+              echo "<td class='highlighted_cell'>";
+            }else{
+              echo "<td>";
+            }
             if (empty($workout)){
               echo "<label>Выходной</label>"; # print Выходной if program is empty
             }else{
-              echo "<ul>";
               foreach ($workout as $exercise_id){
                 $exercise_id_explode = explode("/", $exercise_id); # split id by '/'
                 $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
                 echo "<li>";
-                echo $exercise[1]." - ".$exercise_id_explode[3]." "; # exercise name - repeats
+                echo $exercise[1]." - ".$exercise_id_explode[3]; # exercise name - repeats
                 if ($exercise[0]){
-                  echo "секунд(а)";
+                  echo "с.";
                 }else{
-                  echo "повторений(ие)";
+                  echo "п.";
                 }
                 echo "</li>";
               }
-              echo "</ul>";
             }
             echo "</td>";
           }
@@ -284,17 +297,27 @@ if ($data_array = $conn -> query($select_sql)){
 
         check_if_passed($conn, $login);
 
+        echo "<h2>Календарь тренировок</h2>";
+
         echo "
-        <table><tr><th>Неделя</th>";
+        <table class='calendar'><tr><th class='weekday_cell'>Неделя</th>";
         foreach ($week as $weekday){
-          echo "<th>".$weekday."</th>";
+          echo "<th class='weekday_cell'>".$weekday."</th>";
         }
         echo "</tr>";
+
+        $arr = get_program_day($conn, $login);
+        $day_now = $arr['day_now'];
+        $week_now = $arr['week_now'];
 
         for ($i = 0; $i < count($calendar); $i++){
           echo "<tr><th>".($i + 1)."</th>";
           for ($j = 0; $j < 7; $j++){
-            echo "<td>";
+            if ($j == $day_now && $i == $week_now){
+              echo "<td class='highlighted_cell'>";
+            }else{
+              echo "<td>";
+            }
             switch ($calendar[$i][$j]){
               case 0:
                 echo "<img class='calendar_image' src='img/icons/holiday.png'>";
@@ -319,14 +342,7 @@ if ($data_array = $conn -> query($select_sql)){
         echo "</table>";
       }
       ?>
-    </div>
-    <?php
-    if ($all_info){
-      echo '
-      <a href="clear.php" class="exit_button"><img style="height: 30px; margin-right: 5px;" src="img/icons/logout.png"> <label>Выйти из аккаунта</label></a>
-      ';
-    }
-    ?>
+    </section>
   </main>
 
   <script src="main.js"></script>

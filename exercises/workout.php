@@ -28,27 +28,9 @@ if (isset($_POST['start'])){
   }
 }
 
-$select_calendar_sql = "SELECT calendar, start_program FROM users WHERE login='".$login."'";
-if ($select_result = $conn->query($select_calendar_sql)) {
-  $now = time();
-  foreach ($select_result as $item) {
-    $calendar = json_decode($item['calendar']);
-    $start_program = $item['start_program'];
-  }
-
-  for ($i = 0; $i < 7; $i++) {
-    if ($calendar[0][$i] != 2) {
-      $start_weekday_num = $i;
-    }
-  }
-
-  $day_now = $start_weekday_num;
-  for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
-    $day_now++;
-  }
-  $week_now = $day_now % 7;
-  $day_now = (int)($day_now / 7);
-}
+$arr = get_program_day($conn, $login);
+$day_now = $arr['day_now'];
+$week_now = $arr['week_now'];
 
 $select_id_sql = "SELECT program FROM users WHERE login='".$login."'";
 if ($select_id_result = $conn->query($select_id_sql)){
@@ -110,10 +92,9 @@ if (isset($_POST['finish'])){
 <body>
     <nav>
       <a href="../index.php">Главная</a>
-      <a href="workout.php">Мои тренировки</a>
-      <a href="">Lorem</a>
-      <a href="">Lorem</a>
-      <a href="">Lorem</a>
+      <a href="../exercises/workout.php">Мои тренировки</a>
+      <a href="../users/search.php">Пользователи</a>
+      <a href="../news/news.php">Новости</a>
     </nav>
   <main>
     <?php

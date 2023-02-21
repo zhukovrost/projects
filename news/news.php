@@ -50,8 +50,8 @@ $news_content = json_decode(file_get_contents("news.json"));
   <nav>
     <a href="../index.php">Главная</a>
     <a href="../exercises/workout.php">Мои тренировки</a>
-    <a href="">Пользователи</a>
-    <a href="news.php">Новости</a>
+    <a href="../users/search.php">Пользователи</a>
+    <a href="../news/news.php">Новости</a>
   </nav>
 </header>
 <main>

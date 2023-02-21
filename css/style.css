@@ -298,8 +298,9 @@ p, a {
 	background-color: white;
 	margin: auto;
 	padding: 20px;
-	border-radius: 40px;
+	border-radius: 10px;
 	border: black solid 2px;
+	margin-bottom: 30px;
 }
 
 .avatar {
@@ -320,40 +321,65 @@ p, a {
 	margin-bottom: auto;
 }
 
-.exit_button, #save_button{
-	height: 50px;
-	width: auto;
-	display: flex;
-	justify-content: space-between;
-	padding: 10px;
-	border-radius: 10px;
-	background-color: #F0F0F0;
-	border: black solid 1px;
-	transition: 0.5s;
-}
-
-.exit_button:hover, #save_button {
-	background-color: #DFDFDF;
-}
-
-.exit_button *, #save_button * {
-	margin-bottom: auto;
-	margin-top: auto;
-	font-size: 17px;
-}
-
-#save_button {
-	border-color: green;
-	padding: 5px;
-	border-radius: 5px;
-	height: 40px;
-}
-
 .calendar_image{
 	height: 100px;
 	width: 100px;
 }
 
+.personal_data, .physical_data{
+	padding: 10px;
+	width: 50%;
+}
+
+.personal_data h2, .physical_data h2{
+	font-size: 32px;
+}
+
+.user_program_block h2 {
+	font-size: 40px;
+}
+
+.personal_data input, .physical_data input, .personal_data span, .physical_data span{
+	color: red;
+}
+
+.user_program_block{
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
+
+.user_program_block * {
+	margin: auto;
+}
+
+.program_table, .calendar{
+	border-collapse: collapse;
+	margin: 30px 0;
+}
+.program_table td, .program_table th, .calendar td, .calendar th{
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+.program_table th{
+	width: 14%;
+}
+
+.calendar th{
+	width: 12%;
+}
+
+.highlighted_cell{
+	background-color: #EEEEEE;
+}
+
+.weekday_cell{
+	color: white;
+	background-color: #2f2f2f;
+}
 /* ============= exercise.php ================= */
 
 .main_exercise_block {
