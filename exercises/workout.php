@@ -43,7 +43,8 @@ if ($select_id_result = $conn->query($select_id_sql)){
       foreach ($select_program_result as $item){
         $program = json_decode($item['program']);
       }
-      $today_program = $program[get_week_day()];
+      $today_day = get_program_day($conn, $login)['day_now'];
+      $today_program = $program[$today_day];
       $amount_of_exercises = count($today_program);
       if (count($today_program) == 0){
         $error_array['holiday'] = true;
@@ -86,103 +87,129 @@ if (isset($_POST['finish'])){
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
 
 </head>
-<header class="default_header">
-  <a href="../index.php">Назад</a>
+<header>
+  <div class="header_info">
+    <h1 class="company_name">sport_is_life &#174;</h1>
+    <div class="title">
+      <h1>
+        Спорт
+      </h1>
+      <h2>
+        это жизнь
+      </h2>
+    </div>
+    <div class="reglog_buttons">
+      <?php
+      if (check_the_login("../", false)){
+        echo '<a href="../account.php">'.$_COOKIE["login"].'</a>';
+      }else{
+        echo '
+        <a href="../log.php">Вход</a>
+        <a href="../reg.php">Регистрация</a>
+        ';
+      }
+      ?>
+    </div>
+  </div>
+  <nav>
+    <a href="../index.php">Главная</a>
+    <a href="../exercises/workout.php">Мои тренировки</a>
+    <a href="../users/search.php">Пользователи</a>
+    <a href="../news/news.php">Новости</a>
+  </nav>
 </header>
 <body>
-    <nav>
-      <a href="../index.php">Главная</a>
-      <a href="../exercises/workout.php">Мои тренировки</a>
-      <a href="../users/search.php">Пользователи</a>
-      <a href="../news/news.php">Новости</a>
-    </nav>
   <main>
-    <?php
-    if ($error_array['no_program']){
-      include "../templates/no_program.html";
-    }else{
-      if ($error_array['holiday']){
-        include "../templates/holiday.html";
-      }else{
-
-        # ------------------------------------- CURRENT EXERCISE ----------------------------------
-
-        if ((bool)$_SESSION['start']){
-          if (isset($_SESSION['current_exercise'])){
-            if (isset($_POST['next'])){
-              $_SESSION['current_exercise']++;
-            }
-            if (isset($_POST['pass'])){
-              $_SESSION['current_exercise']++;
-              $_SESSION['passed']++;
-            }
+    <div class="container">
+        <?php
+        if ($error_array['no_program']){
+          include "../templates/no_program.html";
+        }else{
+          if ($error_array['holiday']){
+            include "../templates/holiday.html";
           }else{
-            $_SESSION['current_exercise'] = 0;
-            $_SESSION['passed'] = 0;
-          }
 
-          echo "<form method='post'>";
-          if ($_SESSION['current_exercise'] < $amount_of_exercises){
-            $exercise_id_explode = explode("/", $today_program[$_SESSION['current_exercise']]); # split array by '/'
-            $repeats = $exercise_id_explode[3];
-            $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
+            # ------------------------------------- CURRENT EXERCISE ----------------------------------
 
-            echo "
-            <div>
-              <img src='".$exercise[3]."'>
-              <h4>".$exercise[1]."</h4>";
-            # repeats
-            if ($exercise[0]){
-              echo "<label>Длительность (в секундах): ".$repeats."</label>";
-            }else{
-              echo "<label>Повторения: ".$repeats."</label>";
-            }
+            if ((bool)$_SESSION['start']){
+              if (isset($_SESSION['current_exercise'])){
+                if (isset($_POST['next'])){
+                  $_SESSION['current_exercise']++;
+                }
+                if (isset($_POST['pass'])){
+                  $_SESSION['current_exercise']++;
+                  $_SESSION['passed']++;
+                }
+              }else{
+                $_SESSION['current_exercise'] = 0;
+                $_SESSION['passed'] = 0;
+              }
 
-            echo "
-          <button type='submit' name='pass'>Пропустить упражнение</button>
-          <button type='submit' name='next'>Я выполнил упражнение</button>
-          ";
-          }else{
-            echo "
-            <h1>Поздравляем, вы завершили тренировку!</h1>
-            <label>Выполнено упражнений ".($amount_of_exercises-$_SESSION['passed'])."/".$amount_of_exercises."</label>
-            <button type='submit' name='finish'>Завершить сеанс</button>
+              echo "<form method='post'>";
+              if ($_SESSION['current_exercise'] < $amount_of_exercises){
+                $exercise_id_explode = explode("/", $today_program[$_SESSION['current_exercise']]); # split array by '/'
+                $repeats = $exercise_id_explode[3];
+                $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
+
+                echo "
+              <div>
+                <img src='".$exercise[3]."'>
+                <h4>".$exercise[1]."</h4>";
+                # repeats
+                if ($exercise[0]){
+                  echo "<label>Длительность (в секундах): ".$repeats."</label>";
+                }else{
+                  echo "<label>Повторения: ".$repeats."</label>";
+                }
+
+                echo "
+            <button type='submit' name='pass'>Пропустить упражнение</button>
+            <button type='submit' name='next'>Я выполнил упражнение</button>
             ";
-          }
+              }else{
+                echo "
+              <h1>Поздравляем, вы завершили тренировку!</h1>
+              <label>Выполнено упражнений ".($amount_of_exercises-$_SESSION['passed'])."/".$amount_of_exercises."</label>
+              <button type='submit' name='finish'>Завершить сеанс</button>
+              ";
+              }
 
-          echo "</form>";
-        } else {
+              echo "</form>";
+            } else {
 
-          # ------------------------ TODAY'S WORKOUT  --------------------------
+              # ------------------------ TODAY'S WORKOUT  --------------------------
+              echo "<section class='today_workout'>";
+              echo "<h1>А вот и сегодняшняя тренировка!</h1>";
+              for ($i = 0; $i < count($today_program); $i++){
+                $exercise_id_explode = explode("/", $today_program[$i]); # split array by '/'
+                $repeats = $exercise_id_explode[3];
+                $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
 
-          echo "<h1>А вот и сегодняшняя тренировка!</h1>";
-          for ($i = 0; $i < count($today_program); $i++){
-            $exercise_id_explode = explode("/", $today_program[$i]); # split array by '/'
-            $repeats = $exercise_id_explode[3];
-            $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
-
-            echo "
-            <div>
-              <img src='".$exercise[3]."'>
-              <h4>".$exercise[1]."</h4>";
-            # repeats
-            if ($exercise[0]){
-              echo "<label>Длительность (в секундах): ".$repeats."</label>";
-            }else{
-              echo "<label>Повторения: ".$repeats."</label>";
+                echo "
+              <div class='today_workout_exercise'>
+                <img src='".$exercise[3]."' style='margin-right: 5px'>
+                <div class='together'>
+                  <p>".$exercise[1]."</p>";
+                # repeats
+                if ($exercise[0]){
+                  echo "<p>Длительность (в секундах): ".$repeats."</p>";
+                }else{
+                  echo "<p>Повторения: ".$repeats."</p>";
+                }
+                echo "</div></div>";
+              }
+              echo "
+              <form method='post'>
+                <input type='hidden' name='start' value='1'>
+                <button type='submit'>Начать тренировку</button>
+              </form>
+              ";
+              echo "</section>";
             }
-            echo "</div>";
           }
-          echo "
-          <form method='post'>
-            <input type='hidden' name='start' value='1'>
-            <button type='submit'>Начать тренировку</button>
-          </form>
-          ";
         }
-      }
-    }
-    ?>
+        ?>
+    </div>
   </main>
 </body>
 <?php include "../templates/footer.html"; ?>

@@ -1066,3 +1066,45 @@ footer a:hover{
 	margin-top: 10px;
 	background-color: #F2F2F2;
 }
+
+/* ====================== workout.php ==================== */
+
+.no_program_article, .today_workout, .holiday_article{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	margin: 10px;
+}
+
+.no_program_article a{
+	color: red;
+	transition: 0.5s;
+}
+.no_program_article a:hover{
+	color: #930010;
+}
+
+.no_program_article h1, .holiday_article h1{
+	font-size: 50px;
+}
+.no_program_article h2, .today_workout h1, .holiday_article h2{
+	font-size: 30px;
+}
+.no_program_article h3{
+	font-size: 25px;
+}
+
+.today_workout_exercise{
+	display: flex;
+	width: 30%;
+	margin: 5px 35%;
+	border: black 1px solid;
+}
+.today_workout_exercise div p{
+	font-size: 20px;
+}
+.today_workout_exercise div{
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
