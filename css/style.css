@@ -1037,3 +1037,32 @@ footer a:hover{
 	right: 0;
 	padding: 5px 10px;
 }
+
+/* ============= search.php ============== */
+
+.searched_user_block{
+	width: 100%;
+	border: 1px black solid;
+	background-color: #F2F2F2;
+	padding: 10px;
+	display: flex;
+	margin: 5px 0;
+	justify-content: space-between;
+}
+
+.searched_user_block * {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.searched_user_block h4 {
+	font-size: 24px;
+}
+
+.searchbar{
+	border: 1px black solid;
+	padding: 5px;
+	width: 100%;
+	margin-top: 10px;
+	background-color: #F2F2F2;
+}

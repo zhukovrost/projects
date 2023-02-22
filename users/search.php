@@ -53,8 +53,8 @@ conn_check($conn);
 </header>
 <main>
   <form class="container">
-    <input name="user" style="width: 100%" type="text" placeholder="Введите имя и фамилию пользователя либо логин начиная с @">
-    <button type="submit">Искать</button>
+    <input name="user" class="searchbar" type="text" placeholder="Введите имя и фамилию пользователя либо логин начиная с @">
+    <button type="submit">Искать</button> <!-- КНОПКА ИСКАТЬ (НАДО ЗАСТИЛИЗОВАТЬ!!!) -->
     <?php
     if (isset($_GET['user'])){
       # -------------- searching algorithm (creating a query depending on an input) ---------------------
@@ -72,10 +72,12 @@ conn_check($conn);
         if (mysqli_num_rows($search_result) != 0){
           foreach ($search_result as $user){
             # ------------- searched user boxes --------------
-            echo "<div>";
-            echo "<label>".$user['login']."</label>";
+            echo "<div class='searched_user_block'>";
+            echo "<div class='together'>";
             echo ""; # ------ тут должна быть аватарка в виде квадратного блока наверное но пока мне лень это делать, тк нет нормальной загрузки аватарки, этим я займусь
-            echo "<label>".$user['name']." ".$user['surname']." ".$user['thirdname']."</label>";
+            echo "<h4 style='color: red'>".$user['login'].": </h4>";
+            echo "<p>".$user['name']." ".$user['surname']." ".$user['thirdname']."</p>";
+            echo "</div>";
             echo "<a href='../account.php?back=users/search.php&user=".$user['login']."'>Перейти к профилю</a>";
             echo "</div>";
           }
