@@ -313,7 +313,7 @@ if ($data_array = $conn -> query($select_sql)){
         for ($i = 0; $i < count($calendar); $i++){
           echo "<tr><th>".($i + 1)."</th>";
           for ($j = 0; $j < 7; $j++){
-            if ($j == $day_now && $i == $week_now){
+            if ($i == $day_now && $j == $week_now){
               echo "<td class='highlighted_cell'>";
             }else{
               echo "<td>";

@@ -101,8 +101,8 @@ function check_if_passed($conn, $login){
         for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
           $day_now++;
         }
-        $week_now = $day_now % 7;
-        $day_now = (int)($day_now / 7);
+        $week_now = (int)($day_now / 7);
+        $day_now = $day_now % 7;
         if ($week_now > $program_duration || ($week_now == $program_duration && $day_now >= $start_weekday_num)) { # check if completed
           $week_now = $program_duration;
           if ($start_weekday_num == 0) {
@@ -197,8 +197,8 @@ function get_program_day($conn, $login){
     for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
       $day_now++;
     }
-    $week_now = $day_now % 7;
-    $day_now = (int)($day_now / 7);
+    $week_now = (int)($day_now / 7);
+    $day_now = $day_now % 7;
     return array(
       'week_now' => $week_now,
       'day_now' => $day_now
