@@ -144,7 +144,7 @@ $end - время окончания тестирования формата tim
         echo "<div id='result_pie'></div>"; # pie diagram
         echo "<a href='my_tests.php'>Назад</a>";
 
-      } elseif ($_SESSION['result']) {
+      } else if ($_SESSION['result']) {
         # --------- bug fix ----------
         $_SESSION = array();
         header("Location: my_tests.php");
@@ -215,6 +215,11 @@ $end - время окончания тестирования формата tim
     const timer = document.querySelector('.timer p');
 
     const FinsishButton = document.querySelector('.test_finish_button input');
+
+    FinsishButton.addEventListener('click', function(){
+      clearInterval(IntervalTimer);
+      time = 0;
+    });
 
     //Если пользователь начала тестирование то запускается таймер
     let IntervalTimer = setInterval(UpdateTime, 1000);
