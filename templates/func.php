@@ -98,7 +98,7 @@ function check_if_passed($conn, $login){
         if ($start_weekday_num == 7){ $start_weekday_num = 0; }
 
         $day_now = $start_weekday_num;
-        for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
+        for ($i = $now - $start_program; $i >= 86400; $i = $i - 86400) {
           $day_now++;
         }
         $week_now = (int)($day_now / 7);
@@ -188,13 +188,13 @@ function get_program_day($conn, $login){
     }
 
     for ($i = 0; $i < 7; $i++) {
-      if ($calendar[0][$i] != 2) {
-        $start_weekday_num = $i;
+      if ($calendar[0][$i] == 2) {
+        $start_weekday_num = $i + 1;
       }
     }
 
     $day_now = $start_weekday_num;
-    for ($i = $now - $start_program; $i >= 0; $i = $i - 86400) {
+    for ($i = $now - $start_program; $i >= 86400; $i = $i - 86400) {
       $day_now++;
     }
     $week_now = (int)($day_now / 7);
