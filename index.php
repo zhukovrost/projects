@@ -12,6 +12,7 @@ conn_check($conn);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,22 +62,14 @@ conn_check($conn);
   <a href=""><img class="header_question" src="img/question.png" alt=""></a>
   <div class="container">
     <div class="header_title_block">
-      <p class="header_subtitle">Lorem ipsum</p>
-      <h1 class="header_title">LOREM</h1>
-      <p class="header_subtitle">dolor sit amet</p>
+      <p class="header_subtitle">The platform</p>
+      <h1 class="header_title">Roman/24</h1>
+      <p class="header_subtitle">for education</p>
     </div>
     
     <nav>
       <ul>
-        <li><a href="#">Lorem</a>
-          <ul>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-          </ul>
-        </li>
+        <li><a href="user/test.php">Tests</a></li>
         <li><a href="#">Lorem</a>
           <ul>
             <li><a href="#">ipsum</a></li>

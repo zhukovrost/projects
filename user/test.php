@@ -73,6 +73,10 @@ $end - время окончания тестирования формата tim
 </head>
 <body>
 <main class="question_main">
+  <div class="timer">
+    <p>15:30</p>
+  </div>
+
   <div class="container">
 
     <?php
@@ -205,6 +209,7 @@ $end - время окончания тестирования формата tim
   </div>
 </main>
 <?php include "../templates/footer.html"; ?>
+<script src="../main.js"></script>
 <script>
     var data = [{
         values: [<?php
@@ -226,6 +231,38 @@ $end - время окончания тестирования формата tim
     };
 
     Plotly.newPlot('result_pie', data, layout);
+
+
+    // ===========TIMER===========
+
+    // Значение времени
+    let time = 3600
+    const timer = document.querySelector('.timer p');
+
+    //Если пользователь начала тестирование то запускается таймер
+    if(...){
+        setInterval(UpdateTime, 1000);
+    }
+    
+    //Если время вышло то перебросит на страничку с резами
+    if(time == 0){
+        //...
+    }
+
+    function UpdateTime(){
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        if (seconds < 10){
+            seconds = '0' + seconds;
+        }
+        if (minutes < 10){
+            minutes = '0' + minutes;
+        }
+
+        timer.innerHTML = `${minutes}:${seconds}`;
+        
+        time--;
+    }
 </script>
 </body>
 </html>

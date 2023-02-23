@@ -2,7 +2,7 @@
 
 // ========header_logout_btn========
 document.addEventListener("DOMContentLoaded", function() {
-    =========ЭТО ФОРМЫ=========
+    // =========ЭТО ФОРМЫ=========
     function add_answer (button){
         let el_ans = button.parentNode.lastElementChild;
 

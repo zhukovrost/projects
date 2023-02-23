@@ -918,15 +918,17 @@ footer a:hover{
 /* ============Question.html============= */
 .question_main{
 	height: auto;
+    text-align: center;
+    height: 75vh;
 }
 
 .test_output_form{
+    display: inline-block;
 	margin: 30px auto;
-	width: 80%;
 	background-color: #F2F2F2;
 	border: 5px solid #0D0D0D;
 	border-radius: 5px;
-	padding: 30px 40px;
+	padding: 50px 60px;
 }
 
 .test_output_item{
@@ -960,11 +962,29 @@ footer a:hover{
 }
 
 .test_finish_button{
-	margin: 50px auto 20px auto;
+	margin: 70px auto 0px auto;
 	width: 400px;
 }
 
 .test_finish_button::before{
 	width: 101.6%;
 	left: -1%;
+}
+
+/* Timer */
+.timer{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    width: 7%;
+    height: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #0D0D0D;
+    background-color: #F2F2F2;
+}
+
+.timer p{
+    font-size: 30px;
 }

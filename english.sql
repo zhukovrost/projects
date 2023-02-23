@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 09, 2023 at 07:50 PM
+-- Generation Time: Feb 12, 2023 at 09:03 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,41 @@ CREATE TABLE `questions` (
   `theme` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `questions`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `id` int(11) NOT NULL,
+  `user` varchar(32) NOT NULL,
+  `files` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]' CHECK (json_valid(`files`)),
+  `message` text NOT NULL,
+  `rate` int(1) NOT NULL,
+  `date` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reports`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report_files`
+--
+
+CREATE TABLE `report_files` (
+  `id` int(11) NOT NULL,
+  `file` mediumblob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +80,11 @@ CREATE TABLE `tests` (
   `test` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`test`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tests`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +96,11 @@ CREATE TABLE `test_images` (
   `image` longblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `test_images`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -65,6 +110,10 @@ CREATE TABLE `test_images` (
 CREATE TABLE `themes` (
   `theme` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `themes`
+--
 
 -- --------------------------------------------------------
 
@@ -80,15 +129,35 @@ CREATE TABLE `users` (
   `thirdname` varchar(32) DEFAULT NULL,
   `email` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `status` varchar(5) NOT NULL
+  `status` varchar(5) NOT NULL DEFAULT 'user',
+  `user_tests_ids` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]' CHECK (json_valid(`user_tests_ids`)),
+  `user_tests_marks` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]' CHECK (json_valid(`user_tests_marks`)),
+  `user_tests_durations` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '[]' CHECK (json_valid(`user_tests_durations`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `status`) VALUES
-(1, 'admin', 'admin_name', 'admin_surname', 'admin_thirdname', 'admin@admin.com', '123', 'admin');
+INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `status`, `user_tests_ids`, `user_tests_marks`, `user_tests_durations`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin', 'admin@admin.com', '123', 'admin', '[]', '[]', '[]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `verification_tests`
+--
+
+CREATE TABLE `verification_tests` (
+  `id` int(11) NOT NULL,
+  `login` varchar(32) NOT NULL,
+  `test_id` int(11) NOT NULL,
+  `right_answers` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `answers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `answers_ids` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `position` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -98,6 +167,18 @@ INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `pa
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `report_files`
+--
+ALTER TABLE `report_files`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -119,6 +200,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `verification_tests`
+--
+ALTER TABLE `verification_tests`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -129,22 +216,40 @@ ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `report_files`
+--
+ALTER TABLE `report_files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `test_images`
 --
 ALTER TABLE `test_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `verification_tests`
+--
+ALTER TABLE `verification_tests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
