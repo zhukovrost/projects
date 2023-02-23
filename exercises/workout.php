@@ -32,10 +32,11 @@ $arr = get_program_day($conn, $login);
 $day_now = $arr['day_now'];
 $week_now = $arr['week_now'];
 
-$select_id_sql = "SELECT program FROM users WHERE login='".$login."'";
+$select_id_sql = "SELECT program, calendar FROM users WHERE login='".$login."'";
 if ($select_id_result = $conn->query($select_id_sql)){
   foreach ($select_id_result as $user){
     $program_id = $user['program'];
+    $calendar = json_decode($user['calendar']);
   }
   if ($program_id != 0){
     $select_program_sql = "SELECT program FROM userprograms WHERE id='".$program_id."'";
@@ -145,16 +146,17 @@ if (isset($_POST['finish'])){
                 $_SESSION['passed'] = 0;
               }
 
-              echo "<form method='post'>";
+              echo "<form method='post' class='current_exercise_form'>";
               if ($_SESSION['current_exercise'] < $amount_of_exercises){
                 $exercise_id_explode = explode("/", $today_program[$_SESSION['current_exercise']]); # split array by '/'
                 $repeats = $exercise_id_explode[3];
                 $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
 
                 echo "
-              <div>
+                <div class='current_exercise'><div class='together'>
                 <img src='".$exercise[3]."'>
-                <h4>".$exercise[1]."</h4>";
+                <section>
+                  <h4>".$exercise[1]."</h4>";
                 # repeats
                 if ($exercise[0]){
                   echo "<label>Длительность (в секундах): ".$repeats."</label>";
@@ -163,8 +165,13 @@ if (isset($_POST['finish'])){
                 }
 
                 echo "
-            <button type='submit' name='pass'>Пропустить упражнение</button>
-            <button type='submit' name='next'>Я выполнил упражнение</button>
+                </div>
+                </section>
+                <section>
+                  <button type='submit' name='pass'>Пропустить упражнение</button>
+                  <button type='submit' name='next'>Я выполнил упражнение</button>
+                </section>
+                </div>
             ";
               }else{
                 echo "
