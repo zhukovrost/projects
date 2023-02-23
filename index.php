@@ -69,7 +69,7 @@ conn_check($conn);
     
     <nav>
       <ul>
-        <li><a href="user/test.php">Tests</a></li>
+        <li><a href="user/my_tests.php">Tests</a></li>
         <li><a href="#">Lorem</a>
           <ul>
             <li><a href="#">ipsum</a></li>

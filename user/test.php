@@ -73,14 +73,11 @@ $end - время окончания тестирования формата tim
 </head>
 <body>
 <main class="question_main">
-  <div class="timer">
-    <p>15:30</p>
-  </div>
 
   <div class="container">
 
     <?php
-    $select_test_sql = "SELECT name, test FROM tests WHERE id=$test_id";
+    $select_test_sql = "SELECT name, test FROM tests WHERE id='".$test_id."'";
     if ($select_test_result = $conn->query($select_test_sql)){
       foreach ($select_test_result as $item) {
         $test = json_decode($item['test']);
@@ -154,6 +151,7 @@ $end - время окончания тестирования формата tim
 
       } else {
         # -------------------- TEST PAGE ----------------------
+        echo "<div class='timer'><p>15:30</p></div>";
         echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$test_id.": ".$name."</h2>";
 
         for ($i = 0; $i < count($test); $i++){
@@ -209,7 +207,37 @@ $end - время окончания тестирования формата tim
   </div>
 </main>
 <?php include "../templates/footer.html"; ?>
-<script src="../main.js"></script>
+<script>
+  // ===========TIMER===========
+
+    // Значение времени
+    let time = 10
+    const timer = document.querySelector('.timer p');
+
+    const FinsishButton = document.querySelector('.test_finish_button input');
+
+    //Если пользователь начала тестирование то запускается таймер
+    let IntervalTimer = setInterval(UpdateTime, 1000);
+
+    function UpdateTime(){
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        if (seconds < 10){
+            seconds = '0' + seconds;
+        }
+        if (minutes < 10){
+            minutes = '0' + minutes;
+        }
+
+        timer.innerHTML = `${minutes}:${seconds}`;
+        
+        time--;
+        if(time == 0){
+          clearInterval(IntervalTimer);
+          FinsishButton.click();
+        }
+    }
+</script>
 <script>
     var data = [{
         values: [<?php
@@ -231,38 +259,8 @@ $end - время окончания тестирования формата tim
     };
 
     Plotly.newPlot('result_pie', data, layout);
-
-
-    // ===========TIMER===========
-
-    // Значение времени
-    let time = 3600
-    const timer = document.querySelector('.timer p');
-
-    //Если пользователь начала тестирование то запускается таймер
-    if(...){
-        setInterval(UpdateTime, 1000);
-    }
     
-    //Если время вышло то перебросит на страничку с резами
-    if(time == 0){
-        //...
-    }
 
-    function UpdateTime(){
-        let minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-        if (seconds < 10){
-            seconds = '0' + seconds;
-        }
-        if (minutes < 10){
-            minutes = '0' + minutes;
-        }
-
-        timer.innerHTML = `${minutes}:${seconds}`;
-        
-        time--;
-    }
 </script>
 </body>
 </html>

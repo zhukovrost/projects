@@ -36,4 +36,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // =========Logout btn==========
     let width_of_user_name = this.querySelector('header .user_name').getBoundingClientRect().width;
     this.querySelector('header .header_logout_btn').style.width = width_of_user_name + 'px';
+
+    
 });
