@@ -107,6 +107,8 @@ if (isset($_POST['weeks'])){
               $id = $select_id['id'];
             }
           }
+          $insert_sql2 = "INSERT INTO news(new_id, user, date) VALUES(2, '".$login."', '".time()."')";
+          $conn->query($insert_sql2);
           $check_existing_program_result2->free();
         }
       }else {
