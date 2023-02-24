@@ -32,7 +32,7 @@ if ($_SESSION['refresh'] == null){
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Montserrat+Alternates:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
-<main>
+<main class="my_tests_main">
   <h1>Мои тесты</h1>
   <?php
   # -------- errors -------------
@@ -60,7 +60,7 @@ if ($_SESSION['refresh'] == null){
         $time = $time_to_do[$i];
         $mins = $time / 60;
 
-        echo "<div style='border: black solid 2px'>";
+        echo "<div>";
         echo "
         <label>".$name."</label>
         <label>Отведённое время: ".$mins." мин</label>
@@ -72,7 +72,7 @@ if ($_SESSION['refresh'] == null){
             <input type='hidden' name='id' value='".$id."'>
             <input type='hidden' name='position' value='".$i."'>
             <input type='hidden' name='duration' value='".$time."'>
-            <input type='submit' value='Начать тестирование'>
+            <input class='my_test_btn' type='submit' value='Начать тестирование'>
           </form>
           ";
         }else{

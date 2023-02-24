@@ -83,7 +83,7 @@ $end - время окончания тестирования формата tim
         $test = json_decode($item['test']);
         $name = $item['name'];
       }
-      if (isset($_POST['test_input'])){
+      if (isset($_POST['finish_test'])){
         # ------------ RESULTS ----------------------
 
         $_SESSION['result'] = true;
@@ -153,6 +153,7 @@ $end - время окончания тестирования формата tim
         # -------------------- TEST PAGE ----------------------
         echo "<div class='timer'><p>15:30</p></div>";
         echo "<form method='post' class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$test_id.": ".$name."</h2>";
+        echo "<input type='hidden' name='finish_test' value='1'>";
 
         for ($i = 0; $i < count($test); $i++){
           $question = $test[$i];

@@ -54,11 +54,9 @@ conn_check($conn);
       }
       $select_result->free();
     }
-
   }
   $conn->close();
   ?>
-
   <a href=""><img class="header_question" src="img/question.png" alt=""></a>
   <div class="container">
     <div class="header_title_block">

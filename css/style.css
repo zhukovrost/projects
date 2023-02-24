@@ -194,7 +194,7 @@ article {
 
 main{
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
 }
 
@@ -666,7 +666,7 @@ footer a:hover{
 }
 
 
-.log_button, .reg_button, .back_button{
+.log_button, .reg_button, .back_button, .my_test_btn{
     letter-spacing: 0.5px;
     font-size: 21px;
     font-weight: 600;
@@ -679,7 +679,7 @@ footer a:hover{
 	margin-right: 30px;
 }
 
-.log_button::before, .reg_button::before, .back_button::before{
+.log_button::before, .reg_button::before, .back_button::before, .my_test_btn::before{
 	content: '';
 	position: absolute;
 	top: 140%;
@@ -689,11 +689,11 @@ footer a:hover{
 	transition: .3s ease;
 }
 
-.log_button:hover, .reg_button:hover, .back_button:hover{
+.log_button:hover, .reg_button:hover, .back_button:hover, .my_test_btn:hover{
 	color: #f2f2f2;
 }
 
-.log_button:hover::before, .reg_button:hover::before, .back_button:hover::before{
+.my_test_btn:hover::before, .log_button:hover::before, .reg_button:hover::before, .back_button:hover::before{
 	width: 100%;
 }
 
@@ -975,4 +975,39 @@ footer a:hover{
 
 .question_main .container a{
     margin-top: 3%;
+}
+
+
+
+
+/* ======================MY TESTS==================== */
+
+
+.my_tests_main h1{
+    text-align: center;
+    font-size: 45px;
+    text-transform: uppercase;
+    margin: 50px 0px 40px 0px;
+}
+
+.my_tests_main div{
+    text-align: center;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F2F2F2;
+    border: #0D0D0D 2px solid;
+    margin-bottom: 30px;
+    padding: 30px 20px;
+}
+
+.my_test_btn{
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #0D0D0D;
+    border: 2px solid #0D0D0D;
+}
+
+.my_test_btn:hover{
+    background-color: #0D0D0D;
 }
