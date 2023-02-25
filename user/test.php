@@ -217,7 +217,7 @@ $end - время окончания тестирования формата tim
   // ===========TIMER===========
 
     // Значение времени
-    let time = 10
+    let time = 3600
     const timer = document.querySelector('.timer p');
 
     const FinsishButton = document.querySelector('.test_finish_button input');
