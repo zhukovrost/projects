@@ -117,7 +117,7 @@ if (isset($_POST['reg_done'])){
                         reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
                         reg_warning($error_array["too_long_string"], "Слишком много символов");
                         if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Ошибка: " . $conn->error); };
-                        echo '<div class="button_login button_reg"><input class="button" type="submit" name="reg_done" value="Зарегистрироваться"></div>';
+                        echo '<button class="button_reg" type="submit" name="reg_done">Зарегистрироваться</button>';
                 ?>
             </div>
           </div>
