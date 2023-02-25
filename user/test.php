@@ -83,34 +83,39 @@ $end - время окончания тестирования формата tim
         $test = json_decode($item['test']);
         $name = $item['name'];
       }
+      $all_questions = count($test);
       if (isset($_POST['finish_test'])){
         # ------------ RESULTS ----------------------
+        if (empty($_POST['test_input'])){
+          $amount = 0;
+          $right_answers = 0;
+        }else{
+          $_SESSION['result'] = true;
 
-        $_SESSION['result'] = true;
-
-        $answer = $_POST['test_input'];
-        $all_questions = count($test);
-        $right_answers = 0;
-        $ids_to_check = array();
-        $answers_to_check = array();
-        for ($i = 0; $i < $all_questions; $i++){
-          if (isset($answer[$i])){
-            if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox" || $test[$i][4] == "missing_words"){
-              if ($test[$i][2] == $answer[$i]){ $right_answers++; }
-            }else if ($test[$i][4] == "definite"){
-              foreach ($test[$i][3] as $item){
-                if (mb_strtoupper(str_replace(" ", "", $item)) == mb_strtoupper(str_replace(" ", "", $answer[$i]))){
+          $answer = $_POST['test_input'];
+          $right_answers = 0;
+          $ids_to_check = array();
+          $answers_to_check = array();
+          for ($i = 0; $i < $all_questions; $i++){
+            if (isset($answer[$i])){
+              if ($test[$i][4] == "radio" || $test[$i][4] == "checkbox" || $test[$i][4] == "missing_words"){
+                if ($test[$i][2] == $answer[$i]){ $right_answers++; }
+              }else if ($test[$i][4] == "definite"){
+                foreach ($test[$i][3] as $item){
+                  if (mb_strtoupper(str_replace(" ", "", $item)) == mb_strtoupper(str_replace(" ", "", $answer[$i]))){
                     $right_answers += 1;
+                  }
                 }
-              }
-            }else if ($test[$i][4] == "definite_mc"){
+              }else if ($test[$i][4] == "definite_mc"){
                 array_push($ids_to_check, $i);
                 array_push($answers_to_check, $answer[$i]);
+              }
             }
           }
+          $wrong_answers = $all_questions - count($ids_to_check) - $right_answers;
+          $amount = count($ids_to_check);
         }
-        $wrong_answers = $all_questions - count($ids_to_check) - $right_answers;
-        $amount = count($ids_to_check);
+
         # ---------- GETTING THE LIST OF MARKS ------------------
         $select_user_sql = "SELECT user_tests_marks FROM users WHERE login='".$login."'";
         if ($select_user_result = $conn->query($select_user_sql)) {
