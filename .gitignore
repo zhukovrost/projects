@@ -1,1 +1,4 @@
 .idea/
+.venv/
+st.sh
+sp.sh
