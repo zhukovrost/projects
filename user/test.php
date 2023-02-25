@@ -124,24 +124,28 @@ $end - время окончания тестирования формата tim
           }
         }
         $select_user_result->free();
-        if ($amount == 0){
-          $mark = mark($right_answers/$all_questions);
+        if ($user_tests_marks[$position] != 0){
+          if ($amount == 0){
+            $mark = mark($right_answers/$all_questions);
 
-          $user_tests_marks[$position] = $mark;
-          $update_sql = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
-          if ($conn->query($update_sql)){
-            $error_array['success_verification'] = true;
-          }
-        }else{
-          # ---------------- FAST VERIFICATION ------------------------
-          $user_tests_marks[$position] = -1;
-          $insert_sql = "INSERT INTO verification_tests (login, test_id, right_answers, amount, answers, answers_ids, position) VALUES ('".$login."', '".$test_id."', '".$right_answers."', '".$all_questions."', '".json_encode($answers_to_check, JSON_UNESCAPED_UNICODE)."', '".json_encode($ids_to_check, JSON_UNESCAPED_UNICODE)."', '".$position."')";
-          if ($conn->query($insert_sql)){
-            $update_sql2 = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
-            if ($conn->query($update_sql2)){
+            $user_tests_marks[$position] = $mark;
+            $update_sql = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
+            if ($conn->query($update_sql)){
               $error_array['success_verification'] = true;
             }
+          }else{
+            # ---------------- FAST VERIFICATION ------------------------
+            $user_tests_marks[$position] = -1;
+            $insert_sql = "INSERT INTO verification_tests (login, test_id, right_answers, amount, answers, answers_ids, position) VALUES ('".$login."', '".$test_id."', '".$right_answers."', '".$all_questions."', '".json_encode($answers_to_check, JSON_UNESCAPED_UNICODE)."', '".json_encode($ids_to_check, JSON_UNESCAPED_UNICODE)."', '".$position."')";
+            if ($conn->query($insert_sql)){
+              $update_sql2 = "UPDATE users SET user_tests_marks='".json_encode($user_tests_marks)."' WHERE login='".$login."'";
+              if ($conn->query($update_sql2)){
+                $error_array['success_verification'] = true;
+              }
+            }
           }
+        }else{
+          header('Location: my_tests.php?error_completed=1');
         }
 
         # ----------------- TEXT OUTPUT ----------------
