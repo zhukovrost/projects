@@ -78,12 +78,12 @@ if (isset($_POST['log_done'])){
           if (isset($_GET['reg'])){ echo "<p class=''>Регистрация прошла успешно, пожалуйста авторизуйтесь</p>"; }
 				?>
                 <button class="button_login" type="submit" class="button" name="log_done">Войти </button>
-                <img class="first_img" src="img/big-ben.png" alt="">
-				<img class="second_img" src="img/education.png" alt="">
-				<img class="third_img" src="img/graduated.png" alt="">
-				<img class="fourth_img" src="img/graduation.png" alt="">
-				<img class="fifth_img" src="img/big-ben.png" alt="">
-				<img class="sixth_img" src="img/education.png" alt="">
+                <img class="first_img" src="img/A.png" alt="">
+				<img class="second_img" src="img/Book_open.png" alt="">
+				<img class="third_img" src="img/C.png" alt="">
+				<img class="fourth_img" src="img/computer.png" alt="">
+				<img class="fifth_img" src="img/person_studying.png" alt="">
+				<img class="sixth_img" src="img/B.png" alt="">
 			</form>
 	</main>
 	<?php include "templates/footer.html"; ?>

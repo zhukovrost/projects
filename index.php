@@ -67,43 +67,23 @@ conn_check($conn);
     
     <nav>
       <ul>
-        <li><a href="user/my_tests.php">Tests</a></li>
-        <li><a href="#">Lorem</a>
+        <li><a href="">Duolingo English Test</a></li>
+        <li><a href="user/my_tests.php">My tests</a>
           <ul>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
+            <li><a href="#">PTE</a></li>
+            <li><a href="#">IELTS</a></li>
+            <li><a href="#">TOEFL</a></li>
+            <li><a href="#">GMAT</a></li>
+            <li><a href="#">SAT</a></li>
           </ul>
         </li>
-        <li><a href="#">Lorem</a>
+        <li class="third_li"><a href="#">Grammar</a>
           <ul>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
+            <li><a href="#">Vocabulary</a></li>
           </ul>
         </li>
-        <li><a href="#">Lorem</a>
-          <ul>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Lorem</a>
-          <ul>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-            <li><a href="#">ipsum</a></li>
-          </ul>
-        </li>
+        <li><a href="#">Cambridge</a></li>
+        <li><a href="#">Other</a></li>
       </ul>
     </nav>
   </div>

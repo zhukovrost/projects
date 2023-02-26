@@ -173,6 +173,10 @@ header nav ul li:hover ul{
     height: 310px;
 }
 
+header nav ul .third_li:hover ul{
+    height: 60px;
+}
+
 nav li ul li{
     width: auto;
 }
@@ -268,11 +272,17 @@ main::after {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    animation: card_open1 .8s 3s forwards ease-in-out;
 }
 
-.card:hover{
-    width: 600px;
-    transition-delay: 0s;
+@keyframes card_open1 {
+    from {
+        width: 300px;
+    }
+  
+    to {
+        width: 600px;
+    }
 }
 
 .card .circle{
@@ -297,11 +307,18 @@ main::after {
     height: 100%;
     background-color:#0D0D0D;
     clip-path: circle(120px at center);
-    transition: .6s;
+    animation: card_open2  .8s 3s forwards ease-in-out;
 }
 
-.card:hover .circle::before{
-    clip-path: circle(400px at center);
+
+@keyframes card_open2 {
+    from {
+        clip-path: circle(120px at center);
+    }
+  
+    to {
+        clip-path: circle(400px at center);
+    }
 }
 
 .content{
@@ -309,17 +326,25 @@ main::after {
     width: 50%;
     left: 20%;
     padding: 40px 20px 40px 40px;
-    opacity: 0;
+    left: 20%;
     transition: .5s;
     visibility: hidden;
     color: #F2F2F2;
+    animation: card_open3 .4s 3.25s forwards ease-in-out;
 }
 
-.card:hover .content{
-    left: 0;
-    opacity: 1;
-    visibility: visible;
-    transition-delay: .3s;
+@keyframes card_open3 {
+    from {
+        left: 20%;
+        opacity: 0;
+        visibility: hidden;
+    }
+  
+    to {
+        left: 0;
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 
@@ -337,13 +362,19 @@ main::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.45);
-    transition: .5s;
+    animation: card_open4 .4s 3s forwards ease-in-out;
 }
 
-.card:hover .logo{
-    left: 85%;
-    transform: translate(-50%, -50%) scale(0.7);
-    transition-delay: .2s;
+@keyframes card_open4 {
+    from {
+        transform: translate(-50%, -50%) scale(0.45);
+        left: 50%;
+    }
+  
+    to {
+        left: 85%;
+        transform: translate(-50%, -50%) scale(0.7);
+    }
 }
 
 .card_cover_second .card .logo{
@@ -351,17 +382,45 @@ main::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.45);
+    animation: card_open5 .4s 3s forwards ease-in-out;
+}
+
+@keyframes card_open5 {
+    from {
+        transform: translate(-50%, -50%) scale(0.45);
+        left: 50%;
+    }
+  
+    to {
+        left: 15%;
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+}
+
+.card_cover_second .card .content{
+    position: relative;
+    width: 50%;
+    left: 20%;
+    padding: 40px 20px 40px 40px;
+    left: 20%;
     transition: .5s;
+    visibility: hidden;
+    color: #F2F2F2;
+    animation: card_open6 .4s 3.25s forwards ease-in-out;
 }
 
-.card_cover_second .card:hover .logo{
-    left: 15%;
-    transform: translate(-50%, -50%) scale(0.7);
-    transition-delay: .2s;
-}
-
-.card_cover_second .card:hover .content{
-    left: 45%;
+@keyframes card_open6 {
+    from {
+        left: 20%;
+        opacity: 0;
+        visibility: hidden;
+    }
+  
+    to {
+        left: 45%;
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .card_cover_fourth .card .logo{
@@ -768,8 +827,8 @@ footer a:hover{
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 170px;
-	height: 170px;
+	width: 130px;
+	height: 130px;
 }
 
 .login_form .first_img{
@@ -833,7 +892,7 @@ footer a:hover{
 
 
 .registration_form .first_img{
-	top: -5%;
+	top: 0%;
 	left: -20%;
 	transform: rotateZ(-30deg);
 }
