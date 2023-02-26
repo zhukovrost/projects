@@ -74,6 +74,15 @@ header{
     z-index: 10;
 }
 
+.user_name a{
+    color: #f2f2f2cb;
+    transition: .4s cubic-bezier(0.51, 0.14, 0.12, 1.02);
+}
+
+.user_name:hover a{
+    color: #f2f2f2;
+}
+
 .header_logout_btn{
     background-color: #000000;
     color: #f2f2f2cb;
@@ -575,9 +584,65 @@ footer a:hover{
   padding: 5px;
 }
 
+.c_all_forms_block h3, .c_all_forms_block h4{
+    margin-top: 15px;
+}
+
+.c_all_forms_block input[type="text"], .c_all_forms_block input[type="number"], .c_all_forms_block textarea{
+    border: 1px solid #0D0D0D;
+    padding: 5px 7px;
+    margin-bottom: 3px;
+    font-size: 15px;
+}
+
+.c_all_forms_block input[type="submit"]{
+    border: 2px solid #0D0D0D;
+    padding: 5px 10px;
+    margin: 0px 0px 20px;
+    transition: .4s ease;
+}
+
+.last_submit_btn{
+    margin: 10px 0px 30px 0px !important;
+}
+
+.c_all_forms_block input[type="submit"]:hover{
+    background-color: #0D0D0D;
+    color: #F2F2F2;
+    border: 2px solid #2e8b16;
+}
+
+.c_form_3 form a{
+    padding: 10px 20px;
+    border: 2px solid #0D0D0D;
+    color: #0D0D0D;
+    transition: .4s ease;
+}
+
+.c_form_3 form a:hover{
+    background-color: #0D0D0D;
+    color: #F2F2F2;
+    border: 2px solid #2e8b16;
+}
+
+.c_clear_all_btn{
+    padding: 10px 20px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border: 2px solid #0D0D0D;
+    color: #0D0D0D;
+    transition: .4s ease;
+}
+
+.c_clear_all_btn:hover{
+    background-color: #0D0D0D;
+    color: #F2F2F2;
+    border: 2px solid #2e8b16;
+}
+
 /* ======================REGENLOG==================== */
 
-/* reg, log, back buttons */
+/* reg, log, back buttons and other btns*/
 
 .regenlog_cover{
 	position: absolute;

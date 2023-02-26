@@ -398,7 +398,7 @@ $count_result->free();
         <h3>Задайте название тестирования</h3>
         <textarea id="name_of_test" name="test_name"></textarea>
         <input type="submit" name="add_test_to_db" value="Добавить тест в бд">
-        <input type="submit" name="add_questions_to_db" value="Добавить вопросы в бд">
+        <input class="last_submit_btn" type="submit" name="add_questions_to_db" value="Добавить вопросы в бд">
         <a href="questions.php">Добавить из бд</a>
       </form>
     </div>
@@ -524,7 +524,7 @@ $count_result->free();
 			?>
 		<form method="post">
       <input type="hidden" name="clear" value="true">
-			<input type="submit" value="очистить всё">
+			<input class="c_clear_all_btn" type="submit" value="очистить всё">
 		</form>
 	
 		<script>
