@@ -121,12 +121,12 @@ if (isset($_POST['reg_done'])){
                 ?>
             </div>
           </div>
-          <img class="first_img" src="img/big-ben.png" alt="">
-				  <img class="second_img" src="img/education.png" alt="">
-				  <img class="third_img" src="img/graduated.png" alt="">
-				  <img class="fourth_img" src="img/graduation.png" alt="">
-				  <img class="fifth_img" src="img/big-ben.png" alt="">
-				  <img class="sixth_img" src="img/education.png" alt="">
+          <img class="" src="img/C.png" alt="">
+				<img class="second_img" src="img/person_studying.png" alt="">
+				<img class="third_img" src="img/B.png" alt="">
+				<img class="fourth_img" src="img/computer.png" alt="">
+				<img class="fifth_img" src="img/Book_open.png" alt="">
+				<img class="sixth_img" src="img/A.png" alt="">
 		    </form>
     </div>         
 	</main>
