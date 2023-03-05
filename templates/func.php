@@ -206,4 +206,17 @@ function get_program_day($conn, $login){
   }
 }
 
+function check_the_program($conn, $login){
+  $select_sql = "SELECT program FROM users WHERE login='".$login."'";
+  if ($select_result = $conn->query($select_sql)){
+    foreach ($select_result as $item){
+      $program_id = $item['program_id'];
+    }
+  }
+  $select_result->free();
+  if ($program_id != 0){
+    header("Location: ../account.php?new_program_error=1");
+  }
+}
+
 ?>

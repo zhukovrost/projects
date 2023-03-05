@@ -294,9 +294,7 @@ if ($data_array = $conn -> query($select_sql)){
           }
           echo "</tr></table>";
         }
-        if (!$all_info){
-          echo "<a href='exercises/exercises.php?id=".$program_id."'>Начать такую же программу</button>";
-        }
+
         check_if_passed($conn, $login);
 
         echo "<h2>Календарь тренировок</h2>";
@@ -344,14 +342,27 @@ if ($data_array = $conn -> query($select_sql)){
         echo "</table>";
       }
 
-      if ($all_info && $program_id != 0) {
-        echo "<a href='exercises/end.php'>Досрочно завершить</a>";
+      if ($all_info) {
+        if ($program_id != 0) {
+          echo "<a href='exercises/end.php'>Досрочно завершить</a>";
+        }
+      }else{
+        echo "<a href='exercises/exercises.php?back=../account.php?user=".$login."&page=my_program&id=" . $program_id . "'>Начать такую же программу</button>";
       }
       ?>
     </section>
   </main>
 
   <script src="main.js"></script>
+  <?php
+  if (isset($_GET['new_program_error'])){
+    echo "
+    <script>
+      alert('У вас уже есть программа. Завершите текущую, чтобы начать новую')
+    </script>
+    ";
+  }
+  ?>
 </body>
 <?php
 include "templates/footer.html";

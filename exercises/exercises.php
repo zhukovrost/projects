@@ -13,7 +13,18 @@ $error_array = array(
   "set_date_error" => true
 );
 
+$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
+conn_check($conn);
+check_the_login("../");
+$login = $_COOKIE['login'];
+check_the_program($conn, $login);
+
 session_start();
+
+$back_way = "../account.php";
+if (isset($_GET['back'])){
+  $back_way = $_GET['back'];
+}
 
 if (isset($_POST['edit_construct_array'])){
 
@@ -38,7 +49,16 @@ if (isset($_POST['edit_construct_array'])){
 
 # pushing selected exercises($_SESSION['construct_array']) to program($_SESSION['program_array']), creating $_SESSION['program_array'] if it does not exist
 
-if (isset($_SESSION['program_array'])){
+
+if (isset($_GET['id'])){
+  $select_sql = "SELECT program from userprograms WHERE id='".$_GET['id']."'";
+  if ($select_result = $conn->query($select_sql)){
+    foreach($select_result as $item){
+      $_SESSION['program_array'] = json_decode($item['program']);
+    }
+  }
+  $select_result->free();
+}else if (isset($_SESSION['program_array'])){
   if (isset($_POST['add_to_program_array'])){
     if (isset($_POST['day'])){
       if ($_POST['day'] != ''){
@@ -91,10 +111,6 @@ if (isset($_POST['delete_workout'])){
 
 if (isset($_POST['weeks'])){
   if ($_POST['weeks'] > 0){
-    check_the_login("../");
-    $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
-    conn_check($conn);
-    $login = $_COOKIE['login'];
     $new_program = json_encode($_SESSION['program_array']);
     $check_existing_program_sql = "SELECT id FROM userprograms WHERE program='" . $new_program . "'";
     if ($check_existing_program_result = $conn->query($check_existing_program_sql)) {
@@ -159,6 +175,7 @@ if (isset($_POST['weeks'])){
       if ($conn->query($update_account_sql)){
         $_SESSION['program_array'] = [[], [], [], [], [], [], []];
         $_SESSION['construct_array'] = array();
+        header("Location: ../account.php");
       }
     }
     $check_existing_program_result->free();
@@ -179,7 +196,7 @@ if (isset($_POST['weeks'])){
 </head>
 
 <header class="default_header">
-  <a href="../account.php">Назад</a>
+  <a href="<?php echo $back_way; ?>">Назад</a>
 </header>
 
 <body>
