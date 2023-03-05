@@ -445,12 +445,18 @@ p, a {
 .exercise section input{
 	border: 1px black solid;
 	padding: 5px;
+	width: 80%;
 }
 
-.plus_button{
-	font-size: 32px;
-	padding: 8px 16px;
+.exercise button{
+	padding: 5px;
 	border: 1px black solid;
+	width: 30%;
+	margin: 0 auto;
+}
+
+.exercise img{
+	width: 30%;
 }
 
 /* ===============INDEX.html===================== */
