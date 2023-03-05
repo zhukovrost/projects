@@ -104,7 +104,7 @@ $news_content = json_decode(file_get_contents("news.json"));
       ";
       }
     }else{
-      include "../templates/news.html";
+      header('Location: ../log.php');
     }
     ?>
   </div>

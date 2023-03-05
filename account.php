@@ -294,7 +294,9 @@ if ($data_array = $conn -> query($select_sql)){
           }
           echo "</tr></table>";
         }
-
+        if (!$all_info){
+          echo "<a href='exercises/exercises.php?id=".$program_id."'>Начать такую же программу</button>";
+        }
         check_if_passed($conn, $login);
 
         echo "<h2>Календарь тренировок</h2>";
@@ -340,6 +342,10 @@ if ($data_array = $conn -> query($select_sql)){
           echo "</tr>";
         }
         echo "</table>";
+      }
+
+      if ($all_info && $program_id != 0) {
+        echo "<a href='exercises/end.php'>Досрочно завершить</a>";
       }
       ?>
     </section>

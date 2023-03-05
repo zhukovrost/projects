@@ -72,42 +72,6 @@ include "templates/func.php";
                 </svg>
             </div>
         </div>
-        <div class="workout_info">
-            <div class="container">
-                <h2>Создавайте собственную тренировку</h2>
-                <div class="workout_content">
-                    <div class="my_workout">
-                        <h3>Моя тренировка:</h3>
-                        <p class="workout_line_through">- Атжумания</p>
-                        <p>- Пресс качат</p>
-                    </div>
-                    <!-- Если что я хз где взять норм фотки, так что пока что тут бицуха-->
-                    <div class="workout_blocks_cover">
-                        <div class="workout_block first">
-                            <h4>Атжумания</h4>
-                            <img src="img/exercises/arms/biceps.jpg" alt="">
-                            <div class="workout_button workout_button_green">
-                                ✓
-                            </div>
-                        </div>
-                        <div class="workout_block second">
-                            <h4>Разминка</h4>
-                            <img src="img/exercises/arms/biceps.jpg" alt="">
-                            <div class="workout_button workout_button_red">
-                                ✓
-                            </div>
-                        </div>
-                        <div class="workout_block third">
-                            <h4>Пресс качат</h4>
-                            <img src="img/exercises/arms/biceps.jpg" alt="">
-                            <div class="workout_button workout_button_green">
-                                ✓
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="progress_info">
             <div class="container">
