@@ -394,6 +394,65 @@ p, a {
 	padding: 0;
 }
 
+.start_program_form h1{
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+.start_program_form_input{
+	border: 1px black solid;
+	padding: 5px;
+	font-size: 16px;
+	background-color: #F2F2F2;
+}
+
+.exercise_list_block{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
+
+.exercise_list_block form, .exercise_list_block article{
+	margin: 0 auto 5px auto;
+}
+
+.exercise_list_block form *, .exercise_list_block article *{
+	margin: auto 0;
+}
+
+.exercise, .exercise_list_block article{
+	width: 50%;
+	background-color: #F2F2F2;
+	border: 1px black solid;
+	display: flex;
+}
+
+.exercise_list_block article{
+	width: 30%;
+}
+
+.exercise_list_block article h3{
+	color: red;
+	margin-left: 5px;
+	font-size: 24px;
+}
+
+.exercise section{
+	padding: 5px;
+	width: 50%;
+}
+
+.exercise section input{
+	border: 1px black solid;
+	padding: 5px;
+}
+
+.plus_button{
+	font-size: 32px;
+	padding: 8px 16px;
+	border: 1px black solid;
+}
+
 /* ===============INDEX.html===================== */
 
 /* ==========Navigation=========== */
