@@ -31,6 +31,7 @@ if (isset($_POST['start'])){
 $arr = get_program_day($conn, $login);
 $day_now = $arr['day_now'];
 $week_now = $arr['week_now'];
+$completed = false;
 
 $select_id_sql = "SELECT program, calendar FROM users WHERE login='".$login."'";
 if ($select_id_result = $conn->query($select_id_sql)){
@@ -43,9 +44,8 @@ if ($select_id_result = $conn->query($select_id_sql)){
     if ($select_program_result = $conn->query($select_program_sql)){
       foreach ($select_program_result as $item){
         $program = json_decode($item['program']);
-      }
-      $today_day = get_program_day($conn, $login)['day_now'];
-      $today_program = $program[$today_day];
+      };
+      $today_program = $program[$day_now];
       $amount_of_exercises = count($today_program);
       if (count($today_program) == 0){
         $error_array['holiday'] = true;
@@ -133,6 +133,9 @@ if (isset($_POST['finish'])){
             # ------------------------------------- CURRENT EXERCISE ----------------------------------
 
             if ((bool)$_SESSION['start']){
+              if ($calendar[$week_now][$day_now] == 3){
+                header('Location: workout.php');
+              }
               if (isset($_SESSION['current_exercise'])){
                 if (isset($_POST['next'])){
                   $_SESSION['current_exercise']++;
@@ -205,12 +208,17 @@ if (isset($_POST['finish'])){
                 }
                 echo "</div></div>";
               }
-              echo "
-              <form method='post'>
-                <input type='hidden' name='start' value='1'>
-                <button type='submit'>Начать тренировку</button>
-              </form>
-              ";
+              if ($calendar[$week_now][$day_now] != 3){
+                echo "
+                <form method='post'>
+                  <input type='hidden' name='start' value='1'>
+                  <button type='submit'>Начать тренировку</button>
+                </form>
+                ";
+              }else{
+                echo "<p>Вы уже потренировались. Возвращайтесь завтра.</p>";
+              }
+
               echo "</section>";
             }
           }
