@@ -66,6 +66,16 @@ function check_if_admin($conn, $login, $way=""){
   }
 }
 
+function select_question($conn, $id){
+  $select_question_sql = "SELECT question FROM questions WHERE id=".(int)$id;
+  $select_question_result = $conn->query($select_question_sql);
+  foreach ($select_question_result as $item){
+    $question = json_decode($item['question']);
+  }
+
+  return $question;
+}
+
 #---------------- reg and log ----------------------
 
 	function success_log($login){

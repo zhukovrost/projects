@@ -12,12 +12,17 @@ $error_array = array(
 );
 # count checked and sum it with right answers
 if (isset($_POST['id'])){
+  if (isset($_POST['count'])){
+    $new_right_answers = count($_POST['count']);
+  }else{
+    $new_right_answers = 0;
+  }
   $select_sql2 = "SELECT id, login, right_answers, amount, position FROM verification_tests WHERE id='".$_POST['id']."'";
   if ($select_result2 = $conn->query($select_sql2)) {
     foreach ($select_result2 as $item) {
       $id = $item['id'];
       $login = $item['login'];
-      $right_answers = $item['right_answers'] + count($_POST['count']);
+      $right_answers = $item['right_answers'] + $new_right_answers;
       $amount = $item['amount'];
       $position = $item['position'];
 
@@ -63,7 +68,7 @@ if (isset($_POST['id'])){
 <main class="construct_main">
   <?php
   if ($error_array['success_verification']){
-    echo "<label class='success'>Успешная проверка</label>";
+    print_success_message('Успешная проверка');
   }
   $select_sql = "SELECT id, login, test_id, answers, answers_ids FROM verification_tests ORDER BY id DESC";
   if ($select_result = $conn->query($select_sql)){

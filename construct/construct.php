@@ -96,28 +96,24 @@ if (isset($_POST['num_for_delete'])){
 # ----------------------- add random questions -----------------------
 
 if (isset($_POST['num_of_rand_questions'])){
-  if ($_POST['theme_of_rand_questions'] != "" || $_POST['theme_of_rand_questions'] != null){
-    if ($_POST['theme_of_rand_questions'] == "all_themes"){
-      $select_rand_sql = "SELECT * FROM questions ORDER BY RAND() LIMIT 1";
-    }else{
-      $select_rand_sql = "SELECT * FROM questions WHERE theme='".$_POST['theme_of_rand_questions']."' ORDER BY RAND() LIMIT 1";
-    }
-    for ($i = 0; $i < $_POST['num_of_rand_questions']; $i++){
-      if ($result = $conn->query($select_rand_sql)){
-        foreach ($result as $rand_question_query){
-          $rand_question = json_decode($rand_question_query['question'], null, 512, JSON_UNESCAPED_UNICODE);
-          array_push($result_array, $rand_question);
-          array_push($_SESSION['to_send'], false);
-          array_push($themes_array, $rand_question_query['theme']);
-        }
-      }else{
-        $error_array["random_error"] = true;
-      }
-    }
-    $result->free();
-    $_SESSION['themes_array'] = $themes_array;
-    $_SESSION['result_array'] = $result_array;
+  if ($_POST['theme_of_rand_questions'] == "all_themes"){
+    $select_rand_sql = "SELECT * FROM questions ORDER BY RAND() LIMIT " . $_POST['num_of_rand_questions'];
+  }else{
+    $select_rand_sql = "SELECT * FROM questions WHERE theme='".$_POST['theme_of_rand_questions']."' ORDER BY RAND() LIMIT " . $_POST['num_of_rand_questions'];
   }
+  if ($result = $conn->query($select_rand_sql)){
+    foreach ($result as $rand_question_query){
+      $rand_question = json_decode($rand_question_query['question'], null, 512, JSON_UNESCAPED_UNICODE);
+      array_push($result_array, $rand_question);
+      array_push($_SESSION['to_send'],  (int)$rand_question_query['id']);
+      array_push($themes_array, $rand_question_query['theme']);
+    }
+  }else{
+    $error_array["random_error"] = true;
+  }
+  $result->free();
+  $_SESSION['themes_array'] = $themes_array;
+  $_SESSION['result_array'] = $result_array;
 }
 
 # -------------------- add questions from db ----------------
@@ -125,8 +121,12 @@ if (isset($_POST['num_of_rand_questions'])){
 if (isset($_POST['add_question_from_db'])){
   if ($_POST['add_question_from_db'] != "" || $_POST['add_question_from_db'] != null){
     array_push($result_array, json_decode($_POST['add_question_from_db']));
-    array_push($_SESSION['to_send'], false);
+    array_push($_SESSION['result_array'], json_decode($_POST['add_question_from_db']));
+
+    array_push($_SESSION['to_send'], (int)$_POST['add_question_from_db_id']);
+
     array_push($themes_array, $_POST['add_question_from_db_theme']);
+    array_push($_SESSION['themes_array'], $_POST['add_question_from_db_theme']);
   }
 }
 
@@ -226,42 +226,44 @@ if (isset($_POST['form_add_done'])){
 	unset($_POST['question'], $_POST['c_form_add_done']);
 	array_push($result_array, $construct);
 	$_SESSION['result_array'] = $result_array;
-  array_push($_SESSION['to_send'], true);
+  array_push($_SESSION['to_send'], -1);
 }
 
-#-------------- add test to db ------------------
-
-if (isset($_POST['add_test_to_db'])){
-	if (conn_check($conn)){
-		$add_test_sql = "INSERT INTO tests(name, test) VALUES('".$_POST['test_name']."', '".json_encode($result_array, JSON_UNESCAPED_UNICODE)."')";
-		if($conn->query($add_test_sql)){
-			$error_array["success_add_test"] = true;
-		} else{
-			echo "Ошибка: " . $conn->error;
-		}
-	}
-}
-
-#----------------- add questions to db -------------------------
+# adding tests to db
 
 if (isset($_POST['add_questions_to_db']) || isset($_POST['add_test_to_db'])){
-	if (conn_check($conn)){
-		for ($i = 0; $i < count($result_array); $i++){
-      if ($_SESSION['to_send'][$i]){
-        $add_questions_sql = "INSERT INTO questions(question, theme) VALUES('".json_encode($result_array[$i], JSON_UNESCAPED_UNICODE)."', '".$themes_array[$i]."')";
-        if (!$conn->query($add_questions_sql)) {
+  if (conn_check($conn)){
+    $test_array = array();
+    for ($i = 0; $i < count($result_array); $i++) {
+      if ($_SESSION['to_send'][$i] == -1) {
+        $add_questions_sql = "INSERT INTO questions(question, theme) VALUES('" . json_encode($result_array[$i], JSON_UNESCAPED_UNICODE) . "', '" . $themes_array[$i] . "')";
+        if ($conn->query($add_questions_sql)) {
+          array_push($test_array, $conn->insert_id);
+        }else{
           echo "Ошибка: " . $conn->error;
         }
+      }else{
+        array_push($test_array, $_SESSION['to_send'][$i]);
       }
-		}
-		unset($_POST['test_name']);
-		$error_array["success_add_questions"] = true;
-		$_SESSION['result_array'] = [];
+    }
+
+    if (isset($_POST['add_test_to_db'])){
+      $add_test_sql = "INSERT INTO tests(name, test) VALUES('".$_POST['test_name']."', '".json_encode($test_array, JSON_UNESCAPED_UNICODE)."')";
+      if($conn->query($add_test_sql)){
+        $error_array["success_add_test"] = true;
+      } else{
+        echo "Ошибка: " . $conn->error;
+      }
+    }
+
+    unset($_POST['test_name']);
+    $error_array["success_add_questions"] = true;
+    $_SESSION['result_array'] = [];
     $_SESSION['to_send'] = [];
     $_SESSION['themes_array'] = [];
     $themes_array = array();
-		$result_array = array();
-	}
+    $result_array = array();
+  }
 }
 
 # ----------------- select all themes ---------------------------

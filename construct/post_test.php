@@ -116,7 +116,7 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
         echo "<div class='test_output_form'><h2 style='margin-bottom: 20px; font-size: 30px;'>Тест №".$_GET['test_id'].": ".$name."</h2>";
 
         for ($i = 0; $i < count($test); $i++){
-          $question = $test[$i];
+          $question = select_question($conn, $test[$i]);
           $preview_type = $question[4];
           echo '<div class="test_output_item">';
 

@@ -10,12 +10,6 @@ check_the_login("../");
 $login = $_COOKIE['login'];
 session_start();
 
-if ($_SESSION['refresh'] == null){
-  $_SESSION['refresh'] = " ";
-  header("Refresh: 0");
-}else{
-  $_SESSION['refresh'] = null;
-}
 ?>
 
 <!doctype html>
@@ -75,7 +69,7 @@ if ($_SESSION['refresh'] == null){
             <input type='hidden' name='id' value='".$id."'>
             <input type='hidden' name='position' value='".$i."'>
             <input type='hidden' name='duration' value='".$time."'>
-            <input class='my_test_btn' type='submit' value='Начать тестирование'>
+            <button class='my_test_btn' type='submit'>Начать тестирование</button>
           </form>
           ";
         }else{

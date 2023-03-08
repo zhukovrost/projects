@@ -36,6 +36,7 @@ if ($select_result = $conn->query($select_sql)){
     echo "<h3>".$q_array[0]."</h3>";
     echo "<input type='hidden' value='".$item['question']."' name='add_question_from_db'>";
     echo "<input type='hidden' value='".$item['theme']."' name='add_question_from_theme'>";
+    echo "<input type='hidden' value='".$item['id']."' name='add_question_from_db_id'>";
     echo "<input type='submit' value='Добавить'></form>";
   }
 }

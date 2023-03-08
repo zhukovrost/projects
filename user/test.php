@@ -92,8 +92,10 @@ $end - время окончания тестирования формата tim
         if (empty($_POST['test_input'])){
           $amount = 0;
           $right_answers = 0;
+          $not_answered = $all_questions;
         }else{
           $_SESSION['result'] = true;
+          $not_answered = 0;
 
           $answer = $_POST['test_input'];
           $right_answers = 0;
@@ -113,9 +115,11 @@ $end - время окончания тестирования формата tim
                 array_push($ids_to_check, $i);
                 array_push($answers_to_check, $answer[$i]);
               }
+            }else{
+              $not_answered++;
             }
           }
-          $wrong_answers = $all_questions - count($ids_to_check) - $right_answers;
+          $wrong_answers = $all_questions - count($ids_to_check) - $right_answers - $not_answered;
           $amount = count($ids_to_check);
         }
 
@@ -151,11 +155,6 @@ $end - время окончания тестирования формата tim
 
         echo "<div id='result_pie'></div>"; # pie diagram
         echo "<a class='my_test_btn' href='my_tests.php'>Назад</a>";
-
-      } else if ($_SESSION['result']) {
-        # --------- bug fix ----------
-        $_SESSION = array();
-        header("Location: my_tests.php");
 
       } else {
         # -------------------- TEST PAGE ----------------------
@@ -258,11 +257,13 @@ $end - время окончания тестирования формата tim
           if ($right_answers != 0){ echo $right_answers; }
           if ($wrong_answers != 0){ if ($right_answers != 0){ echo ", "; } echo $wrong_answers; }
           if (count($ids_to_check) != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo count($ids_to_check); }
+          if ($not_answered != 0){ if ($right_answers != 0 || $wrong_answers != 0 || count($ids_to_check) != 0){ echo ", "; } echo $not_answered; }
           ?>],
         labels: [<?php
           if ($right_answers != 0){ echo "'Правильные ответы'"; }
           if ($wrong_answers != 0){ if ($right_answers != 0){ echo ", "; } echo "'Неправильные ответы'"; }
           if (count($ids_to_check) != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo "'На проверке'"; }
+          if ($not_answered){ if ($right_answers != 0 || $wrong_answers != 0 || count($ids_to_check) != 0){ echo ", "; } echo "Не отвечено"; }
           ?>],
         type: 'pie'
     }];
