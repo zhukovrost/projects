@@ -456,7 +456,28 @@ p, a {
 }
 
 .exercise img{
-	width: 30%;
+	width: 20%;
+}
+
+.construct_form *{
+	margin: auto;
+}
+.construct_form{
+	width: 50%;
+	border: 1px black solid;
+	background-color: #F2F2F2;
+	margin: 5px auto;
+	padding: 10px;
+}
+
+.construct_form table{
+	border-collapse: collapse;
+}
+.construct_form table th, .construct_form table td{
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+	width: 14%;
 }
 
 /* ===============INDEX.html===================== */
