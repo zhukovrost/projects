@@ -272,7 +272,14 @@ main::after {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    animation: card_open1 .8s 3s forwards ease-in-out;
+}
+
+.card_cover_second .card{
+    animation: card_open1 .8s .7s forwards ease-in-out;
+}
+
+.card_cover_first .card{
+    animation: card_open1 .8s .7s forwards ease-in-out;
 }
 
 @keyframes card_open1 {
@@ -307,9 +314,31 @@ main::after {
     height: 100%;
     background-color:#0D0D0D;
     clip-path: circle(120px at center);
-    animation: card_open2  .8s 3s forwards ease-in-out;
 }
 
+.card_cover_second .card .circle::before{
+    animation: card_open2  .8s .7s forwards ease-in-out;
+}
+
+.card_cover_first .card .circle::before{
+    animation: card_open2  .8s .7s forwards ease-in-out;
+}
+
+.card_cover_third .card .circle{
+    --sq-animation: none;
+}
+
+.card_cover_third .card .circle::before{
+    animation: var(--sq-animation);
+}
+
+.card_cover_fourth .card .circle{
+    --sq-animation: none;
+}
+
+.card_cover_fourth .card .circle::before{
+    animation: var(--sq-animation);
+}
 
 @keyframes card_open2 {
     from {
@@ -330,7 +359,10 @@ main::after {
     transition: .5s;
     visibility: hidden;
     color: #F2F2F2;
-    animation: card_open3 .4s 3.25s forwards ease-in-out;
+}
+
+.card_cover_first .card .content{
+    animation: card_open3 .4s 1.2s forwards ease-in-out;
 }
 
 @keyframes card_open3 {
@@ -342,6 +374,35 @@ main::after {
   
     to {
         left: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.card_cover_second .card .content{
+    position: relative;
+    width: 50%;
+    left: 20%;
+    padding: 40px 20px 40px 40px;
+    left: 20%;
+    transition: .5s;
+    visibility: hidden;
+    color: #F2F2F2;
+}
+
+.card_cover_second .card .content{
+    animation: card_open6 .4s 1.2s forwards ease-in-out;
+}
+
+@keyframes card_open6 {
+    from {
+        left: 20%;
+        opacity: 0;
+        visibility: hidden;
+    }
+  
+    to {
+        left: 45%;
         opacity: 1;
         visibility: visible;
     }
@@ -362,7 +423,10 @@ main::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.45);
-    animation: card_open4 .4s 3s forwards ease-in-out;
+}
+
+.card_cover_first .card .logo{
+    animation: card_open4 .4s 1.3s forwards ease-in-out;
 }
 
 @keyframes card_open4 {
@@ -382,7 +446,7 @@ main::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.45);
-    animation: card_open5 .4s 3s forwards ease-in-out;
+    animation: card_open5 .4s 1.3s forwards ease-in-out;
 }
 
 @keyframes card_open5 {
@@ -394,32 +458,6 @@ main::after {
     to {
         left: 15%;
         transform: translate(-50%, -50%) scale(0.7);
-    }
-}
-
-.card_cover_second .card .content{
-    position: relative;
-    width: 50%;
-    left: 20%;
-    padding: 40px 20px 40px 40px;
-    left: 20%;
-    transition: .5s;
-    visibility: hidden;
-    color: #F2F2F2;
-    animation: card_open6 .4s 3.25s forwards ease-in-out;
-}
-
-@keyframes card_open6 {
-    from {
-        left: 20%;
-        opacity: 0;
-        visibility: hidden;
-    }
-  
-    to {
-        left: 45%;
-        opacity: 1;
-        visibility: visible;
     }
 }
 

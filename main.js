@@ -32,10 +32,23 @@ document.addEventListener("DOMContentLoaded", function() {
     
     }, true)
 
+    document.addEventListener('scroll', function(){
+        if(window.scrollY > 300){
+            document.querySelector('.card_cover_third .card').style = 'animation: card_open1 .8s 0s forwards ease-in-out;';
+            document.querySelector('.card_cover_fourth .card').style = 'animation: card_open1 .8s 0s forwards ease-in-out;';
+            document.querySelector('.card_cover_third .card .circle').style.setProperty('--sq-animation', 'card_open2  .8s 0s forwards ease-in-out');
+            document.querySelector('.card_cover_fourth .card .circle').style.setProperty('--sq-animation', 'card_open2  .8s 0s forwards ease-in-out');
+            document.querySelector('.card_cover_third .card .content').style = 'animation: card_open3 .4s .5s forwards ease-in-out;';
+            document.querySelector('.card_cover_fourth .card .content').style = 'animation: card_open6 .4s .5s forwards ease-in-out;';
+            document.querySelector('.card_cover_third .card .logo').style = 'animation: card_open4 .4s .6s forwards ease-in-out;';
+            document.querySelector('.card_cover_fourth .card .logo').style = 'animation: card_open5 .4s .6s forwards ease-in-out;';
+        }
+    })
 
     // =========Logout btn==========
     let width_of_user_name = this.querySelector('header .user_name').getBoundingClientRect().width;
     this.querySelector('header .header_logout_btn').style.width = width_of_user_name + 'px';
 
+    
     
 });
