@@ -121,7 +121,7 @@ if (isset($_POST['reg_done'])){
                 ?>
             </div>
           </div>
-          <img class="" src="img/C.png" alt="">
+        <img class="first_img" src="img/C.png" alt="">
 				<img class="second_img" src="img/person_studying.png" alt="">
 				<img class="third_img" src="img/B.png" alt="">
 				<img class="fourth_img" src="img/computer.png" alt="">

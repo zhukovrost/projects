@@ -72,6 +72,9 @@ $end - время окончания тестирования формата tim
   <script src='https://cdn.plot.ly/plotly-2.18.0.min.js'></script>
 </head>
 <body>
+<header class="tests_header">
+		<a class="back_button" href="../index.php">На главную</a>
+</header>
 <main class="question_main">
 
   <div class="container">
@@ -147,7 +150,7 @@ $end - время окончания тестирования формата tim
         # ----------------- TEXT OUTPUT ----------------
 
         echo "<div id='result_pie'></div>"; # pie diagram
-        echo "<a href='my_tests.php'>Назад</a>";
+        echo "<a class='my_test_btn' href='my_tests.php'>Назад</a>";
 
       } else if ($_SESSION['result']) {
         # --------- bug fix ----------
@@ -200,7 +203,7 @@ $end - время окончания тестирования формата tim
         }
         echo '
         <div class="test_finish_button">
-          <input type="submit" class="button" value="Завершить тестирование">
+          <input type="submit" class="my_test_btn" value="Завершить тестирование">
         </div>
         ';
       }
@@ -227,7 +230,7 @@ $end - время окончания тестирования формата tim
       time = 0;
     });
 
-    //Если пользователь начала тестирование то запускается таймер
+    //Если пользователь начал тестирование то запускается таймер
     let IntervalTimer = setInterval(UpdateTime, 1000);
 
     function UpdateTime(){

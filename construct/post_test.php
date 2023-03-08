@@ -34,7 +34,7 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
 }
 ?>
 </header>
-  <main class="question_main">
+  <main class="construct_main">
     <div class="container">
     <?php
 
@@ -75,7 +75,7 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
           $id = $item['id'];
           $name = $item['name'];
 
-          echo "<a href='post_test.php?test_id=".$id."'>".$id.": ".$name."</a><br>";
+          echo "<a class='construct_btn' href='post_test.php?test_id=".$id."'>".$id.": ".$name."</a>";
         }
         echo "</div>";
       }
@@ -95,7 +95,7 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
         <input name="time_to_do" type="number" value="15">
         <label for="time_to_do">Время на тест (в минутах)</label>
         <div class="test_finish_button">
-          <input type="submit" class="button" value="Выложить тест" name="finish_test">
+          <input type="submit" class="construct_btn" value="Выложить тест" name="finish_test">
         </div>   
         <input type="hidden" name="push_id" value="'.$_GET['test_id'].'">
         ';

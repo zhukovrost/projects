@@ -33,6 +33,9 @@ if ($_SESSION['refresh'] == null){
 </head>
 <body>
 <main class="my_tests_main">
+<header class="tests_header">
+		<a class="back_button" href="../index.php">На главную</a>
+</header>
   <h1>Мои тесты</h1>
   <?php
   # -------- errors -------------

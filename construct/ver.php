@@ -60,7 +60,7 @@ if (isset($_POST['id'])){
   <a class="back_button" href="ver.php">К ручной проверке</a>
   <a class="back_button" href="../index.php">На главную</a>
 </header>
-<main>
+<main class="construct_main">
   <?php
   if ($error_array['success_verification']){
     echo "<label class='success'>Успешная проверка</label>";
@@ -80,16 +80,16 @@ if (isset($_POST['id'])){
           $test = json_decode($item2['test']);
           $test_name = $item2['name'];
         }
-        echo "<form method='post' style='border: black solid 1px; background-color: lightgrey; margin: 2px;'>
-        <label>".$test_name." (".$login."):</label><br>";
+        echo "<form class='construct_ver_form' method='post'>
+        <label>".$test_name." (".$login."):</label>";
         for ($i = 0; $i < count($answers_ids); $i++){
           $answer_id = $answers_ids[$i];
           # print answers with checkboxes
-          echo "<input type='checkbox' name='count[]'><label>".$test[$answer_id][0]."</label><br>";
-          echo "<label>".$answers[$i]."</label><br>";
+          echo "<div><input type='checkbox' name='count[]'><label>".$test[$answer_id][0]."</label></div>";
+          echo "<label>".$answers[$i]."</label>";
         }
         echo "<input type='hidden' name='id' value='".$id."'>";
-        echo "<input type='submit'><hr>";
+        echo "<input class='construct_btn ver_btn' type='submit'>";
         echo "</form>";
       }
     }

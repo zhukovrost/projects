@@ -77,7 +77,7 @@ if (isset($_POST['log_done'])){
 					if (isset($_GET['please_log'])){ echo "<p class=''> Пожалуйста авторизуйтесь</p>"; }
           if (isset($_GET['reg'])){ echo "<p class=''>Регистрация прошла успешно, пожалуйста авторизуйтесь</p>"; }
 				?>
-                <button class="button_login" type="submit" class="button" name="log_done">Войти </button>
+                <button class="button_login" type="submit" name="log_done">Войти </button>
                 <img class="first_img" src="img/A.png" alt="">
 				<img class="second_img" src="img/Book_open.png" alt="">
 				<img class="third_img" src="img/C.png" alt="">
