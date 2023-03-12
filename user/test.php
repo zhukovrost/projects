@@ -98,7 +98,7 @@ $end - время окончания тестирования формата tim
         }else{
           $_SESSION['result'] = true;
           $not_answered = 0;
-
+          $ids_to_check = array();
           $answer = $_POST['test_input'];
           $right_answers = 0;
           $answers_to_check = array();
@@ -258,14 +258,14 @@ $end - время окончания тестирования формата tim
         values: [<?php
           if ($right_answers != 0){ echo $right_answers; }
           if ($wrong_answers != 0){ if ($right_answers != 0){ echo ", "; } echo $wrong_answers; }
-          if (count($ids_to_check) != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo count($ids_to_check); }
-          if ($not_answered != 0){ if ($right_answers != 0 || $wrong_answers != 0 || count($ids_to_check) != 0){ echo ", "; } echo $not_answered; }
+          if ($amount != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo $amount; }
+          if ($not_answered != 0){ if ($right_answers != 0 || $wrong_answers != 0 || $amount != 0){ echo ", "; } echo $not_answered; }
           ?>],
         labels: [<?php
           if ($right_answers != 0){ echo "'Правильные ответы'"; }
           if ($wrong_answers != 0){ if ($right_answers != 0){ echo ", "; } echo "'Неправильные ответы'"; }
-          if (count($ids_to_check) != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo "'На проверке'"; }
-          if ($not_answered){ if ($right_answers != 0 || $wrong_answers != 0 || count($ids_to_check) != 0){ echo ", "; } echo "Не отвечено"; }
+          if ($amount != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo "'На проверке'"; }
+          if ($not_answered){ if ($right_answers != 0 || $wrong_answers != 0 || $amount != 0){ echo ", "; } echo "Не отвечено"; }
           ?>],
         type: 'pie'
     }];
