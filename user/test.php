@@ -94,6 +94,7 @@ $end - время окончания тестирования формата tim
         if (empty($_POST['test_input'])){
           $amount = 0;
           $right_answers = 0;
+          $wrong_answers = 0;
           $not_answered = $all_questions;
         }else{
           $_SESSION['result'] = true;
