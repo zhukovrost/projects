@@ -220,7 +220,7 @@ $end - время окончания тестирования формата tim
   // ===========TIMER===========
 
     // Значение времени
-    let time = <?php echo (int)$duration; ?>
+    let time = <?php echo (int)$duration; ?>;
     const timer = document.querySelector('.timer p');
 
     const FinsishButton = document.querySelector('.test_finish_button input');
