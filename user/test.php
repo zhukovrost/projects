@@ -265,7 +265,7 @@ $end - время окончания тестирования формата tim
           if ($right_answers != 0){ echo "'Правильные ответы'"; }
           if ($wrong_answers != 0){ if ($right_answers != 0){ echo ", "; } echo "'Неправильные ответы'"; }
           if ($amount != 0){ if ($right_answers != 0 || $wrong_answers != 0){ echo ", "; } echo "'На проверке'"; }
-          if ($not_answered){ if ($right_answers != 0 || $wrong_answers != 0 || $amount != 0){ echo ", "; } echo "Не отвечено"; }
+          if ($not_answered){ if ($right_answers != 0 || $wrong_answers != 0 || $amount != 0){ echo ", "; } echo "'Не отвечено'"; }
           ?>],
         type: 'pie'
     }];
