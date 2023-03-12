@@ -66,20 +66,14 @@ if (isset($_POST['message']) && check_the_login("../", false)){
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Montserrat+Alternates:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <div class="container">
+<header class="tests_header">
+		<a class="back_button" href="../index.php">На главную</a>
+</header>
+<main>
+  <div class="container reports_container">
     <?php if ($error_array['fill_all_the_fields']){ print_warning("Заполните все поля"); } ?>
-    <section style="width: 70%; border: black 2px solid; background-color: white; padding: 10px; margin: 5px auto">
-      <h3 style="font-size: 40px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cum maiores, nihil nulla quas repellendus! Accusamus architecto deleniti eveniet excepturi illo incidunt ipsa perspiciatis similique tempora vel veniam, voluptates voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid architecto cupiditate dignissimos earum est et impedit ipsa ipsam minus odit porro praesentium quae, quidem quis rerum saepe sit voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi, consectetur corporis dicta dolor expedita inventore labore nemo nesciunt nisi sunt, tempora temporibus tenetur? Animi illum nobis odit sed similique!</h3>
-    </section>
-    <section style="width: 70%; border: black 2px solid; background-color: white; padding: 10px; margin: 5px auto">
-      <?php
-      if ($page == 1){
-        echo "<div class='triangle-left'><</div>";
-      }else{
-        echo "<a class='triangle-left' href='reports.php?page=". ($page - 1) ."'><</a>";
-      }
-      ?>
+    <h1 class="title">Отзывы</h1>
+    <section>
       <div>
         <?php
         if ($select_result = $conn -> query($select_sql)){
@@ -90,7 +84,7 @@ if (isset($_POST['message']) && check_the_login("../", false)){
             $date = $note['date'];
             $files = json_decode($note['files']);
 
-            echo "<div class='report_item feedback_block'><p class='report_item_name'>".$user." (Оценка - ".$rate."):</p><p>".$message."</p><p class='report_item_date'>".$date."</p></div>";
+            echo "<div class='report_item feedback_block'><p class='report_item_name'>".$user." (Оценка - ".$rate."):</p><p class='report_item_date'>".$date."</p><p>".$message."</p></div>";
           }
           $select_result->free();
         }else{
@@ -98,17 +92,21 @@ if (isset($_POST['message']) && check_the_login("../", false)){
         }
         ?>
       </div>
-      <?php
-      if ($page == $total_pages){
-        echo "<div class='triangle-right'>></div>";
-      }else{
-        echo "<a class='triangle-right' href='reports.php?page=". ($page + 1) ."'>></a>";
-      }
-      echo "<p class='page_reports'>страница ".$page."/".$total_pages."</p>";
-      ?>
-    </section>
-    <section style="width: 70%; border: black 2px solid; background-color: white; padding: 10px; margin: 5px auto">
-      <h3 style="font-size: 40px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cum maiores, nihil nulla quas repellendus! Accusamus architecto deleniti eveniet excepturi illo incidunt ipsa perspiciatis similique tempora vel veniam, voluptates voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid architecto cupiditate dignissimos earum est et impedit ipsa ipsam minus odit porro praesentium quae, quidem quis rerum saepe sit voluptas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi, consectetur corporis dicta dolor expedita inventore labore nemo nesciunt nisi sunt, tempora temporibus tenetur? Animi illum nobis odit sed similique!</h3>
+      <div class="pages">
+        <?php
+        if ($page == 1){
+          echo "<div class='triangle-left'></div>";
+        }else{
+          echo "<a class='triangle-left' href='reports.php?page=". ($page - 1) ."'></a>";
+        }
+        echo "<p class='page_reports'>страница ".$page."/".$total_pages."</p>";
+        if ($page == $total_pages){
+          echo "<div class='triangle-right'></div>";
+        }else{
+          echo "<a class='triangle-right' href='reports.php?page=". ($page + 1) ."'></a>";
+        }
+        ?>
+      </div>
     </section>
     <?php
     if (check_the_login("../", false)){
@@ -118,6 +116,7 @@ if (isset($_POST['message']) && check_the_login("../", false)){
     }
     ?>
   </div>
-
+  <?php include "../templates/footer.html"; ?>
+</main>
 </body>
 </html>

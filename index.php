@@ -68,13 +68,14 @@ conn_check($conn);
     <nav>
       <ul>
         <li><a href="">Duolingo English Test</a></li>
-        <li><a href="user/my_tests.php">My tests</a>
+        <li class="second_li"><a href="user/my_tests.php">My tests</a>
           <ul>
             <li><a href="#">PTE</a></li>
             <li><a href="#">IELTS</a></li>
             <li><a href="#">TOEFL</a></li>
             <li><a href="#">GMAT</a></li>
             <li><a href="#">SAT</a></li>
+            <li><a href="#">Cambridge</a></li>
           </ul>
         </li>
         <li class="third_li"><a href="#">Grammar</a>
@@ -82,7 +83,7 @@ conn_check($conn);
             <li><a href="#">Vocabulary</a></li>
           </ul>
         </li>
-        <li><a href="#">Cambridge</a></li>
+        <li><a href="reports/reports.php">Reports</a></li>
         <li><a href="#">Other</a></li>
       </ul>
     </nav>
