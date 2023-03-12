@@ -163,7 +163,7 @@ $end - время окончания тестирования формата tim
         echo "<input type='hidden' name='finish_test' value='1'>";
 
         for ($i = 0; $i < count($test); $i++){
-          $question = $test[$i];
+          $question = select_question($conn, $test[$i]);
           $preview_type = $question[4];
           echo '<div class="test_output_item">';
 
