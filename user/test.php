@@ -7,6 +7,8 @@ conn_check($conn);
 session_start();
 check_the_login("../");
 
+$ids_to_check = array();
+
 $login = $_COOKIE['login'];
 $error_array = array(
   "success_verification" => false
@@ -99,7 +101,6 @@ $end - время окончания тестирования формата tim
 
           $answer = $_POST['test_input'];
           $right_answers = 0;
-          $ids_to_check = array();
           $answers_to_check = array();
           for ($i = 0; $i < $all_questions; $i++){
             $question = select_question($conn, $test[$i]);
