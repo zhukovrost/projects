@@ -72,31 +72,36 @@ if (isset($_POST['id'])){
   }
   $select_sql = "SELECT id, login, test_id, answers, answers_ids FROM verification_tests ORDER BY id DESC";
   if ($select_result = $conn->query($select_sql)){
-    foreach ($select_result as $item){
-      $id = $item['id'];
-      $login = $item['login'];
-      $test_id = (int)$item['test_id'];
-      $answers = json_decode($item['answers']);
-      $answers_ids = json_decode($item['answers_ids']);
-      # select questions
-      $select_test_sql = "SELECT test, name FROM tests WHERE id=".$test_id;
-      if ($select_test_result = $conn->query($select_test_sql)){
-        foreach ($select_test_result as $item2){
-          $test = json_decode($item2['test']);
-          $test_name = $item2['name'];
-        }
-        echo "<form class='construct_ver_form' method='post'>
+    $rowsCount = $select_result->num_rows;
+    if ($rowsCount != 0){
+      foreach ($select_result as $item){
+        $id = $item['id'];
+        $login = $item['login'];
+        $test_id = (int)$item['test_id'];
+        $answers = json_decode($item['answers']);
+        $answers_ids = json_decode($item['answers_ids']);
+        # select questions
+        $select_test_sql = "SELECT test, name FROM tests WHERE id=".$test_id;
+        if ($select_test_result = $conn->query($select_test_sql)){
+          foreach ($select_test_result as $item2){
+            $test = json_decode($item2['test']);
+            $test_name = $item2['name'];
+          }
+          echo "<form class='construct_ver_form' method='post'>
         <label>".$test_name." (".$login."):</label>";
-        for ($i = 0; $i < count($answers_ids); $i++){
-          $answer_id = $answers_ids[$i];
-          # print answers with checkboxes
-          echo "<div><input type='checkbox' name='count[]'><label>".$test[$answer_id][0]."</label></div>";
-          echo "<label>".$answers[$i]."</label>";
+          for ($i = 0; $i < count($answers_ids); $i++){
+            $answer_id = $answers_ids[$i];
+            # print answers with checkboxes
+            echo "<div><input type='checkbox' name='count[]'><label>".$test[$answer_id][0]."</label></div>";
+            echo "<label>".$answers[$i]."</label>";
+          }
+          echo "<input type='hidden' name='id' value='".$id."'>";
+          echo "<input class='construct_btn ver_btn' type='submit'>";
+          echo "</form>";
         }
-        echo "<input type='hidden' name='id' value='".$id."'>";
-        echo "<input class='construct_btn ver_btn' type='submit'>";
-        echo "</form>";
       }
+    }else{
+      print_success_message('Все тесты проверены!');
     }
   }
   ?>

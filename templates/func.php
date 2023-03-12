@@ -5,7 +5,6 @@
 	function clear_post($loc){
 		if (isset($_POST)){
 			$_POST = [];
-			return true;
 			header('Location: '.$loc);
 		}else{
 			return false;
@@ -15,7 +14,6 @@
 	function conn_check($conn){
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
-			return false;
 		}else{
 			return true;
 		}

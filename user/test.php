@@ -219,7 +219,7 @@ $end - время окончания тестирования формата tim
   // ===========TIMER===========
 
     // Значение времени
-    let time = 3600
+    let time = <?php echo (int)$duration; ?>
     const timer = document.querySelector('.timer p');
 
     const FinsishButton = document.querySelector('.test_finish_button input');
@@ -229,7 +229,7 @@ $end - время окончания тестирования формата tim
       time = 0;
     });
 
-    //Если пользователь начал тестирование то запускается таймер
+    //Если пользователь начал тестирование, то запускается таймер
     let IntervalTimer = setInterval(UpdateTime, 1000);
 
     function UpdateTime(){

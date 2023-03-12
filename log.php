@@ -23,7 +23,7 @@ if (isset($_POST['log_done'])){
 		$log_login = $_POST['log_login'];
 		$log_password = $_POST['log_password'];
 
-		$log_sql = "SELECT * FROM users WHERE login='".$log_login."' AND password='".$log_password."'";
+		$log_sql = "SELECT * FROM users WHERE login='".$log_login."' AND password='".md5($log_password)."'";
 
 		if($log_result = $conn->query($log_sql)){
 				$rowsCount = $log_result->num_rows;
