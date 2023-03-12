@@ -473,16 +473,6 @@ main::after {
     transition: .5s;
 }
 
-.card_cover_fourth .card:hover .logo{
-    left: 15%;
-    transform: translate(-50%, -50%) scale(0.7);
-    transition-delay: .2s;
-}
-
-.card_cover_fourth .card:hover .content{
-    left: 45%;
-}
-
 /* ==========FOOTER========== */
 
 footer{
