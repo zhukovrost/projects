@@ -177,6 +177,10 @@ header nav ul .third_li:hover ul{
     height: 60px;
 }
 
+header nav ul .second_li:hover ul{
+    height: 372px;
+}
+
 nav li ul li{
     width: auto;
 }
@@ -860,7 +864,7 @@ footer a:hover{
     font-size: 20px;
 }
 
-.login_form .button_login, .registration_form .button_reg, .test_buton{
+.login_form .button_login, .registration_form .button_reg, .test_buton, .user_feedback_button{
     position: relative;
     width: 40%;
     padding: 15px 0px;
@@ -882,11 +886,11 @@ footer a:hover{
     margin-top: 25px;
 }
 
-.login_form .button_login:hover, .registration_form .button_reg:hover{
+.login_form .button_login:hover, .registration_form .button_reg:hover, .user_feedback_button:hover{
     color: #F2F2F2;
 }
 
-.login_form .button_login::before, .registration_form .button_reg::before{
+.login_form .button_login::before, .registration_form .button_reg::before, .user_feedback_button::before{
     content: '';
     position: absolute;
     top: 0;
@@ -899,7 +903,7 @@ footer a:hover{
     transition: .6s ease;
 }
 
-.login_form .button_login:hover::before, .registration_form .button_reg:hover::before{
+.login_form .button_login:hover::before, .registration_form .button_reg:hover::before, .user_feedback_button:hover::before{
     height: 190%;
 }
 
@@ -1137,4 +1141,182 @@ footer a:hover{
 
 .my_test_btn:hover{
     background-color: #0D0D0D;
+}
+
+
+
+
+
+/* ===================REPORTS================ */
+
+.reports_container h1{
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.reports_container section{
+    width: 70%;
+     border: black 2px solid;
+     background-color: white;
+    padding: 10px;
+    margin: 50px auto;
+}
+
+.pages{
+    margin: 60px 0px 20px;
+}
+
+.reports_container section .pages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reports_container section .pages .page_reports{
+    margin: 0px 10px;
+}
+
+.reports_container section .pages .triangle-left{
+    cursor: pointer;
+    margin-bottom: auto;
+    margin-top: auto;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 25px solid #121526;
+}
+
+.reports_container section .pages .triangle-right{
+    cursor: pointer;
+    margin-bottom: auto;
+    margin-top: auto;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #121526;
+}
+
+.reports_container section .pages a{
+    color: #0D0D0D;
+}
+
+.reports_container section .report_item_name{
+    color: #0D0D0D;
+    font-size: 30px;
+}
+
+.reports_container section .report_item_date{
+    font-size: 17px;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.reports_container section .report_item{
+    margin-bottom: 40px;
+}
+
+.reports_container h3{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.user_feedback_rating_wrapper:before{
+    content: "★★★★★";
+    color: #c2a239;
+    display: block;
+}
+
+.user_feedback_rating_wrapper{
+    margin-left: 3%;
+    position: relative;
+    font-size: 50px;
+    display: inline-block;
+}
+
+.user_feedback_rating{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+
+.user_feedback_rating_item{
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+.user_feedback_label{
+    flex: 0 0 10%;
+    height: 100%;
+    cursor: pointer;
+    color: #c2a750;
+}
+
+.user_feedback_label::before{
+    content: "★";
+    display: block;
+    transition: color .3s ease 0s;
+}
+
+.user_feedback_rating_item:checked,
+.user_feedback_rating_item:checked ~ .user_feedback_label{
+    color: #f7c72c;
+}
+
+.user_feedback_label:hover,
+.user_feedback_label:hover ~ .user_feedback_label,
+.user_feedback_label:checked ~ .user_feedback_label:hover{
+    color: #f7c72c;
+}
+
+.user_feedback_title{
+    text-align: center;
+    font-weight: 600;
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+.user_feedback_rating_title{
+    margin-top: 30px;
+    font-size: 35px;
+    margin-left: 3%;
+}
+
+.user_feedback_textarea{
+    margin: 30px 0px 10px;
+    margin-left: 5%;
+    background-color: #c7c7c7;
+    height: 250px;
+    font-size: 23px;
+    padding: 10px 20px;
+    width: 90%;
+}
+
+.user_feedback_button_cover{
+    text-align: end;
+    margin-right: 3%;
+}
+
+.user_feedback_button{
+    width: 20%;
+    height: 60px;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
