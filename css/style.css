@@ -292,6 +292,36 @@ p, a {
 
 /* ============ account.php ============= */
 
+.create_prog_button, .exit_button {
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 4px;
+	height: 45px;
+	font-size: 20px;
+	font-weight: 500;
+	color: #e4e4e4;
+	background-color: #7f49f2;
+	box-shadow: 0 4px #3F2140;
+	transition: .3s ease;
+}
+
+.exit_button{
+	height: 40px;
+	font-size: 18px;
+	padding: 10px 15px;
+}
+
+.create_prog_button:hover, .exit_button:hover {
+	background-color: #5832aa;
+	color: #ffffff;
+}
+.create_prog_button:active, .exit_button:active {
+	background-color: #3d2275 !important;
+}
+.create_prog_button:focus-visible, .exit_button:focus-visible {
+	box-shadow: 0 0 0 3px #3F2140;
+}
+
 .profile_card {
 	height: auto;
 	width: 80%;
@@ -1135,38 +1165,41 @@ footer a:hover{
 
 /* ============= search.php ============== */
 
-.search_btn {
+.search_btn, .searched_user_block a {
 	display: inline-block;	
-	box-sizing: border-box;
 	padding: 0 30px;
 	margin: 10px 0px;
 	border-radius: 4px;
 	height: 40px;
 	font-size: 14px;
 	font-weight: 500;
-	text-decoration: none;
 	color: #fff;
-	background-color: #6d3370;
-	box-shadow: 0 2px #3F2140;
-	cursor: pointer;
-	user-select: none;
-	appearance: none;
-	touch-action: manipulation;  
+	background-color: #7f49f2;
+	box-shadow: 0 4px #3F2140;
 	vertical-align: top;
 	transition: .3s ease;
 }
+
+.searched_user_block a{
+	color: #e9e9e9;
+	height: 35px;
+	padding: 10px 30px;
+}
+
 .search_btn:hover {
-	background-color: #943697;
+	background-color: #5632a3;
 }
-.search_btn:active {
-	background-color: #3F2140 !important;
+
+.searched_user_block a:hover{
+	background-color: #5632a3;
+	color: #fff;
 }
-.search_btn:focus-visible {
-	box-shadow: 0 0 0 3px lightskyblue;
+
+.search_btn:active, .searched_user_block a:active {
+	background-color: #3c2274 !important;
 }
-.search_btn:disabled {
-	background-color: #6c87b5;
-	pointer-events: none;
+.search_btn:focus-visible, .searched_user_block a:focus-visible {
+	box-shadow: 0 0 0 3px #7f49f2;
 }
 
 .searched_user_block{

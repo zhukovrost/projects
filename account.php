@@ -247,10 +247,8 @@ if ($data_array = $conn -> query($select_sql)){
       <?php
       if ($program_id == 0){
         echo '
-      <h2>Програм пока нет</h2>
-      <div class="button"> 
-        <a href="exercises/exercises.php" class="button">Создать программу</a> <!-- сделай здесть эту кнопку -->
-      </div>
+      <h2 class = "acc_title_prog">Програм пока нет</h2>
+      <a href="exercises/exercises.php" class="create_prog_button">Создать программу</a> <!-- сделай здесть эту кнопку -->
       ';
       }else{
         echo "<h2>Программа спортсмена:</h2>";
