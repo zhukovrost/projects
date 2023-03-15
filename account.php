@@ -176,7 +176,7 @@ if ($data_array = $conn -> query($select_sql)){
               <label>Пароль: <span>'.$password.'</span></label>
               <br>
               <label>Загрузить новую аватарку: </label>
-              <input type="file" name="load_avatar">
+              <input class="load_avatar_btn" type="file" name="load_avatar">
               <br>
             </div>
             <div class="physical_data">

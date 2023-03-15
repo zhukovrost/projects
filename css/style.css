@@ -278,15 +278,15 @@ p, a {
 	transform: translate(0, 0.25em);
 }
 
-.button_login:hover::before{
+.button_login:hover::before, .load_avatar_btn:hover::before{
 	transform: translate3d(0, 0.5em, -1em);
 }
 
-.button_login:active{
+.button_login:active, .load_avatar_btn:active{
 	transform: translate(0, 0.75em);
 }
 
-.button_login:active::before{
+.button_login:active::before, .load_avatar_btn:active::before{
 	transform: translate3d(0, 0em, -1em);
 }
 
@@ -380,6 +380,11 @@ p, a {
 	color: white;
 	background-color: #2f2f2f;
 }
+
+
+
+
+
 /* ============= exercise.php ================= */
 
 .main_exercise_block {
@@ -1102,6 +1107,40 @@ footer a:hover{
 }
 
 /* ============= search.php ============== */
+
+.search_btn {
+	display: inline-block;	
+	box-sizing: border-box;
+	padding: 0 30px;
+	margin: 10px 0px;
+	border-radius: 4px;
+	height: 40px;
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: none;
+	color: #fff;
+	background-color: #6d3370;
+	box-shadow: 0 2px #3F2140;
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;  
+	vertical-align: top;
+	transition: .3s ease;
+}
+.search_btn:hover {
+	background-color: #943697;
+}
+.search_btn:active {
+	background-color: #3F2140 !important;
+}
+.search_btn:focus-visible {
+	box-shadow: 0 0 0 3px lightskyblue;
+}
+.search_btn:disabled {
+	background-color: #6c87b5;
+	pointer-events: none;
+}
 
 .searched_user_block{
 	width: 100%;

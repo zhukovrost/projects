@@ -11,7 +11,7 @@ conn_check($conn);
 $data = file_get_contents("exercises.json");
 $exercises_array = json_decode($data, true);
 
-date_default_timezone_set('UTC+3');
+date_default_timezone_set('Europe/Moscow');
 
 $error_array = array(
   "holiday" => false,

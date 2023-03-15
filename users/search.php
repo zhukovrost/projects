@@ -54,7 +54,7 @@ conn_check($conn);
 <main>
   <form class="container">
     <input name="user" class="searchbar" type="text" placeholder="Введите имя и фамилию пользователя либо логин начиная с @">
-    <button type="submit">Искать</button> <!-- КНОПКА ИСКАТЬ (НАДО ЗАСТИЛИЗОВАТЬ!!!) -->
+    <button class="search_btn" type="submit">Искать</button> <!-- КНОПКА ИСКАТЬ (НАДО ЗАСТИЛИЗОВАТЬ!!!) -->
     <?php
     if (isset($_GET['user'])){
       # -------------- searching algorithm (creating a query depending on an input) ---------------------

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 07, 2023 at 04:30 PM
+-- Generation Time: Mar 15, 2023 at 07:49 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,6 +35,35 @@ CREATE TABLE `avatars` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `new_id` int(11) NOT NULL,
+  `user` varchar(32) NOT NULL,
+  `date` int(11) NOT NULL,
+  `personal` tinyint(1) NOT NULL DEFAULT 0,
+  `additional_info` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `new_id`, `user`, `date`, `personal`, `additional_info`) VALUES
+(1, 4, 'zhukovrost', 1677148290, 1, NULL),
+(2, 2, 'zhukovrost', 1677148384, 0, NULL),
+(3, 1, 'zhukovrost', 1678015430, 0, NULL),
+(4, 3, 'zhukovrost', 1678017718, 0, NULL),
+(5, 2, 'zhukovrost', 1678023801, 0, NULL),
+(6, 4, 'test1', 1678023936, 1, NULL),
+(7, 0, 'zhukovrost', 1678024468, 1, 'test1'),
+(8, 3, 'zhukovrost', 1678025759, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `userprograms`
 --
 
@@ -48,22 +77,8 @@ CREATE TABLE `userprograms` (
 --
 
 INSERT INTO `userprograms` (`id`, `program`) VALUES
-(1, '[[\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/4/60\",\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/3/30\"],[],[\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/4/60\",\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/3/30\"],[],[\"press/2/2/30\",\"press/2/3/30\",\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/4/60\",\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/3/30\"],[],[\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/4/60\",\"chest_and_shoulders/1/2/30\",\"chest_and_shoulders/1/3/30\"]]'),
-(2, '[[\"press/1/3/30\",\"press/1/5/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/2/30\"],[],[],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/2/30\"],[],[]]'),
-(3, '[[],[],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/2/30\"],[],[]]'),
-(4, '[[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[],[\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[]]'),
-(5, '[[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[],[],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"],[\"arms/1/2/30\",\"arms/1/4/30\",\"arms/1/4/30\"]]'),
-(6, '[[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\",\"legs/2/6/30\",\"legs/1/2/30\",\"chest_and_shoulders/1/3/30\"],[],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/6/30\"],[]]'),
-(7, '[[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"back/1/2/30\",\"back/1/3/30\",\"back/1/4/30\",\"back/1/6/30\",\"back/1/5/30\"],[\"arms/1/2/30\",\"arms/1/3/30\",\"arms/1/4/30\",\"arms/1/5/30\"],[\"press/1/2/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"back/1/2/30\",\"back/1/3/30\",\"back/1/4/30\",\"back/1/6/30\",\"back/1/5/30\"],[\"arms/1/2/30\",\"arms/1/3/30\",\"arms/1/4/30\",\"arms/1/5/30\"],[\"legs/2/7/30\",\"legs/1/2/30\",\"legs/1/3/60\",\"legs/1/4/20\",\"legs/1/5/60\"]]'),
-(8, '[[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/2/30\"],[]]'),
-(9, '[[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"],[],[],[],[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/2/6/30\",\"press/1/3/30\",\"press/1/2/30\",\"press/1/4/30\",\"press/1/5/30\"]]'),
-(10, '[[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/2/3/30\",\"press/1/4/30\",\"press/1/3/30\"],[]]'),
-(11, '[[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[],[],[],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/3/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"]]'),
-(12, '[[],[],[],[],[],[],[]]'),
-(13, '[[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[],[\"press/2/3/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\",\"press/1/2/30\"],[]]'),
-(14, '[[\"press/1/3/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/4/30\"],[],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/4/30\"],[],[],[\"press/1/3/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/4/30\",\"press/1/2/30\",\"press/1/4/30\"],[]]'),
-(15, '[[],[],[],[\"press/4/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/4/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[\"press/4/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\"],[]]'),
-(16, '[[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"],[\"press/1/4/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/3/30\",\"press/1/4/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\",\"press/1/5/30\"]]');
+(1, '[[\"press/1/2/30\",\"legs/1/2/30\",\"arms/1/2/30\"],[],[\"press/1/2/30\",\"legs/1/2/30\",\"arms/1/2/30\"],[],[\"press/1/2/30\",\"legs/1/2/30\",\"arms/1/2/30\"],[],[]]'),
+(2, '[[\"press/6/4/30\",\"press/2/3/30\",\"press/1/2/30\"],[],[\"arms/1/2/30\",\"arms/1/2/30\",\"arms/1/5/30\",\"arms/1/5/30\"],[],[\"back/1/2/30\",\"back/1/3/30\",\"back/1/4/30\"],[\"back/1/2/30\",\"back/1/3/30\",\"back/1/4/30\"],[\"press/6/4/30\",\"press/2/3/30\",\"press/1/2/30\"]]');
 
 -- --------------------------------------------------------
 
@@ -82,22 +97,23 @@ CREATE TABLE `users` (
   `avatar_id` int(32) UNSIGNED DEFAULT NULL,
   `weight` float(6,3) UNSIGNED NOT NULL,
   `height` float(6,3) UNSIGNED NOT NULL,
-  `sex` varchar(16) NOT NULL,
-  `date_of_birth` date NOT NULL,
+  `sex` varchar(1) NOT NULL,
+  `date_of_birth` int(11) NOT NULL,
   `program` int(11) UNSIGNED NOT NULL,
   `program_duration` int(10) UNSIGNED DEFAULT NULL,
   `calendar` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  `start_program` date DEFAULT NULL
+  `start_program` int(11) DEFAULT NULL,
+  `completed_program` tinyint(1) DEFAULT NULL,
+  `subscriptions` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '[]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `avatar_id`, `weight`, `height`, `sex`, `date_of_birth`, `program`, `program_duration`, `calendar`, `start_program`) VALUES
-(1, 'test1', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1111-11-11', 15, 3, '[[2,2,2,2,2,1,0],[0,0,0,1,1,1,0],[0,0,0,1,1,1,0],[0,0,0,1,1,2,2]]', '2023-01-07'),
-(2, 'test2', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'man', '1110-11-11', 14, 5, '[[2,2,2,2,2,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,1,0],[1,0,1,0,0,2,2]]', '2023-01-07'),
-(3, 'test3', 'testsurname', 'testname', 'testthirdname', 'sdafasd@dsafsdf', '123', NULL, 0.000, 0.000, 'woman', '2221-03-12', 16, 3, '[[2,2,2,2,2,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,1,1],[1,1,1,1,1,2,2]]', '2023-01-07');
+INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `password`, `avatar_id`, `weight`, `height`, `sex`, `date_of_birth`, `program`, `program_duration`, `calendar`, `start_program`, `completed_program`, `subscriptions`) VALUES
+(1, 'zhukovrost', 'Ростислав', 'Жуков', 'Сергеевич', 'rosf.zhukov@gmail.com', 'ZHU2006', NULL, 0.000, 0.000, 'm', 1141074000, 0, 0, '[]', 0, 0, '[]'),
+(2, 'test1', 'User_name', 'User_surname', 'User_thirdname', 'aaaaaaa@aaaaaaaaaa', '123', NULL, 0.000, 0.000, 'm', 952981200, 0, NULL, NULL, NULL, NULL, '[\"zhukovrost\"]');
 
 --
 -- Indexes for dumped tables
@@ -107,6 +123,12 @@ INSERT INTO `users` (`id`, `login`, `name`, `surname`, `thirdname`, `email`, `pa
 -- Indexes for table `avatars`
 --
 ALTER TABLE `avatars`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -132,16 +154,22 @@ ALTER TABLE `avatars`
   MODIFY `id` int(32) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `userprograms`
 --
 ALTER TABLE `userprograms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
