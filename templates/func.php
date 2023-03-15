@@ -214,7 +214,7 @@ function check_the_program($conn, $login){
     }
   }
   $select_result->free();
-  if ($program_id != 0){
+  if ($program_id == 0){
     header("Location: ../account.php?new_program_error=1");
   }
 }
