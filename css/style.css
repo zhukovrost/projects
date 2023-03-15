@@ -450,12 +450,39 @@ p, a {
 .exercise section input{
 	border: 1px black solid;
 	padding: 5px;
+	width: 80%;
 }
 
-.plus_button{
-	font-size: 32px;
-	padding: 8px 16px;
+.exercise button{
+	padding: 5px;
 	border: 1px black solid;
+	width: 30%;
+	margin: 0 auto;
+}
+
+.exercise img{
+	width: 20%;
+}
+
+.construct_form *{
+	margin: auto;
+}
+.construct_form{
+	width: 50%;
+	border: 1px black solid;
+	background-color: #F2F2F2;
+	margin: 5px auto;
+	padding: 10px;
+}
+
+.construct_form table{
+	border-collapse: collapse;
+}
+.construct_form table th, .construct_form table td{
+	border: 1px solid black;
+	padding: 5px;
+	text-align: center;
+	width: 14%;
 }
 
 /* ===============INDEX.html===================== */

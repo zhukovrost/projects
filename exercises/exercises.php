@@ -85,7 +85,7 @@ if ($_GET['page'] == "constructor"){
     # clear selected exercises ($_SESSION['construct_array'])
     $_SESSION['construct_array'] = array();
   }
-  elseif (isset($_POST['delete_exercise'])){
+  elseif (isset($_POST['delete_exercise_id'])){
     # deleting an exercise from $_SESSION['construct_array']
     $new_construct_array = array();
     for ($i = 0; $i < $_POST['delete_exercise_id']; $i++){ array_push($new_construct_array, $_SESSION['construct_array'][$i]); }
@@ -293,10 +293,40 @@ if (isset($_POST['weeks'])){
 
       # printing some text if there are no selected exercises
 
-      echo "<label>Вы не выбрали упражнения</label><br>";
-      echo "<label>Помните: выходные для слабаков!</label>";
+      echo "<h1 style='margin: auto; font-size: 32px;'>Вы не выбрали упражнения</h1>";
+      echo "<h2 style='margin: auto; font-size: 24px;'>Помните: выходные для слабаков!</h2>";
 
     }else{
+
+      echo "
+      <form class='construct_form' method='post'>
+        <table>
+        <tr>
+      ";
+      foreach ($week as $weekday){
+        echo "<th class='weekday_cell'>".$weekday."</th>";
+      }
+      echo "</tr><tr>";
+        # printing days menu
+      for ($i = 0; $i < 7; $i++){
+        if (isset($_SESSION['edit_day'])){
+          if ($_SESSION['edit_day'] == $i){
+            echo "<td><input id='".$i."' type='checkbox' name='day[]' value='".$i."' checked></td>";
+          }else {
+            echo "<td><input id='".$i."' type='checkbox' name='day[]' value='".$i."'></td>";
+          }
+        }else{
+          echo "<td><input id='".$i."' type='checkbox' name='day[]' value='".$i."'></td>";
+        }
+      }
+
+      echo "
+        </tr></table>
+      <input type='submit' name='add_to_program_array' value='Добавить в программу'>
+      <input type='submit' name='clear' value='Очистить конструктор полностью'>
+    </form>";
+
+      echo "<section class='exercise_list_block'>";
       for ($i = 0; $i < count($_SESSION['construct_array']); $i++){
 
         # printing selected exercises ($_SESSION['construct_array'])
@@ -306,51 +336,29 @@ if (isset($_POST['weeks'])){
         $exercise = $exercises_array[$exercise_id_explode[0]][$exercise_id_explode[1]][$exercise_id_explode[2]]; # select the exercise from $exercises_array by id
 
         echo "
-    <form method='post' class='together'>
-      <img src='".$exercise[3]."'>
-      <h4>".$exercise[1]."</h4>";
-
+    <form class='exercise' method='post' class='together'>
+      <img style='width: 15%;' src='".$exercise[3]."'>
+      <section>
+        <h4>".$exercise[1]."</h4> <!-- exercise name -->";
         # repeats input
-
         if ($exercise[0]){
-          echo "<label>Длительность (в секундах)<input name='change_repeats' type='number' value='".$repeats."'></label>";
+          echo "<p>Длительность (в секундах)</p>";
         }else{
-          echo "<label>Повторения<input type='number' name='change_repeats' value='".$repeats."'></label>";
+          echo "<p>Повторения</p>";
         }
-
-        # edit and delete exercise buttons
-
+        # posting an id of the exercise
         echo "
-      <input type='hidden' name='change_repeats_id' value='".$i."'>
-      <button type='submit'><img style='width: 100px; height: 100px' src='../img/icons/edit.png'></button>
-      <input type='hidden' name='delete_exercise_id' value='".$i."'>
-      <button type='submit' name='delete_exercise'><img style='width: 100px; height: 100px' src='../img/icons/bin.png'></button>
+         <input type='number' name='change_repeats' value='".$repeats."'>
+      </section>
+      <section style='justify-content: right; width: 35%'>
+        <input type='hidden' name='change_repeats_id' value='".$i."'>
+        <button type='submit'><img style='width: 40%' src='../img/icons/edit.png'></button>
+        <input type='hidden' name='delete_exercise_id' value='".$i."'>
+        <button type='submit'><img style='width: 40%' src='../img/icons/bin.png'></button>
+      </section>
     </form>";
       }
-
-      # add to program menu
-
-      echo "
-    <form method='post'>
-      <div>";
-      # printing days menu
-      for ($i = 0; $i < 7; $i++){
-        if (isset($_SESSION['edit_day'])){
-          if ($_SESSION['edit_day'] == $i){
-            echo "<label><input id='".$i."' type='checkbox' name='day[]' value='".$i."' checked>".$week[$i]."</label>";
-          }else {
-            echo "<label><input id='".$i."' type='checkbox' name='day[]' value='".$i."'>".$week[$i]."</label>";
-          }
-        }else{
-          echo "<label><input id='".$i."' type='checkbox' name='day[]' value='".$i."'>".$week[$i]."</label>";
-        }
-      }
-
-      echo "
-         </div>
-      <input type='submit' name='add_to_program_array' value='Добавить в программу'>
-      <input type='submit' name='clear' value='Очистить конструктор полностью'>
-    </form>";
+      echo '</seciton>';
     }
 
   }else{
@@ -386,7 +394,9 @@ if (isset($_POST['weeks'])){
            <input type='number' name='repeats' value='".$exercise[2]."'>
           </section>
           <input type='hidden' name='exercise' value='".$exercise_id."'>
-          <button class='plus_button' type='submit'>+</button>
+          <button style='border: none' type='submit'>
+            <img src='../img/icons/add_to_the_list.png'>
+          </button>
         </form>";
       }
       echo "</div>";

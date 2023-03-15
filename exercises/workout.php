@@ -28,7 +28,6 @@ if (isset($_POST['start'])){
   }
 }
 
-$arr = get_program_day($conn, $login);
 $day_now = $arr['day_now'];
 $week_now = $arr['week_now'];
 $completed = false;
@@ -40,6 +39,7 @@ if ($select_id_result = $conn->query($select_id_sql)){
     $calendar = json_decode($user['calendar']);
   }
   if ($program_id != 0){
+    $arr = get_program_day($conn, $login);
     $select_program_sql = "SELECT program FROM userprograms WHERE id='".$program_id."'";
     if ($select_program_result = $conn->query($select_program_sql)){
       foreach ($select_program_result as $item){
