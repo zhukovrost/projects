@@ -227,5 +227,5 @@ if (isset($_POST['finish'])){
     </div>
   </main>
 </body>
-<?php include "../templates/footer.html"; ?>
+
 </html>

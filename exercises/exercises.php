@@ -417,5 +417,4 @@ if (isset($_POST['weeks'])){
   ?>
 </main>
 </body>
-<?php include "../templates/footer.html"; ?>
 </html>
