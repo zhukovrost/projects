@@ -429,6 +429,12 @@ p, a {
 	padding: 0;
 }
 
+.start_program_form{
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+}
+
 .start_program_form h1{
 	font-size: 32px;
 	margin-bottom: 10px;
@@ -1283,4 +1289,52 @@ footer a:hover{
 	display: flex;
 	flex-direction: column;
 	width: auto;
+}
+
+
+
+/* ================EXERCISES============== */
+
+
+.change_btn, .remove_btn, .start_btn {
+	display: inline-block;	
+	padding: 0 30px;
+	margin: 10px 0px;
+	border-radius: 4px;
+	height: 40px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #fff;
+	background-color: #288a45;
+	box-shadow: 0 4px #163d29;
+	vertical-align: top;
+	transition: .3s ease;
+}
+
+.remove_btn{
+	background-color: #851919;
+}
+
+.change_btn:hover, .start_btn:hover {
+	background-color: #31a554;
+}
+
+.remove_btn:hover{
+	background-color: #941c1c;
+}
+
+.change_btn:active, .start_btn:active {
+	background-color: #36b95e !important;
+}
+
+.remove_btn:active{
+	background-color: #b62323 !important;
+}
+
+.change_btn:focus-visible, .start_btn:focus-visible{
+	box-shadow: 0 0 0 3px #123d1b;
+}
+
+.remove_btn:focus-visible{
+	box-shadow: 0 0 0 3px #440d0d;
 }

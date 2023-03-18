@@ -266,11 +266,11 @@ if (isset($_POST['weeks'])){
       <form action='exercises.php?page=constructor' method='post'>
         <input type='hidden' name='edit_construct_array' value='".json_encode($program)."'>
         <input type='hidden' name='edit_day' value='".json_encode(array($i))."'>
-        <button type='submit'>Изменить</button>
+        <button class='change_btn' type='submit'>Изменить</button>
       </form>
       <form method='post'>
         <input type='hidden' value='".$i."' name='delete_workout'>
-        <input type='submit' value='Удалить тренировку'>
+        <input class='remove_btn' type='submit' value='Удалить тренировку'>
       </form>";
       echo "</td>";
     }
@@ -282,7 +282,7 @@ if (isset($_POST['weeks'])){
       <h1>Укажите продолжительность выполнения данной программы в неделях</h1>
       <input class='start_program_form_input' name='weeks' type='number' value='3'>
       <br>
-      <button type='submit'>Начать данную программу</button>
+      <button class='start_btn' type='submit'>Начать данную программу</button>
     </form>";
 
   } elseif ($_GET['page'] == "constructor") {
