@@ -292,10 +292,10 @@ if (isset($_POST['weeks'])){
     if (!isset($_SESSION['construct_array']) || count($_SESSION['construct_array']) == 0){
 
       # printing some text if there are no selected exercises
-
-      echo "<h1 style='margin: auto; font-size: 32px;'>Вы не выбрали упражнения</h1>";
-      echo "<h2 style='margin: auto; font-size: 24px;'>Помните: выходные для слабаков!</h2>";
-
+      echo "<div style='width: 100%; text-align: center'>";
+      echo "<h1 style='margin: 30px auto; font-size: 40px;'>Вы не выбрали упражнения</h1>";
+      echo "<h2 style='margin: auto; font-size: 32px;'><span style='color: red'>Помните:</span> выходные для слабаков!</h2>";
+      echo "</div>";
     }else{
 
       echo "

@@ -364,8 +364,5 @@ if ($data_array = $conn -> query($select_sql)){
   }
   ?>
 </body>
-<?php
-include "templates/footer.html";
-$conn->close();
-?>
+<?php $conn->close(); ?>
 </html>
