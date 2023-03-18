@@ -28,6 +28,8 @@ if (isset($_POST['start'])){
   }
 }
 
+$arr = get_program_day($conn, $login);
+
 $day_now = $arr['day_now'];
 $week_now = $arr['week_now'];
 $completed = false;
