@@ -246,10 +246,10 @@ if ($data_array = $conn -> query($select_sql)){
     <section class="user_program_block">
       <?php
       if ($program_id == 0){
-        echo '
-      <h2 class = "acc_title_prog">Програм пока нет</h2>
-      <a href="exercises/exercises.php" class="create_prog_button">Создать программу</a> <!-- сделай здесть эту кнопку -->
-      ';
+        echo '<h2 class = "acc_title_prog">Програм пока нет</h2>';
+        if ($all_info){
+          echo '<a href="exercises/exercises.php" class="create_prog_button">Создать программу</a> <!-- сделай здесть эту кнопку -->';
+        }
       }else{
         echo "<h2>Программа спортсмена:</h2>";
         $select_program_sql = "SELECT program FROM userprograms WHERE id=".$program_id;
@@ -345,7 +345,9 @@ if ($data_array = $conn -> query($select_sql)){
           echo "<a href='exercises/end.php'>Досрочно завершить</a>";
         }
       }else{
-        echo "<a href='exercises/exercises.php?back=../account.php?user=".$login."&page=my_program&id=" . $program_id . "'>Начать такую же программу</button>";
+        if ($program_id != 0){
+          echo "<a href='exercises/exercises.php?back=../account.php?user=".$login."&page=my_program&id=" . $program_id . "'>Начать такую же программу</button>";
+        }
       }
       ?>
     </section>
