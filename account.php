@@ -222,10 +222,10 @@ if ($data_array = $conn -> query($select_sql)){
               <br>
               ';
             if (check_if_sub($conn, $_COOKIE['login'], $login)){
-              echo "<label>Вы подписаны</label>";
+              echo "<label' class='already_subscribed_btn'>Вы подписаны</label>";
             }else {
               echo '
-              <input type="submit" value="Подписаться" name="sub">
+              <input class="subscribe_btn" type="submit" value="Подписаться" name="sub">
               ';
             }
             echo '</div>';

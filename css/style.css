@@ -4,12 +4,28 @@
 html {
 	overflow: scroll;
 	overflow-x: hidden;
+	height: 100%;
 }
 
 body {
+	position: relative;
 	background-color: #F2F2F2;
 	margin: 0px;
 	font-family: 'Ubuntu', sans-serif;
+	min-height: 100%;
+}
+
+.exercises_body::after {
+    content: '';
+    background: url('../img/background.png');
+    opacity: 0.14;  
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	height: 100%;
+    position: absolute;
+    z-index: -1;   
 }
 
 .default_header{
@@ -667,6 +683,10 @@ header .reglog_buttons a:hover::after{
 
 /* =======MAIN========= */
 
+main{
+	height: auto;
+}
+
 main::after {
     content: '';
     background: url('../img/background.png');
@@ -1296,7 +1316,7 @@ footer a:hover{
 /* ================EXERCISES============== */
 
 
-.change_btn, .remove_btn, .start_btn {
+.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn{
 	display: inline-block;	
 	padding: 0 30px;
 	margin: 10px 0px;
@@ -1311,30 +1331,35 @@ footer a:hover{
 	transition: .3s ease;
 }
 
-.remove_btn{
-	background-color: #851919;
+.already_subscribed_btn{
+	padding: 10px 30px;
 }
 
-.change_btn:hover, .start_btn:hover {
+.remove_btn, .subscribe_btn{
+	background-color: #851919;
+	color: #fff !important;
+}
+
+.change_btn:hover, .start_btn:hover, .already_subscribed_btn:hover {
 	background-color: #31a554;
 }
 
-.remove_btn:hover{
-	background-color: #941c1c;
+.remove_btn:hover, .subscribe_btn:hover{
+	background-color: #aa2020;
 }
 
 .change_btn:active, .start_btn:active {
 	background-color: #36b95e !important;
 }
 
-.remove_btn:active{
-	background-color: #b62323 !important;
+.remove_btn:active, .subscribe_btn:active{
+	background-color: #d12929 !important;
 }
 
 .change_btn:focus-visible, .start_btn:focus-visible{
 	box-shadow: 0 0 0 3px #123d1b;
 }
 
-.remove_btn:focus-visible{
+.remove_btn:focus-visible, .subscribe_btn:focus-visible{
 	box-shadow: 0 0 0 3px #440d0d;
 }

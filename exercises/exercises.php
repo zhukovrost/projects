@@ -195,11 +195,12 @@ if (isset($_POST['weeks'])){
   <title>Document</title>
 </head>
 
+
+
+<body class="exercises_body">
 <header class="default_header">
   <a href="<?php echo $back_way; ?>">Назад</a>
 </header>
-
-<body>
 <nav>
   <a href="exercises.php?page=my_program">Моя программа</a>
   <a href="exercises.php?page=constructor">Конструктор(<?php if (isset($_SESSION['construct_array'])) { echo count($_SESSION['construct_array']); } else { echo "0"; } # amount of selected exercises ?>)</a>
