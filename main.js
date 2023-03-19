@@ -1,7 +1,6 @@
 "use strict"
 function add_answer (button){
     let el_ans = button.parentNode.lastElementChild;
-    console.log(el_ans)
 
     let input_ans = document.createElement("input");
     input_ans.setAttribute("type","text");
@@ -31,9 +30,8 @@ document.body.addEventListener('click', function(e){
 
 
 let InputsAcc = document.body.querySelectorAll('main input');
-let form = document.body.querySelector('form');
+let form = document.body.querySelector('#user');
 let InputsAccText = [];
-console.log(InputsAcc)
 
 
 for(let i = 0; i < InputsAcc.length; i++){
@@ -44,9 +42,10 @@ for(let i = 0; i < InputsAcc.length; i++){
     InputsAcc[i].oninput = function(){
         if(document.body.querySelector('#save_button') == null){
             let btn = document.createElement('button');
-            btn.innerHTML = "<img style='height: 30px; margin-right: 5px;' src='img/icons/save.png'><label>Сохранить изменения</label>";
+            btn.innerHTML = "<label><img style='height: 30px; margin-right: 5px;' src='img/icons/save.png'><p>Сохранить изменения</p></label>";
             btn.id = "save_button";
             btn.type = "submit";
+            btn.style = `border: 2px solid black; height: 100px`
             form.appendChild(btn);
 
             document.body.querySelector('#save_button').addEventListener('click', function(){

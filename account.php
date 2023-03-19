@@ -175,8 +175,8 @@ if ($data_array = $conn -> query($select_sql)){
               <br>
               <label>Пароль: <span>'.$password.'</span></label>
               <br>
-              <label>Загрузить новую аватарку: </label>
-              <input class="load_avatar_btn" type="file" name="load_avatar">
+              <label class="load_avatar_label" for="load_avatar_btn">Загрузить новую аватарку<img src="img/icons/free-icon-download-arrow-62055.png" alt=""> </label>
+              <input id="load_avatar_btn" type="file" name="load_avatar">
               <br>
             </div>
             <div class="physical_data">
@@ -222,10 +222,10 @@ if ($data_array = $conn -> query($select_sql)){
               <br>
               ';
             if (check_if_sub($conn, $_COOKIE['login'], $login)){
-              echo "<label>Вы подписаны</label>";
+              echo "<label' class='already_subscribed_btn'>Вы подписаны</label>";
             }else {
               echo '
-              <input type="submit" value="Подписаться" name="sub">
+              <input class="subscribe_btn" type="submit" value="Подписаться" name="sub">
               ';
             }
             echo '</div>';

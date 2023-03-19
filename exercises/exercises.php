@@ -195,11 +195,12 @@ if (isset($_POST['weeks'])){
   <title>Document</title>
 </head>
 
+
+
+<body class="exercises_body">
 <header class="default_header">
   <a href="<?php echo $back_way; ?>">Назад</a>
 </header>
-
-<body>
 <nav>
   <a href="exercises.php?page=my_program">Моя программа</a>
   <a href="exercises.php?page=constructor">Конструктор(<?php if (isset($_SESSION['construct_array'])) { echo count($_SESSION['construct_array']); } else { echo "0"; } # amount of selected exercises ?>)</a>
@@ -209,7 +210,7 @@ if (isset($_POST['weeks'])){
   <a href="exercises.php?page=back">Спина</a>
   <a href="exercises.php?page=chest_and_shoulders">Грудь и плечи</a>
 </nav>
-<main class="container">
+<main class="container container_exercises">
   <?php
   if (empty($_GET['page'])){
 
@@ -266,11 +267,11 @@ if (isset($_POST['weeks'])){
       <form action='exercises.php?page=constructor' method='post'>
         <input type='hidden' name='edit_construct_array' value='".json_encode($program)."'>
         <input type='hidden' name='edit_day' value='".json_encode(array($i))."'>
-        <button type='submit'>Изменить</button>
+        <button class='change_btn' type='submit'>Изменить</button>
       </form>
       <form method='post'>
         <input type='hidden' value='".$i."' name='delete_workout'>
-        <input type='submit' value='Удалить тренировку'>
+        <input class='remove_btn' type='submit' value='Удалить тренировку'>
       </form>";
       echo "</td>";
     }
@@ -282,7 +283,7 @@ if (isset($_POST['weeks'])){
       <h1>Укажите продолжительность выполнения данной программы в неделях</h1>
       <input class='start_program_form_input' name='weeks' type='number' value='3'>
       <br>
-      <button type='submit'>Начать данную программу</button>
+      <button class='start_btn' type='submit'>Начать данную программу</button>
     </form>";
 
   } elseif ($_GET['page'] == "constructor") {
@@ -322,8 +323,8 @@ if (isset($_POST['weeks'])){
 
       echo "
         </tr></table>
-      <input type='submit' name='add_to_program_array' value='Добавить в программу'>
-      <input type='submit' name='clear' value='Очистить конструктор полностью'>
+      <input class='add_programm_btn' type='submit' name='add_to_program_array' value='Добавить в программу'>
+      <input class='clear_construct_btn' type='submit' name='clear' value='Очистить конструктор полностью'>
     </form>";
 
       echo "<section class='exercise_list_block'>";

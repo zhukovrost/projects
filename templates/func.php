@@ -207,6 +207,7 @@ function get_program_day($conn, $login){
 }
 
 function check_the_program($conn, $login){
+  $program_id = 0;
   $select_sql = "SELECT program FROM users WHERE login='".$login."'";
   if ($select_result = $conn->query($select_sql)){
     foreach ($select_result as $item){

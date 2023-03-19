@@ -4,12 +4,31 @@
 html {
 	overflow: scroll;
 	overflow-x: hidden;
+	height: 100%;
 }
 
 body {
 	background-color: #F2F2F2;
 	margin: 0px;
 	font-family: 'Ubuntu', sans-serif;
+	min-height: 100%;
+}
+
+.exercises_body{
+	position: relative;
+}
+
+.exercises_body::after {
+    content: '';
+    background: url('../img/background.png');
+    opacity: 0.14;  
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	height: 100%;
+    position: absolute;
+    z-index: -1;   
 }
 
 .default_header{
@@ -278,15 +297,15 @@ p, a {
 	transform: translate(0, 0.25em);
 }
 
-.button_login:hover::before, .load_avatar_btn:hover::before{
+.button_login:hover::before{
 	transform: translate3d(0, 0.5em, -1em);
 }
 
-.button_login:active, .load_avatar_btn:active{
+.button_login:active{
 	transform: translate(0, 0.75em);
 }
 
-.button_login:active::before, .load_avatar_btn:active::before{
+.button_login:active::before{
 	transform: translate3d(0, 0em, -1em);
 }
 
@@ -300,8 +319,8 @@ p, a {
 	font-size: 20px;
 	font-weight: 500;
 	color: #e4e4e4;
-	background-color: #7f49f2;
-	box-shadow: 0 4px #3F2140;
+	background-color: #851919;
+	box-shadow: 0 4px #490e0e;
 	transition: .3s ease;
 }
 
@@ -312,14 +331,14 @@ p, a {
 }
 
 .create_prog_button:hover, .exit_button:hover {
-	background-color: #5832aa;
+	background-color: #a81f1f;
 	color: #ffffff;
 }
 .create_prog_button:active, .exit_button:active {
-	background-color: #3d2275 !important;
+	background-color: #c92828 !important;
 }
 .create_prog_button:focus-visible, .exit_button:focus-visible {
-	box-shadow: 0 0 0 3px #3F2140;
+	box-shadow: 0 0 0 3px #851919;
 }
 
 .profile_card {
@@ -429,6 +448,12 @@ p, a {
 	padding: 0;
 }
 
+.start_program_form{
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+}
+
 .start_program_form h1{
 	font-size: 32px;
 	margin-bottom: 10px;
@@ -444,7 +469,8 @@ p, a {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 100%;
+	width: 50%;
+	margin: 0 auto 50px;
 }
 
 .exercise_list_block form, .exercise_list_block article{
@@ -456,14 +482,16 @@ p, a {
 }
 
 .exercise, .exercise_list_block article{
-	width: 50%;
+	width: 60%;
+	padding: 10px 20px;
 	background-color: #F2F2F2;
 	border: 1px black solid;
 	display: flex;
 }
 
 .exercise_list_block article{
-	width: 30%;
+	width: 40%;
+	margin-bottom: 20px;
 }
 
 .exercise_list_block article h3{
@@ -660,6 +688,10 @@ header .reglog_buttons a:hover::after{
 
 
 /* =======MAIN========= */
+
+main{
+	height: auto;
+}
 
 main::after {
     content: '';
@@ -996,7 +1028,19 @@ main::after {
 	max-height: 70vh;
 	padding: 40px 0px;
 	color: #D9D9D9;
-	background: url('img/background.png')
+	position: relative;
+}
+
+.registration_info::after{
+	content: '';
+    background: url('../img/background.png');
+    opacity: 0.14;  
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 .registration_info h2{
@@ -1283,4 +1327,95 @@ footer a:hover{
 	display: flex;
 	flex-direction: column;
 	width: auto;
+}
+
+
+
+/* ================EXERCISES============== */
+
+
+.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn, .load_avatar_label{
+	display: inline-block;	
+	padding: 0 30px;
+	margin: 10px 0px;
+	border-radius: 4px;
+	height: 40px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #fff;
+	background-color: #288a45;
+	box-shadow: 0 4px #163d29;
+	vertical-align: top;
+	transition: .3s ease;
+}
+
+.load_avatar_label{
+	font-size: 16px;
+	padding: 15px 30px;
+	height: 50px;
+}
+
+.load_avatar_label img{
+	width: 35px;
+	height: 35px;
+	transform: translateY(-25%);
+}
+
+.add_programm_btn{
+	margin: 10px 9% 0px 50px;
+}
+
+.clear_construct_btn{
+	margin: 10px 50px 0px 9%;
+}
+
+.already_subscribed_btn{
+	padding: 10px 30px;
+}
+
+.remove_btn, .subscribe_btn, .clear_construct_btn, .load_avatar_label{
+	background-color: #851919;
+	color: #fff !important;
+}
+
+.change_btn:hover, .start_btn:hover, .already_subscribed_btn:hover, .add_programm_btn:hover {
+	background-color: #31a554;
+}
+
+.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover, .load_avatar_label:hover{
+	background-color: #aa2020;
+}
+
+.change_btn:active, .start_btn:active, .add_programm_btn:active {
+	background-color: #36b95e !important;
+}
+
+.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active, .load_avatar_label:active{
+	background-color: #d12929 !important;
+}
+
+.change_btn:focus-visible, .start_btn:focus-visible, .add_programm_btn:focus-visible{
+	box-shadow: 0 0 0 3px #123d1b;
+}
+
+.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible, .load_avatar_label:focus-visible{
+	box-shadow: 0 0 0 3px #440d0d;
+}
+
+
+.container_exercises{
+	position: relative;
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+#load_avatar_btn{
+	display: none;
+}
+
+#user div div{
+	display: flex;
+	align-items: center;
+	margin: 5px 0px;
 }
