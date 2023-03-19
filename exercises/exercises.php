@@ -210,7 +210,7 @@ if (isset($_POST['weeks'])){
   <a href="exercises.php?page=back">Спина</a>
   <a href="exercises.php?page=chest_and_shoulders">Грудь и плечи</a>
 </nav>
-<main class="container">
+<main class="container container_exercises">
   <?php
   if (empty($_GET['page'])){
 

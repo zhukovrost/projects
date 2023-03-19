@@ -469,7 +469,8 @@ p, a {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 100%;
+	width: 50%;
+	margin: 0 auto 50px;
 }
 
 .exercise_list_block form, .exercise_list_block article{
@@ -481,14 +482,16 @@ p, a {
 }
 
 .exercise, .exercise_list_block article{
-	width: 50%;
+	width: 60%;
+	padding: 10px 20px;
 	background-color: #F2F2F2;
 	border: 1px black solid;
 	display: flex;
 }
 
 .exercise_list_block article{
-	width: 30%;
+	width: 40%;
+	margin-bottom: 20px;
 }
 
 .exercise_list_block article h3{
@@ -1385,4 +1388,12 @@ footer a:hover{
 
 .remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible{
 	box-shadow: 0 0 0 3px #440d0d;
+}
+
+
+.container_exercises{
+	position: relative;
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
 }
