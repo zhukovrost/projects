@@ -297,15 +297,15 @@ p, a {
 	transform: translate(0, 0.25em);
 }
 
-.button_login:hover::before, .load_avatar_btn:hover::before{
+.button_login:hover::before{
 	transform: translate3d(0, 0.5em, -1em);
 }
 
-.button_login:active, .load_avatar_btn:active{
+.button_login:active{
 	transform: translate(0, 0.75em);
 }
 
-.button_login:active::before, .load_avatar_btn:active::before{
+.button_login:active::before{
 	transform: translate3d(0, 0em, -1em);
 }
 
@@ -319,8 +319,8 @@ p, a {
 	font-size: 20px;
 	font-weight: 500;
 	color: #e4e4e4;
-	background-color: #7f49f2;
-	box-shadow: 0 4px #3F2140;
+	background-color: #851919;
+	box-shadow: 0 4px #490e0e;
 	transition: .3s ease;
 }
 
@@ -331,14 +331,14 @@ p, a {
 }
 
 .create_prog_button:hover, .exit_button:hover {
-	background-color: #5832aa;
+	background-color: #a81f1f;
 	color: #ffffff;
 }
 .create_prog_button:active, .exit_button:active {
-	background-color: #3d2275 !important;
+	background-color: #c92828 !important;
 }
 .create_prog_button:focus-visible, .exit_button:focus-visible {
-	box-shadow: 0 0 0 3px #3F2140;
+	box-shadow: 0 0 0 3px #851919;
 }
 
 .profile_card {
@@ -1334,7 +1334,7 @@ footer a:hover{
 /* ================EXERCISES============== */
 
 
-.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn{
+.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn, .load_avatar_label{
 	display: inline-block;	
 	padding: 0 30px;
 	margin: 10px 0px;
@@ -1349,6 +1349,18 @@ footer a:hover{
 	transition: .3s ease;
 }
 
+.load_avatar_label{
+	font-size: 16px;
+	padding: 15px 30px;
+	height: 50px;
+}
+
+.load_avatar_label img{
+	width: 35px;
+	height: 35px;
+	transform: translateY(-25%);
+}
+
 .add_programm_btn{
 	margin: 10px 9% 0px 50px;
 }
@@ -1361,7 +1373,7 @@ footer a:hover{
 	padding: 10px 30px;
 }
 
-.remove_btn, .subscribe_btn, .clear_construct_btn{
+.remove_btn, .subscribe_btn, .clear_construct_btn, .load_avatar_label{
 	background-color: #851919;
 	color: #fff !important;
 }
@@ -1370,7 +1382,7 @@ footer a:hover{
 	background-color: #31a554;
 }
 
-.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover{
+.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover, .load_avatar_label:hover{
 	background-color: #aa2020;
 }
 
@@ -1378,7 +1390,7 @@ footer a:hover{
 	background-color: #36b95e !important;
 }
 
-.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active{
+.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active, .load_avatar_label:active{
 	background-color: #d12929 !important;
 }
 
@@ -1386,7 +1398,7 @@ footer a:hover{
 	box-shadow: 0 0 0 3px #123d1b;
 }
 
-.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible{
+.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible, .load_avatar_label:focus-visible{
 	box-shadow: 0 0 0 3px #440d0d;
 }
 
@@ -1396,4 +1408,14 @@ footer a:hover{
 	display: flex;
 	width: 100%;
 	flex-wrap: wrap;
+}
+
+#load_avatar_btn{
+	display: none;
+}
+
+#user div div{
+	display: flex;
+	align-items: center;
+	margin: 5px 0px;
 }
