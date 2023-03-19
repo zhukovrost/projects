@@ -193,7 +193,7 @@ if ($data_array = $conn -> query($select_sql)){
 <header class="default_header">
   <a href="<?php echo $back_way; ?>">Назад</a>
 </header>
-<body>
+<body class="exercises_body">
   <main class="profile_card">
       <form enctype="multipart/form-data" method="post">
       <!-- first string -->
@@ -396,7 +396,7 @@ if ($data_array = $conn -> query($select_sql)){
 
         if ($all_info) {
           if ($program_id != 0) {
-            echo "<a href='exercises/end.php'>Досрочно завершить</a>";
+            echo "<a class='finish_btn' href='exercises/end.php'>Досрочно завершить</a>";
           }
         }else{
           if ($program_id != 0){
