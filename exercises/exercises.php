@@ -323,8 +323,8 @@ if (isset($_POST['weeks'])){
 
       echo "
         </tr></table>
-      <input type='submit' name='add_to_program_array' value='Добавить в программу'>
-      <input type='submit' name='clear' value='Очистить конструктор полностью'>
+      <input class='add_programm_btn' type='submit' name='add_to_program_array' value='Добавить в программу'>
+      <input class='clear_construct_btn' type='submit' name='clear' value='Очистить конструктор полностью'>
     </form>";
 
       echo "<section class='exercise_list_block'>";

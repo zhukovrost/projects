@@ -8,11 +8,14 @@ html {
 }
 
 body {
-	position: relative;
 	background-color: #F2F2F2;
 	margin: 0px;
 	font-family: 'Ubuntu', sans-serif;
 	min-height: 100%;
+}
+
+.exercises_body{
+	position: relative;
 }
 
 .exercises_body::after {
@@ -1022,7 +1025,19 @@ main::after {
 	max-height: 70vh;
 	padding: 40px 0px;
 	color: #D9D9D9;
-	background: url('img/background.png')
+	position: relative;
+}
+
+.registration_info::after{
+	content: '';
+    background: url('../img/background.png');
+    opacity: 0.14;  
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 .registration_info h2{
@@ -1316,7 +1331,7 @@ footer a:hover{
 /* ================EXERCISES============== */
 
 
-.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn{
+.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn{
 	display: inline-block;	
 	padding: 0 30px;
 	margin: 10px 0px;
@@ -1331,35 +1346,43 @@ footer a:hover{
 	transition: .3s ease;
 }
 
+.add_programm_btn{
+	margin: 10px 9% 0px 50px;
+}
+
+.clear_construct_btn{
+	margin: 10px 50px 0px 9%;
+}
+
 .already_subscribed_btn{
 	padding: 10px 30px;
 }
 
-.remove_btn, .subscribe_btn{
+.remove_btn, .subscribe_btn, .clear_construct_btn{
 	background-color: #851919;
 	color: #fff !important;
 }
 
-.change_btn:hover, .start_btn:hover, .already_subscribed_btn:hover {
+.change_btn:hover, .start_btn:hover, .already_subscribed_btn:hover, .add_programm_btn:hover {
 	background-color: #31a554;
 }
 
-.remove_btn:hover, .subscribe_btn:hover{
+.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover{
 	background-color: #aa2020;
 }
 
-.change_btn:active, .start_btn:active {
+.change_btn:active, .start_btn:active, .add_programm_btn:active {
 	background-color: #36b95e !important;
 }
 
-.remove_btn:active, .subscribe_btn:active{
+.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active{
 	background-color: #d12929 !important;
 }
 
-.change_btn:focus-visible, .start_btn:focus-visible{
+.change_btn:focus-visible, .start_btn:focus-visible, .add_programm_btn:focus-visible{
 	box-shadow: 0 0 0 3px #123d1b;
 }
 
-.remove_btn:focus-visible, .subscribe_btn:focus-visible{
+.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible{
 	box-shadow: 0 0 0 3px #440d0d;
 }
