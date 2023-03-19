@@ -144,7 +144,7 @@ if ($data_array = $conn -> query($select_sql)){
 <header class="default_header">
   <a href="<?php echo $back_way; ?>">Назад</a>
 </header>
-<body style="height: 100vh">
+<body class="exercises_body">
   <main class="profile_card">
     <!-- first string -->
     <form class="together" method="post">
@@ -216,7 +216,7 @@ if ($data_array = $conn -> query($select_sql)){
                 <label style="margin-right: 10px;">Вес (кг): <span>'.$weight.'</span></label>
               </div>
               <div class="together">
-                <label style="margin-right: 10px;">Рост (см): <span>'.$height.'</span></label>
+  right: 10px;">Рост (см): <span>'.$height.'</span></label>
               </div>
               <label>Пол: <span>'.$sex .'</span></label>
               <br>
@@ -342,7 +342,7 @@ if ($data_array = $conn -> query($select_sql)){
 
       if ($all_info) {
         if ($program_id != 0) {
-          echo "<a href='exercises/end.php'>Досрочно завершить</a>";
+          echo "<a class='finish_btn' href='exercises/end.php'>Досрочно завершить</a>";
         }
       }else{
         if ($program_id != 0){
