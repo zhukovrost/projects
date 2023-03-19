@@ -256,12 +256,12 @@ p, a {
 	margin-right: auto;
 	width: 200px;
 	height: 70px;
-	background-color: #7f49f2;
+	background-color: #d12a2a;
 	color: #0d0d0dda;
 	font-size: 23px;
 	font-weight: 700;
 	padding: 30px 40px;
-	border: 3px solid #3F2140;
+	border: 3px solid #8b1d1d;
 	border-radius: 15px;
 	transform-style: preserve-3d;
 	transition: .2s ease-in-out;
@@ -279,8 +279,8 @@ p, a {
 	left: -1.5%;
 	top: 0;
 	border-radius: inherit;
-	border: 3px solid #3F2140;
-	background-color: #7E49F2;
+	border: 3px solid #d12a2a;
+	background-color: #8b1d1d;
 	-webkit-transform: translate3d(0, 0.75em, -1em);
 	transform: translate3d(0, 0.75em, -1em);
 	transition: .2s ease-in-out;
@@ -293,7 +293,7 @@ p, a {
 
 .button_login:hover{
 	color: #000000;
-	background-color: #673ac9;
+	background-color: #d12a2a;
 	transform: translate(0, 0.25em);
 }
 
@@ -319,7 +319,7 @@ p, a {
 	font-size: 20px;
 	font-weight: 500;
 	color: #e4e4e4;
-	background-color: #851919;
+	background-color: #d12a2a;
 	box-shadow: 0 4px #490e0e;
 	transition: .3s ease;
 }
@@ -331,11 +331,11 @@ p, a {
 }
 
 .create_prog_button:hover, .exit_button:hover {
-	background-color: #a81f1f;
+	background-color: #d12929;
 	color: #ffffff;
 }
 .create_prog_button:active, .exit_button:active {
-	background-color: #c92828 !important;
+	background-color: #e92f2f !important;
 }
 .create_prog_button:focus-visible, .exit_button:focus-visible {
 	box-shadow: 0 0 0 3px #851919;
@@ -1076,12 +1076,12 @@ main::after {
 
 .reg_block a{
 	position: relative;
-	background-color: #7f49f2;
+	background-color: #d12a2a;
 	color: #0d0d0dda;
 	font-size: 23px;
 	font-weight: 700;
 	padding: 30px 40px;
-	border: 3px solid #3F2140;
+	border: 3px solid #831b1b;
 	border-radius: 15px;
 	transform-style: preserve-3d;
 	transition: .2s ease-in-out;
@@ -1095,8 +1095,8 @@ main::after {
 	left: -0.5%;
 	top: 0;
 	border-radius: inherit;
-	border: 3px solid #3F2140;
-	background-color: #7E49F2;
+	border: 3px solid #751717;
+	background-color: #d12a2a;
 	-webkit-transform: translate3d(0, 0.75em, -1em);
 	transform: translate3d(0, 0.75em, -1em);
 	transition: .2s ease-in-out;
@@ -1111,7 +1111,7 @@ main::after {
 
 .reg_block a:hover{
 	color: #000000;
-	background-color: #673ac9;
+	background-color: #e93030;
 	transform: translate(0, 0.25em);
 }
 
@@ -1218,8 +1218,8 @@ footer a:hover{
 	font-size: 14px;
 	font-weight: 500;
 	color: #fff;
-	background-color: #7f49f2;
-	box-shadow: 0 4px #3F2140;
+	background-color: #d12a2a;
+	box-shadow: 0 4px #851b1b;
 	vertical-align: top;
 	transition: .3s ease;
 }
@@ -1231,19 +1231,19 @@ footer a:hover{
 }
 
 .search_btn:hover {
-	background-color: #5632a3;
+	background-color: #e22e2e;
 }
 
 .searched_user_block a:hover{
-	background-color: #5632a3;
+	background-color: #e43131;
 	color: #fff;
 }
 
 .search_btn:active, .searched_user_block a:active {
-	background-color: #3c2274 !important;
+	background-color: #f13333 !important;
 }
 .search_btn:focus-visible, .searched_user_block a:focus-visible {
-	box-shadow: 0 0 0 3px #7f49f2;
+	box-shadow: 0 0 0 3px #8b1c1c;
 }
 
 .searched_user_block{
@@ -1334,7 +1334,7 @@ footer a:hover{
 /* ================EXERCISES============== */
 
 
-.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn, .load_avatar_label{
+.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn, .load_avatar_label, .finish_btn{
 	display: inline-block;	
 	padding: 0 30px;
 	margin: 10px 0px;
@@ -1347,6 +1347,11 @@ footer a:hover{
 	box-shadow: 0 4px #163d29;
 	vertical-align: top;
 	transition: .3s ease;
+}
+
+.finish_btn{
+	margin: 0px auto;
+	padding: 10px 30px;
 }
 
 .load_avatar_label{
@@ -1373,8 +1378,8 @@ footer a:hover{
 	padding: 10px 30px;
 }
 
-.remove_btn, .subscribe_btn, .clear_construct_btn, .load_avatar_label{
-	background-color: #851919;
+.remove_btn, .subscribe_btn, .clear_construct_btn, .load_avatar_label, .finish_btn{
+	background-color: #d12a2a;
 	color: #fff !important;
 }
 
@@ -1382,15 +1387,15 @@ footer a:hover{
 	background-color: #31a554;
 }
 
-.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover, .load_avatar_label:hover{
-	background-color: #aa2020;
+.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover, .load_avatar_label:hover, .finish_btn{
+	background-color: #d12a2a;
 }
 
 .change_btn:active, .start_btn:active, .add_programm_btn:active {
 	background-color: #36b95e !important;
 }
 
-.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active, .load_avatar_label:active{
+.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active, .load_avatar_label:active, .finish_btn:active{
 	background-color: #d12929 !important;
 }
 
@@ -1398,7 +1403,7 @@ footer a:hover{
 	box-shadow: 0 0 0 3px #123d1b;
 }
 
-.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible, .load_avatar_label:focus-visible{
+.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible, .load_avatar_label:focus-visible, .finish_btn:focus-visible{
 	box-shadow: 0 0 0 3px #440d0d;
 }
 
