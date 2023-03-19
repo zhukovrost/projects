@@ -220,4 +220,17 @@ function check_the_program($conn, $login){
   }
 }
 
+function get_avatar($conn, $id=0){
+  $select_sql = "SELECT image FROM avatars WHERE id='".$id."'";
+  if ($result_sql = $conn->query($select_sql)){
+    foreach ($result_sql as $item){
+      $image = $item['image'];
+    }
+  }else{
+    return false;
+  }
+
+  return $image;
+}
+
 ?>
