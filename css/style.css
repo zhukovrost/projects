@@ -241,6 +241,7 @@ p, a {
 	width: 100%;
 	height: 100%;
 	position: absolute;
+	color: #ffffffda;
 	top: 0%;
 	left: 0;
 	border: none;
@@ -257,7 +258,7 @@ p, a {
 	width: 200px;
 	height: 70px;
 	background-color: #d12a2a;
-	color: #0d0d0dda;
+	color: #fafafada;
 	font-size: 23px;
 	font-weight: 700;
 	padding: 30px 40px;
@@ -279,8 +280,8 @@ p, a {
 	left: -1.5%;
 	top: 0;
 	border-radius: inherit;
-	border: 3px solid #d12a2a;
-	background-color: #8b1d1d;
+	border: 3px solid #8b1d1d;
+	background-color:  #d12a2a;
 	-webkit-transform: translate3d(0, 0.75em, -1em);
 	transform: translate3d(0, 0.75em, -1em);
 	transition: .2s ease-in-out;
@@ -292,7 +293,7 @@ p, a {
 }
 
 .button_login:hover{
-	color: #000000;
+	color: #ffffff;
 	background-color: #d12a2a;
 	transform: translate(0, 0.25em);
 }
@@ -318,7 +319,7 @@ p, a {
 	height: 45px;
 	font-size: 20px;
 	font-weight: 500;
-	color: #e4e4e4;
+	color: #ffffff;
 	background-color: #d12a2a;
 	box-shadow: 0 4px #490e0e;
 	transition: .3s ease;
@@ -331,7 +332,7 @@ p, a {
 }
 
 .create_prog_button:hover, .exit_button:hover {
-	background-color: #d12929;
+	background-color: #e62c2c;
 	color: #ffffff;
 }
 .create_prog_button:active, .exit_button:active {
@@ -1077,7 +1078,7 @@ main::after {
 .reg_block a{
 	position: relative;
 	background-color: #d12a2a;
-	color: #0d0d0dda;
+	color: #f5f5f5da;
 	font-size: 23px;
 	font-weight: 700;
 	padding: 30px 40px;
@@ -1110,7 +1111,7 @@ main::after {
 
 
 .reg_block a:hover{
-	color: #000000;
+	color: #ffffff;
 	background-color: #e93030;
 	transform: translate(0, 0.25em);
 }
@@ -1342,7 +1343,7 @@ footer a:hover{
 	height: 40px;
 	font-size: 14px;
 	font-weight: 500;
-	color: #fff;
+	color: #f3f3f3;
 	background-color: #288a45;
 	box-shadow: 0 4px #163d29;
 	vertical-align: top;
@@ -1388,7 +1389,7 @@ footer a:hover{
 }
 
 .remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover, .load_avatar_label:hover, .finish_btn{
-	background-color: #d12a2a;
+	background-color: #e92f2f;
 }
 
 .change_btn:active, .start_btn:active, .add_programm_btn:active {
@@ -1423,4 +1424,11 @@ footer a:hover{
 	display: flex;
 	align-items: center;
 	margin: 5px 0px;
+}
+
+
+.container_exercises h1{
+	margin: 0 auto;
+	font-size: 30px;
+	margin-top: 20px;
 }
