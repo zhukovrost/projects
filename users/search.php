@@ -71,10 +71,12 @@ conn_check($conn);
       if ($search_result = $conn->query($search_sql)){
         if (mysqli_num_rows($search_result) != 0){
           foreach ($search_result as $user){
+
+            $avatar = base64_encode(get_avatar($conn, $user['avatar_id']));
             # ------------- searched user boxes --------------
             echo "<div class='searched_user_block'>";
             echo "<div class='together'>";
-            echo "<img class='search_img' src='../img/icons/holiday.png'>";
+            echo "<img class='search_img' src='data:image/jpeg;base64, ".$avatar."'>";
             echo ""; # ------ тут должна быть аватарка в виде квадратного блока наверное но пока мне лень это делать, тк нет нормальной загрузки аватарки, этим я займусь
             echo "<div>";
             echo "<h4>".$user['login']." </h4>";
