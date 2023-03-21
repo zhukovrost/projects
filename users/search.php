@@ -74,6 +74,7 @@ conn_check($conn);
             # ------------- searched user boxes --------------
             echo "<div class='searched_user_block'>";
             echo "<div class='together'>";
+            echo "<div class='together'>";
             echo ""; # ------ тут должна быть аватарка в виде квадратного блока наверное но пока мне лень это делать, тк нет нормальной загрузки аватарки, этим я займусь
             echo "<h4 style='color: red'>".$user['login'].": </h4>";
             echo "<p>".$user['name']." ".$user['surname']." ".$user['thirdname']."</p>";
