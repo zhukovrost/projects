@@ -365,6 +365,31 @@ p, a {
 	padding: 0px;
 }
 
+.search_img{
+	width: 65px;
+	height: 65px;
+	border: 2px solid #d12929;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.together div{
+	margin-left: 20px;
+}
+
+.together div h4{
+	color: red;
+	font-size: 30px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-decoration: underline;
+	margin-bottom: 5px;
+}
+
+.together div p{
+	font-size: 19px;
+}
+
 .card_input {
 	height: 50%;
 	margin-top: auto;
