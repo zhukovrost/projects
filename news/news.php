@@ -76,7 +76,7 @@ $news_content = json_decode(file_get_contents("news.json"));
         }
 
         foreach ($subscriptions as $sub){
-          $select_news_sql = "SELECT * FROM news WHERE user='".$sub."' AND personal!=0";
+          $select_news_sql = "SELECT * FROM news WHERE user='".$sub."' AND personal=0";
           if ($select_news_result = $conn->query($select_news_sql)){
             foreach ($select_news_result as $news){
               array_push($news_array, $news);
@@ -96,6 +96,8 @@ $news_content = json_decode(file_get_contents("news.json"));
       ";
         if ($news['additional_info'] != null){
           echo ": ".$news['additional_info'];
+        }else{
+          echo ": ".$news['user'];
         }
         echo "
         </p>
