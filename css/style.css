@@ -434,6 +434,11 @@ p, a {
 	border-collapse: collapse;
 	margin: 30px 0;
 }
+
+.program_table{
+	margin: 30px auto;
+}
+
 .program_table td, .program_table th, .calendar td, .calendar th{
 	border: 1px solid black;
 	padding: 5px;
@@ -495,7 +500,7 @@ p, a {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 50%;
+	width: 45%;
 	margin: 0 auto 50px;
 }
 
@@ -555,7 +560,7 @@ p, a {
 	width: 50%;
 	border: 1px black solid;
 	background-color: #F2F2F2;
-	margin: 5px auto;
+	margin: 0px 0px 30px 5%;
 	padding: 10px;
 }
 
@@ -1360,7 +1365,7 @@ footer a:hover{
 /* ================EXERCISES============== */
 
 
-.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn, .load_avatar_label, .finish_btn{
+.change_btn, .remove_btn, .start_btn, .subscribe_btn, .already_subscribed_btn, .add_programm_btn, .clear_construct_btn, .load_avatar_label, .finish_btn, .same_programm_btn{
 	display: inline-block;	
 	padding: 0 30px;
 	margin: 10px 0px;
@@ -1378,6 +1383,13 @@ footer a:hover{
 .finish_btn{
 	margin: 0px auto;
 	padding: 10px 30px;
+}
+
+.same_programm_btn{
+	display: block;
+	padding: 20px 30px;
+	height: auto;
+	margin: 0 auto;
 }
 
 .load_avatar_label{
@@ -1404,7 +1416,7 @@ footer a:hover{
 	padding: 10px 30px;
 }
 
-.remove_btn, .subscribe_btn, .clear_construct_btn, .load_avatar_label, .finish_btn{
+.remove_btn, .subscribe_btn, .clear_construct_btn, .load_avatar_label, .finish_btn, .same_programm_btn{
 	background-color: #d12a2a;
 	color: #fff !important;
 }
@@ -1413,7 +1425,7 @@ footer a:hover{
 	background-color: #31a554;
 }
 
-.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover, .load_avatar_label:hover, .finish_btn{
+.remove_btn:hover, .subscribe_btn:hover, .clear_construct_btn:hover, .load_avatar_label:hover, .finish_btn:hover, .same_programm_btn:hover{
 	background-color: #e92f2f;
 }
 
@@ -1421,7 +1433,7 @@ footer a:hover{
 	background-color: #36b95e !important;
 }
 
-.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active, .load_avatar_label:active, .finish_btn:active{
+.remove_btn:active, .subscribe_btn:active, .clear_construct_btn:active, .load_avatar_label:active, .finish_btn:active, .same_programm_btn:active{
 	background-color: #d12929 !important;
 }
 
@@ -1429,7 +1441,7 @@ footer a:hover{
 	box-shadow: 0 0 0 3px #123d1b;
 }
 
-.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible, .load_avatar_label:focus-visible, .finish_btn:focus-visible{
+.remove_btn:focus-visible, .subscribe_btn:focus-visible, .clear_construct_btn:focus-visible, .load_avatar_label:focus-visible, .finish_btn:focus-visible, .same_programm_btn:focus-visible{
 	box-shadow: 0 0 0 3px #440d0d;
 }
 
@@ -1439,6 +1451,10 @@ footer a:hover{
 	display: flex;
 	width: 100%;
 	flex-wrap: wrap;
+}
+
+.container_exercises:after{
+	background: none;
 }
 
 #load_avatar_btn{
@@ -1455,5 +1471,53 @@ footer a:hover{
 .container_exercises h1{
 	margin: 0 auto;
 	font-size: 30px;
+	margin-top: 20px;
+}
+
+
+.welcomeS{
+	width: 100%;
+}
+
+.welcomeS h1{
+	text-align: center;
+	font-size: 37px;
+	font-weight: 500;
+}
+
+.welcomeS h2{
+	text-align: center;
+	font-size: 23px;
+	font-weight: 500;
+}
+
+.welcomeS h3{
+	text-align: center;
+	font-size: 33px;
+	font-weight: 500;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.welcomeS div{
+	width: 50%;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+.welcomeS div ul li{
+	list-style-type: disc;
+	margin-left: 5%;
+}
+
+.welcomeS div ul{
+	margin-bottom: 20px;
+}
+
+.good_luck_title{
+	color: red;
+	font-size: 25px;
+	text-align: center;
+	font-weight: 500;
 	margin-top: 20px;
 }

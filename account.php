@@ -88,6 +88,49 @@ if  ($all_info && isset($_POST['name']) && isset($_POST['surname']) && isset($_P
   }
 }
 
+# ---------------------- avatar --------------------
+
+
+if (isset($_FILES['load_avatar'])){
+  $load_avatar = $_FILES['load_avatar'];
+  if (@getimagesize($load_avatar['tmp_name']) == true){
+    $input = file_get_contents($load_avatar['tmp_name']);
+    if (preg_match('/(<\?php\s)/', $input)){
+      $error_array['not_image'] = true;
+    }else{
+      $input = str_replace(chr(0), '', $input);
+    }
+  }else{
+    $error_array['not_image'] = true;
+  }
+
+  $size = $load_avatar['size'];
+
+  if ($size > 2949120){
+    $error_array['too_big_image'] = true;
+  }
+
+
+   if ($load_avatar['type'] != "image/jpg" && $load_avatar['type'] != "image/jpeg" && $load_avatar['type'] != "image/png"){
+      $error_array['incorrect_format'] = true;
+    }
+
+   if (!$error_array['not_image'] && !$error_array['too_big_image'] && !$error_array['incorrect_format']){
+     $image = addslashes(file_get_contents($load_avatar["tmp_name"]));
+     $insert_image_sql = "INSERT INTO avatars (image) VALUES ('".$image."')";
+     if ($conn->query($insert_image_sql)){
+       $error_array['success_upload'] = true;
+       $update_avatar_sql = "UPDATE users SET avatar_id='".$conn->insert_id."' WHERE login='".$login."'";
+       $conn->query($update_avatar_sql);
+     }else{
+       $error_array['error_upload'] = true;
+     }
+   }else{
+     $error_array['update_success'] = false;
+   }
+
+}
+
 # ------------------------- select user data -----------------------------
 
 $select_sql = "SELECT * FROM users WHERE login='".$login."'";
@@ -101,8 +144,7 @@ if ($data_array = $conn -> query($select_sql)){
     $program_duration = $data['program_duration'];
     $calendar = json_decode($data['calendar']);
     $start_program = $data['start_program'];
-    $avatar_id = $data['avatar_id'];
-    $avatar = base64_encode(get_avatar($conn, $avatar_id));
+    $avatar = base64_encode(get_avatar($conn, $data['avatar_id']));
     if ($data['sex'] == "m"){
       $sex = "Мужской";
     }elseif ($data['sex'] == "f"){
@@ -134,58 +176,6 @@ if ($data_array = $conn -> query($select_sql)){
   $error_array["select_error"] = true;
 }
 
-# ---------------------- avatar --------------------
-
-
-if (isset($_FILES['load_avatar'])){
-  $load_avatar = $_FILES['load_avatar'];
-  if (@getimagesize($load_avatar['tmp_name']) == true){
-    $input = file_get_contents($load_avatar['tmp_name']);
-    if (preg_match('/(<\?php\s)/', $input)){
-      $error_array['not_image'] = true;
-    }else{
-      $input = str_replace(chr(0), '', $input);
-    }
-  }else{
-    $error_array['not_image'] = true;
-  }
-
-  $size = $load_avatar['size'];
-
-  if ($size > 2949120){
-    $error_array['too_big_image'] = true;
-  }
-
-
-  if ($load_avatar['type'] != "image/jpg" && $load_avatar['type'] != "image/jpeg" && $load_avatar['type'] != "image/png"){
-    $error_array['incorrect_format'] = true;
-  }
-
-  if (!$error_array['not_image'] && !$error_array['too_big_image'] && !$error_array['incorrect_format']){
-    $image = addslashes(file_get_contents($load_avatar["tmp_name"]));
-    $insert_image_sql = "INSERT INTO avatars (image) VALUES ('".$image."')";
-    if ($conn->query($insert_image_sql)){
-      $error_array['success_upload'] = true;
-      $update_avatar_sql = "UPDATE users SET avatar_id='".$conn->insert_id."' WHERE login='".$login."'";
-      $conn->query($update_avatar_sql);
-      header("Refresh: 0.5");
-    }else{
-      $error_array['error_upload'] = true;
-    }
-  }else{
-    $error_array['update_success'] = false;
-  }
-
-}
-
-if (isset($_POST['delete_avatar']) && $avatar_id != 0){
-  $set_default_avatar_sql = "UPDATE users SET avatar_id=0 WHERE login='".$login."'";
-  if ($conn->query($set_default_avatar_sql)){
-    $delete_sql = "DELETE FROM avatars WHERE id='".$avatar_id."'";
-    $conn->query($delete_sql);
-    header("Refresh: 0.5");
-  }
-}
 ?>
 
 <!DOCTYPE html>
@@ -234,15 +224,10 @@ if (isset($_POST['delete_avatar']) && $avatar_id != 0){
                 <label>Электронная почта: <span>'.$email.'</span></label>
                 <br>
                 <label>Пароль: <span>'.$password.'</span></label>
-                <br>';
-              if ($avatar_id == 0){
-                echo '<label class="load_avatar_label" for="load_avatar_btn">Загрузить новую аватарку<img src="img/icons/free-icon-download-arrow-62055.png" alt=""> </label>
-                <input id="load_avatar_btn" type="file" name="load_avatar">';
-              }else{
-                echo '<button class="exit_button" name="delete_avatar" value="1">Удалить аватарку</button>';
-              }
-
-                echo '<br>
+                <br>
+                <label class="load_avatar_label" for="load_avatar_btn">Загрузить новую аватарку<img src="img/icons/free-icon-download-arrow-62055.png" alt=""> </label>
+                <input id="load_avatar_btn" type="file" name="load_avatar">
+                <br>
               </div>
               <div class="physical_data">
                 <h2>Физические данные спортсмена</h2>
@@ -415,7 +400,7 @@ if (isset($_POST['delete_avatar']) && $avatar_id != 0){
           }
         }else{
           if ($program_id != 0){
-            echo "<a href='exercises/exercises.php?back=../account.php?user=".$login."&page=my_program&id=" . $program_id . "'>Начать такую же программу</button>";
+            echo "<a class='same_programm_btn' href='exercises/exercises.php?back=../account.php?user=".$login."&page=my_program&id=" . $program_id . "'>Начать такую же программу</button>";
           }
         }
         ?>
