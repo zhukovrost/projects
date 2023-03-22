@@ -400,7 +400,7 @@ if ($data_array = $conn -> query($select_sql)){
           }
         }else{
           if ($program_id != 0){
-            echo "<a class='same_programm_btn' href='exercises/exercises.php?back=../account.php?user=".$login."&page=my_program&id=" . $program_id . "'>Начать такую же программу</button>";
+            echo "<a class='same_programm_btn' href='exercises/exercises.php?back=../account.php?user=".$login."&page=my_program&id=" . $program_id . "'>Начать такую же программу</a>";
           }
         }
         ?>
