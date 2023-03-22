@@ -75,7 +75,7 @@ include "templates/func.php";
 
         <div class="progress_info">
             <div class="container">
-                <h2>Следите за прогрессом</h2>
+                <h2>Совершенствуйте свою программу</h2>
                 <div class="progress_cover">
                     <div class="progress_block">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512" height="512" x="0" y="0" viewBox="0 0 100 100" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g><path d="m12.257 25.375 11.421 6.594c5.314-7.744 13.957-13.017 23.868-13.772v-13.197c-14.669.732-27.32 8.037-35.289 20.375z" fill="#e57e25" data-original="#e57e25"></path><path d="m18.093 50c0-4.938 1.122-9.611 3.124-13.784l-11.414-6.59c-6.701 13.07-6.701 27.678 0 40.748l11.414-6.589c-2.002-4.174-3.124-8.847-3.124-13.785z" fill="#894b9d" data-original="#894b9d"></path><path d="m23.678 68.031-11.421 6.594c7.969 12.338 20.62 19.643 35.289 20.375v-13.196c-9.911-.755-18.554-6.028-23.868-13.773z" fill="#e64c3c" data-original="#e64c3c"></path><path d="m52.454 81.804v13.196c14.669-.732 27.321-8.037 35.289-20.375l-11.422-6.595c-5.315 7.746-13.959 13.019-23.867 13.774z" fill="#26b99a" data-original="#26b99a"></path><path d="m90.198 29.626-11.415 6.59c2.002 4.172 3.124 8.846 3.124 13.783s-1.123 9.611-3.124 13.784l11.415 6.591c6.699-13.069 6.699-27.677 0-40.748z" fill="#2980ba" data-original="#2980ba"></path><path d="m76.321 31.97 11.422-6.595c-7.968-12.338-20.62-19.643-35.289-20.375v13.196c9.908.755 18.552 6.028 23.867 13.774z" fill="#f0c419" data-original="#f0c419"></path></g></g></svg>
@@ -96,7 +96,7 @@ include "templates/func.php";
             </div>
             <div class="reg_cover">
                 <div class="reg_block">
-                    <h3>Еще не зарегистрированны?</h3>
+                    <h3>Еще не зарегистрированы?</h3>
                     <a href="reg.php">Зарегистрироваться</a>
                 </div>
                 <div class="reg_block">

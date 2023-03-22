@@ -74,12 +74,14 @@ if  ($all_info && isset($_POST['name']) && isset($_POST['surname']) && isset($_P
       }else if (is_numeric(str_replace(',', '.', $_POST['weight']))){
         $height_to_push = str_replace(',', '.', $_POST['weight']);
       }
+
       $update_sql = "UPDATE users SET name='".$_POST['name']."', surname='".$_POST['surname']."', thirdname='".$_POST['thirdname']."', height='".$height_to_push."', weight='".$weight_to_push."' WHERE login='".$login."'";
       if ($conn -> query($update_sql)){
         $error_array["update_success"] = true;
       }else{
         $error_array["update_error"] = true;
       }
+
     }else{
       $error_array["too_long_string"] = true;
     }
@@ -90,45 +92,45 @@ if  ($all_info && isset($_POST['name']) && isset($_POST['surname']) && isset($_P
 
 # ---------------------- avatar --------------------
 
-
 if (isset($_FILES['load_avatar'])){
   $load_avatar = $_FILES['load_avatar'];
-  if (@getimagesize($load_avatar['tmp_name']) == true){
-    $input = file_get_contents($load_avatar['tmp_name']);
-    if (preg_match('/(<\?php\s)/', $input)){
-      $error_array['not_image'] = true;
+  if ($load_avatar['error'] != 4){
+    if (@getimagesize($load_avatar['tmp_name']) == true){
+      $input = file_get_contents($load_avatar['tmp_name']);
+      if (preg_match('/(<\?php\s)/', $input)){
+        $error_array['not_image'] = true;
+      }else{
+        $input = str_replace(chr(0), '', $input);
+      }
     }else{
-      $input = str_replace(chr(0), '', $input);
+      $error_array['not_image'] = true;
     }
-  }else{
-    $error_array['not_image'] = true;
-  }
 
-  $size = $load_avatar['size'];
+    $size = $load_avatar['size'];
 
-  if ($size > 2949120){
-    $error_array['too_big_image'] = true;
-  }
+    if ($size > 2949120){
+      $error_array['too_big_image'] = true;
+    }
 
 
-   if ($load_avatar['type'] != "image/jpg" && $load_avatar['type'] != "image/jpeg" && $load_avatar['type'] != "image/png"){
+    if ($load_avatar['type'] != "image/jpg" && $load_avatar['type'] != "image/jpeg" && $load_avatar['type'] != "image/png"){
       $error_array['incorrect_format'] = true;
     }
 
-   if (!$error_array['not_image'] && !$error_array['too_big_image'] && !$error_array['incorrect_format']){
-     $image = addslashes(file_get_contents($load_avatar["tmp_name"]));
-     $insert_image_sql = "INSERT INTO avatars (image) VALUES ('".$image."')";
-     if ($conn->query($insert_image_sql)){
-       $error_array['success_upload'] = true;
-       $update_avatar_sql = "UPDATE users SET avatar_id='".$conn->insert_id."' WHERE login='".$login."'";
-       $conn->query($update_avatar_sql);
-     }else{
-       $error_array['error_upload'] = true;
-     }
-   }else{
-     $error_array['update_success'] = false;
-   }
-
+    if (!$error_array['not_image'] && !$error_array['too_big_image'] && !$error_array['incorrect_format']){
+      $image = addslashes(file_get_contents($load_avatar["tmp_name"]));
+      $insert_image_sql = "INSERT INTO avatars (image) VALUES ('".$image."')";
+      if ($conn->query($insert_image_sql)){
+        $error_array['success_upload'] = true;
+        $update_avatar_sql = "UPDATE users SET avatar_id='".$conn->insert_id."' WHERE login='".$login."'";
+        $conn->query($update_avatar_sql);
+      }else{
+        $error_array['error_upload'] = true;
+      }
+    }else{
+      $error_array['update_success'] = false;
+    }
+  }
 }
 
 # ------------------------- select user data -----------------------------
@@ -164,10 +166,6 @@ if ($data_array = $conn -> query($select_sql)){
       $thirdname = "Отсутствует";
     } else {
       $thirdname = $data['thirdname'];
-    }
-    $password = "";
-    for ($i = 0; $i < strlen($data['password']); $i++) {
-      $password = $password.'*';
     }
 
   }
@@ -222,8 +220,6 @@ if ($data_array = $conn -> query($select_sql)){
                 <label>Дата рождения: <span>'.date("d-m-Y" ,$date_of_birth).'</span></label>
                 <br>
                 <label>Электронная почта: <span>'.$email.'</span></label>
-                <br>
-                <label>Пароль: <span>'.$password.'</span></label>
                 <br>
                 <label class="load_avatar_label" for="load_avatar_btn">Загрузить новую аватарку<img src="img/icons/free-icon-download-arrow-62055.png" alt=""> </label>
                 <input id="load_avatar_btn" type="file" name="load_avatar">
