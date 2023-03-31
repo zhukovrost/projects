@@ -121,8 +121,8 @@ if (isset($_POST['finish'])){
     <a href="../news/news.php">Новости</a>
   </nav>
 </header>
-<body>
-  <main>
+<body class="exercises_body">
+  <main class="container_exercises">
     <div class="container">
         <?php
         if ($error_array['no_program']){
@@ -173,8 +173,8 @@ if (isset($_POST['finish'])){
                 </div>
                 </section>
                 <section>
-                  <button type='submit' name='pass'>Пропустить упражнение</button>
-                  <button type='submit' name='next'>Я выполнил упражнение</button>
+                  <button class='skip_exercise_btn' type='submit' name='pass'>Пропустить упражнение</button>
+                  <button class='done_exercise_btn' type='submit' name='next'>Я выполнил упражнение</button>
                 </section>
                 </div>
             ";
@@ -182,7 +182,7 @@ if (isset($_POST['finish'])){
                 echo "
               <h1>Поздравляем, вы завершили тренировку!</h1>
               <label>Выполнено упражнений ".($amount_of_exercises-$_SESSION['passed'])."/".$amount_of_exercises."</label>
-              <button type='submit' name='finish'>Завершить сеанс</button>
+              <button class='finish_workout_btn' type='submit' name='finish'>Завершить сеанс</button>
               ";
               }
 
@@ -214,11 +214,11 @@ if (isset($_POST['finish'])){
                 echo "
                 <form method='post'>
                   <input type='hidden' name='start' value='1'>
-                  <button type='submit'>Начать тренировку</button>
+                  <button class='start_workout_btn' type='submit'>Начать тренировку</button>
                 </form>
                 ";
               }else{
-                echo "<p>Вы уже потренировались. Возвращайтесь завтра.</p>";
+                echo "<p class='already_workout_text'>Вы уже потренировались. Возвращайтесь завтра.</p>";
               }
 
               echo "</section>";
