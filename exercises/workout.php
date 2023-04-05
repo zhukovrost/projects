@@ -88,6 +88,7 @@ if (isset($_POST['finish'])){
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </head>
 <header>
@@ -181,6 +182,7 @@ if (isset($_POST['finish'])){
               }else{
                 echo "
               <h1>Поздравляем, вы завершили тренировку!</h1>
+              <div id='result_pie'></div>
               <label>Выполнено упражнений ".($amount_of_exercises-$_SESSION['passed'])."/".$amount_of_exercises."</label>
               <button class='finish_workout_btn' type='submit' name='finish'>Завершить сеанс</button>
               ";
@@ -228,6 +230,21 @@ if (isset($_POST['finish'])){
         ?>
     </div>
   </main>
+
+  <script>
+    var data = [{  values: [19, 26, 55],
+      labels: ['Apple', 'Orange', 'Banana'],
+      type: 'pie'
+    }];
+    var layout = {
+      height: 400,
+      width: 400,
+      showlegend: true,
+      title: "My Pie",
+      hole: 0
+    };
+    Plotly.newPlot('result_pie', data, layout);
+  </script>
 </body>
 
 </html>
