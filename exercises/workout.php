@@ -203,7 +203,7 @@ if (isset($_POST['finish'])){
               <div class='today_workout_exercise'>
                 <img src='".$exercise[3]."' style='margin-right: 5px'>
                 <div class='together'>
-                  <p>".$exercise[1]."</p>";
+                  <p class='title'>".$exercise[1]."</p>";
                 # repeats
                 if ($exercise[0]){
                   echo "<p>Длительность (в секундах): ".$repeats."</p>";
