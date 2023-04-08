@@ -395,7 +395,7 @@ if (isset($_POST['weeks'])){
            <input type='number' name='repeats' value='".$exercise[2]."'>
           </section>
           <input type='hidden' name='exercise' value='".$exercise_id."'>
-          <button style='border: none' type='submit'>
+          <button class='plus_btn' style='border: none' type='submit'>
             <img src='../img/icons/add_to_the_list.png'>
           </button>
         </form>";
@@ -417,5 +417,25 @@ if (isset($_POST['weeks'])){
   */
   ?>
 </main>
+
+<script>
+  
+  document.addEventListener("DOMContentLoaded", function(){
+    let BtnsArr = document.getElementsByClassName('plus_btn');
+
+    window.scroll(0, localStorage.getItem('btn_plus'));
+
+    window.addEventListener('scroll', function() {
+      y_coord = pageYOffset;
+      for(let i = 0; i < BtnsArr.length; i++){
+        BtnsArr[i].addEventListener('click', function(){
+          localStorage.setItem('btn_plus', y_coord);
+        })
+      }
+    });
+  });
+  
+</script>
+
 </body>
 </html>
