@@ -237,7 +237,7 @@ if (isset($_POST['finish'])){
   <script>
     var data = [{
       values: [<?php if ($done != 0){ echo $done; } if ($passed != 0){ if ($done != 0){ echo ', '; } echo $passed; } ?>],
-      labels: [<?php if ($done != 0){ echo 'Сделано'; } if ($passed != 0){ if ($done != 0){ echo ', '; } echo 'Пропущено'; } ?>],
+      labels: [<?php if ($done != 0){ echo '"Сделано"'; } if ($passed != 0){ if ($done != 0){ echo ', '; } echo '"Пропущено"'; } ?>],
       type: 'pie'
     }];
     var layout = {
