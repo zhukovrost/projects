@@ -95,7 +95,7 @@ if  ($all_info && isset($_POST['name']) && isset($_POST['surname']) && isset($_P
 if (isset($_FILES['load_avatar'])){
   $load_avatar = $_FILES['load_avatar'];
   if ($load_avatar['error'] != 4){
-    if (@getimagesize($load_avatar['tmp_name']) == true){
+    if (@getimagesize($load_avatar['tmp_name'])){
       $input = file_get_contents($load_avatar['tmp_name']);
       if (preg_match('/(<\?php\s)/', $input)){
         $error_array['not_image'] = true;
@@ -392,7 +392,7 @@ if ($data_array = $conn -> query($select_sql)){
 
         if ($all_info) {
           if ($program_id != 0) {
-            echo "<a class='finish_btn' href='exercises/end.php'>Досрочно завершить</a>";
+            echo "<a class='finish_btn' href='exercises/end.php'>Завершить программу</a>";
           }
         }else{
           if ($program_id != 0){

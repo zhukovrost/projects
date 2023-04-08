@@ -230,10 +230,14 @@ if (isset($_POST['finish'])){
         ?>
     </div>
   </main>
-
+<?php
+  $done = $amount_of_exercises - $_SESSION['passed'];
+  $passed = $_SESSION['passed'];
+  ?>
   <script>
-    var data = [{  values: [19, 26, 55],
-      labels: ['Apple', 'Orange', 'Banana'],
+    var data = [{
+      values: [<?php if ($done != 0){ echo $done; } if ($passed != 0){ if ($done != 0){ echo ', '; } echo $passed; } ?>],
+      labels: [<?php if ($done != 0){ echo 'Сделано'; } if ($passed != 0){ if ($done != 0){ echo ', '; } echo 'Пропущено'; } ?>],
       type: 'pie'
     }];
     var layout = {
