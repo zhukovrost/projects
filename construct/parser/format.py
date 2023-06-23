@@ -1,4 +1,5 @@
 from json import load, dumps
+from colorama import Fore, Style
 
 
 def print_question(test, number):
@@ -7,14 +8,17 @@ def print_question(test, number):
     try:
         print(test[str(number)][0], end='')
     except:
-        print("NONE!!!")
+        print(Fore.RED + "NONE!!!")
+        print(Style.RESET_ALL)
+
 
     print("\nAnswer: ", end='')
 
     try:
         print(test[str(number)][1], end='')
     except:
-        print("NONE!!!")
+        print(Fore.RED + 'NONE!!!')
+        print(Style.RESET_ALL)
 
     print("\n")
 
