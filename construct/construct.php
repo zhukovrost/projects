@@ -438,7 +438,9 @@ $count_result->free();
 
 		echo "</div>\n";
 
-	}	
+	}
+
+  print_r($_SESSION['result_array']);
 #-------------------- preview -------------------
 
  

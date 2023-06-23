@@ -108,19 +108,8 @@ function select_question($conn, $id){
 #------------------ construct ------------------------
 
 function mark($points){
-  $points *= 5;
-  if ($points < 1.6){
-    $mark = 1;
-  }else if ($points >= 1.6 && $points < 2.6){
-    $mark = 2;
-  }else if ($points >= 2.6 && $points < 3.6){
-    $mark = 3;
-  }else if ($points >= 3.6 && $points < 4.6){
-    $mark = 4;
-  }else if ($points >= 4.6){
-    $mark = 5;
-  }
-  return $mark;
+  $points *= 100;
+  return $points;
 }
 
 ?>
