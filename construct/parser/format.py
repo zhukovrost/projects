@@ -9,7 +9,7 @@ def print_question(test, number):
         print(test[str(number)][0], end='')
     except:
         print(Fore.RED + "NONE!!!")
-        print(Style.RESET_ALL)
+        print(Fore.RESET)
 
 
     print("\nAnswer: ", end='')
@@ -18,7 +18,7 @@ def print_question(test, number):
         print(test[str(number)][1], end='')
     except:
         print(Fore.RED + 'NONE!!!')
-        print(Style.RESET_ALL)
+        print(Fore.RESET)
 
     print("\n")
 
@@ -51,8 +51,9 @@ for unformatted_item in unformatted_data.items():
     unformatted_test = unformatted_item[1]
     formatted_test = []
     formatted_themes = []
-
+    print(Fore.MAGENTA)
     print(filename, '\n')
+    print(Fore.RESET)
     print("Here is an example:\nQuestion: ", unformatted_test["3"][0], "\nAnswer: ", unformatted_test["3"][1], "\n\nChoose the question type:\n1 - One blank field with different possible answers.\n2 - Several blank fields with one answer variant.\n3 - Do not include this test\n", sep='')
     question_type = int(input("Enter 1 or 2 or 3: "))
     if question_type != 3:
@@ -95,7 +96,7 @@ for unformatted_item in unformatted_data.items():
             theme = -1
 
         for i in range(1, len(unformatted_test) + 1):
-            question_array = [unformatted_test[str(i)][0], 1, -1, [unformatted_test[str(i)][0]], "", None]
+            question_array = [unformatted_test[str(i)][0], 1, -1, [unformatted_test[str(i)][0].replace(' ', '').upper()], "", None]
             if question_type == 1:
                 question_array[4] = "definite"
             elif question_type == 2:
@@ -108,6 +109,8 @@ for unformatted_item in unformatted_data.items():
         all_themes.append(formatted_themes)
     else:
         excluded[filename] = unformatted_test
+
+    print('\n' + Fore.GREEN + 'SUCCESS!\n' + Fore.RESET)
 
 f3 = open("excluded.json", "r+")
 f3.write(dumps(excluded))
