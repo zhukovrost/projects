@@ -1,0 +1,2290 @@
+@import url("reset.css");
+
+/* =================BASE================= */
+html {
+	overflow: scroll;
+	overflow-x: hidden;
+	height: 100%;
+}
+
+body {
+    position: relative;
+	background-color: #D8E8F3;
+	font-family: 'Montserrat', sans-serif;
+	min-height: 100%;
+    padding-bottom: 60px;
+}
+
+/* ===BASE BUTTONS=== */
+
+
+
+/* ============== */
+
+.container{
+    max-width: 74%;
+    margin: 0 auto;
+}
+
+/* ===FOOTER=== */
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 2.5%;
+    width: 95%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px 7px 40px;
+    border-top: #000000 1px solid;
+}
+
+footer p{
+    margin-bottom: 5px;
+}
+
+footer p:last-child{
+    margin-bottom: 0px;
+}
+
+
+/* ===LOGO=== */
+.logo{
+    margin-right: 10vw;
+    display: inline-block;
+    text-align: center;
+    color: #323232;
+    transition: .2s ease;
+}
+
+/* For login and registration */
+.log_reg_logo{
+    position: absolute;
+    top: 2%;
+    left: 3%;
+}
+
+/* For current test */
+
+.logo::after{
+    content: none;
+}
+
+.logo:hover{
+    color: #000000;
+}
+
+.logo p:first-child{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.logo p:last-child{
+    font-size: 18px;
+    font-weight: 500;
+    transform: translateY(-30%);
+}
+
+/* ===HEADER=== */
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 50px;
+}
+
+header a{
+    position: relative;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+header a::after{
+    content: "";
+    position: absolute;
+    left: -5%;
+    bottom: -15%;
+    width: 0%;
+    height: 2px;
+    background-color: #000000;
+    transition: .3s ease;
+}
+
+header a:hover::after{
+    width: 110%;
+}
+
+/* ====================================== */
+
+
+/* =============WELCOME PAGE============= */
+
+/* ===Background objects(back header)=== */
+.Background_object_1{
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: 0%;
+}
+
+.Background_object_2{
+    position: absolute;
+    right: 0%;
+    z-index: -1;
+}
+
+
+.icons_body{
+    background-image: url('../img/bacground.svg');
+    background-size: cover;
+}
+
+
+.welcome_header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+
+/* Links in header */
+.welcome_header a{
+    position: relative;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.welcome_header a::after{
+    content: "";
+    position: absolute;
+    left: -5%;
+    bottom: -15%;
+    width: 0%;
+    height: 2px;
+    background-color: #000000;
+    transition: .3s ease;
+}
+
+.welcome_header a:hover::after{
+    width: 110%;
+}
+
+/* login and registration links */
+.welcome_header div a{
+    margin-right: 25px;
+}
+
+/* ===Daily words block=== */
+.daily_words{
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.daily_words swiper-slide{
+    position: relative;
+    height: 25vh;
+    padding: 30px 100px;
+    background-color: #F2F2F2;
+    box-shadow: #0000005f 5px 5px 10px;
+}
+
+.daily_words .title{
+    color: #323232;
+    font-size: 19px;
+    letter-spacing: 1px;
+    margin: 0px 0px 2px 10px;
+    font-family: 'Comfortaa';
+}
+
+.daily_words h2{
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.daily_words .example_title{
+    font-family: 'Comfortaa';
+    margin-top: 35px;
+    font-size: 18px;
+    color: #414040;
+}
+
+.daily_words .example_text{
+    font-size: 23px;
+}
+
+/* ===Welcome words and button to login page=== */
+.welcome_content{
+    margin: 0px 0px 60px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome_content img{
+    transform: scale(1);
+}
+
+.welcome_content .text{
+    text-align: center;
+}
+
+.welcome_content .text h1{
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.welcome_content .text p{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.welcome_content .text a{
+    background-color: #56d8ff;
+    padding: 20px 30px;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #000000;
+    border: 2px #000000 solid;
+    border-radius: 3px;
+    transition: .2s ease-in-out;
+}
+
+.welcome_content .text a:hover{
+    background-color: #00c3ff;
+    border-radius: 8px;
+}
+
+.welcome_content .text a img{
+    margin-left: -3px;
+    transition: .2s ease-in-out;
+}
+
+.welcome_content .text a:hover img{
+    margin-left: 10px;
+}
+
+/* =========================================== */
+
+
+/* ===========REGISTRATION && LOGIN PAGES=========== */
+
+.reg_body, .log_body{
+    background-image: url('../img/reg_background.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.log_body{
+    background-image: url('../img/log_background.png');
+}
+
+.reg_form, .log_form{
+    width: 40vw;
+    padding: 50px 60px 70px 60px;
+    background-color: #d8e8f3ed;
+    border: 2px #000000 solid;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Padding only for login form */
+.log_form{
+    padding: 50px 10px 100px 10px;
+}
+
+/* Title of reg and log form */
+.reg_form h1, .log_form h1{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 60px;
+}
+
+.log_form h1{
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+/* Inputs and buttons */
+.reg_form .content{
+    display: flex;
+}
+
+.log_form .content{
+    width: 80%;
+}
+
+/* 'Forgot password' */
+.log_form .content a{
+    font-size: 18px;
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.log_form .content a::after{
+    content: none;
+}
+
+.reg_form .left{
+    margin-right: 70px;
+}
+
+.reg_form input, .log_form input{
+    border: #000000 1px solid;
+    background-color: #F0F0F0;
+    padding: 7px 5px;
+    margin-bottom: 23px;
+    font-size: 25px;
+    width: 100%;
+}
+
+.log_form input{
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 10px 7px;
+    font-size: 30px;
+}
+
+.log_form label{
+    font-size: 20px;
+}
+
+.log_form #password{
+    margin-bottom: 3px;
+}
+
+.reg_form a, .log_form a{
+    position: relative;
+    margin-top: 8px;
+    font-size: 18px;
+    color: #414040;
+    transition: .2s ease-in-out;
+}
+
+.reg_form a::after, .log_form a::after{
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    left: -10%;
+    height: 2px;
+    background-color: #414040;
+    width: 120%;
+    transition: .2s ease-in-out;
+}
+
+.reg_form a:hover::after, .log_form a:hover::after{
+    background-color: #000000;
+    width: 140%;
+    left: -20%;
+}
+
+.reg_form a:hover, .log_form a:hover{
+    color: #000000;
+}
+
+/* Reg and log buttons */
+.reg_button, .log_button{
+    position: relative;
+    width: 40%;
+    padding: 15px 0px;
+    margin-top: 40px;
+    text-transform: uppercase;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    border: 3px solid #0D0D0D;
+    color: #1d1c1c;
+    z-index: 0;
+    overflow: hidden;
+    transition: .6s ease;
+}
+
+.reg_button{
+    margin-top: 60px;
+}
+
+.reg_button::before, .log_button::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    border-radius: 0% 0% 50% 50%;
+    background: #1d1c1c;
+    z-index: -1;
+    transition: .6s ease;
+}
+
+.log_button{
+    margin-top: 40px;
+}
+
+.reg_button:hover, .log_button:hover{
+    color: #F2F2F2;
+}
+
+.reg_button:hover::before, .log_button:hover::before{
+    height: 190%;
+}
+
+/* Reg and log footer */
+.reg_log_footer{
+    background-color: #d8e8f3ec;
+    width: 100%;
+    left: 0%;
+}
+
+/* =================================== */
+
+
+/* ==============PROFILE============== */
+
+.profile_title{
+    text-align: center;
+    font-size: 40px;
+    margin: 10px 0px 0px 0px;
+}
+
+.profile_block{
+    position: relative;
+    width: 65vw;
+    height: 70vh;
+    font-size: 14px;
+    margin: 20px auto 50px;
+    padding: 30px 70px;
+    background-color: #F0F0F0;
+    box-shadow: 6px 7px 7px rgba(0, 0, 0, 0.25);
+}
+
+/* User's avatar photo */
+.profile_block .avatar{
+    position: absolute;
+    top: -6%;
+    left: -4%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    overflow: hidden;
+}
+
+.profile_block .avatar img{
+    height: 100%;
+    width: 100%;
+}
+
+.profile_block .avatar #avatar_file{
+    display: none;
+}
+
+.profile_block .avatar .uppload_button{
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: rgb(0, 0, 0, 0.7);
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 30px;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.profile_block .avatar:hover .uppload_button{
+    opacity: 1;
+}
+
+/* ===Homework, theory, diagram of progress and links=== */
+.profile_block .materials{
+    display: flex;
+    justify-content: space-around;
+    color: #ffffff;
+}
+
+.profile_block .materials .theory, .profile_block .materials .homework{
+    position: relative;
+    background-color: #000000;
+}
+
+/* Titles of materials blocks */
+.profile_block .materials h2{
+    position: absolute;
+    top: -12.5%;
+    left: 3%;
+    color: #000000;
+    font-family: 'Comfortaa';
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.profile_block .materials .theory{
+    margin-left: 10%;
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* =Message of unread theores= */
+.profile_block .materials .theory div{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Number of unread theories */
+.profile_block .theory div .number{
+    background-color: rgba(123, 194, 193, 1);
+    color: #000000;
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0px 10px;
+    padding: 5px 10px;
+}
+
+/* Button 'GO' */
+.profile_block .theory div button{
+    background-color: rgba(123, 194, 193, 1);
+    border: 1px solid #000000;
+    color: #000000;
+    box-shadow: 0px 3px 0px #54d7ff;
+    padding: 5px 12px;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Comfortaa';
+    margin-left: 20px;
+    transition: .2s ease-in-out;
+}
+
+.profile_block .theory div button:hover{
+    background-color: rgb(143, 226, 225);
+}
+
+.profile_block .theory div button:active{
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px #54d7ff;
+}
+
+/* =Homework block= */
+.profile_block .materials .homework{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 10px;
+}
+
+.profile_block .materials .homework .content{
+    display: flex;
+}
+
+/* Deadline, Theme and alloted time*/
+.profile_block .homework .content p{
+    font-size: 21px;
+    margin-bottom: 2px;
+}
+
+.profile_block .homework .content p span{
+    font-weight: 600;
+}
+
+/* image homerwork */
+.profile_block .homework img{
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+/* Button 'START' */
+.profile_block .homework button{
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 10px;
+    background-color: rgba(123, 194, 193, 1);
+    border: 1px solid #000000;
+    color: #000000;
+    box-shadow: 0px 3px 0px #54d7ff;
+    padding: 5px 12px;
+    margin: 10px auto 0px auto;
+    transition: .2s ease-in-out;
+}
+
+.profile_block .homework button:hover{
+    background-color: rgb(143, 226, 225);
+}
+
+.profile_block .homework button:active{
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px #54d7ff;
+}
+
+/* Links for pages: marks, all tests and all materials */
+.activity{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Activity diagram */
+.profile_block .activity .diagram{
+    margin-right: 50px;
+    width: 78%;
+}
+
+.profile_block .activity .links{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    float: right;
+}
+
+.profile_block .activity .links .item{
+    display: inline-block;
+    position: relative;
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #585858;
+    transition: .2s ease-in-out;
+}
+
+.profile_block .activity .links .item::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -15%;
+    width: 0%;
+    height: 2px;
+    background-color: #000000;
+    transition: .3s ease;
+}
+
+.profile_block .activity .links .item:hover::after{
+    width: 100%;
+    left: 0%;
+}
+
+.profile_block .activity .links .item:hover{
+    color: #000000;
+}
+
+/* Button 'Log out' to leave account */
+.profile_block .activity .links .logout_btn{
+    background-color: #222222;
+    color: #ffffff;
+    box-shadow: 0px 3px 0px #54d7ff;
+    padding: 7px 5px 7px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    margin-top: 60px;
+    transition: .2s ease-in-out;
+}
+
+.profile_block .activity .logout_btn:hover{
+    background-color: #000000;
+}
+
+.profile_block .activity .logout_btn:active{
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px #54d7ff;
+}
+
+.profile_block .activity .logout_btn img{
+    margin-left: 16px;
+}
+
+/* Logout button and button to constructor(for admin) */
+
+.logout_cover{
+    position: relative;
+}
+
+.construct_title{
+    position: relative;
+    font-size: 21px;
+    background-color: #000000;
+    border: 2px solid #F2F2F2;
+    padding: 10px 40px;
+    z-index: 10;
+}
+
+.construct_title a{
+    color: #f2f2f2cb;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: .4s cubic-bezier(0.51, 0.14, 0.12, 1.02);
+}
+
+.construct_title:hover a{
+    color: #f2f2f2;
+}
+
+.admin_logout_btn{
+    background-color: #000000;
+    color: #f2f2f2cb;
+    border: solid #F2F2F2;
+    border-top: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+    transform: translateY(-100%);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 0px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .4s cubic-bezier(0.51, 0.14, 0.12, 1.02);
+}
+
+.admin_logout_btn:hover{
+    color: #f2f2f2;
+}
+
+.logout_cover:hover .admin_logout_btn{
+    transform: translateY(0%);
+}
+
+/* ====================================== */
+
+
+
+/* ============All TESTS PAGE============ */
+
+/* ===Progress on tests=== */
+.tests_progress{
+    width: 75%;
+    margin: 0 auto;
+}
+
+.tests_progress .content{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 100px;
+    width: 100%;
+    background-color: #F0F0F0;
+}
+
+.tests_progress .title{
+    font-family: 'Comfortaa';
+    font-size: 18px;
+    margin-bottom: 1px;
+    margin-left: 5px;
+    letter-spacing: 1px;
+}
+
+.tests_progress .diagram{
+    width: 300px;
+    height: 300px;
+}
+
+/* Statistic of tests(all time) */
+.tests_progress .statistic p{
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.tests_progress .statistic p span{
+    background-color: #54d7ff;
+    padding: 3px 5px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+/* ===All tests list=== */
+/* Sort of All tests */
+.tests_list_sort{
+    display: flex;
+    margin-top: 70px;
+}
+
+/* Reday sort buttons */
+.tests_list_sort .ready_sort{
+    display: flex;
+    margin-left: 50px;
+}
+
+.tests_list_sort .ready_sort button{
+    margin: 0 10px;
+    font-size: 20px;
+    background-color: rgba(137, 206, 255, 0.377);
+    padding: 3px 10px;
+    border: 1px solid #000000;
+    transition: .1s ease-in-out;
+}
+
+.tests_list_sort .ready_sort button:hover{
+    background-color: rgba(137, 206, 255, 0.705);
+}
+
+.tests_list_sort .ready_sort .sortItem_active{
+    background-color: rgb(114, 193, 250);
+}
+
+.tests_list_sort .ready_sort .sortItem_active:hover{
+    background-color: rgb(114, 193, 250);
+}
+
+/* =Test's search by theme= */
+.tests_list_sort img{
+    height: 40px;
+    width: 40px;
+}
+
+.tests_list_sort input{
+    background-color: #F2F2F2;
+    margin-left: 10px;
+    font-size: 23px;
+    padding: 3px 5px;
+}
+
+/* lists of test */
+.tests_list{
+    column-count: 2;
+    margin-top: 20px;
+}
+
+/* Current test */
+.tests_list .test{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 30px;
+    padding: 20px 0px;
+    background-color: #F0F0F0;
+}
+
+/* Hide class for searching */
+.tests_list .hide{
+    display: none;
+}
+
+/* Test's content */
+.tests_list .test p{
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.tests_list .test p span{
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.tests_list .test img{
+    width: 120px;
+    height: 120px;
+}
+
+.tests_list .test .status{
+    margin-top: 7px;
+}
+
+.tests_list .test .status span{
+    background-color: #00205b;
+    color: rgb(255, 255, 255);
+    padding: 4px 7px;
+}
+
+.tests_list .test .not_passed span{
+    background-color: rgba(133, 198, 243, 1);
+    color: #000000;
+}
+
+/* 'Start' button to current test page */
+.tests_list .test button{
+    writing-mode: vertical-lr; 
+    text-orientation: upright;
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(133, 198, 243, 1);
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -5px;
+    padding: 5px 7px 10px 7px;
+    transition: .2s ease-in-out;
+}
+
+.tests_list .test button:hover{
+    background-color: rgb(28, 64, 138);
+}
+
+.tests_list .test button:active{
+    box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
+    transform: translateY(3px);
+}
+
+/* =================================== */
+
+
+/* =========CURRENT TEST PAGE========= */
+/* Header only for current test page herader  */
+.curtest_header{
+    justify-content: space-between;
+}
+
+/* Right side of header */
+.curtest_header .right{
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+/* Progress of test */
+.test_progress{
+    width: 90%;
+}
+
+/* Percents of progress */
+.test_progress .progress_bar .percent{
+    position: relative;
+    background-color: #54d7ff;
+    text-align: end;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+
+.test_progress .progress_bar .percent::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 53%;
+    height: 100%;
+    background-color: #004fe3;
+    border-radius: 3px;
+}
+
+/* title 'progress' */
+.test_progress .progress_bar h2{
+    transform: translateX(1%);
+    font-size: 15px;
+    font-family: 'Comfortaa';
+}
+
+/* Navifation the test */
+.test_progress nav{
+    margin-top: 15px;
+    transform: translateX(4%);
+}
+
+.test_progress nav button{
+    background-color: #54d7ff;
+    padding: 4px 10px;
+    margin-right: 10px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+/* answered questions */
+.test_progress nav .finish{
+    background-color: #004fe3;
+    color: #ffffff;
+}
+
+/* remaining time for the test */
+.curtest_header .time{
+    background-color: #54d7ff;
+    font-size: 25px;
+    padding: 15px 20px;
+    margin-left: 20px;
+    box-shadow: 0px 3px 0px #004fe3;
+}
+
+
+/* ====Questions list=== */
+.questions_list{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* question item */
+.questions_list .question{
+    max-width: 65vw;
+    margin: 40px 0px;
+    word-break: break-all;
+}
+
+/* question number and score */
+.questions_list .question .underline_title{
+    display: inline-block;
+    background-color: rgba(240, 240, 240, 1);
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 5px 15px;
+}
+
+.questions_list .question .underline_title h2{
+    display: inline;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.questions_list .question .underline_title h2 span{
+    font-size: 23px;
+    font-weight: 600;
+}
+
+/* Question content */
+.questions_list .question .content{
+    padding: 20px 70px;
+    background-color: rgba(240, 240, 240, 1);
+}
+
+.questions_list .question .content h1{
+    font-size: 35px;
+}
+
+.questions_list .question .content p{
+    margin-top: 40px;
+    font-size: 20px;
+    font-family: 'Comfortaa';
+}
+
+.questions_list .question .content form{
+    display: flex;
+    flex-direction: column;
+}
+
+.questions_list .question .content form label{
+    font-size: 30px;
+}
+
+.questions_list .question .content form input{
+    width: 20px;
+    height: 20px;
+    margin: 10px 10px 5px 20px;
+}
+
+
+/* 'Finish' button to finish current test */
+.questions_list .finish{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(133, 198, 243, 1);
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 5px 25px;
+    margin-bottom: 50px;
+    margin-right: 30px;
+    float: right;
+    transition: .2s ease-in-out;
+}
+
+.questions_list .finish:hover{
+    background-color: rgb(28, 64, 138);
+}
+
+.questions_list .finish:active{
+    box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
+    transform: translateY(3px);
+}
+
+/* ==================================================== */
+
+
+/* ==================TEST RESULT PAGE================== */
+/* Title */
+.result_title{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+/* ===Results block=== */
+.result_content .result{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 30vh;
+    overflow: hidden;
+}
+
+/* Pie diagram */
+.result_content .result .diagram{
+    height: 470px;
+    width: 470px;
+}
+
+.result_content .result .diagram{
+    font-size: 20px;
+}
+
+/* result */
+.result_content .result .statistics{
+    display: flex;
+    align-items: center;
+    background-color: rgba(240, 240, 240, 1);
+    height: 100%;
+    padding: 0px 70px;
+}
+
+/* Smile image */
+.result_content .statistics .image img{
+    width: 170px;
+    height: 170px;
+}
+
+.result_content .statistics .image p{
+    font-size: 27px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* results numbers */
+.result_content .statistics .content p{
+    font-size: 25px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.result_content .statistics .content p span{
+    background-color: rgba(133, 198, 243, 1);
+    font-size: 26px;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+/* Button 'new attempt' */
+.result_content .new_attempt{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(133, 198, 243, 1);
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 15px;
+    margin: 20px 0px 0px 0px;
+    float: right;
+    transition: .2s ease-in-out;
+}
+
+.result_content .new_attempt:hover{
+    background-color: rgb(28, 64, 138);
+}
+
+.result_content .new_attempt:active{
+    box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
+    transform: translateY(3px);
+}
+
+/* Theory block with link to theory page */
+.result_content .theory{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin: 70px auto 0px;
+    padding: 15px 20px;
+    background-color: rgba(240, 240, 240, 1);
+}
+
+.result_content .theory img{
+    width: 150px;
+    height: 150px;
+}
+
+.result_content .theory div{
+    margin-left: 50px;
+}
+
+.result_content .theory p{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+/* Link 'Go to theory' */
+.result_content .theory button{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(133, 198, 243, 1);
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 15px;
+    margin: 20px 10px 0px 0px;
+    float: right;
+    transition: .2s ease-in-out;
+}
+
+.result_content .theory button:hover{
+    background-color: rgb(28, 64, 138);
+}
+
+.result_content .theory button:active{
+    box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
+    transform: translateY(3px);
+}
+
+/* ================================================= */
+
+
+/* ===================THEORY PAGE=================== */
+/* ===Navigation for theory=== */
+.theory_nav{
+    margin-top: 40px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* ===Search by tag=== */
+.theory_nav .search{
+    display: flex;
+    align-items: center;
+}
+
+.theory_nav .search input{
+    margin-left: 20px;
+    padding: 5px 10px;
+    font-size: 25px;
+    background-color: #F0F0F0;
+}
+
+.theory_nav .search p{
+    font-size: 23px;
+    font-weight: 500;
+}
+
+/* ===Most popular themes=== */
+.theory_nav .themes{
+    text-align: center;
+}
+
+.theory_nav .themes button{
+    color: #4d4d4d;
+    transition: .1s ease;
+}
+
+.theory_nav .themes button:hover{
+    color: #000000;
+}
+
+.theory_nav .popular{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.theory_nav .medium_popular{
+    display: flex;
+    justify-content: center;
+}
+
+.theory_nav .medium_popular button{
+    font-size: 21px;
+    font-weight: 500;
+    margin: 5px 10px;
+}
+
+.theory_nav .unpopular{
+    display: flex;
+}
+
+.theory_nav .unpopular button{
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+/* Title of theory item (tags) */
+.theory_block .underline_title{
+    display: inline-block;
+    background-color: rgba(240, 240, 240, 1);
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 5px 15px;
+}
+
+.theory_block .underline_title h2{
+    display: inline;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.theory_block .underline_title h2 span{
+    font-size: 23px;
+    font-weight: 500;
+}
+
+/* Item of theory block */
+.theory_block .item{
+    position: relative;
+    background-color: rgba(240, 240, 240, 1);
+    margin-bottom: 40px;
+    padding: 20px 30px;
+}
+
+/* Content of item */
+.theory_block .item .content{
+    background-color: rgba(216, 227, 243, 1);
+    margin-bottom: 20px;
+    padding: 10px 20px 8px 20px;
+}
+
+.theory_block .item .content p{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+/* Edit button and user, date, time */
+.theory_block .item .content div{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+/* Button 'Edit' */
+.theory_block .item .content button{
+    background-color: rgba(15, 38, 84, 1);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 3px 8px 3px 15px;
+    font-size: 21px;
+    border-radius: 5px;
+    transition: .2s ease;
+}
+
+.theory_block .item .content button img{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.theory_block .item .content button:hover{
+    background-color: rgb(24, 59, 128);
+}
+
+/* User, date, time */
+.theory_block .item .content .content_caption{
+    justify-content: end;
+}
+
+.theory_block .item .content .content_caption p{
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+.theory_block .item .content_caption .user{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.theory_block .item .content_caption .time, .theory_block .item .content_caption .date{
+    font-size: 16px;
+}
+
+/* Button 'view all' */
+.theory_block .item .view_all{
+    position: absolute;
+    top: 94%;
+    left: 42%;
+    display: block;
+    margin: 0 auto;
+    width: 16%;
+    height: 16%;
+    border-radius: 10px;
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
+    color: #ffffff;
+    font-size: 35px;
+    transition: .1s ease-in-out;
+}
+
+.theory_block .item .view_all:hover{
+    background-color: rgb(24, 59, 128);
+}
+
+.theory_block .item .view_all:active{
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
+}
+
+/* ===New post block=== */
+.new_post{
+    text-align: center;
+    font-weight: 500;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+/* Title */
+.new_post h1{
+    font-size: 40px;
+    text-align: center;
+}
+
+/* Form to write tags of theory */
+.new_post form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.new_post form input{
+    margin: 0 15px;
+    background-color: rgba(240, 240, 240, 1);
+    font-size: 25px;
+    padding: 5px 7px;
+}
+
+.new_post form p{
+    font-size: 25px;
+}
+
+/* Button 'add' to add new post */
+.new_post form button{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 6px 20px;
+    border-radius: 3px;
+    transition: .2s ease;
+}
+
+.new_post form button:hover{
+    background-color: rgb(24, 59, 128);
+}
+
+.new_post form button:active{
+    box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
+    transform: translateY(3px);
+}
+
+/* =============================================== */
+
+
+/* ==================REPORTS PAGE==================*/
+/* Statistic of reports block */
+.reports .about_block{
+    display: flex;
+    align-items: center;
+    padding: 20px 50px;
+    margin: 30px auto 0px;
+    width: fit-content;
+    border-radius: 20px;
+    background: linear-gradient(270deg, #0F2654 0%, #71C4FD 100%);
+    color: #ffffff;
+}
+
+.reports .about_block img{
+    margin-right: 100px;
+}
+
+/* Statistic content */
+.reports .about_block li{
+    margin-bottom: 10px;
+    font-size: 25px;
+    list-style-type:disc;
+}
+
+.reports .about_block h1{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.reports .about_block h1 span{
+    background-color: #F9F8F8;
+    color: #000000;
+    padding: 5px 15px;
+    margin-left: 10px;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+/* Reports swiper */
+.reports swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.reports swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 40vw;
+}
+
+/* Reports's item */
+.reports .reports_item{
+    position: relative;
+    border-radius: 28px;
+    background: linear-gradient(90deg, #96D4FF 1.42%, #3E6390 58.33%, #0F2654 100%, #0F2654 100%);
+    padding: 30px 30px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+/* User's avatar */
+.reports .reports_item .avatar img{
+    width: 200px;
+    height: 200px;
+}
+
+.reports .reports_item .avatar p{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+/* User's rating */
+.reports .reports_item .rating{
+    display: flex;
+    align-items: center;
+}
+
+.reports .reports_item .rating p{
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.reports .reports_item .rating img{
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+/* User's feedback(text) */
+.reports .reports_item .content{
+    width: 60%;
+    margin-left: 50px;
+}
+
+.reports .reports_item .content .text{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Date of feedback */
+.reports .reports_item .caption{
+    position: absolute;
+    bottom: 3%;
+    right: 4%;
+}
+
+/* Link to all reviews page and button to leave feedback */
+.reports .links{
+    display: flex;
+    justify-content: center;
+}
+
+.reports .links button, .reports .links a{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 6px 20px;
+    margin: 0 10px;
+    border-radius: 3px;
+    transition: .2s ease;
+}
+
+.reports .links button:hover, .reports .links a:hover{
+    background-color: rgb(24, 59, 128);
+}
+
+.reports .links button:active, .reports .links a:active{
+    box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
+    transform: translateY(3px);
+}
+
+/* ====================================================== */
+
+
+/* ===================ALL REPORTS PAGE=================== */
+/* ===POPUP WINDOW to leave feedback=== */
+.popup_feedback{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000cc;
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: .4s ease-in-out;
+}
+
+.popup_feedback.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup_feedback form{
+    -webkit-box-shadow: 0px 0px 54px 8px rgba(255, 255, 255, 0.27);
+    -moz-box-shadow: 0px 0px 54px 8px rgba(255, 255, 255, 0.27);
+    box-shadow: 0px 0px 54px 8px rgba(255, 255, 255, 0.27);
+    background-color: #ffffff;
+    padding: 50px 60px 10px 60px;
+
+    transition: .8s ease-in-out;
+}
+
+.popup_feedback.open form{
+    transform: scale(1);
+}
+
+.popup_feedback .close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    margin: 10px 10px 0px 0px;
+}
+
+.popup_feedback form .content{
+    display: flex;
+    align-items: center;
+
+}
+
+.popup_feedback form .rating{
+    text-align: center;
+    margin-right: 7vw;
+}
+
+.popup_feedback form .rating h1{
+    font-size: 50px;
+}
+
+.stars_wrapper:before{
+    content: "★★★★★";
+    color: rgb(0, 0, 0);
+    display: block;
+}
+
+.stars_wrapper{
+    position: relative;
+    font-size: 65px;
+    display: inline-block;
+}
+
+.stars_wrapper .stars{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+
+.stars_wrapper input{
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+.star_label{
+    flex: 0 0 20%;
+    height: 100%;
+    cursor: pointer;
+    color: #928148;
+}
+
+.star_label::before{
+    content: "★";
+    display: block;
+    transition: color .3s ease 0s;
+}
+
+.star_item:checked,
+.star_item:checked ~ .star_label{
+    color: #ffc400;
+}
+
+.star_label:hover,
+.star_label:hover ~ .star_label,
+.star_label:checked ~ .star_label:hover{
+    color: #ffc400;
+}
+
+
+.popup_feedback .text textarea{
+    width: 20vw;
+    height: 25vh;
+    background-color: #e6e6e6;
+    padding: 5px 10px;
+    font-size: 21px;
+}
+
+.popup_feedback .text h1{
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.popup_feedback form .send{
+    display: block;
+    margin: 20px auto 15px;
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: 500;
+    padding: 7px 40px;
+    border-radius: 5px;
+    transition: .2s ease;
+}
+
+.popup_feedback form .send:hover{
+    background-color: rgb(24, 59, 128);
+}
+
+.popup_feedback form .send:active{
+    box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
+    transform: translateY(3px);
+}
+
+/* ===Navigation=== */
+.reports_nav{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+/* Search by filter */
+.reports_nav .search{
+    display: flex;
+    align-items: center;
+}
+
+.reports_nav .search h1{
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.reports_nav .search select{
+    font-size: 23px;
+    padding: 3px 5px;
+    background-color: #0F2654;
+    color: #ffffff;
+}
+
+/* Leave your feedback */
+.reports_nav .your_feedback{
+    display: flex;
+    align-items: center;
+}
+
+.reports_nav .your_feedback h1{
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+/* Button 'Leave' */
+.reports_nav .your_feedback button{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 6px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: .2s ease;
+}
+
+.reports_nav .your_feedback button:hover{
+    background-color: rgb(24, 59, 128);
+}
+
+.reports_nav .your_feedback button:active{
+    box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
+    transform: translateY(3px);
+}
+
+/* Block with all reports */
+.all_reports{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2em;
+    margin-bottom: 30px;
+}
+
+.all_reports .reports_item{
+    position: relative;
+    border-radius: 28px;
+    background: linear-gradient(90deg, #96D4FF 1.42%, #3E6390 58.33%, #0F2654 100%, #0F2654 100%);
+    padding: 30px 30px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+/* User's avatar */
+.all_reports .reports_item .avatar img{
+    width: 200px;
+    height: 200px;
+}
+
+.all_reports .reports_item .avatar p{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+/* User's rating */
+.all_reports .reports_item .rating{
+    display: flex;
+    align-items: center;
+}
+
+.all_reports .reports_item .rating p{
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.all_reports .reports_item .rating img{
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+/* User's feedback(text) */
+.all_reports .reports_item .content{
+    width: 60%;
+    margin-left: 50px;
+}
+
+.all_reports .reports_item .content .text{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Date of feedback */
+.all_reports .reports_item .caption{
+    position: absolute;
+    bottom: 3%;
+    right: 4%;
+}
+
+/* ======================================== */
+
+
+/* ===============MARKS PAGE=============== */
+
+.marks_block .top{
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-between;
+    z-index: 0;
+}
+
+.marks_block .previous_cover .title{
+    margin-left: 5px;
+    margin-bottom: 4px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.marks_block .previous{
+    position: relative;
+    display: flex;
+    z-index: 1;
+    width: 30vw;
+    float:right;
+    padding: 20px 40px;
+    color: #ffffff;
+    background: linear-gradient(180deg, #071124 0%, #15316B 100%);
+    box-shadow: -7px -8px 3px #0000003a;
+    opacity: 0.9;
+    transition: .2s ease-in-out;
+}
+
+.marks_block .previous:hover{
+    box-shadow: -10px -25px 3px #0000003a;
+    opacity: 1;
+}
+
+.marks_block .previous .marks{
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+}
+
+.marks_block .previous .marks div{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(74, 168, 1, 1);
+}
+
+.marks_block .top .date{
+    display: flex;
+    align-items:flex-start;
+}
+
+.marks_block .top .date p{
+    font-size: 27px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.marks_block .top .date input{
+    font-size: 29px;
+    padding: 2px 5px;
+    border: 1px solid #143272;
+}
+
+.marks_block .current{
+    position: relative;
+    display: flex;
+    z-index: 1;
+    width: 60vw;
+    float:right;
+    padding: 40px 60px;
+    color: #ffffff;
+    transform: translateY(-5vh);
+    background: linear-gradient(180deg, #071124 0%, #15316B 100%);
+    box-shadow: -7px -8px 3px #0000003a;    
+}
+
+.marks_block .current .marks{
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+}
+
+.marks_block .current .marks div{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(74, 168, 1, 1);
+}
+
+.marks_block .current .statistic{
+    margin-left: 50px;
+}
+
+.marks_block .current .content h2{
+    margin-bottom: 3px;
+    font-size: 25px;
+}
+
+.marks_block .current .content h2 span{
+    font-weight: 500;
+}
+
+.marks_block .current .content h1{
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.marks_block .current .content h1 span{
+    font-weight: 600;
+    background-color: rgba(133, 194, 3, 1);
+    color: #000000;
+    padding: 3px 5px;
+}
+
+.marks_block .current button{
+    margin-top: 50px;
+    border-radius: 5px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: rgba(154, 208, 245, 1);
+    color: #000000;
+    transition: .1s ease-in-out;
+}
+
+.marks_block .current button:hover{
+    background-color: rgb(161, 218, 255);
+}
+
+.marks_block .current button img{
+    margin-left: 20px;
+    transition: .1s ease-in-out;
+}
+
+.marks_block .current button:hover img{
+    margin-left: 30px;
+}
+
+/* ============================================== */
+
+
+/* ==================OTHER PAGE================== */
+
+.other_container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+
+.other_container img{
+    margin-top: 10vh;
+    width: 50vw;
+    height: 50vh;
+}
+
+.other_container h1{
+    margin-top: 30px;
+    font-size: 45px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+
+/* ===================CONSTRUCTOR PAGE===============*/
+
+.construct_main{
+    min-height: 92vh;
+    text-align: center;
+}
+
+.construct_btn{
+    background-color: #F2F2F2;
+    color: #0D0D0D;
+    border: #0D0D0D 2px solid;
+    padding: 10px 20px;
+    margin: 10px 0px;
+    transition: .4s ease;
+}
+
+.construct_btn:hover{
+    background-color:#0D0D0D ;
+    color: #F2F2F2;
+}
+
+.construct_ver_form{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: #000000 2px solid;
+    background-color: #F2F2F2;
+    margin-top: 3%;
+    padding: 30px 40px;
+}
+
+.construct_ver_form label, .construct_ver_form div{
+    margin: 5px 0px;
+}
+
+.ver_btn{
+    padding: 0;
+    width: 30%;
+    height: 40px;
+    margin: 10px auto 40px auto;
+}
+
+.c_all_forms_block{
+	width: 99%;
+	border: black 2px solid;
+	margin: 5px;
+	padding: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+.c_checkbox_block{
+	display: flex;	
+	margin: 1px;
+}
+
+.c_form_1{
+	border: black 2px solid;
+	width: 40%;
+	margin: 5px;
+	padding: 5px;
+}
+.c_form_2{
+	border: black 2px solid;
+	width: 15%;
+	margin: 5px;
+	padding: 5px;
+}
+
+.c_form_2 input, textarea{
+	width: 90%;
+	margin: 2px;
+}
+
+.c_form_3{
+	border: black 2px solid;
+	width: 20%;
+	margin: 5px;
+	padding: 5px;
+}
+
+.c_preview_all{
+  width: 90%;
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+ 
+.c_preview{
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+}
+ 
+.c_preview_info{
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px; 
+}
+ 
+.c_preview_info p{
+  margin-top: 7px;
+  margin-bottom: 2px;
+}
+ 
+.c_preview.radio{
+  width: 80%;
+}
+ 
+.c_preview_info.radio{
+  width: 17%;
+}
+ 
+.c_preview.checkbox{
+  width: 70%;
+}
+ 
+.c_preview_info.checkbox{
+  width: 27%;
+}
+ 
+.c_preview.definite{
+  width: 49%;
+}
+ 
+.c_preview_info.definite{
+  width: 49%;
+}
+ 
+.c_preview.definite_mc{
+  width: 80%;
+}
+ 
+.c_preview_info.definite_mc{
+  width: 17%;
+}
+
+.c_preview.missing_words {
+    width: 70%;
+}
+.c_preview_info.missing_words {
+    width: 28%;
+}
+
+.c_error_array{
+  width: 95%;
+  border: 2px solid lime;
+  margin: 5px;
+  padding: 5px;
+}
+
+.c_all_forms_block h3, .c_all_forms_block h4{
+    margin-top: 15px;
+}
+
+.c_all_forms_block input[type="text"], .c_all_forms_block input[type="number"], .c_all_forms_block textarea{
+    border: 1px solid #0D0D0D;
+    padding: 5px 7px;
+    margin-bottom: 3px;
+    font-size: 15px;
+}
+
+.c_all_forms_block input[type="submit"]{
+    border: 2px solid #0D0D0D;
+    padding: 5px 10px;
+    margin: 0px 0px 20px;
+    transition: .4s ease;
+}
+
+.last_submit_btn{
+    margin: 10px 0px 30px 0px !important;
+}
+
+.c_all_forms_block input[type="submit"]:hover{
+    background-color: #0D0D0D;
+    color: #F2F2F2;
+    border: 2px solid #2e8b16;
+}
+
+.c_form_3 form a{
+    padding: 10px 20px;
+    border: 2px solid #0D0D0D;
+    color: #0D0D0D;
+    transition: .4s ease;
+}
+
+.c_form_3 form a:hover{
+    background-color: #0D0D0D;
+    color: #F2F2F2;
+    border: 2px solid #2e8b16;
+}
+
+.c_clear_all_btn{
+    padding: 10px 20px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    border: 2px solid #0D0D0D;
+    color: #0D0D0D;
+    transition: .4s ease;
+}
+
+.c_clear_all_btn:hover{
+    background-color: #0D0D0D;
+    color: #F2F2F2;
+    border: 2px solid #2e8b16;
+}
+/* ================================ */

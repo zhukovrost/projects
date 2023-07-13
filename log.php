@@ -46,46 +46,53 @@ if (isset($_POST['log_done'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/format.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Montserrat+Alternates:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,800&display=swap" rel="stylesheet">
-	<title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <title>24 / Roman</title>
 </head>
-<body class="regenlog_body">
-	<header class="regenlog_header">
-		<a class="back_button" href="index.php">На главную</a>
-		<a class="reg_button" href="reg.php">Зарегистрироваться</a>
-	</header>
-	<main class="regenlog">
-		    <form class="login_form" method="post">
-				<h1 class="login_title">Вход в систему</h1>
-				<p>Логин</p>
-				<input class="login_item" type="text" name="log_login" value="<?php if (isset($_COOKIE['reg_login'])){ echo $_COOKIE['reg_login']; } ?>">
-				<p>Пароль</p>
-				<input class="login_item" type="password" name="log_password" value="<?php if (isset($_COOKIE['reg_password'])){ echo $_COOKIE['reg_password']; } ?>">
-				<?php 
-					log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
-					log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
-					if ($error_array['log_conn_error']){ log_warning($error_array['log_conn_error'], "Ошибка: " . $conn->error); };
-					if (isset($_GET['please_log'])){ echo "<p class=''> Пожалуйста авторизуйтесь</p>"; }
-          if (isset($_GET['reg'])){ echo "<p class=''>Регистрация прошла успешно, пожалуйста авторизуйтесь</p>"; }
-				?>
-                <button class="button_login" type="submit" name="log_done">Войти </button>
-                <img class="first_img" src="img/A.png" alt="">
-				<img class="second_img" src="img/Book_open.png" alt="">
-				<img class="third_img" src="img/C.png" alt="">
-				<img class="fourth_img" src="img/computer.png" alt="">
-				<img class="fifth_img" src="img/person_studying.png" alt="">
-				<img class="sixth_img" src="img/B.png" alt="">
-			</form>
-	</main>
-	<?php include "templates/footer.html"; ?>
+<body class="log_body">
+<!-- Header only for log and reg -->
+<header>
+  <a class="logo log_reg_logo" href="index.php"><p>24</p><p>Roman</p></a>
+</header>
+
+<main>
+  <!-- Login form -->
+  <form class="log_form" action="" method="post">
+    <h1>Login</h1>
+    <div class="content">
+      <label for="login">Login</label>
+      <input type="text" id="login" name="log_login" value="<?php if (isset($_COOKIE['reg_login'])){ echo $_COOKIE['reg_login']; } ?>">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="log_password" value="<?php if (isset($_COOKIE['reg_password'])){ echo $_COOKIE['reg_password']; } ?>">
+      <a href="">Forgot password</a>
+    </div>
+    <?php
+      log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
+      log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
+      if ($error_array['log_conn_error']){ log_warning($error_array['log_conn_error'], "Ошибка: " . $conn->error); };
+      if (isset($_GET['please_log'])){ echo "<p class=''> Пожалуйста авторизуйтесь</p>"; }
+      if (isset($_GET['reg'])){ echo "<p class=''>Регистрация прошла успешно, пожалуйста авторизуйтесь</p>"; }
+    ?>
+    <button class="log_button" type="submit" name="log_done">Submit</button>
+    <a href="reg.php">Registration</a>
+  </form>
+</main>
+
+<!-- Footer only for log and reg -->
+<footer class="reg_log_footer">
+  <div class="contacts">
+    <p>telephone: +7 999-999-99-99</p>
+    <p>email: aaaaaaaa@aaa.aaaaaaaa</p>
+  </div>
+  <div class="company">
+    <p>Created by: El Primo</p>
+    <p>All rights are reserved</p>
+  </div>
+</footer>
 </body>
 </html>
