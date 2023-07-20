@@ -451,6 +451,9 @@ header a:hover::after{
 
 
 /* ==============PROFILE============== */
+.profile_main{
+    position: relative;
+}
 
 .profile_title{
     text-align: center;
@@ -470,6 +473,69 @@ header a:hover::after{
 }
 
 /* User's avatar photo */
+.preview_cover{
+    position: fixed;
+    top: 20vh;
+    left: 15vw;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.preview_block{
+    width: 75vw;
+    height: 60vh;
+}
+
+.preview_block #preview{
+    width: 50%;
+    height: 50%;
+}
+
+.cropper-dashed {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px dashed #fff;
+}
+
+.cropper-modal{
+    width: 100%;
+    height: 100%;
+}
+
+.cropper-view-box, .cropper-face {
+    border-radius: 50%;
+}
+
+.cropper-canvas{
+    height: 100%;
+}
+
+#saveAvatar{
+    margin: 30px auto 20px;
+    font-size: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #54d7ff;
+    box-shadow: 0px 6px 0px #317f97;
+    padding: 20px 40px;
+    width: fit-content;
+    transition: .2s ease;
+}
+
+#saveAvatar:hover{
+    background-color: #4bbee0;
+}
+
+#saveAvatar:active{
+    transform: translateY(6px);
+    box-shadow: 0px 0px 0px #317f97;
+}
+
+.profile_block .avatar #avatar_file{
+    display: none;
+}
+
 .profile_block .avatar{
     position: absolute;
     top: -6%;
@@ -484,10 +550,6 @@ header a:hover::after{
 .profile_block .avatar img{
     height: 100%;
     width: 100%;
-}
-
-.profile_block .avatar #avatar_file{
-    display: none;
 }
 
 .profile_block .avatar .uppload_button{
@@ -822,6 +884,8 @@ header a:hover::after{
 }
 
 .tests_list_sort .ready_sort button{
+    display: flex;
+    align-items: center;
     margin: 0 10px;
     font-size: 20px;
     background-color: rgba(137, 206, 255, 0.377);
@@ -830,8 +894,23 @@ header a:hover::after{
     transition: .1s ease-in-out;
 }
 
+.tests_list_sort .ready_sort button img{
+    width: 20px;
+    height: 20px;
+    transform: translateY(1.5px);
+    margin-left: 5px;
+}
+
+.tests_list_sort .ready_sort button img.up{
+    transform: rotate(180deg);
+}
+
 .tests_list_sort .ready_sort button:hover{
     background-color: rgba(137, 206, 255, 0.705);
+}
+
+.tests_list_sort .ready_sort button:active{
+    background-color: rgb(62, 173, 252);
 }
 
 .tests_list_sort .ready_sort .sortItem_active{
@@ -840,6 +919,10 @@ header a:hover::after{
 
 .tests_list_sort .ready_sort .sortItem_active:hover{
     background-color: rgb(114, 193, 250);
+}
+
+.tests_list_sort .ready_sort .sortItem_active:active{
+    background-color: rgb(62, 173, 252);
 }
 
 /* =Test's search by theme= */
@@ -857,8 +940,18 @@ header a:hover::after{
 
 /* lists of test */
 .tests_list{
-    column-count: 2;
     margin-top: 20px;
+}
+
+.tests_list .column{
+    float: left;
+    width: 50%;
+}
+
+.tests_list:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Current test */
@@ -937,7 +1030,13 @@ header a:hover::after{
 /* =========CURRENT TEST PAGE========= */
 /* Header only for current test page herader  */
 .curtest_header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: none;
     justify-content: space-between;
+    transition: .3s ease;
 }
 
 /* Right side of header */
@@ -953,7 +1052,8 @@ header a:hover::after{
 }
 
 /* Percents of progress */
-.test_progress .progress_bar .percent{
+
+.test_progress .progress_bar .percents{
     position: relative;
     background-color: #54d7ff;
     text-align: end;
@@ -961,15 +1061,22 @@ header a:hover::after{
     border-radius: 3px;
 }
 
-.test_progress .progress_bar .percent::after{
-    content: "";
+.test_progress .progress_bar .percents p{
+    position: relative;
+    z-index: 2;
+    transition: .2s ease;
+}
+
+.test_progress .progress_bar .finish{
     position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
-    width: 53%;
+    width: 0%;
     height: 100%;
     background-color: #004fe3;
     border-radius: 3px;
+    transition: .2s ease;
 }
 
 /* title 'progress' */
@@ -991,12 +1098,7 @@ header a:hover::after{
     margin-right: 10px;
     font-size: 23px;
     font-weight: 600;
-}
-
-/* answered questions */
-.test_progress nav .finish{
-    background-color: #004fe3;
-    color: #ffffff;
+    transition: .2s ease;
 }
 
 /* remaining time for the test */
@@ -1013,7 +1115,7 @@ header a:hover::after{
 .questions_list{
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 100px;
 }
 
 /* question item */
@@ -1141,6 +1243,10 @@ header a:hover::after{
 }
 
 /* Smile image */
+.result_content .statistics .image{
+    text-align: center;
+}
+
 .result_content .statistics .image img{
     width: 170px;
     height: 170px;
@@ -1149,7 +1255,7 @@ header a:hover::after{
 .result_content .statistics .image p{
     font-size: 27px;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 /* results numbers */
@@ -1292,18 +1398,14 @@ header a:hover::after{
 }
 
 .theory_nav .medium_popular button{
-    font-size: 21px;
+    font-size: 23px;
     font-weight: 500;
-    margin: 5px 10px;
-}
-
-.theory_nav .unpopular{
-    display: flex;
+    margin: 5px 0px;
 }
 
 .theory_nav .unpopular button{
+    font-size: 18px;
     font-weight: 500;
-    margin: 0 10px;
 }
 
 /* Title of theory item (tags) */
@@ -1313,6 +1415,10 @@ header a:hover::after{
     margin-bottom: 5px;
     margin-left: 10px;
     padding: 5px 15px;
+}
+
+.theory_block .underline_title.hide{
+    display: none;
 }
 
 .theory_block .underline_title h2{
@@ -1326,12 +1432,31 @@ header a:hover::after{
     font-weight: 500;
 }
 
+/* Close button(крест) */
+.theory_block .close{
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    z-index: 1000;
+    top: 0%;
+    right: 1.5%;
+    margin: 20px 0px 0px 0px;
+}
+
 /* Item of theory block */
 .theory_block .item{
     position: relative;
-    background-color: rgba(240, 240, 240, 1);
-    margin-bottom: 40px;
+    width: 100%;
+    max-height: 55vh;
+    overflow: hidden;
+    background-color: rgba(240, 240, 240, 1);   
     padding: 20px 30px;
+    border: 1px solid #dadada;
+}
+
+.theory_block div.hide{
+    display: none;
 }
 
 /* Content of item */
@@ -1394,15 +1519,58 @@ header a:hover::after{
     font-size: 16px;
 }
 
+/* Add new message */
+.theory_block .item .new_message{
+    text-align: center;
+    margin: 50px 0px 40px;
+}
+
+.theory_block .item .new_message h1{
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.theory_block .item .new_message div{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px 50px;
+    background-color: rgba(216, 227, 243, 1);
+}
+
+.theory_block .item .new_message div p{
+    font-size: 27px;
+    margin-right: 20px;
+}
+
+.theory_block .item .new_message button{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 500;
+    padding: 5px 18px;
+    border-radius: 3px;
+    transition: .2s ease;
+}
+
+.theory_block .item .new_message button:hover{
+    background-color: rgb(24, 59, 128);
+}
+
+.theory_block .item .new_message button:active{
+    box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
+    transform: translateY(3px);
+}
+
 /* Button 'view all' */
-.theory_block .item .view_all{
-    position: absolute;
-    top: 94%;
-    left: 42%;
+.theory_block .view_all{
     display: block;
     margin: 0 auto;
-    width: 16%;
-    height: 16%;
+    padding: 15px 40px;
+    transform: translateY(-30px);
     border-radius: 10px;
     background-color: rgba(15, 38, 84, 1);
     box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
@@ -1411,13 +1579,17 @@ header a:hover::after{
     transition: .1s ease-in-out;
 }
 
-.theory_block .item .view_all:hover{
+.theory_block .view_all:hover{
     background-color: rgb(24, 59, 128);
 }
 
-.theory_block .item .view_all:active{
-    transform: translateY(3px);
+.theory_block .view_all:active{
+    transform: translateY(-27px);
     box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
+}
+
+.theory_block .view_all.hide{
+    display: none;
 }
 
 /* ===New post block=== */
@@ -1454,7 +1626,7 @@ header a:hover::after{
 }
 
 /* Button 'add' to add new post */
-.new_post form button{
+.new_post form .add_post{
     background-color: rgba(15, 38, 84, 1);
     box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
     color: #ffffff;
@@ -1465,11 +1637,11 @@ header a:hover::after{
     transition: .2s ease;
 }
 
-.new_post form button:hover{
+.new_post form .add_post:hover{
     background-color: rgb(24, 59, 128);
 }
 
-.new_post form button:active{
+.new_post form .add_post:active{
     box-shadow: 0px 0px 0px rgba(89, 138, 183, 1);
     transform: translateY(3px);
 }
