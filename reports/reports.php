@@ -5,6 +5,8 @@ include '../templates/settings.php';
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
 
+$user_data = get_user_data($conn, $_COOKIE['login']);
+
 date_default_timezone_set("Europe/Moscow");
 
 $error_array = array(
@@ -34,7 +36,7 @@ if ($total_pages == 0){
 
 $select_sql = "SELECT * FROM reports ORDER BY id DESC LIMIT $size_page OFFSET $offset";
 
-if (isset($_POST['message']) && check_the_login("../", false)){
+if (isset($_POST['message']) && check_the_login($user_data, "../", false)){
   if ($_POST['message'] != "" && isset($_POST['rate'])){
     $new_date = date("d.m.Y");
     $new_message = $_POST['message'];
@@ -109,7 +111,7 @@ if (isset($_POST['message']) && check_the_login("../", false)){
       </div>
     </section>
     <?php
-    if (check_the_login("../", false)){
+    if (check_the_login($user_data, "../", false)){
       include "../templates/leave_report.html";
     }else{
       echo "<section><label>Хотите оставить отзыв? <a href='../log.php?please_log=true'>войдите</a> или <a href='../reg.php'>зарегистрируйтесь</a></label></section>";

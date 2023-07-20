@@ -27,14 +27,8 @@
 
 
 
-function check_the_login($way = "", $header = true){
-  if (empty($_COOKIE['login'])){
-    if ($header){
-      header('Location: '.$way.'log.php?please_log=1');
-    }else{
-      return false;
-    }
-  }else if ($_COOKIE['login'] == ""){
+function check_the_login($user_data, $way = "", $header = true){
+  if (!$user_data['auth']){
     if ($header){
       header('Location: '.$way.'log.php?please_log=1');
     }else{
@@ -46,22 +40,60 @@ function check_the_login($way = "", $header = true){
   }
 }
 
-function check_if_admin($conn, $login, $way=""){
-  if (check_the_login($way, false)) {
-    $check_sql = "SELECT status FROM users WHERE login='".$login."'";
-    if ($check = $conn->query($check_sql)){
-      foreach ($check as $user){
-        $status = $user['status'];
-      }
-      if ($status == 'admin'){
-        return true;
-      }else if ($status == 'test'){
-        return false;
-      }
+function check_if_admin($user_data, $way=""){
+  if (check_the_login($user_data, $way, false)) {
+    if ($user_data['status'] == 'admin'){
+      return true;
     }else{
       return false;
     }
+  }else{
+    return false;
   }
+}
+
+function get_user_data($conn, $login){
+  $auth = false;
+  $id = 0;
+  $name = '';
+  $surname = '';
+  $thirdname = '';
+  $status = '';
+  $user_tests_ids = [];
+  $user_tests_marks = [];
+  $user_tests_durations = [];
+
+  if (isset($login) && $login != ''){
+    $select_sql = "SELECT * FROM users WHERE login='".$login."'";
+    if ($select_result = $conn->query($select_sql)) {
+      foreach ($select_result as $item) {
+        $id = $item['id'];
+        $name = $item['name'];
+        $surname = $item['surname'];
+        $thirdname = $item['thirdname'];
+        $status = $item['status'];
+        $user_tests_ids = $item['user_tests_ids'];
+        $user_tests_marks = $item['user_tests_marks'];
+        $user_tests_durations = $item['user_tests_durations'];
+      }
+
+      $auth = true;
+    }
+    $select_result->free();
+  }
+
+  return array(
+    "auth" => $auth,
+    "id" => $id,
+    "login" => $login,
+    "name" => $name,
+    "surname" => $surname,
+    "thirdname" => $thirdname,
+    "status" => $status,
+    "user_tests_ids" => $user_tests_ids,
+    "user_tests_marks" => $user_tests_marks,
+    "user_tests_durations" => $user_tests_durations
+    );
 }
 
 function select_question($conn, $id){

@@ -3,144 +3,102 @@ include "templates/settings.php";
 include "templates/func.php";
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
+
+$auth = get_user_data($conn, $_COOKIE['login'])["auth"];
+if ($auth){
+  header('Location: user/profile.php');
+}
+
+$conn->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com"> 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="css/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Montserrat+Alternates:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <title>24 / Roman</title>
 </head>
-<body>
-<header>
-  <?php
-  if (empty($_COOKIE['login']) || $_COOKIE['login'] == '') {
-    echo '
-    <div class="regenlog_cover">
-        <a class="log_button" href="log.php">Войти</a>
-        <a class="reg_button" href="reg.php">Зарегистрироваться</a>
-    </div>
-    ';
-  }else{
-    $select_sql = "SELECT name, surname FROM users WHERE login='".$_COOKIE['login']."'";
-    conn_check($conn);
-    if ($select_result = $conn->query($select_sql)){
-      foreach ($select_result as $item){
-        $name = $item['name'];
-        $surname = $item['surname'];
-      }
+<body class="icons_body">
+<!-- Decoratin -->
+<img class="Background_object_1" src="img/Background_object_1.svg" alt="">
+<img class="Background_object_2" src="img/Background_object_2.svg" alt="">
 
-      if (check_if_admin($conn, $_COOKIE['login'])){
-        echo '
-        <div class="user_cover">
-          <p class="user_name" ><a href="construct/construct.php">'.$surname.' '.$name. '(админ)</a></p>
-          <a class="header_logout_btn" href="clear.php">Выйти</a>
-        </div>
-        ';
-      }else{
-        echo '
-        <div class="user_cover">
-          <p class="user_name">'.$surname.' '.$name.'</p>
-          <a class="header_logout_btn" href="clear.php">Выйти</a>
-        </div>
-        ';
-      }
-      $select_result->free();
-    }
-  }
-  $conn->close();
-  ?>
-  <a href=""><img class="header_question" src="img/question.png" alt=""></a>
-  <div class="container">
-    <div class="header_title_block">
-      <p class="header_subtitle">The platform</p>
-      <h1 class="header_title">Roman/24</h1>
-      <p class="header_subtitle">for education</p>
-    </div>
-    
-    <nav>
-      <ul>
-        <li><a href="">Duolingo English Test</a></li>
-        <li class="second_li"><a href="user/my_tests.php">My tests</a>
-          <ul>
-            <li><a href="#">PTE</a></li>
-            <li><a href="#">IELTS</a></li>
-            <li><a href="#">TOEFL</a></li>
-            <li><a href="#">GMAT</a></li>
-            <li><a href="#">SAT</a></li>
-            <li><a href="#">Cambridge</a></li>
-          </ul>
-        </li>
-        <li class="third_li"><a href="#">Grammar</a>
-          <ul>
-            <li><a href="#">Vocabulary</a></li>
-          </ul>
-        </li>
-        <li><a href="reports/reports.php">Reports</a></li>
-        <li><a href="#">Other</a></li>
-      </ul>
-    </nav>
+<!-- Header only for welcome page -->
+<header class="welcome_header">
+  <a href="" class="help">Help</a>
+
+  <div>
+    <a href="log.php">Log in</a>
+    <a href="reg.php">Registration</a>
   </div>
+
 </header>
 
 <main>
-  <div class="info">
-    <p>Lorem ipsum?</p>
-  </div>
-  <div class="card_cover card_cover_first">
-    <div class="card">
-      <div class="circle">
-      </div>
-      <div class="content">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam ut perspiciatis quibusdam voluptates minima delectus necessitatibus, dolorum incidunt fugit officia corporis, numquam illum, ipsum aut quisquam ipsa dolore libero. Labore!</p>
-      </div>
-      <img class="logo" src="img/Books.png" alt="">
-    </div>
-  </div>
-  <div class="card_cover card_cover_second">
-    <div class="card">
-      <div class="circle">
-      </div>
-      <div class="content">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam ut perspiciatis quibusdam voluptates minima delectus necessitatibus, dolorum incidunt fugit officia corporis, numquam illum, ipsum aut quisquam ipsa dolore libero. Labore!</p>
-      </div>
-      <img class="logo" src="img/Books.png" alt="">
-    </div>
-  </div>
-  <div class="card_cover card_cover_third">
-    <div class="card">
-      <div class="circle">
-      </div>
-      <div class="content">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam ut perspiciatis quibusdam voluptates minima delectus necessitatibus, dolorum incidunt fugit officia corporis, numquam illum, ipsum aut quisquam ipsa dolore libero. Labore!</p>
-      </div>
-      <img class="logo" src="img/Books.png" alt="">
-    </div>
-  </div>
-  <div class="card_cover card_cover_fourth">
-    <div class="card">
-      <div class="circle">
-      </div>
-      <div class="content">
-        <h2>Lorem ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam ut perspiciatis quibusdam voluptates minima delectus necessitatibus, dolorum incidunt fugit officia corporis, numquam illum, ipsum aut quisquam ipsa dolore libero. Labore!</p>
-      </div>
-      <img class="logo" src="img/Books.png" alt="">
-    </div>
-  </div>
+  <div class="container">
+    <!-- Daily words block -->
+    <section class="daily_words ">
+      <h3 class="title">
+        Words of the day
+      </h3>
+      <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="0"
+                        centered-slides="true" autoplay-delay="3000" autoplay-disable-on-interaction="false" speed="1000">
+        <swiper-slide>
+          <h2>
+            Light weight - легкий вес
+          </h2>
+          <p class="example_title">
+            Example:
+          </p>
+          <p class="example_text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </swiper-slide>
+        <swiper-slide>
+          <h2>
+            Light weight - легкий вес
+          </h2>
+          <p class="example_title">
+            Example:
+          </p>
+          <p class="example_text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </swiper-slide>
+        <swiper-slide>
+          <h2>
+            Light weight - легкий вес
+          </h2>
+          <p class="example_title">
+            Example:
+          </p>
+          <p class="example_text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+        </swiper-slide>
+      </swiper-container>
+    </section>
 
+    <!-- Welcome words and button to login page -->
+    <section class="welcome_content">
+      <div class="text">
+        <h1>24 / Roman</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Accusamus voluptatem porro neque, eius, <br> tempora laudantium animi.</p>
+        <a href="log.php">GET STARTED <img src="img/Arrow_get_started_button.svg" alt=""></a>
+      </div>
+      <img src="img/Hats.svg" alt="">
+    </section>
+  </div>
 </main>
+
 <?php include "templates/footer.html"; ?>
-<script src="main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 </body>
 </html>

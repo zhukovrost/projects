@@ -5,7 +5,9 @@ include '../templates/settings.php';
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
 
-check_the_login("../");
+$user_data = get_user_data($conn, $_COOKIE['login']);
+
+check_the_login($user_data, "../");
 
 $login = $_COOKIE['login'];
 session_start();

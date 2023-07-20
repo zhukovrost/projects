@@ -4,8 +4,11 @@ include '../templates/settings.php';
 
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
+
+$user_data = get_user_data($conn, $_COOKIE['login']);
+
 session_start();
-check_the_login("../");
+check_the_login($user_data, "../");
 
 $ids_to_check = array();
 
