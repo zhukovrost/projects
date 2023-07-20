@@ -5,7 +5,9 @@ include '../templates/settings.php';
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
 
-if (!(check_if_admin($conn, $_COOKIE['login'], "../"))){ header("Location: ../index.php"); }
+$user_data = get_user_data($conn, $_COOKIE['login']);
+
+if (!(check_if_admin($user_data, "../"))){ header("Location: ../index.php"); }
 
 $error_array = array(
   "success_verification" => false
