@@ -1813,7 +1813,7 @@ header a:hover::after{
     opacity: 1;
 }
 
-.popup_feedback form{
+.popup_feedback .cover{
     -webkit-box-shadow: 0px 0px 54px 8px rgba(255, 255, 255, 0.27);
     -moz-box-shadow: 0px 0px 54px 8px rgba(255, 255, 255, 0.27);
     box-shadow: 0px 0px 54px 8px rgba(255, 255, 255, 0.27);
@@ -1823,7 +1823,7 @@ header a:hover::after{
     transition: .8s ease-in-out;
 }
 
-.popup_feedback.open form{
+.popup_feedback.open .cover{
     transform: scale(1);
 }
 
@@ -1836,18 +1836,18 @@ header a:hover::after{
     margin: 10px 10px 0px 0px;
 }
 
-.popup_feedback form .content{
+.popup_feedback .cover .content{
     display: flex;
     align-items: center;
 
 }
 
-.popup_feedback form .rating{
+.popup_feedback .cover .rating{
     text-align: center;
     margin-right: 7vw;
 }
 
-.popup_feedback form .rating h1{
+.popup_feedback .cover .rating h1{
     font-size: 50px;
 }
 
