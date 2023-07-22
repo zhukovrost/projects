@@ -1,4 +1,9 @@
 <?php
+$error_array = array(
+  "fill_all_the_fields" => false,
+  "success_new_report" => false
+);
+
 if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
   if ($_POST['report'] != "" && isset($_POST['stars'])){
     $new_date = time();
@@ -7,7 +12,6 @@ if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
 
 
     $insert_sql = "INSERT INTO reports(user, message, rate, date) VALUES(".$user_data['id'].", '".$new_message."', ".$new_rate.", ".$new_date.")";
-    echo $insert_sql;
     if ($conn -> query($insert_sql)){
       $error_array['success_new_report'] = true;
     }
@@ -20,9 +24,9 @@ if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
 <div class="popup_feedback">
   <form method="post">
     <button type="button" class="close">
-      <img src="../img/крест.svg" alt="">
+      <img src="../img/cross.svg" alt="">
     </button>
-    <form method="post" class="content">
+    <div method="post" class="content">
       <div class="rating">
         <h1>Ваша оценка</h1>
         <div class="stars_wrapper">
@@ -44,7 +48,7 @@ if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
         <h1>Your comment</h1>
         <textarea name="report" placeholder="Type something..."></textarea>
       </div>
-    </form>
+    </div>
     <?php if ($error_array['fill_all_the_fields']){ print_warning("Заполните все поля"); } ?>
     <button class="send" type="submit">Send</button>
   </form>

@@ -1,10 +1,8 @@
 <?php
-include "templates/settings.php";
 include "templates/func.php";
-$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
-conn_check($conn);
+include "templates/settings.php";
 
-$auth = get_user_data($conn, $_COOKIE['login'])["auth"];
+$auth = $user_data['auth'];
 if ($auth){
   header('Location: user/profile.php');
 }

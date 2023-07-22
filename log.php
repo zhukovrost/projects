@@ -3,11 +3,6 @@
 include 'templates/func.php';
 include 'templates/settings.php';
 
-if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
-	$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
-	conn_check($conn);
-}
-
 $error_array = array(
   "log_conn_error" => false,
   "log_fill_all_input_fields" => false,

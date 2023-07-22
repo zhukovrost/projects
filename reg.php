@@ -3,10 +3,7 @@
 include 'templates/func.php';
 include 'templates/settings.php';
 
-if (isset($_POST['reg_done']) || isset($_POST['log_done'])){
-	$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
-	conn_check($conn);
-}
+$title = "Registration";
 
 $error_array = array(
   "reg_fill_all_input_fields" => false,
@@ -71,15 +68,7 @@ if (isset($_POST['reg_done'])){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <title>24 / Roman</title>
-</head>
+<?php include "templates/head.php"; ?>
 <body class="reg_body">
 <!-- Header only for reg and log -->
 <header>
@@ -121,15 +110,6 @@ if (isset($_POST['reg_done'])){
 </main>
 
 <!-- Footer only for reg and log -->
-<footer class="reg_log_footer">
-  <div class="contacts">
-    <p>telephone: +7 999-999-99-99</p>
-    <p>email: aaaaaaaa@aaa.aaaaaaaa</p>
-  </div>
-  <div class="company">
-    <p>Created by: El Primo</p>
-    <p>All rights are reserved</p>
-  </div>
-</footer>
+<?php include "templates/footer.html"; ?>
 </body>
 </html>

@@ -2,11 +2,6 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
-conn_check($conn);
-
-$user_data = get_user_data($conn, $_COOKIE['login']);
-
 if (!(check_if_admin($user_data, "../"))){ header("Location: ../index.php"); }
 
 $select_sql = "SELECT * FROM questions ORDER BY id DESC";
