@@ -38,14 +38,16 @@ $select_sql = "SELECT * FROM reports ORDER BY id DESC LIMIT $size_page OFFSET $o
 
 if (isset($_POST['message']) && check_the_login($user_data, "../", false)){
   if ($_POST['message'] != "" && isset($_POST['rate'])){
-    $new_date = date("d.m.Y");
+    $new_date = time();
     $new_message = $_POST['message'];
     $new_rate = $_POST['rate'];
 
 
-    $insert_sql = "INSERT INTO reports(user, message, rate, date) VALUES('".$_COOKIE['login']."', '".$new_message."', '".$new_rate."', '".$new_date."')";
+    $insert_sql = "INSERT INTO reports(user, message, rate, date) VALUES(".$user_data['id'].", '".$new_message."', ".$new_rate.", ".$new_date.")";
+    echo $insert_sql;
     if ($conn -> query($insert_sql)){
       $error_array['success_new_report'] = true;
+      echo "sus";
     }
   }else{
     $error_array['fill_all_the_fields'] = true;
@@ -118,7 +120,6 @@ if (isset($_POST['message']) && check_the_login($user_data, "../", false)){
     }
     ?>
   </div>
-  <?php include "../templates/footer.html"; ?>
 </main>
 </body>
 </html>

@@ -1,3 +1,13 @@
+<?php
+include '../templates/func.php';
+include '../templates/settings.php';
+
+$conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
+conn_check($conn);
+
+$user_data = get_user_data($conn, $_COOKIE['login']);
+check_the_login($user_data, '../')
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +34,7 @@
 
         <div class="container">
             <!-- Welcome 'user name' -->
-            <h1 class="profile_title">Welcome, Lorem!</h1>
+            <h1 class="profile_title">Welcome, <?php echo $user_data['name']; ?></h1>
             <!-- profile block -->
             <section class="profile_block">
                 

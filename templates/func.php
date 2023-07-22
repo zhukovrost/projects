@@ -52,7 +52,7 @@ function check_if_admin($user_data, $way=""){
   }
 }
 
-function get_user_data($conn, $login){
+function get_user_data($conn, $login, $is_id=false){
   $auth = false;
   $id = 0;
   $name = '';
@@ -64,7 +64,11 @@ function get_user_data($conn, $login){
   $user_tests_durations = [];
 
   if (isset($login) && $login != ''){
-    $select_sql = "SELECT * FROM users WHERE login='".$login."'";
+    if ($is_id){
+      $select_sql = "SELECT * FROM users WHERE id='".$login."'";
+    }else {
+      $select_sql = "SELECT * FROM users WHERE login='".$login."'";
+    }
     if ($select_result = $conn->query($select_sql)) {
       foreach ($select_result as $item) {
         $id = $item['id'];
