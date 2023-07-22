@@ -10,7 +10,6 @@ if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
     echo $insert_sql;
     if ($conn -> query($insert_sql)){
       $error_array['success_new_report'] = true;
-      echo "sus";
     }
   }else{
     $error_array['fill_all_the_fields'] = true;
