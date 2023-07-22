@@ -2,7 +2,8 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-check_the_login($user_data, '../')
+check_the_login($user_data, '../');
+$avatar = get_avatar($conn, $user_data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@ check_the_login($user_data, '../')
                 
                 <!-- User avatar photo -->
                 <div class="avatar">
-                    <img id="profileImage" src="../img/Volk.webp" alt="">
+                    <img id="profileImage" src="data:image/jpeg;base64, <?php echo $avatar; ?>">
                     <input type="file" id="avatar_file" accept="image/*" />
                     <label for="avatar_file" class="uppload_button">Choose photo</label>
                 </div>

@@ -52,8 +52,8 @@ function check_if_admin($user_data, $way=""){
   }
 }
 
-function get_avatar($conn, $avatar_id){
-  $select_sql = "SELECT file FROM avatars WHERE id=".$avatar_id;
+function get_avatar($conn, $user_data){
+  $select_sql = "SELECT file FROM avatars WHERE id=".$user_data['avatar'];
   if ($result_sql = $conn->query($select_sql)){
     foreach ($result_sql as $item){
       $image = $item['file'];
