@@ -22,7 +22,7 @@ if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
 ?>
 
 <div class="popup_feedback">
-  <form method="post">
+  <form class="cover" method="post">
     <button type="button" class="close">
       <img src="../img/cross.svg" alt="">
     </button>
