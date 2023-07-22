@@ -1,9 +1,29 @@
+<?php
+if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
+  if ($_POST['report'] != "" && isset($_POST['stars'])){
+    $new_date = time();
+    $new_message = $_POST['report'];
+    $new_rate = $_POST['stars'];
+
+
+    $insert_sql = "INSERT INTO reports(user, message, rate, date) VALUES(".$user_data['id'].", '".$new_message."', ".$new_rate.", ".$new_date.")";
+    echo $insert_sql;
+    if ($conn -> query($insert_sql)){
+      $error_array['success_new_report'] = true;
+      echo "sus";
+    }
+  }else{
+    $error_array['fill_all_the_fields'] = true;
+  }
+}
+?>
+
 <div class="popup_feedback">
   <form method="post">
     <button type="button" class="close">
       <img src="../img/крест.svg" alt="">
     </button>
-    <div class="content">
+    <form method="post" class="content">
       <div class="rating">
         <h1>Ваша оценка</h1>
         <div class="stars_wrapper">
@@ -25,7 +45,8 @@
         <h1>Your comment</h1>
         <textarea name="report" placeholder="Type something..."></textarea>
       </div>
-    </div>
+    </form>
+    <?php if ($error_array['fill_all_the_fields']){ print_warning("Заполните все поля"); } ?>
     <button class="send" type="submit">Send</button>
   </form>
 </div>

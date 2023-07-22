@@ -38,7 +38,7 @@ $error_array = array(
                         <li>More than 95% of satisfied students</li>
                         <li>We are recommended by more than <br> 90% of users</li>
                     </ul>
-                    <h1>Overall rating: <span>4.73</span></h1>
+                    <h1>Overall rating: <span><?php echo get_overall_rating($conn); ?></span></h1>
                 </div>
             </section>
 

@@ -52,6 +52,37 @@ function check_if_admin($user_data, $way=""){
   }
 }
 
+function get_avatar($conn, $avatar_id){
+  $select_sql = "SELECT file FROM avatars WHERE id=".$avatar_id;
+  if ($result_sql = $conn->query($select_sql)){
+    foreach ($result_sql as $item){
+      $image = $item['file'];
+    }
+  }else{
+    return false;
+  }
+
+  return base64_encode($image);
+}
+
+
+function get_overall_rating($conn){
+  $cnt = 0;
+  $report_quantity = 0;
+  $select_sql = "SELECT rate FROM reports";
+  if ($result_sql = $conn->query($select_sql)) {
+    foreach ($result_sql as $item) {
+      $rate = $item['rate'];
+      $report_quantity++;
+      $cnt += $rate;
+    }
+    return round($cnt/$report_quantity, 2);
+  }else{
+    return "Error 404";
+  }
+
+}
+
 function get_user_data($conn, $login, $is_id=false){
   $auth = false;
   $id = 0;
@@ -62,6 +93,7 @@ function get_user_data($conn, $login, $is_id=false){
   $user_tests_ids = [];
   $user_tests_marks = [];
   $user_tests_durations = [];
+  $avatar = '';
 
   if (isset($login) && $login != ''){
     if ($is_id){
@@ -79,6 +111,7 @@ function get_user_data($conn, $login, $is_id=false){
         $user_tests_ids = $item['user_tests_ids'];
         $user_tests_marks = $item['user_tests_marks'];
         $user_tests_durations = $item['user_tests_durations'];
+        $avatar = $item['avatar'];
       }
 
       $auth = true;
@@ -96,7 +129,8 @@ function get_user_data($conn, $login, $is_id=false){
     "status" => $status,
     "user_tests_ids" => $user_tests_ids,
     "user_tests_marks" => $user_tests_marks,
-    "user_tests_durations" => $user_tests_durations
+    "user_tests_durations" => $user_tests_durations,
+    "avatar" => $avatar,
     );
 }
 

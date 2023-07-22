@@ -5,12 +5,13 @@ if ($select_result = $conn -> query($select_sql)){
     $message = $note['message'];
     $rate = $note['rate'];
     $date = date('j F, Y', $note['date']);
+    $avatar = get_avatar($conn, $user['avatar']);
     ?>
     <!-- Report's item -->
     <swiper-slide class="reports_item">
       <!-- User's avatar -->
       <div class="avatar">
-        <img src="../img/man_avatar.svg" alt="">
+        <img src="data:image/jpeg;base64, <?php echo $avatar; ?>">
         <p><?php echo $user['name'].' '.$user['surname']; ?></p>
       </div>
       <!-- User's report(rating and text) -->
