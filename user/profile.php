@@ -4,18 +4,31 @@ include '../templates/settings.php';
 
 check_the_login($user_data, '../');
 $avatar = get_avatar($conn, $user_data);
+$title = $user_data['login'];
+
+$select_sql = "SELECT date FROM tests_to_users WHERE user=".$user_data['id']." ORDER BY date DESC";
+$completed_tests = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+if ($select_result = $conn->query($select_sql)){
+  foreach ($select_result as $test_date){
+    if ($test_date['date'] < mktime(0, 0, 0, 1, 1, date("Y"))){
+      break;
+    }else{
+      for ($i = 1; $i <= 12; $i++){
+        if ($test_date['date'] > mktime(0, 0, 0, $i - 1, 0, date("Y")) && $test_date['date'] < mktime(0, 0, 0, $i + 1, 1, date("Y"))){
+          $completed_tests[$i - 1]++;
+          break;
+        }
+      }
+    }
+  }
+}
+$select_result->free();
+$completed_tests = json_encode($completed_tests);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>24 / Roman</title>
-</head>
+<?php include "../templates/head.php"; ?>
 <body>
     <!-- Main header -->
 
@@ -73,9 +86,14 @@ $avatar = get_avatar($conn, $user_data);
                         <canvas id="myChart"></canvas>
                     </div>
                     <div class="links">
-                        <a class="item" href="">Marks</a>
-                        <a class="item" href="">All tests</a>
-                        <a class="item" href="">All materials</a>
+                        <a class="item" href="my_marks.php">Marks</a>
+                        <a class="item" href="my_tests.php">All tests</a>
+                        <a class="item" href="my_materials.php">All materials</a>
+                      <?php
+                      if (check_if_admin($user_data, '../')){
+                        ?>
+                        <a href="../construct/construct.php" class="item">Admin Page</a>
+                      <?php } ?>
                         <!-- Logout button for all users -->
                         <a href="../clear.php" class="logout_btn">Logout <img src="../img/exit_account.svg" alt=""></a>
 
@@ -100,10 +118,10 @@ $avatar = get_avatar($conn, $user_data);
          new Chart(ctx, {
             type: 'bar',
             data: {
-            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             datasets: [{
-                label: 'number of completed tests per week',
-                data: [2, 5, 3, 7, 2, 1, 3],
+                label: 'number of completed tests per month (<?php echo date("Y"); ?>)',
+                data: <?php echo $completed_tests; ?>,
                 borderWidth: 1
             }]
             },

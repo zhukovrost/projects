@@ -1,16 +1,6 @@
 <?php
 
-#------------------ all -----------------------
-
-function clear_post($loc){
-  if (isset($_POST)){
-    $_POST = [];
-    header('Location: '.$loc);
-  }else{
-    return false;
-  }
-}
-
+#------------------ settings and base -----------------------
 function conn_check($conn){
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -19,13 +9,8 @@ function conn_check($conn){
   }
 }
 
-function render($replaces, $tpl_filename){
-  $tpl = file_get_contents($tpl_filename);
-  $tpl = strtr($tpl, $replaces);
-  return $tpl;
-}
 
-
+# ----------------- user data -----------------
 
 function check_the_login($user_data, $way = "", $header = true){
   if (!$user_data['auth']){
@@ -52,36 +37,6 @@ function check_if_admin($user_data, $way=""){
   }
 }
 
-function get_avatar($conn, $user_data){
-  $select_sql = "SELECT file FROM avatars WHERE id=".$user_data['avatar'];
-  if ($result_sql = $conn->query($select_sql)){
-    foreach ($result_sql as $item){
-      $image = $item['file'];
-    }
-  }else{
-    return false;
-  }
-
-  return base64_encode($image);
-}
-
-
-function get_overall_rating($conn){
-  $cnt = 0;
-  $report_quantity = 0;
-  $select_sql = "SELECT rate FROM reports";
-  if ($result_sql = $conn->query($select_sql)) {
-    foreach ($result_sql as $item) {
-      $rate = $item['rate'];
-      $report_quantity++;
-      $cnt += $rate;
-    }
-    return round($cnt/$report_quantity, 2);
-  }else{
-    return "Error 404";
-  }
-
-}
 
 function get_user_data($conn, $login, $is_id=false){
   $auth = false;
@@ -131,25 +86,72 @@ function get_user_data($conn, $login, $is_id=false){
     "user_tests_marks" => $user_tests_marks,
     "user_tests_durations" => $user_tests_durations,
     "avatar" => $avatar,
-    );
+  );
 }
 
+# -------------- other ------------------
+
+function get_avatar($conn, $user_data){
+  $select_sql = "SELECT file FROM avatars WHERE id=".$user_data['avatar'];
+  if ($result_sql = $conn->query($select_sql)){
+    foreach ($result_sql as $item){
+      $image = $item['file'];
+    }
+  }else{
+    return false;
+  }
+
+  return base64_encode($image);
+}
+
+
+function get_overall_rating($conn){
+  $cnt = 0;
+  $report_quantity = 0;
+  $select_sql = "SELECT rate FROM reports";
+  if ($result_sql = $conn->query($select_sql)) {
+    foreach ($result_sql as $item) {
+      $rate = $item['rate'];
+      $report_quantity++;
+      $cnt += $rate;
+    }
+    return round($cnt/$report_quantity, 2);
+  }else{
+    return "Error 404";
+  }
+
+}
+
+
 function select_question($conn, $id){
-  $select_question_sql = "SELECT question FROM questions WHERE id=".(int)$id;
-  $select_question_result = $conn->query($select_question_sql);
-  foreach ($select_question_result as $item){
+  $select_item_sql = "SELECT question FROM questions WHERE id=".(int)$id;
+  $select_item_result = $conn->query($select_item_sql);
+  foreach ($select_item_result as $item){
     $question = json_decode($item['question']);
   }
 
   return $question;
 }
 
-#---------------- reg and log ----------------------
+function get_theme_id($conn, $theme){
+  $id = 0;
+  if ($theme != '' && $theme != null){
+    $select_item_sql = "SELECT id FROM themes WHERE theme='$theme'";
+    $select_item_result = $conn->query($select_item_sql);
+    foreach ($select_item_result as $item){
+      $id = $item['id'];
+    }
+  }
+  return $id;
+}
 
-	function success_log($login){
-		$_COOKIE['login'] = $login;
-		header('Location: ../index.php');
-	}
+function render($replaces, $tpl_filename){
+  $tpl = file_get_contents($tpl_filename);
+  $tpl = strtr($tpl, $replaces);
+  return $tpl;
+}
+
+#---------------- reg and log ----------------------
 
 	function log_warning($if, $warning){
 		if (isset($_POST['log_done'])){
@@ -167,19 +169,331 @@ function select_question($conn, $id){
 		}
 	}
 
-  function print_warning($message){
-    echo "<div class='warning_block'><label>".$message."</label></div>";
+  function print_message($message, $type=3){
+    # 0 - error, 1 - success, 2 - warning, 3 - nothing
+    if ($type == 0){
+      $beginning = "ERROR: ";
+    } else if ($type == 1){
+      $beginning = "SUCCESS: ";
+    }else if ($type == 2){
+      $beginning = "WARNING: ";
+    }else{
+      $beginning = "";
+    }
+
+    echo "<script>alert('".$beginning.$message."')</script>";
   }
 
-  function print_success_message($message){
-    echo "<div class='success_block'><label>".$message."</label></div>";
+
+# ----------------------- QUESTIONS AND TESTS ------------------------------------
+
+function get_question_data($conn, $question_id){
+  $select_question_sql = "SELECT * FROM questions WHERE id=$question_id";
+  if ($select_question_result = $conn->query($select_question_sql)){
+    foreach ($select_question_result as $question_data){
+      return $question_data;
+    }
+  }else{
+    return false;
   }
-
-#------------------ construct ------------------------
-
-function mark($points){
-  $points *= 100;
-  return $points;
 }
+
+function get_test_data($conn, $test_id){
+  $select_test_sql = "SELECT * FROM tests WHERE id=$test_id";
+  if ($select_test_result = $conn->query($select_test_sql)){
+    foreach ($select_test_result as $test_data){
+      return $test_data;
+    }
+  }else{
+    return false;
+  }
+}
+
+function get_tests_to_users_data($conn, $id){
+  $select_sql = "SELECT * FROM tests_to_users WHERE id=$id";
+  if ($select_result = $conn->query($select_sql)){
+    foreach ($select_result as $data){
+      return $data;
+    }
+  }else{
+    return false;
+  }
+}
+
+function get_stats($conn, $user_id){
+  $select_sql = "SELECT * FROM stats WHERE id=$user_id";
+  if ($select_result = $conn->query($select_sql)){
+    foreach ($select_result as $data){
+      return $data;
+    }
+  }else{
+    return false;
+  }
+}
+
+function print_image($conn, $image_id){
+  if ($image_id != 0){
+    $select_image_sql = "SELECT image FROM test_images WHERE id=$image_id";
+    if ($select_image_result = $conn->query($select_image_sql)){
+      foreach ($select_image_result as $item){
+        $image = $item['image'];
+      }
+      echo '<img src="data:image;base64,'.base64_encode($image).'"/>'; # image
+    }
+    $select_image_result->free();
+  }
+}
+
+function print_question($conn, $question_id, $question_number=0, $extend=false, $user_answers_id=-1){
+  $question_data = get_question_data($conn, $question_id);
+  $type = $question_data['type'];
+  $variants = json_decode($question_data['variants']);
+  $right_answers = json_decode($question_data['right_answers']);
+  $image_id = $question_data['image'];
+  if ($user_answers_id != -1){
+    $user_answers = json_decode(get_tests_to_users_data($conn, $user_answers_id)['answers']);
+  }
+  ?>
+  <section class="question">
+    <div class="underline_title">
+      <h2>Question: <span><?php echo $question_number + 1; ?></span></h2>
+      <h2>Score: <span>1.00</span></h2>
+    </div>
+    <div class="content">
+      <h1><?php echo $question_data['question']; ?></h1>
+      <?php
+      switch ($type){
+        case "radio":
+          ?> <p>Choose one answer:</p><?php
+          break;
+        case "checkbox":
+          ?> <p>Choose n answers:</p> <?php
+          break;
+        case "definite_mc":
+        case "definite":
+          ?> <p>Answer the question:</p><?php
+          break;
+        case "missing_words":
+          ?> <p>Enter missing words:</p><?php
+          break;
+      }
+
+      ?>
+      <form action="" method="post">
+        <?php
+
+        if ($type == 'radio' || $type == 'checkbox'){
+          for ($i = 0; $i < count($variants); $i++){
+            ?> <div> <?php
+            if ($user_answers_id == -1){
+              echo "<input type='$type' name='test_input[$question_number][]'>";
+            }else if (in_array($i, $user_answers[$question_number])){
+              echo "<input type='$type' name='test_input[$question_number][]' checked>";
+            }
+            echo "<label>$variants[$i]</label>";
+
+            ?> </div> <?php
+          }
+        }else if ($type == 'missing_words'){
+          for ($i = 0; $i < count($right_answers); $i++){
+            ?> <div> <?php
+            if ($user_answers_id == -1) {
+              echo "<input type='$type' name='test_input[$question_number][]'>";
+            }else{
+              echo "<input type='$type' name='test_input[$question_number][]' value='$user_answers[$question_id][$i]'>";
+            }
+            ?> </div> <?php
+          }
+        } else if ($type == "definite"){
+          if ($user_answers_id == -1){
+            echo "<input type='text' name='test_input[$question_number][]'>";
+          }else{
+            echo "<input type='text' name='test_input[$question_number][]' value='$user_answers[$question_number][0]'>";
+          }
+        }else if ($type == "definite_mc"){
+          if ($user_answers_id == -1){
+            echo "<textarea name='test_input[$question_number][]'></textarea>";
+          }else{
+            echo "<textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea>";
+          }
+        }
+
+        print_image($conn, $image_id);
+
+        if ($extend && $type != "definite_mc"){
+
+          echo "<p>Right answer(s): ";
+          foreach ($right_answers as $right_answer) {
+            if ($type == "missing_words" || $type == "definite"){
+              echo $right_answer."; ";
+            }else{
+              echo $variants[$right_answer] . "; ";
+            }
+          }
+          echo "</p>";
+
+        }
+        ?>
+      </form>
+    </div>
+  </section>
+<?php }
+
+
+function print_test($conn, $test, $extend=false, $user_answers_id=-1){ ?>
+<form method="post" class="questions_list">
+  <div class="container">
+
+    <?php
+      for ($i = 0; $i < count($test); $i++){
+        print_question($conn, $test[$i], $i, $extend, $user_answers_id);
+      }
+
+      if(!$extend && $user_answers_id == -1){ ?>
+        <button class="finish">Finish</button>
+      <?php } ?>
+  </div>
+</form>
+<?php }
+
+function print_test_by_id($conn, $test_id, $extend=false, $user_answers_id=-1){
+  $test_data = get_test_data($conn, $test_id);
+  print_test($conn, json_decode($test_data['test']), $extend, $user_answers_id);
+}
+
+function check_the_test($conn, $id, $header=true, $time=0){
+  $solve = get_tests_to_users_data($conn, $id);
+  $user_answers = json_decode($solve['answers']);
+  $verified_scores = (array)json_decode($solve['verified_scores']);
+  $test_data = get_test_data($conn, $solve['test']);
+  $user_id = $solve['user'];
+  $test = json_decode($test_data['test']);
+  $all_scores = 0;
+  $user_scores = 0;
+  $correct = 0;
+  $wrong = 0;
+  $not_answered = 0;
+  for ($i = 0; $i < count($test); $i++){
+    $question_id = $test[$i];
+    $question_data = get_question_data($conn, $question_id);
+    $all_scores += $question_data['score'];
+    $type = $question_data['type'];
+    $right_answers = json_decode($question_data['right_answers']);
+    if ($type != 'definite_mc'){
+      if ($type == "radio" || $type == "checkbox"){
+        if ($user_answers[$i] == $right_answers[$i]){
+          $user_scores += $question_data['score'];
+          $correct++;
+        }else if ($user_answers[$i] == [] || $user_answers[$i] == '' || $user_answers[$i] == null){
+          $not_answered++;
+        }else{
+          $wrong++;
+        }
+      }else{
+        $flag = true;
+        for ($j = 0; $j < count($right_answers); $i++){
+          try {
+            $user_answer = strtolower($user_answers[$i][$j].str_replace(' ', ''));
+            if ($right_answers[$i][$j] != $user_answer){
+              $flag = false;
+              if ($user_answer == [] || $user_answer == '' || $user_answer == null){
+                $not_answered++;
+              }else{
+                $wrong++;
+              }
+            }
+          }catch (Exception $e) {
+            $flag = false;
+            $not_answered++;
+            break;
+          }
+        }
+
+        if ($flag){
+          $correct += count($right_answers);
+          $user_scores += $question_data['score'];
+        }
+      }
+    }else{
+      $qid = 'q'.$i;
+      if ($verified_scores[$qid] != null){
+        $user_scores += (int)$verified_scores[$qid];
+        if ((int)$verified_scores[$qid] == $question_data['score']){
+          $correct++;
+        }else if ($user_answers[$i][0] == ''){
+          $not_answered++;
+        }else if ((int)$verified_scores[$qid] == 0){
+          $wrong++;
+        }
+      }
+    }
+  }
+
+  $mark = round( $user_scores/$all_scores, 4) * 100;
+
+  $stats = get_stats($conn, $user_id);
+  $stats_score = (int)$stats['score'] + $user_scores;
+  $stats_tests = (int)$stats['tests'] + 1;
+  $stats_correct = (int)$stats['correct'] + $correct;
+  $stats_wrong = (int)$stats['wrong'] + $wrong;
+  $stats_not_answered = (int)$stats['not_answered'] + $not_answered;
+  $stats_time = (int)$stats['time'] + $time;
+
+  $update_stats_sql = "UPDATE stats SET score=$stats_score, tests=$stats_tests, correct=$stats_correct, wrong=$stats_wrong, not_answered=$stats_not_answered, time=$stats_time WHERE user=$user_id";
+  $conn->query($update_stats_sql);
+  $update_sql = "UPDATE tests_to_users SET mark=$mark WHERE id=$id";
+  if ($conn->query($update_sql)){
+    if ($header){
+      header("Location: result.php");
+    }else{
+      return true;
+    }
+  }else{
+    return false;
+  }
+
+}
+
+
+function print_test_info($conn, $test_info_array){
+  $test_data = get_test_data($conn, $test_info_array['test']);
+  $themes = array();
+  foreach (json_decode($test_data['themes']) as $theme_id){
+    $select_theme_sql = "SELECT theme FROM themes WHERE id=".$theme_id;
+    foreach ($conn->query($select_theme_sql) as $item){
+      array_push($themes, $item['theme']);
+    }
+  }
+  $mark = (int)$test_info_array['mark'];
+  if ($mark >= 0){
+    $status = "passed";
+  }else{
+    switch ($mark){
+      case -1:
+      case -3:
+        $status = "not passed";
+        break;
+      case -2:
+        $status = "verifying...";
+    }
+  }
+  ?>
+  <section class="test">
+    <img src="../img/test-1.png" alt="">
+    <div>
+      <?php if (count($themes) != 0) { ?><p class="theme">Theme(s): <span> <?php foreach ($themes as $theme){ echo $theme.'; '; }?></span></p><?php } ?>
+      <p class="time">Time for test: <span><?php echo $test_info_array['duration']; ?></span></p>
+      <p class="questions_number">Number of questions: <span><?php echo count(json_decode($test_data['test'])); ?></span></p>
+      <p class="status">Status: <span><?php echo $status; ?></span></p>
+    </div>
+    <?php if ($mark == -1 || $mark == -3){ ?>
+      <a href="test.php?test_id=">START</a>
+    <?php }else{ ?>
+      <a href="">START</a>
+    <?php } ?>
+  </section>
+<?php
+}
+
 
 ?>

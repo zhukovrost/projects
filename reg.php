@@ -11,7 +11,8 @@ $error_array = array(
   "reg_passwords_are_not_the_same" => false,
   "reg_conn_error" => false,
   "reg_success" => false,
-  "too_long_string" => false
+  "too_long_string" => false,
+  "adding_stats" => false
 );
 
 # ------------------ registration ------------------------
@@ -40,9 +41,14 @@ if (isset($_POST['reg_done'])){
 
               if (!$error_array["too_long_string"]){
                 if ($conn->query($reg_sql2)) {
-                  setcookie("reg_login", $reg_login, time()+300);
-                  setcookie("reg_password", $reg_password, time()+300);
-                  header("Location: log.php?reg=1");
+                  $reg_sql3 = "INSERT INTO stats(user) VALUES (LAST_INSERT_ID())";
+                  if ($conn->query($reg_sql3)){
+                    setcookie("reg_login", $reg_login, time()+300);
+                    setcookie("reg_password", $reg_password, time()+300);
+                    header("Location: log.php?reg=1");
+                  }else{
+                    $error_array['adding_stats'] = true;
+                  }
                 } else {
                   $error_array['reg_conn_error'] = true;
                 }

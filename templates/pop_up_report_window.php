@@ -49,7 +49,7 @@ if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
         <textarea name="report" placeholder="Type something..."></textarea>
       </div>
     </div>
-    <?php if ($error_array['fill_all_the_fields']){ print_warning("Заполните все поля"); } ?>
     <button class="send" type="submit">Send</button>
   </form>
+  <?php if ($error_array['fill_all_the_fields']){ print_message("Заполните все поля", 2); } ?>
 </div>
