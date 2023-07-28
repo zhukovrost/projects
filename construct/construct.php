@@ -180,7 +180,7 @@ if (isset($_POST['add_question_to_db'])){
     $right_answers = $variants;
     $variants = array();
     for ($i = 0; $i < count($right_answers); $i++){
-      $right_answers[$i] = strtolower($right_answers[$i].str_replace(' ', ''));
+      $right_answers[$i] = mb_strtolower(str_replace(' ', '', $right_answers[$i]));
     }
   }else{
     $right_answers = array();

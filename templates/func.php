@@ -221,7 +221,7 @@ function get_tests_to_users_data($conn, $id){
 }
 
 function get_stats($conn, $user_id){
-  $select_sql = "SELECT * FROM stats WHERE id=$user_id";
+  $select_sql = "SELECT * FROM stats WHERE user=$user_id";
   if ($select_result = $conn->query($select_sql)){
     foreach ($select_result as $data){
       return $data;
@@ -279,7 +279,7 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
       }
 
       ?>
-      <form action="" method="post">
+
         <?php
 
         if ($type == 'radio' || $type == 'checkbox'){
@@ -334,7 +334,7 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
 
         }
         ?>
-      </form>
+
     </div>
   </section>
 <?php }
@@ -350,7 +350,7 @@ function print_test($conn, $test, $extend=false, $user_answers_id=-1){ ?>
       }
 
       if(!$extend && $user_answers_id == -1){ ?>
-        <button class="finish">Finish</button>
+        <button class="finish" id="FinsishButton" name="finish" value="1">Finish</button>
       <?php } ?>
   </div>
 </form>
@@ -391,9 +391,9 @@ function check_the_test($conn, $id, $header=true, $time=0){
         }
       }else{
         $flag = true;
-        for ($j = 0; $j < count($right_answers); $i++){
+        for ($j = 0; $j < count($right_answers); $j++){
           try {
-            $user_answer = strtolower($user_answers[$i][$j].str_replace(' ', ''));
+            $user_answer = mb_strtolower(str_replace(' ', '', $user_answers[$i][$j]));
             if ($right_answers[$i][$j] != $user_answer){
               $flag = false;
               if ($user_answer == [] || $user_answer == '' || $user_answer == null){
@@ -428,18 +428,17 @@ function check_the_test($conn, $id, $header=true, $time=0){
       }
     }
   }
-
   $mark = round( $user_scores/$all_scores, 4) * 100;
 
   $stats = get_stats($conn, $user_id);
-  $stats_score = (int)$stats['score'] + $user_scores;
+  $stats_mark = (int)$stats['mark'] + $mark;
   $stats_tests = (int)$stats['tests'] + 1;
   $stats_correct = (int)$stats['correct'] + $correct;
   $stats_wrong = (int)$stats['wrong'] + $wrong;
   $stats_not_answered = (int)$stats['not_answered'] + $not_answered;
   $stats_time = (int)$stats['time'] + $time;
 
-  $update_stats_sql = "UPDATE stats SET score=$stats_score, tests=$stats_tests, correct=$stats_correct, wrong=$stats_wrong, not_answered=$stats_not_answered, time=$stats_time WHERE user=$user_id";
+  $update_stats_sql = "UPDATE stats SET mark=$stats_mark, tests=$stats_tests, correct=$stats_correct, wrong=$stats_wrong, not_answered=$stats_not_answered, time=$stats_time WHERE user=$user_id";
   $conn->query($update_stats_sql);
   $update_sql = "UPDATE tests_to_users SET mark=$mark WHERE id=$id";
   if ($conn->query($update_sql)){
@@ -487,9 +486,9 @@ function print_test_info($conn, $test_info_array){
       <p class="status">Status: <span><?php echo $status; ?></span></p>
     </div>
     <?php if ($mark == -1 || $mark == -3){ ?>
-      <a href="test.php?test_id=">START</a>
+      <a href="test.php?test_id=<?php echo $test_info_array['test']; ?>">START</a>
     <?php }else{ ?>
-      <a href="">START</a>
+      <a href="test.php?test_id=<?php echo $test_info_array['test']; ?>">START</a>
     <?php } ?>
   </section>
 <?php

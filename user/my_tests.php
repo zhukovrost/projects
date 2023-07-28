@@ -14,6 +14,9 @@ if ($select_all_tests_result = $conn->query($select_all_tests_sql)){
 }
 $select_all_tests_result->free();
 
+$stats = get_stats($conn, $user_data['id']);
+$diagram_data = json_encode([$stats['wrong'], $stats['not_answered'], $stats['correct']])
+
 ?>
 
 <!doctype html>
@@ -32,10 +35,9 @@ $select_all_tests_result->free();
           <canvas id="myPie"></canvas>
         </div>
         <div class="statistic">
-          <p>Total tests passed: <span>1234</span></p>
-          <p>Time spent on tests: <span>1234 min</span></p>
-          <p>Average score for the test: <span>4.3</span></p>
-          <p>Maximum completed tests per week: <span>14</span></p>
+          <p>Total tests passed: <span><?php echo $stats['tests']; ?></span></p>
+          <p>Time spent on tests: <span><?php echo round($stats['time'] / 60);?> min</span></p>
+          <p>Average mark for the test: <span><?php if ($stats['tests'] != 0){ echo round($stats['mark'] / $stats['tests'], 2); }else{ echo 0; } ?></span></p>
         </div>
       </div>
     </section>
@@ -87,7 +89,7 @@ include "../templates/footer.html";
         ],
         datasets: [{
             label: 'Count of tests',
-            data: [300, 50, 100],
+            data: <?php echo $diagram_data; ?>,
             backgroundColor: [
                 'rgba(15, 38, 84, 1)',
                 'rgba(10, 70, 224, 1)',

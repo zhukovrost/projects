@@ -140,12 +140,6 @@ $completed_tests = json_encode($completed_tests);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script>
-        var savedCroppedImageDataURL = localStorage.getItem("profileAvatar");
-        if (savedCroppedImageDataURL) {
-            $("#profileImage").attr("src", savedCroppedImageDataURL);
-        }
-
-
         avatar_file.addEventListener('click', function(){
             document.querySelector('.preview_cover').style.cssText = `display: flex;`;
         });
@@ -204,12 +198,7 @@ $completed_tests = json_encode($completed_tests);
           // Обработка сохранения обновленной аватарки
           $("#saveAvatar").on("click", function () {
             if (croppedImageDataURL) {
-            
-                $("#profileImage").attr("src", croppedImageDataURL);
-                console.log(profileImage.src);
-                localStorage.setItem('profileAvatar', croppedImageDataURL);
                 location.reload();
-                
             } 
             else {
               alert("Сначала выберите и обрежьте изображение");
