@@ -63,9 +63,6 @@ function get_user_data($conn, $login, $is_id=false){
         $surname = $item['surname'];
         $thirdname = $item['thirdname'];
         $status = $item['status'];
-        $user_tests_ids = $item['user_tests_ids'];
-        $user_tests_marks = $item['user_tests_marks'];
-        $user_tests_durations = $item['user_tests_durations'];
         $avatar = $item['avatar'];
       }
 
