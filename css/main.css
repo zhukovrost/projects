@@ -1839,7 +1839,6 @@ header a:hover::after{
 .popup_feedback .cover .content{
     display: flex;
     align-items: center;
-
 }
 
 .popup_feedback .cover .rating{
