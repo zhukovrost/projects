@@ -277,63 +277,63 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
           ?> <p>Enter missing words:</p><?php
           break;
       }
-
       ?>
+        <div class="answers">
+          <?php
 
-        <?php
+          if ($type == 'radio' || $type == 'checkbox'){
+            for ($i = 0; $i < count($variants); $i++){
+              ?> <div> <?php
+              if ($user_answers_id == -1){
+                echo "<input type='$type' name='test_input[$question_number][]'>";
+              }else if (in_array($i, $user_answers[$question_number])){
+                echo "<input type='$type' name='test_input[$question_number][]' checked>";
+              }
+              echo "<label>$variants[$i]</label>";
 
-        if ($type == 'radio' || $type == 'checkbox'){
-          for ($i = 0; $i < count($variants); $i++){
-            ?> <div> <?php
+              ?> </div> <?php
+            }
+          }else if ($type == 'missing_words'){
+            for ($i = 0; $i < count($right_answers); $i++){
+              ?> <div> <?php
+              if ($user_answers_id == -1) {
+                echo "<input type='$type' name='test_input[$question_number][]'>";
+              }else{
+                echo "<input type='$type' name='test_input[$question_number][]' value='$user_answers[$question_id][$i]'>";
+              }
+              ?> </div> <?php
+            }
+          } else if ($type == "definite"){
             if ($user_answers_id == -1){
-              echo "<input type='$type' name='test_input[$question_number][]'>";
-            }else if (in_array($i, $user_answers[$question_number])){
-              echo "<input type='$type' name='test_input[$question_number][]' checked>";
-            }
-            echo "<label>$variants[$i]</label>";
-
-            ?> </div> <?php
-          }
-        }else if ($type == 'missing_words'){
-          for ($i = 0; $i < count($right_answers); $i++){
-            ?> <div> <?php
-            if ($user_answers_id == -1) {
-              echo "<input type='$type' name='test_input[$question_number][]'>";
+              echo "<input type='text' name='test_input[$question_number][]'>";
             }else{
-              echo "<input type='$type' name='test_input[$question_number][]' value='$user_answers[$question_id][$i]'>";
+              echo "<input type='text' name='test_input[$question_number][]' value='$user_answers[$question_number][0]'>";
             }
-            ?> </div> <?php
-          }
-        } else if ($type == "definite"){
-          if ($user_answers_id == -1){
-            echo "<input type='text' name='test_input[$question_number][]'>";
-          }else{
-            echo "<input type='text' name='test_input[$question_number][]' value='$user_answers[$question_number][0]'>";
-          }
-        }else if ($type == "definite_mc"){
-          if ($user_answers_id == -1){
-            echo "<textarea name='test_input[$question_number][]'></textarea>";
-          }else{
-            echo "<textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea>";
-          }
-        }
-
-        print_image($conn, $image_id);
-
-        if ($extend && $type != "definite_mc"){
-
-          echo "<p>Right answer(s): ";
-          foreach ($right_answers as $right_answer) {
-            if ($type == "missing_words" || $type == "definite"){
-              echo $right_answer."; ";
+          }else if ($type == "definite_mc"){
+            if ($user_answers_id == -1){
+              echo "<textarea name='test_input[$question_number][]'></textarea>";
             }else{
-              echo $variants[$right_answer] . "; ";
+              echo "<textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea>";
             }
           }
-          echo "</p>";
 
-        }
-        ?>
+          print_image($conn, $image_id);
+
+          if ($extend && $type != "definite_mc"){
+
+            echo "<p>Right answer(s): ";
+            foreach ($right_answers as $right_answer) {
+              if ($type == "missing_words" || $type == "definite"){
+                echo $right_answer."; ";
+              }else{
+                echo $variants[$right_answer] . "; ";
+              }
+            }
+            echo "</p>";
+
+          }
+          ?>
+        </div>
 
     </div>
   </section>

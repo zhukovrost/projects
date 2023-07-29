@@ -1120,7 +1120,7 @@ header a:hover::after{
 
 /* question item */
 .questions_list .question{
-    max-width: 65vw;
+    width: 65vw;
     margin: 40px 0px;
     word-break: break-all;
 }
@@ -1161,16 +1161,16 @@ header a:hover::after{
     font-family: 'Comfortaa';
 }
 
-.questions_list .question .content form{
+.questions_list .question .content .answers{
     display: flex;
     flex-direction: column;
 }
 
-.questions_list .question .content form label{
+.questions_list .question .content .answers label{
     font-size: 30px;
 }
 
-.questions_list .question .content form input{
+.questions_list .question .content .answers input{
     width: 20px;
     height: 20px;
     margin: 10px 10px 5px 20px;
