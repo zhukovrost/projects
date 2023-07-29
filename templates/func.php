@@ -260,7 +260,7 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
   <section class="question">
     <div class="underline_title">
       <h2>Question: <span><?php echo $question_number + 1; ?></span></h2>
-      <h2>Score: <span>1.00</span></h2>
+      <h2>Score: <span><?php echo $question_data['score']; ?></span></h2>
     </div>
     <div class="content">
       <h1><?php echo $question_data['question']; ?></h1>

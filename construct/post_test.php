@@ -51,7 +51,7 @@ if (isset($_POST['push_id'])){
 if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
   include "../templates/admin_header.html";
 }else{ ?>
-  <a class="back_button" href="post_test.php?test_id">Назад</a>
+  <a class="back_button" href="post_test.php?test_id">GO BACK</a>
 <?php } ?>
     <?php
     # -------------------- LIST OF TESTS -------------------------
@@ -83,9 +83,9 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
         }
         ?>
         <input name="duration" type="number" value="15">
-        <label for="time_to_do">Время на тест (в минутах)</label>
+        <label for="time_to_do">Test time</label>
         <div class="test_finish_button">
-          <input type="submit" class="construct_btn" value="Выложить тест">
+          <input type="submit" class="construct_btn" value="Post the test">
           <input type="hidden" name="push_id" value="<?php echo $test_id; ?>">
         </div>
         </form>

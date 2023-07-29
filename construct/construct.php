@@ -151,6 +151,14 @@ if (isset($_POST['add_question_to_db'])){
   $question = $_POST['question'];
   $type = $_SESSION['form_type'];
 
+  # --------------- get score -------------------
+
+  if (isset($_POST['score']) && $_POST['score'] != ''){
+    $score = $_POST['score'];
+  }else{
+    $score = 1;
+  }
+
   #------------------ get theme ----------------------------
 
   $theme = 0;
@@ -210,7 +218,7 @@ if (isset($_POST['add_question_to_db'])){
 
 
   # ----------------- insert question to db --------------------
-  $add_question_sql = "INSERT INTO questions (question, theme, type, variants, right_answers, image) VALUES ('$question', $theme, '$type', '".json_encode($variants, 256)."', '".json_encode($right_answers, 256)."', $img_id)";
+  $add_question_sql = "INSERT INTO questions (question, theme, type, score, variants, right_answers, image) VALUES ('$question', $theme, '$type', $score, '".json_encode($variants, 256)."', '".json_encode($right_answers, 256)."', $img_id)";
   if ($conn->query($add_question_sql)) {
     $error_array['success_add_question'] = true;
     $id = mysqli_insert_id($conn);
@@ -245,7 +253,13 @@ if (isset($_POST['test_name'])){
 
   # ------------------ insert test --------------------------
 
-  $add_test_sql = "INSERT INTO tests(name, test, themes) VALUES('".$_POST['test_name']."', '".json_encode($_SESSION['result_array'])."', '".json_encode($test_themes)."')";
+  if (isset($_POST['test_task']) && $_POST['test_task'] != ''){
+    $task = $_POST['test_task'];
+  }else{
+    $task = "Solve the test.";
+  }
+
+  $add_test_sql = "INSERT INTO tests(name, test, task, themes) VALUES('".$_POST['test_name']."', '".json_encode($_SESSION['result_array'])."', '$task', '".json_encode($test_themes)."')";
   if($conn->query($add_test_sql)){
     $error_array["success_add_test"] = true;
   } else {
@@ -267,35 +281,36 @@ if (isset($_POST['test_name'])){
 <?php include "../templates/admin_header.html"; ?>
 	<div class="c_all_forms_block">
 		<form enctype="multipart/form-data" method="post" class="c_form_1">
-			<h3>Добавить вопрос</h3>
-			<textarea id="add_question_input" name="question"></textarea>
+			<textarea id="add_question_input" name="question" placeholder="Enter the question"></textarea>
 			<br>
 			<?php 
 			if ($_SESSION['form_type'] != "definite_mc"){
         if ($_SESSION['form_type'] != "missing_words"){
           for ($i = 0; $i < $_SESSION['num_of_questions']; $i++){
-            echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Вариант ответа №".(intval($i) + 1)."'>\n<br>";
+            echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Variant №".(intval($i) + 1)."'>\n<br>";
           }
         }else{
           for ($i = 0; $i < $_SESSION['num_of_questions']; $i++){
-            echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Пропущенное слово №".(intval($i) + 1)."'>\n<br>";
+            echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Missing word №".(intval($i) + 1)."'>\n<br>";
           }
         }
 			} 
 			?>
-			<h4>Добавить картинку</h4>
+      <h3>Enter question score</h3>
+      <input name="score" type="number" placeholder="Leave blank = 1">
+			<h4>Add the image</h4>
 			<input type="file" name="add_img">
 			<?php
 			if ($_SESSION['form_type'] == "radio"){ ?>
-				<h4>Номер правильного ответа</h4><input id="num_of_right_answer_number" type="number" name="num_of_right_answer" style="width: 30%">
+				<h4>Right answer number</h4><input id="num_of_right_answer_number" type="number" name="num_of_right_answer" style="width: 30%">
 			<?php }
 			if ($_SESSION['form_type'] == "checkbox"){ ?>
-				<h4>Номера правильных ответов</h4>
+				<h4>Right answer numbers</h4>
         <input id="num_of_right_answer_text" type="text" name="num_of_right_answer" style="width: 30%">
-        <p>Записывать через пробел</p>
+        <p>Enter with a space</p>
 			<?php } ?>
 
-      <h3>Выберите тему вопроса</h3>
+      <h3>Select question theme</h3>
       <select id="theme_select" style="width: 90%" name="theme">
         <option></option>
         <?php
@@ -309,34 +324,38 @@ if (isset($_POST['test_name'])){
 			<input type="submit" name="add_question_to_db" value="Создать">
 		</form>
 		<form method="get" class="c_form_3">
-			<h3>Тип вопроса</h3>
-			<p><input type="radio" name="form_type" value="radio"<?php if ($_SESSION['form_type'] == "radio"){ echo " checked"; } ?>>С одним вариантом овета</p>
-			<p><input type="radio" name="form_type" value="checkbox"<?php if ($_SESSION['form_type'] == "checkbox"){ echo " checked"; } ?>>С несколькими вариантами ответа</p>
-			<p><input type="radio" name="form_type" value="definite"<?php if ($_SESSION['form_type'] == "definite"){ echo " checked"; } ?>>С определённым ответом</p>
-			<p><input type="radio" name="form_type" value="definite_mc"<?php if ($_SESSION['form_type'] == "definite_mc"){ echo " checked"; } ?>>С определённым ответом (Ручная проверка)</p>
-      <p><input type="radio" name="form_type" value="missing_words"<?php if ($_SESSION['form_type'] == "missing_words"){ echo " checked"; } ?>>Пропущенные слова</p>
+			<h3>Question type</h3>
+			<p><input type="radio" name="form_type" value="radio"<?php if ($_SESSION['form_type'] == "radio"){ echo " checked"; } ?>>Choice of options (one answer)</p>
+			<p><input type="radio" name="form_type" value="checkbox"<?php if ($_SESSION['form_type'] == "checkbox"){ echo " checked"; } ?>>Choice of options (several answers)</p>
+			<p><input type="radio" name="form_type" value="definite"<?php if ($_SESSION['form_type'] == "definite"){ echo " checked"; } ?>>Definite answer (several variants)</p>
+			<p><input type="radio" name="form_type" value="definite_mc"<?php if ($_SESSION['form_type'] == "definite_mc"){ echo " checked"; } ?>>Definite answer (manual verification)</p>
+      <p><input type="radio" name="form_type" value="missing_words"<?php if ($_SESSION['form_type'] == "missing_words"){ echo " checked"; } ?>>Missing words</p>
 			<input type="submit" value="изменить" style="width: 90%">
 		</form>
     <div class="c_form_2">
       <form method="get">
-        <h3>Количество ответов</h3>
+        <h3>Amount of answers</h3>
         <input type="number" name="num_of_questions" value="<?php echo $_SESSION['num_of_questions']; ?>">
-        <input type="submit" value="изменить">
+        <input type="submit" value="Switch">
       </form>
       <form method="post">
-        <h3>Удалить вопрос</h3>
+        <h3>Delete the question</h3>
         <input type="number" name="num_for_delete">
-        <input type="submit" value="Удалить вопрос">
+        <input type="submit" value="Submit">
       </form>
       <form method="post">
-        <h3>Добавить тему</h3>
+        <h3>Add the theme</h3>
         <input type="text" name="add_theme">
-        <input type="submit" value="Добавить тему">
+        <input type="submit" value="Submit">
+      </form>
+      <form method="post">
+        <input type="hidden" name="clear" value="true">
+        <input class="c_clear_all_btn" type="submit" value="clear all">
       </form>
     </div>
     <div class="c_form_3">
       <form method="post">
-        <h3>Добавить рандомные вопросы</h3>
+        <h3>Add random questions</h3>
         <select id="theme_of_rand_questions" name="theme_of_rand_questions" style="width: 90%; margin-bottom: 10px">
           <option value="all_themes">Any(<?php echo $num_of_all_questions; ?>)</option>
           <?php
@@ -347,14 +366,16 @@ if (isset($_POST['test_name'])){
           }
           ?>
         </select>
-        <input id="number_of_random_questions" type="number" placeholder="Количество вопросов" name="num_of_rand_questions">
-        <input type="submit" value="Добавить">
+        <input id="number_of_random_questions" type="number" placeholder="Amount of questions" name="num_of_rand_questions">
+        <input type="submit" value="Add">
       </form>
+      <a href="questions.php">Add questions from database</a>
       <form method="post">
-        <h3>Задайте название тестирования</h3>
+        <h3>Enter test name</h3>
         <textarea id="name_of_test" name="test_name"></textarea>
-        <input type="submit" value="Добавить тест в бд">
-        <a href="questions.php">Добавить из бд</a>
+        <h3>Enter test task</h3>
+        <textarea id="name_of_test" name="test_task" placeholder="Leave blank = Solve the test."></textarea>
+        <input type="submit" value="Add test to the database">
       </form>
     </div>
   </div>
@@ -388,11 +409,6 @@ if (isset($_POST['test_name'])){
 
 
 ?>
-		<form method="post">
-      <input type="hidden" name="clear" value="true">
-			<input class="c_clear_all_btn" type="submit" value="очистить всё">
-		</form>
-	
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {
 
