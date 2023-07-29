@@ -49,11 +49,12 @@ $completed_tests = json_encode($completed_tests);
             <section class="profile_block">
                 
                 <!-- User avatar photo -->
-                <div class="avatar">
-                    <img id="profileImage" src="data:image/jpeg;base64, <?php echo $avatar; ?>">
-                    <input type="file" id="avatar_file" accept="image/*" />
-                    <label for="avatar_file" class="uppload_button">Choose photo</label>
-                </div>
+                <form id="avatar_form" class="avatar" method="post">
+                  <img id="profileImage" src="data:image/jpeg;base64, <?php echo $avatar; ?>">
+                  <input type="file" id="avatar_file" accept="image/*" />
+                  <label for="avatar_file" class="uppload_button">Choose photo</label>
+                  <input type="hidden" id="image_to_php" name="image_to_php" value="">
+                </form>
                 
                 <!-- nearest theory and homework -->
                 <section class="materials">
@@ -198,7 +199,9 @@ $completed_tests = json_encode($completed_tests);
           // Обработка сохранения обновленной аватарки
           $("#saveAvatar").on("click", function () {
             if (croppedImageDataURL) {
-                location.reload();
+                location.reload()
+                image_to_php.value = croppedImageDataURL
+                document.getElementById("avatar_form").submit();
             } 
             else {
               alert("Сначала выберите и обрежьте изображение");

@@ -361,18 +361,22 @@ function print_test_by_id($conn, $test_id, $extend=false, $user_answers_id=-1){
   print_test($conn, json_decode($test_data['test']), $extend, $user_answers_id);
 }
 
-function check_the_test($conn, $id, $header=true, $time=0){
+function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
+  # collecting data
   $solve = get_tests_to_users_data($conn, $id);
   $user_answers = json_decode($solve['answers']);
   $verified_scores = (array)json_decode($solve['verified_scores']);
   $test_data = get_test_data($conn, $solve['test']);
   $user_id = $solve['user'];
   $test = json_decode($test_data['test']);
+  # default values
   $all_scores = 0;
   $user_scores = 0;
   $correct = 0;
   $wrong = 0;
   $not_answered = 0;
+  $verifying = 0;
+  # checking the test
   for ($i = 0; $i < count($test); $i++){
     $question_id = $test[$i];
     $question_data = get_question_data($conn, $question_id);
@@ -415,40 +419,61 @@ function check_the_test($conn, $id, $header=true, $time=0){
         }
       }
     }else{
-      $qid = 'q'.$i;
-      if ($verified_scores[$qid] != null){
-        $user_scores += (int)$verified_scores[$qid];
-        if ((int)$verified_scores[$qid] == $question_data['score']){
-          $correct++;
-        }else if ($user_answers[$i][0] == ''){
-          $not_answered++;
-        }else if ((int)$verified_scores[$qid] == 0){
-          $wrong++;
+      if ($get_stats && $solve['mark'] == -2){
+        $verifying += 1;
+      }else{
+        $qid = 'q'.$i;
+        if ($verified_scores[$qid] != null){
+          $user_scores += (int)$verified_scores[$qid];
+          if ((int)$verified_scores[$qid] == $question_data['score']){
+            $correct++;
+          }else if ($user_answers[$i][0] == ''){
+            $not_answered++;
+          }else if ((int)$verified_scores[$qid] == 0){
+            $wrong++;
+          }
         }
       }
     }
   }
+
+  # result
   $mark = round( $user_scores/$all_scores, 4) * 100;
 
-  $stats = get_stats($conn, $user_id);
-  $stats_mark = (int)$stats['mark'] + $mark;
-  $stats_tests = (int)$stats['tests'] + 1;
-  $stats_correct = (int)$stats['correct'] + $correct;
-  $stats_wrong = (int)$stats['wrong'] + $wrong;
-  $stats_not_answered = (int)$stats['not_answered'] + $not_answered;
-  $stats_time = (int)$stats['time'] + $time;
-
-  $update_stats_sql = "UPDATE stats SET mark=$stats_mark, tests=$stats_tests, correct=$stats_correct, wrong=$stats_wrong, not_answered=$stats_not_answered, time=$stats_time WHERE user=$user_id";
-  $conn->query($update_stats_sql);
-  $update_sql = "UPDATE tests_to_users SET mark=$mark WHERE id=$id";
-  if ($conn->query($update_sql)){
-    if ($header){
-      header("Location: result.php");
-    }else{
-      return true;
-    }
+  if($get_stats){
+    $result_stats = array(
+      "all_scores" => $all_scores,
+      "user_scores" => $user_scores,
+      "mark" => $mark,
+      "time" => $time,
+      "all_questions" => count($test),
+      "correct" => $correct,
+      "wrong" => $wrong,
+      "not_answered" => $not_answered,
+      "verifying" => $verifying
+    );
+    return $result_stats;
   }else{
-    return false;
+    $stats = get_stats($conn, $user_id);
+    $stats_mark = (int)$stats['mark'] + $mark;
+    $stats_tests = (int)$stats['tests'] + 1;
+    $stats_correct = (int)$stats['correct'] + $correct;
+    $stats_wrong = (int)$stats['wrong'] + $wrong;
+    $stats_not_answered = (int)$stats['not_answered'] + $not_answered;
+    $stats_time = (int)$stats['time'] + $time;
+
+    $update_stats_sql = "UPDATE stats SET mark=$stats_mark, tests=$stats_tests, correct=$stats_correct, wrong=$stats_wrong, not_answered=$stats_not_answered, time=$stats_time WHERE user=$user_id";
+    $conn->query($update_stats_sql);
+    $update_sql = "UPDATE tests_to_users SET mark=$mark WHERE id=$id";
+    if ($conn->query($update_sql)){
+      if ($header){
+        header("Location: result.php?id=$id");
+      }else{
+        return true;
+      }
+    }else{
+      return false;
+    }
   }
 
 }
@@ -481,14 +506,14 @@ function print_test_info($conn, $test_info_array){
     <img src="../img/test-1.png" alt="">
     <div>
       <?php if (count($themes) != 0) { ?><p class="theme">Theme(s): <span> <?php foreach ($themes as $theme){ echo $theme.'; '; }?></span></p><?php } ?>
-      <p class="time">Time for test: <span><?php echo $test_info_array['duration']; ?></span></p>
+      <p class="time">Time for test: <span><?php echo date('i:s', $test_info_array['duration']); ?></span></p>
       <p class="questions_number">Number of questions: <span><?php echo count(json_decode($test_data['test'])); ?></span></p>
       <p class="status">Status: <span><?php echo $status; ?></span></p>
     </div>
     <?php if ($mark == -1 || $mark == -3){ ?>
       <a href="test.php?test_id=<?php echo $test_info_array['test']; ?>">START</a>
     <?php }else{ ?>
-      <a href="test.php?test_id=<?php echo $test_info_array['test']; ?>">START</a>
+      <a href="result.php?id=<?php echo $test_info_array['id']; ?>">RESULT</a>
     <?php } ?>
   </section>
 <?php

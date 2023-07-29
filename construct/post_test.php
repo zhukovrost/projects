@@ -27,15 +27,17 @@ if (isset($_POST['push_id'])){
     }
   }
 
-  $duration = $_POST['duration'];
+  $duration = $_POST['duration'] * 60;
   foreach ($_POST['users_array'] as $user_id){
     if ($flag){
-      $insert_sql = "INSERT INTO tests_to_users (test, user, duration, mark) VALUES ($push_id, $user_id, $duration, -3)";
+      $insert_sql = "INSERT INTO tests_to_users (test, user, duration, mark, date) VALUES ($push_id, $user_id, $duration, -3, ".time().")";
     }else{
-      $insert_sql = "INSERT INTO tests_to_users (test, user, duration) VALUES ($push_id, $user_id, $duration)";
+      $insert_sql = "INSERT INTO tests_to_users (test, user, duration, date) VALUES ($push_id, $user_id, $duration, ".time().")";
     }
     if ($conn->query($insert_sql)){
       $error_array['post_test_success'] = true;
+    }else{
+      echo $conn->error;
     }
   }
 }

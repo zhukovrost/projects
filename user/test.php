@@ -11,7 +11,7 @@ if (isset($_GET['test_id'])){
 
 $check_select_sql = "SELECT id, mark, duration FROM tests_to_users WHERE test=$test_id AND user=".$user_data['id'];
 if ($check_select_result = $conn->query($check_select_sql)){
-  if ($check_select_result->num_rows == 1){
+  if ($check_select_result->num_rows >= 1){
     foreach ($check_select_result as $item){
       $mark = $item['mark'];
       $duration = $item['duration'];
@@ -43,12 +43,13 @@ if (isset($_POST['finish'])){
 
   if ($flag){
     $insert_sql = "UPDATE tests_to_users SET mark=-2, date=".time().", answers='".json_encode($_POST['test_input'], 256)."', verified_scores='{}' WHERE id=$id";
-    header("Location: my_tests.php?success=1");
   }else{
     $insert_sql = "UPDATE tests_to_users SET date=".time().", answers='".json_encode($_POST['test_input'], 256)."' WHERE id=$id";
   }
   if ($conn->query($insert_sql)){
-    if (!$flag){
+    if ($flag){
+      header("Location: my_tests.php?verifying=1");
+    }else{
       check_the_test($conn, $id);
     }
   }else{

@@ -6,7 +6,7 @@ check_the_login($user_data, "../");
 $title = "My tests";
 
 $tests = array();
-$select_all_tests_sql = "SELECT test, duration, mark FROM tests_to_users WHERE user=".$user_data['id'];
+$select_all_tests_sql = "SELECT id, test, duration, mark FROM tests_to_users WHERE user=".$user_data['id'];
 if ($select_all_tests_result = $conn->query($select_all_tests_sql)){
   foreach ($select_all_tests_result as $item){
     array_push($tests, $item);
@@ -88,7 +88,7 @@ include "../templates/footer.html";
             'Correct'
         ],
         datasets: [{
-            label: 'Count of tests',
+            label: 'answers',
             data: <?php echo $diagram_data; ?>,
             backgroundColor: [
                 'rgba(15, 38, 84, 1)',
