@@ -1,10 +1,10 @@
 <?php
 if ($select_result = $conn -> query($select_sql)){
-  foreach($select_result as $note){
-    $user = get_user_data($conn, $note['user'], true);
-    $message = $note['message'];
-    $rate = $note['rate'];
-    $date = date('j F, Y', $note['date']);
+  foreach($select_result as $report){
+    $user = get_user_data($conn, $report['user'], true);
+    $message = $report['message'];
+    $rate = $report['rate'];
+    $date = date('j F, Y', $report['date']);
     $avatar = get_avatar($conn, $user);
     ?>
     <!-- Report's item -->

@@ -52,7 +52,7 @@ function get_user_data($conn, $login, $is_id=false){
 
   if (isset($login) && $login != ''){
     if ($is_id){
-      $select_sql = "SELECT * FROM users WHERE id='".$login."'";
+      $select_sql = "SELECT * FROM users WHERE id=$login";
     }else {
       $select_sql = "SELECT * FROM users WHERE login='".$login."'";
     }
@@ -70,6 +70,8 @@ function get_user_data($conn, $login, $is_id=false){
       }
 
       $auth = true;
+    }else{
+      echo $conn -> error;
     }
     $select_result->free();
   }
@@ -92,13 +94,14 @@ function get_user_data($conn, $login, $is_id=false){
 # -------------- other ------------------
 
 function get_avatar($conn, $user_data){
-  $select_sql = "SELECT file FROM avatars WHERE id=".$user_data['avatar'];
+  $avatar_id = $user_data['avatar'];
+  $select_sql = "SELECT file FROM avatars WHERE id=$avatar_id";
   if ($result_sql = $conn->query($select_sql)){
     foreach ($result_sql as $item){
       $image = $item['file'];
     }
   }else{
-    return false;
+    echo $conn->error;
   }
 
   return base64_encode($image);
