@@ -6,7 +6,7 @@ check_the_login($user_data, '../');
 $avatar = get_avatar($conn, $user_data);
 $title = $user_data['login'];
 
-$select_sql = "SELECT date FROM tests_to_users WHERE user=".$user_data['id']." ORDER BY date DESC";
+$select_sql = "SELECT date FROM tests_to_users WHERE user=".$user_data['id']." AND mark >= 0 ORDER BY date DESC";
 $completed_tests = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 if ($select_result = $conn->query($select_sql)){
   foreach ($select_result as $test_date){

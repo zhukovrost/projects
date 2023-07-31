@@ -14,6 +14,7 @@ $data = get_tests_to_users_data($conn, $id);
 if ($data['user'] != $user_data['id']){
   header("Location: my_tests.php");
 }
+$test_id = $data['test'];
 
 $result_data = check_the_test($conn, $id, false, true);
 $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered'], $result_data['correct'], $result_data['verifying']])
@@ -55,6 +56,9 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
                         </div>
                     </div>
                 </section>
+
+              <?php print_test_by_id($conn, $test_id, true, $id); ?>
+
                 <!-- Link to theory page -->
                 <section class="theory">
                     <img src="../img/theory_icon.svg" alt="">

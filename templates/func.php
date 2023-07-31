@@ -254,7 +254,7 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
   $right_answers = json_decode($question_data['right_answers']);
   $image_id = $question_data['image'];
   if ($user_answers_id != -1){
-    $user_answers = json_decode(get_tests_to_users_data($conn, $user_answers_id)['answers']);
+    $user_answers = (array)json_decode(get_tests_to_users_data($conn, $user_answers_id)['answers']);
   }
   ?>
   <section class="question">
@@ -288,9 +288,9 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
         if ($type == 'radio' || $type == 'checkbox'){
           for ($i = 0; $i < count($variants); $i++){
             ?> <div> <?php
-            if ($user_answers_id == -1){
+            if ($user_answers_id == -1 || ($user_answers_id != -1 && $user_answers[$question_number][$i] != "on")){
               echo "<input type='$type' name='test_input[$question_number][]'>";
-            }else if (in_array($i, $user_answers[$question_number])){
+            }else if ($user_answers[$question_number][$i] == "on"){
               echo "<input type='$type' name='test_input[$question_number][]' checked>";
             }
             echo "<label>$variants[$i]</label>";
@@ -301,9 +301,10 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
           for ($i = 0; $i < count($right_answers); $i++){
             ?> <div> <?php
             if ($user_answers_id == -1) {
-              echo "<input type='$type' name='test_input[$question_number][]'>";
+              echo "<input type='text' name='test_input[$question_number][]'>";
             }else{
-              echo "<input type='$type' name='test_input[$question_number][]' value='$user_answers[$question_id][$i]'>";
+              $value = $user_answers[$question_number][(string)$i];
+              echo "<input type='text' name='test_input[$question_number][]' value='$value'>";
             }
             ?> </div> <?php
           }
@@ -311,10 +312,11 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
           if ($user_answers_id == -1){
             echo "<input type='text' name='test_input[$question_number][]'>";
           }else{
-            echo "<input type='text' name='test_input[$question_number][]' value='$user_answers[$question_number][0]'>";
+            $value = $user_answers[$question_number][0];
+            echo "<input type='text' name='test_input[$question_number][]' value='$value'>";
           }
         }else if ($type == "definite_mc"){
-          if ($user_answers_id == -1){
+          if ($user_answers_id == -1 || $user_answers[$question_number] == null){
             echo "<textarea name='test_input[$question_number][]'></textarea>";
           }else{
             echo "<textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea>";
@@ -367,7 +369,7 @@ function print_test_by_id($conn, $test_id, $extend=false, $user_answers_id=-1){
 function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
   # collecting data
   $solve = get_tests_to_users_data($conn, $id);
-  $user_answers = json_decode($solve['answers']);
+  $user_answers = (array)json_decode($solve['answers']);
   $verified_scores = (array)json_decode($solve['verified_scores']);
   $test_data = get_test_data($conn, $solve['test']);
   $user_id = $solve['user'];
@@ -508,6 +510,7 @@ function print_test_info($conn, $test_info_array){
   <section class="test">
     <img src="../img/test-1.png" alt="">
     <div>
+      <p><span><?php echo $test_data['name']; ?></span></p>
       <?php if (count($themes) != 0) { ?><p class="theme">Theme(s): <span> <?php foreach ($themes as $theme){ echo $theme.'; '; }?></span></p><?php } ?>
       <p class="time">Time for test: <span><?php echo date('i:s', $test_info_array['duration']); ?></span></p>
       <p class="questions_number">Number of questions: <span><?php echo count(json_decode($test_data['test'])); ?></span></p>
@@ -523,4 +526,63 @@ function print_test_info($conn, $test_info_array){
 }
 
 
-?>
+function print_marks($conn, $user_id, $current_month, $next_month, $is_prev=false){ ?>
+  <div class="marks">
+  <?php
+  $select_sql = "SELECT mark FROM tests_to_users WHERE user=".$user_id." AND date >= $current_month AND date < $next_month AND mark >= 0 ORDER BY date";
+  if ($select_result = $conn -> query($select_sql)){
+    $amount_of_marks = $select_result->num_rows;
+    $all_marks_sum = 0;
+    if ($amount_of_marks > 0){
+      foreach ($select_result as $mark_data){
+        $mark = $mark_data['mark'];
+        $all_marks_sum += $mark;
+        echo "<div>$mark</div>";
+      }
+    }else{ ?>
+      <p>No marks this month.</p>
+    <?php }
+    if ($amount_of_marks != 0){
+      $average_mark = round($all_marks_sum / $amount_of_marks, 2);
+    }else{
+      $average_mark = 0;
+    }
+
+    $tests_done = $amount_of_marks;
+    $verifying = 0;
+    $not_done = 0;
+
+    $select_sql2 = "SELECT mark FROM tests_to_users WHERE user=".$user_id." AND date >= $current_month AND date < $next_month AND mark < 0 ORDER BY date";
+    if ($select_result2 = $conn->query($select_sql2)){
+      foreach ($select_result2 as $mark_data) {
+        $mark = $mark_data['mark'];
+        switch ($mark){
+          case -1:
+          case -3:
+            $not_done++;
+            break;
+          case -2:
+            $verifying++;
+            break;
+        }
+      }
+    }
+
+    $tests_done += $verifying;
+  }
+  ?>
+  </div>
+  <!-- Marks' statistic -->
+  <div class="statistic">
+    <div class="content">
+        <h2>Completed tests: <span><?php echo $tests_done; ?></span></h2>
+        <h2>Uncompleted tests: <span><?php echo $not_done; ?></span></h2>
+        <h2>Verifying: <span><?php echo $verifying; ?></span></h2>
+        <h1>Average mark: <span><?php echo $average_mark; ?></span></h1>
+    </div>
+    <!-- Button to next month -->
+    <?php if (!$is_prev){ ?>
+    <button>Next month <img src="../img/Arrow 6.svg" alt=""></button>
+    <?php } ?>
+  </div>
+<?php } ?>

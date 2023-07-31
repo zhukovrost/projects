@@ -44,7 +44,7 @@ $diagram_data = json_encode([$stats['wrong'], $stats['not_answered'], $stats['co
 
     <!-- Sort of All tests -->
     <div class="tests_list_sort">
-      <img src="img/search.svg" alt="">
+      <img src="../img/search.svg" alt="">
       <input type="text" placeholder="Search theme">
       <div class="ready_sort">
         <button class="all sortItem_active">All</button>
