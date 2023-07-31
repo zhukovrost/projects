@@ -141,8 +141,9 @@ if (isset($_POST['finish'])){
         let inputBlocksArr = questionsArr[i].children[1].children[2].children;
 
         for(let j = 0; j < inputBlocksArr.length; j++){
-            let input = inputBlocksArr[j].children[0];
-            input.addEventListener('click', function(){
+            let inputItem = inputBlocksArr[j].children[0];
+
+            inputItem.addEventListener('click', function(){
                 finishQuestions[i].flag = true;
 
                 let finishCount = 0
@@ -168,71 +169,71 @@ if (isset($_POST['finish'])){
 
     // =====Timer=====
     let time = 0;
-    if(localStorage.getItem("test_time")){
-        time = localStorage.getItem("test_time");
-    }
-    else{
-        // сюда подставить время
-        time = <?php echo $duration; ?>;
-        localStorage.setItem("test_time", time);
-    }
+            if(localStorage.getItem("test_time")){
+                time = localStorage.getItem("test_time");
+            }
+            else{
+                // сюда подставить время
+                time = <?php echo $duration; ?>;
+                localStorage.setItem("test_time", time);
+            }
 
-    const timer = document.querySelector('.curtest_header .time');
+            const timer = document.querySelector('.curtest_header .time');
 
-    if(time <= 0){
-        timer.innerHTML = `00:00`;
-    }
-    else{
-        timer.innerHTML = `${Math.floor(time / 60)}:${time % 60}`;
-    }
+            if(time <= 0){
+                timer.innerHTML = `00:00`;
+            }
+            else{
+                timer.innerHTML = `${Math.floor(time / 60)}:${time % 60}`;
+            }
 
-    const FinsishButton = document.querySelector('.questions_list .finish');
+            const FinsishButton = document.querySelector('.questions_list .finish');
 
-    FinsishButton.addEventListener('click', function(){
-        clearInterval(IntervalTimer);
-        time = 0;
-    });
+            FinsishButton.addEventListener('click', function(){
+                clearInterval(IntervalTimer);
+                time = 0;
+            });
 
-    //Если пользователь начал тестирование, то запускается таймер
-    if(time > 0){
-        let minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-        if (seconds < 10){
-            seconds = '0' + seconds;
-        }
-        if (minutes < 10){
-            minutes = '0' + minutes;
-        }
+            //Если пользователь начал тестирование, то запускается таймер
+            if(time > 0){
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+                if (seconds < 10){
+                    seconds = '0' + seconds;
+                }
+                if (minutes < 10){
+                    minutes = '0' + minutes;
+                }
 
-        timer.innerHTML = `${minutes}:${seconds}`;
-        time--;
-        localStorage.setItem("test_time", time);
+                timer.innerHTML = `${minutes}:${seconds}`;
+                time--;
+                localStorage.setItem("test_time", time);
 
-        let IntervalTimer = setInterval(UpdateTime, 1000);
-    }
+                let IntervalTimer = setInterval(UpdateTime, 1000);
+            }
 
-    function UpdateTime(){
-        let minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-        if (seconds < 10){
-            seconds = '0' + seconds;
-        }
-        if (minutes < 10){
-            minutes = '0' + minutes;
-        }
+            function UpdateTime(){
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+                if (seconds < 10){
+                    seconds = '0' + seconds;
+                }
+                if (minutes < 10){
+                    minutes = '0' + minutes;
+                }
 
-        timer.innerHTML = `${minutes}:${seconds}`;
+                timer.innerHTML = `${minutes}:${seconds}`;
+                
 
+                if(time == 0){
+                    localStorage.removeItem("test_time");
+                    clearInterval(IntervalTimer);
+                    FinsishButton.click();
+                }
 
-        if(time == 0){
-            localStorage.removeItem("test_time");
-            clearInterval(IntervalTimer);
-            FinsishButton.click();
-        }
-
-        time--;
-        localStorage.setItem("test_time", time);
-    }
+                time--;
+                localStorage.setItem("test_time", time);
+            }
 </script>
 </body>
 </html>

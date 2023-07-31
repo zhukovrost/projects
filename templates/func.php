@@ -63,9 +63,6 @@ function get_user_data($conn, $login, $is_id=false){
         $surname = $item['surname'];
         $thirdname = $item['thirdname'];
         $status = $item['status'];
-        $user_tests_ids = $item['user_tests_ids'];
-        $user_tests_marks = $item['user_tests_marks'];
-        $user_tests_durations = $item['user_tests_durations'];
         $avatar = $item['avatar'];
       }
 
@@ -323,24 +320,23 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
           }
         }
 
-        print_image($conn, $image_id);
+          print_image($conn, $image_id);
 
-        if ($extend && $type != "definite_mc"){
+          if ($extend && $type != "definite_mc"){
 
-          echo "<p>Right answer(s): ";
-          foreach ($right_answers as $right_answer) {
-            if ($type == "missing_words" || $type == "definite"){
-              echo $right_answer."; ";
-            }else{
-              echo $variants[$right_answer] . "; ";
+            echo "<p>Right answer(s): ";
+            foreach ($right_answers as $right_answer) {
+              if ($type == "missing_words" || $type == "definite"){
+                echo $right_answer."; ";
+              }else{
+                echo $variants[$right_answer] . "; ";
+              }
             }
+            echo "</p>";
+
           }
-          echo "</p>";
-
-        }
-        ?>
-
-    </div>
+          ?>
+        </div>
   </section>
 <?php }
 
