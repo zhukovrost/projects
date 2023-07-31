@@ -28,60 +28,7 @@ $previous_month = mktime(0, 0, 0, date('m') - 1, 1, date('Y'));
                     </div>
                     <button class="previous">
                         <!-- Marks -->
-                        <div class="marks">
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                            <div>4</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                            <div>4</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                            <div>4</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>4</div>
-                            <div>3</div>
-                            <div>2</div>
-                        </div>
-                        <!-- Marks' statistic -->
-                        <div class="statistic">
-                            <div class="content">
-                                <h2>Grades five: <span>3</span></h2>
-                                <h2>Grades four: <span>3</span></h2>
-                                <h2>Grades three: <span>3</span></h2>
-                                <h2>Grades two: <span>3</span></h2>
-                                <h1>Total grade: <span>4.09</span></h1>
-                            </div>
-                        </div>
+                        <?php print_marks($conn, $user_data['id'], $previous_month, $current_month, true); ?>
                     </button>
                 </div>
                 
@@ -94,33 +41,7 @@ $previous_month = mktime(0, 0, 0, date('m') - 1, 1, date('Y'));
             <!-- Current month -->
             <section class="current">
                 <!-- Marks -->
-                <div class="marks">
-                  <?php
-                  $select_sql = "SELECT mark FROM tests_to_users WHERE user=".$user_data['id']." AND date >= $current_month AND date < $next_month ORDER BY date DESC";
-                  if ($select_result = $conn -> query($select_sql)){
-                    if ($select_result->num_rows > 0){
-                      foreach ($select_result as $mark_data){
-                        $mark = $mark_data['mark'];
-                        echo "<div>$mark</div>";
-                      }
-                    }else{ ?>
-                      <p>No marks this month.</p>
-                    <?php }
-                  }
-                  ?>
-                </div>
-                <!-- Marks' statistic -->
-                <div class="statistic">
-                    <div class="content">
-                        <h2>Grades five: <span>3</span></h2>
-                        <h2>Grades four: <span>3</span></h2>
-                        <h2>Grades three: <span>3</span></h2>
-                        <h2>Grades two: <span>3</span></h2>
-                        <h1>Total grade: <span>4.09</span></h1>
-                    </div>
-                    <!-- Button to next month -->
-                    <button>Next month <img src="../img/Arrow 6.svg" alt=""></button>
-                </div>
+                <?php print_marks($conn, $user_data['id'], $current_month, $next_month); ?>
             </section>
         </div>
     </main>

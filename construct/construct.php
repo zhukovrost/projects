@@ -112,6 +112,7 @@ if (isset($_POST['add_theme'])){
     $add_theme_sql = "INSERT INTO themes(theme) VALUES('".$_POST['add_theme']."')";
     if($conn->query($add_theme_sql)){
       $error_array['theme_success'] = true;
+      $theme_id = mysqli_insert_id($conn);
     }else{
       $error_array['theme_error'] = true;
     }
@@ -262,6 +263,7 @@ if (isset($_POST['test_name'])){
   $add_test_sql = "INSERT INTO tests(name, test, task, themes) VALUES('".$_POST['test_name']."', '".json_encode($_SESSION['result_array'])."', '$task', '".json_encode($test_themes)."')";
   if($conn->query($add_test_sql)){
     $error_array["success_add_test"] = true;
+    $test_id = mysqli_insert_id($conn);
   } else {
     echo "Ошибка: " . $conn->error;
   }
@@ -386,17 +388,17 @@ if (isset($_POST['test_name'])){
 
 		<div class='c_error_array'>
 		<?php if ($error_array["success_add_test"]){ ?>
-      <p class='success'>The test has been added to the database</p>
+      <p class='success'>The test has been added to the database (ID: <?php echo $test_id; ?>)</p>
 		<?php } if ($error_array["image_error"]){ ?>
-			<p class='warning'>Ошибка загрузки картинки</p>
+			<p class='warning'>Image upload error</p>
 		<?php } if ($error_array["theme_error"]){ ?>
-      <p class='warning'>Ошибка загрузки тем</p>
+      <p class='warning'>Themes error</p>
     <?php } if ($error_array["image_success"]){ ?>
-			<p class='success'>Картинка была успешно добавлена (ID: <?php echo $img_id; ?>)</p>
+			<p class='success'>New image has been added to the database (ID: <?php echo $img_id; ?>)</p>
 		<?php } if ($error_array["success_add_question"]){ ?>
-			<p class='success'>Вопросы были успешно добавлены в базу данныx</p>
+			<p class='success'>New question has been added to the database (ID: <?php echo $id; ?>)</p>
 		<?php } if ($error_array["theme_success"]){ ?>
-      <p class='success'>Тема успешно добавлена в базу данныx</p>
+      <p class='success'>New theme has been added to the database (ID: <?php echo $theme_id; ?>)</p>
     <?php } ?>
 		</div>
 
