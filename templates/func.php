@@ -279,7 +279,7 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
       }
 
       ?>
-
+      <div class="answers">
         <?php
 
         if ($type == 'radio' || $type == 'checkbox'){
@@ -336,7 +336,8 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
 
           }
           ?>
-        </div>
+      </div>
+    </div>
   </section>
 <?php }
 
