@@ -332,7 +332,6 @@ if (isset($_POST['test_name'])){
 			<p><input type="radio" name="form_type" value="definite"<?php if ($_SESSION['form_type'] == "definite"){ echo " checked"; } ?>>Definite answer (several variants)</p>
 			<p><input type="radio" name="form_type" value="definite_mc"<?php if ($_SESSION['form_type'] == "definite_mc"){ echo " checked"; } ?>>Definite answer (manual verification)</p>
       <p><input type="radio" name="form_type" value="missing_words"<?php if ($_SESSION['form_type'] == "missing_words"){ echo " checked"; } ?>>Missing words</p>
-			<input type="submit" value="изменить" style="width: 90%">
 		</form>
     <div class="c_form_2">
       <form method="get">
@@ -413,6 +412,14 @@ if (isset($_POST['test_name'])){
 ?>
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {
+        // Question type Event listener
+        let questionTypeButtons = document.querySelectorAll('.c_form_3 p input');
+
+        for(let i = 0; i < questionTypeButtons.length; i++){
+          questionTypeButtons[i].addEventListener('change', function(){
+            document.querySelector('.c_form_3').submit();
+          });
+        }
 
 				// ============Save content in forms============
 				// First Column
