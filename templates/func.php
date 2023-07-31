@@ -514,7 +514,7 @@ function print_test_info($conn, $test_info_array){
       <p class="status">Status: <span><?php echo $status; ?></span></p>
     </div>
     <?php if ($mark == -1 || $mark == -3){ ?>
-      <a href="test.php?test_id=<?php echo $test_info_array['test']; ?>">START</a>
+      <a href="test.php?id=<?php echo $test_info_array['id']; ?>">START</a>
     <?php }else{ ?>
       <a href="result.php?id=<?php echo $test_info_array['id']; ?>">RESULT</a>
     <?php } ?>

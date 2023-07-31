@@ -3,19 +3,23 @@ include '../templates/func.php';
 include '../templates/settings.php';
 
 check_the_login($user_data, "../");
-if (isset($_GET['test_id'])){
-  $test_id = $_GET['test_id'];
+if (isset($_GET['id'])){
+  $id = $_GET['id'];
 }else{
   header("Location: my_tests.php");
 }
 
-$check_select_sql = "SELECT id, mark, duration FROM tests_to_users WHERE test=$test_id AND user=".$user_data['id'];
+$check_select_sql = "SELECT user, test, mark, duration FROM tests_to_users WHERE id=$id";
 if ($check_select_result = $conn->query($check_select_sql)){
-  if ($check_select_result->num_rows >= 1){
+  if ($check_select_result->num_rows == 1){
     foreach ($check_select_result as $item){
+      if ($item['user'] != $user_data['id']){
+        header("Location: my_tests.php?access_error=1");
+      }
       $mark = $item['mark'];
       $duration = $item['duration'];
-      $id = $item['id'];
+      $test_id = $item['test'];
+
     }
   }else{
     header("Location: my_tests.php?access_error=1");
