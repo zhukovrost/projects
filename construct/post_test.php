@@ -101,5 +101,6 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
       print_message("The test has been published!", 1);
     }
     ?>
+    <script src="../templates/format.js"></script>
 </body>
 </html>

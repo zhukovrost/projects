@@ -253,5 +253,6 @@ if (isset($_POST['finish'])){
         }
     }
 </script>
+<script src="../templates/format.js"></script>
 </body>
 </html>

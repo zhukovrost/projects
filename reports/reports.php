@@ -58,6 +58,8 @@ $title = "Feedback";
 
     </main>
 
+    <script src="../templates/format.js"></script>
+
     <?php include "../templates/footer.html"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>

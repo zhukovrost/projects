@@ -536,5 +536,6 @@ include "../templates/footer.html";
     }
 
 </script>
+<script src="../templates/format.js"></script>
 </body>
 </html>

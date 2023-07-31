@@ -48,6 +48,7 @@ $previous_month = mktime(0, 0, 0, date('m') - 1, 1, date('Y'));
 
     <?php include "../templates/footer.html"; ?>
 
+    <script src="../templates/format.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 </body>
 </html>

@@ -143,5 +143,6 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
             resultText.innerHTML = "Try it again!";
         }
     </script>
+    <script src="../templates/format.js"></script>
 </body>
 </html>

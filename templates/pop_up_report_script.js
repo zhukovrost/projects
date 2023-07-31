@@ -2,7 +2,7 @@
 // Popup window to leave feedback
 const feedbackBtn = document.querySelector('.reports .links button');
 const popupWindow = document.querySelector('.popup_feedback');
-console.log(popupWindow);
+
 feedbackBtn.addEventListener('click', function(){
     popupWindow.classList.add("open");
 });

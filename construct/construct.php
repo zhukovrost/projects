@@ -410,6 +410,7 @@ if (isset($_POST['test_name'])){
 
 
 ?>
+    <script src="../templates/format.js"></script>
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {
         // Question type Event listener

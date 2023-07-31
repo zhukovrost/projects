@@ -86,5 +86,6 @@ if (isset($_POST['verified'])){
   ?>
 
 </main>
+<script src="../templates/format.js"></script>
 </body>
 </html>

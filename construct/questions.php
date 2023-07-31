@@ -26,6 +26,6 @@ if ($select_result = $conn->query($select_sql)){
 }
 $select_result->free();
 ?>
-
+<script src="../templates/format.js"></script>
 </body>
 </html>

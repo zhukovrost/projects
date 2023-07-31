@@ -1,0 +1,3561 @@
+@media (max-width: 1800px){
+    /* ==============PROFILE============== */
+    /* Titles of materials blocks */
+    .profile_block .materials h2{
+        font-size: 14px;
+        top: -10%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 18px;
+    }
+
+    /* Number of unread theories */
+    .profile_block .theory div .number{
+        font-size: 21px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        font-size: 25px;
+    }
+
+
+    /* =Homework block= */
+    .profile_block .homework .content p{
+        font-size: 18px;
+    }
+
+    /* image homerwork */
+    .profile_block .homework img{
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Button 'START' */
+    .profile_block .homework button{
+        font-size: 22px;
+        margin: 5px auto 0px auto;
+    }
+
+
+    /* Links for pages: marks, all tests and all materials */
+    .profile_block .activity .links .item{
+        font-size: 25px;
+    }
+}
+
+
+@media (max-width: 1600px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 350px;
+        width: 350px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 60px 60px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 160px;
+        height: 160px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 26px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 24px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 25px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 24px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .questions_list .question .underline_title h2{
+        font-size: 18px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 21px;
+    }
+
+    /* Question content */
+    .questions_list .question .content h1{
+        font-size: 30px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 18px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 26px;
+    }
+
+    /* ==================================== */
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress .content{
+        padding: 20px 80px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 18px;
+    }
+
+
+    /* =================================== */
+
+    /* ==============PROFILE============== */
+
+    .profile_block{
+        height: 65vh;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 170px;
+        height: 170px;
+    }
+
+    /* Titles of materials blocks */
+    .profile_block .materials h2{
+        top: -11%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 16px;
+    }
+
+    /* Number of unread theories */
+    .profile_block .theory div .number{
+        font-size: 19px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        font-size: 23px;
+    }
+
+
+    /* =Homework block= */
+    .profile_block .homework .content p{
+        font-size: 16px;
+    }
+
+    /* image homerwork */
+    .profile_block .homework img{
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Button 'START' */
+    .profile_block .homework button{
+        font-size: 20px;
+        margin: 5px auto 0px auto;
+    }
+}
+
+
+@media (max-width: 1500px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 330px;
+        width: 330px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 60px 60px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 150px;
+        height: 150px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 25px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 23px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 24px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 23px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .questions_list .question .underline_title h2{
+        font-size: 17px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 20px;
+    }
+
+    /* Question content */
+    .questions_list .question .content h1{
+        font-size: 28px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 17px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 24px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress .statistic p{
+        font-size: 21px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 21px;
+    }
+
+    .tests_progress .content{
+        padding: 20px 60px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 17px;
+        padding: 3px 7px;
+    }
+
+
+
+
+    /* =================================== */
+
+    /* ==============PROFILE============== */
+    .profile_block{
+        padding: 30px 50px;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 160px;
+        height: 160px;
+    }
+
+    /* Titles of materials blocks */
+    .profile_block .materials h2{
+        top: -11%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 15px;
+    }
+
+    /* Number of unread theories */
+    .profile_block .theory div .number{
+        font-size: 18px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        font-size: 22px;
+    }
+
+
+    /* =Homework block= */
+    .profile_block .homework .content p{
+        font-size: 15px;
+    }
+
+    /* image homerwork */
+    .profile_block .homework img{
+        width: 45px;
+        height: 45px;
+    }
+
+    /* Button 'START' */
+    .profile_block .homework button{
+        font-size: 19px;
+        margin: 5px auto 0px auto;
+    }
+
+
+    /* ====================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content .text p{
+        font-size: 19px;
+    }
+
+    .welcome_content .text h1{
+        font-size: 57px;
+    }
+
+    .welcome_content .hats{
+        width: 500px;
+        height: 500px;
+    }
+
+
+    /* =========================================== */
+
+
+    /* ===========REGISTRATION && LOGIN PAGES=========== */
+    
+    .reg_form{
+        width: 50vw;
+    }
+}
+
+
+@media (max-width: 1400px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 330px;
+        width: 330px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 60px 50px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 130px;
+        height: 130px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 23px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 21px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 22px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 21px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .questions_list .question .underline_title h2{
+        font-size: 16px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 19px;
+    }
+
+    /* Question content */
+    .questions_list .question .content h1{
+        font-size: 26px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 16px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 22px;
+    }
+
+    /* ==================================== */
+
+    
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 80%;
+    }
+
+    .tests_progress .content{
+        padding: 20px 50px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 15px;
+        padding: 3px 7px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 18px;
+    }
+
+    .tests_list .test p span{
+        font-size: 19px;
+    }
+
+    .tests_list .test img{
+        width: 110px;
+        height: 110px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 27px;
+    }
+
+
+
+
+    /* =================================== */
+    /* ==============PROFILE============== */
+    .profile_block{
+        width: 70vw;
+        height: 65vh;
+    }
+
+    /* =================================== */
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content .text p{
+        font-size: 17px;
+    }
+
+    .welcome_content .text h1{
+        font-size: 55px;
+    }
+
+    .welcome_content .hats{
+        width: 450px;
+        height: 450px;
+    }
+
+}
+
+
+@media (max-width: 1300px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 320px;
+        width: 320px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 60px 50px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 110px;
+        height: 110px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 21px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 19px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 20px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 19px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .questions_list .question .underline_title h2{
+        font-size: 15px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 18px;
+    }
+
+    /* Question content */
+    .questions_list .question .content h1{
+        font-size: 24px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 15px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 20px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 80%;
+    }
+
+    .tests_progress .content{
+        padding: 20px 50px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 19px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 19px;
+    }
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort input{
+        font-size: 21px;
+    }
+
+    .tests_list_sort .ready_sort{
+        margin-left: 20px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        margin: 0 5px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 18px;
+    }
+
+    /* =================================== */
+
+
+    /* ===HEADER=== */
+    .main_header a{
+        font-size: 15px;
+    }
+
+    /* =================================== */
+
+
+
+    /* ==============PROFILE============== */
+
+    .profile_block{
+        height: 63vh;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Titles of materials blocks */
+    .profile_block .materials h2{
+        top: -11%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 14px;
+    }
+
+    /* Number of unread theories */
+    .profile_block .theory div .number{
+        font-size: 17px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        font-size: 21px;
+    }
+
+
+    /* =Homework block= */
+    .profile_block .homework .content p{
+        font-size: 14px;
+    }
+
+    /* image homerwork */
+    .profile_block .homework img{
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Button 'START' */
+    .profile_block .homework button{
+        font-size: 18px;
+        margin: 5px auto 0px auto;
+    }
+
+    /* Links for pages: marks, all tests and all materials */
+    .profile_block .activity .links .item{
+        font-size: 20px;
+    }
+
+    /* Button 'Log out' to leave account */
+    .profile_block .activity .links .logout_btn{
+        padding: 7px 10px 7px 20px;
+        font-size: 22px;
+    }
+
+    .profile_block .activity .logout_btn img{
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+    }
+
+    /* ====================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Background objects(back header)=== */
+    .Background_object_1{
+        position: absolute;
+        z-index: -1;
+        top: -1%;
+        left: -5%;
+    }
+    
+    .Background_object_2{
+        position: absolute;
+        right: -5%;
+        z-index: -1;
+    }
+
+    /* ===Daily words block=== */
+    .daily_words swiper-slide{
+        padding: 30px 70px;
+    }
+
+    .daily_words .title{
+        font-size: 16px;
+    }
+
+    .daily_words h2{
+        font-size: 25px;
+    }
+
+    .daily_words .example_title{
+        font-size: 15px;
+    }
+
+    .daily_words .example_text{
+        font-size: 19px;
+    }
+
+
+    .welcome_header{
+        padding: 20px 30px;
+    }
+
+    /* Links in header */
+    .welcome_header a{
+        font-size: 17px;
+    }
+
+    /* login and registration links */
+    .welcome_header div a{
+        margin-right: 15px;
+    }
+
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content .text p{
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .welcome_content .text h1{
+        font-size: 55px;
+    }
+
+    .welcome_content .text a{
+        padding: 15px 20px;
+        font-size: 23px;
+    }
+
+
+    .welcome_content{
+        margin: 40px 0px 60px 0px;
+    }
+
+    .welcome_content .hats{
+        width: 440px;
+        height: 440px;
+    }
+
+
+}
+
+
+@media (max-width: 1200px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 310px;
+        width: 310px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 50px 40px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 19px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 17px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 18px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 17px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory img{
+        width: 130px;
+        height: 130px;
+    }
+
+    .result_content .theory p{
+        font-size: 23px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 23px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .questions_list .question .underline_title h2{
+        font-size: 14px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 17px;
+    }
+
+    /* Question content */
+    .questions_list .question .content h1{
+        font-size: 22px;
+    }
+
+    .questions_list .question .content p{
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .questions_list .question .content form input{
+        width: 17px;
+        height: 17px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 19px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 80%;
+    }
+
+    .tests_progress .content{
+        padding: 20px 40px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 17px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 17px;
+    }
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort .ready_sort{
+        margin-left: 18px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 14px;
+        margin: 0px 5px 5px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 16px;
+    }
+
+    .tests_list .test p span{
+        font-size: 17px;
+    }
+
+    .tests_list .test img{
+        width: 90px;
+        height: 90px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 25px;
+    }
+
+    /* =================================== */
+
+
+    /* ==============PROFILE============== */
+
+    .profile_block{
+        height: 60vh;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 130px;
+        height: 130px;
+    }
+
+    /* Titles of materials blocks */
+    .profile_block .materials h2{
+        font-size: 12px;
+        top: -12%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 12px;
+    }
+
+    /* Number of unread theories */
+    .profile_block .theory div .number{
+        font-size: 12px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        font-size: 19px;
+    }
+
+
+    /* =Homework block= */
+    .profile_block .homework .content p{
+        font-size: 12px;
+    }
+
+    /* image homerwork */
+    .profile_block .homework img{
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Button 'START' */
+    .profile_block .homework button{
+        font-size: 16px;
+        margin: 5px auto 0px auto;
+    }
+
+    /* Links for pages: marks, all tests and all materials */
+    .profile_block .activity .links .item{
+        font-size: 20px;
+    }
+
+    /* Button 'Log out' to leave account */
+    .profile_block .activity .links .logout_btn{
+        font-size: 22px;
+    }
+
+    .profile_block .activity .logout_btn img{
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+    }
+
+    /* ====================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Daily words block=== */
+    .daily_words{
+        width: 50vw;
+        margin: 0 auto;
+    }
+
+    .daily_words swiper-slide{
+        padding: 30px 70px;
+    }
+
+    .daily_words .title{
+        font-size: 16px;
+    }
+
+    .daily_words h2{
+        font-size: 23px;
+    }
+
+    .daily_words .example_title{
+        font-size: 15px;
+    }
+
+    .daily_words .example_text{
+        font-size: 18px;
+    }
+
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content .text p{
+        font-size: 16px;
+    }
+
+    .welcome_content .text h1{
+        font-size: 51px;
+    }
+
+    .welcome_content .hats{
+        width: 380px;
+        height: 380px;
+    }
+
+}
+
+@media (max-width: 1100px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 300px;
+        width: 300px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 50px 40px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 17px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 15px;
+        margin: 0px 0px 15px 50px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 16px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 15px;
+        margin-top: 0px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory img{
+        width: 130px;
+        height: 130px;
+    }
+
+    .result_content .theory p{
+        font-size: 23px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 23px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .test_progress .progress_bar h2{
+        font-size: 14px;
+    }
+
+    .test_progress .progress_bar .percents p{
+        font-size: 15px;
+    }
+
+    .test_progress nav button{
+        font-size: 21px
+    }
+
+    .curtest_header .time{
+        font-size: 23px;
+    }
+
+    /* Navifation the test */
+
+    .questions_list .question .underline_title h2{
+        font-size: 13px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 16px;
+    }
+
+    /* Question content */
+    .questions_list .question .content h1{
+        font-size: 20px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 13px;
+    }
+
+    .questions_list .question .content form input{
+        width: 15px;
+        height: 15px;
+        margin-bottom: 0px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 18px;
+    }
+
+    /* 'Finish' button to finish current test */
+    .questions_list .finish{
+        font-size: 35px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 85%;
+    }
+
+    .tests_progress .title{
+        font-size: 15px;
+    }
+
+    .tests_progress .content{
+        padding: 20px 30px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 17px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 17px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 15px;
+    }
+
+    .tests_list .test p span{
+        font-size: 16px;
+    }
+
+    .tests_list .test img{
+        width: 80px;
+        height: 80px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 23px;
+    }
+
+    /* =================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Background objects(back header)=== */
+    .Background_object_1{
+        position: absolute;
+        z-index: -1;
+        top: 0%;
+        left: 0%;
+    }
+    
+    .Background_object_2{
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        z-index: -1;
+    }
+
+    /* ===Daily words block=== */
+    .daily_words{
+        width: 70vw;
+        margin-top: 10vh;
+    }
+
+    .daily_words .title{
+        font-size: 18px;
+    }
+
+    .daily_words h2{
+        font-size: 25px;
+    }
+
+    .daily_words .example_title{
+        font-size: 17px;
+    }
+
+    .daily_words .example_text{
+        font-size: 20px;
+    }
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content{
+        margin-top: 5vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .welcome_content .hats{
+        display: none;
+    }
+
+    .welcome_content .text p{
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+
+    .welcome_content .text h1{
+        font-size: 60px;
+    }
+
+    .welcome_content .text a{
+        padding: 20px 30px;
+        font-size: 25px;
+    }
+
+
+    /* =========================================== */
+
+
+    /* ===========REGISTRATION && LOGIN PAGES=========== */
+    .log_form{
+        width: 60vw;
+    }
+
+    .log_button{
+        font-size: 25px;
+    }
+
+    .log_form input{
+        font-size: 20px;
+    }
+
+    .log_form .content a{
+        font-size: 16px;
+    }
+
+
+
+    .reg_form{
+        width: 70vw;
+    }
+}
+
+
+@media (max-width: 1000px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        
+        height: 290px;
+        width: 290px;
+    }
+    /* result */
+    .result_content .result .statistics{
+        padding: 50px 40px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 17px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 15px;
+        margin: 0px 0px 15px 50px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 16px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 15px;
+        margin-top: 0px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory{
+        margin-top: 100px;
+    }
+
+    .result_content .theory img{
+        width: 130px;
+        height: 130px;
+    }
+
+    .result_content .theory p{
+        font-size: 23px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 23px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .test_progress .progress_bar h2{
+        font-size: 13px;
+    }
+
+    .test_progress .progress_bar .percents p{
+        font-size: 14px;
+    }
+
+    .test_progress nav{
+        margin-top: 10px;
+    }
+
+    .test_progress nav button{
+        padding: 4px 8px;
+        font-size: 18px
+    }
+
+    .curtest_header .time{
+        font-size: 21px;
+    }
+
+    /* Navifation the test */
+
+    .questions_list .question .underline_title h2{
+        font-size: 12px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 15px;
+    }
+
+    /* Question content */
+    .questions_list .question .content{
+        padding: 20px 50px;
+    }
+
+    .questions_list .question .content h1{
+        font-size: 19px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 12px;
+    }
+
+    .questions_list .question .content form input{
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 17px;
+    }
+
+    /* 'Finish' button to finish current test */
+    .questions_list .finish{
+        font-size: 33px;
+        padding: 5px 20px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 85%;
+    }
+
+    .tests_progress .title{
+        font-size: 12px;
+    }
+
+    .tests_progress .diagram{
+        width: 250px;
+        height: 250px;
+    }
+
+    .tests_progress .content{
+        padding: 20px 30px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 16px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 16px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 13px;
+    }
+
+    .tests_list .test p span{
+        font-size: 14px;
+    }
+
+    .tests_list .test img{
+        width: 70px;
+        height: 70px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 21px;
+    }
+
+    /* =================================== */
+    /* ===HEADER=== */
+    .main_header a{
+        font-size: 13px;
+    }
+
+    /* =================================== */
+    /* ==============PROFILE============== */
+
+    .profile_block{
+        height: 70vh;
+        padding: 30px 30px;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 110px;
+        height: 110px;
+    }
+
+    .profile_block .materials{
+        width: 55%;
+        flex-direction: column;
+        margin-left: 70px;
+    }
+
+    .profile_block .materials .theory{
+        margin-left: 0px;
+        margin-bottom: 20px;
+        padding: 20px 10px;
+    }
+
+    .profile_block .materials .homework{
+        padding: 15px 15px;
+        align-items: center;
+        flex-direction: row;
+    }
+
+
+    .profile_block .activity .links{
+        width: 200px;
+        position: absolute;
+        top: 10%;
+        right: 2%;
+    }
+
+    .profile_block .activity .links .item{
+        font-size: 18px;
+    }
+
+    /* Button 'Log out' to leave account */
+    .profile_block .activity .links .logout_btn{
+        font-size: 20px;
+        width: 150px;
+        margin: 60px auto 0px auto;
+    }
+
+
+    /* Activity diagram */
+    .profile_block .activity .diagram{
+        width: 100%;
+    }
+
+    /* ====================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Background objects(back header)=== */
+    .Background_object_2{
+        position: absolute;
+        right: -3%;
+        top: 0%;
+        z-index: -1;
+    }
+}
+
+@media (max-width: 900px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        
+        height: 270px;
+        width: 270px;
+    }
+    /* result */
+    .result_content .result .statistics{
+        padding: 40px 30px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 16px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 14px;
+        margin: 0px 0px 15px 50px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 15px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 14px;
+        margin-top: 0px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory{
+        margin-top: 100px;
+    }
+
+    .result_content .theory img{
+        width: 120px;
+        height: 120px;
+    }
+
+    .result_content .theory p{
+        font-size: 21px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 21px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .test_progress .progress_bar h2{
+        font-size: 12px;
+    }
+
+    .test_progress .progress_bar .percents p{
+        font-size: 13px;
+    }
+
+    .test_progress nav{
+        margin-top: 10px;
+    }
+
+    .test_progress nav button{
+        padding: 4px 8px;
+        font-size: 17px
+    }
+
+    .curtest_header .time{
+        font-size: 20px;
+    }
+
+    /* Navifation the test */
+
+    .questions_list .question .underline_title h2{
+        font-size: 11px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 14px;
+    }
+
+    /* Question content */
+    .questions_list .question .content{
+        padding: 20px 50px;
+    }
+
+    .questions_list .question .content h1{
+        font-size: 18px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 11px;
+    }
+
+    .questions_list .question .content form input{
+        width: 14px;
+        height: 14px;
+        margin-bottom: 0px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 16px;
+    }
+
+    /* 'Finish' button to finish current test */
+    .questions_list .finish{
+        font-size: 30px;
+        padding: 5px 20px;
+    }
+
+    /* ==================================== */
+
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 90%;
+    }
+
+    .tests_progress .title{
+        font-size: 11px;
+    }
+
+    .tests_progress .diagram{
+        width: 230px;
+        height: 230px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 15px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 15px;
+    }
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort .ready_sort{
+        margin-left: 15px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 13px;
+        margin: 0px 5px 5px;
+    }
+
+    .tests_list_sort input{
+        font-size: 19px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+
+    .tests_list .test p span{
+        font-size: 12px;
+    }
+
+    .tests_list .test img{
+        width: 70px;
+        height: 70px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 19px;
+    }
+
+    /* =================================== */
+    /* ===HEADER=== */
+    .main_header a{
+        font-size: 13px;
+    }
+
+    /* =================================== */
+    .main_header a{
+        font-size: 11px;
+    }
+
+    /* =================================== */
+    /* ==============PROFILE============== */
+
+    .profile_block{
+        height: 70vh;
+        width: 75vw;
+        padding: 30px 20px;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile_block .materials{
+        width: 60%;
+        margin-left: 50px;
+    }
+
+    .profile_block .materials h2 {
+        top: -13%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 10px;
+        padding: 15px 10px;
+    }
+
+    .profile_block .materials .theory h2{
+        top: -17%;
+    }
+
+    /* =Message of unread theores= */
+    .profile_block .materials .theory div{
+        margin-top: 10px;
+    }
+
+    .profile_block .theory div .number{
+        font-size: 11px;
+    }
+
+    .profile_block .theory div button{
+        font-size: 17px;
+    }
+
+
+    .profile_block .homework button{
+        font-size: 13px;
+    }
+
+    .profile_block .homework .content p{
+        font-size: 11px;
+    }
+
+    .profile_block .activity .links{
+        width: 200px;
+        position: absolute;
+        top: 10%;
+        right: 0%;
+        font-size: 15px;
+    }
+
+    .profile_block .activity .links .item{
+        font-size: 17px;
+    }
+
+    /* Button 'Log out' to leave account */
+    .profile_block .activity .links .logout_btn{
+        font-size: 18px;
+        width: 130px;
+        margin: 10px auto 0px auto;
+    }
+
+
+    /* Activity diagram */
+    .profile_block .activity .diagram{
+        width: 100%;
+    }
+
+    /* ====================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Daily words block=== */
+    .daily_words{
+        width: 70vw;
+        margin-top: 10vh;
+    }
+
+    .daily_words .title{
+        font-size: 16px;
+    }
+
+    .daily_words h2{
+        font-size: 29px;
+    }
+
+    .daily_words .example_title{
+        font-size: 17px;
+    }
+
+    .daily_words .example_text{
+        font-size: 20px;
+    }
+
+    /* =========================================== */
+
+
+    /* ===========REGISTRATION && LOGIN PAGES=========== */
+    /* Title of reg and log form */
+    .log_form h1{
+        font-size: 45px;
+    }
+
+    .log_button{
+        font-size: 20px;
+    }
+
+}
+
+
+@media (max-width: 800px){
+    /* ==================TEST RESULT PAGE================== */
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 250px;
+        width: 250px;
+    }
+    /* result */
+    .result_content .result .statistics{
+        padding: 30px 20px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 14px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 12px;
+        margin: 0px 0px 15px 50px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 13px;
+        padding: 3px 5px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 12px;
+        margin-top: 0px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory{
+        margin-top: 100px;
+    }
+
+    .result_content .theory img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .result_content .theory p{
+        font-size: 19px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 21px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    .test_progress .progress_bar h2{
+        font-size: 11px;
+    }
+
+    .test_progress .progress_bar .percents p{
+        font-size: 12px;
+    }
+
+    .test_progress nav{
+        margin-top: 9px;
+    }
+
+    .test_progress nav button{
+        padding: 4px 8px;
+        font-size: 16px
+    }
+
+    .curtest_header .time{
+        font-size: 19px;
+    }
+
+    /* Navifation the test */
+
+    .questions_list .question .underline_title{
+        padding: 5px 10px;
+    }
+
+    .questions_list .question .underline_title h2{
+        font-size: 11px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 14px;
+    }
+
+    /* Question content */
+    .questions_list .question .content{
+        padding: 20px 30px;
+    }
+
+    .questions_list .question .content h1{
+        font-size: 16px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 11px;
+    }
+
+    .questions_list .question .content form input{
+        width: 13px;
+        height: 13px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 16px;
+    }
+
+    /* 'Finish' button to finish current test */
+    .questions_list .finish{
+        font-size: 30px;
+        padding: 5px 20px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 90%;
+    }
+
+    .tests_progress .title{
+        font-size: 10px;
+    }
+
+    .tests_progress .diagram{
+        width: 200px;
+        height: 200px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 13px;
+    }
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort .ready_sort{
+        margin-left: 10px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 12px;
+        margin: 0px 5px 5px;
+    }
+
+    .tests_list_sort input{
+        font-size: 17px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .tests_list .test p span{
+        font-size: 12px;
+    }
+
+    .tests_list .test img{
+        width: 50px;
+        height: 50px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 16px;
+        letter-spacing: -3px;
+    }
+
+    /* =================================== */
+
+
+    /* ============PROFILE PAGE============= */
+
+    .profile_block .activity .links{
+        width: 160px;
+        right: 0%;
+    }
+
+    /* ====================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Daily words block=== */
+    .daily_words .title{
+        font-size: 13px;
+    }
+
+    .daily_words h2{
+        font-size: 25px;
+    }
+
+    .daily_words .example_title{
+        font-size: 15px;
+    }
+
+    .daily_words .example_text{
+        font-size: 17px;
+    }
+
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content{
+        margin-top: 10vh;
+    }
+
+    .welcome_content .text p{
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .welcome_content .text h1{
+        font-size: 55px;
+    }
+
+    .welcome_content .text a{
+        padding: 15px 20px;
+        font-size: 23px;
+    }
+
+    /* =========================================== */
+
+
+    /* ===========REGISTRATION && LOGIN PAGES=========== */
+    /* Title of reg and log form */
+    .reg_form{
+        width: 80vw;
+    }
+
+    .reg_form input{
+        font-size: 20px;
+    }
+
+    .reg_button{
+        font-size: 25px;
+    }
+
+    .reg_form label{
+        font-size: 14px;
+    }
+
+}
+
+
+@media (max-width: 700px){
+    /* ==================TEST RESULT PAGE================== */
+
+    .result_title{
+        font-size: 35px;
+        margin-top: 0px;
+    }
+
+    .result_content .result{
+        flex-direction: column;
+    }
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 250px;
+        width: 250px;
+        margin-bottom: 50px;
+    }
+    /* result */
+    .result_content .result .statistics{
+        padding: 40px 60px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 18px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 16px;
+        margin: 0px 0px 15px 50px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 17px;
+        padding: 3px 5px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 16px;
+        margin-top: 0px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory{
+        margin-top: 50px;
+        margin-bottom: 30px
+    }
+
+    .result_content .theory img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .result_content .theory p{
+        font-size: 16px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 19px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+        /* Navifation the test */
+    .test_progress .progress_bar h2{
+        font-size: 10px;
+    }
+
+    .test_progress .progress_bar .percents p{
+        font-size: 11px;
+    }
+
+    .test_progress nav{
+        margin-top: 7px;
+    }
+
+    .test_progress nav button{
+        padding: 3px 5px;
+        font-size: 13px;
+    }
+
+    .curtest_header .time{
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+
+
+    /* Question content */
+    .questions_list .question{
+        margin: 30px 0px 20px;
+    }
+
+    .questions_list .question .underline_title{
+        padding: 5px 7px;
+    }
+
+    .questions_list .question .underline_title h2{
+        font-size: 10px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 13px;
+    }
+
+    .questions_list .question .content{
+        padding: 20px 30px;
+    }
+
+    .questions_list .question .content h1{
+        font-size: 15px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 10px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 15px;
+    }
+
+    /* 'Finish' button to finish current test */
+    .questions_list .finish{
+        margin: 0px 20px 40px 0px;
+        font-size: 26px;
+        padding: 5px 20px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 95%;
+    }
+
+    .tests_progress .content{
+        padding: 20px 20px;
+    }
+
+    .tests_progress .title{
+        font-size: 10px;
+    }
+
+    .tests_progress .diagram{
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 12px;
+    }
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort .ready_sort{
+        margin-left: 5px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 11px;
+        margin: 0px 5px 5px;
+    }
+
+    .tests_list_sort .ready_sort button img{
+        width: 10px;
+        height: 10px;
+    }
+
+    .tests_list_sort img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .tests_list_sort input{
+        font-size: 15px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .tests_list .test p span{
+        font-size: 11px;
+    }
+
+    .tests_list .test img{
+        width: 40px;
+        height: 40px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 14px;
+        letter-spacing: -3px;
+        padding: 3px 5px 7px 5px;
+    }
+
+    /* =================================== */
+
+
+    /* ===HEADER=== */
+    .burger_header{
+        justify-content: space-between;
+    }
+
+    .main_header{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #ffffff;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-between;
+        padding: 50px 0px;
+    }
+
+    .main_header .logo{
+        display: none;
+    }
+
+    .main_header button{
+        margin-right: 0px;
+        width: 50px;
+        height: 50px;
+        border-bottom: none;
+    }
+
+    .main_header a{
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #d6d6d6;
+        padding-bottom: 15px;
+    }
+
+    .main_header a::after{
+        content: "";
+        position: absolute;
+        left: -5%;
+        bottom: -15%;
+        width: 0%;
+        height: 2px;
+        background-color: #000000;
+        transition: .3s ease;
+    }
+
+    .main_header a:hover::after{
+        width: 110%;
+    }
+
+    /* ====================================== */
+
+
+    /* ==============PROFILE============== */
+
+    .profile_block{
+        height: 70vh;
+        width: 80vw;
+        padding: 30px 20px;
+    }
+
+    .profile_title{
+        font-size: 35px;
+        margin: 0px;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 70px;
+        height: 70px;
+    }
+
+    .profile_block .materials{
+        width: 60%;
+        margin-left: 20px;
+    }
+
+    .profile_block .materials h2 {
+        font-size: 9px;
+        top: -9%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 9px;
+        padding: 10px 10px;
+    }
+
+    .profile_block .materials .theory h2{
+        top: -12%;
+    }
+
+    /* ====================================== */
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Background objects(back header)=== */
+    .Background_object_1{
+        display: none;
+    }
+    
+    .Background_object_2{
+        display: none;
+    }
+
+    .welcome_header{
+        background-color: rgba(61, 187, 226, 0.685);
+        border-bottom: 1px solid #575757;
+    }
+
+    /* ===Daily words block=== */
+    .daily_words{
+        margin-top: 5vh;
+    }
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content{
+        margin-top: 10vh;
+    }
+
+    .welcome_content .text p{
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .welcome_content .text h1{
+        font-size: 50px;
+    }
+
+    .welcome_content .text a{
+        padding: 15px 20px;
+        font-size: 23px;
+    }
+
+    /* =========================================== */
+
+
+    /* ===========REGISTRATION && LOGIN PAGES=========== */
+    /* Title of reg and log form */
+    .reg_form .content{
+        position: relative;
+        display: block;
+    }
+
+    .reg_form{
+        padding: 20px 40px 30px 40px;
+        margin-top: 40px;
+    }
+
+    .reg_form h1{
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .reg_form .left{
+        margin-right: 0px;
+    }
+
+    .reg_form input{
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .reg_button{
+        font-size: 20px;
+    }
+
+    .reg_form label{
+        font-size: 14px;
+    }
+
+    .reg_button{
+        margin-top: 10px;
+    }
+    
+}
+
+
+@media (max-width: 600px){
+    /* ==================TEST RESULT PAGE================== */
+
+    .result_title{
+        font-size: 33px;
+        margin-top: 0px;
+    }
+
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 230px;
+        width: 230px;
+        margin-bottom: 50px;
+    }
+    /* result */
+    .result_content .result .statistics{
+        padding: 30px 40px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 16px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 14px;
+        margin: 0px 0px 15px 50px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 15px;
+        padding: 3px 5px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 14px;
+        margin-top: 0px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory{
+        margin-top: 50px;
+    }
+
+    .result_content .theory img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .result_content .theory p{
+        font-size: 16px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 17px;
+    }
+
+    /* =================================== */
+
+    
+    /* =========CURRENT TEST PAGE========= */
+
+        /* Navifation the test */
+        .test_progress .progress_bar h2{
+            font-size: 9px;
+        }
+    
+        .test_progress .progress_bar .percents p{
+            font-size: 11px;
+        }
+    
+        .test_progress nav{
+            margin-top: 7px;
+        }
+    
+        .test_progress nav button{
+            padding: 3px 5px;
+            font-size: 12px;
+        }
+    
+        .curtest_header .time{
+            padding: 10px 15px;
+            font-size: 15px;
+        }
+    
+    
+        /* Question content */
+        .questions_list .question{
+            margin: 30px 0px 20px;
+        }
+    
+        .questions_list .question .underline_title{
+            padding: 5px 7px;
+        }
+    
+        .questions_list .question .underline_title h2{
+            font-size: 10px;
+        }
+    
+        .questions_list .question .underline_title h2 span{
+            font-size: 13px;
+        }
+    
+        .questions_list .question .content{
+            padding: 20px 20px;
+        }
+    
+        .questions_list .question .content h1{
+            font-size: 13px;
+        }
+    
+        .questions_list .question .content p{
+            font-size: 10px;
+        }
+
+        .questions_list .question .content form input{
+            width: 11px;
+            height: 11px;
+        }
+    
+        .questions_list .question .content form label{
+            font-size: 12px;
+        }
+    
+        /* 'Finish' button to finish current test */
+        .questions_list .finish{
+            margin: 0px 20px 40px 0px;
+            font-size: 26px;
+            padding: 5px 20px;
+        }
+    
+        /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 100%;
+    }
+
+    .tests_progress .content{
+        padding: 20px 20px;
+    }
+
+    .tests_progress .title{
+        font-size: 10px;
+    }
+
+    .tests_progress .diagram{
+        width: 160px;
+        height: 160px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        font-size: 10px;
+        margin-bottom: 15px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 10px;
+        padding: 2px 3px;
+    }
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort .ready_sort{
+        margin-left: 5px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 10px;
+        margin: 0px 5px 5px;
+    }
+
+    .tests_list_sort img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .tests_list_sort input{
+        font-size: 15px;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .tests_list .test p span{
+        font-size: 11px;
+    }
+
+    .tests_list .test img{
+        display: none;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        font-size: 14px;
+        letter-spacing: -3px;
+        padding: 3px 5px 7px 5px;
+    }
+
+    /* =================================== */
+
+    /* ==============PROFILE============== */
+
+    .profile_block{
+        height: 60vh;
+        width: 80vw;
+        padding: 30px 20px;
+    }
+
+    .profile_title{
+        font-size: 35px;
+        margin: 0px;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 60px;
+        height: 60px;
+    }
+
+    .profile_block .materials{
+        width: 65%;
+        margin-left: 20px;
+    }
+
+    .profile_block .materials h2 {
+        font-size: 10px;
+        top: -9%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 9px;
+        padding: 10px 10px;
+    }
+
+    /* Number of unread theories */
+    .profile_block .theory div .number{
+        margin: 0px 5px;
+        padding: 3px 5px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        margin-left: 10px;
+    }
+
+    .profile_block .materials .theory h2{
+        top: -13%;
+    }
+
+    .profile_block .activity .links{
+        width: 120px;
+    }
+
+    .profile_block .activity .links .item{
+        font-size: 14px;
+    }
+
+    /* Button 'Log out' to leave account */
+    .profile_block .activity .links .logout_btn{
+        font-size: 14px;
+        width: 100px;
+        padding: 7px 10px 7px 10px;
+    }
+
+    /* ====================================== */
+
+
+    /* ===footer=== */
+    footer p{
+        font-size: 12px;
+    }
+
+    /* =============WELCOME PAGE============= */
+
+    /* Links in header */
+    .welcome_header a{
+        font-size: 15px;
+    }
+
+    /* login and registration links */
+    .welcome_header div a{
+        margin-right: 10px;
+    }
+
+
+    /* ===Daily words block=== */
+    .daily_words h2{
+        font-size: 23px;
+    }
+
+    .daily_words .example_title{
+        font-size: 12px;
+    }
+
+    .daily_words .example_text{
+        font-size: 15px;
+    }
+
+    /* =========================================== */
+
+
+    /* ===========REGISTRATION && LOGIN PAGES=========== */
+    .log_form{
+        width: 70vw;
+        padding: 20px 10px 30px 10px;
+    }
+
+    .log_button{
+        font-size: 18px;
+    }
+
+    .log_form a{
+        font-size: 15px;
+    }
+
+    .log_form input{
+        font-size: 18px;
+    }
+
+    .log_form .content a{
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 500px){
+    /* ==================TEST RESULT PAGE================== */
+
+    .result_title{
+        font-size: 30px;
+        margin-top: 0px;
+    }
+
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 210px;
+        width: 210px;
+        margin-bottom: 50px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 20px 20px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 14px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 12px;
+        margin: 0px 0px 15px 50px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 13px;
+        padding: 2px 3px;
+        margin-left: 5px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 12px;
+        margin-top: 0px;
+        padding: 5px 8px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory{
+        margin-top: 50px;
+    }
+
+    .result_content .theory img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .result_content .theory p{
+        font-size: 12px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 14px;
+    }
+
+    /* =================================== */
+
+
+/* =========CURRENT TEST PAGE========= */
+.curtest_logo p:first-child{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.curtest_logo p:last-child{
+    font-size: 10px;
+    font-weight: 500;
+    transform: translateY(-30%);
+}
+
+    /* Navifation the test */
+    .test_progress .progress_bar h2{
+        font-size: 9px;
+    }
+
+    .test_progress .progress_bar .percents p{
+        font-size: 11px;
+    }
+
+    .test_progress nav{
+        margin-top: 7px;
+    }
+
+    .test_progress nav button{
+        padding: 3px 5px;
+        margin-right: 3px;
+        font-size: 10px;
+    }
+
+    .curtest_header .time{
+        padding: 10px 15px;
+        font-size: 13px;
+        margin-left: 10px;
+    }
+
+
+    /* Question content */
+    .questions_list .question{
+        margin: 30px 0px 20px;
+    }
+
+    .questions_list .question .underline_title{
+        padding: 3px 5px;
+    }
+
+    .questions_list .question .underline_title h2{
+        font-size: 10px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 13px;
+    }
+
+    .questions_list .question .content{
+        padding: 10px 10px;
+    }
+
+    .questions_list .question .content h1{
+        font-size: 12px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 9px;
+    }
+
+    .questions_list .question .content form input{
+        width: 10px;
+        height: 10px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 11px;
+    }
+
+    /* 'Finish' button to finish current test */
+    .questions_list .finish{
+        margin: 0px 20px 40px 0px;
+        font-size: 20px;
+        padding: 5px 20px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+    .tests_progress{
+        width: 100%;
+    }
+
+    .tests_progress .content{
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    .tests_progress .title{
+        font-size: 10px;
+    }
+
+    .tests_progress .diagram{
+        width: 150px;
+        height: 150px;
+        margin-bottom: 40px;
+    }
+
+    /* Statistic of tests(all time) */
+    .tests_progress .statistic p{
+        text-align: center;
+        font-size: 10px;
+        margin-bottom: 15px;
+    }
+
+    .tests_progress .statistic p span{
+        font-size: 10px;
+        padding: 2px 3px;
+    }
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort .ready_sort{
+        margin-left: 3px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 9px;
+        margin: 0px 3px 5px;
+    }
+
+    .tests_list_sort img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .tests_list_sort input{
+        font-size: 12px;
+    }
+
+    .tests_list .test{
+        flex-direction: column;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .tests_list .test p span{
+        font-size: 11px;
+    }
+
+    .tests_list .test img{
+        display: none;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        writing-mode:horizontal-tb;
+        text-orientation:sideways;
+        font-size: 11px;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        padding: 5px 10px 5px 10px;
+    }
+
+    /* =================================== */
+
+
+
+    /* ===============PROFILE================ */
+
+    .profile_block{
+        height: 55vh;
+        width: 87vw;
+        padding: 20px 10px;
+    }
+
+    .profile_title{
+        font-size: 30px;
+        margin: 0px;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile_block .materials{
+        width: 65%;
+        margin-left: 20px;
+    }
+
+    .profile_block .materials h2 {
+        font-size: 10px;
+        top: -12%;
+    }
+
+    .profile_block .materials .theory{
+        font-size: 9px;
+        padding: 10px 10px;
+    }
+
+    /* Number of unread theories */
+    .profile_block .theory div .number{
+        margin: 0px 5px;
+        padding: 3px 5px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        margin-left: 10px;
+        font-size: 13px;
+    }
+
+    .profile_block .materials .theory h2{
+        top: -15%;
+    }
+
+    /* Deadline, Theme and alloted time*/
+    .profile_block .materials .homework{
+        padding: 10px 5px;
+    }
+
+    .profile_block .homework .content p{
+        font-size: 9px;
+    }
+
+    /* Button 'START' */
+    .profile_block .homework button{
+        font-size: 11px;
+        letter-spacing: -2px;
+    }
+
+    .profile_block .activity .links{
+        width: 100px;
+    }
+
+    .profile_block .activity .links .item{
+        font-size: 12px;
+    }
+
+    /* Button 'Log out' to leave account */
+    .profile_block .activity .links .logout_btn{
+        font-size: 12px;
+        width: 85px;
+        padding: 7px 10px 7px 10px;
+    }
+
+    .profile_block .activity .logout_btn img{
+        width: 20px;
+        height: 20px;
+    }
+
+    /* ====================================== */
+
+    /* ===footer=== */
+    body{
+        padding-bottom: 40px;
+    }
+
+    footer{
+        height: 40px;
+        padding: 5px 20px 3px 20px;
+    }
+
+    footer p{
+        font-size: 10px;
+    }
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Daily words block=== */
+    .daily_words swiper-slide{
+        padding: 20px 50px;
+    }
+
+    .daily_words .example_title{
+        font-size: 11px;
+    }
+
+    .daily_words .example_text{
+        font-size: 13px;
+    }
+
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content .text h1{
+        font-size: 45px;
+    }
+
+    .welcome_content .text p{
+        font-size: 14px;
+    }
+
+    .welcome_content .text a{
+        padding: 15px 20px;
+        font-size: 20px;
+    }
+
+
+    /* =========================================== */
+
+
+    /* ===========REGISTRATION && LOGIN PAGES=========== */
+    /* Title of reg and log form */
+
+    .reg_form h1{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .reg_form .left{
+        margin-right: 0px;
+    }
+
+    .reg_form input{
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .reg_button{
+        font-size: 16px;
+    }
+
+    .reg_form label{
+        font-size: 14px;
+    }
+
+    .reg_button{
+        margin-top: 10px;
+    }
+}
+
+
+@media (max-width: 400px){
+    /* ==================TEST RESULT PAGE================== */
+
+    .result_title{
+        font-size: 27px;
+        margin-top: 0px;
+    }
+
+
+    /* Pie diagram */
+    .result_content .result .diagram{
+        height: 190px;
+        width: 190px;
+        margin-bottom: 50px;
+    }
+
+    /* result */
+    .result_content .result .statistics{
+        padding: 20px 10px;
+    }
+
+    /* Smile image */
+    .result_content .statistics .image img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .result_content .statistics .image p{
+        font-size: 11px;
+    }
+
+    /* results numbers */
+    .result_content .statistics .content p{
+        font-size: 11px;
+        margin: 0px 0px 10px 20px;
+    }
+
+    .result_content .statistics .content p span{
+        font-size: 12px;
+        padding: 2px 3px;
+        margin-left: 5px;
+    }
+
+    
+    /* Button 'new attempt' */
+    .result_content .new_attempt{
+        font-size: 11px;
+        margin-top: 0px;
+        padding: 3px 5px;
+    }
+
+    /* Theory block with link to theory page */
+    .result_content .theory{
+        margin-top: 50px;
+    }
+
+    .result_content .theory img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .result_content .theory p{
+        font-size: 11px;
+    }
+
+    /* Link 'Go to theory' */
+    .result_content .theory button{
+        font-size: 12px;
+    }
+
+    /* =================================== */
+
+
+    /* =========CURRENT TEST PAGE========= */
+
+    /* Navifation the test */
+    .test_progress .progress_bar h2{
+        font-size: 8px;
+    }
+
+    .test_progress .progress_bar .percents p{
+        font-size: 9px;
+    }
+
+    .test_progress nav{
+        margin-top: 7px;
+    }
+
+    .test_progress nav button{
+        padding: 3px 5px;
+        font-size: 8px;
+    }
+
+    .curtest_header .time{
+        padding: 5px 10px;
+        font-size: 11px;
+        margin-left: 5px;
+    }
+
+
+    /* Question content */
+    .questions_list .question{
+        margin: 30px 0px 20px;
+    }
+
+    .questions_list .question .underline_title{
+        padding: 3px 5px;
+    }
+
+    .questions_list .question .underline_title h2{
+        font-size: 10px;
+    }
+
+    .questions_list .question .underline_title h2 span{
+        font-size: 12px;
+    }
+
+    .questions_list .question .content{
+        padding: 10px 10px;
+    }
+
+    .questions_list .question .content h1{
+        font-size: 10px;
+    }
+
+    .questions_list .question .content p{
+        font-size: 8px;
+    }
+
+    .questions_list .question .content form input{
+        width: 9px;
+        height: 9px;
+    }
+
+    .questions_list .question .content form label{
+        font-size: 10px;
+    }
+
+    /* 'Finish' button to finish current test */
+    .questions_list .finish{
+        margin: 0px 20px 40px 0px;
+        font-size: 16px;
+        padding: 5px 15px;
+    }
+
+    /* ==================================== */
+
+
+    /* ============All TESTS PAGE============ */
+
+    /* ===All tests list=== */
+    /* Sort of All tests */
+    .tests_list_sort .ready_sort{
+        margin-left: 3px;
+    }
+
+    .tests_list_sort .ready_sort button{
+        font-size: 9px;
+        margin: 0px 3px 5px;
+    }
+
+    .tests_list_sort img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .tests_list_sort input{
+        font-size: 10px;
+        margin-left: 5px;
+    }
+
+    .tests_list .test{
+        flex-direction: column;
+    }
+
+    /* Test's content */
+    .tests_list .test p{
+        font-size: 9px;
+        margin-bottom: 5px;
+    }
+
+    .tests_list .test p span{
+        font-size: 10px;
+    }
+
+    /* 'Start' button to current test page */
+    .tests_list .test a{
+        writing-mode:horizontal-tb;
+        text-orientation:sideways;
+        font-size: 11px;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        padding: 5px 10px 5px 10px;
+    }
+
+    /* =================================== */
+    .burger_header img{
+        width: 50px;
+        height: 50px;
+    }
+
+    /* ================PROFILE================ */
+    .profile_block{
+        height: 60vh;
+        width: 90vw;
+        padding: 20px 10px;
+    }
+
+    .profile_title{
+        font-size: 30px;
+        margin: 0px;
+    }
+
+    /* User's avatar photo */
+    .profile_block .avatar{
+        top: -7%;
+        left: -7%;
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile_block .materials{
+        width: 70%;
+        margin-left: 10px;
+    }
+
+    /* Button 'GO' */
+    .profile_block .theory div button{
+        padding: 5px 7px;
+    }
+
+    /* Button 'Log out' to leave account */
+    .profile_block .activity .links .logout_btn{
+        padding: 5px 7px;
+        font-size: 11px;
+        width: 75px;
+    }
+    
+    .profile_block .activity .links .logout_btn img{
+        width: 18px;
+        height: 18px;
+    }
+
+    /* ================================= */
+
+    /* ===Footer=== */
+    body{
+        padding-bottom: 40px;
+    }
+
+    footer{
+        height: 40px;
+        padding: 5px 10px 3px 10px;
+    }
+
+    /* text for footer */
+    footer p{
+        font-size: 9px;
+    }
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Daily words block=== */
+    .daily_words swiper-slide{
+        padding: 20px 50px;
+    }
+
+    .daily_words .title{
+        font-size: 11px;
+        margin-bottom: 0px;
+        margin-left: 3px;
+    }
+
+    .daily_words h2{
+        font-size: 18px;
+    }
+
+    .daily_words .example_title{
+        margin-top: 30px;
+        font-size: 9px;
+    }
+
+    .daily_words .example_text{
+        font-size: 12px;
+    }
+
+    /* ===Welcome words and button to login page=== */
+    .welcome_content .text h1{
+        font-size: 40px;
+    }
+
+    .welcome_content .text p{
+        font-size: 12px;
+    }
+
+    .welcome_content .text a{
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+
+    .welcome_content .text a img{
+        width: 35px;
+        height: 23px;
+    }
+}
+
+@media (max-width: 360px){
+
+    /* =============WELCOME PAGE============= */
+
+    /* ===Daily words block=== */
+    .daily_words .example_title{
+        margin-top: 10px;
+        font-size: 8px;
+    }
+
+    .daily_words .example_text{
+        font-size: 11px;
+    }
+
+}
