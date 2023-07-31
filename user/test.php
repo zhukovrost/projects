@@ -168,72 +168,86 @@ if (isset($_POST['finish'])){
     // =================================
 
     // =====Timer=====
+    localStorage.setItem(`test_reload`, 1);
+
     let time = 0;
-            if(localStorage.getItem("test_time")){
-                time = localStorage.getItem("test_time");
-            }
-            else{
-                // сюда подставить время
-                time = <?php echo $duration; ?>;
-                localStorage.setItem("test_time", time);
-            }
+    let timerId = localStorage.getItem('timer_id');
 
-            const timer = document.querySelector('.curtest_header .time');
+    if(localStorage.getItem(`test_time${timerId}`) && localStorage.getItem(`test_time${timerId}`) != -1){
+        time = localStorage.getItem(`test_time${timerId}`);
+    }
+    else{
+        // сюда подставить время
+        console.log(<?php echo $duration; ?>);
+        time = <?php echo $duration; ?>;
+        localStorage.setItem(`test_time${timerId}`, time);
+    }
 
-            if(time <= 0){
-                timer.innerHTML = `00:00`;
-            }
-            else{
-                timer.innerHTML = `${Math.floor(time / 60)}:${time % 60}`;
-            }
+    const timer = document.querySelector('.curtest_header .time');
 
-            const FinsishButton = document.querySelector('.questions_list .finish');
+    if(time <= 0){
+        timer.innerHTML = `00:00`;
+    }
+    else{
+        timer.innerHTML = `${Math.floor(time / 60)}:${time % 60}`;
+    }
 
-            FinsishButton.addEventListener('click', function(){
-                clearInterval(IntervalTimer);
-                time = 0;
-            });
+    const FinsishButton = document.querySelector('.questions_list .finish');
 
-            //Если пользователь начал тестирование, то запускается таймер
-            if(time > 0){
-                let minutes = Math.floor(time / 60);
-                let seconds = time % 60;
-                if (seconds < 10){
-                    seconds = '0' + seconds;
-                }
-                if (minutes < 10){
-                    minutes = '0' + minutes;
-                }
+    FinsishButton.addEventListener('click', function(){
+        clearInterval(IntervalTimer);
+        time = 0;
+    });
 
-                timer.innerHTML = `${minutes}:${seconds}`;
+    //Если пользователь начал тестирование, то запускается таймер
+    if(time > 0){
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        if (seconds < 10){
+            seconds = '0' + seconds;
+        }
+        if (minutes < 10){
+            minutes = '0' + minutes;
+        }
+
+        timer.innerHTML = `${minutes}:${seconds}`;
+        time--;
+        localStorage.setItem(`test_time${timerId}`, time);
+
+        let IntervalTimer = setInterval(UpdateTime, 1000);
+    }
+
+    function UpdateTime(){
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        if (seconds < 10){
+            seconds = '0' + seconds;
+        }
+        if (minutes < 10){
+            minutes = '0' + minutes;
+        }
+
+        timer.innerHTML = `${minutes}:${seconds}`;
+        
+
+        if(time <= 0){
+            localStorage.removeItem(`test_time${timerId}`);
+            clearInterval(IntervalTimer);
+            FinsishButton.click();
+        }
+
+        time--;
+        localStorage.setItem(`test_time${timerId}`, time);
+
+        for(let i = 0; i < localStorage.getItem(`StartButtonsLength`); i++){
+            if(localStorage.getItem(`test_time${i}`) > 0 && (localStorage.getItem(`test_time${i}`) != localStorage.getItem(`test_time${timerId}`))){
+                let time = localStorage.getItem(`test_time${i}`);
+
                 time--;
-                localStorage.setItem("test_time", time);
-
-                let IntervalTimer = setInterval(UpdateTime, 1000);
+                localStorage.setItem(`test_time${i}`, time);
             }
-
-            function UpdateTime(){
-                let minutes = Math.floor(time / 60);
-                let seconds = time % 60;
-                if (seconds < 10){
-                    seconds = '0' + seconds;
-                }
-                if (minutes < 10){
-                    minutes = '0' + minutes;
-                }
-
-                timer.innerHTML = `${minutes}:${seconds}`;
-                
-
-                if(time == 0){
-                    localStorage.removeItem("test_time");
-                    clearInterval(IntervalTimer);
-                    FinsishButton.click();
-                }
-
-                time--;
-                localStorage.setItem("test_time", time);
-            }
+        }
+    }
 </script>
 </body>
 </html>

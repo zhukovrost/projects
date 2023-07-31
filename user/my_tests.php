@@ -78,6 +78,54 @@ include "../templates/footer.html";
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
+    // Event listener for timers
+    let StartButtons = document.querySelectorAll('.tests_list .test a');
+    localStorage.setItem(`StartButtonsLength`, StartButtons.length);
+
+    let IntervalTestPage = setInterval(UpdateTestsPage, 4);
+
+    function UpdateTestsPage(){
+        if(localStorage.getItem(`test_reload`) == 1){
+            localStorage.setItem(`test_reload`, 0);
+            clearInterval(IntervalTestPage);
+            location.reload();
+        }
+    }
+    
+
+    for(let i = 0; i < StartButtons.length; i++){
+
+        if(localStorage.getItem(`test_time${i}`) > 0){
+            let time = localStorage.getItem(`test_time${i}`);
+
+            time--;
+            localStorage.setItem(`test_time${i}`, time);
+
+            let IntervalTimer = setInterval(UpdateTime, 1000);
+        }
+        else{
+            localStorage.setItem(`test_time${i}`, -1);
+        }
+    }
+
+    for(let i = 0; i < StartButtons.length; i++){
+        StartButtons[i].addEventListener('click', function(){
+            localStorage.setItem('timer_id', i);
+        });
+    }
+
+    function UpdateTime(){
+        for(let i = 0; i < StartButtons.length; i++){
+            if(localStorage.getItem(`test_time${i}`) > 0){
+                let time = localStorage.getItem(`test_time${i}`);
+
+                time--;
+                localStorage.setItem(`test_time${i}`, time);
+            }
+        }
+    }
+
     // ===Pie diagramm===
     const ctx = document.getElementById('myPie');
 
@@ -244,7 +292,6 @@ include "../templates/footer.html";
     let rightColum = document.querySelector('.tests_list .column.right');
     let leftColum = document.querySelector('.tests_list .column.left');
     let testsArr = document.querySelectorAll('.tests_list .test');
-    console.log(testsArr);
 
 
     for(let i = 0; i < filterButtons.length; i++){
