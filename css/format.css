@@ -200,6 +200,20 @@
 
 
 @media (max-width: 1500px){
+    /* =============ALL REPORTS PAGE============= */
+    .all_reports .reports_item .avatar img{
+        width: 180px;
+        height: 180px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 23px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .reports .reports_item .avatar img{
         width: 170px;
@@ -380,6 +394,20 @@
 
 
 @media (max-width: 1400px){
+    /* =============ALL REPORTS PAGE============= */
+    .all_reports .reports_item .avatar img{
+        width: 165px;
+        height: 165px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 21px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .reports .about_block img{
         margin-right: 80px;
@@ -546,6 +574,32 @@
 
 
 @media (max-width: 1300px){
+    /* =============ALL REPORTS PAGE============= */
+    .all_reports .reports_item .avatar img{
+        width: 150px;
+        height: 150px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 19px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 24px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 3px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 15px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form .rating h1{
         font-size: 40px;
@@ -716,11 +770,13 @@
     }
 
     /* =================================== */
-
+    .main_header div{
+        width: 50%;
+    }
 
     /* ===HEADER=== */
     .main_header a{
-        font-size: 15px;
+        font-size: 18px;
     }
 
     /* =================================== */
@@ -878,6 +934,39 @@
 
 
 @media (max-width: 1200px){
+    /* =============ALL REPORTS PAGE============= */
+    .all_reports .reports_item .avatar img{
+        width: 135px;
+        height: 135px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 17px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 3px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 17px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 13px;
+    }
+
+
+    /* ========================================== */
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form .rating h1{
         font-size: 37px;
@@ -1200,6 +1289,40 @@
 }
 
 @media (max-width: 1100px){
+    /* =============ALL REPORTS PAGE============= */
+    .all_reports .reports_item .avatar img{
+        width: 120px;
+        height: 120px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 15px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 21px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 3px;
+        width: 23px;
+        height: 23px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 16px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 12px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form .rating h1{
         font-size: 35px;
@@ -1470,6 +1593,62 @@
 
 
 @media (max-width: 1000px){
+    /* =============ALL REPORTS PAGE============= */
+    .reports_nav .search h1{
+        font-size: 22px;
+    }
+
+    .reports_nav .search select{
+        font-size: 20px;
+    }
+
+    .reports_nav .your_feedback h1{
+        font-size: 22px;
+        margin-right: 5px;
+    }
+
+    .reports_nav .your_feedback button{
+            font-size: 25px;
+    }
+
+
+    .all_reports .reports_item{
+        padding: 20px 20px;
+    }
+
+    .all_reports .reports_item .avatar img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 18px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 15px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 11px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form .rating h1{
         font-size: 32px;
@@ -1719,8 +1898,10 @@
 
     /* =================================== */
     /* ===HEADER=== */
+
     .main_header a{
-        font-size: 13px;
+        font-size: 16px;
+        
     }
 
     /* =================================== */
@@ -1794,6 +1975,66 @@
 }
 
 @media (max-width: 900px){
+    /* =============ALL REPORTS PAGE============= */
+    .reports_nav .search h1{
+        font-size: 20px;
+    }
+
+    .reports_nav .search select{
+        font-size: 18px;
+    }
+
+    .reports_nav .your_feedback h1{
+        font-size: 20px;
+        margin-right: 5px;
+    }
+
+    .reports_nav .your_feedback button{
+        font-size: 23px;
+    }
+
+
+    .all_reports .reports_item .content{
+        margin-left: 20px;
+    }
+
+    .all_reports .reports_item{
+        padding: 20px 10px;
+    }
+
+    .all_reports .reports_item .avatar img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 17px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 14px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 10px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .reports .about_block img{
         margin-right: 30px;
@@ -2035,14 +2276,15 @@
 
     /* =================================== */
     /* ===HEADER=== */
+    .main_header div{
+        width: 60%;
+    }
+
     .main_header a{
-        font-size: 13px;
+        font-size: 14px;
     }
 
     /* =================================== */
-    .main_header a{
-        font-size: 11px;
-    }
 
     /* =================================== */
     /* ==============PROFILE============== */
@@ -2167,6 +2409,67 @@
 
 
 @media (max-width: 800px){
+    /* =============ALL REPORTS PAGE============= */
+    .reports_nav .search h1{
+        font-size: 17px;
+    }
+
+    .reports_nav .search select{
+        font-size: 15px;
+    }
+
+    .reports_nav .your_feedback h1{
+        font-size: 17px;
+        margin-right: 5px;
+    }
+
+    .reports_nav .your_feedback button{
+        font-size: 20px;
+    }
+
+
+    .all_reports .reports_item .content{
+        margin-left: 20px;
+    }
+
+    .all_reports .reports_item{
+        padding: 20px 10px;
+    }
+
+    .all_reports .reports_item .avatar img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 17px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 3px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 13px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 9px;
+        margin-right: 7px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form{
         padding: 30px 40px 10px 40px;
@@ -2519,6 +2822,70 @@
 
 
 @media (max-width: 700px){
+    /* =============ALL REPORTS PAGE============= */
+    .reports_nav .search h1{
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .reports_nav .search select{
+        font-size: 12px;
+    }
+
+    .reports_nav .your_feedback h1{
+        font-size: 14px;
+        margin-right: 5px;
+    }
+
+    .reports_nav .your_feedback button{
+        font-size: 17px;
+        margin: 0px;
+    }
+
+
+    .all_reports .reports_item .content{
+        margin-left: 20px;
+    }
+
+    .all_reports .reports_item{
+        padding: 20px 10px;
+    }
+
+    .all_reports .reports_item .avatar img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 14px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 1px;
+        width: 17px;
+        height: 17px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 9px;
+        margin-right: 7px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form{
         padding: 30px 40px 10px 40px;
@@ -3021,6 +3388,82 @@
 
 
 @media (max-width: 600px){
+    /* =============ALL REPORTS PAGE============= */
+    .reports_nav{
+        margin-top: 0px;
+    }
+
+    .reports_nav .search h1{
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    .reports_nav .search select{
+        font-size: 10px;
+    }
+
+    .reports_nav .your_feedback h1{
+        font-size: 12px;
+        margin-right: 5px;
+    }
+
+    .reports_nav .your_feedback button{
+        font-size: 15px;
+        padding: 5px 15px;
+        margin: 0px;
+    }
+
+
+    .all_reports{
+        grid-template-columns: 1fr;
+        grid-gap: 1em;
+    }
+
+    .all_reports .reports_item{
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px 30px;
+    }
+
+    .all_reports .reports_item .content{
+        margin-left: 40px;
+    }
+
+    .all_reports .reports_item .avatar img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 16px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 1px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size: 10px;
+        margin-right: 7px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form{
         padding: 30px 30px 10px 30px;
@@ -3453,6 +3896,79 @@
 }
 
 @media (max-width: 500px){
+    /* =============ALL REPORTS PAGE============= */
+
+    .reports_nav .search h1{
+        font-size: 10px;
+        margin-right: 10px;
+    }
+
+    .reports_nav .search select{
+        font-size: 9px;
+    }
+
+    .reports_nav .your_feedback h1{
+        font-size: 10px;
+        margin-right: 5px;
+    }
+
+    .reports_nav .your_feedback button{
+        font-size: 12px;
+        padding: 5px 15px;
+        margin: 0px;
+    }
+
+
+    .all_reports{
+        grid-template-columns: 1fr;
+        grid-gap: 1em;
+    }
+
+    .all_reports .reports_item{
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px 10px;
+    }
+
+    .all_reports .reports_item .content{
+        margin-left: 40px;
+    }
+
+    .all_reports .reports_item .avatar img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 14px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 1px;
+        width: 17px;
+        height: 17px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size:9px;
+        margin-right: 7px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .popup_feedback form{
         padding: 30px 20px 10px 20px;
@@ -3961,6 +4477,80 @@
 
 
 @media (max-width: 400px){
+    /* =============ALL REPORTS PAGE============= */
+
+
+    .reports_nav .search h1{
+        font-size: 8px;
+        margin-right: 5px;
+    }
+
+    .reports_nav .search select{
+        font-size: 8px;
+    }
+
+    .reports_nav .your_feedback h1{
+        font-size: 9px;
+        margin-right: 3px;
+    }
+
+    .reports_nav .your_feedback button{
+        font-size: 10px;
+        padding: 5px 15px;
+        margin: 0px;
+    }
+
+
+    .all_reports{
+        grid-template-columns: 1fr;
+        grid-gap: 1em;
+    }
+
+    .all_reports .reports_item{
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px 10px;
+    }
+
+    .all_reports .reports_item .content{
+        margin-left: 20px;
+    }
+
+    .all_reports .reports_item .avatar img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .all_reports .reports_item .avatar p{
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    .all_reports .reports_item .rating p{
+        font-size: 14px;
+        margin-right: 5px;
+    }
+
+    .all_reports .reports_item .rating img{
+        margin-right: 1px;
+        width: 17px;
+        height: 17px;
+    }
+
+    .all_reports .reports_item .content .text{
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+    .all_reports .reports_item .caption{
+        font-size:9px;
+        margin-right: 7px;
+    }
+
+
+    /* ========================================== */
+
+
     /* ===============REPORTS PAGE=============== */
     .reports .about_block{
         padding: 20px 10px;

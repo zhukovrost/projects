@@ -25,7 +25,7 @@ $title = "Feedback";
         <div class="your_feedback">
             <h1>Leave your feedback:</h1>
             <?php if (check_the_login($user_data, '../', false)){ ?>
-              <button>Leave</button>
+              <button class="popup_button">Leave</button>
             <?php }else{ ?>
               <a href="../log.php">Log in to leave the feedback</a>
             <?php } ?>
@@ -126,8 +126,15 @@ $title = "Feedback";
             SortRatingArr.push(item);
         }
 
+        reportsDateArr.sort((a, b) => a.days > b.days ? 1 : -1);
+
+        reportsCover.innerHTML = '';
+        for(let i = 0; i < reportsDateArr.length; i++){
+            reportsCover.appendChild(reportsArr[reportsDateArr[i].number]);
+        }
+
         selectElement.addEventListener("change", (event) => {
-            if (event.target.value == "Old"){
+            if (event.target.value == "New"){
                 reportsDateArr.sort((a, b) => a.days > b.days ? 1 : -1);
 
                 reportsCover.innerHTML = '';
@@ -136,7 +143,7 @@ $title = "Feedback";
                 }
             }
 
-            if (event.target.value == "New"){
+            if (event.target.value == "Old"){
                 reportsDateArr.sort((a, b) => a.days < b.days ? 1 : -1);
 
                 reportsCover.innerHTML = '';
