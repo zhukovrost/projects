@@ -65,14 +65,14 @@ footer p:last-child{
 .main_header{
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 20px 50px;
+    justify-content: space-between;
+    padding: 20px 100px;
 }
 
 .main_header a{
     position: relative;
     color: #000000;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
 }
 
@@ -89,6 +89,12 @@ footer p:last-child{
 
 .main_header a:hover::after{
     width: 110%;
+}
+
+.main_header div{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .main_header img{

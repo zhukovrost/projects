@@ -2,6 +2,7 @@
 
 // Burger menu (when window width <= 700px)
 let MainHeader = document.querySelector('.main_header');
+
 let logo = document.querySelector('.main_header .logo')
 let BurgerHeader = document.querySelector('.burger_header');
 let BurgerMenu = document.querySelector('.burger_header img');
