@@ -1844,6 +1844,7 @@ footer p:last-child{
 .reports .reports_item .content .text{
     margin-top: 20px;
     font-size: 18px;
+    word-break:break-all;
 }
 
 /* Date of feedback */
@@ -1857,6 +1858,7 @@ footer p:last-child{
 .reports .links{
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .reports .links button, .reports .links a{

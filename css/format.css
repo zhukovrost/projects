@@ -46,7 +46,30 @@
 }
 
 
+@media (max-width: 1700px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .reports_item .avatar img{
+        width: 190px;
+        height: 190px;
+    }
+
+    
+    /* ========================================== */
+
+}
+
 @media (max-width: 1600px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .reports_item .avatar img{
+        width: 180px;
+        height: 180px;
+    }
+
+    
+    /* ========================================== */
+
+
+
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -177,6 +200,16 @@
 
 
 @media (max-width: 1500px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .reports_item .avatar img{
+        width: 170px;
+        height: 170px;
+    }
+
+    
+    /* ========================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -347,6 +380,42 @@
 
 
 @media (max-width: 1400px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block img{
+        margin-right: 80px;
+        width: 350px;
+    }
+
+    .reports .about_block li{
+        font-size: 23px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 28px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 30px;
+    }
+
+
+    .reports .reports_item .avatar img{
+        width: 160px;
+        height: 160px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 21px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 17px;
+    }
+
+    
+    /* ========================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -477,6 +546,51 @@
 
 
 @media (max-width: 1300px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block img{
+        margin-right: 60px;
+        width: 300px;
+    }
+
+    .reports .about_block li{
+        font-size: 21px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 26px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 28px;
+    }
+
+
+    .reports .reports_item .avatar img{
+        width: 150px;
+        height: 150px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 19px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 21px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 25px;
+        height: 25px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 16px;
+    }
+
+    
+    /* ========================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -744,6 +858,54 @@
 
 
 @media (max-width: 1200px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block img{
+        margin-right: 60px;
+        width: 300px;
+    }
+
+    .reports .about_block li{
+        font-size: 21px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 26px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 28px;
+    }
+
+
+    .reports .reports_item .avatar img{
+        width: 130px;
+        height: 130px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 19px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 19px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 23px;
+        height: 23px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 16px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 14px;
+    }
+
+    
+    /* ========================================== */
+    
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -997,62 +1159,61 @@
 }
 
 @media (max-width: 1100px){
-    /* ==================TEST RESULT PAGE================== */
-
-    /* Pie diagram */
-    .result_content .result .diagram{
-        height: 300px;
-        width: 300px;
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block img{
+        margin-right: 50px;
+        width: 280px;
     }
 
-    /* result */
-    .result_content .result .statistics{
-        padding: 50px 40px;
+    .reports .about_block li{
+        font-size: 19px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 24px;
     }
 
-    /* Smile image */
-    .result_content .statistics .image img{
-        width: 80px;
-        height: 80px;
+    .reports .about_block h1 span{
+        font-size: 26px;
     }
 
-    .result_content .statistics .image p{
+
+    .reports .reports_item .avatar img{
+        width: 110px;
+        height: 110px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .reports .reports_item .rating p{
         font-size: 17px;
+        margin-right: 10px;
     }
 
-    /* results numbers */
-    .result_content .statistics .content p{
+    .reports .reports_item .rating img{
+        width: 17px;
+        height: 17px;
+        margin-right: 3px;
+    }
+
+    .reports .reports_item .content .text{
         font-size: 15px;
-        margin: 0px 0px 15px 50px;
+        margin-top: 10px;
     }
 
-    .result_content .statistics .content p span{
-        font-size: 16px;
+    .reports .reports_item .caption{
+        font-size: 12px;
+    }
+
+    .reports .links button, .reports .links a{
+        font-size: 25px;
     }
 
     
-    /* Button 'new attempt' */
-    .result_content .new_attempt{
-        font-size: 15px;
-        margin-top: 0px;
-    }
-
-    /* Theory block with link to theory page */
-    .result_content .theory img{
-        width: 130px;
-        height: 130px;
-    }
-
-    .result_content .theory p{
-        font-size: 23px;
-    }
-
-    /* Link 'Go to theory' */
-    .result_content .theory button{
-        font-size: 23px;
-    }
-
-    /* =================================== */
+    /* ========================================== */
 
 
     /* =========CURRENT TEST PAGE========= */
@@ -1247,6 +1408,59 @@
 
 
 @media (max-width: 1000px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block img{
+        margin-right: 40px;
+        width: 260px;
+    }
+
+    .reports .about_block li{
+        font-size: 17px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 22px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 24px;
+    }
+
+
+    .reports .reports_item .avatar img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 17px;
+        height: 17px;
+        margin-right: 3px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 10px;
+    }
+
+    
+    /* ========================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -1497,6 +1711,59 @@
 }
 
 @media (max-width: 900px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block img{
+        margin-right: 30px;
+        width: 250px;
+    }
+
+    .reports .about_block li{
+        font-size: 15px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 20px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 22px;
+    }
+
+
+    .reports .reports_item .avatar img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 17px;
+        height: 17px;
+        margin-right: 3px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 9px;
+    }
+
+    
+    /* ========================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -1817,6 +2084,67 @@
 
 
 @media (max-width: 800px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block img{
+        margin-right: 30px;
+        width: 220px;
+    }
+
+    .reports .about_block li{
+        font-size: 13px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 18px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 20px;
+    }
+
+    
+    .reports swiper-slide{
+        width: 60vw;
+    }
+
+    .reports .reports_item .avatar img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 14px;
+        margin-top: 3px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 17px;
+        margin-right: 10px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 20px;
+        height: 20px;
+        margin-right: 3px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 12px;
+    }
+
+    .reports .links button, .reports .links a{
+        font-size: 22px;
+    }
+
+    
+    /* ========================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     /* Pie diagram */
@@ -2083,6 +2411,70 @@
 
 
 @media (max-width: 700px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block{
+        padding: 20px 30px;
+    }
+
+    .reports .about_block img{
+        margin-right: 30px;
+        width: 200px;
+    }
+
+    .reports .about_block li{
+        font-size: 11px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 16px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 18px;
+    }
+
+    
+    .reports swiper-slide{
+        width: 60vw;
+    }
+
+    .reports .reports_item .avatar img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 15px;
+        margin-right: 10px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 18px;
+        height: 18px;
+        margin-right: 3px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 10px;
+    }
+
+    .reports .links button, .reports .links a{
+        font-size: 19px;
+    }
+
+    
+    /* ========================================== */
+    
     /* ==================TEST RESULT PAGE================== */
 
     .result_title{
@@ -2496,6 +2888,72 @@
 
 
 @media (max-width: 600px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block{
+        padding: 20px 20px;
+    }
+
+    .reports .about_block img{
+        margin-right: 30px;
+        width: 180px;
+    }
+
+    .reports .about_block li{
+        font-size: 10px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 14px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 16px;
+    }
+
+    
+    .reports swiper-slide{
+        width: 65vw;
+    }
+
+    .reports .reports_item .avatar img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 13px;
+        margin-right: 10px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 17px;
+        height: 17px;
+        margin-right: 3px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 10px;
+    }
+
+    .reports .links button, .reports .links a{
+        font-size: 16px;
+    }
+
+    
+    /* ========================================== */
+
+
+
     /* ==================TEST RESULT PAGE================== */
 
     .result_title{
@@ -2837,6 +3295,74 @@
 }
 
 @media (max-width: 500px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block{
+        padding: 20px 10px;
+    }
+
+    .reports .about_block img{
+        margin-right: 30px;
+        width: 150px;
+    }
+
+    .reports .about_block li{
+        font-size: 9px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 10px;
+        margin-top: 20px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 12px;
+        padding: 5px 10px;
+        margin-left: 3px;
+    }
+
+    
+    .reports swiper-slide{
+        width: 70vw;
+        padding: 20px 10px !important;
+    }
+
+    .reports .reports_item .avatar img{
+        width: 65px;
+        height: 65px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 12px;
+        margin-right: 10px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 16px;
+        height: 16px;
+        margin-right: 3px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 8px;
+    }
+
+    .reports .links button, .reports .links a{
+        font-size: 12px;
+    }
+
+    /* ================================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     .result_title{
@@ -3251,6 +3777,75 @@
 
 
 @media (max-width: 400px){
+    /* ===============REPORTS PAGE=============== */
+    .reports .about_block{
+        padding: 20px 10px;
+    }
+
+    .reports .about_block img{
+        margin-right: 30px;
+        width: 130px;
+    }
+
+    .reports .about_block li{
+        font-size: 8px;
+    }
+    
+    .reports .about_block h1{
+        font-size: 9px;
+    }
+
+    .reports .about_block h1 span{
+        font-size: 10px;
+        padding: 3px 5px;
+        margin-left: 1px;
+    }
+
+    
+    .reports swiper-slide{
+        width: 70vw;
+        padding: 20px 10px !important;
+    }
+
+    .reports .reports_item .avatar img{
+        width: 55px;
+        height: 55px;
+    }
+
+    .reports .reports_item .avatar p{
+        font-size: 9px;
+        margin-top: 3px;
+    }
+
+    .reports .reports_item .rating p{
+        font-size: 10px;
+        margin-right: 10px;
+    }
+
+    .reports .reports_item .rating img{
+        width: 12px;
+        height: 12px;
+        margin-right: 1px;
+    }
+
+    .reports .reports_item .content .text{
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    .reports .reports_item .caption{
+        font-size: 7px;
+        margin-right: 7px;
+    }
+
+    .reports .links button, .reports .links a{
+        font-size: 10px;
+        text-align: center;
+    }
+
+    /* ================================================== */
+
+
     /* ==================TEST RESULT PAGE================== */
 
     .result_title{
