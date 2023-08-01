@@ -2969,6 +2969,11 @@
         font-size: 9px;
     }
 
+    .tests_list .test .status span{
+        font-size: 8px;
+        padding: 3px 5px;
+    }
+
     .questions_list .question .content form input{
         width: 10px;
         height: 10px;
@@ -3365,6 +3370,11 @@
 
     .questions_list .question .content p{
         font-size: 8px;
+    }
+
+    .tests_list .test .status span{
+        font-size: 7px;
+        padding: 2px 3px;
     }
 
     .questions_list .question .content form input{

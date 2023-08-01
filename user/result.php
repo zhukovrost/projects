@@ -65,7 +65,7 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
                     <!-- link -->
                     <div>
                         <p>Study the theory to improve your result!</p>
-                        <button>Go to theory</button>
+                        <a href="../theory.php">Go to theory</a>
                     </div>
                 </section>
             </section>
@@ -136,11 +136,11 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
         }
         else if(currentScore / totalScore < 0.6 && currentScore / totalScore >= 0.4){
             resultImage.src = "../img/3_smile.svg";
-            resultText.innerHTML = "You can do better!";
+            resultText.innerHTML = "It's fine!";
         }
         else{
             resultImage.src = "../img/2_smile.svg";
-            resultText.innerHTML = "Try it again!";
+            resultText.innerHTML = "Learn theory!";
         }
     </script>
     <script src="../templates/format.js"></script>

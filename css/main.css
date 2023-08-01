@@ -1005,6 +1005,10 @@ footer p:last-child{
     margin-bottom: 8px;
 }
 
+.tests_list .test div{
+    width: 60%;
+}
+
 .tests_list .test p span{
     font-size: 21px;
     font-weight: 500;
@@ -1023,14 +1027,20 @@ footer p:last-child{
     background-color: #00205b;
     color: rgb(255, 255, 255);
     padding: 4px 7px;
+    margin-left: 5px;
 }
 
 .tests_list .test .not_passed span{
-    background-color: rgba(133, 198, 243, 1);
+    background-color: rgb(81, 175, 241);
     color: #000000;
 }
 
-/* 'Start' button to current test page */
+.tests_list .test .verifying span{
+    background-color: rgb(0, 51, 153);
+    color: #ffffff;
+}
+
+/* 'Result' button to result test page */
 .tests_list .test a{
     writing-mode: vertical-lr; 
     text-orientation: upright;
@@ -1050,6 +1060,22 @@ footer p:last-child{
 
 .tests_list .test a:active{
     box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
+    transform: translateY(3px);
+}
+
+.tests_list .test .start{
+    background-color:rgb(81, 175, 241);
+    color: #000000;
+    box-shadow: 0px 3px 0px rgba(15, 38, 84, 1);
+
+}
+
+.tests_list .test .start:hover{
+    background-color:rgb(106, 189, 248);
+}
+
+.tests_list .test .start:active{
+    box-shadow: 0px 0px 0px rgb(149, 207, 248);
     transform: translateY(3px);
 }
 
@@ -1383,7 +1409,7 @@ footer p:last-child{
 }
 
 /* Link 'Go to theory' */
-.result_content .theory button{
+.result_content .theory a{
     background-color: rgba(15, 38, 84, 1);
     box-shadow: 0px 3px 0px rgba(133, 198, 243, 1);
     color: #ffffff;
@@ -1396,11 +1422,11 @@ footer p:last-child{
     transition: .2s ease-in-out;
 }
 
-.result_content .theory button:hover{
+.result_content .theory a:hover{
     background-color: rgb(28, 64, 138);
 }
 
-.result_content .theory button:active{
+.result_content .theory a:active{
     box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
     transform: translateY(3px);
 }

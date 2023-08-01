@@ -511,10 +511,20 @@ function print_test_info($conn, $test_info_array){
       <?php if (count($themes) != 0) { ?><p class="theme">Theme(s): <span> <?php foreach ($themes as $theme){ echo $theme.'; '; }?></span></p><?php } ?>
       <p class="time">Time for test: <span><?php echo date('i:s', $test_info_array['duration']); ?></span></p>
       <p class="questions_number">Number of questions: <span><?php echo count(json_decode($test_data['test'])); ?></span></p>
-      <p class="status">Status: <span><?php echo $status; ?></span></p>
+      <?php
+        if ($status == "passed"){
+          echo "<p class='status'>Status:<span>passed</span></p>";
+        }
+        else if($status == "not passed"){
+          echo "<p class='status not_passed'>Status:<span>not passed</span></p>";
+        }
+        else if($status == "verifying..."){
+          echo "<p class='status verifying'>Status:<span>verifying...</span></p>";
+        }
+       ?>
     </div>
     <?php if ($mark == -1 || $mark == -3){ ?>
-      <a href="test.php?id=<?php echo $test_info_array['id']; ?>">START</a>
+      <a class="start" href="test.php?id=<?php echo $test_info_array['id']; ?>">START</a>
     <?php }else{ ?>
       <a href="result.php?id=<?php echo $test_info_array['id']; ?>">RESULT</a>
     <?php } ?>
