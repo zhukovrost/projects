@@ -547,6 +547,26 @@
 
 @media (max-width: 1300px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form .rating h1{
+        font-size: 40px;
+    }
+
+    .stars_wrapper{
+        font-size: 55px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 16px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 30vw;
+    }
+
+    .popup_feedback form .send{
+        font-size: 32px;
+    }
+
     .reports .about_block img{
         margin-right: 60px;
         width: 300px;
@@ -859,6 +879,27 @@
 
 @media (max-width: 1200px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form .rating h1{
+        font-size: 37px;
+    }
+
+    .stars_wrapper{
+        font-size: 50px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 15px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 40vw;
+    }
+
+    .popup_feedback form .send{
+        font-size: 30px;
+    }
+
+
     .reports .about_block img{
         margin-right: 60px;
         width: 300px;
@@ -1160,6 +1201,27 @@
 
 @media (max-width: 1100px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form .rating h1{
+        font-size: 35px;
+    }
+
+    .stars_wrapper{
+        font-size: 45px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 15px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 40vw;
+    }
+
+    .popup_feedback form .send{
+        font-size: 30px;
+    }
+
+
     .reports .about_block img{
         margin-right: 50px;
         width: 280px;
@@ -1409,6 +1471,27 @@
 
 @media (max-width: 1000px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form .rating h1{
+        font-size: 32px;
+    }
+
+    .stars_wrapper{
+        font-size: 40px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 15px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 40vw;
+    }
+
+    .popup_feedback form .send{
+        font-size: 27px;
+    }
+
+
     .reports .about_block img{
         margin-right: 40px;
         width: 260px;
@@ -2085,6 +2168,31 @@
 
 @media (max-width: 800px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form{
+        padding: 30px 40px 10px 40px;
+    }
+
+    .popup_feedback form .rating h1{
+        font-size: 32px;
+    }
+
+    .stars_wrapper{
+        font-size: 40px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 15px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 40vw;
+    }
+
+    .popup_feedback form .send{
+        font-size: 27px;
+    }
+
+
     .reports .about_block img{
         margin-right: 30px;
         width: 220px;
@@ -2412,6 +2520,31 @@
 
 @media (max-width: 700px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form{
+        padding: 30px 40px 10px 40px;
+    }
+
+    .popup_feedback form .rating h1{
+        font-size: 29px;
+    }
+
+    .stars_wrapper{
+        font-size: 37px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 14px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 35vw;
+    }
+
+    .popup_feedback form .send{
+        font-size: 25px;
+    }
+
+
     .reports .about_block{
         padding: 20px 30px;
     }
@@ -2889,6 +3022,31 @@
 
 @media (max-width: 600px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form{
+        padding: 30px 30px 10px 30px;
+    }
+
+    .popup_feedback form .rating h1{
+        font-size: 26px;
+    }
+
+    .stars_wrapper{
+        font-size: 35px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 14px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 35vw;
+    }
+
+    .popup_feedback form .send{
+        font-size: 23px;
+    }
+
+
     .reports .about_block{
         padding: 20px 20px;
     }
@@ -3296,6 +3454,32 @@
 
 @media (max-width: 500px){
     /* ===============REPORTS PAGE=============== */
+    .popup_feedback form{
+        padding: 30px 20px 10px 20px;
+    }
+
+    .popup_feedback form .rating h1{
+        font-size: 16px;
+    }
+
+    .stars_wrapper{
+        font-size: 25px;
+    }
+
+    .popup_feedback .text h1{
+        font-size: 14px;
+    }
+
+    .popup_feedback .text textarea{
+        width: 36vw;
+        font-size: 15px;
+    }
+
+    .popup_feedback form .send{
+        font-size: 20px;
+    }
+
+
     .reports .about_block{
         padding: 20px 10px;
     }
