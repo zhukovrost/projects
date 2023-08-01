@@ -3896,6 +3896,13 @@
 }
 
 @media (max-width: 500px){
+    /* ================OTHER PAGE================ */
+    .other_container h1{
+        margin-top: 0px;
+        font-size: 30px;
+    }
+
+    /* ========================================== */
     /* =============ALL REPORTS PAGE============= */
 
     .reports_nav .search h1{
@@ -4477,6 +4484,15 @@
 
 
 @media (max-width: 400px){
+    /* ================OTHER PAGE================ */
+    .other_container h1{
+        margin-top: 0px;
+        font-size: 20px;
+    }
+
+    /* ========================================== */
+
+
     /* =============ALL REPORTS PAGE============= */
 
 
