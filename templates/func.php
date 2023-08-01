@@ -307,16 +307,16 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
           }
         } else if ($type == "definite"){
           if ($user_answers_id == -1){
-            echo "<input type='text' name='test_input[$question_number][]'>";
+            echo "<div><input type='text' name='test_input[$question_number][]'></div>";
           }else{
             $value = $user_answers[$question_number][0];
-            echo "<input type='text' name='test_input[$question_number][]' value='$value'>";
+            echo "<div><input type='text' name='test_input[$question_number][]' value='$value'></div>";
           }
         }else if ($type == "definite_mc"){
           if ($user_answers_id == -1 || $user_answers[$question_number] == null){
-            echo "<textarea name='test_input[$question_number][]'></textarea>";
+            echo "<div><textarea name='test_input[$question_number][]'></textarea></div>";
           }else{
-            echo "<textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea>";
+            echo "<div><textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea></div>";
           }
         }
 

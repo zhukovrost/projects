@@ -143,30 +143,124 @@ if (isset($_POST['finish'])){
 
     for(let i = 0; i < questionsArr.length; i++){
         let inputBlocksArr = questionsArr[i].children[1].children[2].children;
+        let CountFinishInputs = new Array(questionsArr.length).fill(0);
 
         for(let j = 0; j < inputBlocksArr.length; j++){
-            let inputItem = inputBlocksArr[j].children[0];
+            if(inputBlocksArr[j].tagName != "IMG"){
+              let inputItem = inputBlocksArr[j].children[0];
+              let previousValue = ""
 
-            inputItem.addEventListener('click', function(){
-                finishQuestions[i].flag = true;
+              if(inputItem.type == 'checkbox'){
+                inputItem.addEventListener('change', function(){
+                  if (inputItem.checked){
+                    CountFinishInputs[i] += 1;
+                    console.log(CountFinishInputs)
 
-                let finishCount = 0
-                for(let q = 0; q < finishQuestions.length; q++){
-                    if(finishQuestions[q].flag == true){
-                        finishCount++;
+                    finishQuestions[i].flag = true;
 
-                        navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                    let finishCount = 0
+                    for(let q = 0; q < finishQuestions.length; q++){
+                        if(finishQuestions[q].flag == true){
+                            finishCount++;
+
+                            navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                        }
                     }
-                }
-                currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
-                progressBar.style.cssText = `width: ${currentWidth}%`;
-                percents.innerHTML = `${currentWidth} %`;
+                    currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                    progressBar.style.cssText = `width: ${currentWidth}%`;
+                    percents.innerHTML = `${currentWidth} %`;
 
-                if(currentWidth == 100){
-                    document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                    if(currentWidth == 100){
+                        document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                    }
+                  }
+                  else if(inputItem.checked == false){
+                    CountFinishInputs[i] -= 1;
+                    if (CountFinishInputs[i] == 0){
+
+                      finishQuestions[i].flag = false;
+
+                      let finishCount = 0
+                      for(let q = 0; q < finishQuestions.length; q++){
+                          if(finishQuestions[q].flag == true){
+                              finishCount++;
+
+                              navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                          }
+                          else{
+                              navigationButtons[q].style.cssText = `background-color: #54d7ff; color: #000000;`;
+                          }
+                      }
+                      currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                      progressBar.style.cssText = `width: ${currentWidth}%`;
+                      percents.innerHTML = `${currentWidth} %`;
+
+                      if(currentWidth == 100){
+                          document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                      }
+                    }
+                  }
+                })
+              }
+
+              inputItem.oninput =  function(){
+
+                if (inputItem.value != ''){
+                  if (inputItem.value.length == 1 && previousValue.length != 2){
+                    CountFinishInputs[i] += 1;
+                  }
+                  
+                  
+                  finishQuestions[i].flag = true;
+
+                  let finishCount = 0
+                  for(let q = 0; q < finishQuestions.length; q++){
+                      if(finishQuestions[q].flag == true){
+                          finishCount++;
+
+                          navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                      }
+                  }
+                  currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                  progressBar.style.cssText = `width: ${currentWidth}%`;
+                  percents.innerHTML = `${currentWidth} %`;
+
+                  if(currentWidth == 100){
+                      document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                  }
+
+                  previousValue = inputItem.value;
+                }
+                else{
+                  CountFinishInputs[i] -= 1;
+                  if (CountFinishInputs[i] == 0){
+
+                    finishQuestions[i].flag = false;
+
+                    let finishCount = 0
+                    for(let q = 0; q < finishQuestions.length; q++){
+                        if(finishQuestions[q].flag == true){
+                            finishCount++;
+
+                            navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                        }
+                        else{
+                            navigationButtons[q].style.cssText = `background-color: #54d7ff; color: #000000;`;
+                        }
+                    }
+                    currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                    progressBar.style.cssText = `width: ${currentWidth}%`;
+                    percents.innerHTML = `${currentWidth} %`;
+
+                    if(currentWidth == 100){
+                        document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                    }
+                  }
                 }
 
-            });
+              };
+            }
+            
         }
     }
     // =================================
@@ -182,7 +276,6 @@ if (isset($_POST['finish'])){
     }
     else{
         // сюда подставить время
-        console.log(<?php echo $duration; ?>);
         time = <?php echo $duration; ?>;
         localStorage.setItem(`test_time${timerId}`, time);
     }
@@ -196,11 +289,10 @@ if (isset($_POST['finish'])){
         timer.innerHTML = `${Math.floor(time / 60)}:${time % 60}`;
     }
 
-    const FinsishButton = document.querySelector('.questions_list .finish');
-
     FinsishButton.addEventListener('click', function(){
         clearInterval(IntervalTimer);
         time = 0;
+        localStorage.setItem(`test_time${timerId}`, time);
     });
 
     //Если пользователь начал тестирование, то запускается таймер
@@ -253,6 +345,6 @@ if (isset($_POST['finish'])){
         }
     }
 </script>
-<script src="../templates/format.js"></script>
+
 </body>
 </html>
