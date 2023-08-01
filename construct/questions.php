@@ -9,8 +9,8 @@ $title = "Add question from db"
 <!doctype html>
 <html lang="en">
 <?php include "../templates/head.php"; ?>
-<body>
-<a href="construct.php">Назад</a>
+<body class="question_body">
+<a class="question_back" href="construct.php">Назад</a>
 <?php
 $select_sql = "SELECT * FROM questions ORDER BY id DESC";
 if ($select_result = $conn->query($select_sql)){

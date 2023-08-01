@@ -154,7 +154,6 @@ if (isset($_POST['finish'])){
                 inputItem.addEventListener('change', function(){
                   if (inputItem.checked){
                     CountFinishInputs[i] += 1;
-                    console.log(CountFinishInputs)
 
                     finishQuestions[i].flag = true;
 
