@@ -47,6 +47,33 @@
 
 
 @media (max-width: 1700px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 25px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 23px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 28px;
+    }
+
+    .marks_block .current button{
+        font-size: 28px;
+        padding: 10px 20px;
+    }
+
+    .marks_block .current button img{
+        width: 35%;
+    }
+
+
+    /* ========================================= */
+
     /* ===============REPORTS PAGE=============== */
     .reports .reports_item .avatar img{
         width: 190px;
@@ -59,6 +86,38 @@
 }
 
 @media (max-width: 1600px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 25px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 23px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 28px;
+    }
+
+    .marks_block .current button{
+        font-size: 28px;
+        padding: 10px 20px;
+    }
+
+    .marks_block .current button img{
+        width: 35%;
+    }
+
+    .marks_block .previous{
+        padding-left: 10px;
+    }
+
+
+    /* ========================================= */
+
+
     /* ===============REPORTS PAGE=============== */
     .reports .reports_item .avatar img{
         width: 180px;
@@ -200,6 +259,38 @@
 
 
 @media (max-width: 1500px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 23px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 21px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 26px;
+    }
+
+    .marks_block .current button{
+        font-size: 26px;
+        padding: 10px 15px;
+    }
+
+    .marks_block .current button img{
+        width: 30%;
+    }
+
+    .marks_block .previous{
+        padding-left: 10px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .all_reports .reports_item .avatar img{
         width: 180px;
@@ -394,6 +485,52 @@
 
 
 @media (max-width: 1400px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 23px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 21px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 26px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 20px;
+    }
+
+    .marks_block .current button{
+        font-size: 26px;
+        padding: 10px 15px;
+    }
+
+    .marks_block .current button img{
+        width: 30%;
+    }
+
+    .marks_block .previous{
+        padding-left: 10px;
+    }
+
+    .marks_block .previous .marks{
+        width: 42%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 16px;
+        width: 27px;
+        height: 27px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .all_reports .reports_item .avatar img{
         width: 165px;
@@ -574,6 +711,53 @@
 
 
 @media (max-width: 1300px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 21px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 19px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 24px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 20px;
+    }
+
+    .marks_block .current button{
+        font-size: 24px;
+        padding: 10px 15px;
+    }
+
+    .marks_block .current button img{
+        width: 30%;
+    }
+
+    .marks_block .previous{
+        padding-left: 10px;
+        left: -5%;
+    }
+
+    .marks_block .previous .marks{
+        width: 42%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 16px;
+        width: 27px;
+        height: 27px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .all_reports .reports_item .avatar img{
         width: 150px;
@@ -771,7 +955,7 @@
 
     /* =================================== */
     .main_header div{
-        width: 50%;
+        width: 60%;
     }
 
     /* ===HEADER=== */
@@ -934,6 +1118,71 @@
 
 
 @media (max-width: 1200px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 21px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .marks_block .current{
+        padding: 30px 40px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 19px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 24px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 20px;
+    }
+
+    .marks_block .current button{
+        font-size: 24px;
+        padding: 10px 15px;
+    }
+
+    .marks_block .current button img{
+        width: 30%;
+    }
+
+    .marks_block .previous{
+        width: 33vw;
+        padding-left: 10px;
+        left: -7%;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -7%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 16px;
+        width: 27px;
+        height: 27px;
+    }
+
+    .marks_block .previous h2{
+        font-size: 14px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 18px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .all_reports .reports_item .avatar img{
         width: 135px;
@@ -1289,6 +1538,79 @@
 }
 
 @media (max-width: 1100px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 21px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .marks_block .current{
+        padding: 30px 40px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 19px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 24px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 20px;
+    }
+
+    .marks_block .current button{
+        font-size: 24px;
+        padding: 10px 15px;
+    }
+
+    .marks_block .current button img{
+        width: 30%;
+    }
+
+    .marks_block .previous{
+        width: 33vw;
+        padding-left: 10px;
+        left: -12%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 14px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -12%;
+    }
+
+    .marks_block .previous h2{
+        font-size: 13px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 16px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 24px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 24px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .all_reports .reports_item .avatar img{
         width: 120px;
@@ -1593,6 +1915,79 @@
 
 
 @media (max-width: 1000px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 18px;
+        width: 27px;
+        height: 27px;
+    }
+
+    .marks_block .current{
+        padding: 20px 30px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 17px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 23px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 18px;
+    }
+
+    .marks_block .current button{
+        font-size: 22px;
+        padding: 5px 10px;
+    }
+
+    .marks_block .current button img{
+        width: 25%;
+    }
+
+    .marks_block .previous{
+        width: 35vw;
+        padding-left: 10px;
+        left: -13%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 12px;
+        width: 22px;
+        height: 22px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -13%;
+    }
+
+    .marks_block .previous h2{
+        font-size: 11px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 14px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 21px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 21px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .reports_nav .search h1{
         font-size: 22px;
@@ -1975,6 +2370,80 @@
 }
 
 @media (max-width: 900px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 16px;
+        width: 23px;
+        height: 23px;
+    }
+
+    .marks_block .current{
+        padding: 20px 30px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 15px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 20px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 18px;
+    }
+
+    .marks_block .current button{
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+
+    .marks_block .current button img{
+        width: 23%;
+    }
+
+    .marks_block .previous{
+        width: 35vw;
+        padding-left: 10px;
+        left: -13%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 11px;
+        width: 19px;
+        height: 19px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -13%;
+        font-size: 14px;
+    }
+
+    .marks_block .previous h2{
+        font-size: 10px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 12px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 17px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 17px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .reports_nav .search h1{
         font-size: 20px;
@@ -2277,7 +2746,7 @@
     /* =================================== */
     /* ===HEADER=== */
     .main_header div{
-        width: 60%;
+        width: 70%;
     }
 
     .main_header a{
@@ -2409,6 +2878,81 @@
 
 
 @media (max-width: 800px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 15px;
+        width: 21px;
+        height: 21px;
+        margin: 0px 7px 5px 0px;
+    }
+
+    .marks_block .current{
+        padding: 20px 30px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 14px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 17px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 10px;
+    }
+
+    .marks_block .current button{
+        font-size: 17px;
+        padding: 5px 10px;
+    }
+
+    .marks_block .current button img{
+        width: 25%;
+    }
+
+    .marks_block .previous{
+        width: 40vw;
+        padding-left: 10px;
+        left: -13%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 11px;
+        width: 19px;
+        height: 19px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -13%;
+        font-size: 12px;
+    }
+
+    .marks_block .previous h2{
+        font-size: 10px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 12px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 14px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 14px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .reports_nav .search h1{
         font-size: 17px;
@@ -2822,6 +3366,85 @@
 
 
 @media (max-width: 700px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 14px;
+        width: 18px;
+        height: 18px;
+        margin: 0px 7px 5px 0px;
+    }
+
+    .marks_block .current{
+        padding: 20px 30px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 12px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 15px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 10px;
+    }
+
+    .marks_block .current button{
+        font-size: 15px;
+        padding: 5px 10px;
+    }
+
+    .marks_block .current button img{
+        width: 25%;
+    }
+
+    .marks_block .previous{
+        width: 45vw;
+        padding-left: 10px;
+        left: -13%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 11px;
+        width: 19px;
+        height: 19px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -13%;
+        font-size: 11px;
+    }
+
+    .marks_block .previous h2{
+        font-size: 10px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 11px;
+    }
+
+    .marks_block .top{
+        margin-top: 10px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 12px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 12px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .reports_nav .search h1{
         font-size: 14px;
@@ -3388,6 +4011,86 @@
 
 
 @media (max-width: 600px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 11px;
+        width: 18px;
+        height: 18px;
+        margin: 0px 7px 5px 0px;
+    }
+
+    .marks_block .current{
+        padding: 20px 20px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 12px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 13px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 10px;
+    }
+
+    .marks_block .current button{
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .marks_block .current button img{
+        width: 25%;
+    }
+
+    .marks_block .previous{
+        width: 45vw;
+        padding-left: 10px;
+        left: -13%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 9px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -13%;
+        font-size: 11px;
+    }
+
+    .marks_block .previous h2{
+        font-size: 8px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 9px;
+    }
+
+    .marks_block .top{
+        margin-top: 10px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 10px;
+        margin-right: 3px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 9px;
+    }
+
+
+    /* ========================================= */
+
+
     /* =============ALL REPORTS PAGE============= */
     .reports_nav{
         margin-top: 0px;
@@ -3896,6 +4599,87 @@
 }
 
 @media (max-width: 500px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 9px;
+        width: 15px;
+        height: 15px;
+        margin: 0px 7px 5px 0px;
+    }
+
+    .marks_block .current{
+        padding: 20px 10px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 10px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 11px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 5px;
+    }
+
+    .marks_block .current button{
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .marks_block .current button img{
+        width: 23%;
+    }
+
+    .marks_block .previous{
+        width: 45vw;
+        padding-left: 10px;
+        left: -13%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 8px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -13%;
+        font-size: 9px;
+    }
+
+    .marks_block .previous h2{
+        font-size: 6px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 7px;
+    }
+
+    .marks_block .top{
+        margin-top: 10px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 8px;
+        margin-right: 3px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 8px;
+        width: 50%;
+    }
+
+
+    /* ========================================= */
+
+
     /* ================OTHER PAGE================ */
     .other_container h1{
         margin-top: 0px;
@@ -4484,6 +5268,87 @@
 
 
 @media (max-width: 400px){
+    /* ==============MARKS PAGE============== */
+    .marks_block .current .marks div{
+        font-size: 8px;
+        width: 12px;
+        height: 12px;
+        margin: 0px 5px 3px 0px;
+    }
+
+    .marks_block .current{
+        padding: 20px 10px;
+    }
+
+    .marks_block .current .content h2{
+        font-size: 9px;
+    }
+
+    .marks_block .current .content h1{
+        font-size: 10px;
+    }
+
+    .marks_block .current .statistic{
+        margin-left: 5px;
+    }
+
+    .marks_block .current button{
+        font-size: 9px;
+        padding: 3px 5px;
+    }
+
+    .marks_block .current button img{
+        width: 23%;
+    }
+
+    .marks_block .previous{
+        width: 52vw;
+        padding-left: 10px;
+        left: -13%;
+    }
+
+    .marks_block .previous .marks{
+        width: 50%;
+    }
+
+    .marks_block .previous .marks div{
+        font-size: 8px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .marks_block .previous_cover .title{
+        position: relative;
+        left: -13%;
+        font-size: 9px;
+    }
+
+    .marks_block .previous h2{
+        font-size: 5px;
+    }
+
+    .marks_block .previous h1{
+        font-size: 6px;
+    }
+
+    .marks_block .top{
+        margin-top: 10px;
+    }
+
+    .marks_block .top .date p{
+        font-size: 8px;
+        margin-right: 3px;
+    }
+
+    .marks_block .top .date input{
+        font-size: 8px;
+        width: 50%;
+    }
+
+
+    /* ========================================= */
+
+
     /* ================OTHER PAGE================ */
     .other_container h1{
         margin-top: 0px;
