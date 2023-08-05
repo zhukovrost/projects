@@ -43,7 +43,7 @@ if (isset($_POST['finish'])){
   }
 
   if ($flag){
-    $insert_sql = "UPDATE tests_to_users SET mark=-2, date=".time().", answers='".json_encode($_POST['test_input'], 256)."', verified_scores='{}' WHERE id=$id";
+    $insert_sql = "UPDATE tests_to_users SET mark=-2, date=".time().", answers='".json_encode($_POST['test_input'], 256)."' WHERE id=$id";
   }else{
     $insert_sql = "UPDATE tests_to_users SET date=".time().", answers='".json_encode($_POST['test_input'], 256)."' WHERE id=$id";
   }

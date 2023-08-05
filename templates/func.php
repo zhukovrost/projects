@@ -285,10 +285,10 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
         if ($type == 'radio' || $type == 'checkbox'){
           for ($i = 0; $i < count($variants); $i++){
             ?> <div> <?php
-            if ($user_answers_id == -1 || ($user_answers_id != -1 && $user_answers[$question_number][$i] != "on")){
-              echo "<input type='$type' name='test_input[$question_number][]'>";
-            }else if ($user_answers[$question_number][$i] == "on"){
-              echo "<input type='$type' name='test_input[$question_number][]' checked>";
+            if ($user_answers_id != -1 && in_array($i, $user_answers[$question_number])){
+              echo "<input type='$type' name='test_input[$question_number][]' value='$i' checked>";
+            }else{
+              echo "<input type='$type' name='test_input[$question_number][]' value='$i'>";
             }
             echo "<label>$variants[$i]</label>";
 
@@ -380,62 +380,75 @@ function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
   $wrong = 0;
   $not_answered = 0;
   $verifying = 0;
+  $ver_num = 0;
   # checking the test
   for ($i = 0; $i < count($test); $i++){
     $question_id = $test[$i];
     $question_data = get_question_data($conn, $question_id);
-    $all_scores += $question_data['score'];
+    $score = $question_data['score'];
+    $all_scores += $score;
     $type = $question_data['type'];
-    $right_answers = json_decode($question_data['right_answers']);
-    if ($type != 'definite_mc'){
-      if ($type == "radio" || $type == "checkbox"){
-        if ($user_answers[$i] == $right_answers[$i]){
-          $user_scores += $question_data['score'];
-          $correct++;
-        }else if ($user_answers[$i] == [] || $user_answers[$i] == '' || $user_answers[$i] == null){
-          $not_answered++;
-        }else{
-          $wrong++;
-        }
-      }else{
-        $flag = true;
-        for ($j = 0; $j < count($right_answers); $j++){
-          try {
-            $user_answer = mb_strtolower(str_replace(' ', '', $user_answers[$i][$j]));
-            if ($right_answers[$i][$j] != $user_answer){
-              $flag = false;
-              if ($user_answer == [] || $user_answer == '' || $user_answer == null){
-                $not_answered++;
-              }else{
-                $wrong++;
-              }
-            }
-          }catch (Exception $e) {
-            $flag = false;
-            $not_answered++;
-            break;
-          }
-        }
+    $right_answer = (array)json_decode($question_data['right_answers']);
+    $user_answer = $user_answers[$i];
 
-        if ($flag){
-          $correct += count($right_answers);
-          $user_scores += $question_data['score'];
-        }
-      }
-    }else{
-      if ($get_stats && $solve['mark'] == -2){
-        $verifying += 1;
-      }else{
-        $qid = 'q'.$i;
-        if ($verified_scores[$qid] != null){
-          $user_scores += (int)$verified_scores[$qid];
-          if ((int)$verified_scores[$qid] == $question_data['score']){
+    if ($type != 'definite_mc'){
+      if ((count($user_answer) == count($right_answer) || $type == 'definite') && !in_array('', $user_answer)){
+        if ($type == 'radio' || $type == 'checkbox'){
+          if ($right_answer == $user_answer){
             $correct++;
-          }else if ($user_answers[$i][0] == ''){
-            $not_answered++;
-          }else if ((int)$verified_scores[$qid] == 0){
+            $user_scores += $score;
+          }else{
             $wrong++;
           }
+        } else if ($type == 'missing_words'){
+          $flag = true;
+          for ($j = 0; $j < count($right_answer); $j++){
+            if (mb_strtolower(str_replace(' ', '', $right_answer[$j])) != mb_strtolower(str_replace(' ', '', $user_answer[$j]))){
+              $flag = false;
+              break;
+            }
+          }
+
+          if ($flag){
+            $correct++;
+            $user_scores += $score;
+          }else{
+            $wrong++;
+          }
+        }else if ($type == 'definite'){
+          $flag = false;
+          $user_answer = mb_strtolower(str_replace(' ', '', $user_answer[0]));
+          foreach ($right_answer as $answer){
+            if (mb_strtolower(str_replace(' ', '', $answer)) == $user_answer){
+              $flag = true;
+              break;
+            }
+          }
+
+          if ($flag){
+            $correct++;
+            $user_scores += $score;
+          }else{
+            $wrong++;
+          }
+        }
+      }else{
+        $not_answered++;
+      }
+    }else if ($type == 'definite_mc'){
+      if ($get_stats && $solve['mark'] == -2){
+        $verifying += 1;
+      }else {
+        $ver_score = $verified_scores[$ver_num];
+        $ver_num++;
+
+        if ($ver_score > 0) {
+          $correct++;
+          $user_scores += $ver_score;
+        } else if ($ver_score == 0 && $user_answer[0] != '') {
+          $wrong++;
+        } else {
+          $not_answered++;
         }
       }
     }

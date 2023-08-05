@@ -11,23 +11,13 @@ $error_array = array(
 );
 
 if (isset($_POST['verified'])){
-  $flag = true;
-  foreach ($_POST['ver_score_input'][$_POST['verified']] as $key=>$value){
-    if ($value == ''){
-      $flag = false;
-      break;
-    }
-  }
   $update_sql = "UPDATE tests_to_users SET verified_scores='".json_encode($_POST['ver_score_input'][$_POST['verified']])."' WHERE id=".$_POST['verified'];
-  $conn->query($update_sql);
-  if ($flag){
+  if ($conn->query($update_sql) && !in_array('', $_POST['ver_score_input'][$_POST['verified']])){
     if (check_the_test($conn, $_POST['verified'], false)){
       $error_array['success_verification'] = true;
     }
   }
 }
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -54,6 +44,7 @@ if (isset($_POST['verified'])){
         $user_answers = json_decode($item['answers']);
         $verified_scores = (array)json_decode($item['verified_scores']);
         $user = get_user_data($conn, $user_id, true);
+        $ver_num = 0;
         ?>
 
         <form action="" method="post" class="questions_list">
@@ -65,14 +56,12 @@ if (isset($_POST['verified'])){
           $question_data = get_question_data($conn, $question_id);
           if ($question_data['type'] == "definite_mc"){
             print_question($conn, $question_id, $i, true, $id);
-            $qid = 'q'.$i;
-            $verified_score = $verified_scores[$qid];
             ?>
 
             <label class="ver_points_title" for="">POINTS: </label>
-            <input class="ver_points" type="number" name="<?php echo "ver_score_input[".$id."][".$qid."]" ?>" <?php if ($verified_score != ''){ echo " value='$verified_score'"; } ?>>
+            <input class="ver_points" type="number" name="<?php echo "ver_score_input[".$id."][".$i."]" ?>" <?php if ($verified_scores[$ver_num] != ''){ echo "value=".$verified_scores[$ver_num]; } ?>>
 
-          <?php } } ?>
+          <?php $ver_num++; } } ?>
           <br>
             <button class="ver_button" type="submit" name="verified" value="<?php echo $id; ?>">VERIFIED</button>
           </div>

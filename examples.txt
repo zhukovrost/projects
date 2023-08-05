@@ -71,3 +71,13 @@ if (isset($_POST['finish'])){
     echo $conn->error;
   }
 }
+
+
+if (isset($_POST['verified'])){
+  $update_sql = "UPDATE tests_to_users SET verified_scores='".json_encode($_POST['ver_score_input'][$_POST['verified']])."' WHERE id=".$_POST['verified'];
+  if ($conn->query($update_sql)){
+    if (check_the_test($conn, $_POST['verified'], false)){
+      $error_array['success_verification'] = true;
+    }
+  }
+}
