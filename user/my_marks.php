@@ -4,9 +4,11 @@ include '../templates/settings.php';
 
 check_the_login($user_data, "../");
 
-$next_month = mktime(0, 0, 0, date('m') + 1, 1, date('Y'));
-$current_month = mktime(0, 0, 0, date('m') , 1, date('Y'));
-$previous_month = mktime(0, 0, 0, date('m') - 1, 1, date('Y'));
+$month = $_GET['month'];
+
+$next_month = mktime(0, 0, 0, date('m') + 1 + $month, 1, date('Y'));
+$current_month = mktime(0, 0, 0, date('m') + $month , 1, date('Y'));
+$previous_month = mktime(0, 0, 0, date('m') - 1 + $month, 1, date('Y'));
 
 ?>
 
@@ -26,10 +28,10 @@ $previous_month = mktime(0, 0, 0, date('m') - 1, 1, date('Y'));
                     <div class="title">
                         <h1>Previous month</h1>
                     </div>
-                    <button class="previous">
+                    <a href="my_marks.php?month=<?php echo $month - 1; ?>">
                         <!-- Marks -->
-                        <?php print_marks($conn, $user_data['id'], $previous_month, $current_month, true); ?>
-                    </button>
+                        <?php print_marks($conn, $user_data['id'], $previous_month, $current_month, true, $month); ?>
+                    </a>
                 </div>
                 
                 <!-- Date(current month) -->
@@ -41,7 +43,7 @@ $previous_month = mktime(0, 0, 0, date('m') - 1, 1, date('Y'));
             <!-- Current month -->
             <section class="current">
                 <!-- Marks -->
-                <?php print_marks($conn, $user_data['id'], $current_month, $next_month); ?>
+                <?php print_marks($conn, $user_data['id'], $current_month, $next_month, false, $month); ?>
             </section>
         </div>
     </main>

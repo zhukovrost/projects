@@ -548,7 +548,7 @@ function print_test_info($conn, $test_info_array){
 }
 
 
-function print_marks($conn, $user_id, $current_month, $next_month, $is_prev=false){ ?>
+function print_marks($conn, $user_id, $current_month, $next_month, $is_prev=false, $month){ ?>
   <div class="marks">
   <?php
   $select_sql = "SELECT mark FROM tests_to_users WHERE user=".$user_id." AND date >= $current_month AND date < $next_month AND mark >= 0 ORDER BY date";
@@ -604,7 +604,7 @@ function print_marks($conn, $user_id, $current_month, $next_month, $is_prev=fals
     </div>
     <!-- Button to next month -->
     <?php if (!$is_prev){ ?>
-    <button>Next month <img src="../img/Arrow 6.svg" alt=""></button>
+    <a href="my_marks.php?month=<?php echo $month + 1; ?>">Next month <img src="../img/Arrow 6.svg" alt=""></a>
     <?php } ?>
   </div>
 <?php } ?>

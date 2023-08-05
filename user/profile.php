@@ -88,7 +88,7 @@ $completed_tests = json_encode($completed_tests);
                         <canvas id="myChart"></canvas>
                     </div>
                     <div class="links">
-                        <a class="item" href="my_marks.php">Marks</a>
+                        <a class="item" href="my_marks.php?month=0">Marks</a>
                         <a class="item" href="my_tests.php">All tests</a>
                         <a class="item" href="my_materials.php">All materials</a>
                       <?php
