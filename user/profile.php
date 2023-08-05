@@ -6,6 +6,7 @@ check_the_login($user_data, '../');
 $avatar = get_avatar($conn, $user_data);
 $title = $user_data['login'];
 
+# ------------ getting diagram data -------------------
 $select_sql = "SELECT date FROM tests_to_users WHERE user=".$user_data['id']." AND mark >= 0 ORDER BY date DESC";
 $completed_tests = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 if ($select_result = $conn->query($select_sql)){
@@ -75,7 +76,7 @@ $completed_tests = json_encode($completed_tests);
                                 <h2>Nearest homework</h2>
                                 <p>Deadline: <span>23 June 15:00</span></p>
                                 <p>Theme: <span>Past Perfect Tense</span></p>
-                                <p>Alloted time: <span>120 min</span></p>
+                                <p>Allowed time: <span>120 min</span></p>
                             </div>
                         </div>
                         <button>START</button>

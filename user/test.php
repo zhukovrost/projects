@@ -37,12 +37,9 @@ if ($mark == -2){
 if (isset($_POST['finish'])){
   $test_data = get_test_data($conn, $test_id);
   $test = json_decode($test_data['test']);
-  $flag = false;
-  foreach ($test as $question_id){
-    if (get_question_data($conn, $question_id)['type'] == 'definite_mc'){
-      $flag = true;
-      break;
-    }
+  $flag = 0;
+  if (isset($_POST['for_verification'])){
+    $flag = $_POST['for_verification'];
   }
 
   if ($flag){

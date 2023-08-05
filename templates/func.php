@@ -312,7 +312,9 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
             $value = $user_answers[$question_number][0];
             echo "<input type='text' name='test_input[$question_number][]' value='$value'>";
           }
-        }else if ($type == "definite_mc"){
+        }else if ($type == "definite_mc"){ ?>
+          <input type="hidden" name="for_verification" value="1">
+          <?php
           if ($user_answers_id == -1 || $user_answers[$question_number] == null){
             echo "<textarea name='test_input[$question_number][]'></textarea>";
           }else{
