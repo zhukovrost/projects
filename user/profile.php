@@ -214,7 +214,7 @@ $completed_tests = json_encode($completed_tests);
             document.querySelector('.preview_cover').style.cssText = `display: none;`;
         });
       </script>
-      
+      <script src="../templates/format.js"></script>
       
 </body>
 </html>

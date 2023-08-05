@@ -23,9 +23,9 @@ $diagram_data = json_encode([$stats['wrong'], $stats['not_answered'], $stats['co
 <html lang="en">
 <?php include "../templates/head.php"; ?>
 <body>
+<?php include "../templates/header.html"; ?>
 <main>
   <div class="container">
-  <?php include "../templates/header.html"; ?>
 
     <!-- Block of progress for all tests -->
     <section class="tests_progress">
@@ -536,5 +536,6 @@ include "../templates/footer.html";
     }
 
 </script>
+<script src="../templates/format.js"></script>
 </body>
 </html>

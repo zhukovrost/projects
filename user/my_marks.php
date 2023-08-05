@@ -48,6 +48,24 @@ $previous_month = mktime(0, 0, 0, date('m') - 1, 1, date('Y'));
 
     <?php include "../templates/footer.html"; ?>
 
+    <script src="../templates/format.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+    <script>
+        let marksArr = document.querySelectorAll('.marks_block .marks div');
+        for(let i = 0; i < marksArr.length; i++){
+            if(parseInt(marksArr[i].innerHTML) >= 80){
+                marksArr[i].style.cssText = `background-color: rgba(74, 168, 1, 1)`;
+            }
+            if(parseInt(marksArr[i].innerHTML) < 80 && parseInt(marksArr[i].innerHTML) >= 60){
+                marksArr[i].style.cssText = `background-color: rgba(144, 180, 0, 1)`;
+            }
+            if(parseInt(marksArr[i].innerHTML) < 60 && parseInt(marksArr[i].innerHTML) >= 40){
+                marksArr[i].style.cssText = `background-color: rgba(223, 134, 0, 1)`;
+            }
+            if(parseInt(marksArr[i].innerHTML) < 40){
+                marksArr[i].style.cssText = `background-color: rgba(199, 0, 0, 1)`;
+            }
+        }
+    </script>
 </body>
 </html>

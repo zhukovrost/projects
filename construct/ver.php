@@ -58,7 +58,7 @@ if (isset($_POST['verified'])){
 
         <form action="" method="post" class="questions_list">
           <div class="container">
-          <p><?php echo $user['surname'].' '.$user['name']; ?> from test: <?php echo $test_data['name']; ?></p>
+          <p class="ver_title"><?php echo $user['surname'].' '.$user['name']; ?> from test: <?php echo $test_data['name']; ?></p>
         <?php
         for ($i = 0; $i < count($test); $i++){
           $question_id = $test[$i];
@@ -69,11 +69,12 @@ if (isset($_POST['verified'])){
             $verified_score = $verified_scores[$qid];
             ?>
 
-            <label for="">POINTS: </label>
-            <input type="number" name="<?php echo "ver_score_input[".$id."][".$qid."]" ?>" <?php if ($verified_score != ''){ echo " value='$verified_score'"; } ?>>
+            <label class="ver_points_title" for="">POINTS: </label>
+            <input class="ver_points" type="number" name="<?php echo "ver_score_input[".$id."][".$qid."]" ?>" <?php if ($verified_score != ''){ echo " value='$verified_score'"; } ?>>
 
           <?php } } ?>
-            <button type="submit" name="verified" value="<?php echo $id; ?>">VERIFIED</button>
+          <br>
+            <button class="ver_button" type="submit" name="verified" value="<?php echo $id; ?>">VERIFIED</button>
           </div>
         </form>
   <?php } }
@@ -85,5 +86,6 @@ if (isset($_POST['verified'])){
   ?>
 
 </main>
+<script src="../templates/format.js"></script>
 </body>
 </html>

@@ -51,7 +51,7 @@ if (isset($_POST['push_id'])){
 if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
   include "../templates/admin_header.html";
 }else{ ?>
-  <a class="back_button" href="post_test.php?test_id">GO BACK</a>
+  <a class="post_back_button" href="post_test.php?test_id">GO BACK</a>
 <?php } ?>
     <?php
     # -------------------- LIST OF TESTS -------------------------
@@ -59,7 +59,7 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
     if (empty($test_id) || $test_id == ''){
       $select_tests_sql = "SELECT id, name FROM tests ORDER BY id DESC";
       if ($select_tests_result = $conn->query($select_tests_sql)){
-        echo "<div class='test_output_form'>";
+        echo "<div class='test_output_form'> <h1>Post tests!</h1>";
         foreach ($select_tests_result as $item) {
           $id = $item['id'];
           $name = $item['name'];
@@ -101,5 +101,6 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
       print_message("The test has been published!", 1);
     }
     ?>
+    <script src="../templates/format.js"></script>
 </body>
 </html>

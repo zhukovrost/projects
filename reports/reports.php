@@ -49,7 +49,7 @@ $title = "Feedback";
                 <a href="all_reports.php">View all reports</a>
                 <!-- Button to leave feedback -->
               <?php if (check_the_login($user_data, '../', false)){ ?>
-                <button>Leave your feedback</button>
+                <button class="popup_button">Leave your feedback</button>
               <?php }else{ ?>
                 <a href="../log.php">Log in to leave the feedback</a>
               <?php } ?>
@@ -57,6 +57,8 @@ $title = "Feedback";
         </div>
 
     </main>
+
+    <script src="../templates/format.js"></script>
 
     <?php include "../templates/footer.html"; ?>
 
