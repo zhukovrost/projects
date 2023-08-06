@@ -26,6 +26,14 @@ if ($select_result = $conn->query($select_sql)){
 $select_result->free();
 $completed_tests = json_encode($completed_tests);
 
+if(isset($_POST['image_to_php'])) {
+  $data = $_POST['image_to_php'];
+  $image_array_1 = explode(";", $data);
+  $image_array_2 = explode(",", $image_array_1[1]);
+  $data = base64_decode($image_array_2[1]);
+  $image_name = 'upload/' . time() . '.jpg';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
