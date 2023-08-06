@@ -344,10 +344,11 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
 <?php }
 
 
-function print_test($conn, $test, $extend=false, $user_answers_id=-1){ ?>
+function print_test($conn, $test, $extend=false, $user_answers_id=-1, $task=''){
+  ?>
 <form method="post" class="questions_list">
   <div class="container">
-
+    <h1><?php echo $task; ?></h1>
     <?php
       for ($i = 0; $i < count($test); $i++){
         print_question($conn, $test[$i], $i, $extend, $user_answers_id);
@@ -362,7 +363,7 @@ function print_test($conn, $test, $extend=false, $user_answers_id=-1){ ?>
 
 function print_test_by_id($conn, $test_id, $extend=false, $user_answers_id=-1){
   $test_data = get_test_data($conn, $test_id);
-  print_test($conn, json_decode($test_data['test']), $extend, $user_answers_id);
+  print_test($conn, json_decode($test_data['test']), $extend, $user_answers_id, $test_data['task']);
 }
 
 function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
