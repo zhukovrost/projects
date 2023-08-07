@@ -28,15 +28,26 @@ $completed_tests = json_encode($completed_tests);
 
 if(isset($_POST['image_to_php'])) {
   $data = $_POST['image_to_php'];
-  $insert_sql = "INSERT INTO avatars (file) VALUES ('$data')";
-  if ($conn->query($insert_sql)){
-    $avatar_id = mysqli_insert_id($conn);
-    $update_sql = "UPDATE users SET avatar=$avatar_id WHERE id=".$user_data['id'];
-    if ($conn->query($update_sql)){
-      header("Refresh: 0");
+  $avatar_id = $user_data['avatar'];
+  if ($avatar_id == 1){
+    $sql = "INSERT INTO avatars (file) VALUES ('$data')";
+  }else{
+    $sql = "UPDATE avatars SET file='$data' WHERE id=$avatar_id";
+  }
+  if ($conn->query($sql)){
+    if ($avatar_id == 1){
+      $new_avatar_id = mysqli_insert_id($conn);
+      $update_sql = "UPDATE users SET avatar=$new_avatar_id WHERE id=".$user_data['id'];
+      if ($conn->query($update_sql)){
+        header("Refresh: 0");
+      }else{
+        echo $conn->error;
+      }
     }else{
-      echo $conn->error;
+      header("Refresh: 0");
     }
+  }else{
+    echo $conn->error;
   }
 }
 
