@@ -62,12 +62,12 @@
         font-size: 28px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 28px;
         padding: 10px 20px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 35%;
     }
 
@@ -101,12 +101,12 @@
         font-size: 28px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 28px;
         padding: 10px 20px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 35%;
     }
 
@@ -274,12 +274,12 @@
         font-size: 26px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 26px;
         padding: 10px 15px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 30%;
     }
 
@@ -504,12 +504,12 @@
         margin-left: 20px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 26px;
         padding: 10px 15px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 30%;
     }
 
@@ -730,12 +730,12 @@
         margin-left: 20px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 24px;
         padding: 10px 15px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 30%;
     }
 
@@ -1141,12 +1141,12 @@
         margin-left: 20px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 24px;
         padding: 10px 15px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 30%;
     }
 
@@ -1561,12 +1561,12 @@
         margin-left: 20px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 24px;
         padding: 10px 15px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 30%;
     }
 
@@ -1938,12 +1938,12 @@
         margin-left: 18px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 22px;
         padding: 5px 10px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 25%;
     }
 
@@ -2393,12 +2393,12 @@
         margin-left: 18px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 20px;
         padding: 5px 10px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 23%;
     }
 
@@ -2902,12 +2902,12 @@
         margin-left: 10px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 17px;
         padding: 5px 10px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 25%;
     }
 
@@ -3390,12 +3390,12 @@
         margin-left: 10px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 15px;
         padding: 5px 10px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 25%;
     }
 
@@ -4035,12 +4035,12 @@
         margin-left: 10px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 12px;
         padding: 5px 10px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 25%;
     }
 
@@ -4623,12 +4623,12 @@
         margin-left: 5px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 10px;
         padding: 5px 10px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 23%;
     }
 
@@ -5292,12 +5292,12 @@
         margin-left: 5px;
     }
 
-    .marks_block .current button{
+    .marks_block .current a{
         font-size: 9px;
         padding: 3px 5px;
     }
 
-    .marks_block .current button img{
+    .marks_block .current a img{
         width: 23%;
     }
 
