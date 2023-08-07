@@ -1135,6 +1135,13 @@ footer p:last-child{
 
 /* Percents of progress */
 
+.curtest_title{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
 .test_progress .progress_bar .percents{
     position: relative;
     background-color: #54d7ff;
@@ -2303,7 +2310,7 @@ footer p:last-child{
     padding: 3px 5px;
 }
 
-.marks_block .current button{
+.marks_block .current a{
     margin-top: 50px;
     border-radius: 5px;
     font-size: 30px;
@@ -2315,16 +2322,16 @@ footer p:last-child{
     transition: .1s ease-in-out;
 }
 
-.marks_block .current button:hover{
+.marks_block .current a:hover{
     background-color: rgb(161, 218, 255);
 }
 
-.marks_block .current button img{
+.marks_block .current a img{
     margin-left: 20px;
     transition: .1s ease-in-out;
 }
 
-.marks_block .current button:hover img{
+.marks_block .current a:hover img{
     margin-left: 30px;
 }
 

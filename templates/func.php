@@ -377,7 +377,7 @@ function print_test($conn, $test, $extend=false, $user_answers_id=-1, $task=''){
   ?>
 <form method="post" class="questions_list">
   <div class="container">
-    <h1><?php echo $task; ?></h1>
+    <h1 class="curtest_title"><?php echo $task; ?></h1>
     <?php
       for ($i = 0; $i < count($test); $i++){
         print_question($conn, $test[$i], $i, $extend, $user_answers_id);

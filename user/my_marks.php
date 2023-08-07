@@ -28,7 +28,7 @@ $previous_month = mktime(0, 0, 0, date('m') - 1 + $month, 1, date('Y'));
                     <div class="title">
                         <h1>Previous month</h1>
                     </div>
-                    <a href="my_marks.php?month=<?php echo $month - 1; ?>">
+                    <a class="previous" href="my_marks.php?month=<?php echo $month - 1; ?>">
                         <!-- Marks -->
                         <?php print_marks($conn, $user_data['id'], $previous_month, $current_month, true, $month); ?>
                     </a>
@@ -37,7 +37,9 @@ $previous_month = mktime(0, 0, 0, date('m') - 1 + $month, 1, date('Y'));
                 <!-- Date(current month) -->
                 <div class="date">
                     <p>Choose date: </p>
-                    <input type="month">
+                    <form method="post">
+                        <input type="month">
+                    </form>
                 </div>
             </div>
             <!-- Current month -->
@@ -68,6 +70,13 @@ $previous_month = mktime(0, 0, 0, date('m') - 1 + $month, 1, date('Y'));
                 marksArr[i].style.cssText = `background-color: rgba(199, 0, 0, 1)`;
             }
         }
+    </script>
+    <script>
+        let monthInput = document.querySelector('.marks_block .date input');
+
+        monthInput.addEventListener('change', function(){
+            document.querySelector('.marks_block .date form').submit();
+        });
     </script>
 </body>
 </html>
