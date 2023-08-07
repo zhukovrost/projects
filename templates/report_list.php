@@ -11,7 +11,7 @@ if ($select_result = $conn -> query($select_sql)){
     <swiper-slide class="reports_item">
       <!-- User's avatar -->
       <div class="avatar">
-        <img src="data:image/jpeg;base64, <?php echo $avatar; ?>">
+        <img src="<?php echo $avatar; ?>">
         <p><?php echo $user['name'].' '.$user['surname']; ?></p>
       </div>
       <!-- User's report(rating and text) -->

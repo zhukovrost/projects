@@ -28,10 +28,16 @@ $completed_tests = json_encode($completed_tests);
 
 if(isset($_POST['image_to_php'])) {
   $data = $_POST['image_to_php'];
-  $image_array_1 = explode(";", $data);
-  $image_array_2 = explode(",", $image_array_1[1]);
-  $data = base64_decode($image_array_2[1]);
-  $image_name = 'upload/' . time() . '.jpg';
+  $insert_sql = "INSERT INTO avatars (file) VALUES ('$data')";
+  if ($conn->query($insert_sql)){
+    $avatar_id = mysqli_insert_id($conn);
+    $update_sql = "UPDATE users SET avatar=$avatar_id WHERE id=".$user_data['id'];
+    if ($conn->query($update_sql)){
+      header("Refresh: 0");
+    }else{
+      echo $conn->error;
+    }
+  }
 }
 
 ?>
@@ -59,7 +65,7 @@ if(isset($_POST['image_to_php'])) {
                 
                 <!-- User avatar photo -->
                 <form id="avatar_form" class="avatar" method="post">
-                  <img id="profileImage" src="data:image/jpeg;base64, <?php echo $avatar; ?>">
+                  <img id="profileImage" src="<?php echo $avatar; ?>">
                   <input type="file" id="avatar_file" accept="image/*" />
                   <label for="avatar_file" class="uppload_button">Choose photo</label>
                   <input type="hidden" id="image_to_php" name="image_to_php" value="">

@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Europe/Moscow");
 
 #------------------ settings and base -----------------------
 function conn_check($conn){
@@ -101,7 +102,7 @@ function get_avatar($conn, $user_data){
     echo $conn->error;
   }
 
-  return base64_encode($image);
+  return $image;
 }
 
 
@@ -228,6 +229,34 @@ function get_stats($conn, $user_id){
     }
   }else{
     return false;
+  }
+}
+
+
+function check_deadline($conn, $deadline, $test_id, $tests_to_users_id, $user_id){
+  $now = time();
+  $deadline = (int)$deadline;
+
+  if ($deadline == -1 || $deadline < $now){
+    return true;
+  }else{
+    $answers = array();
+    $question_number = count(json_decode(get_test_data($conn, $test_id)['test']));
+    for ($i = 0; $i < $question_number; $i ++){
+      array_push($answers, array(''));
+    }
+
+    $stats = get_stats($conn, $user_id);
+    $user_not_answered_stats = $stats['not_answered'] + count($answers);
+    $user_tests_stats = $stats['tests'] + 1;
+
+    $update_sql_1 = "UPDATE tests_to_users SET mark=0, answers='$answers' WHERE id=$tests_to_users_id";
+    $update_sql_2 = "UPDATE stats SET not_answred=$user_not_answered_stats, tests=$user_tests_stats WHERE user=$user_id";
+    if ($conn->query($update_sql_1) && $conn->query($update_sql_2)){
+      return false;
+    }else{
+      echo $conn->error;
+    }
   }
 }
 
@@ -498,6 +527,7 @@ function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
 
 
 function print_test_info($conn, $test_info_array){
+  $deadline = false;
   $test_data = get_test_data($conn, $test_info_array['test']);
   $themes = array();
   foreach (json_decode($test_data['themes']) as $theme_id){
@@ -510,13 +540,18 @@ function print_test_info($conn, $test_info_array){
   if ($mark >= 0){
     $status = "passed";
   }else{
-    switch ($mark){
-      case -1:
-      case -3:
-        $status = "not passed";
-        break;
-      case -2:
-        $status = "verifying...";
+    if (check_deadline($conn, $test_info_array['deadline'], $test_info_array['test'], $test_info_array['id'], $test_info_array['user'])){
+      switch ($mark){
+        case -1:
+        case -3:
+          $status = "not passed";
+          break;
+        case -2:
+          $status = "verifying...";
+      }
+    }else{
+      $status = "passed";
+      $deadline = true;
     }
   }
   ?>
@@ -527,6 +562,12 @@ function print_test_info($conn, $test_info_array){
       <?php if (count($themes) != 0) { ?><p class="theme">Theme(s): <span> <?php foreach ($themes as $theme){ echo $theme.'; '; }?></span></p><?php } ?>
       <p class="time">Time for test: <span><?php echo date('i:s', $test_info_array['duration']); ?></span></p>
       <p class="questions_number">Number of questions: <span><?php echo count(json_decode($test_data['test'])); ?></span></p>
+      <?php
+      if ($test_info_array['deadline'] != -1){
+        $date = date('d.m.Y', $test_info_array['deadline']);
+        echo "<p>Deadline: <span>$date</span></p>";
+      }
+      ?>
       <?php
         if ($status == "passed"){
           echo "<p class='status'>Status:<span>passed</span></p>";
@@ -539,7 +580,7 @@ function print_test_info($conn, $test_info_array){
         }
        ?>
     </div>
-    <?php if ($mark == -1 || $mark == -3){ ?>
+    <?php if (($mark == -1 || $mark == -3) && !$deadline){ ?>
       <a class="start" href="test.php?id=<?php echo $test_info_array['id']; ?>">START</a>
     <?php }else{ ?>
       <a href="result.php?id=<?php echo $test_info_array['id']; ?>">RESULT</a>
