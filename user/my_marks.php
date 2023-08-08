@@ -4,11 +4,29 @@ include '../templates/settings.php';
 
 check_the_login($user_data, "../");
 
-$month = $_GET['month'];
+if (isset($_GET['month'])){
+  $month = $_GET['month'];
+}else{
+  $month = 0;
+}
 
 $next_month = mktime(0, 0, 0, date('m') + 1 + $month, 1, date('Y'));
 $current_month = mktime(0, 0, 0, date('m') + $month , 1, date('Y'));
 $previous_month = mktime(0, 0, 0, date('m') - 1 + $month, 1, date('Y'));
+
+if (isset($_POST['month_input'])) {
+  $d1 = date_create(date('Y-m', $current_month));
+  $d2 = date_create($_POST['month_input']);
+  $interval = date_diff($d2, $d1, false);
+  if ($interval->invert){
+    $month += $interval->m;
+  }else{
+    $month -= $interval->m;
+  }
+  header("Location: my_marks.php?month=".$month);
+}
+
+$month_input = date('Y-m', $current_month)
 
 ?>
 
@@ -38,7 +56,7 @@ $previous_month = mktime(0, 0, 0, date('m') - 1 + $month, 1, date('Y'));
                 <div class="date">
                     <p>Choose date: </p>
                     <form method="post">
-                        <input type="month">
+                        <input type="month" name="month_input" value="<?php echo $month_input; ?>">
                     </form>
                 </div>
             </div>
