@@ -18,10 +18,13 @@ if (isset($_POST['month_input'])) {
   $d1 = date_create(date('Y-m', $current_month));
   $d2 = date_create($_POST['month_input']);
   $interval = date_diff($d2, $d1, false);
+  $flag = $interval->d >= 15;
   if ($interval->invert){
     $month += $interval->m;
+    if ($flag){ $month++; }
   }else{
     $month -= $interval->m;
+    if ($flag){ $month--; }
   }
   header("Location: my_marks.php?month=".$month);
 }
