@@ -237,21 +237,20 @@ function check_deadline($conn, $deadline, $test_id, $tests_to_users_id, $user_id
   $now = time();
   $deadline = (int)$deadline;
 
-  if ($deadline == -1 || $deadline < $now){
+  if ($deadline == -1 || $deadline > $now){
     return true;
   }else{
     $answers = array();
     $question_number = count(json_decode(get_test_data($conn, $test_id)['test']));
     for ($i = 0; $i < $question_number; $i ++){
-      array_push($answers, array(''));
+      array_push($answers, ['']);
     }
-
     $stats = get_stats($conn, $user_id);
-    $user_not_answered_stats = $stats['not_answered'] + count($answers);
-    $user_tests_stats = $stats['tests'] + 1;
+    $user_not_answered_stats = (int)$stats['not_answered'] + count($answers);
+    $user_tests_stats = (int)$stats['tests'] + 1;
 
-    $update_sql_1 = "UPDATE tests_to_users SET mark=0, answers='$answers' WHERE id=$tests_to_users_id";
-    $update_sql_2 = "UPDATE stats SET not_answred=$user_not_answered_stats, tests=$user_tests_stats WHERE user=$user_id";
+    $update_sql_1 = "UPDATE tests_to_users SET mark=0, answers='".json_encode($answers)."' WHERE id=$tests_to_users_id";
+    $update_sql_2 = "UPDATE stats SET not_answered=$user_not_answered_stats, tests=$user_tests_stats WHERE user=" . $user_id;
     if ($conn->query($update_sql_1) && $conn->query($update_sql_2)){
       return false;
     }else{
@@ -587,6 +586,9 @@ function print_test_info($conn, $test_info_array){
     <?php } ?>
   </section>
 <?php
+  if ($deadline){
+    header("Refresh: 0");
+  }
 }
 
 

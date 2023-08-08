@@ -27,12 +27,19 @@ if (isset($_POST['push_id'])){
     }
   }
 
+  if (isset($_POST['deadline'])){
+    $deadline_date = explode('-', $_POST['deadline']);
+    $deadline = mktime(0, 0, 0, $deadline_date[1], $deadline_date[2], $deadline_date[0]);
+  }else{
+    $deadline = -1;
+  }
+
   $duration = $_POST['duration'] * 60;
   foreach ($_POST['users_array'] as $user_id){
     if ($flag){
-      $insert_sql = "INSERT INTO tests_to_users (test, user, duration, mark, date) VALUES ($push_id, $user_id, $duration, -3, ".time().")";
+      $insert_sql = "INSERT INTO tests_to_users (test, user, duration, mark, date, deadline) VALUES ($push_id, $user_id, $duration, -3, ".time().", $deadline)";
     }else{
-      $insert_sql = "INSERT INTO tests_to_users (test, user, duration, date) VALUES ($push_id, $user_id, $duration, ".time().")";
+      $insert_sql = "INSERT INTO tests_to_users (test, user, duration, date, deadline) VALUES ($push_id, $user_id, $duration, ".time().", $deadline)";
     }
     if ($conn->query($insert_sql)){
       $error_array['post_test_success'] = true;
@@ -84,6 +91,8 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
         ?>
         <input name="duration" type="number" value="15">
         <label for="time_to_do">Test time</label>
+        <input type="date" name="deadline">
+        <label for="">Deadline</label>
         <div class="test_finish_button">
           <input type="submit" class="construct_btn" value="Post the test">
           <input type="hidden" name="push_id" value="<?php echo $test_id; ?>">

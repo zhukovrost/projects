@@ -9,7 +9,7 @@ if (isset($_GET['id'])){
   header("Location: my_tests.php");
 }
 
-$check_select_sql = "SELECT user, test, mark, duration FROM tests_to_users WHERE id=$id";
+$check_select_sql = "SELECT user, test, mark, duration, deadline FROM tests_to_users WHERE id=$id";
 if ($check_select_result = $conn->query($check_select_sql)){
   if ($check_select_result->num_rows == 1){
     foreach ($check_select_result as $item){
@@ -19,7 +19,8 @@ if ($check_select_result = $conn->query($check_select_sql)){
       $mark = $item['mark'];
       $duration = $item['duration'];
       $test_id = $item['test'];
-
+      $deadline = $item['deadline'];
+      $user = $item['user'];
     }
   }else{
     header("Location: my_tests.php?access_error=1");
@@ -31,6 +32,11 @@ $check_select_result->free();
 
 if ($mark == -2){
   header("Location: my_tests.php?verification_error=1");
+}
+
+echo $user_data['id'];
+if (!check_deadline($conn, $deadline, $test_id, $id, $user_data['id'])){
+  header("Location: my_tests.php?deadline_error=1");
 }
 
 
