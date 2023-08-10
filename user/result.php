@@ -47,7 +47,7 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
                         <!-- results -->
                         <div>
                             <div class="content">
-                                <p>Time spent: <span><?php echo $result_data['time']; ?></span></p>
+                                <p>Time spent: <span class="time"><?php echo $result_data['time']; ?></span></p>
                                 <p>Right answers: <span><?php echo $result_data['correct'].'/'.$result_data['all_questions']; ?></span></p>
                                 <p>Total score: <span class="score"><?php echo $result_data['user_scores'].'/'.$result_data['all_scores']; ?></span></p>
                                 <p>Mark: <span><?php echo $result_data['mark']; ?></span></p>
@@ -76,6 +76,36 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Timer
+        for(let i = 0; i < localStorage.getItem(`StartButtonsLength`); i++){
+            if(localStorage.getItem(`test_time${i}`) > 0){
+                let time = localStorage.getItem(`test_time${i}`);
+
+                time--;
+                let AllTime = localStorage.getItem(`AllTestTime${i}`);
+                localStorage.setItem(`test_time${i}`, time);
+                localStorage.setItem(`SpendTestTime${i}`, (AllTime - time));
+
+                let IntervalTimer = setInterval(UpdateTime, 1000, i);
+            }
+            else{
+                localStorage.setItem(`test_time${i}`, -1);
+                localStorage.setItem(`SpendTestTime${i}`, (0));
+            }
+        }
+
+        function UpdateTime(i){
+            if(localStorage.getItem(`test_time${i}`) > 0){
+                let time = localStorage.getItem(`test_time${i}`);
+
+                time--;
+                console.log(1)
+                let AllTime = localStorage.getItem(`AllTestTime${i}`);
+                localStorage.setItem(`SpendTestTime${i}`, (AllTime - time));
+                localStorage.setItem(`test_time${i}`, time);
+            }
+        }
+
         // ===Pie diagramm===
         const ctx = document.getElementById('myPie');
 
@@ -122,9 +152,13 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
         let resultImage = document.querySelector('.result_content .statistics .image img');
         let resultText = document.querySelector('.result_content .statistics .image p');
         let score = document.querySelector('.result_content .statistics .score');
+        let time = document.querySelector('.result_content .statistics .time');
 
-        let currentScore = parseFloat(score.innerHTML.split(' / ')[0]);
-        let totalScore = parseFloat(score.innerHTML.split(' / ')[1]);
+        time.innerHTML = localStorage.getItem(`SpendTestTime${localStorage.getItem('timer_id')}`) + ' sec';
+
+        let currentScore = parseFloat(score.innerHTML.split('/')[0]);
+        let totalScore = parseFloat(score.innerHTML.split('/')[1]);
+
 
         if(currentScore / totalScore >= 0.8){
             resultImage.src = "../img/5_smile.svg";
@@ -140,7 +174,7 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
         }
         else{
             resultImage.src = "../img/2_smile.svg";
-            resultText.innerHTML = "Learn theory!";
+            resultText.innerHTML = "It's bad!";
         }
     </script>
     <script src="../templates/format.js"></script>

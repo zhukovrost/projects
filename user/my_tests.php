@@ -80,8 +80,27 @@ include "../templates/footer.html";
 <script>
 
     // Event listener for timers
-    let StartButtons = document.querySelectorAll('.tests_list .test a');
-    localStorage.setItem(`StartButtonsLength`, StartButtons.length);
+    let StartButtonsLeft = document.querySelectorAll('.tests_list .left .test a');
+    let StartButtonsRight = document.querySelectorAll('.tests_list .right .test a');
+    let testTimesArrLeft = document.querySelectorAll('.tests_list .left .test .time span');
+    let testTimesArrRight = document.querySelectorAll('.tests_list .right .test .time span');
+    
+    let currentLength = (testTimesArrLeft.length + testTimesArrRight.length);
+    
+    let x = 0;
+    let y = 0;
+    for(let i = 0; i < currentLength; i++){
+        if(i % 2 == 0){
+            localStorage.setItem(`AllTestTime${i}`, parseInt(testTimesArrLeft[x].innerHTML) * 60);
+            x += 1;
+        }
+        else{
+            localStorage.setItem(`AllTestTime${i}`, parseInt(testTimesArrRight[y].innerHTML) * 60);
+            y += 1;
+        }
+    }
+
+    localStorage.setItem(`StartButtonsLength`, currentLength);
 
     let IntervalTestPage = setInterval(UpdateTestsPage, 4);
 
@@ -94,35 +113,50 @@ include "../templates/footer.html";
     }
     
 
-    for(let i = 0; i < StartButtons.length; i++){
-
+    for(let i = 0; i < currentLength; i++){
         if(localStorage.getItem(`test_time${i}`) > 0){
             let time = localStorage.getItem(`test_time${i}`);
 
             time--;
+            let AllTime = localStorage.getItem(`AllTestTime${i}`);
             localStorage.setItem(`test_time${i}`, time);
+            localStorage.setItem(`SpendTestTime${i}`, (AllTime - time));
 
-            let IntervalTimer = setInterval(UpdateTime, 1000);
+            let IntervalTimer = setInterval(UpdateTime, 1000, i);
         }
         else{
             localStorage.setItem(`test_time${i}`, -1);
+            localStorage.setItem(`SpendTestTime${i}`, (0));
         }
     }
 
-    for(let i = 0; i < StartButtons.length; i++){
-        StartButtons[i].addEventListener('click', function(){
-            localStorage.setItem('timer_id', i);
-        });
+
+    x = 0;
+    y = 0;
+    for(let i = 0; i < currentLength; i++){
+        if(i % 2 == 0){
+            StartButtonsLeft[x].addEventListener('click', function(){
+                localStorage.setItem('timer_id', i);
+            });
+            x += 1;
+        }
+        else{
+            StartButtonsRight[y].addEventListener('click', function(){
+                localStorage.setItem('timer_id', i);
+            });
+            y += 1;
+        }
     }
 
-    function UpdateTime(){
-        for(let i = 0; i < StartButtons.length; i++){
-            if(localStorage.getItem(`test_time${i}`) > 0){
-                let time = localStorage.getItem(`test_time${i}`);
+    function UpdateTime(i){
+        if(localStorage.getItem(`test_time${i}`) > 0){
+            let time = localStorage.getItem(`test_time${i}`);
 
-                time--;
-                localStorage.setItem(`test_time${i}`, time);
-            }
+            time--;
+            console.log(1)
+            let AllTime = localStorage.getItem(`AllTestTime${i}`);
+            localStorage.setItem(`SpendTestTime${i}`, (AllTime - time));
+            localStorage.setItem(`test_time${i}`, time);
         }
     }
 
@@ -499,11 +533,21 @@ include "../templates/footer.html";
                     leftColum.innerHTML = '';
                     for(let i = 0; i < statusArr.length; i++){
                         if(statusArr[i].status == 'passed'){
-                            if(i % 2 == 1){
-                                rightColum.appendChild(testsArr[statusArr[i].number]);
+                            if(questionsArr.length % 2 == 0){
+                                if(i % 2 == 0){
+                                    rightColum.appendChild(testsArr[statusArr[i].number]);
+                                }
+                                if(i % 2 == 1){
+                                    leftColum.appendChild(testsArr[statusArr[i].number]);
+                                }
                             }
-                            if(i % 2 == 0){
-                                leftColum.appendChild(testsArr[statusArr[i].number]);
+                            else{
+                                if(i % 2 == 1){
+                                    rightColum.appendChild(testsArr[statusArr[i].number]);
+                                }
+                                if(i % 2 == 0){
+                                    leftColum.appendChild(testsArr[statusArr[i].number]);
+                                }
                             }
                         }
 
@@ -515,11 +559,21 @@ include "../templates/footer.html";
                     leftColum.innerHTML = '';
                     for(let i = 0; i < statusArr.length; i++){
                         if(statusArr[i].status == 'not passed'){
-                            if(i % 2 == 1){
-                                rightColum.appendChild(testsArr[statusArr[i].number]);
+                            if(questionsArr.length % 2 == 0){
+                                if(i % 2 == 0){
+                                    rightColum.appendChild(testsArr[statusArr[i].number]);
+                                }
+                                if(i % 2 == 1){
+                                    leftColum.appendChild(testsArr[statusArr[i].number]);
+                                }
                             }
-                            if(i % 2 == 0){
-                                leftColum.appendChild(testsArr[statusArr[i].number]);
+                            else{
+                                if(i % 2 == 1){
+                                    rightColum.appendChild(testsArr[statusArr[i].number]);
+                                }
+                                if(i % 2 == 0){
+                                    leftColum.appendChild(testsArr[statusArr[i].number]);
+                                }
                             }
                         }
 

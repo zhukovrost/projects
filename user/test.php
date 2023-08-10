@@ -272,14 +272,17 @@ if (isset($_POST['finish'])){
 
     let time = 0;
     let timerId = localStorage.getItem('timer_id');
+    let AllTime = localStorage.getItem(`AllTestTime${timerId}`);
 
     if(localStorage.getItem(`test_time${timerId}`) && localStorage.getItem(`test_time${timerId}`) != -1){
         time = localStorage.getItem(`test_time${timerId}`);
+        localStorage.setItem(`SpendTestTime${timerId}`, (AllTime - time - 1));
     }
     else{
         // сюда подставить время
         time = <?php echo $duration; ?>;
-        localStorage.setItem(`test_time${timerId}`, time);
+        localStorage.setItem(`SpendTestTime${timerId}`, 0);
+        localStorage.setItem(`test_time${timerId}`, time + 1);
     }
 
     const timer = document.querySelector('.curtest_header .time');
@@ -293,8 +296,8 @@ if (isset($_POST['finish'])){
 
     FinsishButton.addEventListener('click', function(){
         clearInterval(IntervalTimer);
+        localStorage.setItem(`test_time${timerId}`, 0);
         time = 0;
-        localStorage.setItem(`test_time${timerId}`, time);
     });
 
     //Если пользователь начал тестирование, то запускается таймер
@@ -310,7 +313,7 @@ if (isset($_POST['finish'])){
 
         timer.innerHTML = `${minutes}:${seconds}`;
         time--;
-        localStorage.setItem(`test_time${timerId}`, time);
+        localStorage.setItem(`test_time${timerId}`, time + 1);
 
         let IntervalTimer = setInterval(UpdateTime, 1000);
     }
@@ -335,13 +338,16 @@ if (isset($_POST['finish'])){
         }
 
         time--;
-        localStorage.setItem(`test_time${timerId}`, time);
+        localStorage.setItem(`test_time${timerId}`, time + 1);
+        localStorage.setItem(`SpendTestTime${timerId}`, (AllTime - time - 1));
 
         for(let i = 0; i < localStorage.getItem(`StartButtonsLength`); i++){
             if(localStorage.getItem(`test_time${i}`) > 0 && (localStorage.getItem(`test_time${i}`) != localStorage.getItem(`test_time${timerId}`))){
                 let time = localStorage.getItem(`test_time${i}`);
 
                 time--;
+                let AllTime = localStorage.getItem(`AllTestTime${i}`);
+                localStorage.setItem(`SpendTestTime${i}`, (AllTime - time));
                 localStorage.setItem(`test_time${i}`, time);
             }
         }

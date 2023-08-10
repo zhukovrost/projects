@@ -91,6 +91,20 @@ $month_input = date('Y-m', $current_month)
                 marksArr[i].style.cssText = `background-color: rgba(199, 0, 0, 1)`;
             }
         }
+
+        let averageMark = document.querySelector('.marks_block .current .content h1 span');
+        if(parseInt(averageMark.innerHTML) >= 80){
+                averageMark.style.cssText = `background-color: rgba(74, 168, 1, 1)`;
+            }
+            if(parseInt(averageMark.innerHTML) < 80 && parseInt(averageMark.innerHTML) >= 60){
+                averageMark.style.cssText = `background-color: rgba(144, 180, 0, 1)`;
+            }
+            if(parseInt(averageMark.innerHTML) < 60 && parseInt(averageMark.innerHTML) >= 40){
+                averageMark.style.cssText = `background-color: rgba(223, 134, 0, 1)`;
+            }
+            if(parseInt(averageMark.innerHTML) < 40){
+                averageMark.style.cssText = `background-color: rgba(199, 0, 0, 1)`;
+            }
     </script>
     <script>
         let monthInput = document.querySelector('.marks_block .date input');
