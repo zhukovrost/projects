@@ -1553,7 +1553,7 @@ footer p:last-child{
     overflow: hidden;
     background-color: rgba(240, 240, 240, 1);   
     padding: 20px 30px;
-    border: 1px solid #dadada;
+    border: 1px solid #d8d8d8;
 }
 
 .theory_block div.hide{
@@ -2688,6 +2688,24 @@ footer p:last-child{
     transition: .4s ease;
 }
 
+.c_questions_search{
+    display: flex;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.c_questions_search input{
+    background-color: #F2F2F2;
+    font-size: 25px;
+    padding: 5px 10px;
+    margin-left: 15px;
+    margin-right: 20px;
+}
+
+.c_questions_search img{
+    margin-left: 20px;
+}
+
 .question_back:hover{
     background-color: #0D0D0D;
     color: #F2F2F2;
@@ -2699,6 +2717,10 @@ footer p:last-child{
     padding: 30px 0px 20px;
     background-color: #F2F2F2;
     margin: 0px auto 40px;
+}
+
+.question_body form.hide{
+    display: none;
 }
 
 .question_body form h2{
