@@ -36,7 +36,6 @@ $diagram_data = json_encode([$stats['wrong'], $stats['not_answered'], $stats['co
         </div>
         <div class="statistic">
           <p>Total tests passed: <span><?php echo $stats['tests']; ?></span></p>
-          <p>Time spent on tests: <span><?php echo round($stats['time'] / 60);?> min</span></p>
           <p>Average mark for the test: <span><?php if ($stats['tests'] != 0){ echo round($stats['mark'] / $stats['tests'], 2); }else{ echo 0; } ?></span></p>
         </div>
       </div>

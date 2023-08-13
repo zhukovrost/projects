@@ -394,7 +394,7 @@ function print_test_by_id($conn, $test_id, $extend=false, $user_answers_id=-1){
   print_test($conn, json_decode($test_data['test']), $extend, $user_answers_id, $test_data['task']);
 }
 
-function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
+function check_the_test($conn, $id, $header=true, $get_stats=false){
   # collecting data
   $solve = get_tests_to_users_data($conn, $id);
   $user_answers = (array)json_decode($solve['answers']);
@@ -491,7 +491,6 @@ function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
       "all_scores" => $all_scores,
       "user_scores" => $user_scores,
       "mark" => $mark,
-      "time" => $time,
       "all_questions" => count($test),
       "correct" => $correct,
       "wrong" => $wrong,
@@ -506,9 +505,8 @@ function check_the_test($conn, $id, $header=true, $get_stats=false, $time=0){
     $stats_correct = (int)$stats['correct'] + $correct;
     $stats_wrong = (int)$stats['wrong'] + $wrong;
     $stats_not_answered = (int)$stats['not_answered'] + $not_answered;
-    $stats_time = (int)$stats['time'] + $time;
 
-    $update_stats_sql = "UPDATE stats SET mark=$stats_mark, tests=$stats_tests, correct=$stats_correct, wrong=$stats_wrong, not_answered=$stats_not_answered, time=$stats_time WHERE user=$user_id";
+    $update_stats_sql = "UPDATE stats SET mark=$stats_mark, tests=$stats_tests, correct=$stats_correct, wrong=$stats_wrong, not_answered=$stats_not_answered WHERE user=$user_id";
     $conn->query($update_stats_sql);
     $update_sql = "UPDATE tests_to_users SET mark=$mark WHERE id=$id";
     if ($conn->query($update_sql)){
