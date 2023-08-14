@@ -5,6 +5,8 @@ include '../templates/settings.php';
 $title = "Theory";
 $auth = $user_data['auth'];
 
+var_dump($_POST);
+
 $error_array = array(
   "theme_success" => false,
   "theme_error" => false,
@@ -60,6 +62,25 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
 }
 
 
+# --------------- edit content ------------------
+
+if (isset($_POST['theory_id']) && $auth){
+  if ($_POST['edit_content'] == ''){
+    $sql = "DELETE FROM theory WHERE id=".$_POST['theory_id'];
+  }else{
+    $sql = "UPDATE theory SET theory='".$_POST['edit_content']."', user=".$user_data['id'].", date=".time()." WHERE id=".$_POST['theory_id'];
+  }
+
+  if ($conn -> query($sql)){
+    $error_array['content_success'] = true;
+  }else{
+    $error_array['content_error'] = true;
+  }
+
+}else if (isset($_POST['theory_id']) && !$auth){
+  $error_array['auth_error'] = true;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,7 +131,7 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
             if ($result_sql = $conn->query($select_sql)){
               if ($result_sql->num_rows != 0){
                 foreach ($result_sql as $content) { ?>
-                  <form class="content">
+                  <form class="content" method="post">
                     <p><?php echo $content['theory']; ?></p>
                     <div>
                       <!-- Edit button -->
@@ -126,6 +147,8 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
                         <p class="date"><?php echo date("d.m.Y", $content['date']); ?></p>
                       </div>
                     </div>
+
+                    <input type="hidden" name="theory_id" value="<?php echo $content['id']; ?>">
                   </form>
                 <?php }
               }?>
