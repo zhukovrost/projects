@@ -5,7 +5,6 @@ include '../templates/settings.php';
 $title = "Theory";
 $auth = $user_data['auth'];
 
-var_dump($_POST);
 
 $error_array = array(
   "theme_success" => false,
@@ -149,6 +148,7 @@ if (isset($_POST['theory_id']) && $auth){
                     </div>
 
                     <input type="hidden" name="theory_id" value="<?php echo $content['id']; ?>">
+                    <input type="hidden" name="edit_content" value="">
                   </form>
                 <?php }
               }?>
