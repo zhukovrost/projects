@@ -9,7 +9,10 @@ $error_array = array(
   "theme_success" => false,
   "theme_error" => false,
   "theory_select_error" => false,
-  "existing_theme" => false
+  "existing_theme" => false,
+  "auth_error" => false,
+  "content_success" => false,
+  "content_error" => false
 );
 
 #-------------- add new theme to db ----------------
@@ -43,6 +46,18 @@ if($result = $conn->query($get_themes_sql)){
   $error_array["theme_error"] = true;
 }
 
+# -------------------- add new content --------------------
+
+if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
+  $insert_sql = "INSERT INTO theory (theory, theme, user, date) VALUES ('".$_POST['add_content']."', '".$_POST['theme_id']."', ".$user_data['id'].", ".time().")";
+  if ($conn->query($insert_sql)){
+    $error_array['content_success'] = true;
+  }else{
+    $error_array['content_error'] = true;
+  }
+}else if (!$auth && isset($_POST['theme_id'])){
+  $error_array['auth_error'] = true;
+}
 
 
 ?>
@@ -50,120 +65,110 @@ if($result = $conn->query($get_themes_sql)){
 <html lang="en">
 <?php include "../templates/head.php"; ?>
 <body>
-    <!-- Main header -->
+<!-- Main header -->
 
-    <?php include "../templates/header.html"; ?>
+<?php include "../templates/header.html"; ?>
 
-    <!-- Navigation -->
-    <nav class="theory_nav">
-        <!-- Search by tag -->
-        <div class="search">
-            <p>Search: </p>
-            <input type="text" placeholder="write tag">
-        </div>
-        <!-- Most popular themes -->
-        <div class="themes">
-            <div class="popular">
-                <h1><button>All</button> - <button></button> - <button></button></h1>
-            </div>
-            <div class="medium_popular">
-                <h1><button>None</button> - <button>None</button> - <button>None</button></h1>
-            </div>
-            <div class="unpopular">
-                <h1><button>None</button> - <button>None</button> - <button>None</button></h1>
-            </div>
-        </div>
-       
-    </nav>
+<!-- Navigation -->
+<nav class="theory_nav">
+  <!-- Search by tag -->
+  <div class="search">
+    <p>Search: </p>
+    <input type="text" placeholder="write tag">
+  </div>
+  <!-- Most popular themes -->
+  <div class="themes">
+    <div class="popular">
+      <h1><button>All</button> - <button></button> - <button></button></h1>
+    </div>
+    <div class="medium_popular">
+      <h1><button>None</button> - <button>None</button> - <button>None</button></h1>
+    </div>
+    <div class="unpopular">
+      <h1><button>None</button> - <button>None</button> - <button>None</button></h1>
+    </div>
+  </div>
 
-    <main>
-        <div class="container">
+</nav>
 
-        <section class="theory_block">
-          <?php foreach ($themes as $theme){ ?>
-                <!-- Tags of current theory -->
-                <div class="item_cover">
-                  <button class="close"><img src="../img/крест.svg" alt=""></button>
-                  <div class="underline_title">
-                    <h2><span><?php echo $theme['theme']; ?></span></h2>
+<main>
+  <div class="container">
+
+    <section class="theory_block">
+      <?php foreach ($themes as $theme){ ?>
+        <!-- Tags of current theory -->
+        <div class="item_cover">
+          <button class="close"><img src="../img/крест.svg" alt=""></button>
+          <div class="underline_title">
+            <h2><span><?php echo $theme['theme']; ?></span></h2>
+          </div>
+          <!-- Theory item -->
+          <div class="item">
+            <?php
+            $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC";
+
+            if ($result_sql = $conn->query($select_sql)){
+              if ($result_sql->num_rows != 0){
+                foreach ($result_sql as $content) { ?>
+                  <div class="content">
+                    <p><?php echo $content['theory']; ?></p>
+                    <div>
+                      <!-- Edit button -->
+                      <button>Edit <img src="../img/edit.svg" alt=""></button>
+                      <!-- User, date, time -->
+                      <div class="content_caption">
+                        <p class="user"><?php echo get_user_data($conn, $content['user'], true)['name']; ?></p>
+                        <p class="time"><?php echo date("H:i", $content['date']); ?></p>
+                        <p class="date"><?php echo date("d.m.Y", $content['date']); ?></p>
+                      </div>
+                    </div>
                   </div>
-                <!-- Theory item -->
-                <div class="item">
-                  <?php
-                  if (isset($_GET['view_all'])){
-                    if ((int)$_GET['view_all'] == (int)$theme['id']){
-                      $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC";
-                    }else{
-                      $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC LIMIT 3";
-                    }
-                  }else{
-                    $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC LIMIT 3";
-                  }
-
-                  if ($result_sql = $conn->query($select_sql)){
-                    if ($result_sql->num_rows != 0){
-                      foreach ($result_sql as $content) { ?>
-                        <div class="content">
-                          <p><?php echo $content['theory']; ?></p>
-                          <div>
-                            <!-- Edit button -->
-                            <button>Edit <img src="../img/edit.svg" alt=""></button>
-                            <!-- User, date, time -->
-                            <div class="content_caption">
-                              <p class="user"><?php echo get_user_data($conn, $content['user'], true)['name']; ?></p>
-                              <p class="time"><?php echo date("H:i", $content['date']); ?></p>
-                              <p class="date"><?php echo date("d.m.Y", $content['date']); ?></p>
-                            </div>
-                          </div>
-                        </div>
-                    <?php }
-                      if ($result_sql->num_rows > 3) { ?>
-                      <a class="view_all" href="theory.php?view_all=<?php echo $theme['id']; ?>">View all</a>
-                    <?php }
-                    }?>
-                    <section class="new_message">
-                        <h1>Add new content</h1>
-                        <div>
-                            <textarea name="" id="" placeholder="type something..."></textarea>
-                            <button>Add</button>
-                        </div>
-                    </section>
-                  <?php }else{
-                    $error_array['theory_select_error'] = true;
-                  }
-                  ?>
+                <?php }
+              }?>
+              <form class="new_message" method="post">
+                <h1>Add new content</h1>
+                <div>
+                  <textarea name="add_content" id="" placeholder="type something..."></textarea>
+                  <input type="hidden" name="theme_id" value="<?php echo $theme['id']; ?>">
+                  <button type="submit">Add</button>
                 </div>
-                <button class="view_all">View all</button>
-            </div>
-            <?php } ?>
-          </section>
-          
-          
-          <?php if ($auth) { ?>
-
-            <!-- Block to add new post -->
-            <section class="new_post">
-                <h1>Add a new theme</h1>
-                <!-- Form to write tags -->
-                <form method="post">
-                    <p>New theme:</p>
-                    <input type="text" placeholder="write theme" name="add_theme">
-                    <button class="add_post">Add</button>
-                </form>
-            </section>
-          <?php } ?>
+              </form>
+            <?php }else{
+              $error_array['theory_select_error'] = true;
+            }
+            ?>
+          </div>
+          <button class="view_all">View all</button>
         </div>
-    </main>
+      <?php } ?>
+    </section>
 
-    <?php include "../templates/footer.html"; ?>
 
-    
-    <script src="../templates/format.js"></script>
-    <script>
-        // ===SEARCH===
-        // Tag search
-        const search_input = document.querySelector('.theory_nav .search input');
-        search_input.oninput = function(){
+    <?php if ($auth) { ?>
+
+      <!-- Block to add new post -->
+      <section class="new_post">
+        <h1>Add a new theme</h1>
+        <!-- Form to write tags -->
+        <form method="post">
+          <p>New theme:</p>
+          <input type="text" placeholder="write theme" name="add_theme">
+          <button class="add_post">Add</button>
+        </form>
+      </section>
+    <?php } ?>
+  </div>
+</main>
+
+<?php include "../templates/footer.html"; ?>
+
+
+<script src="../templates/format.js"></script>
+<script>
+    // ===SEARCH===
+    // Tag search
+    const search_input = document.querySelector('.theory_nav .search input');
+    search_input.oninput = function(){
         let val = this.value.trim().replaceAll(' ', '').toUpperCase();
         let testThemes = document.querySelectorAll('.theory_block .underline_title h2');
         if(val != ''){
@@ -264,16 +269,16 @@ if($result = $conn->query($get_themes_sql)){
             closeButtons[i].style.cssText = `display: none`;
         });
     }
-  
+
 
     let AllThemes = Array.from(document.querySelectorAll('.theory_block .item_cover'));
     let sortedPopularThemes = [];
 
     for(let i = 0; i < AllThemes.length; i++){
-      sortedPopularThemes[i] = {
-        name: AllThemes[i].children[1].children[0].children[0].innerHTML,
-        count: AllThemes[i].children[2].children.length
-      }
+        sortedPopularThemes[i] = {
+            name: AllThemes[i].children[1].children[0].children[0].innerHTML,
+            count: AllThemes[i].children[2].children.length
+        }
     }
 
     sortedPopularThemes.sort((a, b) => a.count > b.count ? 1 : -1);
@@ -282,7 +287,7 @@ if($result = $conn->query($get_themes_sql)){
     let mediumPopular = document.querySelectorAll('.theory_nav .themes .medium_popular h1 button');
     let unpopular = document.querySelectorAll('.theory_nav .themes .unpopular h1 button');
     let AllThemesNav = document.querySelectorAll('.theory_nav .themes h1 button');
-    
+
     for(let i = 1; i < 3; i++){
         if(i < sortedPopularThemes.length){
             popular[i].innerHTML = sortedPopularThemes[i - 1].name;
@@ -304,19 +309,19 @@ if($result = $conn->query($get_themes_sql)){
 
     let FullAllThemesNav = [];
     for(let i = 0; i < AllThemesNav.length; i++){
-      FullAllThemesNav[i] = AllThemesNav[i].innerHTML;
+        FullAllThemesNav[i] = AllThemesNav[i].innerHTML;
     }
 
     for(let i = 0; i < AllThemesNav.length; i++){
         if (String(AllThemesNav[i].innerHTML).length > 15){
-            
+
             AllThemesNav[i].innerHTML = String(AllThemesNav[i].innerHTML).slice(0, 15) + '...';
         }
     }
-    
+
     let themesNavigation = document.querySelectorAll('.theory_nav .themes button');
     let testThemes = document.querySelectorAll('.theory_block .underline_title h2');
-    
+
     for(let k = 0; k < themesNavigation.length; k++){
         themesNavigation[k].addEventListener('click', function(){
             if(FullAllThemesNav[k] == "All"){
@@ -351,7 +356,7 @@ if($result = $conn->query($get_themes_sql)){
         });
     }
 
-    </script>
-    <script src="../main.js"></script>
+</script>
+<script src="../main.js"></script>
 </body>
 </html>
