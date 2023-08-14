@@ -17,11 +17,6 @@ body {
     padding-bottom: 60px;
 }
 
-/* ===BASE BUTTONS=== */
-
-
-
-/* ============== */
 
 .container{
     max-width: 85%;
@@ -1510,6 +1505,8 @@ footer p:last-child{
 }
 
 /* Title of theory item (tags) */
+
+
 .theory_block .underline_title{
     display: inline-block;
     background-color: rgba(240, 240, 240, 1);
@@ -1641,10 +1638,14 @@ footer p:last-child{
     background-color: rgba(216, 227, 243, 1);
 }
 
-.theory_block .item .new_message div p{
-    font-size: 27px;
-    margin-right: 20px;
+.theory_block .item .new_message textarea{
+    border: 1px solid #b6b6b6;
+    margin-right: 30px;
+    padding: 5px 7px;
+    min-width: 30vw;
+    min-height: 150px;
 }
+
 
 .theory_block .item .new_message button{
     background-color: rgba(15, 38, 84, 1);

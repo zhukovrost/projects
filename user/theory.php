@@ -61,7 +61,7 @@ if($result = $conn->query($get_themes_sql)){
             <p>Search: </p>
             <input type="text" placeholder="write tag">
         </div>
-        <!-- Most popular themes
+        <!-- Most popular themes -->
         <div class="themes">
             <div class="popular">
                 <h1><button>All</button> - <button></button> - <button></button></h1>
@@ -73,64 +73,73 @@ if($result = $conn->query($get_themes_sql)){
                 <h1><button>None</button> - <button>None</button> - <button>None</button></h1>
             </div>
         </div>
-        -->
+       
     </nav>
 
     <main>
         <div class="container">
 
+        <section class="theory_block">
           <?php foreach ($themes as $theme){ ?>
-          <section class="theory_block">
-            <!-- Tags of current theory -->
-            <div>
-              <button class="close"><img src="../img/крест.svg" alt=""></button>
-              <div class="underline_title">
-                <h2><span><?php echo $theme['theme']; ?></span></h2>
-              </div>
-              <!-- Block with all theory -->
-              <!-- Theory item -->
-              <div class="item">
-                <?php
-                if (isset($_GET['view_all'])){
-                  if ((int)$_GET['view_all'] == (int)$theme['id']){
-                    $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC";
+                <!-- Tags of current theory -->
+                <div class="item_cover">
+                  <button class="close"><img src="../img/крест.svg" alt=""></button>
+                  <div class="underline_title">
+                    <h2><span><?php echo $theme['theme']; ?></span></h2>
+                  </div>
+                <!-- Theory item -->
+                <div class="item">
+                  <?php
+                  if (isset($_GET['view_all'])){
+                    if ((int)$_GET['view_all'] == (int)$theme['id']){
+                      $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC";
+                    }else{
+                      $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC LIMIT 3";
+                    }
                   }else{
                     $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC LIMIT 3";
                   }
-                }else{
-                  $select_sql = "SELECT * FROM theory WHERE theme=".$theme['id']." ORDER BY id DESC LIMIT 3";
-                }
 
-                if ($result_sql = $conn->query($select_sql)){
-                  if ($result_sql->num_rows != 0){
-                    foreach ($result_sql as $content) { ?>
-                      <div class="content">
-                        <p><?php echo $content['theory']; ?></p>
-                        <div>
-                          <!-- Edit button -->
-                          <button>Edit <img src="../img/edit.svg" alt=""></button>
-                          <!-- User, date, time -->
-                          <div class="content_caption">
-                            <p class="user"><?php echo get_user_data($conn, $content['user'], true)['name']; ?></p>
-                            <p class="time"><?php echo date("H:i", $content['date']); ?></p>
-                            <p class="date"><?php echo date("d.m.Y", $content['date']); ?></p>
+                  if ($result_sql = $conn->query($select_sql)){
+                    if ($result_sql->num_rows != 0){
+                      foreach ($result_sql as $content) { ?>
+                        <div class="content">
+                          <p><?php echo $content['theory']; ?></p>
+                          <div>
+                            <!-- Edit button -->
+                            <button>Edit <img src="../img/edit.svg" alt=""></button>
+                            <!-- User, date, time -->
+                            <div class="content_caption">
+                              <p class="user"><?php echo get_user_data($conn, $content['user'], true)['name']; ?></p>
+                              <p class="time"><?php echo date("H:i", $content['date']); ?></p>
+                              <p class="date"><?php echo date("d.m.Y", $content['date']); ?></p>
+                            </div>
                           </div>
                         </div>
-
-                      </div>
-                  <?php }
-                    if ($result_sql->num_rows > 3) { ?>
-                    <a class="view_all" href="theory.php?view_all=<?php echo $theme['id']; ?>">View all</a>
-                  <?php }
-                  }?>
-                  <button>Add new content</button>
-                <?php }else{
-                  $error_array['theory_select_error'] = true;
-                }
-                ?>
-              </div>
-
-          <?php } if ($auth) { ?>
+                    <?php }
+                      if ($result_sql->num_rows > 3) { ?>
+                      <a class="view_all" href="theory.php?view_all=<?php echo $theme['id']; ?>">View all</a>
+                    <?php }
+                    }?>
+                    <section class="new_message">
+                        <h1>Add new content</h1>
+                        <div>
+                            <textarea name="" id="" placeholder="type something..."></textarea>
+                            <button>Add</button>
+                        </div>
+                    </section>
+                  <?php }else{
+                    $error_array['theory_select_error'] = true;
+                  }
+                  ?>
+                </div>
+                <button class="view_all">View all</button>
+            </div>
+            <?php } ?>
+          </section>
+          
+          
+          <?php if ($auth) { ?>
 
             <!-- Block to add new post -->
             <section class="new_post">
@@ -192,7 +201,7 @@ if($result = $conn->query($get_themes_sql)){
     let themeTitles = document.querySelectorAll('.theory_block .underline_title');
     let themeItems = document.querySelectorAll('.theory_block .item');
     let closeButtons = document.querySelectorAll('.theory_block .close');
-    const theoryFooter = document.querySelector('.theory_footer')
+    const theoryFooter = document.querySelector('footer')
 
     for(let i = 0; i < viewButtons.length; i++){
         viewButtons[i].addEventListener('click', function(){
@@ -201,6 +210,7 @@ if($result = $conn->query($get_themes_sql)){
             for(let j = 0; j < themeItems.length; j++){
                 viewButtons[j].classList.add('hide');
                 if(i != j){
+                    themeTitles[j].style.cssText = `display: none`;
                     themeItems[j].style.cssText = `display: none`;
                 }
             }
@@ -211,6 +221,7 @@ if($result = $conn->query($get_themes_sql)){
                 left: 0;
                 padding: 10vh 10vw;
                 min-height: 100vh;
+                height: auto;
                 max-height: none;
             `;
             themeTitles[i].style.cssText = `
@@ -253,51 +264,53 @@ if($result = $conn->query($get_themes_sql)){
             closeButtons[i].style.cssText = `display: none`;
         });
     }
-    
-    // Most popular themes
-    function sortByCount(array)
-        {
-            if( !Array.isArray(array) )
-                throw new TypeError('Неправильный тип, ожидался массив, получен ' + typeof array);
+  
 
-            let valuesMap = new Map();
+    let AllThemes = Array.from(document.querySelectorAll('.theory_block .item_cover'));
+    let sortedPopularThemes = [];
 
-            array.forEach(elem => {
-
-                valuesMap.set(elem, valuesMap.has(elem) ? valuesMap.get(elem) + 1 :  1);
-            });
-
-            let arr =  [...valuesMap.entries()].sort((a, b) => b[1] - a[1]);
-
-            return arr.map(value => value[0]);
-        }
-
-    let popularThemes = Array.from(document.querySelectorAll('.theory_block .underline_title h2 span'));
-    for(let i = 0; i < popularThemes.length; i++){
-        popularThemes[i] = popularThemes[i].innerHTML;
+    for(let i = 0; i < AllThemes.length; i++){
+      sortedPopularThemes[i] = {
+        name: AllThemes[i].children[1].children[0].children[0].innerHTML,
+        count: AllThemes[i].children[2].children.length
+      }
     }
 
-    sortedPopularThemes = sortByCount(popularThemes);
+    sortedPopularThemes.sort((a, b) => a.count > b.count ? 1 : -1);
 
     let popular = document.querySelectorAll('.theory_nav .themes .popular h1 button');
     let mediumPopular = document.querySelectorAll('.theory_nav .themes .medium_popular h1 button');
     let unpopular = document.querySelectorAll('.theory_nav .themes .unpopular h1 button');
+    let AllThemesNav = document.querySelectorAll('.theory_nav .themes h1 button');
     
     for(let i = 1; i < 3; i++){
         if(i < sortedPopularThemes.length){
-            popular[i].innerHTML = sortedPopularThemes[i - 1];
+            popular[i].innerHTML = sortedPopularThemes[i - 1].name;
         }
     }
 
     for(let i = 0; i < 3; i++){
         if(i + 2 < sortedPopularThemes.length){
-            mediumPopular[i].innerHTML = sortedPopularThemes[i + 2];
+            mediumPopular[i].innerHTML = sortedPopularThemes[i + 2].name;
         }
     }
 
     for(let i = 0; i < 3; i++){
         if(i + 5 < sortedPopularThemes.length){
-            unpopular[i].innerHTML = sortedPopularThemes[i + 5];
+            unpopular[i].innerHTML = sortedPopularThemes[i + 5].name
+            ;
+        }
+    }
+
+    let FullAllThemesNav = [];
+    for(let i = 0; i < AllThemesNav.length; i++){
+      FullAllThemesNav[i] = AllThemesNav[i].innerHTML;
+    }
+
+    for(let i = 0; i < AllThemesNav.length; i++){
+        if (String(AllThemesNav[i].innerHTML).length > 15){
+            
+            AllThemesNav[i].innerHTML = String(AllThemesNav[i].innerHTML).slice(0, 15) + '...';
         }
     }
     
@@ -306,14 +319,14 @@ if($result = $conn->query($get_themes_sql)){
     
     for(let k = 0; k < themesNavigation.length; k++){
         themesNavigation[k].addEventListener('click', function(){
-            if(themesNavigation[k].innerHTML == "All"){
+            if(FullAllThemesNav[k] == "All"){
                 for(let i = 0; i < testThemes.length; i++){
                     let cur_test = testThemes[i].parentNode.parentNode;
                     cur_test.classList.remove('hide');
                 }
             }
             else{
-                let val = themesNavigation[k].innerHTML.trim().replaceAll(' ', '').toUpperCase();
+                let val = FullAllThemesNav[k].trim().replaceAll(' ', '').toUpperCase();
                 for(let i = 0; i < testThemes.length; i++){
                     let titlesArr = Array.from(testThemes[i].children);
                     count = 0;
