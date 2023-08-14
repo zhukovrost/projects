@@ -110,14 +110,14 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
             if ($result_sql = $conn->query($select_sql)){
               if ($result_sql->num_rows != 0){
                 foreach ($result_sql as $content) { ?>
-                  <div class="content">
+                  <form class="content">
                     <p><?php echo $content['theory']; ?></p>
                     <div>
                       <!-- Edit button -->
                       <div class="buttons">
-                          <button>Edit <img src="../img/edit.svg" alt=""></button>
-                          <button>Cancel <img src="../img/cancel.svg" alt=""></button>
-                          <button>Save <img src="../img/save.svg" alt=""></button>
+                          <button type="button">Edit <img src="../img/edit.svg" alt=""></button>
+                          <button type="button">Cancel <img src="../img/cancel.svg" alt=""></button>
+                          <button type="submit">Save <img src="../img/save.svg" alt=""></button>
                       </div>
                       <!-- User, date, time -->
                       <div class="content_caption">
@@ -126,7 +126,7 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
                         <p class="date"><?php echo date("d.m.Y", $content['date']); ?></p>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 <?php }
               }?>
               <form class="new_message" method="post">
@@ -285,7 +285,7 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
         }
     }
 
-    sortedPopularThemes.sort((a, b) => a.count > b.count ? 1 : -1);
+    sortedPopularThemes.sort((a, b) => a.count > b.count ? 1 : 1);
 
     let popular = document.querySelectorAll('.theory_nav .themes .popular h1 button');
     let mediumPopular = document.querySelectorAll('.theory_nav .themes .medium_popular h1 button');
@@ -386,6 +386,7 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
             let curText = contentsBlock[i].firstElementChild.innerHTML;
             let NewElem = document.createElement('textarea');
             NewElem.value = curText;
+            NewElem.name = 'edit_content';
             NewElem.style.height = (contentsBlock[i].firstElementChild.scrollHeight) + "px";
             contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
 
@@ -417,11 +418,25 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
             NewElem.innerHTML = curText;
             contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
 
-            
             contentsBlock[i].prepend(NewElem);
         });
     }
 
+    
+    // Прокрутка к текущему блоку
+    let editButtons = document.querySelectorAll('.theory_block .item .content button[type="submit"]');
+
+    if(localStorage.getItem('ScrollToBlock')){
+      window.scrollTo(0, localStorage.getItem('ScrollToBlock'));
+    }
+
+    
+    
+    for(let i = 0; i < editButtons.length; i++){
+      editButtons[i].addEventListener('click', function(){
+        localStorage.setItem('ScrollToBlock', window.pageYOffset);
+      });
+    }
 
 </script>
 <script src="../main.js"></script>
