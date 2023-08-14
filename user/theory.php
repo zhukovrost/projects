@@ -114,7 +114,11 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
                     <p><?php echo $content['theory']; ?></p>
                     <div>
                       <!-- Edit button -->
-                      <button>Edit <img src="../img/edit.svg" alt=""></button>
+                      <div class="buttons">
+                          <button>Edit <img src="../img/edit.svg" alt=""></button>
+                          <button>Cancel <img src="../img/cancel.svg" alt=""></button>
+                          <button>Save <img src="../img/save.svg" alt=""></button>
+                      </div>
                       <!-- User, date, time -->
                       <div class="content_caption">
                         <p class="user"><?php echo get_user_data($conn, $content['user'], true)['name']; ?></p>
@@ -355,6 +359,69 @@ if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
             }
         });
     }
+
+
+    
+    // Buttons to add new messages
+    let messageButtons = document.querySelectorAll('.theory_block .item .content .buttons');
+    let contentsP = document.querySelectorAll('.theory_block .item .content p');
+    let contentsBlock = document.querySelectorAll('.theory_block .item .content');
+
+    for(let i = 0; i < messageButtons.length; i++){
+        let buttonsArr = messageButtons[i].children;
+        buttonsArr[1].style.cssText = `display:none`;
+        buttonsArr[2].style.cssText = `display:none`;
+    }
+
+    for(let i = 0; i < messageButtons.length; i++){
+        let buttonsArr = messageButtons[i].children;
+        let prText = contentsBlock[i].firstElementChild.innerHTML;
+
+        buttonsArr[0].addEventListener('click', function(){
+            buttonsArr[0].style.cssText = `display:none`;
+            buttonsArr[1].style.cssText = `display:flex`;
+            buttonsArr[2].style.cssText = `display:flex`;
+
+
+            let curText = contentsBlock[i].firstElementChild.innerHTML;
+            let NewElem = document.createElement('textarea');
+            NewElem.value = curText;
+            NewElem.style.height = (contentsBlock[i].firstElementChild.scrollHeight) + "px";
+            contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
+
+            
+            contentsBlock[i].prepend(NewElem);
+        });
+
+        buttonsArr[1].addEventListener('click', function(){
+            buttonsArr[0].style.cssText = `display:flex`;
+            buttonsArr[1].style.cssText = `display:none`;
+            buttonsArr[2].style.cssText = `display:none`;
+
+            let NewElem = document.createElement('p');
+            
+            NewElem.innerHTML = prText;
+            contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
+
+            
+            contentsBlock[i].prepend(NewElem);
+        });
+
+        buttonsArr[2].addEventListener('click', function(){
+            buttonsArr[0].style.cssText = `display:flex`;
+            buttonsArr[1].style.cssText = `display:none`;
+            buttonsArr[2].style.cssText = `display:none`;
+
+            let curText = contentsBlock[i].firstChild.value;
+            let NewElem = document.createElement('p');
+            NewElem.innerHTML = curText;
+            contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
+
+            
+            contentsBlock[i].prepend(NewElem);
+        });
+    }
+
 
 </script>
 <script src="../main.js"></script>

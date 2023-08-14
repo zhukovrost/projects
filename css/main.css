@@ -1569,6 +1569,14 @@ footer p:last-child{
     margin-bottom: 30px;
 }
 
+.theory_block .item .content textarea{
+    font-size: 20px;
+    padding: 5px 7px;
+    min-height: 100px;
+    border: 1px solid #a8a8a8;
+}
+
+
 /* Edit button and user, date, time */
 .theory_block .item .content div{
     display: flex;
@@ -1584,6 +1592,7 @@ footer p:last-child{
     align-items: center;
     padding: 3px 8px 3px 15px;
     font-size: 21px;
+    margin-right: 10px;
     border-radius: 5px;
     transition: .2s ease;
 }
