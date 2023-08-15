@@ -132,6 +132,7 @@ if (isset($_POST['theory_id']) && $auth){
                 foreach ($result_sql as $content) { ?>
                   <form class="content" method="post">
                     <p><?php echo $content['theory']; ?></p>
+                    <textarea></textarea>
                     <div>
                       <!-- Edit button -->
                       <div class="buttons">
@@ -390,58 +391,60 @@ if (isset($_POST['theory_id']) && $auth){
     let contentsP = document.querySelectorAll('.theory_block .item .content p');
     let contentsBlock = document.querySelectorAll('.theory_block .item .content');
 
+    let editTextareaArr = document.querySelectorAll('.theory_block .item .content textarea');
+    let editInputArr = document.querySelectorAll('.theory_block .item .content input[name="edit_content"]');
+
+
     for(let i = 0; i < messageButtons.length; i++){
         let buttonsArr = messageButtons[i].children;
         buttonsArr[1].style.cssText = `display:none`;
         buttonsArr[2].style.cssText = `display:none`;
+        editTextareaArr[i].style.cssText = `display:none`;
+    }
+
+    for(let i = 0; i < editTextareaArr.length; i++){
+      editTextareaArr[i].addEventListener('input', function(){
+        editInputArr[i].value = editTextareaArr[i].value; 
+      });
     }
 
     for(let i = 0; i < messageButtons.length; i++){
         let buttonsArr = messageButtons[i].children;
-        let prText = contentsBlock[i].firstElementChild.innerHTML;
+        let prText = contentsP[i].innerHTML;
 
         buttonsArr[0].addEventListener('click', function(){
             buttonsArr[0].style.cssText = `display:none`;
             buttonsArr[1].style.cssText = `display:flex`;
             buttonsArr[2].style.cssText = `display:flex`;
+            editTextareaArr[i].style.cssText = `display:block`;
+            contentsP[i].style.cssText = `display:none`;
 
 
-            let curText = contentsBlock[i].firstElementChild.innerHTML;
-            let NewElem = document.createElement('textarea');
-            NewElem.value = curText;
-            NewElem.name = 'edit_content';
-            NewElem.style.height = (contentsBlock[i].firstElementChild.scrollHeight) + "px";
-            contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
-
-            
-            contentsBlock[i].prepend(NewElem);
+            let curText = contentsP[i].innerHTML;
+            editTextareaArr[i].value = curText;
+            editTextareaArr[i].style.height = (contentsBlock[i].firstElementChild.scrollHeight) + "px";
         });
 
         buttonsArr[1].addEventListener('click', function(){
             buttonsArr[0].style.cssText = `display:flex`;
             buttonsArr[1].style.cssText = `display:none`;
             buttonsArr[2].style.cssText = `display:none`;
-
-            let NewElem = document.createElement('p');
-            
-            NewElem.innerHTML = prText;
-            contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
+            editTextareaArr[i].style.cssText = `display:none`;
+            contentsP[i].style.cssText = `display:block`;
 
             
-            contentsBlock[i].prepend(NewElem);
+            contentsP[i].innerHTML = prText;
         });
 
         buttonsArr[2].addEventListener('click', function(){
             buttonsArr[0].style.cssText = `display:flex`;
             buttonsArr[1].style.cssText = `display:none`;
             buttonsArr[2].style.cssText = `display:none`;
+            editTextareaArr[i].style.cssText = `display:none`;
+            contentsP[i].style.cssText = `display:block`;
 
-            let curText = contentsBlock[i].firstChild.value;
-            let NewElem = document.createElement('p');
-            NewElem.innerHTML = curText;
-            contentsBlock[i].removeChild(contentsBlock[i].firstElementChild);
-
-            contentsBlock[i].prepend(NewElem);
+            let curText = editTextareaArr[i].value;
+            contentsP[i].innerHTML = curText;
         });
     }
 
