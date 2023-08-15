@@ -313,7 +313,7 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
         if ($type == 'radio' || $type == 'checkbox'){
           for ($i = 0; $i < count($variants); $i++){
             ?> <div> <?php
-            if ($user_answers_id != -1 && in_array($i, $user_answers[$question_number])){
+            if ($user_answers_id != -1 && array_key_exists($question_number, $user_answers) && in_array($i, $user_answers[$question_number])){
               echo "<input type='$type' name='test_input[$question_number][]' value='$i' checked>";
             }else{
               echo "<input type='$type' name='test_input[$question_number][]' value='$i'>";
@@ -418,7 +418,11 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
     $all_scores += $score;
     $type = $question_data['type'];
     $right_answer = (array)json_decode($question_data['right_answers']);
-    $user_answer = $user_answers[$i];
+    if (array_key_exists($i, $user_answers)){
+      $user_answer = $user_answers[$i];
+    }else{
+      $user_answer = [''];
+    }
 
     if ($type != 'definite_mc'){
       if ((count($user_answer) == count($right_answer) || $type == 'definite') && !in_array('', $user_answer)){

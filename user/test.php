@@ -38,6 +38,11 @@ if (!check_deadline($conn, $deadline, $test_id, $id, $user_data['id'])){
   header("Location: my_tests.php?deadline_error=1");
 }
 
+if (empty($_POST['test_input'])){
+  $input = array();
+}else{
+  $input = $_POST['test_input'];
+}
 
 if (isset($_POST['finish'])){
   $test_data = get_test_data($conn, $test_id);
@@ -48,9 +53,9 @@ if (isset($_POST['finish'])){
   }
 
   if ($flag){
-    $insert_sql = "UPDATE tests_to_users SET mark=-2, date=".time().", answers='".json_encode($_POST['test_input'], 256)."' WHERE id=$id";
+    $insert_sql = "UPDATE tests_to_users SET mark=-2, date=".time().", answers='".json_encode($input, 256)."' WHERE id=$id";
   }else{
-    $insert_sql = "UPDATE tests_to_users SET date=".time().", answers='".json_encode($_POST['test_input'], 256)."' WHERE id=$id";
+    $insert_sql = "UPDATE tests_to_users SET date=".time().", answers='".json_encode($input, 256)."' WHERE id=$id";
   }
   if ($conn->query($insert_sql)){
     if ($flag){
