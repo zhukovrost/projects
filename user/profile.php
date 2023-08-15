@@ -131,7 +131,7 @@ if ($select_result_3 = $conn->query($select_sql_3)){
                               <h2>Nearest homework</h2>
                               <p>Name: <span><?php echo $test['name']; ?></span></p>
                               <p>Deadline: <span><?php if ($test_deadline != -1) { echo date("d.m.Y", (int)$test_deadline); } else { echo "None"; } ?></span></p>
-                              <p>Allowed time: <span><?php echo date("i:s", (int)$test_duration); ?></span></p>
+                              <p class="allowed_time">Allowed time: <span><?php echo date("i:s", (int)$test_duration); ?></span></p>
                             <a href="test.php?id=<?php echo $tests_to_users_id; ?>">START</a>
                           <?php } else { ?>
                               <p>You have done all your homework</p>
