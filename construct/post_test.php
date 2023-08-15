@@ -12,7 +12,11 @@ $error_array = array(
 
 # --------------------  pushing tests to db  -------------------------
 
-$test_id = $_GET['test_id'];
+if (empty($_GET['test_id'])){
+  $test_id = '';
+}else{
+  $test_id = $_GET['test_id'];
+}
 
 if (isset($_POST['push_id'])){
   $push_id = $_POST['push_id'];
