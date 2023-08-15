@@ -1118,6 +1118,29 @@
 
 
 @media (max-width: 1200px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav .search p{
+        font-size: 21px;
+    }
+
+    .theory_nav .search input{
+        font-size: 23px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 25px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 20px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 16px;
+    }
+
+    /* ===================================== */
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 21px;
@@ -1538,6 +1561,30 @@
 }
 
 @media (max-width: 1100px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav .search p{
+        font-size: 19px;
+    }
+
+    .theory_nav .search input{
+        font-size: 21px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 23px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 18px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 15px;
+    }
+
+    /* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 21px;
@@ -1915,6 +1962,34 @@
 
 
 @media (max-width: 1000px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav .search p{
+        font-size: 16px;
+    }
+
+    .theory_nav .search input{
+        font-size: 18px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 20px;
+    }
+
+    .theory_nav .themes h1{
+        font-size: 18px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 16px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 14px;
+    }
+
+    /* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 18px;
@@ -2370,6 +2445,34 @@
 }
 
 @media (max-width: 900px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav .search p{
+        font-size: 14px;
+    }
+
+    .theory_nav .search input{
+        font-size: 16px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 18px;
+    }
+
+    .theory_nav .themes h1{
+        font-size: 16px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 14px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 12px;
+    }
+
+    /* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 16px;
@@ -2878,6 +2981,51 @@
 
 
 @media (max-width: 800px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav .search p{
+        font-size: 12px;
+    }
+
+    .theory_nav .search input{
+        font-size: 14px;
+    }
+
+    .theory_nav .themes h1{
+        font-size: 16px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 16px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 12px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 11px;
+    }
+
+    .new_post h1{
+        font-size: 33px;
+    }
+
+    .new_post form p{
+        font-size: 21px;
+    }
+
+    .new_post form input{
+        font-size: 21px;
+    }
+
+    .new_post form .add_post{
+        font-size: 25px;
+        padding: 5px 15px;
+    }
+
+    /* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 15px;
@@ -3366,6 +3514,64 @@
 
 
 @media (max-width: 700px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .theory_nav .search{
+        margin-bottom: 30px;
+    }
+
+    .theory_nav .search p{
+        font-size: 18px;
+    }
+
+    .theory_nav .search input{
+        font-size: 20px;
+    }
+
+    .theory_nav .themes h1{
+        font-size: 22px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 22px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 17px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 15px;
+    }
+
+    .theory_block .close{
+        position: absolute;
+    }
+
+    .new_post h1{
+        font-size: 30px;
+    }
+
+    .new_post form p{
+        font-size: 18px;
+    }
+
+    .new_post form input{
+        font-size: 18px;
+    }
+
+    .new_post form .add_post{
+        font-size: 23px;
+        padding: 5px 15px;
+    }
+
+    /* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 14px;
@@ -4011,6 +4217,111 @@
 
 
 @media (max-width: 600px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .theory_nav .search{
+        margin-bottom: 20px;
+    }
+
+    .theory_nav .search p{
+        font-size: 15px;
+    }
+
+    .theory_nav .search input{
+        font-size: 17px;
+    }
+
+    .theory_nav .themes h1{
+        font-size: 19px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 15px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 12px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 10px;
+    }
+
+    .theory_block .close{
+        position: absolute;
+    }
+
+    .theory_block .underline_title{
+        padding: 5px 10px;
+    }
+
+    .theory_block .underline_title h2 span{
+        font-size: 20px;
+    }
+
+    .theory_block .item .content p{
+        font-size: 17px;
+    }
+
+    .theory_block .item .content button{
+        font-size: 16px;
+    }
+
+    .theory_block .item .content .content_caption p{
+        font-size: 13px;
+    }
+
+    .theory_block .item .content .content_caption .user{
+        font-size: 17px;
+    }
+
+    .theory_block .view_all{
+        font-size: 30px;
+        padding: 10px 30px;
+    }
+
+    .theory_block .item .new_message textarea{
+        min-width: 20vw;
+        font-size: 12px;
+    }
+
+    .theory_block .item .new_message div{
+        padding: 10px 20px;
+    }
+
+    .theory_block .item .new_message h1{
+        font-size: 28px;
+    }
+
+    .theory_block .item .new_message button{
+        font-size: 21px;
+        padding: 5px 15px;
+    }
+
+    .new_post h1{
+        font-size: 25px;
+    }
+
+    .new_post form p{
+        font-size: 15px;
+    }
+
+    .new_post form input{
+        font-size: 15px;
+    }
+
+    .new_post form .add_post{
+        font-size: 19px;
+        padding: 5px 15px;
+    }
+
+    /* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 11px;
@@ -4599,6 +4910,111 @@
 }
 
 @media (max-width: 500px){
+    /* ==============THEORY PAGE============= */
+    .theory_nav{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .theory_nav .search{
+        margin-bottom: 15px;
+    }
+
+    .theory_nav .search p{
+        font-size: 15px;
+    }
+
+    .theory_nav .search input{
+        font-size: 15px;
+        margin: 0px 0px 0px 10px;
+    }
+
+    .theory_nav .themes h1{
+        font-size: 17px;
+    }
+
+    .theory_nav .themes button{
+        font-size: 15px;
+    }
+
+    .theory_nav .medium_popular button{
+        font-size: 13px;
+    }
+
+    .theory_nav .unpopular button{
+        font-size: 11px;
+    }
+
+    .theory_block .close{
+        position: absolute;
+    }
+
+    .theory_block .underline_title{
+        padding: 5px 8px;
+    }
+
+    .theory_block .underline_title h2 span{
+        font-size: 14px;
+    }
+
+    .theory_block .item .content p{
+        font-size: 15px;
+    }
+
+    .theory_block .item .content button{
+        font-size: 14px;
+    }
+
+    .theory_block .item .content .content_caption p{
+        font-size: 11px;
+    }
+
+    .theory_block .item .content .content_caption .user{
+        font-size: 15px;
+    }
+
+    .theory_block .view_all{
+        font-size: 25px;
+        padding: 10px 20px;
+    }
+
+    .theory_block .item .new_message h1{
+        font-size: 24px;
+    }
+
+    .theory_block .item .new_message textarea{
+        min-width: 20vw;
+    }
+
+    .theory_block .item .new_message div{
+        padding: 10px 20px;
+    }
+
+    .theory_block .item .new_message button{
+        font-size: 19px;
+        padding: 5px 15px;
+    }
+
+    .new_post h1{
+        font-size: 23px;
+    }
+
+    .new_post form p{
+        font-size: 13px;
+    }
+
+    .new_post form input{
+        font-size: 13px;
+    }
+
+    .new_post form .add_post{
+        font-size: 17px;
+        padding: 5px 15px;
+    }
+
+    /* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 9px;
@@ -5268,6 +5684,112 @@
 
 
 @media (max-width: 400px){
+/* ==============THEORY PAGE============= */
+.theory_nav{
+    flex-direction: column;
+    align-items: center;
+}
+
+.theory_nav .search{
+    margin-bottom: 10px;
+}
+
+.theory_nav .search p{
+    font-size: 13px;
+}
+
+.theory_nav .search input{
+    font-size: 13px;
+    margin: 0px 0px 0px 7px;
+}
+
+.theory_nav .themes h1{
+    font-size: 15px;
+}
+
+.theory_nav .themes button{
+    font-size: 13px;
+}
+
+.theory_nav .medium_popular button{
+    font-size: 11px;
+}
+
+.theory_nav .unpopular button{
+    font-size: 9px;
+}
+
+.theory_block .close{
+    position: absolute;
+}
+
+.theory_block .underline_title{
+    padding: 2px 3px;
+}
+
+.theory_block .underline_title h2 span{
+    font-size: 11px;
+}
+
+.theory_block .item .content p{
+    font-size: 12px;
+}
+
+.theory_block .item .content button{
+    font-size: 12px;
+}
+
+.theory_block .item .content .content_caption p{
+    font-size: 9px;
+}
+
+.theory_block .item .content .content_caption .user{
+    font-size: 12px;
+}
+
+.theory_block .view_all{
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+.theory_block .item .new_message h1{
+    font-size: 18px;
+}
+
+.theory_block .item .new_message textarea{
+    min-width: 20vw;
+}
+
+.theory_block .item .new_message div{
+    padding: 10px 10px;
+}
+
+.theory_block .item .new_message button{
+    font-size: 17px;
+    padding: 5px 15px;
+}
+
+.new_post h1{
+    font-size: 23px;
+}
+
+.new_post form p{
+    font-size: 11px;
+}
+
+.new_post form input{
+    font-size: 11px;
+    margin-left: 5px;
+}
+
+.new_post form .add_post{
+    font-size: 15px;
+    padding: 5px 15px;
+}
+
+/* ===================================== */
+
+
     /* ==============MARKS PAGE============== */
     .marks_block .current .marks div{
         font-size: 8px;
@@ -5812,6 +6334,110 @@
 }
 
 @media (max-width: 360px){
+    /* ==============THEORY PAGE============= */
+.theory_nav{
+    flex-direction: column;
+    align-items: center;
+}
+
+.theory_nav .search{
+    margin-bottom: 9px;
+}
+
+.theory_nav .search p{
+    font-size: 12px;
+}
+
+.theory_nav .search input{
+    font-size: 12px;
+    margin: 0px 0px 0px 7px;
+}
+
+.theory_nav .themes h1{
+    font-size: 14px;
+}
+
+.theory_nav .themes button{
+    font-size: 12px;
+}
+
+.theory_nav .medium_popular button{
+    font-size: 10px;
+}
+
+.theory_nav .unpopular button{
+    font-size: 8px;
+}
+
+.theory_block .close{
+    position: absolute;
+}
+
+.theory_block .underline_title{
+    padding: 2px 3px;
+}
+
+.theory_block .underline_title h2 span{
+    font-size: 10px;
+}
+
+.theory_block .item .content p{
+    font-size: 11px;
+}
+
+.theory_block .item .content button{
+    font-size: 11px;
+}
+
+.theory_block .item .content .content_caption p{
+    font-size: 8px;
+}
+
+.theory_block .item .content .content_caption .user{
+    font-size: 11px;
+}
+
+.theory_block .view_all{
+    font-size: 17px;
+    padding: 10px 20px;
+}
+
+.theory_block .item .new_message h1{
+    font-size: 15px;
+}
+
+.theory_block .item .new_message textarea{
+    min-width: 20vw;
+}
+
+.theory_block .item .new_message div{
+    padding: 10px 10px;
+}
+
+.theory_block .item .new_message button{
+    font-size: 15px;
+    padding: 5px 15px;
+}
+
+.new_post h1{
+    font-size: 20px;
+}
+
+.new_post form p{
+    font-size: 9px;
+}
+
+.new_post form input{
+    font-size: 9px;
+    margin-left: 5px;
+}
+
+.new_post form .add_post{
+    font-size: 14px;
+    padding: 5px 15px;
+}
+
+/* ===================================== */
 
     /* =============WELCOME PAGE============= */
 

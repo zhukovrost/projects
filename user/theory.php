@@ -250,6 +250,7 @@ if (isset($_POST['theory_id']) && $auth){
 
             themeItems[i].style.cssText = `
                 position: absolute;
+                z-index:1001;
                 top: 0;
                 left: 0;
                 padding: 10vh 10vw;
@@ -259,7 +260,7 @@ if (isset($_POST['theory_id']) && $auth){
             `;
             themeTitles[i].style.cssText = `
                 position: absolute;
-                z-index: 1000;
+                z-index: 1002;
                 top: 0;
                 left: 0;
                 margin: 10px 20px;

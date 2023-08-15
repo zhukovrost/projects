@@ -1536,7 +1536,7 @@ footer p:last-child{
     width: 30px;
     height: 30px;
     position: fixed;
-    z-index: 1000;
+    z-index: 1002;
     top: 0%;
     right: 1.5%;
     margin: 20px 0px 0px 0px;
@@ -1550,7 +1550,7 @@ footer p:last-child{
     overflow: hidden;
     background-color: rgba(240, 240, 240, 1);   
     padding: 20px 30px;
-    border: 1px solid #d8d8d8;
+    border: 1px solid #b6b6b6;
 }
 
 .theory_block div.hide{
@@ -1562,6 +1562,7 @@ footer p:last-child{
     background-color: rgba(216, 227, 243, 1);
     margin-bottom: 20px;
     padding: 10px 20px 8px 20px;
+    word-break: break-all;
 }
 
 .theory_block .item .content p{
@@ -1685,6 +1686,7 @@ footer p:last-child{
     border-radius: 10px;
     background-color: rgba(15, 38, 84, 1);
     box-shadow: 0px 3px 0px rgba(89, 138, 183, 1);
+    border: 3px solid rgba(89, 138, 183, 1);
     color: #ffffff;
     font-size: 35px;
     transition: .1s ease-in-out;
@@ -1702,6 +1704,8 @@ footer p:last-child{
 .theory_block .view_all.hide{
     display: none;
 }
+
+
 
 /* ===New post block=== */
 .new_post{
@@ -1824,9 +1828,14 @@ footer p:last-child{
 }
 
 /* User's avatar */
+.reports .reports_item .avatar{
+    text-align: center;
+}
+
 .reports .reports_item .avatar img{
     width: 200px;
     height: 200px;
+    border-radius: 50%;
 }
 
 .reports .reports_item .avatar p{
@@ -2135,9 +2144,14 @@ footer p:last-child{
 }
 
 /* User's avatar */
+.all_reports .reports_item .avatar{
+    text-align: center;
+}
+
 .all_reports .reports_item .avatar img{
     width: 200px;
     height: 200px;
+    border-radius: 50%;
 }
 
 .all_reports .reports_item .avatar p{
@@ -2316,7 +2330,7 @@ footer p:last-child{
 .marks_block .current .content h1 span{
     font-weight: 600;
     background-color: rgba(133, 194, 3, 1);
-    color: #000000;
+    color: #ffffff;
     padding: 3px 5px;
 }
 
