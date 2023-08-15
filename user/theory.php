@@ -131,7 +131,7 @@ if (isset($_POST['theory_id']) && $auth){
               if ($result_sql->num_rows != 0){
                 foreach ($result_sql as $content) { ?>
                   <form class="content" method="post">
-                    <p><?php echo $content['theory']; ?></p>
+                    <p class="text"><?php echo $content['theory']; ?></p>
                     <textarea></textarea>
                     <div>
                       <!-- Edit button -->
@@ -388,7 +388,7 @@ if (isset($_POST['theory_id']) && $auth){
     
     // Buttons to add new messages
     let messageButtons = document.querySelectorAll('.theory_block .item .content .buttons');
-    let contentsP = document.querySelectorAll('.theory_block .item .content p');
+    let contentsP = document.querySelectorAll('.theory_block .item .content .text');
     let contentsBlock = document.querySelectorAll('.theory_block .item .content');
 
     let editTextareaArr = document.querySelectorAll('.theory_block .item .content textarea');
