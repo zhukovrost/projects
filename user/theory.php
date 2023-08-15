@@ -20,7 +20,7 @@ $error_array = array(
 
 if (isset($_POST['add_theme']) && $auth){
   if ($_POST['add_theme'] != "" || $_POST['add_theme'] != null){
-    $check_sql = "SELECT id FROM themes WHERE theme=".$_POST['add_theme'];
+    $check_sql = "SELECT id FROM themes WHERE theme='".$_POST['add_theme']."'";
     if ($conn->query($check_sql)->num_rows == 0){
       $add_theme_sql = "INSERT INTO themes(theme) VALUES('".$_POST['add_theme']."')";
       if($conn->query($add_theme_sql)){
