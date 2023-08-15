@@ -26,6 +26,8 @@ if ($select_result = $conn->query($select_sql)){
 $select_result->free();
 $completed_tests = json_encode($completed_tests);
 
+# ---------------- avatar upload ------------------------
+
 if(isset($_POST['image_to_php'])) {
   $data = $_POST['image_to_php'];
   $avatar_id = $user_data['avatar'];
@@ -48,6 +50,31 @@ if(isset($_POST['image_to_php'])) {
     }
   }else{
     echo $conn->error;
+  }
+}
+
+
+# -------------------- getting num of uncompleted tests ----------------------
+
+$uncompleted_tests = 0;
+$select_sql_2 = "SELECT id FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY deadline DESC";
+if ($select_result_2 = $conn->query($select_sql_2)){
+  $uncompleted_tests = $select_result_2->num_rows;
+}
+
+
+# --------------- getting nearest test ---------------------------
+
+$flag = false;
+
+$select_sql_3 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY deadline DESC LIMIT 1";
+if ($select_result_3 = $conn->query($select_sql_3)){
+  foreach ($select_result_3 as $item){
+    $flag = true;
+    $test = get_test_data($conn, $item['test']);
+    $test_deadline = $item['deadline'];
+    $tests_to_users_id = $item['id'];
+    $test_duration = $item['duration'];
   }
 }
 
@@ -85,26 +112,32 @@ if(isset($_POST['image_to_php'])) {
                 <!-- nearest theory and homework -->
                 <section class="materials">
                     <section class="theory">
-                        <h2>My theory</h2>
-                        <p>Learn the theory before doing your homework!</p>
+                        <h2>My tests</h2>
+                        <p>It's time to do your homework!</p>
                         <div>
                             <p>You have</p>
-                            <p class="number"> 3 </p>
-                            <p>unread theories</p>
-                            <button> GO </button>
+                            <p class="number"> <?php echo $uncompleted_tests; ?> </p>
+                            <p>uncompleted tests</p>
+                          <?php if ($uncompleted_tests > 0){?>
+                            <a href="my_tests.php"> GO </a>
+                          <?php } ?>
                         </div>
                     </section>
                     <section class="homework">
                         <div class="content">
                             <img src="../img/homework.svg" alt="">
-                            <div>
-                                <h2>Nearest homework</h2>
-                                <p>Deadline: <span>23 June 15:00</span></p>
-                                <p>Theme: <span>Past Perfect Tense</span></p>
-                                <p>Allowed time: <span>120 min</span></p>
-                            </div>
+                          <div>
+                          <?php if ($flag){ ?>
+                              <h2>Nearest homework</h2>
+                              <p>Name: <span><?php echo $test['name']; ?></span></p>
+                              <p>Deadline: <span><?php if ($test_deadline != -1) { echo date("d.m.Y", (int)$test_deadline); } else { echo "None"; } ?></span></p>
+                              <p>Allowed time: <span><?php echo date("i:s", (int)$test_duration); ?></span></p>
+                            <a href="test.php?id=<?php echo $tests_to_users_id; ?>">START</a>
+                          <?php } else { ?>
+                              <p>You have done all your homework</p>
+                          <?php } ?>
+                          </div>
                         </div>
-                        <button>START</button>
                     </section>
                 </section>
                 <!-- Activity diagram and links to all materials -->

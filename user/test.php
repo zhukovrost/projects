@@ -34,7 +34,6 @@ if ($mark == -2){
   header("Location: my_tests.php?verification_error=1");
 }
 
-echo $user_data['id'];
 if (!check_deadline($conn, $deadline, $test_id, $id, $user_data['id'])){
   header("Location: my_tests.php?deadline_error=1");
 }

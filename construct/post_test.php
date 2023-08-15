@@ -27,7 +27,7 @@ if (isset($_POST['push_id'])){
     }
   }
 
-  if (isset($_POST['deadline'])){
+  if (isset($_POST['deadline']) && $_POST['deadline'] != ''){
     $deadline_date = explode('-', $_POST['deadline']);
     $deadline = mktime(0, 0, 0, $deadline_date[1], $deadline_date[2], $deadline_date[0]);
   }else{

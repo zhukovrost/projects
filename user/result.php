@@ -65,7 +65,7 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
                     <!-- link -->
                     <div>
                         <p>Study the theory to improve your result!</p>
-                        <a href="../theory.php">Go to theory</a>
+                        <a href="theory.php">Go to theory</a>
                     </div>
                 </section>
             </section>
