@@ -452,18 +452,40 @@ if (isset($_POST['theory_id']) && $auth){
     
     // Прокрутка к текущему блоку
     let editButtons = document.querySelectorAll('.theory_block .item .content button[type="submit"]');
+    let addButtons = document.querySelectorAll('.theory_block .item .new_message button');
+    let viewAllButtons = document.querySelectorAll('.theory_block .view_all');
 
     if(localStorage.getItem('ScrollToBlock')){
       window.scrollTo(0, localStorage.getItem('ScrollToBlock'));
     }
 
-    
+    for(let i = 0; i < closeButtons.length; i++){
+      closeButtons[i].addEventListener('click', function(){ 
+        window.scrollTo(0, localStorage.getItem('ScrollToBlock'));
+      });
+    }
     
     for(let i = 0; i < editButtons.length; i++){
       editButtons[i].addEventListener('click', function(){
         localStorage.setItem('ScrollToBlock', window.pageYOffset);
       });
     }
+
+    for(let i = 0; i < addButtons.length; i++){
+      addButtons[i].addEventListener('click', function(){
+        localStorage.setItem('ScrollToBlock', window.pageYOffset);
+      });
+    }
+
+    window.addEventListener('scroll', function(){
+      let cur = window.pageYOffset;
+      for(let i = 0; i < viewAllButtons.length; i++){
+        viewAllButtons[i].addEventListener('click', function(){
+          localStorage.setItem('ScrollToBlock', cur);
+        });
+      }
+    })
+
 
 </script>
 <script src="../main.js"></script>
