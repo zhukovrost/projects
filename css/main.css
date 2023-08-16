@@ -701,6 +701,7 @@ footer p:last-child{
 
 /* Button 'START' */
 .profile_block .homework a{
+    font-family: 'Comfortaa';
     font-size: 25px;
     font-weight: 600;
     background-color: rgba(123, 194, 193, 1);

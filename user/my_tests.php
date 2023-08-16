@@ -50,6 +50,7 @@ $diagram_data = json_encode([$stats['wrong'], $stats['not_answered'], $stats['co
         <button class="passed">Passed</button>
         <button class="not_passed">Not passed</button>
         <button class="time"><p>Time</p> <img src="../img/Arrow_down.svg" alt=""></button>
+        <button class="deadline"><p>Deadline</p> <img src="../img/Arrow_down.svg" alt=""></button>
         <button class="questions_number"><p>Number of questions</p> <img src="../img/Arrow_down.svg" alt=""></button>
       </div>
     </div>
@@ -152,7 +153,6 @@ include "../templates/footer.html";
             let time = localStorage.getItem(`test_time${i}`);
 
             time--;
-            console.log(1)
             let AllTime = localStorage.getItem(`AllTestTime${i}`);
             localStorage.setItem(`SpendTestTime${i}`, (AllTime - time));
             localStorage.setItem(`test_time${i}`, time);
@@ -239,49 +239,48 @@ include "../templates/footer.html";
     let statusArr = [];
 
     for(let i = 0; i < deadlineSpans.length; i++){
-        let current = (deadlineSpans[i].innerHTML).split(' ');
-        let minutes = parseInt(current[0].split(':')[0]) * 60 + parseInt(current[0].split(':')[1]);
-        let day = parseInt(current[2]) - 1;
+        let current = (deadlineSpans[i].innerHTML).split('.');
+        let day = parseInt(current[0]) - 1;
         let month = 0;
-        let year = new Date().getFullYear();
-        if(current[1] == "January"){
+        let year = current[2];
+        if(current[1] == "01"){
             month = 1;
         }
-        if(current[1] == "February"){
+        if(current[1] == "02"){
             month = 2;
         }
-        if(current[1] == "March"){
+        if(current[1] == "03"){
             month = 3;
         }
-        if(current[1] == "April"){
+        if(current[1] == "04"){
             month = 4;
         }
-        if(current[1] == "May"){
+        if(current[1] == "05"){
             month = 5;
         }
-        if(current[1] == "June"){
+        if(current[1] == "06"){
             month = 6;
         }
-        if(current[1] == "July"){
+        if(current[1] == "07"){
             month = 7;
         }
-        if(current[1] == "August"){
+        if(current[1] == "08"){
             month = 8;
         }
-        if(current[1] == "September"){
+        if(current[1] == "09"){
             month = 9;
         }
-        if(current[1] == "October"){
+        if(current[1] == "10"){
             month = 10;
         }
-        if(current[1] == "November"){
+        if(current[1] == "11"){
             month = 11;
         }
-        if(current[1] == "December"){
+        if(current[1] == "12"){
             month = 12;
         }
 
-        let time = minutes + (day * 24 * 60)  + (month * 30 * 24 * 60)  + (year * 365 * 30 * 24 * 60);
+        let time = (day * 24 * 60)  + (month * 30 * 24 * 60)  + (year * 365 * 30 * 24 * 60);
         let item = {
             number: i,
             time: time
@@ -289,6 +288,8 @@ include "../templates/footer.html";
 
         deadlineArr.push(item);
     }
+
+    console.log(deadlineArr)
 
     for(let i = 0; i < timeSpans.length; i++){
         let time = parseInt(timeSpans[i].innerHTML.split(' ')[0]);
@@ -325,6 +326,69 @@ include "../templates/footer.html";
     let rightColum = document.querySelector('.tests_list .column.right');
     let leftColum = document.querySelector('.tests_list .column.left');
     let testsArr = document.querySelectorAll('.tests_list .test');
+
+    if(localStorage.getItem('nearestTestClick') == 1){
+        rightColum.innerHTML = '';
+        leftColum.innerHTML = '';
+        filterButtons[3].children[1].classList.add('up');
+        filterButtons[3].classList.add('sortItem_active');
+        for(let j = 0; j < deadlineArr.length; j++){
+            if(j % 2 == 1){
+                if(testsArr[deadlineArr[j].number].children[1].children[4].children[0].innerHTML == 'not passed'){
+                    rightColum.appendChild(testsArr[deadlineArr[j].number]);
+                    break;
+                }
+            }
+            if(j % 2 == 0){
+                if(testsArr[deadlineArr[j].number].children[1].children[4].children[0].innerHTML == 'not passed'){
+                    leftColum.appendChild(testsArr[deadlineArr[j].number]);
+                    break;
+                }
+            }
+        }
+
+        for(let j = 0; j < filterButtons.length; j++){
+            if(j != 2){
+                filterButtons[j].classList.remove('sortItem_active');
+            }
+        }
+
+        localStorage.setItem('nearestTestClick', 0);
+    }
+
+    if(localStorage.getItem('uncompletedTestsClick') == 1){
+        filterButtons[2].classList.add('sortItem_active');
+        rightColum.innerHTML = '';
+        leftColum.innerHTML = '';
+        for(let i = 0; i < statusArr.length; i++){
+            if(statusArr[i].status == 'not passed'){
+                if(questionsArr.length % 2 == 0){
+                    if(i % 2 == 1){
+                        rightColum.appendChild(testsArr[statusArr[i].number]);
+                    }
+                    if(i % 2 == 0){
+                        leftColum.appendChild(testsArr[statusArr[i].number]);
+                    }
+                }
+                else{
+                    if(i % 2 == 1){
+                        rightColum.appendChild(testsArr[statusArr[i].number]);
+                    }
+                    if(i % 2 == 0){
+                        leftColum.appendChild(testsArr[statusArr[i].number]);
+                    }
+                }
+            }
+        }
+
+        for(let j = 0; j < filterButtons.length; j++){
+            if(j != 2){
+                filterButtons[j].classList.remove('sortItem_active');
+            }
+        }
+
+        localStorage.setItem('uncompletedTestsClick', 0);
+    }
 
 
     for(let i = 0; i < filterButtons.length; i++){
@@ -559,10 +623,10 @@ include "../templates/footer.html";
                     for(let i = 0; i < statusArr.length; i++){
                         if(statusArr[i].status == 'not passed'){
                             if(questionsArr.length % 2 == 0){
-                                if(i % 2 == 0){
+                                if(i % 2 == 1){
                                     rightColum.appendChild(testsArr[statusArr[i].number]);
                                 }
-                                if(i % 2 == 1){
+                                if(i % 2 == 0){
                                     leftColum.appendChild(testsArr[statusArr[i].number]);
                                 }
                             }
@@ -575,7 +639,6 @@ include "../templates/footer.html";
                                 }
                             }
                         }
-
                     }
                 }
             }

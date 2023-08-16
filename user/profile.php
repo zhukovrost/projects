@@ -67,7 +67,7 @@ if ($select_result_2 = $conn->query($select_sql_2)){
 
 $flag = false;
 
-$select_sql_3 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY deadline DESC LIMIT 1";
+$select_sql_3 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY deadline LIMIT 1";
 if ($select_result_3 = $conn->query($select_sql_3)){
   foreach ($select_result_3 as $item){
     $flag = true;
@@ -132,7 +132,7 @@ if ($select_result_3 = $conn->query($select_sql_3)){
                               <p>Name: <span><?php echo $test['name']; ?></span></p>
                               <p>Deadline: <span><?php if ($test_deadline != -1) { echo date("d.m.Y", (int)$test_deadline); } else { echo "None"; } ?></span></p>
                               <p class="allowed_time">Allowed time: <span><?php echo date("i:s", (int)$test_duration); ?></span></p>
-                            <a href="test.php?id=<?php echo $tests_to_users_id; ?>">START</a>
+                            <a href="my_tests.php">GO</a>
                           <?php } else { ?>
                               <p>You have done all your homework</p>
                           <?php } ?>
@@ -147,8 +147,8 @@ if ($select_result_3 = $conn->query($select_sql_3)){
                     </div>
                     <div class="links">
                         <a class="item" href="my_marks.php?month=0">Marks</a>
+                        <a class="item" href="theory.php">Theory</a>
                         <a class="item" href="my_tests.php">All tests</a>
-                        <a class="item" href="my_materials.php">All materials</a>
                       <?php
                       if (check_if_admin($user_data, '../')){
                         ?>
@@ -270,6 +270,21 @@ if ($select_result_3 = $conn->query($select_sql_3)){
 
         saveAvatar.addEventListener('click', function(){
             document.querySelector('.preview_cover').style.cssText = `display: none;`;
+        });
+
+
+
+        // Buttons GO
+        let uncompletedTestsButton = document.querySelector('.profile_block .theory div a');
+        let nearestTestButton = document.querySelector('.profile_block .homework a');
+
+        uncompletedTestsButton.addEventListener('click', function(){
+          localStorage.setItem(`uncompletedTestsClick`, 1);
+        });
+
+        nearestTestButton.addEventListener('click', function(){
+          localStorage.setItem(`nearestTestClick`, 1);
+          console.log(1)
         });
       </script>
       <script src="../templates/format.js"></script>

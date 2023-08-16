@@ -566,7 +566,7 @@ function print_test_info($conn, $test_info_array){
       <?php
       if ($test_info_array['deadline'] != -1){
         $date = date('d.m.Y', $test_info_array['deadline']);
-        echo "<p>Deadline: <span>$date</span></p>";
+        echo "<p class='deadline'>Deadline: <span>$date</span></p>";
       }
       ?>
       <?php
