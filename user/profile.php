@@ -67,14 +67,25 @@ if ($select_result_2 = $conn->query($select_sql_2)){
 
 $flag = false;
 
-$select_sql_3 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY deadline LIMIT 1";
+$select_sql_3 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND deadline > ".time()." ORDER BY deadline LIMIT 1";
 if ($select_result_3 = $conn->query($select_sql_3)){
-  foreach ($select_result_3 as $item){
-    $flag = true;
-    $test = get_test_data($conn, $item['test']);
-    $test_deadline = $item['deadline'];
-    $tests_to_users_id = $item['id'];
-    $test_duration = $item['duration'];
+  if ($select_result_3->num_rows > 0){
+    foreach ($select_result_3 as $item){
+      $flag = true;
+      $test = get_test_data($conn, $item['test']);
+      $test_deadline = $item['deadline'];
+      $tests_to_users_id = $item['id'];
+      $test_duration = $item['duration'];
+    }
+  }else{
+    $select_sql_4 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR dedline=-1) ORDER BY date LIMIT 1";
+    foreach ($select_result_3 as $item){
+      $flag = true;
+      $test = get_test_data($conn, $item['test']);
+      $test_deadline = $item['deadline'];
+      $tests_to_users_id = $item['id'];
+      $test_duration = $item['duration'];
+    }
   }
 }
 
