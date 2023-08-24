@@ -4,7 +4,7 @@ include '../templates/settings.php';
 
 if (!(check_if_admin($user_data, "../"))){ header("Location: ../index.php"); }
 
-$title = "Add question from db"
+$title = "ADD QUESTIONS";
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,6 +26,7 @@ if ($select_result = $conn->query($select_sql)){
       <h3><?php echo $item["question"]; ?></h3>
       <input type='hidden' value='<?php echo $item["id"]; ?>' name='add_question_from_db_id'>
       <input type='submit' value='Добавить'>
+      <a href="edit_question.php?id=<?php echo $item['id']; ?>">EDIT</a>
     </form>
   <?php
   }
