@@ -78,7 +78,7 @@ if ($select_result_3 = $conn->query($select_sql_3)){
       $test_duration = $item['duration'];
     }
   }else{
-    $select_sql_4 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR dedline=-1) ORDER BY date LIMIT 1";
+    $select_sql_4 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY date LIMIT 1";
     if ($select_result_4 = $conn->query($select_sql_4)){
       foreach ($select_result_4 as $item){
         $flag = true;
