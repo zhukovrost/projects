@@ -289,8 +289,6 @@ include "../templates/footer.html";
         deadlineArr.push(item);
     }
 
-    console.log(deadlineArr)
-
     for(let i = 0; i < timeSpans.length; i++){
         let time = parseInt(timeSpans[i].innerHTML.split(' ')[0]);
         let item = {
@@ -360,24 +358,34 @@ include "../templates/footer.html";
         filterButtons[2].classList.add('sortItem_active');
         rightColum.innerHTML = '';
         leftColum.innerHTML = '';
+        let lengthArr = 0
+        for(let i = 0; i < statusArr.length; i++){
+            if(statusArr[i].status == 'passed'){
+                lengthArr += 1;
+            }
+        }
+
+        let cur = 0;
+
         for(let i = 0; i < statusArr.length; i++){
             if(statusArr[i].status == 'not passed'){
-                if(questionsArr.length % 2 == 0){
-                    if(i % 2 == 1){
+                if(lengthArr % 2 == 0){
+                    if(cur % 2 == 1){
                         rightColum.appendChild(testsArr[statusArr[i].number]);
                     }
-                    if(i % 2 == 0){
+                    if(cur % 2 == 0){
                         leftColum.appendChild(testsArr[statusArr[i].number]);
                     }
                 }
                 else{
-                    if(i % 2 == 1){
+                    if(cur % 2 == 1){
                         rightColum.appendChild(testsArr[statusArr[i].number]);
                     }
-                    if(i % 2 == 0){
+                    if(cur % 2 == 0){
                         leftColum.appendChild(testsArr[statusArr[i].number]);
                     }
                 }
+                cur += 1;
             }
         }
 
@@ -499,18 +507,26 @@ include "../templates/footer.html";
                         for(let j = timeArr.length - 1; j >= 0; j--){
                             if(deadlineArr.length % 2 == 0){
                                 if(j % 2 == 0){
-                                    rightColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    if(deadlineArr[j] != undefined){
+                                        rightColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    }
                                 }
                                 if(j % 2 == 1){
-                                    leftColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    if(deadlineArr[j] != undefined){
+                                        leftColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    }
                                 }
                             }
                             else{
                                 if(j % 2 == 1){
-                                    rightColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    if(deadlineArr[j] != undefined){
+                                        rightColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    }
                                 }
                                 if(j % 2 == 0){
-                                    leftColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    if(deadlineArr[j] != undefined){
+                                        leftColum.appendChild(testsArr[deadlineArr[j].number]);
+                                    }
                                 }
                             }
                         }
@@ -594,24 +610,33 @@ include "../templates/footer.html";
                     filterButtons[i].classList.add('sortItem_active');
                     rightColum.innerHTML = '';
                     leftColum.innerHTML = '';
+                    let lengthArr = 0
                     for(let i = 0; i < statusArr.length; i++){
                         if(statusArr[i].status == 'passed'){
-                            if(questionsArr.length % 2 == 0){
-                                if(i % 2 == 0){
+                            lengthArr += 1;
+                        }
+                    }
+
+                    let cur = 0;
+                    for(let i = 0; i < statusArr.length; i++){
+                        if(statusArr[i].status == 'passed'){
+                            if(lengthArr % 2 == 0){
+                                if(cur % 2 == 0){
                                     rightColum.appendChild(testsArr[statusArr[i].number]);
                                 }
-                                if(i % 2 == 1){
+                                if(cur % 2 == 1){
                                     leftColum.appendChild(testsArr[statusArr[i].number]);
                                 }
                             }
                             else{
-                                if(i % 2 == 1){
+                                if(cur % 2 == 1){
                                     rightColum.appendChild(testsArr[statusArr[i].number]);
                                 }
-                                if(i % 2 == 0){
+                                if(cur % 2 == 0){
                                     leftColum.appendChild(testsArr[statusArr[i].number]);
                                 }
                             }
+                            cur += 1;
                         }
 
                     }
@@ -620,24 +645,32 @@ include "../templates/footer.html";
                     filterButtons[i].classList.add('sortItem_active');
                     rightColum.innerHTML = '';
                     leftColum.innerHTML = '';
+                    let lengthArr = 0
                     for(let i = 0; i < statusArr.length; i++){
                         if(statusArr[i].status == 'not passed'){
-                            if(questionsArr.length % 2 == 0){
-                                if(i % 2 == 1){
+                            lengthArr += 1;
+                        }
+                    }
+                    let cur = 0;
+                    for(let i = 0; i < statusArr.length; i++){
+                        if(statusArr[i].status == 'not passed'){
+                            if(lengthArr % 2 == 0){
+                                if(cur % 2 == 1){
                                     rightColum.appendChild(testsArr[statusArr[i].number]);
                                 }
-                                if(i % 2 == 0){
+                                if(cur % 2 == 0){
                                     leftColum.appendChild(testsArr[statusArr[i].number]);
                                 }
                             }
                             else{
-                                if(i % 2 == 1){
+                                if(cur % 2 == 1){
                                     rightColum.appendChild(testsArr[statusArr[i].number]);
                                 }
-                                if(i % 2 == 0){
+                                if(cur % 2 == 0){
                                     leftColum.appendChild(testsArr[statusArr[i].number]);
                                 }
                             }
+                            cur += 1;
                         }
                     }
                 }
