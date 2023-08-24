@@ -14,8 +14,10 @@ $title = "Roman/24";
 $conn = new mysqli(HOSTNAME, HOSTUSER, HOSTPASSWORD, HOSTDB);
 conn_check($conn);
 
-if (isset($_COOKIE["login"])){
-    $user_data = get_user_data($conn, $_COOKIE['login']);
+session_start();
+
+if (isset($_SESSION["login"])){
+    $user_data = get_user_data($conn, $_SESSION['login']);
 }
 else{
     $user_data = array(

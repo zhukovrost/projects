@@ -23,7 +23,7 @@ if (isset($_POST['log_done'])){
 		if($log_result = $conn->query($log_sql)){
 				$rowsCount = $log_result->num_rows;
 				if ( $rowsCount != 0 ){
-          setcookie("login", $log_login);
+          $_SESSION["login"] = $log_login;
           header('Location: index.php');
           #header('Location: account.php');
 				}else{
@@ -62,9 +62,9 @@ if (isset($_POST['log_done'])){
     <h1>Login</h1>
     <div class="content">
       <label for="login">Login</label>
-      <input type="text" id="login" name="log_login" value="<?php if (isset($_COOKIE['reg_login'])){ echo $_COOKIE['reg_login']; } ?>">
+      <input type="text" id="login" name="log_login" value="<?php if (isset($_SESSION['reg_login'])){ echo $_SESSION['reg_login']; } ?>">
       <label for="password">Password</label>
-      <input type="password" id="password" name="log_password" value="<?php if (isset($_COOKIE['reg_password'])){ echo $_COOKIE['reg_password']; } ?>">
+      <input type="password" id="password" name="log_password" value="<?php if (isset($_SESSION['reg_password'])){ echo $_SESSION['reg_password']; } ?>">
       <a href="">Forgot password</a>
     </div>
     <?php

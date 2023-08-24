@@ -43,8 +43,8 @@ if (isset($_POST['reg_done'])){
                 if ($conn->query($reg_sql2)) {
                   $reg_sql3 = "INSERT INTO stats(user) VALUES (LAST_INSERT_ID())";
                   if ($conn->query($reg_sql3)){
-                    setcookie("reg_login", $reg_login, time()+300);
-                    setcookie("reg_password", $reg_password, time()+300);
+                    $_SESSION["reg_login"] = $reg_login;
+                    $_SESSION["reg_password"] = $reg_password;
                     header("Location: log.php?reg=1");
                   }else{
                     $error_array['adding_stats'] = true;
