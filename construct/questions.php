@@ -25,7 +25,7 @@ if ($select_result = $conn->query($select_sql)){
       <h2>ID: <span><?php echo $item["id"]; ?></span></h2>
       <h3><?php echo $item["question"]; ?></h3>
       <input type='hidden' value='<?php echo $item["id"]; ?>' name='add_question_from_db_id'>
-      <input type='submit' value='Добавить'>
+      <input type='submit' value='ADD'>
       <a href="edit_question.php?id=<?php echo $item['id']; ?>">EDIT</a>
     </form>
   <?php

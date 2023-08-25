@@ -24,8 +24,8 @@ $score = $question_data['score'];
 <!doctype html>
 <html lang="en">
 <?php include "../templates/head.php"; ?>
-<body>
-<a href="questions.php">Go back</a>
+<body class="edit_question_body">
+<a class="question_back" href="questions.php">Go back</a>
 <form method="post" action="edit_question.php?id=<?php echo $id; ?>">
     <input type="text" name="question" value="<?php echo $question_data['question']; ?>">
     <input type="hidden" name="type" value="<?php echo $type; ?>">

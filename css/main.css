@@ -2472,6 +2472,20 @@ footer p:last-child{
 	padding: 5px;
 }
 
+.c_form_3 .add_from_database{
+    border: 2px solid #0D0D0D;
+    padding: 5px 10px;
+    margin: 0px 0px 20px;
+    transition: .4s ease;
+    color: #000000;
+}
+
+.c_form_3 .add_from_database:hover{
+    background-color: #0D0D0D;
+    color: #F2F2F2;
+    border: 2px solid #2e8b16;
+}
+
 .c_preview_all{
   width: 90%;
   border: 2px solid black;
@@ -2778,6 +2792,90 @@ footer p:last-child{
 }
 
 .question_body form input:active{
+    box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
+    transform: translateY(3px);
+}
+
+.question_body form a{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(133, 198, 243, 1);
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 5px 25px;
+    margin-left: 20px;
+    transition: .2s ease-in-out;
+}
+
+.question_body form a:hover{
+    background-color: rgb(28, 64, 138);
+}
+
+.question_body form a:active{
+    box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
+    transform: translateY(3px);
+}
+
+/* ================================================== */
+
+
+/* ================EDIT QUESTIONS PAGE================*/
+
+.edit_question_body{
+    display: flex;
+    justify-content: center;
+    padding-top: 15vh;
+}
+
+.edit_question_body form{
+    background-color: rgba(240, 240, 240, 1);
+    height: fit-content;
+    padding: 30px 70px;
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+}
+
+.edit_question_body form input[name=question]{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    border: 1px solid #000000;
+    margin-bottom: 30px;
+    padding: 3px 10px;
+}
+
+.edit_question_body form input{
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+    font-size: 23px;
+    padding: 3px 7px;
+}
+
+.edit_question_body form input[name=right_answers]{
+    margin-top: 30px;
+    border: 2px solid #000000;
+}
+
+.edit_question_body form button[type=submit]{
+    background-color: rgba(15, 38, 84, 1);
+    box-shadow: 0px 3px 0px rgba(133, 198, 243, 1);
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    width: fit-content;
+    margin: 10px auto 0px;
+    padding: 5px 40px;
+    transition: .2s ease-in-out;
+}
+
+.edit_question_body form button[type=submit]:hover{
+    background-color: rgb(28, 64, 138);
+}
+
+.edit_question_body form button[type=submit]:active{
     box-shadow: 0px 0px 0px rgba(133, 198, 243, 1);
     transform: translateY(3px);
 }

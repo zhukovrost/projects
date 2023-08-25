@@ -364,7 +364,7 @@ if (isset($_POST['test_name'])){
             <input id="number_of_random_questions" type="number" placeholder="Amount of questions" name="num_of_rand_questions">
             <input type="submit" value="Add">
         </form>
-        <a href="questions.php">Add questions from database</a>
+        <a class="add_from_database" href="questions.php">Add questions from database</a>
         <form method="post">
             <h3>Enter test name</h3>
             <textarea id="name_of_test" name="test_name"></textarea>
