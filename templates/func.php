@@ -1,5 +1,8 @@
 <?php
 date_default_timezone_set("Europe/Moscow");
+require_once "Question.php";
+require_once "Test.php";
+require_once "User.php";
 
 #------------------ settings and base -----------------------
 function conn_check($conn){
@@ -123,17 +126,6 @@ function get_overall_rating($conn){
 
 }
 
-
-function select_question($conn, $id){
-  $select_item_sql = "SELECT question FROM questions WHERE id=".(int)$id;
-  $select_item_result = $conn->query($select_item_sql);
-  foreach ($select_item_result as $item){
-    $question = json_decode($item['question']);
-  }
-
-  return $question;
-}
-
 function get_theme_id($conn, $theme){
   $id = 0;
   if ($theme != '' && $theme != null){
@@ -144,12 +136,6 @@ function get_theme_id($conn, $theme){
     }
   }
   return $id;
-}
-
-function render($replaces, $tpl_filename){
-  $tpl = file_get_contents($tpl_filename);
-  $tpl = strtr($tpl, $replaces);
-  return $tpl;
 }
 
 #---------------- reg and log ----------------------
@@ -187,17 +173,6 @@ function render($replaces, $tpl_filename){
 
 
 # ----------------------- QUESTIONS AND TESTS ------------------------------------
-
-function get_question_data($conn, $question_id){
-  $select_question_sql = "SELECT * FROM questions WHERE id=$question_id";
-  if ($select_question_result = $conn->query($select_question_sql)){
-    foreach ($select_question_result as $question_data){
-      return $question_data;
-    }
-  }else{
-    return false;
-  }
-}
 
 function get_test_data($conn, $test_id){
   $select_test_sql = "SELECT * FROM tests WHERE id=$test_id";
@@ -259,25 +234,9 @@ function check_deadline($conn, $deadline, $test_id, $tests_to_users_id, $user_id
   }
 }
 
-function print_image($conn, $image_id){
-  if ($image_id != 0){
-    $select_image_sql = "SELECT image FROM test_images WHERE id=$image_id";
-    if ($select_image_result = $conn->query($select_image_sql)){
-      foreach ($select_image_result as $item){
-        $image = $item['image'];
-      }
-      echo '<img src="data:image;base64,'.base64_encode($image).'"/>'; # image
-    }
-    $select_image_result->free();
-  }
-}
-
 function print_question($conn, $question_id, $question_number=0, $extend=false, $user_answers_id=-1){
-  $question_data = get_question_data($conn, $question_id);
-  $type = $question_data['type'];
-  $variants = json_decode($question_data['variants']);
-  $right_answers = json_decode($question_data['right_answers']);
-  $image_id = $question_data['image'];
+  $question = new Question();
+  $question->set_question_data($conn, $question_id);
   if ($user_answers_id != -1){
     $user_answers = (array)json_decode(get_tests_to_users_data($conn, $user_answers_id)['answers']);
   }
@@ -285,12 +244,12 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
   <section class="question">
     <div class="underline_title">
       <h2>Question: <span><?php echo $question_number + 1; ?></span></h2>
-      <h2>Score: <span><?php echo $question_data['score']; ?></span></h2>
+      <h2>Score: <span><?php echo $question->score; ?></span></h2>
     </div>
     <div class="content">
-      <h1><?php echo $question_data['question']; ?></h1>
+      <h1><?php echo $question->question; ?></h1>
       <?php
-      switch ($type){
+      switch ($question->type){
         case "radio":
           ?> <p>Choose one answer:</p><?php
           break;
@@ -310,20 +269,20 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
       <div class="answers">
         <?php
 
-        if ($type == 'radio' || $type == 'checkbox'){
-          for ($i = 0; $i < count($variants); $i++){
+        if ($question->type == 'radio' || $question->type == 'checkbox'){
+          for ($i = 0; $i < count($question->variants); $i++){
             ?> <div> <?php
             if ($user_answers_id != -1 && array_key_exists($question_number, $user_answers) && in_array($i, $user_answers[$question_number])){
-              echo "<input type='$type' name='test_input[$question_number][]' value='$i' checked>";
+              echo "<input type='$question->type' name='test_input[$question_number][]' value='$i' checked>";
             }else{
-              echo "<input type='$type' name='test_input[$question_number][]' value='$i'>";
+              echo "<input type='$question->type' name='test_input[$question_number][]' value='$i'>";
             }
-            echo "<label>$variants[$i]</label>";
+            echo "<label>$question->variants</label>";
 
             ?> </div> <?php
           }
-        }else if ($type == 'missing_words'){
-          for ($i = 0; $i < count($right_answers); $i++){
+        }else if ($question->type == 'missing_words'){
+          for ($i = 0; $i < count($question->get_right_answers()); $i++){
             ?> <div> <?php
             if ($user_answers_id == -1) {
               echo "<input type='text' name='test_input[$question_number][]'>";
@@ -333,14 +292,14 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
             }
             ?> </div> <?php
           }
-        } else if ($type == "definite"){
+        } else if ($question->type == "definite"){
           if ($user_answers_id == -1){
             echo "<div><input type='text' name='test_input[$question_number][]'></div>";
           }else{
             $value = $user_answers[$question_number][0];
             echo "<div><input type='text' name='test_input[$question_number][]' value='$value'></div>";
           }
-        }else if ($type == "definite_mc"){ ?>
+        }else if ($question->type == "definite_mc"){ ?>
           <input type="hidden" name="for_verification" value="1">
           <?php
           if ($user_answers_id == -1 || $user_answers[$question_number] == null){
@@ -350,16 +309,16 @@ function print_question($conn, $question_id, $question_number=0, $extend=false, 
           }
         }
 
-          print_image($conn, $image_id);
+          $question->print_image($conn);
 
-          if ($extend && $type != "definite_mc"){
+          if ($extend && $question->type != "definite_mc"){
 
             echo "<p>Right answer(s): ";
-            foreach ($right_answers as $right_answer) {
-              if ($type == "missing_words" || $type == "definite"){
+            foreach ($question->get_right_answers() as $right_answer) {
+              if ($question->type == "missing_words" || $question->type == "definite"){
                 echo $right_answer."; ";
               }else{
-                echo $variants[$right_answer] . "; ";
+                echo $question->variants[$right_answer] . "; ";
               }
             }
             echo "</p>";
@@ -413,30 +372,28 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
   # checking the test
   for ($i = 0; $i < count($test); $i++){
     $question_id = $test[$i];
-    $question_data = get_question_data($conn, $question_id);
-    $score = $question_data['score'];
-    $all_scores += $score;
-    $type = $question_data['type'];
-    $right_answer = (array)json_decode($question_data['right_answers']);
+    $question = new Question();
+    $question->set_question_data($conn, $question_id);
+    $all_scores += $question->score;
     if (array_key_exists($i, $user_answers)){
       $user_answer = $user_answers[$i];
     }else{
       $user_answer = [''];
     }
 
-    if ($type != 'definite_mc'){
-      if ((count($user_answer) == count($right_answer) || $type == 'definite') && !in_array('', $user_answer)){
-        if ($type == 'radio' || $type == 'checkbox'){
-          if ($right_answer == $user_answer){
+    if ($question->type != 'definite_mc'){
+      if ((count($user_answer) == count($question->get_right_answers()) || $question->type == 'definite') && !in_array('', $user_answer)){
+        if ($question->type == 'radio' || $question->type == 'checkbox'){
+          if ($question->get_right_answers() == $user_answer){
             $correct++;
-            $user_scores += $score;
+            $user_scores += $question->score;
           }else{
             $wrong++;
           }
-        } else if ($type == 'missing_words'){
+        } else if ($question->type == 'missing_words'){
           $flag = true;
-          for ($j = 0; $j < count($right_answer); $j++){
-            if (mb_strtolower(str_replace(' ', '', $right_answer[$j])) != mb_strtolower(str_replace(' ', '', $user_answer[$j]))){
+          for ($j = 0; $j < count($question->get_right_answers()); $j++){
+            if (mb_strtolower(str_replace(' ', '', $question->get_right_answers()[$j])) != mb_strtolower(str_replace(' ', '', $user_answer[$j]))){
               $flag = false;
               break;
             }
@@ -444,14 +401,14 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
 
           if ($flag){
             $correct++;
-            $user_scores += $score;
+            $user_scores += $question->score;
           }else{
             $wrong++;
           }
-        }else if ($type == 'definite'){
+        }else if ($question->type == 'definite'){
           $flag = false;
           $user_answer = mb_strtolower(str_replace(' ', '', $user_answer[0]));
-          foreach ($right_answer as $answer){
+          foreach ($question->get_right_answers() as $answer){
             if (mb_strtolower(str_replace(' ', '', $answer)) == $user_answer){
               $flag = true;
               break;
@@ -460,7 +417,7 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
 
           if ($flag){
             $correct++;
-            $user_scores += $score;
+            $user_scores += $question->type;
           }else{
             $wrong++;
           }
@@ -468,7 +425,7 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
       }else{
         $not_answered++;
       }
-    }else if ($type == 'definite_mc'){
+    }else if ($question->type == 'definite_mc'){
       if ($get_stats && $solve['mark'] == -2){
         $verifying += 1;
       }else {

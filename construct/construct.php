@@ -21,32 +21,32 @@ $error_array = array(
 #------------------- clear function -------------------------
 
 if (empty($_POST['clear'])){
-    if (empty($_COOKIES['result_array'])){
-        $_COOKIES['result_array'] = array();
+    if (empty($_SESSION['result_array'])){
+        $_SESSION['result_array'] = array();
     }
 }else{
-    $_COOKIES['result_array'] = array();
+    $_SESSION['result_array'] = array();
     $_POST = array();
 }
 
 #------------------ form type -----------------------
 
 if (empty($_GET['form_type'])){
-    if (empty($_COOKIES['form_type'])){
-        $_COOKIES['form_type'] = "radio";
+    if (empty($_SESSION['form_type'])){
+        $_SESSION['form_type'] = "radio";
     }
 }else{
-    $_COOKIES['form_type'] = $_GET['form_type'];
+    $_SESSION['form_type'] = $_GET['form_type'];
 }
 
 #--------------- amount of questions ------------------
 
 if (empty($_GET['num_of_questions'])){
-    if (empty($_COOKIES['num_of_questions'])){
-        $_COOKIES['num_of_questions'] = 4;
+    if (empty($_SESSION['num_of_questions'])){
+        $_SESSION['num_of_questions'] = 4;
     }
 }else{
-    $_COOKIES['num_of_questions'] = $_GET['num_of_questions'];
+    $_SESSION['num_of_questions'] = $_GET['num_of_questions'];
 }
 
 # -------------------- FUNCTIONS -----------------------------
@@ -66,9 +66,9 @@ if (isset($_POST['num_for_delete'])){
         $num_del = $_POST['num_for_delete'] - 1;
 
         $nwra1 = array();
-        for ($i = 0; $i < $num_del; $i++){ array_push($nwra1, $_COOKIES['result_array'][$i]); }
-        for ($i = $num_del + 1; $i < count($_COOKIES['result_array']); $i++){ array_push($nwra1, $_COOKIES['result_array'][$i]); }
-        $_COOKIES['result_array'] = $nwra1;
+        for ($i = 0; $i < $num_del; $i++){ array_push($nwra1, $_SESSION['result_array'][$i]); }
+        for ($i = $num_del + 1; $i < count($_SESSION['result_array']); $i++){ array_push($nwra1, $_SESSION['result_array'][$i]); }
+        $_SESSION['result_array'] = $nwra1;
 
         unset($_POST['num_for_delete']);
     }
@@ -86,7 +86,7 @@ if (isset($_POST['num_of_rand_questions'])){
     if ($result = $conn->query($select_rand_sql)){
         foreach ($result as $rand_question_query){
             $rand_question_id = $rand_question_query['id'];
-            array_push($_COOKIES['result_array'], $rand_question_id);
+            array_push($_SESSION['result_array'], $rand_question_id);
         }
     }else{
         $error_array["random_error"] = true;
@@ -98,7 +98,7 @@ if (isset($_POST['num_of_rand_questions'])){
 
 if (isset($_POST['add_question_from_db_id'])){
     if ($_POST['add_question_from_db_id'] != "" || $_POST['add_question_from_db_id'] != null){
-        array_push($_COOKIES['result_array'], (int)$_POST['add_question_from_db_id']);
+        array_push($_SESSION['result_array'], (int)$_POST['add_question_from_db_id']);
     }
 }
 
@@ -143,12 +143,6 @@ if($result = $conn->query($get_themes_sql)){
 
 if (isset($_POST['add_question_to_db'])){
 
-
-    # ------------------- get question and type ---------------------
-
-    $question = $_POST['question'];
-    $type = $_COOKIES['form_type'];
-
     # --------------- get score -------------------
 
     if (isset($_POST['score']) && $_POST['score'] != ''){
@@ -169,7 +163,7 @@ if (isset($_POST['add_question_to_db'])){
     # --------------------- get variants / answers ------------------------
 
     $variants = array();
-    for ($i = 0; $i < $_COOKIES['num_of_questions']; $i++){
+    for ($i = 0; $i < $_SESSION['num_of_questions']; $i++){
         $variant = $_POST[$i];
         array_push($variants, $variant);
         unset($_POST[$i]);
@@ -182,7 +176,7 @@ if (isset($_POST['add_question_to_db'])){
         for ($i = 0; $i < count($right_answers); $i++){
             $right_answers[$i] = (int)$right_answers[$i] - 1;
         }
-    }else if ($type == "definite" or $type == "missing_words"){
+    }else if ($_SESSION['type'] == "definite" or $_SESSION['type'] == "missing_words"){
         $right_answers = $variants;
         $variants = array();
     }else{
@@ -211,17 +205,15 @@ if (isset($_POST['add_question_to_db'])){
         $img_id = mysqli_insert_id($conn);
     }
 
+    # ------------------ insert question ----------------
 
-    # ----------------- insert question to db --------------------
-    $add_question_sql = "INSERT INTO questions (question, theme, type, score, variants, right_answers, image) VALUES ('$question', $theme, '$type', $score, '".json_encode($variants, 256)."', '".json_encode($right_answers, 256)."', $img_id)";
-    if ($conn->query($add_question_sql)) {
+    $question = new Question($_POST['question'], $theme, $_SESSION['form_type'], $variants, $right_answers, $score, $img_id);
+    if ($question->insert($conn)){
+        array_push($_SESSION['result_array'], $question->get_id());
         $error_array['success_add_question'] = true;
-        $id = mysqli_insert_id($conn);
-        array_push($_COOKIES['result_array'], $id);
     }else{
         echo "Ошибка: " . $conn->error;
     }
-
 }
 
 # -------------------- ADD TEST TO DB ----------------------
@@ -231,7 +223,7 @@ if (isset($_POST['test_name'])){
     # -------------- search for all themes in the test -----------------
 
     $test_themes = array();
-    foreach ($_COOKIES['result_array'] as $question_id){
+    foreach ($_SESSION['result_array'] as $question_id){
         $select_test_themes_sql = "SELECT theme FROM questions WHERE id=$question_id ORDER BY theme";
         if ($select_test_themes_result = $conn->query($select_test_themes_sql)){
             foreach ($select_test_themes_result as $item){
@@ -254,7 +246,7 @@ if (isset($_POST['test_name'])){
         $task = "Solve the test.";
     }
 
-    $add_test_sql = "INSERT INTO tests(name, test, task, themes) VALUES('".$_POST['test_name']."', '".json_encode($_COOKIES['result_array'])."', '$task', '".json_encode($test_themes)."')";
+    $add_test_sql = "INSERT INTO tests(name, test, task, themes) VALUES('".$_POST['test_name']."', '".json_encode($_SESSION['result_array'])."', '$task', '".json_encode($test_themes)."')";
     if($conn->query($add_test_sql)){
         $error_array["success_add_test"] = true;
         $test_id = mysqli_insert_id($conn);
@@ -266,7 +258,7 @@ if (isset($_POST['test_name'])){
 
     unset($_POST['test_name']);
     $error_array["success_add_questions"] = true;
-    $_COOKIES['result_array'] = array();
+    $_SESSION['result_array'] = array();
 }
 
 ?>
@@ -280,13 +272,13 @@ if (isset($_POST['test_name'])){
         <textarea id="add_question_input" name="question" placeholder="Enter the question"></textarea>
         <br>
         <?php
-        if ($_COOKIES['form_type'] != "definite_mc"){
-            if ($_COOKIES['form_type'] != "missing_words"){
-                for ($i = 0; $i < $_COOKIES['num_of_questions']; $i++){
+        if ($_SESSION['form_type'] != "definite_mc"){
+            if ($_SESSION['form_type'] != "missing_words"){
+                for ($i = 0; $i < $_SESSION['num_of_questions']; $i++){
                     echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Variant №".(intval($i) + 1)."'>\n<br>";
                 }
             }else{
-                for ($i = 0; $i < $_COOKIES['num_of_questions']; $i++){
+                for ($i = 0; $i < $_SESSION['num_of_questions']; $i++){
                     echo "<input id='answer_input' style='width: 90%' name='".$i."' type='text' placeholder='Missing word №".(intval($i) + 1)."'>\n<br>";
                 }
             }
@@ -297,10 +289,10 @@ if (isset($_POST['test_name'])){
         <h4>Add the image</h4>
         <input type="file" name="add_img">
         <?php
-        if ($_COOKIES['form_type'] == "radio"){ ?>
+        if ($_SESSION['form_type'] == "radio"){ ?>
             <h4>Right answer number</h4><input id="num_of_right_answer_number" type="number" name="num_of_right_answer" style="width: 30%">
         <?php }
-        if ($_COOKIES['form_type'] == "checkbox"){ ?>
+        if ($_SESSION['form_type'] == "checkbox"){ ?>
             <h4>Right answer numbers</h4>
             <input id="num_of_right_answer_text" type="text" name="num_of_right_answer" style="width: 30%">
             <p>Enter with a space</p>
@@ -321,16 +313,16 @@ if (isset($_POST['test_name'])){
     </form>
     <form method="get" class="c_form_3">
         <h3>Question type</h3>
-        <p><input type="radio" name="form_type" value="radio"<?php if ($_COOKIES['form_type'] == "radio"){ echo " checked"; } ?>>Choice of options (one answer)</p>
-        <p><input type="radio" name="form_type" value="checkbox"<?php if ($_COOKIES['form_type'] == "checkbox"){ echo " checked"; } ?>>Choice of options (several answers)</p>
-        <p><input type="radio" name="form_type" value="definite"<?php if ($_COOKIES['form_type'] == "definite"){ echo " checked"; } ?>>Definite answer (several variants)</p>
-        <p><input type="radio" name="form_type" value="definite_mc"<?php if ($_COOKIES['form_type'] == "definite_mc"){ echo " checked"; } ?>>Definite answer (manual verification)</p>
-        <p><input type="radio" name="form_type" value="missing_words"<?php if ($_COOKIES['form_type'] == "missing_words"){ echo " checked"; } ?>>Missing words</p>
+        <p><input type="radio" name="form_type" value="radio"<?php if ($_SESSION['form_type'] == "radio"){ echo " checked"; } ?>>Choice of options (one answer)</p>
+        <p><input type="radio" name="form_type" value="checkbox"<?php if ($_SESSION['form_type'] == "checkbox"){ echo " checked"; } ?>>Choice of options (several answers)</p>
+        <p><input type="radio" name="form_type" value="definite"<?php if ($_SESSION['form_type'] == "definite"){ echo " checked"; } ?>>Definite answer (several variants)</p>
+        <p><input type="radio" name="form_type" value="definite_mc"<?php if ($_SESSION['form_type'] == "definite_mc"){ echo " checked"; } ?>>Definite answer (manual verification)</p>
+        <p><input type="radio" name="form_type" value="missing_words"<?php if ($_SESSION['form_type'] == "missing_words"){ echo " checked"; } ?>>Missing words</p>
     </form>
     <div class="c_form_2">
         <form method="get">
             <h3>Amount of answers</h3>
-            <input type="number" name="num_of_questions" value="<?php echo $_COOKIES['num_of_questions']; ?>">
+            <input type="number" name="num_of_questions" value="<?php echo $_SESSION['num_of_questions']; ?>">
             <input type="submit" value="Switch">
         </form>
         <form method="post">
@@ -389,7 +381,7 @@ if ($error_array['theme_error'] || $error_array['theme_success'] || $error_array
         <?php } if ($error_array["image_success"]){ ?>
             <p class='success'>New image has been added to the database (ID: <?php echo $img_id; ?>)</p>
         <?php } if ($error_array["success_add_question"]){ ?>
-            <p class='success'>New question has been added to the database (ID: <?php echo $id; ?>)</p>
+            <p class='success'>New question has been added to the database (ID: <?php echo $question->get_id(); ?>)</p>
         <?php } if ($error_array["theme_success"]){ ?>
             <p class='success'>New theme has been added to the database (ID: <?php echo $theme_id; ?>)</p>
         <?php } ?>
@@ -400,7 +392,7 @@ if ($error_array['theme_error'] || $error_array['theme_success'] || $error_array
 <?php
 #-------------------- preview -------------------
 
-print_test($conn, $_COOKIES['result_array'], true);
+print_test($conn, $_SESSION['result_array'], true);
 
 
 ?>

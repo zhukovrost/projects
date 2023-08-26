@@ -25,7 +25,9 @@ if (isset($_POST['push_id'])){
   $test = json_decode($test_data['test']);
   $flag = false;
   foreach ($test as $question_id){
-    if (get_question_data($conn, $question_id)['type'] == 'definite_mc'){
+      $question = new Question();
+      $question->set_question_data($conn, $question_id);
+    if ($question->type == 'definite_mc'){
       $flag = true;
       break;
     }

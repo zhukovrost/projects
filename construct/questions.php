@@ -18,15 +18,18 @@ $title = "ADD QUESTIONS";
   <input class="id" type="text" placeholder="Search id">
 </div>
 <?php
-$select_sql = "SELECT * FROM questions ORDER BY id DESC";
+$select_sql = "SELECT id, question FROM questions ORDER BY id DESC";
 if ($select_result = $conn->query($select_sql)){
-  foreach ($select_result as $item){ ?>
+  foreach ($select_result as $item){
+      $question_id = $item['id'];
+      $question = $item['question']
+      ?>
     <form action='construct.php' method='post'>
-      <h2>ID: <span><?php echo $item["id"]; ?></span></h2>
-      <h3><?php echo $item["question"]; ?></h3>
-      <input type='hidden' value='<?php echo $item["id"]; ?>' name='add_question_from_db_id'>
+      <h2>ID: <span><?php echo $question_id; ?></span></h2>
+      <h3><?php echo $question; ?></h3>
+      <input type='hidden' value='<?php echo $question_id; ?>' name='add_question_from_db_id'>
       <input type='submit' value='ADD'>
-      <a href="edit_question.php?id=<?php echo $item['id']; ?>">EDIT</a>
+      <a href="edit_question.php?id=<?php echo $question_id; ?>">EDIT</a>
     </form>
   <?php
   }
