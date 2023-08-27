@@ -3,6 +3,7 @@ date_default_timezone_set("Europe/Moscow");
 require_once "Question.php";
 require_once "Test.php";
 require_once "User.php";
+require_once "Report.php";
 
 #------------------ settings and base -----------------------
 function conn_check($conn){
