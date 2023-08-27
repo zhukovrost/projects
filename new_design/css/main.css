@@ -1,0 +1,2276 @@
+@import url("reset.css");
+
+/* =================BASE================= */
+html {
+	overflow: scroll;
+	overflow-x: hidden;
+    min-width: 100vw;
+    min-height: 100vh;
+	height: 100%;
+}
+
+body {
+    position: relative;
+	background-color: rgba(245, 245, 245, 1);
+	font-family: 'Open Sans', sans-serif;
+	min-height: 100vh;
+    padding-bottom: 65px;
+}
+
+.container{
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+/* ===LOGO=== */
+.logo{
+    text-align: center;
+    margin-right: 10vw;
+    color: #000000;
+    opacity: 0.85;
+}
+
+.logo:hover{
+    opacity: 1;
+}
+
+.welcome_logo{
+    text-align: center;
+    margin-right: 0vw;
+}
+
+.welcome_logo p{
+    color: #ffffff;
+}
+
+/* ===HEADER=== */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+    padding: 0 5vw 10px;
+    color: #000000;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+header a{
+    text-align: center;
+    color: #000000;
+    opacity: 0.85;
+}
+
+header a:hover{
+    opacity: 1;
+}
+
+header a .other_img{
+    transform: translateY(12px);
+}
+
+/* ===FOOTER=== */
+footer{
+    position: absolute;
+    left: 5%;
+    bottom: 0%;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 5px 20px 5px;
+    border-top: 1px solid rgba(208, 208, 208, 1);
+    font-size: 16px;
+}
+
+footer .social_media{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+footer .social_media a{
+    margin-left: 8px;
+}
+
+footer .social_media a img{
+    width: 25px;
+    height: 25px;
+}
+
+footer .email{
+    display: flex;
+}
+
+footer .email a{
+    color: #292929;
+    margin-left: 8px;
+}
+
+footer .email a:hover{
+    color: #000000;
+}
+
+footer .about p:first-child{
+    margin-bottom: 5px;
+}
+
+/* ============================================ */
+
+
+/* ================WELCOME PAGE================ */
+
+/* ===FIRST BLOCK=== */
+.welcome_block_1{
+    overflow: hidden;
+    position: relative;
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+    background-image: url('../img/background_icons.svg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+
+.welcome_header{
+    justify-content: space-around;
+    border-bottom: 1px solid #3a3a3a;
+    padding: 0px 0px 10px;
+}
+
+/* hedaer item */
+.welcome_header a{
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0.85;
+    transition: .05s ease;
+}
+
+.welcome_header a:hover{
+    opacity: 1;
+}
+
+.welcome_header a p{
+    font-size: 15px;
+}
+
+.welcome_header a:last-child{
+    font-size: 25px;
+}
+
+.welcome_header a .other_img{
+    transform: translateY(12px);
+}
+
+/* Title */
+.welcome_block_1 .title{
+    margin-top: 15vh;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.welcome_block_1 .title h1{
+    font-size: 100px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.welcome_block_1 .title h2{
+    font-weight: medium;
+    font-size: 65px;
+    transform: translateY(-15px);
+}
+
+/* decoration images */
+.welcome_hand_img{
+    position: absolute;
+    bottom: -3%;
+    left: 37%;
+    animation: welcome_hand_move 3s cubic-bezier(0.42, 0, 0.5, 1.22) infinite;
+}
+
+@keyframes welcome_hand_move {
+    0%{
+        bottom: -3%;
+    }
+    25%{
+        bottom: -1%;
+    }
+    50%{
+        bottom: -3%;
+    }
+}
+
+.welcome_biceps1{
+    transition: .2s ease-in-out;
+}
+
+.welcome_biceps2{
+    display: block;
+    float: right;
+    transition: .3s ease-in-out;
+}
+
+.welcome_biceps1:hover{
+    transform: rotate(-20deg) translateX(-20px) translateY(-70px);
+}
+
+.welcome_biceps2:hover{
+    transform: rotate(20deg) translateX(20px) translateY(-70px);
+}
+
+/* Удобно. Просто. Эффективно */
+.welcome_subtitle{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+
+/* ===SECOND WELCOME BLOCK */
+.welcome_block_2{
+    padding-top: 15vh;
+    min-height: 100vh;
+    background-color: rgba(245, 245, 245, 1);
+}
+
+/* Title */
+.welcome_block_2 .title{
+    text-align: center;
+}
+
+.welcome_block_2 .title h1{
+    line-height: 40px;
+    font-size: 100px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+}
+
+.welcome_block_2 .title h2{
+    font-weight: 500;
+    font-size: 70px;
+}
+
+
+/* Content */
+.welcome_block_2 .content{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15vh;
+}
+
+/* Exercise item */
+.welcome_block_2 .content .exercise_item{
+    position: relative;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 8px 35px 30px;
+    border-radius: 12px;
+    border: 1px solid #e4e4e4;
+    box-shadow: 9px 9px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: .1s ease-in-out;
+    overflow: hidden;
+}
+
+/* Exercise info */
+.welcome_block_2 .content .exercise_item .info{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    opacity: 0.9;
+    transition: .1s ease-in-out;
+}
+
+.welcome_block_2 .exercise_item .info:hover{
+    opacity: 1;
+}
+
+.welcome_block_2 .exercise_item .info_block{
+    position: absolute;
+    z-index: 1;
+    border-radius: 12px;
+    border: 1px solid #e4e4e4;
+    top: -101%;
+    left: -1%;
+    width: 101%;
+    height: 101%;
+    background-color: #ffffff;
+    text-align: start;
+    padding: 30px 40px;
+    transition: .3s ease-in-out;
+}
+
+.welcome_block_2 .exercise_item .info_block p{
+    font-size: 15px;
+}
+
+.welcome_block_2 .exercise_item .info_block .info_close{
+    top: 3%;
+    right: 2%;
+    position: absolute;
+    opacity: 0.8;
+}
+
+.welcome_block_2 .exercise_item .info_block .info_close:hover{
+    opacity: 1;
+}
+
+/* Exercise muscle groups */
+.welcome_block_2 .content .exercise_item .muscle_groups{
+    color: rgba(143, 143, 143, 1);
+    font-size: 15px;
+    word-break: break-all;
+    max-width: 70%;
+    margin: 0 auto 40px;
+}
+
+/* Exercise images */
+.welcome_block_2 .content .exercise_item .exercise_img{
+    margin-bottom: 20px;
+}
+
+/* Exercise decoration line */
+.welcome_block_2 .content .exercise_item .line{
+    width: 100%;
+    margin: 0 auto;
+    height: 1px;
+    background-color: rgba(206, 206, 206, 1);
+}
+
+/* Exercise title */
+.welcome_block_2 .content .exercise_item h1{
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* Exercise rating + statistic */
+.welcome_block_2 .exercise_item .statistic{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.welcome_block_2 .exercise_item .statistic .rating{
+    display: flex;
+    align-items: center;
+}
+
+.welcome_block_2 .exercise_item .statistic .rating p{
+    font-size: 20px;
+    margin-right: 3px;
+}
+
+.welcome_block_2 .exercise_item .statistic .difficult{
+    display: flex;
+}
+
+.welcome_block_2 .exercise_item .statistic .difficult div{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    margin: 0px 2px;
+}
+
+.welcome_block_2 .exercise_item .statistic .difficult div.disabled{
+    background-color: rgb(155, 194, 161);
+}
+
+/* Exercise buttons */
+.welcome_block_2 .exercise_item .buttons{
+    margin-top: 50px;
+    display: flex;
+}
+
+/* Exercise button 'Add' */
+.welcome_block_2 .exercise_item .buttons .add{
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 2px 10px 5px 15px;
+    margin-right: 15px;
+    transition: .1s ease-in-out;
+}
+
+.welcome_block_2 .exercise_item .buttons .add img{
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    transition: .1s ease-in-out;
+}
+
+.welcome_block_2 .exercise_item .buttons .add:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(190deg);
+        transform: rotate(180deg);
+    }
+  }
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+.welcome_block_2 .exercise_item .buttons .add:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+}
+  
+
+/* Exercise button 'Favarite' */
+.welcome_block_2 .exercise_item .buttons .favorite{
+    opacity: 0.9;
+    transition: .1s ease;
+}
+
+.welcome_block_2 .exercise_item .buttons .favorite:hover{
+    opacity: 1;
+}
+
+.welcome_block_2 .content .exercise_item:hover{
+    box-shadow: 14px 14px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: translate(-5px, -5px);
+}
+
+/* ===ADD EXERCISE ITEM=== */
+/* Photo of exercise */
+.add_exercise_item .add_photo{
+    font-size: 23px;
+    padding: 40px 20px;
+    margin-bottom: 10px;
+    transition: .2s ease;
+}
+
+.add_exercise_item .add_photo:hover{
+    background-color: #eeeded;
+}
+
+/* Content */
+.add_exercise_item .content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    text-align: start;
+}
+
+/* Add muscle gropus */
+.add_exercise_item .add_muscle_groups{
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+}
+
+.add_exercise_item .add_muscle_groups button{
+    margin-left: 10px;
+    background-color: #ebebeb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid #d3d3d3;
+}
+
+.add_exercise_item .add_muscle_groups button img{
+    width: 18px;
+    height: 18px;
+}
+
+.add_exercise_item .add_muscle_groups button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+/* Name of exercise */
+.add_exercise_item .name{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.add_exercise_item .name input{
+    margin-left: 10px;
+    padding: 3px 7px;
+    background-color: rgba(237, 237, 237, 1);
+    border: 1px solid rgb(223, 223, 223);
+}
+
+/* Info about exercise */
+.add_exercise_item .info_text{
+    margin-top: 10px;
+}
+
+.add_exercise_item .info_text textarea{
+    width: 100%;
+    min-height: 70px;
+    padding: 3px 7px;
+    background-color: rgba(237, 237, 237, 1);
+    border: 1px solid rgb(223, 223, 223);
+}
+
+/* Button 'Add' exercise */
+.add_exercise_item .add{
+    display: flex;
+    width: fit-content;
+    margin: 20px auto 0px;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 2px 10px 5px 15px;
+    transition: .1s ease-in-out;
+}
+
+.add_exercise_item .add img{
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    transition: .1s ease-in-out;
+}
+
+.add_exercise_item .add:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+
+/* ===welcome_block_3=== */
+.welcome_block_3{
+    min-height: 100vh;
+    padding-top: 5vh;
+    padding-bottom: 50px;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+}
+
+.statistic_block{
+    display: flex;
+    position: relative;
+}
+
+.welcome_block_3 .title{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 90px;
+    letter-spacing: 3px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Count of trainings chart */
+.welcome_block_3 .trainingChart{
+    width: 60%;
+    margin-right: 20px
+}
+
+/* Last training content */
+.welcome_block_3 .last_trainings .content{
+    max-height: 50vh;
+    background-color: rgba(21, 21, 21, 1);
+    padding: 20px 70px 10px 70px;
+    border: 1px solid rgba(81, 81, 81, 1);
+    box-shadow: 3px 3px 0px 0px #414141;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+/* Last trainings block */
+.welcome_block_3 .last_trainings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+/* Title */
+.welcome_block_3 .last_trainings h2{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Trainings content item */
+.welcome_block_3 .last_trainings .item{
+    display: flex;
+}
+
+/* Left part of last exercise item */
+.welcome_block_3 .last_trainings .item .left{
+    margin-right: 5vw;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.welcome_block_3 .last_trainings .item .left div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.welcome_block_3 .last_trainings .item .left div span{
+    font-weight: 700;
+}
+
+.welcome_block_3 .last_trainings .item .left div img{
+    margin-right: 5px;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.welcome_block_3 .last_trainings .item .right div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.welcome_block_3 .last_trainings .item .right div span{
+    font-weight: 700;
+}
+
+.welcome_block_3 .last_trainings .item .right div img{
+    margin-right: 5px;
+}
+
+/* Button 'Подробнее' for more info about exercise */
+.welcome_block_3 .last_trainings .item .right button{
+    background-color: rgb(218, 218, 218);
+    display: flex;
+    align-items: center;
+    color: #000000;
+    padding: 3px 7px 3px 10px;
+    transition: .1s ease-in-out;
+}
+
+.welcome_block_3 .last_trainings .item .right button:hover{
+    background-color: rgba(245, 245, 245, 1);
+}
+
+.welcome_block_3 .last_trainings .item .right button img{
+    margin-left: 10px;
+}
+
+/* Decoration line */
+.welcome_block_3 .last_trainings .content .line{
+    height: 1px;
+    background-color: rgba(81, 81, 81, 1);
+    margin-bottom: 20px;
+}
+
+
+/* Second part of statistic(training info and muscles & physical diagram) */
+.statistic_block.second{
+    position: relative;
+    display: flex;
+    margin-top: 30px;
+}
+
+/*  Training info */
+.statistic_block.second .training{
+    width: 45%;
+    background-color: rgba(21, 21, 21, 1);
+    padding: 20px 40px 10px 40px;
+    border: 1px solid rgba(81, 81, 81, 1);
+    box-shadow: 3px 3px 0px 0px #414141;
+    border-radius: 3px;
+}
+
+/* Muscle groups diagram */
+.statistic_block.second .training .info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statistic_block.second .muscle_groups h2{
+    font-size: 25px;
+    text-align: center;
+    transform: translateY(40px);
+    color: rgb(194, 194, 194);
+}
+
+/* Statistic info */
+.statistic_block.second .training .info .statistic{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 40px 50px;
+    border-radius: 3px;
+    border: 2px solid rgba(108, 108, 108, 1);
+    background-color: rgba(71, 71, 71, 1);
+}
+
+.statistic_block.second .training .statistic p{
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.statistic_block.second .training .statistic p span{
+    font-weight: 700;
+}
+
+/* Current info */
+.statistic_block.second .training .physical_info{
+    width: 70%;
+    margin: 20px auto 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.statistic_block.second .training .physical_info p{
+    font-size: 20px;
+}
+
+/* Button 'добавить' to add physical parametrs */
+.statistic_block.second .training .physical_info button{
+    display: flex;
+    align-items: center;
+    background-color: rgb(218, 218, 218);
+    color: #000000;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 21px;
+    padding: 2px 10px 5px 15px;
+    transition: .1s ease-in-out;
+}
+
+.statistic_block.second .training .physical_info button img{
+    margin-left: 8px;
+    width: 15px;
+    height: 15px;
+    color: #000000;
+    transition: .1s ease-in-out;
+}
+
+.statistic_block.second .training .physical_info button:hover{
+    background-color: rgba(245, 245, 245, 1);
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+}
+
+.statistic_block.second .training .physical_info button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+/* Physical block  */
+.statistic_block.second .physical_data{
+    width: 55%;
+    margin-left: 20px;
+    background-color: rgba(21, 21, 21, 1);
+    padding: 20px 10px 10px 10px;
+    border: 1px solid rgba(81, 81, 81, 1);
+    box-shadow: 3px 3px 0px 0px #414141;
+    border-radius: 3px;
+}
+
+/* Navigation */
+.statistic_block.second .physical_data nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+/* Year & month & week  */
+.statistic_block.second .physical_data nav select{
+    border: 1px solid rgba(245, 245, 245, 1);
+    background: #000000;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 2px 5px;
+    height: fit-content;
+}
+
+/* Button to other physic(weight or length) */
+.statistic_block.second .physical_data nav button{
+    display: flex;
+    align-items: center;
+    background-color: rgb(218, 218, 218);
+    color: #000000;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    border: 1px solid #474747;
+    font-size: 23px;
+    padding: 5px 20px 5px 20px;
+    transition: .1s ease-in-out;
+}
+
+.statistic_block.second .physical_data nav button:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: rgba(245, 245, 245, 1);
+}
+
+.statistic_block.second .physical_data .chart{
+    margin: 0px 50px;
+    color: #00CD1E;
+}
+
+/* Progress of current programm */
+.programm_progress{
+    margin-top: 30px;
+}
+
+.programm_progress .progress_bar .info{
+    display: flex;
+}
+
+.programm_progress .progress_bar .percents{
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(97, 97, 97);
+    text-align: end;
+    padding: 5px 7px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.programm_progress .progress_bar .percents p{
+    position: relative;
+    font-size: 25px;
+    z-index: 2;
+    transition: .2s ease;
+}
+
+.programm_progress .progress_bar .finish{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-color: rgba(0, 132, 19, 1);
+    border-radius: 5px 5px 5px 0px;
+    transition: .2s ease;
+}
+
+.programm_progress .progress_bar .info button{
+    margin-left: 20px;
+    opacity: 0.8;
+    transition: .2s ease;
+}
+
+.programm_progress .progress_bar .info button:hover{
+    opacity: 1;
+}
+
+/* title 'progress' */
+.programm_progress .progress_bar h2{
+    transform: translateX(1%);
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* ===WELCOME BLOCK FOURTH=== */
+.welcome_block_4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Title */
+.welcome_block_4 h1{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 100px;
+    font-weight: 800;
+}
+
+/* user profile */
+.welcome_block_4 .user_profile{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50vw;
+    padding: 30px 70px;
+    margin-top: 70px;
+    border-radius: 7px;
+    background-color: rgba(21, 21, 21, 1);
+    box-shadow: 6px 7px 0px 2px rgba(65, 65, 65, 1);
+    border: 1px solid rgba(81, 81, 81, 1);
+}
+
+/* Avatar block  */
+.welcome_block_4 .user_profile .avatar{
+    text-align: center;
+}
+
+/* avatar image */
+.welcome_block_4 .avatar img{
+    width: 180px;
+    height: 180px;
+}
+
+/* name */
+.welcome_block_4 .avatar h2{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/* last training time */
+.welcome_block_4 .avatar p{
+    color: rgb(145, 145, 145);
+}
+
+/* Button 'подписаться' */
+.welcome_block_4 .avatar button{
+    display: flex;
+    align-items: center;
+    background-color: rgb(218, 218, 218);
+    color: #000000;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    border: 1px solid #474747;
+    font-size: 23px;
+    padding: 5px 10px 5px 20px;
+    margin-top: 20px;
+    transition: .1s ease-in-out;
+}
+
+.welcome_block_4 .avatar button img{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.welcome_block_4 .avatar button:hover{
+    background-color: rgba(245, 245, 245, 1);
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+}
+
+.welcome_block_4 .avatar button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+/* info block  */
+.welcome_block_4 .info{
+    max-width: 60%;
+}
+
+/* title */
+.welcome_block_4 .info .about h3{
+    font-size: 18px;
+    color: rgb(145, 145, 145);
+    margin-left: 10px;
+}
+
+/* text about user */
+.welcome_block_4 .info .about p{
+    background-color: rgba(71, 71, 71, 1);
+    border: 1px solid rgba(108, 108, 108, 1);
+    padding: 10px 20px;
+    min-height: 20vh;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    word-break: break-all;
+}
+
+/* Follow & followers */
+.welcome_block_4 .info .followers{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.welcome_block_4 .info .followers a{
+    color: #dadada;
+    transition: .1s ease-in-out;
+}
+
+.welcome_block_4 .info .followers a:hover{
+    color: #ffffff;
+}
+
+
+/* ===WELOCOME block fourth=== */
+.welcome_block_5{
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    text-align: center;
+    justify-content: end;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 5vh;
+}
+
+/* Decoration circles */
+.welcome_block_5 .first{
+    position: absolute;
+    bottom: -15%;
+    left: -5%;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    z-index: -1;
+}
+
+.welcome_block_5 .second{
+    position: absolute;
+    bottom: 20%;
+    left: 20%;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    z-index: -1;
+}
+
+.welcome_block_5 .third{
+    position: absolute;
+    bottom: 38%;
+    right: 17%;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    z-index: -1;
+}
+
+.welcome_block_5 .fourth{
+    position: absolute;
+    bottom: 3%;
+    right: -5%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    z-index: -1;
+}
+
+/* Titles */
+.welcome_block_5 h1{
+    font-size: 150px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 800;
+    letter-spacing: 5px;
+}
+
+.welcome_block_5 h1:last-child{
+    font-size: 190px;
+}
+
+/* ===WELOCOME block sixth=== */
+.welcome_block_6{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    padding-top: 10vh;
+}
+
+/* Title */
+.welcome_block_6 h1{
+    font-size: 80px;
+    letter-spacing: 3px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Content */
+.welcome_block_6 .content{
+    display: flex;
+    justify-content: space-between;
+    margin: 50px auto;
+}
+
+.welcome_block_6 .content h2{
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    font-size: 70px;
+    margin: 0 12vw 0;
+}
+
+.welcome_block_6 h2{
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 50px;
+}
+
+
+/* ===WELOCOME block seventh=== */
+.welcome_block_7{
+    min-height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-color: #ffffff;
+}
+
+/* Level of user */
+.welcome_block_7 .level{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title */
+.welcome_block_7 h1{
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+}
+
+/* Users level block */
+.welcome_block_7 .users{
+    display: flex;
+    margin-top: 110px;
+}
+
+.welcome_block_7 .users .item{
+    margin: 0px 50px;
+    text-align: center;
+}
+
+.welcome_block_7 .users .item.professional{
+    transform: translateY(-70px);
+}
+
+.welcome_block_7 .users .item.professional h3{
+    font-size: 32px;
+}
+
+.welcome_block_7 .users .item h3{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.welcome_block_7 h2{
+    margin-top: 40px;
+    font-size: 70px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+}
+
+/* Decoration */
+.welcome_block_7 .level .line{
+    height: 1px;
+    width: 90%;
+    margin: 30px auto 0px;
+    background-color: rgb(216, 215, 215);
+}
+
+
+.welcome_block_7 .chats{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.welcome_block_7 .chats .profiles{
+    width: 35%;
+}
+
+.welcome_block_7 .chats .profiles .sportsman{
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.welcome_block_7 .profiles .sportsman .arrow_coach{
+    position: absolute;
+    top: 40%;
+    left: 7%;
+}
+
+.welcome_block_7 .profiles .sportsman .arrow_doctor{
+    position: absolute;
+    top: 40%;
+    right: 7%;
+}
+
+.welcome_block_7 .chats .profiles .personal{
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+
+.welcome_block_7 .chats .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.welcome_block_7 .chats .info h2{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.welcome_block_7 .chats .info .content{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(242, 242, 242, 1);
+    width: 60%;
+    padding: 20px 30px 20px 90px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid #D4D4D4;
+}
+
+.welcome_block_7 .chats .info ul{
+    list-style: disc;
+    word-break: break;
+}
+
+.welcome_block_7 .chats .info li{
+    width: fit-content;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+
+/* ===WELOCOME block eighth=== */
+.welcome_block_8{
+    background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.welcome_block_8 h1{
+    font-size: 160px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+}
+
+
+/* ===WELOCOME block nineth===*/
+.welcome_block_9{
+    background-color: #000000;
+    color: #ffffff;
+    width: fit-content;
+    margin: 80px auto 30px;
+    padding: 30px 60px;
+    border-radius: 30px;
+}
+
+/* Title */
+.welcome_block_9 .title{
+    display: flex;
+    align-items: center;
+}
+
+.welcome_block_9 .title h1{
+    font-size: 50px;
+    margin-left: 20px;
+}
+
+/* Motivation words */
+.welcome_block_9 .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 50px auto 0px;
+}
+
+.welcome_block_9 .content h2{
+    font-size: 25px;
+}
+
+.welcome_block_9 .content h2 span{
+    font-weight: 600;
+}
+
+/* Button to login */
+.welcome_block_9 .content a{
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    background-color: #068D1A;
+    color: #ffffff;
+    filter: drop-shadow(0px 5px 0px #0DF630);
+    font-size: 30px;
+    font-weight: 600;
+    padding: 10px 30px;
+    transition: .2s ease-in-out;
+}
+
+.welcome_block_9 .content a img{
+    margin-left: 20px;
+    transition: .2s ease-in-out;
+}
+
+.welcome_block_9 .content a:hover{
+    background-color: #08a820;
+}
+
+.welcome_block_9 .content a:hover img{
+    transform: translateX(10px);
+}
+
+.welcome_block_9 .content a:active{
+    transform: translateY(5px);
+    filter: drop-shadow(0px 0px 0px #0DF630);
+}
+
+/* ============================================= */
+
+
+/* ==================LOGIN PAGE================== */
+/* Log & reg body */
+.log_reg_body{
+    position: relative;
+    background-image: url('../img/background_reg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    backdrop-filter: blur(2px);
+}
+
+.log_reg_body .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 90%;
+    min-height: 100vh;
+}
+
+/* Log and reg logo */
+.log_reg_body .container .logo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    width: fit-content;
+    color: #ffffff;
+}
+
+/* Content of log & reg */
+.log_reg_body .container .content{
+    text-align: center;
+    color: #ffffff;
+    background-color: rgba(63, 63, 63, 0.808);
+    border-radius: 10px;
+    border: 1px solid rgba(161, 161, 161, 1);
+    padding: 50px 80px 30px;
+}
+
+/* title */
+.log_reg_body .container .content h1{
+    font-size: 40px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+}
+
+/* Switch buttons (login or registration) */
+.log_reg_body .container .content .buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.log_reg_body .container .buttons button{
+    padding: 10px 40px;
+    margin: 0 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: 30px;
+    border: 1px solid rgb(175, 175, 175);
+    text-transform: uppercase;
+    z-index: 1;
+    transition: .4s ease-in-out;
+}
+
+.log_reg_body .container .buttons button::before,
+ .log_reg_body .container .buttons button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: #ffffff;
+    transition: .5s ease;
+}
+
+.log_reg_body .container .buttons button::before {
+    top: -1em;
+    left: -1em;
+}
+
+.log_reg_body .container .buttons button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.log_reg_body .container .buttons button:hover::before,
+.log_reg_body .container .buttons button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.log_reg_body .container .buttons button:hover {
+    color: rgb(0, 0, 0);
+}
+
+.log_reg_body .container .buttons button:active {
+    filter: brightness(.8);
+}
+
+.log_reg_body .container .buttons button.active{
+    background-color: #000000;
+}
+
+/* ===login form=== */
+.log_reg_body .container .log_form{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    text-align:left;
+}
+
+/* label */
+.log_reg_body .container .log_form label{
+    font-size: 18px;
+}
+
+/* input */
+.log_reg_body .container .log_form input{
+    background-color: rgba(240, 240, 240, 1);
+    font-size: 35px;
+    color: #000000;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+}
+
+/* button 'Войти' */
+.log_reg_body .container .log_form button[type=submit]{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 30px auto 10px;
+    background-color: rgb(20, 20, 20);
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    border: 1px solid #474747;
+    font-size: 35px;
+    padding: 10px 40px;
+    transition: .2s ease-in-out;    
+}
+
+.log_reg_body .container .log_form button[type=submit]:hover{
+    background-color: rgb(0, 0, 0);
+    box-shadow: 5px 5px 0px 0px #00CD1E;
+}
+
+/* Button 'забыли пароль?' */
+.log_reg_body .container .forgot_password{
+    margin-left: 7px;
+    color: #e4e3e3;
+    margin: 0 auto;
+}
+
+.log_reg_body .container .forgot_password:hover{
+    color: #ffffff;
+}
+
+
+/* ===Registration form=== */
+.reg_form{
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    width: 80%;
+    margin: 20px auto 0px;
+}
+
+/* label */
+.reg_form label{
+    font-size: 18px;
+}
+
+/* input */
+.reg_form input{
+    background-color: rgba(240, 240, 240, 1);
+    font-size: 23px;
+    color: #000000;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+}
+
+/* title 'выберите профиль' */
+.reg_form  h2{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+/* User's profile */
+.reg_form .profiles{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+.reg_form .profiles label{
+    font-size: 25px;
+}
+
+.reg_form .profiles input{
+    width: 20px;
+    height: 20px;
+}
+
+/* Button 'зарегистрироваться' */
+.log_reg_body .container .reg_form button[type=submit]{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 10px auto 0px;
+    background-color: rgb(20, 20, 20);
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    border: 1px solid #474747;
+    font-size: 27px;
+    padding: 10px 30px;
+    transition: .2s ease-in-out;    
+}
+
+.log_reg_body .container .reg_form button[type=submit]:hover{
+    background-color: rgb(0, 0, 0);
+    box-shadow: 5px 5px 0px 0px #00CD1E;
+}
+
+/* ====================================================== */
+
+
+/* =====================WORKOUT PAGE===================== */
+.workouts{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+/* Day's workout swiper */
+.workouts swiper-container{
+    width: 50%;
+}
+
+/* slide(no arrows) */
+.workouts .slide{
+    padding: 15px 20px 20px;
+    margin: 0 50px 5px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 5px 5px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+}
+
+/* Title and button to add to favorite collection */
+.workouts .title{
+    display: flex;
+    justify-content: space-between;
+    color: rgba(130, 130, 130, 1);
+    font-size: 25px;
+}
+
+.workouts .title button{
+    height: fit-content;
+    opacity: 0.7;
+}
+
+.workouts .title button:hover{
+    opacity: 1;
+}
+
+/* Content of workout */
+.workouts .slide .content{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Exercises array */
+.workouts .exercise_cover{
+    max-height: 65vh;
+    overflow: auto;
+    width: 50%;
+    margin-top: 15px;
+}
+
+/* Exercise item */
+.workouts .exercise_item{
+    position: relative;
+    margin: 0px 10px 15px 0px;
+    padding: 8px 30px 20px;
+    background-color: #FAFAFA;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #e4e4e4;
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: .1s ease-in-out;
+    overflow: hidden;
+}
+
+/* Exercise info */
+.workouts .exercise_item .info{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    opacity: 0.8;
+    transition: .1s ease-in-out;
+}
+
+.workouts .exercise_item .info:hover{
+    opacity: 1;
+}
+
+/* Info text  */
+.workouts .exercise_item .info_block{
+    position: absolute;
+    z-index: 1;
+    border-radius: 12px;
+    border: 1px solid #e4e4e4;
+    top: -101%;
+    left: -1%;
+    width: 101%;
+    height: 101%;
+    background-color: #FAFAFA;
+    text-align: start;
+    padding: 30px 40px;
+    transition: .3s ease-in-out;
+}
+
+.workouts .exercise_item .info_block p{
+    font-size: 15px;
+}
+
+.workouts .exercise_item .info_block .info_close{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    opacity: 0.8;
+}
+
+.workouts .exercise_item .info_block .info_close:hover{
+    opacity: 1;
+}
+
+/* Exercise muscle groups */
+.workouts .exercise_item .muscle_groups{
+    color: rgba(143, 143, 143, 1);
+    font-size: 15px;
+    word-break: break-all;
+    max-width: 70%;
+    margin: 0 auto 40px;
+}
+
+/* Exercise images */
+.workouts .exercise_item .exercise_img{
+    margin-bottom: 20px;
+}
+
+/* Exercise decoration line */
+.workouts .exercise_item .line{
+    width: 100%;
+    margin: 0 auto;
+    height: 1px;
+    background-color: rgba(206, 206, 206, 1);
+}
+
+/* Exercise title */
+.workouts .exercise_item h1{
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* Exercise rating + statistic */
+.workouts .exercise_item .statistic{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.workouts .exercise_item .statistic .rating{
+    display: flex;
+    align-items: center;
+}
+
+.workouts .exercise_item .statistic .rating p{
+    font-size: 21px;
+    margin-right: 3px;
+}
+
+.workouts .exercise_item .statistic .difficult{
+    display: flex;
+}
+
+.workouts .exercise_item .statistic .difficult div{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    margin: 0px 2px;
+}
+
+.workouts .exercise_item .statistic .difficult div.disabled{
+    background-color: rgb(155, 194, 161);
+}
+
+/* Count of repetitions */
+.workouts .exercise_item .caption{
+    background-color: rgba(234, 234, 234, 1);
+    border: 1px solid rgb(204, 204, 204);
+    width:  fit-content;
+    margin: 20px auto 10px;
+    padding: 5px 60px;
+    border-radius: 3px;
+}
+
+.workouts .exercise_item .caption p{
+    font-size: 25px;
+}
+
+
+/* ===Info about day workout===*/
+.workouts .workout_info{
+    width: 40%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.workouts .workout_info p{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.workouts .workout_info p span{
+    font-weight: 500;
+    background-color: rgba(236, 236, 236, 1);
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+    padding: 0px 10px;
+    border: 1px solid rgb(218, 218, 218);
+    float: right;
+    margin-left: 5px;
+}
+
+/* Decorative line */
+.workouts .workout_info .line{
+    height: 1px;
+    width: 100%;
+    background: #CECECE;
+    margin: 10px 0px 20px;
+}
+
+/* Time for workout  */
+.workouts .workout_info .time{
+    font-size: 26px;
+}
+
+.workouts .workout_info .time span{
+    border: 1px solid rgb(145, 145, 145);
+    padding: 3px 12px;
+}
+
+/* Buttons edit and start */
+.workouts .workout_info .buttons{
+    display: flex;
+    margin-top: auto;
+}
+
+.workouts .workout_info .buttons button{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 27px;
+    padding: 5px 30px 5px;
+    margin-right: 15px;
+    transition: .1s ease-in-out;
+}
+
+.workouts .workout_info .buttons button img{
+    width: 40px;
+    height: 40px;
+    transition: .1s ease-in-out;
+}
+
+.workouts .workout_info .buttons button:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+
+/* ===Other workouts info=== */
+.workouts .other{
+    width: 50vw;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+/* Friends' workouts */
+.workouts .friends{
+    padding: 10px 20px;
+    margin: 0px 15px 15px 0px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+    overflow-x: auto;
+}
+
+/* Title and button to search friends */
+.workouts .friends h1{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(130, 130, 130, 1);
+}
+
+.workouts .friends .title img{
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+}
+
+.workouts .friends .title img:hover{
+    opacity: 1;
+}
+
+/* Friends' workout swiper */
+.workouts .friends .content{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+/* slide */
+.workouts .friends swiper-slide{
+    display: flex;
+    padding: 0px 30px;
+}
+
+/* friend item */
+.workouts .friends .item{
+    text-align: center;
+    width: 7vw;
+    margin: 0px 20px;
+}
+
+.workouts .friends .item p{
+    font-size: 20px;
+    color: #000000;
+}
+
+
+/* last trainings */
+.workouts .last_trainings{
+    max-height: 43vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 45px 10px 10px 10px;
+    margin: 20px 15px 15px 0px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 5px 5px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+}
+
+/* Title */
+.workouts .last_trainings h1{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(130, 130, 130, 1);
+}
+
+/* Trainings content */
+.workouts .last_trainings .content{
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Trainings content item */
+.workouts .last_trainings .item{
+    display: flex;
+    border-bottom: 1px solid #D4D4D4;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Left part of last exercise item */
+.workouts .last_trainings .item .left{
+    margin-right: 5vw;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.workouts .last_trainings .item .left div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.workouts .last_trainings .item .left div span{
+    font-weight: 700;
+}
+
+.workouts .last_trainings .item .left div img{
+    margin-right: 5px;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.workouts .last_trainings .item .right div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.workouts .last_trainings .item .right div span{
+    font-weight: 700;
+}
+
+.workouts .last_trainings .item .right div img{
+    margin-right: 5px;
+}
+
+/* Button 'Подробнее' for more info about exercise */
+.workouts .last_trainings .item .right button{
+    background-color: #272727;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding: 3px 7px 3px 10px;
+    transition: .1s ease-in-out;
+}
+
+.workouts .last_trainings .item .right button:hover{
+    background-color: #000000;
+}
+
+.workouts .last_trainings .item .right button img{
+    margin-left: 10px;
+}
+
+
+/* Buttons favorite workouts and my program */
+.workouts .other .buttons{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 15px;
+}
+
+.workouts .other .buttons a{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 5px 10px 5px 15px;
+    margin-right: 15px;
+    transition: .1s ease-in-out;
+}
+
+.workouts .other .buttons a img{
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.workouts .other .buttons a:hover{
+    box-shadow: 4px 4px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+
+/* ========================================== */
+
+
+/* ==============MY PROGRAM PAGE============== */
+.my_program{
+    margin-top: 50px;
+}
+
+.my_program .day_workouts .date{
+    display: flex;
+    float: right;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.my_program .day_workouts .date h1{
+    font-size: 25px;
+}
+
+.my_program .day_workouts .date input{
+    margin-left: 10px;
+    font-size: 25px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border: 1px solid rgba(198, 198, 198, 1);
+}
+
+.my_program .day_workouts .cover{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.my_program .day_workouts .cover swiper-slide{
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40px 10px;
+}
+
+
+
+.my_program .cover .item h2{
+    font-size: 18px;
+    color: #828282;
+}
+
+.my_program .cover .item .content{
+    display: table-cell;
+    vertical-align:middle;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+}
+
+.my_program .cover .item .content p{
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.my_program .cover .item .content p span{
+    font-size: 22px;
+    background-color: rgba(236, 236, 236, 1);
+    padding: 1px 7px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+    float: right;
+    margin-left: 5px;
+}
+
+.my_program .cover .item .content .buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #CECECE;
+}
+
+.my_program .cover .item .content button{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 5px 10px;
+    margin-right: 15px;
+    transition: .1s ease-in-out;
+}
+
+.my_program .cover .item .content button img{
+    width: 25px;
+    height: 25px;
+}
+
+.my_program .cover .item .content button:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+.my_program .cover .item .content img{
+    width: 30px;
+    height: 30px;
+    margin: auto 0;
+}
+
+.my_program .cover .item .day_off{
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 21px;
+    padding: 5px 10px;
+}
+
+
+
+.my_program .info{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 50px 20px;
+}
+
+.my_program .info .statistic{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 30px 50px;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+}
+
+.my_program .info .muscle_groups{
+    text-align: center;
+    width: 30%;
+}
+
+.my_program .info .muscle_groups h2{
+    font-size: 25px;
+    font-weight: 500;
+    transform: translateY(40px);
+}
+
+.my_program .info .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+}
+
+.my_program .info .content .all{
+    margin-bottom: 25px;
+    border-bottom: 1px solid #CECECE;
+}
+
+.my_program .info .content .all p{
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+.my_program .info .content .all span{
+    background-color: rgba(236, 236, 236, 1);
+    border: 1px solid #C6C6C6;
+    padding: 1px 15px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 10px;
+    float: right;
+}
+
+.my_program .info .content .progress{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.my_program .info .content .progress .item div{
+    width: fit-content;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 auto;
+    background-color: rgba(236, 236, 236, 1);
+    border: 1px solid #00C91D;
+    padding: 5px 15px;
+    box-shadow: 0px 2px 0px 0px #00C91D;
+}
+
+.my_program .info .content .progress .item h3{
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.my_program .info .content .progress .item p{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.my_program .info .content .progress .item p span{
+    background-color: rgba(236, 236, 236, 1);
+    border: 1px solid #C6C6C6;
+    padding: 1px 12px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 10px;
+    float: right;
+}
+
+
+
+.my_program .info .friends{
+    text-align: center;
+    background-color: #ffffff;
+    margin-left: 20px;
+    padding: 10px 20px;
+    width: 20%;
+    max-height: 47vh;
+    overflow: auto;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+}
+
+.my_program .info .friends h2{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #7C7C7C;
+    
+}
+
+.my_program .info .friends img{
+    width: 150px;
+}
+
+.my_program .info .friends p{
+    font-size: 20px;
+}
