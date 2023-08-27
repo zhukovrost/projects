@@ -21,12 +21,11 @@ if (empty($_GET['test_id'])){
 if (isset($_POST['push_id'])){
   $push_id = $_POST['push_id'];
 
-  $test_data = get_test_data($conn, $push_id);
-  $test = json_decode($test_data['test']);
+  $test = new Test();
+  $test->set_test_data($conn, $push_id);
+  $test->get_questions($conn);
   $flag = false;
-  foreach ($test as $question_id){
-      $question = new Question();
-      $question->set_question_data($conn, $question_id);
+  foreach ($test->questions as $question){
     if ($question->type == 'definite_mc'){
       $flag = true;
       break;
@@ -109,8 +108,9 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
       $select_users_result->free();
 
       # ------------------- TEST PREVIEW -------------------------
-
-      print_test_by_id($conn, $test_id, true);
+      $test = new Test();
+      $test->set_test_data($conn, $test_id);
+      $test->print_it($conn, true);
     }
     if ($error_array['post_test_success']){
       print_message("The test has been published!", 1);

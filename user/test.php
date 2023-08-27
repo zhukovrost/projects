@@ -45,8 +45,6 @@ if (empty($_POST['test_input'])){
 }
 
 if (isset($_POST['finish'])){
-  $test_data = get_test_data($conn, $test_id);
-  $test = json_decode($test_data['test']);
   $flag = 0;
   if (isset($_POST['for_verification'])){
     $flag = $_POST['for_verification'];
@@ -100,7 +98,12 @@ if (isset($_POST['finish'])){
   </div>
 </header>
 
-<?php print_test_by_id($conn, $test_id); ?>
+<?php
+$test = new Test();
+$test->set_test_data($conn, $test_id);
+$test->print_it($conn);
+$conn->close();
+?>
 
 <?php include "../templates/footer.html"; ?>
 <script>

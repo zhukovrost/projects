@@ -47,17 +47,19 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
                         <!-- results -->
                         <div>
                             <div class="content">
-                                <p>Time spent: <span class="time"><?php echo $result_data['time']; ?></span></p>
-                                <p>Right answers: <span><?php echo $result_data['correct'].'/'.$result_data['all_questions']; ?></span></p>
+                                <p>Time spent: <span class="time">0</span></p>
+                                <p>Right answers: <span><?php echo $result_data['correct'].'/'.$result_data['all_questions'];  ?></span></p>
                                 <p>Total score: <span class="score"><?php echo $result_data['user_scores'].'/'.$result_data['all_scores']; ?></span></p>
-                                <p>Mark: <span><?php echo $result_data['mark']; ?></span></p>
+                                <p>Mark: <span><?php echo $result_data['mark'];  ?></span></p>
                             </div>
                             <a href="my_tests.php" class="new_attempt">GO BACK</a>
                         </div>
                     </div>
                 </section>
 
-              <?php print_test_by_id($conn, $test_id, true, $id); ?>
+              <?php $test = new Test();
+              $test->set_test_data($conn, $test_id);
+              $test->print_it($conn, true, $id); ?>
 
                 <!-- Link to theory page -->
                 <section class="theory">

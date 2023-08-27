@@ -234,133 +234,15 @@ function check_deadline($conn, $deadline, $test_id, $tests_to_users_id, $user_id
   }
 }
 
-function print_question($conn, $question_id, $question_number=0, $extend=false, $user_answers_id=-1){
-  $question = new Question();
-  $question->set_question_data($conn, $question_id);
-  if ($user_answers_id != -1){
-    $user_answers = (array)json_decode(get_tests_to_users_data($conn, $user_answers_id)['answers']);
-  }
-  ?>
-  <section class="question">
-    <div class="underline_title">
-      <h2>Question: <span><?php echo $question_number + 1; ?></span></h2>
-      <h2>Score: <span><?php echo $question->score; ?></span></h2>
-    </div>
-    <div class="content">
-      <h1><?php echo $question->question; ?></h1>
-      <?php
-      switch ($question->type){
-        case "radio":
-          ?> <p>Choose one answer:</p><?php
-          break;
-        case "checkbox":
-          ?> <p>Choose n answers:</p> <?php
-          break;
-        case "definite_mc":
-        case "definite":
-          ?> <p>Answer the question:</p><?php
-          break;
-        case "missing_words":
-          ?> <p>Enter missing words:</p><?php
-          break;
-      }
-
-      ?>
-      <div class="answers">
-        <?php
-
-        if ($question->type == 'radio' || $question->type == 'checkbox'){
-          for ($i = 0; $i < count($question->variants); $i++){
-            ?> <div> <?php
-            if ($user_answers_id != -1 && array_key_exists($question_number, $user_answers) && in_array($i, $user_answers[$question_number])){
-              echo "<input type='$question->type' name='test_input[$question_number][]' value='$i' checked>";
-            }else{
-              echo "<input type='$question->type' name='test_input[$question_number][]' value='$i'>";
-            }
-            echo "<label>$question->variants</label>";
-
-            ?> </div> <?php
-          }
-        }else if ($question->type == 'missing_words'){
-          for ($i = 0; $i < count($question->get_right_answers()); $i++){
-            ?> <div> <?php
-            if ($user_answers_id == -1) {
-              echo "<input type='text' name='test_input[$question_number][]'>";
-            }else{
-              $value = $user_answers[$question_number][(string)$i];
-              echo "<input type='text' name='test_input[$question_number][]' value='$value'>";
-            }
-            ?> </div> <?php
-          }
-        } else if ($question->type == "definite"){
-          if ($user_answers_id == -1){
-            echo "<div><input type='text' name='test_input[$question_number][]'></div>";
-          }else{
-            $value = $user_answers[$question_number][0];
-            echo "<div><input type='text' name='test_input[$question_number][]' value='$value'></div>";
-          }
-        }else if ($question->type == "definite_mc"){ ?>
-          <input type="hidden" name="for_verification" value="1">
-          <?php
-          if ($user_answers_id == -1 || $user_answers[$question_number] == null){
-            echo "<div><textarea name='test_input[$question_number][]'></textarea></div>";
-          }else{
-            echo "<div><textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea></div>";
-          }
-        }
-
-          $question->print_image($conn);
-
-          if ($extend && $question->type != "definite_mc"){
-
-            echo "<p>Right answer(s): ";
-            foreach ($question->get_right_answers() as $right_answer) {
-              if ($question->type == "missing_words" || $question->type == "definite"){
-                echo $right_answer."; ";
-              }else{
-                echo $question->variants[$right_answer] . "; ";
-              }
-            }
-            echo "</p>";
-
-          }
-          ?>
-      </div>
-    </div>
-  </section>
-<?php }
-
-
-function print_test($conn, $test, $extend=false, $user_answers_id=-1, $task=''){
-  ?>
-<form method="post" class="questions_list">
-  <div class="container">
-    <h1 class="curtest_title"><?php echo $task; ?></h1>
-    <?php
-      for ($i = 0; $i < count($test); $i++){
-        print_question($conn, $test[$i], $i, $extend, $user_answers_id);
-      }
-
-      if(!$extend && $user_answers_id == -1){ ?>
-        <button class="finish" id="FinsishButton" name="finish" value="1">Finish</button>
-      <?php } ?>
-  </div>
-</form>
-<?php }
-
-function print_test_by_id($conn, $test_id, $extend=false, $user_answers_id=-1){
-  $test_data = get_test_data($conn, $test_id);
-  print_test($conn, json_decode($test_data['test']), $extend, $user_answers_id, $test_data['task']);
-}
-
 function check_the_test($conn, $id, $header=true, $get_stats=false){
   # collecting data
   $solve = get_tests_to_users_data($conn, $id);
   $user_answers = (array)json_decode($solve['answers']);
   $verified_scores = (array)json_decode($solve['verified_scores']);
-  $test_data = get_test_data($conn, $solve['test']);
   $user_id = $solve['user'];
-  $test = json_decode($test_data['test']);
+  $test = new Test();
+  $test->set_test_data($conn, $solve['test']);
+  $test->get_questions($conn);
   # default values
   $all_scores = 0;
   $user_scores = 0;
@@ -370,10 +252,8 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
   $verifying = 0;
   $ver_num = 0;
   # checking the test
-  for ($i = 0; $i < count($test); $i++){
-    $question_id = $test[$i];
-    $question = new Question();
-    $question->set_question_data($conn, $question_id);
+  for ($i = 0; $i < count($test->test); $i++){
+    $question = $test->questions[$i];
     $all_scores += $question->score;
     if (array_key_exists($i, $user_answers)){
       $user_answer = $user_answers[$i];
@@ -407,9 +287,9 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
           }
         }else if ($question->type == 'definite'){
           $flag = false;
-          $user_answer = mb_strtolower(str_replace(' ', '', $user_answer[0]));
+          $user_answer = mb_strtolower(str_replace(' ', '', str_replace('.', '', $user_answer[0])));
           foreach ($question->get_right_answers() as $answer){
-            if (mb_strtolower(str_replace(' ', '', $answer)) == $user_answer){
+            if (mb_strtolower(str_replace(' ', '', str_replace('.', '', $answer))) == $user_answer){
               $flag = true;
               break;
             }
@@ -417,7 +297,7 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
 
           if ($flag){
             $correct++;
-            $user_scores += $question->type;
+            $user_scores += $question->score;
           }else{
             $wrong++;
           }
@@ -452,7 +332,7 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
       "all_scores" => $all_scores,
       "user_scores" => $user_scores,
       "mark" => $mark,
-      "all_questions" => count($test),
+      "all_questions" => count($test->test),
       "correct" => $correct,
       "wrong" => $wrong,
       "not_answered" => $not_answered,
@@ -480,15 +360,15 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
       return false;
     }
   }
-
 }
 
 
 function print_test_info($conn, $test_info_array){
   $deadline = false;
-  $test_data = get_test_data($conn, $test_info_array['test']);
+  $test = new Test();
+  $test->set_test_data($conn, $test_info_array['test']);
   $themes = array();
-  foreach (json_decode($test_data['themes']) as $theme_id){
+  foreach ($test->themes as $theme_id){
     $select_theme_sql = "SELECT theme FROM themes WHERE id=".$theme_id;
     foreach ($conn->query($select_theme_sql) as $item){
       array_push($themes, $item['theme']);
@@ -516,10 +396,10 @@ function print_test_info($conn, $test_info_array){
   <section class="test">
     <img src="../img/test-1.png" alt="">
     <div>
-      <p><span><?php echo $test_data['name']; ?></span></p>
+      <p><span><?php echo $test->name; ?></span></p>
       <?php if (count($themes) != 0) { ?><p class="theme">Theme(s): <span> <?php foreach ($themes as $theme){ echo $theme.'; '; }?></span></p><?php } ?>
       <p class="time">Time for test: <span><?php echo date('i:s', $test_info_array['duration']); ?></span></p>
-      <p class="questions_number">Number of questions: <span><?php echo count(json_decode($test_data['test'])); ?></span></p>
+      <p class="questions_number">Number of questions: <span><?php echo count($test->test); ?></span></p>
       <?php
       if ($test_info_array['deadline'] != -1){
         $date = date('d.m.Y', $test_info_array['deadline']);

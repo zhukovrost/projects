@@ -37,9 +37,9 @@ if (isset($_POST['verified'])){
 
       foreach ($select_result as $item){
         $id = $item['id'];
-        $test_data = get_test_data($conn, $item['test']);
-        $test = json_decode($test_data['test']);
-        $test_answers = json_decode($test_data['right_answers']);
+        $test = new Test();
+        $test->set_test_data($conn, $item['test']);
+        $test->get_questions($conn);
         $user_id = $item['user'];
         $user_answers = json_decode($item['answers']);
         $verified_scores = (array)json_decode($item['verified_scores']);
@@ -49,13 +49,12 @@ if (isset($_POST['verified'])){
 
         <form action="" method="post" class="questions_list">
           <div class="container">
-          <p class="ver_title"><?php echo $user['surname'].' '.$user['name']; ?> from test: <?php echo $test_data['name']; ?></p>
+          <p class="ver_title"><?php echo $user['surname'].' '.$user['name']; ?> from test: <?php echo $test->name; ?></p>
         <?php
-        for ($i = 0; $i < count($test); $i++){
-          $question_id = $test[$i];
-          $question_data = get_question_data($conn, $question_id);
-          if ($question_data['type'] == "definite_mc"){
-            print_question($conn, $question_id, $i, true, $id);
+        for ($i = 0; $i < count($test->test); $i++){
+          $question_data = $test->questions[$i];
+          if ($question_data->type == "definite_mc"){
+            $question_data->print_it($conn, $i, true, $id);
             ?>
 
             <label class="ver_points_title" for="">POINTS: </label>

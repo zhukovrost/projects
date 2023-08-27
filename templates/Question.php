@@ -92,4 +92,85 @@ class Question
             $select_image_result->free();
         }
     }
+
+    public function print_it($conn, $question_number, $extend=false, $user_answers_id=-1){
+        if ($user_answers_id != -1){
+            $user_answers = (array)json_decode(get_tests_to_users_data($conn, $user_answers_id)['answers']);
+        } ?>
+        <section class="question">
+            <div class="underline_title">
+                <h2>Question: <span><?php echo $question_number + 1; ?></span></h2>
+                <h2>Score: <span><?php echo $this->score; ?></span></h2>
+            </div>
+            <div class="content">
+                <h1><?php echo $this->question; ?></h1>
+                <?php switch ($this->type){
+                    case "radio":
+                        ?> <p>Choose one answer:</p><?php
+                        break;
+                    case "checkbox":
+                        ?> <p>Choose n answers:</p> <?php
+                        break;
+                    case "definite_mc":
+                    case "definite":
+                        ?> <p>Answer the question:</p><?php
+                        break;
+                    case "missing_words":
+                        ?> <p>Enter missing words:</p><?php
+                        break;
+                } ?>
+                <div class="answers">
+                    <?php if ($this->type == 'radio' || $this->type == 'checkbox'){
+                        for ($i = 0; $i < count($this->variants); $i++){?>
+                            <div>
+                                <?php if ($user_answers_id != -1 && array_key_exists($question_number, $user_answers) && in_array($i, $user_answers[$question_number])){
+                                    echo "<input type='$this->type' name='test_input[$question_number][]' value='$i' checked>";
+                                }else{
+                                    echo "<input type='$this->type' name='test_input[$question_number][]' value='$i'>";
+                                }
+                                echo "<label>$this->variants</label>"; ?>
+                            </div>
+                            <?php }
+                    }else if ($this->type == 'missing_words'){
+                        for ($i = 0; $i < count($this->get_right_answers()); $i++){
+                            ?> <div> <?php
+                                if ($user_answers_id == -1) {
+                                    echo "<input type='text' name='test_input[$question_number][]'>";
+                                }else{
+                                    $value = $user_answers[$question_number][(string)$i];
+                                    echo "<input type='text' name='test_input[$question_number][]' value='$value'>";
+                                } ?>
+                            </div>
+                            <?php }
+                    } else if ($this->type == "definite"){
+                        if ($user_answers_id == -1){
+                            echo "<div><input type='text' name='test_input[$question_number][]'></div>";
+                        }else{
+                            $value = $user_answers[$question_number][0];
+                            echo "<div><input type='text' name='test_input[$question_number][]' value='$value'></div>";
+                        }
+                    }else if ($this->type == "definite_mc"){ ?>
+                        <input type="hidden" name="for_verification" value="1">
+                        <?php if ($user_answers_id == -1 || $user_answers[$question_number] == null){
+                            echo "<div><textarea name='test_input[$question_number][]'></textarea></div>";
+                        }else{
+                            echo "<div><textarea name='test_input[$question_number][]'>".$user_answers[$question_number][0]."</textarea></div>";
+                        }
+                    }
+                    $this->print_image($conn);
+                    if ($extend && $this->type != "definite_mc"){
+                        echo "<p>Right answer(s): ";
+                        foreach ($this->get_right_answers() as $right_answer) {
+                            if ($this->type == "missing_words" || $this->type == "definite"){
+                                echo $right_answer."; ";
+                            }else{
+                                echo $this->variants[$right_answer] . "; ";
+                            }
+                        }
+                        echo "</p>";
+                    } ?>
+                </div>
+            </div>
+        </section>
+    <?php }
 }

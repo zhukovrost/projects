@@ -49,6 +49,9 @@ if (empty($_GET['num_of_questions'])){
     $_SESSION['num_of_questions'] = $_GET['num_of_questions'];
 }
 
+$test = new Test();
+$test->test = $_SESSION['result_array'];
+
 # -------------------- FUNCTIONS -----------------------------
 
 # ----------------- select amount of questions -----------------------
@@ -64,12 +67,7 @@ $count_result->free();
 if (isset($_POST['num_for_delete'])){
     if ($_POST['num_for_delete'] != "" || $_POST['num_for_delete'] != null){
         $num_del = $_POST['num_for_delete'] - 1;
-
-        $nwra1 = array();
-        for ($i = 0; $i < $num_del; $i++){ array_push($nwra1, $_SESSION['result_array'][$i]); }
-        for ($i = $num_del + 1; $i < count($_SESSION['result_array']); $i++){ array_push($nwra1, $_SESSION['result_array'][$i]); }
-        $_SESSION['result_array'] = $nwra1;
-
+        $test->delete_question($num_del);
         unset($_POST['num_for_delete']);
     }
 }
@@ -86,7 +84,7 @@ if (isset($_POST['num_of_rand_questions'])){
     if ($result = $conn->query($select_rand_sql)){
         foreach ($result as $rand_question_query){
             $rand_question_id = $rand_question_query['id'];
-            array_push($_SESSION['result_array'], $rand_question_id);
+            array_push($test->test, $rand_question_id);
         }
     }else{
         $error_array["random_error"] = true;
@@ -98,7 +96,7 @@ if (isset($_POST['num_of_rand_questions'])){
 
 if (isset($_POST['add_question_from_db_id'])){
     if ($_POST['add_question_from_db_id'] != "" || $_POST['add_question_from_db_id'] != null){
-        array_push($_SESSION['result_array'], (int)$_POST['add_question_from_db_id']);
+        array_push($test->test, (int)$_POST['add_question_from_db_id']);
     }
 }
 
@@ -209,7 +207,7 @@ if (isset($_POST['add_question_to_db'])){
 
     $question = new Question($_POST['question'], $theme, $_SESSION['form_type'], $variants, $right_answers, $score, $img_id);
     if ($question->insert($conn)){
-        array_push($_SESSION['result_array'], $question->get_id());
+        array_push($test->test, $question->get_id());
         $error_array['success_add_question'] = true;
     }else{
         echo "Ошибка: " . $conn->error;
@@ -222,43 +220,21 @@ if (isset($_POST['test_name'])){
 
     # -------------- search for all themes in the test -----------------
 
-    $test_themes = array();
-    foreach ($_SESSION['result_array'] as $question_id){
-        $select_test_themes_sql = "SELECT theme FROM questions WHERE id=$question_id ORDER BY theme";
-        if ($select_test_themes_result = $conn->query($select_test_themes_sql)){
-            foreach ($select_test_themes_result as $item){
-                $test_theme = $item['theme'];
-            }
-            if (!in_array($test_theme, $test_themes)){
-                array_push($test_themes, $test_theme);
-            }
-        } else {
-            echo "Ошибка: " . $conn->error;
-        }
-        $select_test_themes_result->free();
-    }
+    $test->name=$_POST['test_name'];
+    $test->get_questions($conn);
+    $test->set_themes();
 
     # ------------------ insert test --------------------------
 
     if (isset($_POST['test_task']) && $_POST['test_task'] != ''){
-        $task = $_POST['test_task'];
+        $test->task = $_POST['test_task'];
     }else{
-        $task = "Solve the test.";
+        $test->task = "Solve the test.";
     }
 
-    $add_test_sql = "INSERT INTO tests(name, test, task, themes) VALUES('".$_POST['test_name']."', '".json_encode($_SESSION['result_array'])."', '$task', '".json_encode($test_themes)."')";
-    if($conn->query($add_test_sql)){
+    if($test->insert($conn)){
         $error_array["success_add_test"] = true;
-        $test_id = mysqli_insert_id($conn);
-    } else {
-        echo "Ошибка: " . $conn->error;
     }
-
-    # ------------ clear -------------
-
-    unset($_POST['test_name']);
-    $error_array["success_add_questions"] = true;
-    $_SESSION['result_array'] = array();
 }
 
 ?>
@@ -373,7 +349,7 @@ if ($error_array['theme_error'] || $error_array['theme_success'] || $error_array
 
     <div class='c_error_array'>
         <?php if ($error_array["success_add_test"]){ ?>
-            <p class='success'>The test has been added to the database (ID: <?php echo $test_id; ?>)</p>
+            <p class='success'>The test has been added to the database (ID: <?php echo $test->get_id(); ?>)</p>
         <?php } if ($error_array["image_error"]){ ?>
             <p class='warning'>Image upload error</p>
         <?php } if ($error_array["theme_error"]){ ?>
@@ -392,9 +368,10 @@ if ($error_array['theme_error'] || $error_array['theme_success'] || $error_array
 <?php
 #-------------------- preview -------------------
 
-print_test($conn, $_SESSION['result_array'], true);
+$test->print_it($conn, true);
+$_SESSION['result_array'] = $test->test;
 
-
+$conn->close();
 ?>
 <script src="../templates/format.js"></script>
 <script>
