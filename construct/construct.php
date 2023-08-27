@@ -2,7 +2,7 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-if (!(check_if_admin($user_data, "../"))){ header("Location: ../index.php"); }
+if (!$user_data->is_admin()){ header("Location: ../index.php"); }
 
 $title = "CONSTRUCTOR";
 

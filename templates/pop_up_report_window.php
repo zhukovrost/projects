@@ -4,14 +4,14 @@ $error_array = array(
   "success_new_report" => false
 );
 
-if (isset($_POST['report']) && check_the_login($user_data, "../", false)){
+if (isset($_POST['report']) && $user_data->check_the_login(false)){
   if ($_POST['report'] != "" && isset($_POST['stars'])){
     $new_date = time();
     $new_message = $_POST['report'];
     $new_rate = $_POST['stars'];
 
 
-    $insert_sql = "INSERT INTO reports(user, message, rate, date) VALUES(".$user_data['id'].", '".$new_message."', ".$new_rate.", ".$new_date.")";
+    $insert_sql = "INSERT INTO reports(user, message, rate, date) VALUES(".$user_data->get_id().", '$new_message', $new_rate, $new_date)";
     if ($conn -> query($insert_sql)){
       $error_array['success_new_report'] = true;
     }

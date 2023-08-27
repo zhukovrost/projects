@@ -2,7 +2,7 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-if (!(check_if_admin($user_data, "../"))){ header("Location: ../index.php"); }
+if (!$user_data->is_admin()){ header("Location: ../index.php"); }
 
 $title = "ADD QUESTIONS";
 ?>
@@ -35,6 +35,7 @@ if ($select_result = $conn->query($select_sql)){
   }
 }
 $select_result->free();
+$conn->close();
 ?>
 <script src="../templates/format.js"></script>
 <script>

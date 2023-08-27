@@ -2,11 +2,11 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-check_the_login($user_data, "../");
+$user_data->check_the_login();
 $title = "My tests";
 
 $tests = array();
-$select_all_tests_sql = "SELECT id, test, duration, mark, deadline, user FROM tests_to_users WHERE user=".$user_data['id'];
+$select_all_tests_sql = "SELECT id, test, duration, mark, deadline, user FROM tests_to_users WHERE user=".$user_data->get_id();
 if ($select_all_tests_result = $conn->query($select_all_tests_sql)){
   foreach ($select_all_tests_result as $item){
     array_push($tests, $item);
@@ -14,7 +14,7 @@ if ($select_all_tests_result = $conn->query($select_all_tests_sql)){
 }
 $select_all_tests_result->free();
 
-$stats = get_stats($conn, $user_data['id']);
+$stats = get_stats($conn, $user_data->get_id());
 $diagram_data = json_encode([$stats['wrong'], $stats['not_answered'], $stats['correct']])
 
 ?>
@@ -74,6 +74,7 @@ $diagram_data = json_encode([$stats['wrong'], $stats['not_answered'], $stats['co
 </main>
 <?php
 include "../templates/footer.html";
+$conn->close();
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -2,8 +2,7 @@
 include "templates/func.php";
 include "templates/settings.php";
 
-$auth = $user_data['auth'];
-if ($auth){
+if ($user_data->get_auth()){
   header('Location: user/profile.php');
 }
 

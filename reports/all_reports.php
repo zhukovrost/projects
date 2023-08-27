@@ -24,7 +24,7 @@ $title = "Feedback";
         <!-- Block to leave feedback -->
         <div class="your_feedback">
             <h1>Leave your feedback:</h1>
-            <?php if (check_the_login($user_data, '../', false)){ ?>
+            <?php if ($user_data->check_the_login(false)){ ?>
               <button class="popup_button">Leave</button>
             <?php }else{ ?>
               <a href="../log.php">Log in to leave the feedback</a>
@@ -46,7 +46,7 @@ $title = "Feedback";
         </div>
     </main>
 
-    <?php include "../templates/footer.html"; ?>
+    <?php include "../templates/footer.html"; $conn->close(); ?>
 
     <script src="../templates/format.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>

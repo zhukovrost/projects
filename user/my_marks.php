@@ -2,8 +2,7 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-check_the_login($user_data, "../");
-
+$user_data->check_the_login();
 if (isset($_GET['month'])){
   $month = $_GET['month'];
 }else{
@@ -51,7 +50,7 @@ $month_input = date('Y-m', $current_month)
                     </div>
                     <a class="previous" href="my_marks.php?month=<?php echo $month - 1; ?>">
                         <!-- Marks -->
-                        <?php print_marks($conn, $user_data['id'], $previous_month, $current_month, true, $month); ?>
+                        <?php print_marks($conn, $user_data->get_id(), $previous_month, $current_month, true, $month); ?>
                     </a>
                 </div>
                 
@@ -66,12 +65,12 @@ $month_input = date('Y-m', $current_month)
             <!-- Current month -->
             <section class="current">
                 <!-- Marks -->
-                <?php print_marks($conn, $user_data['id'], $current_month, $next_month, false, $month); ?>
+                <?php print_marks($conn, $user_data->get_id(), $current_month, $next_month, false, $month); ?>
             </section>
         </div>
     </main>
 
-    <?php include "../templates/footer.html"; ?>
+    <?php include "../templates/footer.html"; $conn->close(); ?>
 
     <script src="../templates/format.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>

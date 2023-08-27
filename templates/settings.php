@@ -16,13 +16,7 @@ conn_check($conn);
 
 session_start();
 
-if (isset($_SESSION["login"])){
-    $user_data = get_user_data($conn, $_SESSION['login']);
+$user_data = new User($conn);
+if (isset($_SESSION["user"])){
+    $user_data = new User($conn, $_SESSION["user"], true);
 }
-else{
-    $user_data = array(
-        "auth" => false
-    );
-}
-
-?>

@@ -2,7 +2,7 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-if (!(check_if_admin($user_data, "../"))){ header("Location: ../index.php"); }
+if (!$user_data->is_admin()){ header("Location: ../index.php"); }
 
 $title = "FAST VERIFICATION";
 
@@ -40,16 +40,15 @@ if (isset($_POST['verified'])){
         $test = new Test();
         $test->set_test_data($conn, $item['test']);
         $test->get_questions($conn);
-        $user_id = $item['user'];
+        $user = new User($conn, $item['user']);
         $user_answers = json_decode($item['answers']);
         $verified_scores = (array)json_decode($item['verified_scores']);
-        $user = get_user_data($conn, $user_id, true);
         $ver_num = 0;
         ?>
 
         <form action="" method="post" class="questions_list">
           <div class="container">
-          <p class="ver_title"><?php echo $user['surname'].' '.$user['name']; ?> from test: <?php echo $test->name; ?></p>
+          <p class="ver_title"><?php echo $user->surname.' '.$user->name; ?> from test: <?php echo $test->name; ?></p>
         <?php
         for ($i = 0; $i < count($test->test); $i++){
           $question_data = $test->questions[$i];
@@ -67,10 +66,10 @@ if (isset($_POST['verified'])){
         </form>
   <?php } }
     $select_result->free();
-    $conn->close();
   if ($error_array['success_verification']){
     print_message("Verification is done!");
   }
+  $conn->close();
   ?>
 
 </main>

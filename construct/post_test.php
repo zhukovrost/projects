@@ -2,7 +2,7 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-if (!(check_if_admin($user_data, "../"))){ header("Location: ../index.php"); }
+if (!$user_data->is_admin()){ header("Location: ../index.php"); }
 
 $title = "POST TESTS";
 
@@ -115,6 +115,7 @@ if (empty($_GET['test_id']) || $_GET['test_id'] == ''){
     if ($error_array['post_test_success']){
       print_message("The test has been published!", 1);
     }
+    $conn->close();
     ?>
     <script src="../templates/format.js"></script>
 </body>

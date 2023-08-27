@@ -4,75 +4,16 @@ include 'templates/func.php';
 include 'templates/settings.php';
 
 $title = "Registration";
-
-$error_array = array(
-    "reg_fill_all_input_fields" => false,
-    "reg_login_is_used" => false,
-    "reg_passwords_are_not_the_same" => false,
-    "reg_conn_error" => false,
-    "reg_success" => false,
-    "too_long_string" => false,
-    "adding_stats" => false,
-    "incorrect_code" => false
-);
+if ($user_data->get_auth()){
+    header("Location: index.php");
+}
 
 # ------------------ registration ------------------------
 
 if (isset($_POST['reg_done'])){
-    if (md5($_POST['code']) == "5bdd0bcac5ca87ec2116d25da2828a55"){
-        if ($_POST['reg_login'] == "" || $_POST['reg_password'] == "" || $_POST['reg_password2'] == "" || $_POST['reg_name'] == "" || $_POST['reg_surname'] == ""){
-            $error_array['reg_fill_all_input_fields'] = true;
-        }else{
-            if ($_POST['reg_password'] == $_POST['reg_password2']){
-                $reg_login = trim($_POST['reg_login']);
-                $reg_password = trim($_POST['reg_password']);
-                $reg_name = trim($_POST['reg_name']);
-                $reg_surname = trim($_POST['reg_surname']);
-                if (strlen($reg_login) < 33 && strlen($reg_password) < 33 && strlen($reg_surname) < 33) {
-                    $reg_sql = "SELECT * FROM users WHERE login='" . $reg_login . "'";
-                    if ($reg_result = $conn->query($reg_sql)) {
-                        $rowsCount = $reg_result->num_rows;
-                        if ($rowsCount == 0) {
-                            if (isset($_POST['reg_thirdname'])) {
-                                $reg_thirdname = trim($_POST['reg_thirdname']);
-                                if (strlen($reg_thirdname) > 32){ $error_array["too_long_string"] = true; }
-                                $reg_sql2 = "INSERT INTO users(login, password, name, surname, thirdname) VALUES('".$reg_login."', '".md5($reg_password)."', '".$reg_name."', '".$reg_surname."', '".$reg_thirdname."')";
-                            } else {
-                                $reg_sql2 = "INSERT INTO users(login, password, name, surname) VALUES('".$reg_login."', '".md5($reg_password)."', '".$reg_name."', '".$reg_surname."')";
-                            }
-
-                            if (!$error_array["too_long_string"]){
-                                if ($conn->query($reg_sql2)) {
-                                    $reg_sql3 = "INSERT INTO stats(user) VALUES (LAST_INSERT_ID())";
-                                    if ($conn->query($reg_sql3)){
-                                        $_SESSION["reg_login"] = $reg_login;
-                                        $_SESSION["reg_password"] = $reg_password;
-                                        header("Location: log.php?reg=1");
-                                    }else{
-                                        $error_array['adding_stats'] = true;
-                                    }
-                                } else {
-                                    $error_array['reg_conn_error'] = true;
-                                }
-                            }
-
-                        } else {
-                            $error_array['reg_login_is_used'] = true;
-                        }
-                    } else {
-                        $error_array['reg_conn_error'] = true;
-                    }
-                }else{
-                    $error_array["too_long_string"] = true;
-                }
-                $conn->close();
-            }else{
-                $error_array['reg_passwords_are_not_the_same'] = true;
-            }
-        }
-    }else{
-        $error_array['incorrect_code'] = true;
-    }
+    $user = new User($conn);
+    $error_array = $user->reg($conn, $_POST['code'], $_POST['reg_login'], $_POST['reg_password'], $_POST['reg_password2'], $_POST['reg_name'], $_POST['reg_surname'], $_POST['reg_thirdname']);
+    $conn->close();
 }
 
 ?>
@@ -107,7 +48,7 @@ if (isset($_POST['reg_done'])){
             <input id="password" type="password" name="reg_password">
             <label for="confirm_password">Confirm the password</label>
             <input id="confirm_password" type="password" name="reg_password2">
-            <input type="text" name="code" placeholder="enter secret code here">
+            <input type="password" name="code" placeholder="enter secret code here">
         </div>
       <div class="right">
         <label for="name">Name</label>

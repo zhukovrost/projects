@@ -2,7 +2,7 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-check_the_login($user_data, "../");
+$user_data->check_the_login();
 if (isset($_GET['id'])){
   $id = $_GET['id'];
 }else{
@@ -13,7 +13,7 @@ $check_select_sql = "SELECT user, test, mark, duration, deadline FROM tests_to_u
 if ($check_select_result = $conn->query($check_select_sql)){
   if ($check_select_result->num_rows == 1){
     foreach ($check_select_result as $item){
-      if ($item['user'] != $user_data['id']){
+      if ($item['user'] != $user_data->get_id()){
         header("Location: my_tests.php?access_error=1");
       }
       $mark = $item['mark'];
@@ -34,7 +34,7 @@ if ($mark == -2){
   header("Location: my_tests.php?verification_error=1");
 }
 
-if (!check_deadline($conn, $deadline, $test_id, $id, $user_data['id'])){
+if (!check_deadline($conn, $deadline, $test_id, $id, $user_data->get_id())){
   header("Location: my_tests.php?deadline_error=1");
 }
 

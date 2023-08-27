@@ -2,12 +2,12 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-check_the_login($user_data, '../');
-$avatar = get_avatar($conn, $user_data);
-$title = $user_data['login'];
+$user_data->check_the_login();
+$title = $user_data->login;
+$id = $user_data->get_id();
 
 # ------------ getting diagram data -------------------
-$select_sql = "SELECT date FROM tests_to_users WHERE user=".$user_data['id']." AND mark >= 0 ORDER BY date DESC";
+$select_sql = "SELECT date FROM tests_to_users WHERE user=$id AND mark >= 0 ORDER BY date DESC";
 $completed_tests = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 if ($select_result = $conn->query($select_sql)){
   foreach ($select_result as $test_date){
@@ -22,52 +22,30 @@ if ($select_result = $conn->query($select_sql)){
       }
     }
   }
+}else{
+    echo $conn->error;
 }
 $select_result->free();
 $completed_tests = json_encode($completed_tests);
-
 # ---------------- avatar upload ------------------------
 
 if(isset($_POST['image_to_php'])) {
-  $data = $_POST['image_to_php'];
-  $avatar_id = $user_data['avatar'];
-  if ($avatar_id == 1){
-    $sql = "INSERT INTO avatars (file) VALUES ('$data')";
-  }else{
-    $sql = "UPDATE avatars SET file='$data' WHERE id=$avatar_id";
-  }
-  if ($conn->query($sql)){
-    if ($avatar_id == 1){
-      $new_avatar_id = mysqli_insert_id($conn);
-      $update_sql = "UPDATE users SET avatar=$new_avatar_id WHERE id=".$user_data['id'];
-      if ($conn->query($update_sql)){
-        header("Refresh: 0");
-      }else{
-        echo $conn->error;
-      }
-    }else{
-      header("Refresh: 0");
-    }
-  }else{
-    echo $conn->error;
-  }
+    $user_data->update_avatar($conn, $_POST['image_to_php']);
 }
-
 
 # -------------------- getting num of uncompleted tests ----------------------
 
 $uncompleted_tests = 0;
-$select_sql_2 = "SELECT id FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY deadline DESC";
+$select_sql_2 = "SELECT id FROM tests_to_users WHERE user=$id AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY deadline DESC";
 if ($select_result_2 = $conn->query($select_sql_2)){
   $uncompleted_tests = $select_result_2->num_rows;
 }
-
 
 # --------------- getting nearest test ---------------------------
 
 $flag = false;
 
-$select_sql_3 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND deadline > ".time()." ORDER BY deadline LIMIT 1";
+$select_sql_3 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=$id AND (mark=-1 OR mark=-3) AND deadline > ".time()." ORDER BY deadline LIMIT 1";
 if ($select_result_3 = $conn->query($select_sql_3)){
   if ($select_result_3->num_rows > 0){
     foreach ($select_result_3 as $item){
@@ -78,7 +56,7 @@ if ($select_result_3 = $conn->query($select_sql_3)){
       $test_duration = $item['duration'];
     }
   }else{
-    $select_sql_4 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=".$user_data['id']." AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY date LIMIT 1";
+    $select_sql_4 = "SELECT id, test, deadline, duration FROM tests_to_users WHERE user=$id AND (mark=-1 OR mark=-3) AND (deadline > ".time()." OR deadline=-1) ORDER BY date LIMIT 1";
     if ($select_result_4 = $conn->query($select_sql_4)){
       foreach ($select_result_4 as $item){
         $flag = true;
@@ -110,13 +88,13 @@ if ($select_result_3 = $conn->query($select_sql_3)){
 
         <div class="container">
             <!-- Welcome 'user name' -->
-            <h1 class="profile_title">Welcome, <?php echo $user_data['name']; ?></h1>
+            <h1 class="profile_title">Welcome, <?php echo $user_data->name; ?></h1>
             <!-- profile block -->
             <section class="profile_block">
                 
                 <!-- User avatar photo -->
                 <form id="avatar_form" class="avatar" method="post">
-                  <img id="profileImage" src="<?php echo $avatar; ?>">
+                  <img id="profileImage" src="<?php echo $user_data->get_avatar($conn); ?>">
                   <input type="file" id="avatar_file" accept="image/*" />
                   <label for="avatar_file" class="uppload_button">Choose photo</label>
                   <input type="hidden" id="image_to_php" name="image_to_php" value="">
@@ -162,9 +140,7 @@ if ($select_result_3 = $conn->query($select_sql_3)){
                         <a class="item" href="my_marks.php?month=0">Marks</a>
                         <a class="item" href="theory.php">Theory</a>
                         <a class="item" href="my_tests.php">All tests</a>
-                      <?php
-                      if (check_if_admin($user_data, '../')){
-                        ?>
+                      <?php if ($user_data->is_admin()){ ?>
                         <a href="../construct/construct.php" class="item">Admin Page</a>
                       <?php } ?>
                         <!-- Logout button for all users -->
@@ -181,7 +157,7 @@ if ($select_result_3 = $conn->query($select_sql_3)){
         </div>
     </main>
 
-    <?php include "../templates/footer.html"; ?>
+    <?php include "../templates/footer.html"; $conn->close(); ?>
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

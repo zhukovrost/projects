@@ -1,18 +1,17 @@
 <?php
 if ($select_result = $conn -> query($select_sql)){
   foreach($select_result as $report){
-    $user = get_user_data($conn, $report['user'], true);
+    $user = new User($conn, $report['user']);
     $message = $report['message'];
     $rate = $report['rate'];
     $date = date('j F, Y', $report['date']);
-    $avatar = get_avatar($conn, $user);
     ?>
     <!-- Report's item -->
     <swiper-slide class="reports_item">
       <!-- User's avatar -->
       <div class="avatar">
-        <img src="<?php echo $avatar; ?>">
-        <p><?php echo $user['name'].' '.$user['surname']; ?></p>
+        <img src="<?php echo $user->get_avatar($conn); ?>">
+        <p><?php echo $user->name.' '.$user->surname; ?></p>
       </div>
       <!-- User's report(rating and text) -->
       <div class="content">

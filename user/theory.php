@@ -3,8 +3,6 @@ include '../templates/func.php';
 include '../templates/settings.php';
 
 $title = "Theory";
-$auth = $user_data['auth'];
-
 
 $error_array = array(
   "theme_success" => false,
@@ -18,7 +16,7 @@ $error_array = array(
 
 #-------------- add new theme to db ----------------
 
-if (isset($_POST['add_theme']) && $auth){
+if (isset($_POST['add_theme']) && $user_data->get_auth()){
   if ($_POST['add_theme'] != "" || $_POST['add_theme'] != null){
     $check_sql = "SELECT id FROM themes WHERE theme='".$_POST['add_theme']."'";
     if ($conn->query($check_sql)->num_rows == 0){
@@ -49,25 +47,25 @@ if($result = $conn->query($get_themes_sql)){
 
 # -------------------- add new content --------------------
 
-if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $auth){
-  $insert_sql = "INSERT INTO theory (theory, theme, user, date) VALUES ('".$_POST['add_content']."', '".$_POST['theme_id']."', ".$user_data['id'].", ".time().")";
+if (isset($_POST['theme_id']) && $_POST['add_content'] != '' && $user_data->get_auth()){
+  $insert_sql = "INSERT INTO theory (theory, theme, user, date) VALUES ('".$_POST['add_content']."', '".$_POST['theme_id']."', ".$user_data->get_id().", ".time().")";
   if ($conn->query($insert_sql)){
     $error_array['content_success'] = true;
   }else{
     $error_array['content_error'] = true;
   }
-}else if (!$auth && isset($_POST['theme_id'])){
+}else if (!$user_data->get_auth() && isset($_POST['theme_id'])){
   $error_array['auth_error'] = true;
 }
 
 
 # --------------- edit content ------------------
 
-if (isset($_POST['theory_id']) && $auth){
+if (isset($_POST['theory_id']) && $user_data->get_auth()){
   if ($_POST['edit_content'] == ''){
     $sql = "DELETE FROM theory WHERE id=".$_POST['theory_id'];
   }else{
-    $sql = "UPDATE theory SET theory='".$_POST['edit_content']."', user=".$user_data['id'].", date=".time()." WHERE id=".$_POST['theory_id'];
+    $sql = "UPDATE theory SET theory='".$_POST['edit_content']."', user=".$user_data->get_id().", date=".time()." WHERE id=".$_POST['theory_id'];
   }
 
   if ($conn -> query($sql)){
@@ -76,7 +74,7 @@ if (isset($_POST['theory_id']) && $auth){
     $error_array['content_error'] = true;
   }
 
-}else if (isset($_POST['theory_id']) && !$auth){
+}else if (isset($_POST['theory_id']) && !$user_data->get_auth()){
   $error_array['auth_error'] = true;
 }
 
@@ -129,7 +127,9 @@ if (isset($_POST['theory_id']) && $auth){
 
             if ($result_sql = $conn->query($select_sql)){
               if ($result_sql->num_rows != 0){
-                foreach ($result_sql as $content) { ?>
+                foreach ($result_sql as $content) {
+                    $user = new User($conn, $content['user']);
+                    ?>
                   <form class="content" method="post">
                     <p class="text"><?php echo $content['theory']; ?></p>
                     <textarea></textarea>
@@ -142,7 +142,7 @@ if (isset($_POST['theory_id']) && $auth){
                       </div>
                       <!-- User, date, time -->
                       <div class="content_caption">
-                        <p class="user"><?php echo get_user_data($conn, $content['user'], true)['name']; ?></p>
+                        <p class="user"><?php echo $user->name; ?></p>
                         <p class="time"><?php echo date("H:i", $content['date']); ?></p>
                         <p class="date"><?php echo date("d.m.Y", $content['date']); ?></p>
                       </div>
@@ -172,7 +172,7 @@ if (isset($_POST['theory_id']) && $auth){
     </section>
 
 
-    <?php if ($auth) { ?>
+    <?php if ($user_data->get_auth()) { ?>
 
       <!-- Block to add new post -->
       <section class="new_post">
@@ -188,7 +188,7 @@ if (isset($_POST['theory_id']) && $auth){
   </div>
 </main>
 
-<?php include "../templates/footer.html"; ?>
+<?php include "../templates/footer.html"; $conn->close(); ?>
 
 
 <script src="../templates/format.js"></script>

@@ -48,7 +48,7 @@ $title = "Feedback";
                 <!-- Link to all reviews page -->
                 <a href="all_reports.php">View all reports</a>
                 <!-- Button to leave feedback -->
-              <?php if (check_the_login($user_data, '../', false)){ ?>
+              <?php if ($user_data->check_the_login(false)){ ?>
                 <button class="popup_button">Leave your feedback</button>
               <?php }else{ ?>
                 <a href="../log.php">Log in to leave the feedback</a>
@@ -69,6 +69,8 @@ $title = "Feedback";
     <?php }
     if ($error_array['fill_all_the_fields']){ ?>
     <script>alert("Error: fill all fields!")</script>
-    <?php } ?>
+    <?php }
+    $conn->close();
+    ?>
 </body>
 </html>

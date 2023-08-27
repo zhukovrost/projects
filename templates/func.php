@@ -13,101 +13,7 @@ function conn_check($conn){
   }
 }
 
-
-# ----------------- user data -----------------
-
-function check_the_login($user_data, $way = "", $header = true){
-  if (!$user_data['auth']){
-    if ($header){
-      header('Location: '.$way.'log.php?please_log=1');
-    }else{
-      return false;
-    }
-  }
-  if (!$header){
-    return true;
-  }
-}
-
-function check_if_admin($user_data, $way=""){
-  if (check_the_login($user_data, $way, false)) {
-    if ($user_data['status'] == 'admin'){
-      return true;
-    }else{
-      return false;
-    }
-  }else{
-    return false;
-  }
-}
-
-
-function get_user_data($conn, $login, $is_id=false){
-  $auth = false;
-  $id = 0;
-  $name = '';
-  $surname = '';
-  $thirdname = '';
-  $status = '';
-  $user_tests_ids = [];
-  $user_tests_marks = [];
-  $user_tests_durations = [];
-  $avatar = '';
-
-  if (isset($login) && $login != ''){
-    if ($is_id){
-      $select_sql = "SELECT * FROM users WHERE id=$login";
-    }else {
-      $select_sql = "SELECT * FROM users WHERE login='".$login."'";
-    }
-    if ($select_result = $conn->query($select_sql)) {
-      foreach ($select_result as $item) {
-        $id = $item['id'];
-        $name = $item['name'];
-        $surname = $item['surname'];
-        $thirdname = $item['thirdname'];
-        $status = $item['status'];
-        $avatar = $item['avatar'];
-      }
-
-      $auth = true;
-    }else{
-      echo $conn -> error;
-    }
-    $select_result->free();
-  }
-
-  return array(
-    "auth" => $auth,
-    "id" => $id,
-    "login" => $login,
-    "name" => $name,
-    "surname" => $surname,
-    "thirdname" => $thirdname,
-    "status" => $status,
-    "user_tests_ids" => $user_tests_ids,
-    "user_tests_marks" => $user_tests_marks,
-    "user_tests_durations" => $user_tests_durations,
-    "avatar" => $avatar,
-  );
-}
-
 # -------------- other ------------------
-
-function get_avatar($conn, $user_data){
-  $avatar_id = $user_data['avatar'];
-  $select_sql = "SELECT file FROM avatars WHERE id=$avatar_id";
-  if ($result_sql = $conn->query($select_sql)){
-    foreach ($result_sql as $item){
-      $image = $item['file'];
-    }
-  }else{
-    echo $conn->error;
-  }
-
-  return $image;
-}
-
 
 function get_overall_rating($conn){
   $cnt = 0;
@@ -140,23 +46,22 @@ function get_theme_id($conn, $theme){
 
 #---------------- reg and log ----------------------
 
-	function log_warning($if, $warning){
-		if (isset($_POST['log_done'])){
-			if ($if){
-				echo "<p class='warning'>".$warning."</p>";
-			}
-		}
-	}
+function log_warning($if, $warning){
+    if (isset($_POST['log_done'])){
+        if ($if){
+            echo "<p class='warning'>".$warning."</p>";
+        }
+    }
+}
+function reg_warning($if, $warning){
+    if (isset($_POST['reg_done'])){
+        if ($if){
+            echo "<p class='warning'>".$warning."</p>";
+        }
+    }
+}
 
-	function reg_warning($if, $warning){
-		if (isset($_POST['reg_done'])){
-			if ($if){
-				echo "<p class='warning'>".$warning."</p>";
-			}
-		}
-	}
-
-  function print_message($message, $type=3){
+function print_message($message, $type=3){
     # 0 - error, 1 - success, 2 - warning, 3 - nothing
     if ($type == 0){
       $beginning = "ERROR: ";
@@ -169,8 +74,7 @@ function get_theme_id($conn, $theme){
     }
 
     echo "<script>alert('".$beginning.$message."')</script>";
-  }
-
+}
 
 # ----------------------- QUESTIONS AND TESTS ------------------------------------
 
@@ -206,7 +110,6 @@ function get_stats($conn, $user_id){
     return false;
   }
 }
-
 
 function check_deadline($conn, $deadline, $test_id, $tests_to_users_id, $user_id){
   $now = time();
@@ -362,7 +265,6 @@ function check_the_test($conn, $id, $header=true, $get_stats=false){
   }
 }
 
-
 function print_test_info($conn, $test_info_array){
   $deadline = false;
   $test = new Test();
@@ -430,7 +332,6 @@ function print_test_info($conn, $test_info_array){
   }
 }
 
-
 function print_marks($conn, $user_id, $current_month, $next_month, $is_prev=false, $month){ ?>
   <div class="marks">
   <?php
@@ -490,4 +391,4 @@ function print_marks($conn, $user_id, $current_month, $next_month, $is_prev=fals
     <a href="my_marks.php?month=<?php echo $month + 1; ?>">Next month <img src="../img/Arrow 6.svg" alt=""></a>
     <?php } ?>
   </div>
-<?php } ?>
+<?php }

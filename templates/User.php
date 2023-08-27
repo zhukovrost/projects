@@ -1,6 +1,197 @@
 <?php
 
-class User
-{
+class User {
+    private $id;
+    public $login;
+    public $name="Guest";
+    public $surname='';
+    public $thirdname='';
+    public $avatar=1;
+    private $password='';
+    private $status="user";
+    private $auth=false;
 
+    public function __construct($conn, $id=-1, $auth=false){
+        if (isset($id) && $id != -1) {
+            $select_sql = "SELECT * FROM users WHERE id=$id LIMIT 1";
+            if ($select_result = $conn->query($select_sql)) {
+                foreach ($select_result as $item) {
+                    $this->id = $item['id'];
+                    $this->name = $item['name'];
+                    $this->surname = $item['surname'];
+                    $this->thirdname = $item['thirdname'];
+                    $this->status = $item['status'];
+                    $this->avatar = $item['avatar'];
+                    $this->password = $item['password'];
+                }
+                $this->auth = true;
+            }else{
+                echo $conn -> error;
+            }
+            $select_result->free();
+        }
+    }
+    public function get_auth(){
+        return $this->auth;
+    }
+    public function get_id(){
+        return $this->id;
+    }
+    public function is_admin(){
+        return $this->status == "admin";
+    }
+
+    public function check_the_login($header=true, $way="../"){
+        if (!$this->get_auth()){
+            if ($header){
+                header('Location: '.$way.'log.php?please_log=1');
+            }else{
+                return false;
+            }
+        }
+        if (!$header){
+            return true;
+        }
+    }
+
+    public function authenticate($conn, $login, $password){
+        $error_array = array(
+            "log_conn_error" => false,
+            "log_fill_all_input_fields" => false,
+            "log_incorrect_login_or_password" => false
+        );
+
+        $login = trim($login);
+        $password = trim($password);
+
+        if ($login == "" || $password == ""){
+            $error_array['log_fill_all_input_fields'] = true;
+            return $error_array;
+        }
+        $log_sql = "SELECT id, password FROM users WHERE login='$login' LIMIT 1";
+        if (!($log_result = $conn->query($log_sql))){
+            $error_array['log_conn_error'] = true;
+            return $error_array;
+        }
+        if ($log_result->num_rows == 0){
+            $error_array['log_incorrect_login_or_password'] = true;
+            return $error_array;
+        }
+
+        foreach ($log_result as $check_password){
+            $_SESSION["user"] = $check_password['id'];
+            if ($check_password['password'] != md5($password)){
+                $error_array['log_incorrect_login_or_password'] = true;
+                return $error_array;
+            }
+        }
+        header('Location: index.php');
+    }
+
+    public function reg($conn, $code, $login, $password, $password2, $name, $surname, $thirdname='')
+    {
+        # ---------- collecting errors ---------------
+        $error_array = array(
+            "reg_fill_all_input_fields" => false,
+            "reg_login_is_used" => false,
+            "reg_passwords_are_not_the_same" => false,
+            "reg_conn_error" => false,
+            "reg_success" => false,
+            "too_long_string" => false,
+            "adding_stats" => false,
+            "incorrect_code" => false
+        );
+        # --------- deleting spaces --------------
+        $code = md5(trim($code));
+        $login = trim($login);
+        $password = trim($password);
+        $password2 = trim($password2);
+        $name = trim($name);
+        $surname = trim($surname);
+        $thirdname = trim($thirdname);
+        # --------- checking data --------------
+        if ($code != "5bdd0bcac5ca87ec2116d25da2828a55") { # checking the secret code
+            $error_array['incorrect_code'] = true;
+            return $error_array;
+        }
+        if ($login == '' || $password == '' || $name == '' || $surname == '') { # checking blank fields
+            $error_array['reg_fill_all_input_fields'] = true;
+            return $error_array;
+        }
+        if ($password != $password2) { # checking password equality
+            $error_array['reg_passwords_are_not_the_same'] = true;
+            return $error_array;
+        }
+        $password = $password2 = md5($password); # hashing password
+        if (strlen($login) > 32 || strlen($surname) > 32 || strlen($thirdname) > 32) { # checking length
+            $error_array["too_long_string"] = true;
+            return $error_array;
+        }
+
+        $check_sql = "SELECT * FROM users WHERE login='$login'";
+        if ($reg_result = $conn->query($check_sql)) { # querying
+            $rowsCount = $reg_result->num_rows;
+            if ($rowsCount > 0) { # checking existence of the login
+                $error_array['reg_login_is_used'] = true;
+                return $error_array;
+            }
+        } else {
+            $error_array['reg_conn_error'] = true;
+            return $error_array;
+        }
+
+        $reg_sql = "INSERT INTO users(login, password, name, surname, thirdname) VALUES('$login', '$password', '$name', '$surname', '$thirdname')";
+        if (!($conn->query($reg_sql))) { # querying
+            $error_array['reg_conn_error'] = true;
+            return $error_array;
+        }
+
+        $stats_sql = "INSERT INTO stats(user) VALUES (LAST_INSERT_ID())";
+        if ($conn->query($stats_sql)) { # querying
+            $_SESSION["reg_login"] = $login;
+            header("Location: log.php?reg=1");
+        } else {
+            $error_array['adding_stats'] = true;
+            return $error_array;
+        }
+
+        return $error_array;
+    }
+
+    public function get_avatar($conn){
+        $select_sql = "SELECT file FROM avatars WHERE id=$this->avatar";
+        if ($result_sql = $conn->query($select_sql)){
+            foreach ($result_sql as $item){
+                $image = $item['file'];
+            }
+        }else{
+            $image=null;
+            echo $conn->error;
+        }
+
+        return $image;
+    }
+
+    public function update_avatar($conn, $data){
+        if ($this->avatar == 1){
+            $sql = "INSERT INTO avatars (file) VALUES ('$data')";
+        }else{
+            $sql = "UPDATE avatars SET file='$data' WHERE id=$this->avatar";
+        }
+        if ($conn->query($sql)){
+            if ($this->avatar == 1){
+                $new_avatar_id = mysqli_insert_id($conn);
+                $update_sql = "UPDATE users SET avatar=$new_avatar_id WHERE id=$this->id";
+                if ($conn->query($update_sql)){
+                    header("Refresh: 0");
+                }else{
+                    echo $conn->error;
+                }
+            }else{
+                header("Refresh: 0");
+            }
+        }else{
+            echo $conn->error;
+        }
+    }
 }

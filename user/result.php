@@ -2,7 +2,7 @@
 include '../templates/func.php';
 include '../templates/settings.php';
 
-check_the_login($user_data, "../");
+$user_data->check_the_login();
 
 if (isset($_GET['id'])){
   $id = $_GET['id'];
@@ -11,7 +11,7 @@ if (isset($_GET['id'])){
 }
 
 $data = get_tests_to_users_data($conn, $id);
-if ($data['user'] != $user_data['id']){
+if ($data['user'] != $user_data->get_id()){
   header("Location: my_tests.php");
 }
 $test_id = $data['test'];
@@ -74,7 +74,7 @@ $diagram_data = json_encode([$result_data['wrong'], $result_data['not_answered']
         </div>
     </main>
 
-    <?php include "../templates/footer.html"; ?>
+    <?php include "../templates/footer.html"; $conn->close(); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>

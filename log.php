@@ -3,38 +3,11 @@
 include 'templates/func.php';
 include 'templates/settings.php';
 
-$error_array = array(
-  "log_conn_error" => false,
-  "log_fill_all_input_fields" => false,
-  "log_incorrect_login_or_password" => false
-);
-
 # ------------------ login -----------------------
 
 if (isset($_POST['log_done'])){
-	if ($_POST["log_login"] == "" || $_POST["log_password"] == ""){
-		$error_array['log_fill_all_input_fields'] = true;
-	}else{
-		$log_login = $_POST['log_login'];
-		$log_password = $_POST['log_password'];
-
-		$log_sql = "SELECT * FROM users WHERE login='".$log_login."' AND password='".md5($log_password)."'";
-
-		if($log_result = $conn->query($log_sql)){
-				$rowsCount = $log_result->num_rows;
-				if ( $rowsCount != 0 ){
-          $_SESSION["login"] = $log_login;
-          header('Location: index.php');
-          #header('Location: account.php');
-				}else{
-						$error_array['log_incorrect_login_or_password'] = true;
-				}
-				$log_result->free();
-		}else{
-			$error_array['log_conn_error'] = true;
-		}
-			$conn->close();
-	}
+	$error_array = $user_data->authenticate($conn, $_POST['log_login'], $_POST['log_password']);
+    $conn->close();
 }
 ?>
 
@@ -64,7 +37,7 @@ if (isset($_POST['log_done'])){
       <label for="login">Login</label>
       <input type="text" id="login" name="log_login" value="<?php if (isset($_SESSION['reg_login'])){ echo $_SESSION['reg_login']; } ?>">
       <label for="password">Password</label>
-      <input type="password" id="password" name="log_password" value="<?php if (isset($_SESSION['reg_password'])){ echo $_SESSION['reg_password']; } ?>">
+      <input type="password" id="password" name="log_password">
       <a href="">Forgot password</a>
     </div>
     <?php
