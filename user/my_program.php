@@ -272,25 +272,7 @@ include "../templates/settings.php";
         </div>
     </main>
 
-    <footer>
-        <!-- Contacts -->
-        <div class="contacts">
-            <div class="social_media">
-                <p>Контакты:</p>
-                <a href="https://t.me/Xcvbnmzd"><img src="../img/tg.svg" alt=""></a>
-                <a href="https://vk.com/id497007918"><img src="../img/vk.svg" alt=""></a>
-            </div>
-            <div class="email">
-                <p>Email:</p>
-                <a href="mailto:ivanbarbash06@gmail.com?subject=Вопрос по сайту">ivanbarbash06@gmail.com</a>
-            </div>
-        </div>
-        <!-- About -->
-        <div class="about">
-            <p>Все права защищены &#169;</p>
-            <p>Иван Барбашин</p>
-        </div>
-    </footer>
+    <?php include "../templates/footer.html" ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -346,6 +328,10 @@ include "../templates/settings.php";
                 }
             },
         });
+
+        // Height of friends block
+        let friendsBlock = document.querySelector('.friends');
+        friendsBlock.style.cssText = `height: ${document.querySelector('.my_program .info .statistic').clientHeight}px;`;
     </script>
 </body>
 </html>

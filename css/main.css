@@ -590,7 +590,7 @@ footer .about p:first-child{
     border: 1px solid rgba(81, 81, 81, 1);
     box-shadow: 3px 3px 0px 0px #414141;
     border-radius: 3px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* Last trainings block */
@@ -605,7 +605,6 @@ footer .about p:first-child{
 .welcome_block_3 .last_trainings h2{
     font-size: 18px;
     font-weight: 500;
-    margin-top: 15px;
     margin-bottom: 5px;
 }
 
@@ -1002,7 +1001,7 @@ footer .about p:first-child{
 }
 
 
-/* ===WELOCOME block fourth=== */
+/* ===WELOCOME block fifth=== */
 .welcome_block_5{
     position: relative;
     overflow: hidden;
@@ -2041,6 +2040,7 @@ footer .about p:first-child{
     margin-top: 50px;
 }
 
+/* Choose date of workouts */
 .my_program .day_workouts .date{
     display: flex;
     float: right;
@@ -2060,25 +2060,27 @@ footer .about p:first-child{
     border: 1px solid rgba(198, 198, 198, 1);
 }
 
+/* Swiper of day workouts */
 .my_program .day_workouts .cover{
     display: flex;
     align-items: center;
     width: 100%;
 }
 
+/* slide */
 .my_program .day_workouts .cover swiper-slide{
     display: flex;
     justify-content: space-around;
     padding: 0 40px 10px;
 }
 
-
-
+/* Day of week */
 .my_program .cover .item h2{
     font-size: 18px;
     color: #828282;
 }
 
+/* Content of day workout */
 .my_program .cover .item .content{
     display: table-cell;
     vertical-align:middle;
@@ -2089,6 +2091,7 @@ footer .about p:first-child{
     border: 1px solid #C6C6C6;
 }
 
+/* Muscle groups */
 .my_program .cover .item .content p{
     font-size: 21px;
     margin-bottom: 10px;
@@ -2103,6 +2106,7 @@ footer .about p:first-child{
     margin-left: 5px;
 }
 
+/* Buttons edit, more and image(complete or not) */
 .my_program .cover .item .content .buttons{
     display: flex;
     justify-content: center;
@@ -2139,6 +2143,7 @@ footer .about p:first-child{
     margin: auto 0;
 }
 
+/* Title 'Выходной' */
 .my_program .cover .item .day_off{
     display: flex;
     margin-top: auto;
@@ -2151,13 +2156,14 @@ footer .about p:first-child{
 }
 
 
-
+/* Info about program */
 .my_program .info{
     display: flex;
     justify-content: space-between;
     margin: 20px 50px 20px;
 }
 
+/* Statistic of my_program */
 .my_program .info .statistic{
     width: 100%;
     display: flex;
@@ -2170,6 +2176,7 @@ footer .about p:first-child{
     border: 1px solid #C6C6C6;
 }
 
+/* Muscle groups chart */
 .my_program .info .muscle_groups{
     text-align: center;
     width: 30%;
@@ -2181,6 +2188,7 @@ footer .about p:first-child{
     transform: translateY(40px);
 }
 
+/* Content of workouts progress */
 .my_program .info .content{
     display: flex;
     flex-direction: column;
@@ -2188,6 +2196,7 @@ footer .about p:first-child{
     width: 45%;
 }
 
+/* All workouts count */
 .my_program .info .content .all{
     margin-bottom: 25px;
     border-bottom: 1px solid #CECECE;
@@ -2207,6 +2216,7 @@ footer .about p:first-child{
     float: right;
 }
 
+/* Progress of program */
 .my_program .info .content .progress{
     width: 100%;
     display: flex;
@@ -2245,20 +2255,21 @@ footer .about p:first-child{
 }
 
 
-
+/* Friends' programs */
 .my_program .info .friends{
     text-align: center;
     background-color: #ffffff;
     margin-left: 20px;
     padding: 10px 20px;
     width: 20%;
-    max-height: 47vh;
+    height: 0px;
     overflow: auto;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     border: 1px solid #C6C6C6;
 }
 
+/* title */
 .my_program .info .friends h2{
     font-size: 20px;
     font-weight: 500;
@@ -2273,4 +2284,334 @@ footer .about p:first-child{
 
 .my_program .info .friends p{
     font-size: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* ======================================== */
+
+
+/* =============STATISTIC PAGE============= */
+
+.progress_block{
+    min-height: 100vh;
+    margin-top: 5vh;
+    margin-bottom: 50px;
+    color: #000000;
+}
+
+.progress_block .statistic_block{
+    display: flex;
+    align-items: start;
+    position: relative;
+}
+
+/* Count of trainings chart */
+.progress_block .trainingChart{
+    width: 60%;
+    margin-right: 20px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    padding: 10px 30px;
+
+}
+
+/* Last trainings block */
+.progress_block .last_trainings{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+/* Last training content */
+.progress_block .last_trainings .content{
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 40px 70px 10px 70px;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+    overflow: auto;
+}
+
+/* Title */
+.progress_block .last_trainings h2{
+    position: absolute;
+    top: 1%;
+    left: 2%;
+    font-size: 20px;
+    color: rgba(150, 150, 150, 1);
+    font-weight: 500;
+}
+
+/* Trainings content item */
+.progress_block .last_trainings .item{
+    display: flex;
+}
+
+/* Left part of last exercise item */
+.progress_block .last_trainings .item .left{
+    margin-right: 5vw;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.progress_block .last_trainings .item .left div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.progress_block .last_trainings .item .left div span{
+    font-weight: 700;
+}
+
+.progress_block .last_trainings .item .left div img{
+    margin-right: 5px;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.progress_block .last_trainings .item .right div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.progress_block .last_trainings .item .right div span{
+    font-weight: 700;
+}
+
+.progress_block .last_trainings .item .right div img{
+    margin-right: 5px;
+}
+
+/* Button 'Подробнее' for more info about exercise */
+.progress_block .last_trainings .item .right button{
+    background-color: #272727;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    padding: 3px 7px 3px 12px;
+    transition: .1s ease-in-out;
+}
+
+.progress_block .last_trainings .item .right button:hover{
+    background-color: #000000;
+}
+
+.progress_block .last_trainings .item .right button img{
+    margin-left: 10px;
+}
+
+/* Decoration line */
+.progress_block .last_trainings .content .line{
+    height: 1px;
+    background-color: #C6C6C6;
+    margin-bottom: 20px;
+}
+
+
+/* Second part of statistic(training info and muscles & physical diagram) */
+.progress_block .statistic_block.second{
+    position: relative;
+    display: flex;
+    margin-top: 10px;
+}
+
+/*  Training info */
+.progress_block .statistic_block.second .training{
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    padding: 20px 40px 10px 40px;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+}
+
+/* Muscle groups diagram */
+.progress_block .statistic_block.second .training .info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress_block .statistic_block.second .muscle_groups h2{
+    font-size: 25px;
+    text-align: center;
+    transform: translateY(40px);
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+}
+
+/* Statistic info */
+.progress_block .statistic_block.second .training .info .statistic{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 40px 50px;
+    margin-left: 50px;
+    border-radius: 3px;
+    border: 2px solid #C6C6C6;
+    background-color: #FAFAFA
+}
+
+.progress_block .statistic_block.second .training .statistic p{
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.progress_block .statistic_block.second .training .statistic p span{
+    font-weight: 700;
+}
+
+/* Current info */
+.progress_block .statistic_block.second .training .physical_info{
+    width: 70%;
+    margin: 20px auto 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.progress_block .statistic_block.second .training .physical_info p{
+    font-size: 20px;
+}
+
+/* Button 'добавить' to add physical parametrs */
+.progress_block .statistic_block.second .training .physical_info button{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 21px;
+    padding: 2px 10px 5px 15px;
+    transition: .1s ease-in-out;
+}
+
+.progress_block .statistic_block.second .training .physical_info button img{
+    margin-left: 8px;
+    width: 15px;
+    height: 15px;
+    transition: .1s ease-in-out;
+}
+
+.progress_block .statistic_block.second .training .physical_info button:hover{
+    background-color: rgb(0, 0, 0);
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+}
+
+.progress_block .statistic_block.second .training .physical_info button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+/* Physical block  */
+.progress_block .statistic_block.second .physical_data{
+    width: 50%;
+    margin-left: 20px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px 10px 10px 10px;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+}
+
+/* Navigation */
+.progress_block .statistic_block.second .physical_data nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+/* Year & month & week  */
+.progress_block .statistic_block.second .physical_data nav select{
+    border: 1px solid #acacac;
+    background: #FAFAFA;
+    color: #000000;
+    font-size: 20px;
+    padding: 2px 5px;
+    height: fit-content;
+}
+
+/* Button to other physic(weight or length) */
+.progress_block .statistic_block.second .physical_data nav button{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    border: 1px solid #474747;
+    font-size: 23px;
+    padding: 5px 20px 5px 20px;
+    transition: .1s ease-in-out;
+}
+
+.progress_block .statistic_block.second .physical_data nav button:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+.progress_block .statistic_block.second .physical_data .chart{
+    margin: 0px 50px;
+    color: #00CD1E;
+}
+
+/* Progress of current programm */
+.progress_block .programm_progress{
+    margin-top: 15px;
+}
+
+.progress_block .programm_progress .progress_bar .info{
+    display: flex;
+}
+
+.progress_block .programm_progress .progress_bar .percents{
+    position: relative;
+    background-color: #FAFAFA;
+    border: 1px solid rgb(97, 97, 97);
+    text-align: end;
+    padding: 5px 7px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.progress_block .programm_progress .progress_bar .percents p{
+    position: relative;
+    font-size: 25px;
+    z-index: 2;
+    transition: .2s ease;
+}
+
+.progress_block .programm_progress .progress_bar .finish{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-color: rgba(0, 132, 19, 1);
+    border-radius: 5px 5px 5px 0px;
+    transition: .2s ease;
+}
+
+.progress_block .programm_progress .progress_bar .info button{
+    margin-left: 20px;
+    opacity: 0.8;
+    transition: .2s ease;
+}
+
+.progress_block .programm_progress .progress_bar .info button:hover{
+    opacity: 1;
+}
+
+/* title 'progress' */
+.progress_block .programm_progress .progress_bar h2{
+    transform: translateX(1%);
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
 }
