@@ -2325,7 +2325,9 @@ footer .about p:first-child{
     background-color: rgb(255, 255, 255);
     border-radius: 3px;
     border: 1px solid #C6C6C6;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     padding-top: 40px;
+    padding-right: 5px;
     width: 40%;
 }
 
@@ -2333,7 +2335,6 @@ footer .about p:first-child{
 .progress_block .last_trainings .content{
     height: 100%;
     padding: 0px 70px 10px 70px;
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     overflow: auto;
 }
 
@@ -2600,13 +2601,13 @@ footer .about p:first-child{
     transition: .2s ease;
 }
 
-.progress_block .programm_progress .progress_bar .info button{
+.progress_block .programm_progress .progress_bar .info a{
     margin-left: 20px;
     opacity: 0.8;
     transition: .2s ease;
 }
 
-.progress_block .programm_progress .progress_bar .info button:hover{
+.progress_block .programm_progress .progress_bar .info a:hover{
     opacity: 1;
 }
 
