@@ -1,6 +1,7 @@
 <?php
 include "templates/func.php";
 include "templates/settings.php";
+$user_data->redirect_logged();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,7 @@ include "templates/settings.php";
                 <p>Другое</p>
             </a>
             <a href="reg_log.php">Войти</a>
+
         </header>
         <!-- Title -->
         <div class="title">

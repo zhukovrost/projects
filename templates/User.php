@@ -59,6 +59,12 @@ class User {
         }
     }
 
+    public function redirect_logged($way=''){
+        if ($this->auth){
+            header("Location: ".$way."user/workout.php");
+        }
+    }
+
     public function authenticate($conn, $login, $password){
         $error_array = array(
             "log_conn_error" => false,
