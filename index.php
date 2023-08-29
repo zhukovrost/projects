@@ -2,6 +2,7 @@
 include "templates/func.php";
 include "templates/settings.php";
 $user_data->redirect_logged();
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">

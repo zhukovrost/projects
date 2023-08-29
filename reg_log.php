@@ -85,6 +85,7 @@ if (isset($_POST['log'])){
                 reg_warning($error_array['reg_fill_all_input_fields'], "Fill all the fields");
                 reg_warning($error_array["too_long_string"], "Too long string");
                 if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Error: " . $conn->error); }
+                $conn->close();
                 ?>
             </form>
         </section>
