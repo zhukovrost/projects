@@ -250,7 +250,7 @@ include "../templates/settings.php";
 						<p>40%</p>
 						<div class="finish"></div>
 					  </div>
-					  <button><img src="../img/my_programm_black.svg" alt=""></button>
+					  <a href="my_program.php"><img src="../img/my_programm_black.svg" alt=""></a>
 				  </div>
 				</div>
 			  </section>
