@@ -1,18 +1,26 @@
+<?php
+include "templates/func.php";
+include "templates/settings.php";
+
+if ($user_data->get_auth()){
+    header("Location: index.php");
+}
+
+if (isset($_POST['reg'])){
+    $error_array = $user_data->reg($conn, $_POST['reg_login'], $_POST['reg_status'], $_POST['reg_password'], $_POST['reg_password2'], $_POST['reg_name'], $_POST['reg_surname'], $_POST['reg_email']);
+}
+
+if (isset($_POST['log'])){
+    $error_array = $user_data->authenticate($conn, $_POST['log_login'], $_POST['log_password']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/adaptation.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-</head>
+<?php inc_head("OpenDoor", true); ?>
 <body class="log_reg_body">
     <div class="container">
         <!-- Log and reg logo -->
-        <a href="welcome.html" class="logo">
+        <a href="index.php" class="logo">
             <img src="img/logo_reg_log.svg" alt="">
             <p>Training</p>
         </a>
@@ -27,16 +35,23 @@
                 <button class="reg_button">Регистрация</button>
             </div>
             <!-- Login form -->
-            <form class="log_form" action="">
+            <form class="log_form" action="" method="post">
                 <label for="login_entry">Логин</label>
                 <input name="log_login" type="text" id="login_entry">
                 <label for="password_entry">Пароль</label>
                 <input name="log_password" type="password" id="password_entry">
-                <button type="submit">Войти</button>
+                <button type="submit" name="log" value="1">Войти</button>
                 <a class="forgot_password" href="">Не помнишь пароль?</a>
+                <?php
+                log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
+                log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
+                if ($error_array['log_conn_error']){ log_warning($error_array['log_conn_error'], "Ошибка: " . $conn->error); };
+                if (isset($_GET['please_log'])){ echo "<p class=''> Пожалуйста авторизуйтесь</p>"; }
+                if (isset($_GET['reg'])){ echo "<p class=''>Регистрация прошла успешно, пожалуйста авторизуйтесь</p>"; }
+                ?>
             </form>
             <!-- Registration form -->
-            <form class="reg_form" action="">
+            <form class="reg_form" action="" method="post">
                 <label for="name">Имя</label>
                 <input name="reg_name" type="text" id="name">
                 <label for="surname">Фамилия</label>
@@ -45,27 +60,34 @@
                 <!-- User's profile -->
                 <div class="profiles">
                     <div>
-                        <input type="radio" name="profile" id="sportsman">
+                        <input type="radio" name="reg_status" id="sportsman" value="user">
                         <label for="sportsman">Спортсмен</label>
                     </div>
                     <div>
-                        <input type="radio" name="profile" id="coach">
+                        <input type="radio" name="reg_status" id="coach" value="coach">
                         <label for="sportsman">Тренер</label>
                     </div>
                     <div>
-                        <input type="radio" name="profile" id="doctor">
+                        <input type="radio" name="reg_status" id="doctor" value="doctor">
                         <label for="sportsman">Врач</label>
                     </div>
                 </div>
                 <label for="email">Почта</label>
-                <input name="reg_email" type="text" id="email">
+                <input name="reg_email" type="email" id="email">
                 <label for="login">Логин</label>
                 <input name="reg_login" type="text" id="login">
                 <label for="password">Пароль</label>
                 <input name="reg_password" type="text" id="password">
                 <label for="check_password">Подтвердите пароль</label>
                 <input name="reg_password2" type="text" id="check_password">
-                <button type="submit">Зарегистрироваться</button>
+                <button type="submit" name="reg" value="1">Зарегистрироваться</button>
+                <?php
+                reg_warning($error_array['reg_login_is_used'], "This login is not available");
+                reg_warning($error_array['reg_passwords_are_not_the_same'], "Passwords are not equal, try again");
+                reg_warning($error_array['reg_fill_all_input_fields'], "Fill all the fields");
+                reg_warning($error_array["too_long_string"], "Too long string");
+                if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Error: " . $conn->error); }
+                ?>
             </form>
         </section>
     </div>

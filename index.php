@@ -1,29 +1,21 @@
+<?php
+include "templates/func.php";
+include "templates/settings.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/adaptation.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-</head>
+<?php inc_head("Welcome!", true);  ?>
 <body>
     <!-- Welcome block first -->
     <section class="welcome_block_1">
         <!-- Welcome header -->
         <header class="welcome_header">
             <!-- Logo -->
-            <a href="welcome.html" class="logo welcome_logo">
+            <a href="index.php" class="logo welcome_logo">
                 <img src="img/logo.svg" alt="">
                 <p>Training</p>
             </a>
-            <a href="../user/workout.html">
+            <a href="user/workout.php">
                 <img src="img/workout.svg" alt="">
                 <p>Тренировки</p>
             </a>
@@ -39,7 +31,7 @@
                 <img class="other_img" src="img/other.svg" alt="">
                 <p>Другое</p>
             </a>
-            <a href="reg_log.html">Войти</a>
+            <a href="reg_log.php">Войти</a>
         </header>
         <!-- Title -->
         <div class="title">
@@ -448,7 +440,7 @@
         <!-- Button to login -->
         <div class="content">
             <h2>Повышаем <span>эффективность</span> и <span>удобство</span> ваших тренировок</h2>
-            <a href="reg_log.html">Начать <img src="img/start_arrow.svg" alt=""></a>
+            <a href="reg_log.php">Начать <img src="img/start_arrow.svg" alt=""></a>
         </div>
     </section>
 
