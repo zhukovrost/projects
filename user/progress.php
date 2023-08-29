@@ -18,10 +18,10 @@ include "../templates/settings.php";
 				</section>
 				<!-- Last trainings block -->
 				<section class="last_trainings">
+					<!-- Title -->
+					<h2>Последние тренировки</h2>
 					<!-- Trainings content -->
 					<div class="content">
-						<!-- Title -->
-						<h2>Последние тренировки</h2>
 						<!-- Item -->
 						<section class="item">
 							<!-- Left part of last exercise item -->

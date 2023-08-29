@@ -2322,17 +2322,18 @@ footer .about p:first-child{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+    padding-top: 40px;
     width: 40%;
 }
 
 /* Last training content */
 .progress_block .last_trainings .content{
     height: 100%;
-    background-color: rgb(255, 255, 255);
-    padding: 40px 70px 10px 70px;
+    padding: 0px 70px 10px 70px;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 3px;
-    border: 1px solid #C6C6C6;
     overflow: auto;
 }
 
