@@ -3,6 +3,7 @@ include "templates/func.php";
 include "templates/settings.php";
 
 $user_data->redirect_logged();
+$error_array = array();
 
 if (isset($_POST['reg'])){
     $error_array = $user_data->reg($conn, $_POST['reg_login'], $_POST['reg_status'], $_POST['reg_password'], $_POST['reg_password2'], $_POST['reg_name'], $_POST['reg_surname'], $_POST['reg_email']);
