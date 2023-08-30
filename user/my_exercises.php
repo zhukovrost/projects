@@ -10,7 +10,7 @@ include "../templates/settings.php";
 
 	<nav class="exercise_nav">
 		<div class="container">
-			<a href="">Мои</a>
+			<a href="exercises.php">Все</a>
 			<select name="exercise_sort" id="">
 				<option value="value1" selected>По умолчанию</option>
 				<option value="value2">Избранные</option>
