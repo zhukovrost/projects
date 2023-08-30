@@ -2638,7 +2638,7 @@ footer .about p:first-child{
     color: #ffffff;
     box-shadow: 2px 2px 0px 0px #00CD1E;
     font-size: 25px;
-    padding: 5px 25px;
+    padding: 5px 15px 5px 20px;
     margin-right: 15px;
     transition: .1s ease-in-out;
 }
@@ -2646,6 +2646,15 @@ footer .about p:first-child{
 .exercise_nav a:hover{
     box-shadow: 3px 3px 0px 0px #00CD1E;
     background-color: #000000;
+}
+
+.exercise_nav a img{
+    margin-left: 10px;
+    transition: .1s ease-in-out;
+}
+
+.exercise_nav a:hover img{
+    transform: translateX(3px);
 }
 
 .exercise_nav select{
