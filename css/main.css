@@ -2663,7 +2663,7 @@ footer .about p:first-child{
     justify-content: end;
     width: 25%;
     height: 40px;
-    padding: 0px 12px;
+    padding: 0px 7px 0 12px;
     border: 1px solid #C1C1C1;
     background-color: #ECECEC;
 }
@@ -2675,8 +2675,9 @@ footer .about p:first-child{
 }
 
 .exercise_nav .search button{
-    padding: 7px;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
 }
 
 .exercise_nav .search button:hover{
@@ -2709,6 +2710,8 @@ footer .about p:first-child{
 
 .exercises_cover .filter_block .content{
     margin-bottom: 20px;
+    height: 0px;
+    overflow: hidden;
 }
 
 .exercises_cover .filter_block .content div{
@@ -2745,7 +2748,7 @@ footer .about p:first-child{
 .exercise_block{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    grid-gap: 20px;
     margin-left: auto;
     margin-right: 20px;
 }
@@ -2756,7 +2759,7 @@ footer .about p:first-child{
     background-color: #ffffff;
     text-align: center;
     padding: 8px 35px 30px;
-    border: 1px solid #e4e4e4;
+    border: 1px solid #cccccc;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     transition: .1s ease-in-out;
     overflow: hidden;
@@ -2909,7 +2912,7 @@ footer .about p:first-child{
         transform: rotate(0);
     }
     100% {
-        -webkit-transform: rotate(190deg);
+        -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
     }
   }
@@ -2922,6 +2925,13 @@ footer .about p:first-child{
         -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
     }
+}
+
+
+/* Exercise button 'Edit' */
+.exercise_block .exercise_item .buttons .delete:hover img{
+    animation: none !important;
+    -webkit-animation: none !important;
 }
   
 

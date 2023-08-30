@@ -10,7 +10,7 @@ include "../templates/settings.php";
 
 	<nav class="exercise_nav">
 		<div class="container">
-			<a href="my_exercises.php">Мои</a>
+			<a href="">Мои</a>
 			<select name="exercise_sort" id="">
 				<option value="value1" selected>По умолчанию</option>
 				<option value="value2">Избранные</option>
@@ -149,7 +149,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 					<div class="buttons">
-						<button class="add">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="add delete">Удалить <img src="../img/delete.svg" alt=""></button>
 						<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
@@ -182,7 +182,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 					<div class="buttons">
-						<button class="add">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="add delete">Удалить <img src="../img/delete.svg" alt=""></button>
 						<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
@@ -215,7 +215,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 					<div class="buttons">
-						<button class="add">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="add delete">Удалить <img src="../img/delete.svg" alt=""></button>
 						<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
@@ -248,7 +248,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 					<div class="buttons">
-						<button class="add">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="add delete">Удалить <img src="../img/delete.svg" alt=""></button>
 						<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
@@ -281,7 +281,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 					<div class="buttons">
-						<button class="add">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="add delete">Удалить <img src="../img/delete.svg" alt=""></button>
 						<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
@@ -314,7 +314,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 					<div class="buttons">
-						<button class="add">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="add delete">Удалить <img src="../img/delete.svg" alt=""></button>
 						<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
@@ -347,7 +347,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 					<div class="buttons">
-						<button class="add">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="add delete">Удалить <img src="../img/delete.svg" alt=""></button>
 						<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
