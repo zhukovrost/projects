@@ -2833,13 +2833,13 @@ footer .about p:first-child{
     font-size: 15px;
     word-break: break-all;
     max-width: 70%;
-    margin: 0 auto 40px;
+    margin: 0 auto auto;
 }
 
 /* Exercise images */
 .exercise_block .exercise_item .exercise_img{
     width: 70%;
-    margin: 0px auto 20px;
+    margin: 10px auto 20px;
 }
 
 /* Exercise decoration line */
