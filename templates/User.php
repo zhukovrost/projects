@@ -12,6 +12,8 @@ class User {
     private $password='';
     private $subscriptions = [];
     private $auth=false;
+    public $featured_exercises = [];
+    public $my_exercises = [];
 
     public function __construct($conn, $id=-1, $auth=false){
         if (isset($id) && $id != -1) {
@@ -28,6 +30,8 @@ class User {
                     $this->password = $item['password'];
                     $this->subscriptions = json_decode($item['subscriptions']);
                     $this->online = $item['online'];
+                    $this->featured_exercises = json_decode($item['featured_exercises']);
+                    $this->my_exercises = json_decode($item['my_exercises']);
                 }
                 $this->auth = true;
             }else{
@@ -165,6 +169,19 @@ class User {
         }
         */
         return $error_array;
+    }
+
+    public function update($conn){
+        $my_exercise = json_encode($this->my_exercises);
+        $featured_exercises = json_encode($this->featured_exercises);
+        $subscriptions = json_encode($this->subscriptions);
+        $sql = "UPDATE users SET my_exercises='$my_exercise', featured_exercises='$featured_exercises', subscriptions='$subscriptions' WHERE id=$this->id";
+        if ($conn->query($sql)){
+            return true;
+        }else{
+            echo $conn->error;
+            return false;
+        }
     }
 
     public function get_avatar($conn){

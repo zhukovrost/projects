@@ -125,7 +125,9 @@ include "../templates/settings.php";
                 if ($select_result = $conn->query($select_sql)){
                     foreach ($select_result as $item){
                         $exercise = new Exercise($conn, $item['id']);
-                        $exercise->print_it($conn);
+                        $is_featured = $exercise->is_featured($user_data);
+                        $is_mine = $exercise->is_mine($user_data);
+                        $exercise->print_it($conn, $is_featured, $is_mine);
                     }
                 }else{
                     echo $conn->error;

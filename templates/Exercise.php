@@ -61,19 +61,43 @@ class Exercise {
 
     }
 
-    public function print_it($conn){
+    public function is_featured($user){
+        if (in_array($this->id, $user->featured_exercises)){
+            return true;
+        }
+        return false;
+    }
+    public function is_mine($user){
+        if (in_array($this->id, $user->my_exercises)){
+            return true;
+        }
+        return false;
+    }
+
+    public function print_it($conn, $is_featured=false, $is_mine=false){
         if ($this->description == ""){
             $description = "No description for this exercise";
         }else{
             $description = $this->description;
         }
+        if ($is_mine){
+            $button = '<button class="add delete" name="delete" value="'.$this->id.'">Удалить <img src="../img/delete.svg" alt=""></button>';
+        }else{
+            $button = '<button class="add" name="add" value="'.$this->id.'">Добавить <img src="../img/add.svg" alt=""></button>';
+        }
+        if ($is_featured){
+            $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
+        }else{
+            $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
+        }
         $replaces = array(
+            "{{ button }}" => $button,
+            "{{ button_featured }}" => $button_featured,
             "{{ image }}" => $this->get_image($conn),
             "{{ name }}" => $this->name,
             "{{ rating }}" => $this->rating,
             "{{ difficulty }}" => $this->difficulty,
             "{{ id }}" => $this->id,
-            "{{ description }}" => $description
         );
         echo render($replaces, "../templates/exercise.html");
     }
