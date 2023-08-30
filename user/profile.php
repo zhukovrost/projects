@@ -30,15 +30,43 @@ include "../templates/settings.php";
 					<button>Новая запись</button>
 					<section class="item">
 						<div class="info">
-							<img src="" alt="">
+							<img src="../img/man_avatat.svg" alt="">
 							<div>
 								<p>Иван иванов</p>
 								<p>12.12.1212</p>
 							</div>
-							<img src="" alt="">
+							<img src="../img/more.svg" alt="">
 						</div>
 						<div class="content">
-
+							<p>Начал(а) программу</p>
+							<button>Подробнее <img src="./img/more_white.svg" alt=""></button>
+						</div>
+					</section>
+					<section class="item">
+						<div class="info">
+							<img src="../img/man_avatat.svg" alt="">
+							<div>
+								<p>Иван иванов</p>
+								<p>12.12.1212</p>
+							</div>
+							<img src="../img/more.svg" alt="">
+						</div>
+						<div class="content">
+							<p>Закончил(а) программу</p>
+							<button>Подробнее <img src="./img/more_white.svg" alt=""></button>
+						</div>
+					</section>
+					<section class="item">
+						<div class="info">
+							<img src="../img/man_avatat.svg" alt="">
+							<div>
+								<p>Иван иванов</p>
+								<p>12.12.1212</p>
+							</div>
+							<img src="../img/more.svg" alt="">
+						</div>
+						<div class="content">
+							<p>Всем привет!</p>
 						</div>
 					</section>
 				</section>
