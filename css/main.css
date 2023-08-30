@@ -2696,6 +2696,7 @@ footer .about p:first-child{
 
 
 .exercises_cover{
+    position: relative;
     display: flex;
     margin-top: 20px;
     margin-bottom: 40px;
@@ -2771,7 +2772,9 @@ footer .about p:first-child{
 
 .exercise_block .exercise_item{
     position: relative;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #ffffff;
     text-align: center;
     padding: 8px 35px 30px;
@@ -2835,7 +2838,8 @@ footer .about p:first-child{
 
 /* Exercise images */
 .exercise_block .exercise_item .exercise_img{
-    margin-bottom: 20px;
+    width: 70%;
+    margin: 0px auto 20px;
 }
 
 /* Exercise decoration line */
@@ -2848,6 +2852,7 @@ footer .about p:first-child{
 
 /* Exercise title */
 .exercise_block .exercise_item h1{
+    max-width: 12vw;
     font-size: 20px;
     margin-top: 5px;
     font-weight: 600;
@@ -2881,6 +2886,10 @@ footer .about p:first-child{
     border-radius: 50%;
     background-color: rgba(0, 132, 19, 1);
     margin: 0px 2px;
+}
+
+.exercise_block .exercise_item .statistic .difficult p{
+    display: none;
 }
 
 .exercise_block .exercise_item .statistic .difficult div.disabled{

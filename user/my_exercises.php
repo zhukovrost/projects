@@ -81,10 +81,6 @@ include "../templates/settings.php";
 							<input type="checkbox" name="difficult_search" id="difficult_search5">
 							<label for="difficult_search5">1</label>
 						</div>
-						<div>
-							<input type="checkbox" name="difficult_search" id="difficult_search6">
-							<label for="difficult_search6">любая</label>
-						</div>
 					</div>
 				</section>
 				<section class="rating">

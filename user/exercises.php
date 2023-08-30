@@ -81,10 +81,6 @@ include "../templates/settings.php";
 							<input type="checkbox" name="difficult_search" id="difficult_search5">
 							<label for="difficult_search5">1</label>
 						</div>
-						<div>
-							<input type="checkbox" name="difficult_search" id="difficult_search6">
-							<label for="difficult_search6">любая</label>
-						</div>
 					</div>
 				</section>
 				<section class="rating">
@@ -176,6 +172,23 @@ include "../templates/settings.php";
 				}
 			});
 		}
+
+
+		//Difficult
+		let difficultCountArr = document.querySelectorAll('.exercise_block .exercise_item .statistic .difficult p');
+		let difficultBlockArr = document.querySelectorAll('.exercise_block .exercise_item .statistic .difficult');
+
+		for(let i = 0; i < difficultCountArr.length; i++){
+			difficultBlockArr[i].innerHTML = '';
+			console.log(Number(difficultCountArr[i].innerHTML) - 1)
+            for(let j = 0; j < 5; j++){
+				let newElem = document.createElement('div');
+				if(j > Number(difficultCountArr[i].innerHTML) - 1){
+					newElem.classList.add('disabled');
+				}
+				difficultBlockArr[i].appendChild(newElem);
+			}
+        }
 
 		FilterButtonsArr[0].click();
 	</script>
