@@ -2624,6 +2624,7 @@ footer .about p:first-child{
 
 /* =================EXERCISES PAGE================= */
 
+/* ===Exercise navigation=== */
 .exercise_nav .container{
     display: flex;
     justify-content: end;
@@ -2631,6 +2632,7 @@ footer .about p:first-child{
     margin-top: 50px;
 }
 
+/* Buttons to (my / all) exercises */
 .exercise_nav a{
     display: flex;
     align-items: center;
@@ -2657,6 +2659,7 @@ footer .about p:first-child{
     transform: translateX(3px);
 }
 
+/* Main search */
 .exercise_nav select{
     border: 1px solid #C1C1C1;
     background-color: #ECECEC;
@@ -2666,6 +2669,7 @@ footer .about p:first-child{
     margin-right: 15px;
 }
 
+/* Exercise search */
 .exercise_nav .search{
     display: flex;
     align-items: center;
@@ -2694,7 +2698,7 @@ footer .about p:first-child{
 }
 
 
-
+/* ===Exercises and filter block=== */
 .exercises_cover{
     position: relative;
     display: flex;
@@ -2702,6 +2706,7 @@ footer .about p:first-child{
     margin-bottom: 40px;
 }
 
+/* Filter buttons */
 .exercises_cover .filter_block section button{
     display: flex;
     align-items: center;
@@ -2718,6 +2723,7 @@ footer .about p:first-child{
     float: right;
 }
 
+/* Inputs for filter */
 .exercises_cover .filter_block .content{
     margin: 10px 0 15px;
     height: 0px;
@@ -2738,11 +2744,12 @@ footer .about p:first-child{
     font-size: 20px;
 }
 
-
+/* Rating filter */
 .exercises_cover .filter_block .rating{
     margin-bottom: 30px;
 }
 
+/* Button 'Очистить' to clear filters */
 .exercises_cover .filter_block .clear{
     display: flex;
     justify-content: center;
@@ -2761,7 +2768,7 @@ footer .about p:first-child{
     border: 1px solid #00CD1E;
 }
 
-
+/* Exercises array  */
 .exercise_block{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -2770,6 +2777,7 @@ footer .about p:first-child{
     margin-right: 20px;
 }
 
+/* Exercise item */
 .exercise_block .exercise_item{
     position: relative;
     display: flex;
