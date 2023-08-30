@@ -404,6 +404,10 @@ footer .about p:first-child{
     transition: .1s ease-in-out;
 }
 
+.welcome_block_2 .exercise_item .buttons .add:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+}
+
 .welcome_block_2 .exercise_item .buttons .add:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
@@ -428,10 +432,6 @@ footer .about p:first-child{
         -webkit-transform: rotate(180deg);
         transform: rotate(180deg);
     }
-}
-
-.welcome_block_2 .exercise_item .buttons .add:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
 }
   
 
@@ -2616,4 +2616,326 @@ footer .about p:first-child{
     transform: translateX(1%);
     font-size: 20px;
     font-family: 'Open Sans', sans-serif;
+}
+
+
+/* ================================================ */
+
+
+/* =================EXERCISES PAGE================= */
+
+.exercise_nav .container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.exercise_nav a{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 5px 25px;
+    margin-right: 15px;
+    transition: .1s ease-in-out;
+}
+
+.exercise_nav a:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+.exercise_nav select{
+    border: 1px solid #C1C1C1;
+    background-color: #ECECEC;
+    font-size: 20px;
+    padding: 5px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.exercise_nav .search{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 25%;
+    height: 40px;
+    padding: 0px 12px;
+    border: 1px solid #C1C1C1;
+    background-color: #ECECEC;
+}
+
+.exercise_nav input{
+    width: 100%;
+    margin-right: 5px;
+    font-size: 21px;
+}
+
+.exercise_nav .search button{
+    padding: 7px;
+    border-radius: 50%;
+}
+
+.exercise_nav .search button:hover{
+    background-color: #dad8d8;
+}
+
+
+
+.exercises_cover{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.exercises_cover .filter_block button{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    width: 100%;
+    padding: 5px 15px 5px 18px;
+    margin: 0px 25px 10px 0px;
+    border: 1px solid #C1C1C1;
+    background-color: #ECECEC;
+}
+
+.exercises_cover .filter_block button img{
+    margin-left: auto;
+    float: right;
+}
+
+.exercises_cover .filter_block .content{
+    margin-bottom: 20px;
+}
+
+.exercises_cover .filter_block .content div{
+    margin-left: 10px;
+    margin-bottom: 3px;
+}
+
+.exercises_cover .filter_block input{
+    width: 17px;
+    height: 17px;
+}
+
+.exercises_cover .filter_block label{
+    font-size: 20px;
+}
+
+.exercises_cover .filter_block .clear{
+    margin-top: 10px;
+    font-size: 23px;
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid #b3b3b3;
+    transition: .3s ease-in-out;
+}
+
+.exercises_cover .filter_block .clear:hover{
+    color: #ffffff;
+    background-color: #000000;
+    border: 1px solid #00CD1E;
+}
+
+
+.exercise_block{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.exercise_block .exercise_item{
+    position: relative;
+    height: fit-content;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 8px 35px 30px;
+    border: 1px solid #e4e4e4;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    transition: .1s ease-in-out;
+    overflow: hidden;
+}
+
+/* Exercise info */
+.exercise_block .exercise_item .info{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    opacity: 0.9;
+    transition: .1s ease-in-out;
+}
+
+.exercise_block .exercise_item .info:hover{
+    opacity: 1;
+}
+
+.exercise_block .exercise_item .info_block{
+    position: absolute;
+    z-index: 1;
+    border-radius: 12px;
+    border: 1px solid #e4e4e4;
+    top: -101%;
+    left: -1%;
+    width: 101%;
+    height: 101%;
+    background-color: #ffffff;
+    text-align: start;
+    padding: 30px 40px;
+    transition: .3s ease-in-out;
+}
+
+.exercise_block .exercise_item .info_block p{
+    font-size: 15px;
+}
+
+.exercise_block .exercise_item .info_block .info_close{
+    top: 3%;
+    right: 2%;
+    position: absolute;
+    opacity: 0.8;
+}
+
+.exercise_block .exercise_item .info_block .info_close:hover{
+    opacity: 1;
+}
+
+/* Exercise muscle groups */
+.exercise_block .exercise_item .muscle_groups{
+    color: rgba(143, 143, 143, 1);
+    font-size: 15px;
+    word-break: break-all;
+    max-width: 70%;
+    margin: 0 auto 40px;
+}
+
+/* Exercise images */
+.exercise_block .exercise_item .exercise_img{
+    margin-bottom: 20px;
+}
+
+/* Exercise decoration line */
+.exercise_block .exercise_item .line{
+    width: 100%;
+    margin: 0 auto;
+    height: 1px;
+    background-color: rgba(206, 206, 206, 1);
+}
+
+/* Exercise title */
+.exercise_block .exercise_item h1{
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* Exercise rating + difficult */
+.exercise_block .exercise_item .statistic{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.exercise_block .exercise_item .statistic .rating{
+    display: flex;
+    align-items: center;
+}
+
+.exercise_block .exercise_item .statistic .rating p{
+    font-size: 20px;
+    margin-right: 3px;
+}
+
+.exercise_block .exercise_item .statistic .difficult{
+    display: flex;
+}
+
+.exercise_block .exercise_item .statistic .difficult div{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    margin: 0px 2px;
+}
+
+.exercise_block .exercise_item .statistic .difficult div.disabled{
+    background-color: rgb(155, 194, 161);
+}
+
+/* Exercise buttons */
+.exercise_block .exercise_item .buttons{
+    margin-top: 50px;
+    display: flex;
+}
+
+/* Exercise button 'Add' */
+.exercise_block .exercise_item .buttons .add{
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 2px 10px 5px 15px;
+    margin-right: 15px;
+    transition: .1s ease-in-out;
+}
+
+.exercise_block .exercise_item .buttons .add img{
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    transition: .1s ease-in-out;
+}
+
+.exercise_block .exercise_item .buttons .add:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+}
+
+.exercise_block .exercise_item .buttons .add:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(190deg);
+        transform: rotate(180deg);
+    }
+  }
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+  
+
+/* Exercise button 'Favarite' */
+.exercise_block .exercise_item .buttons .favorite{
+    opacity: 0.9;
+    transition: .1s ease;
+}
+
+.exercise_block .exercise_item .buttons .favorite:hover{
+    opacity: 1;
+}
+
+.exercise_block .exercise_item:hover{
+    box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.25);
+    transform: translate(-1px, -1px);
 }
