@@ -6,7 +6,13 @@ $user_data->check_the_login();
 if (isset($_POST['featured'])){
     $user_data->change_featured($conn, $_POST['featured']);
 }
-print_r($user_data->featured_exercises);
+
+if (isset($_POST['add'])){
+    $user_data->add_exercise($conn, $_POST['add']);
+}
+if (isset($_POST['delete'])){
+    $user_data->delete_exercise($conn, $_POST['delete']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

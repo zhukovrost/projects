@@ -73,7 +73,14 @@ class User {
         $error_array = array(
             "log_conn_error" => false,
             "log_fill_all_input_fields" => false,
-            "log_incorrect_login_or_password" => false
+            "log_incorrect_login_or_password" => false,
+            "reg_fill_all_input_fields" => false,
+            "reg_login_is_used" => false,
+            "reg_passwords_are_not_the_same" => false,
+            "reg_conn_error" => false,
+            "reg_success" => false,
+            "too_long_string" => false,
+            "adding_stats" => false
         );
 
         $login = trim($login);
@@ -107,6 +114,9 @@ class User {
     {
         # ---------- collecting errors ---------------
         $error_array = array(
+            "log_conn_error" => false,
+            "log_fill_all_input_fields" => false,
+            "log_incorrect_login_or_password" => false,
             "reg_fill_all_input_fields" => false,
             "reg_login_is_used" => false,
             "reg_passwords_are_not_the_same" => false,
@@ -229,6 +239,15 @@ class User {
             array_push($this->featured_exercises, $exercise_id);
         }
 
+        $this->update($conn);
+    }
+
+    public function add_exercise($conn, $exercise_id){
+        array_push($this->my_exercises, $exercise_id);
+        $this->update($conn);
+    }
+    public function delete_exercise($conn, $exercise_id){
+        array_splice($this->featured_exercises, $exercise_id, 1);
         $this->update($conn);
     }
 }
