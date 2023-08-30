@@ -13,6 +13,12 @@ if (isset($_POST['add'])){
 if (isset($_POST['delete'])){
     $user_data->delete_exercise($conn, $_POST['delete']);
 }
+
+if (isset($_GET['my']) && is_numeric($_GET['my'])){
+    $my = $_GET['my'];
+}else{
+    $my = 1;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +28,11 @@ if (isset($_POST['delete'])){
 
 	<nav class="exercise_nav">
 		<div class="container">
-			<a href="my_exercises.php">Мои <img src="../img/arrow_exercise.svg" alt=""></a>
+            <?php if ($my) { ?>
+                <a href="exercises.php?my=0">Все <img src="../img/arrow_exercise.svg" alt=""></a>
+            <?php } else { ?>
+                <a href="exercises.php?my=1">Мои <img src="../img/arrow_exercise.svg" alt=""></a>
+            <?php } ?>
 			<select name="exercise_sort" id="">
 				<option value="value1" selected>По умолчанию</option>
 				<option value="value2">Избранные</option>
@@ -129,18 +139,25 @@ if (isset($_POST['delete'])){
 			</form>
 			<form method="post" class="exercise_block">
 				<?php
-                $select_sql = "SELECT id FROM exercises";
-                if ($select_result = $conn->query($select_sql)){
-                    foreach ($select_result as $item){
-                        $exercise = new Exercise($conn, $item['id']);
+                if ($my){
+                    foreach ($user_data->my_exercises as $exercise_id){
+                        $exercise = new Exercise($conn, $exercise_id);
                         $is_featured = $exercise->is_featured($user_data);
-                        $is_mine = $exercise->is_mine($user_data);
-                        $exercise->print_it($conn, $is_featured, $is_mine);
+                        $exercise->print_it($conn, $is_featured, 1);
                     }
                 }else{
-                    echo $conn->error;
+                    $select_sql = "SELECT id FROM exercises";
+                    if ($select_result = $conn->query($select_sql)){
+                        foreach ($select_result as $item){
+                            $exercise = new Exercise($conn, $item['id']);
+                            $is_featured = $exercise->is_featured($user_data);
+                            $is_mine = $exercise->is_mine($user_data);
+                            $exercise->print_it($conn, $is_featured, $is_mine);
+                        }
+                    }else{
+                        echo $conn->error;
+                    }
                 }
-
                 ?>
 			</form>
         </div>

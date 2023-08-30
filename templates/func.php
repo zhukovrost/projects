@@ -44,3 +44,19 @@ function reg_warning($if, $warning){
     }
 }
 
+function translate_group ($group){
+    switch ($group){
+        case "arms":
+            return "Руки";
+        case "legs":
+            return "Ноги";
+        case "press":
+            return "Пресс";
+        case "back":
+            return "Спина";
+        case "chest":
+            return "Грудь";
+        case "cardio":
+            return "Кардио";
+    }
+}

@@ -90,6 +90,12 @@ class Exercise {
         }else{
             $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
         }
+        $muscle_list = "";
+        foreach ($this->muscles as $muscle){
+            $muscle_list .= translate_group($muscle) . " ";
+        }
+        $muscle_list = str_replace(' ', '-', trim($muscle_list));
+
         $replaces = array(
             "{{ button }}" => $button,
             "{{ button_featured }}" => $button_featured,
@@ -98,6 +104,7 @@ class Exercise {
             "{{ rating }}" => $this->rating,
             "{{ difficulty }}" => $this->difficulty,
             "{{ id }}" => $this->id,
+            "{{ muscle }}" => $muscle_list
         );
         echo render($replaces, "../templates/exercise.html");
     }
