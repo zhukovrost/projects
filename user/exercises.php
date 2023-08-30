@@ -1,6 +1,12 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+$user_data->check_the_login();
+
+if (isset($_POST['featured'])){
+    $user_data->change_featured($conn, $_POST['featured']);
+}
+print_r($user_data->featured_exercises);
 ?>
 <!DOCTYPE html>
 <html lang="en">
