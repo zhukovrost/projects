@@ -247,7 +247,10 @@ class User {
         $this->update($conn);
     }
     public function delete_exercise($conn, $exercise_id){
-        array_splice($this->featured_exercises, $exercise_id, 1);
+        $index = array_search($exercise_id, $this->my_exercises);
+        if (is_numeric($index)) {
+            array_splice($this->my_exercises, $index, 1);
+        }
         $this->update($conn);
     }
 }
