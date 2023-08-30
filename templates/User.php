@@ -220,4 +220,15 @@ class User {
             echo $conn->error;
         }
     }
+
+    public function change_featured($conn, $exercise_id){
+        $index = array_search($exercise_id, $this->featured_exercises);
+        if (is_numeric($index)) {
+            array_splice($this->featured_exercises, $index, 1);
+        }else{
+            array_push($this->featured_exercises, $exercise_id);
+        }
+
+        $this->update($conn);
+    }
 }
