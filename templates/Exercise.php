@@ -8,6 +8,8 @@ class Exercise {
     public $muscles=[];
     private $image=0;
     public $rating;
+    private $creator=1;
+    public $difficulty;
 
     private function set_exercise_data($select_result){
         foreach ($select_result as $item){
@@ -18,17 +20,23 @@ class Exercise {
             $this->image = $item['image'];
             $this->rating = $item['rating'];
             $this->static = $item['static'];
+            $this->creator = $item['creator'];
+            $this->difficulty = $item['difficulty'];
         }
     }
 
-    public function __construct($conn, $id){
-        $select_sql = "SELECT * FROM exercises WHERE id=$id";
-        if ($select_result = $conn->query($select_sql)){
-            $this->set_exercise_data($select_result);
+    public function __construct($conn, $id=0){
+        if ($id != 0){
+            $select_sql = "SELECT * FROM exercises WHERE id=$id";
+            if ($select_result = $conn->query($select_sql)){
+                $this->set_exercise_data($select_result);
+            }else{
+                echo $conn->error;
+            }
+            $select_result->free();
         }else{
-            echo $conn->error;
+            echo "Error";
         }
-        $select_result->free();
     }
 
     public function get_id(){
@@ -51,6 +59,23 @@ class Exercise {
 
     public function update_rating($conn){
 
+    }
+
+    public function print_it($conn){
+        if ($this->description == ""){
+            $description = "No description for this exercise";
+        }else{
+            $description = $this->description;
+        }
+        $replaces = array(
+            "{{ image }}" => $this->get_image($conn),
+            "{{ name }}" => $this->name,
+            "{{ rating }}" => $this->rating,
+            "{{ difficulty }}" => $this->difficulty,
+            "{{ id }}" => $this->id,
+            "{{ description }}" => $description
+        );
+        echo render($replaces, "../templates/exercise.html");
     }
 }
 

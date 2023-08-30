@@ -1,0 +1,30 @@
+<section class="exercise_item">
+    <!-- Exercise info -->
+    <button class="info"><img src="../img/info.svg" alt=""></button>
+    <div class="info_block">
+        <button class="info_close"><img src="../img/close.svg" alt=""></button>
+        <p>{{ description }}</p>
+    </div>
+    <!-- Exercise muscle groups -->
+    <div class="muscle_groups"></div>
+    <!-- Exercise image -->
+    <img class="exercise_img" src="{{ image }}" alt="">
+    <!-- Decoration line -->
+    <div class="line"></div>
+    <!-- Exercise title -->
+    <h1>{{ name }}</h1>
+    <div class="statistic">
+        <div class="rating">
+            <p>{{ rating }}</p>
+            <img src="../img/Star.svg" alt="">
+        </div>
+        <div class="difficult">
+            <p>{{ difficulty }}</p>
+            <div></div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="add" name="add" value="{{ id }}">Добавить <img src="../img/add.svg" alt=""></button>
+        <button class="favorite" name="featured" value="{{ id }}"><img src="../img/favorite.svg" alt=""></button>
+    </div>
+</section>
