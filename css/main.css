@@ -2982,3 +2982,480 @@ footer .about p:first-child{
     box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.25);
     transform: translate(-1px, -1px);
 }
+
+
+/* =================================================== */
+
+
+
+/* ====================PROFILE PAGE=================== */
+.user_block{
+    display: flex;
+    margin-top: 50px;
+    background-color: #ffffff;
+    border: 1px solid #C6C6C6;
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+    border-radius: 5px;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+}
+
+.user_block .info{
+    min-width: 50%;
+    margin-right: 50px;
+}
+
+.user_block .info .about{
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_block .info .avatar_block img{
+    width: 200px;
+    height: 200px;
+}
+
+.user_block .info .avatar_block h1{
+    text-align: center;
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.user_block .info .avatar_block p{
+    text-align: center;
+    font-size: 17px;
+    color: #727272;
+}
+
+.user_block .info .about .content{
+    position: relative;
+    background-color: #FAFAFA;
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+    margin-left: 30px;
+    padding: 20px 40px;
+}
+
+.user_block .info .about .content button{
+    position: absolute;
+    bottom: 1%;
+    right: 2%;
+    opacity: .85;
+}
+
+.user_block .info .about .content button img{
+    margin-right: 5px;
+}
+
+.user_block .info .about .content button:hover{
+    opacity: 1;
+}
+
+
+.user_block .info .news{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 20px 40px;
+    background-color: #FAFAFA;
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+}
+
+.user_block .info .news .new_post_btn{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    width: fit-content;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 5px 15px 5px 20px;
+    margin-bottom: 30px;
+    transition: .1s ease-in-out;
+}
+
+.user_block .info .news .new_post_btn img{
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.user_block .info .news .new_post_btn:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+.user_block .info .news .new_post_btn:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(190deg);
+        transform: rotate(180deg);
+    }
+  }
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+
+
+.user_block .info .news .item{
+    border-bottom: 1px solid #CECECE;
+    margin-bottom: 30px;
+}
+
+.user_block .info .news .item:last-child{
+    border: none;
+}
+
+.user_block .info .news .item .post_info{
+    display: flex;
+    align-items: center;
+    margin-left: 0px;
+}
+
+.user_block .info .news .item img{
+    width: 70px;
+    height: 70px;
+}
+
+.user_block .info .news .item div{
+    margin-left: 10px;
+}
+
+.user_block .info .news .item div p:first-child{
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.user_block .info .news .item div p:last-child{
+    font-size: 15px;
+}
+
+.user_block .info .news .item .more{
+    margin-left: auto;
+    margin-bottom: auto;
+    width: 30px;
+    height: 30px;
+    opacity: .8;
+}
+
+.user_block .info .news .item .more:hover{
+    opacity: 1;
+}
+
+.user_block .info .news .item .content{
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    margin: 10px 0px 20px;
+    padding: 10px 20px;
+}
+
+
+
+
+.user_block .other{
+    max-width: 48%;
+}
+
+/* Friends' workouts */
+.user_block .friends{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 0px 15px 15px 0px;
+    background-color: #FAFAFA;
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+    overflow-x: auto;
+}
+
+/* Title and button to search friends */
+.user_block .friends .title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_block .friends h1{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(130, 130, 130, 1);
+}
+
+.user_block .friends .title img{
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+}
+
+.user_block .friends .title img:hover{
+    opacity: 1;
+}
+
+/* Friends' workout swiper */
+.user_block .friends .content{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+/* slide */
+.user_block .friends swiper-slide{
+    display: flex;
+    padding: 0px 30px;
+}
+
+/* friend item */
+.user_block .friends .item{
+    text-align: center;
+    width: 7vw;
+    margin: 0px 20px;
+}
+
+.user_block .friends .item p{
+    font-size: 20px;
+    color: #000000;
+}
+
+
+
+.user_block .staff{
+    background-color: #FAFAFA;
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+    padding: 20px 40px;
+}
+
+.user_block .staff .coach{
+    display: flex;
+    align-items: center;
+}
+
+.user_block .staff .coach p{
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.user_block .staff .coach button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #DDDDDD;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+.user_block .staff .coach button img{
+    width: 23px;
+    height: 23px;
+}
+
+.user_block .staff .doctor{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #CECECE;
+}
+
+.user_block .staff .doctor p{
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.user_block .staff .doctor button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #DDDDDD;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+.user_block .staff .doctor button img{
+    width: 20px;
+    height: 20px;
+}
+
+
+.user_block .staff .users_count{
+    display: flex;
+    justify-content: space-around;
+}
+
+.user_block .staff .users_count a{
+    color: #5e5d5d;
+    font-size: 20px;
+}
+
+.user_block .staff .users_count a:hover{
+    color: #000000;
+}
+
+
+.user_block .buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.user_block .buttons button{
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 7px 15px 7px 25px;
+    width: 55%;
+    margin-bottom: 10px;
+    transition: .1s ease-in-out;
+}
+
+.user_block .buttons button img{
+    margin-left: auto;
+    width: 23px;
+    height: 23px;
+    transition: .1s ease-in-out;
+}
+
+.user_block .buttons button:hover{
+    box-shadow: 4px 4px 0px 0px #00CD1E;
+}
+
+.user_block .buttons button:hover img{
+    transform: translateY(-3px);
+}
+
+.user_block .buttons .logout{
+    width: fit-content;
+    padding: 7px 10px 7px 20px;
+}
+
+.user_block .buttons .logout img{
+    margin-left: 15px;
+}
+
+.user_block .last_trainings{
+    max-height: 43vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 45px 10px 10px 10px;
+    margin: 20px 15px 15px 0px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 5px 5px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+}
+
+/* Title */
+.user_block .last_trainings h1{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(130, 130, 130, 1);
+}
+
+/* Trainings content */
+.user_block .last_trainings .content{
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Trainings content item */
+.user_block .last_trainings .item{
+    display: flex;
+    border-bottom: 1px solid #D4D4D4;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Left part of last exercise item */
+.user_block .last_trainings .item .left{
+    margin-right: 5vw;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.user_block .last_trainings .item .left div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.user_block .last_trainings .item .left div span{
+    font-weight: 700;
+}
+
+.user_block .last_trainings .item .left div img{
+    margin-right: 5px;
+}
+
+/* Minutes & exercise & muscle groups & info button */
+.user_block .last_trainings .item .right div{
+    display: flex;
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.user_block .last_trainings .item .right div span{
+    font-weight: 700;
+}
+
+.user_block .last_trainings .item .right div img{
+    margin-right: 5px;
+}
+
+/* Button 'Подробнее' for more info about exercise */
+.user_block .last_trainings .item .right button{
+    background-color: #272727;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding: 3px 7px 3px 10px;
+    transition: .1s ease-in-out;
+}
+
+.user_block .last_trainings .item .right button:hover{
+    background-color: #000000;
+}
+
+.user_block .last_trainings .item .right button img{
+    margin-left: 10px;
+}
