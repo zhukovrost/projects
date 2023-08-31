@@ -1,6 +1,18 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+$user_data->check_the_login();
+$user_data->set_program($conn);
+$user_data->program->set_workouts($conn);
+$muscles = array(
+    "arms" => 0,
+    "legs" => 0,
+    "press" => 0,
+    "back" => 0,
+    "chest" => 0,
+    "cardio" => 0,
+    "cnt" => 0
+);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,192 +27,40 @@ include "../templates/settings.php";
                     <input type="week">
                 </section>
                 <swiper-container class="cover" navigation="true">
+                    <?php for ($j = 0; $j < $user_data->program->reps; $j++){ # $j = number of week doing program ?>
                     <swiper-slide>
+                        <?php for($i = 0; $i < 7; $i++){
+                            $workout = $user_data->program->workouts[$i];
+                            foreach ($workout->set_muscles() as $key=>$value){
+                                $muscles[$key] += $value;
+                            }
+                        ?>
                         <section class="item">
-                            <h2>Понедельник</h2>
+                            <h2><?php echo get_day($i); ?></h2>
                             <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
+                                <?php if ($workout->holiday){ ?>
+                                    <div class="day_off">Выходной</div>
+                                <?php }else{ ?>
+                                <p>Руки: <span><?php echo $workout->muscles["arms"]; ?>%</span></p>
+                                <p>Ноги: <span><?php echo $workout->muscles["legs"]; ?>%</span></p>
+                                <p>Грудь: <span><?php echo $workout->muscles["chest"]; ?>%</span></p>
+                                <p>Спина: <span><?php echo $workout->muscles["back"]; ?>%</span></p>
+                                <p>Пресс: <span><?php echo $workout->muscles["press"]; ?>%</span></p>
+                                <p>Кардио: <span><?php echo $workout->muscles["cardio"]; ?>%</span></p>
                                 <div class="buttons">
                                     <button><img src="../img/more_white.svg" alt=""></button>
                                     <button><img src="../img/edit.svg" alt=""></button>
                                     <img src="../img/done.svg" alt="">
                                 </div>
+                                <?php } ?>
                             </div>
                         </section>
-                        <section class="item">
-                            <h2>Вторник</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Среда</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Четверг</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Пятница</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Суббота</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/not_done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Воскресенье</h2>
-                            <div class="content">
-                                <div class="day_off">Выходной</div>
-                            </div>
-                        </section>
+                        <?php } ?>
                     </swiper-slide>
-                    <swiper-slide>
-                        <section class="item">
-                            <h2>Понедельник</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Вторник</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Среда</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Четверг</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Пятница</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Суббота</h2>
-                            <div class="content">
-                                <p>Спина <span>70%</span></p>
-                                <p>Ноги <span>70%</span></p>
-                                <p>Руки <span>70%</span></p>
-                                <p>Пресс <span>70%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/not_done.svg" alt="">
-                                </div>
-                            </div>
-                        </section>
-                        <section class="item">
-                            <h2>Воскресенье</h2>
-                            <div class="content">
-                                <div class="day_off">Выходной</div>
-                            </div>
-                        </section>
-                    </swiper-slide>
+                    <?php } ?>
                   </swiper-container>
             </section>
+            <?php $diagram_muscles = json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>
             <section class="info">
                 <section class="statistic">
                     <section class="muscle_groups">
@@ -209,8 +69,8 @@ include "../templates/settings.php";
                     </section>
                     <section class="content">
                         <section class="all">
-                            <p>Всего тренировок: <span>77</span></p>
-                            <p>Всего упражнений: <span>77</span></p>
+                            <p>Всего тренировок: <span><?php echo $user_data->program->count_workouts(); ?></span></p>
+                            <p>Всего упражнений: <span><?php echo $user_data->program->count_exercises(); ?></span></p>
                         </section>
                         <section class="progress">
                             <div class="item">
@@ -300,10 +160,10 @@ include "../templates/settings.php";
         new Chart(ctx2, {
             type: 'pie',
             data: {
-                labels: ['Руки', 'Ноги', 'Спина'],
+                labels: ['Руки', 'Ноги', 'Грудь', 'Спина', 'Пресс', 'Кардио'],
                 datasets: [{
                     label: 'Количество упражнений',
-                    data: [12, 19, 3],
+                    data: <?php echo $diagram_muscles; ?>,
                     borderWidth: 1,
                     color: '#000000',
                 }]

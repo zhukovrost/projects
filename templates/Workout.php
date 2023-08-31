@@ -47,20 +47,22 @@ class Workout {
             "press" => 0,
             "back" => 0,
             "chest" => 0,
-            "cardio" => 0
+            "cardio" => 0,
+            "cnt" => 0
         );
-        $cnt = 0;
         foreach ($this->exercises as $exercise){
             foreach ($exercise->muscles as $muscle){
                 $muscles[$muscle]++;
-                $cnt++;
+                $muscles['cnt']++;
             }
         }
         foreach ($muscles as $muscle=>$value){
             if ($value != 0){
-                $this->muscles[$muscle] = round($value / $cnt * 100, 0);
+                $this->muscles[$muscle] = round($value / $muscles['cnt'] * 100, 0);
             }
         }
+
+        return $muscles;
     }
 
     public function print_exercises($conn){

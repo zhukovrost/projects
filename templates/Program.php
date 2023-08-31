@@ -30,4 +30,22 @@ class Program {
             array_push($this->workouts, new Workout($conn, $this->program[$i], $i));
         }
     }
+
+    public function count_workouts(){
+        $cnt = 0;
+        foreach ($this->program as $id){
+            if ($id != 0){
+                $cnt++;
+            }
+        }
+        return $cnt * $this->reps;
+    }
+
+    public function count_exercises(){
+        $cnt = 0;
+        foreach ($this->workouts as $workout){
+            $cnt += count($workout->exercises);
+        }
+        return $cnt * $this->reps;
+    }
 }

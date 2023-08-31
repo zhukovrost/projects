@@ -61,3 +61,12 @@ function translate_group ($group){
             return "Кардио";
     }
 }
+
+function get_day($day_number) {
+    // Create an array with day names
+    $days_of_week = array("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье");
+    // Check if the day number is within a valid range (1-7)
+    // Get the corresponding day of the week
+    $day_of_week = $days_of_week[$day_number];
+    return $day_of_week;
+}
