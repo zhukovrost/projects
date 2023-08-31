@@ -1,6 +1,9 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+
+$user_data->set_program($conn);
+$weekday = date("N") - 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,398 +15,92 @@ include "../templates/settings.php";
         <div class="container workouts">
             <!-- Day's workout swiper -->
             <swiper-container navigation="true">
-                <!-- Slide -->
                 <swiper-slide>
-                    <!-- slide(no arrows) -->
-                    <section class="slide">
-                        <!-- Title and button to add to favorite collection -->
-                        <div class="title">
-                            <h2>25.08.2023</h2>
-                            <button><img src="../img/favorite.svg" alt=""></button>
-                        </div>
-                        <!-- Content of workout -->
-                        <section class="content">
-                            <!-- Exercises array -->
-                            <section class="exercise_cover">
-                                <!-- Exercise item -->
-                                <section class="exercise_item">
-                                    <!-- Exercise info button -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <!-- Info text -->
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <!-- Rating and difficult -->
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <!-- Count of repetitions -->
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
+                <!-- Slide -->
+                <?php
+                    $workout = new Workout($conn, $user_data->program->program[$weekday], $weekday);
+                    if ($workout->holiday){
+                        include "../templates/holiday.html";
+                    }else{ $workout->set_muscles(); ?>
+                        <!-- slide(no arrows) -->
+                        <section class="slide">
+                            <!-- Title and button to add to favorite collection -->
+                            <div class="title">
+                                <h2><?php echo date("d.m.Y"); ?></h2>
+                                <button><img src="../img/favorite.svg" alt=""></button>
+                            </div>
+                            <!-- Content of workout -->
+                            <section class="content">
+                                <!-- Exercises array -->
+                                <section class="exercise_cover">
+                                    <!-- Exercise items -->
+                                    <?php $workout->print_exercises($conn); ?>
                                 </section>
-                                <section class="exercise_item">
+                                <!-- Info about day workout -->
+                                <section class="workout_info">
+                                    <!-- Muscle groups -->
+                                    <div class="muscle_groups">
+                                        <p>Руки: <span><?php echo $workout->muscles["arms"]; ?>%</span></p>
+                                        <p>Ноги: <span><?php echo $workout->muscles["legs"]; ?>%</span></p>
+                                        <p>Грудь: <span><?php echo $workout->muscles["chest"]; ?>%</span></p>
+                                        <p>Спина: <span><?php echo $workout->muscles["back"]; ?>%</span></p>
+                                        <p>Пресс: <span><?php echo $workout->muscles["press"]; ?>%</span></p>
+                                        <p>Кардио: <span><?php echo $workout->muscles["cardio"]; ?>%</span></p>
+                                    </div>
+                                    <!-- Decorative line -->
+                                    <div class="line"></div>
                                     <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
+                                    <div class="exercise">
+                                        <p>Упражнений: <span><?php echo count($workout->exercises); ?></span></p>
+                                        <p>Кругов: <span><?php echo $workout->loops; ?></span></p>
                                     </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
+                                    <!-- Decorative line -->
                                     <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
+                                    <!-- Buttons edit and start -->
+                                    <div class="buttons">
+                                        <button><img src="../img/edit.svg" alt=""></button>
+                                        <button>Начать</button>
                                     </div>
                                 </section>
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
-                            </section>
-                            <!-- Info about day workout -->
-                            <section class="workout_info">
-                                <!-- Muscle groups -->
-                                <div class="muscle_groups">
-                                    <p>Ноги: <span>7%</span></p>
-                                    <p>Спина: <span>70%</span></p>
-                                    <p>Руки: <span>3%</span></p>
-                                    <p>Пресс: <span>20%</span></p>
-                                </div>
-                                <!-- Decorative line -->
-                                <div class="line"></div>
-                                <!-- Exercise info -->
-                                <div class="exercise">
-                                    <p>Упражнений: <span>5</span></p>
-                                    <p>Подходов: <span>3</span></p>
-                                    <p>Повторений: <span>20</span></p>
-                                </div>
-                                <!-- Decorative line -->
-                                <div class="line"></div>
-                                <!-- Time for workout -->
-                                <p class="time">Время: <span>90 мин</span></p>
-                                <!-- Buttons edit and start -->
-                                <div class="buttons">
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <button>Начать</button>
-                                </div>
                             </section>
                         </section>
-                    </section>
+                    <?php } ?>
                 </swiper-slide>
                 <swiper-slide>
+                    <?php
+                    if ($weekday == 6){
+                        $weekday = 0;
+                    }else{
+                        $weekday++;
+                    }
+                    $workout = new Workout($conn, $user_data->program->program[$weekday], $weekday);
+                    if ($workout->holiday){
+                        include "../templates/holiday.html";
+                    }else{ $workout->set_muscles(); ?>
                     <section class="slide">
                         <div class="title">
-                            <h2>26.08.2023</h2>
+                            <h2><?php echo date("d.m.Y", time() + 86400); ?></h2>
                             <button><img src="../img/favorite.svg" alt=""></button>
                         </div>
                         <section class="content">
-                            <section class="exercise_cover">   
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
-                                <section class="exercise_item">
-                                    <!-- Exercise info -->
-                                    <button class="info"><img src="../img/info.svg" alt=""></button>
-                                    <div class="info_block">
-                                        <button class="info_close"><img src="../img/close.svg" alt=""></button>
-                                        <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
-                                    </div>
-                                    <!-- Exercise muscle groups -->
-                                    <div class="muscle_groups">Руки - плечи - грудь</div>
-                                    <!-- Exercise image -->
-                                    <img class="exercise_img" src="../img/exercises/arms/triceps_2.jpg" alt="">
-                                    <!-- Decoration line -->
-                                    <div class="line"></div>
-                                    <!-- Exercise title -->
-                                    <h1>Алмазные отжимания</h1>
-                                    <div class="statistic">
-                                        <div class="rating">
-                                            <p>4,5</p>
-                                            <img src="../img/Star.svg" alt="">
-                                        </div>
-                                        <div class="difficult">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="disabled"></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <p>24 x 5</p>
-                                    </div>
-                                </section>
+                            <section class="exercise_cover">
+                                <?php $workout->print_exercises($conn); ?>
                             </section>
                             <div class="workout_info">
                                 <div class="muscle_groups">
-                                    <p>Ноги <span>7%</span></p>
-                                    <p>Спина <span>70%</span></p>
-                                    <p>Руки <span>3%</span></p>
-                                    <p>Пресс <span>20%</span></p>
+                                    <p>Руки: <span><?php echo $workout->muscles["arms"]; ?>%</span></p>
+                                    <p>Ноги: <span><?php echo $workout->muscles["legs"]; ?>%</span></p>
+                                    <p>Грудь: <span><?php echo $workout->muscles["chest"]; ?>%</span></p>
+                                    <p>Спина: <span><?php echo $workout->muscles["back"]; ?>%</span></p>
+                                    <p>Пресс: <span><?php echo $workout->muscles["press"]; ?>%</span></p>
+                                    <p>Кардио: <span><?php echo $workout->muscles["cardio"]; ?>%</span></p>
                                 </div>
                                 <div class="line"></div>
                                 <div class="exercise">
-                                    <p>Упражнений <span>5</span></p>
-                                    <p>Подходов <span>3</span></p>
-                                    <p>Повторений <span>20</span></p>
+                                    <p>Упражнений: <span><?php echo count($workout->exercises); ?></span></p>
+                                    <p>Кругов: <span><?php echo $workout->loops; ?></span></p>
                                 </div>
                                 <div class="line"></div>
-                                <p class="time">Время <span>90 мин</span></p>
                                 <div class="buttons">
                                     <button><img src="../img/edit.svg" alt=""></button>
                                     <button>Начать</button>
@@ -411,6 +108,7 @@ include "../templates/settings.php";
                             </div>
                         </section>
                     </section>
+                    <?php } ?>
                 </swiper-slide>
             </swiper-container>
             <section class="other">
@@ -655,7 +353,7 @@ include "../templates/settings.php";
             });
         }
 
-        
+
     </script>
 </body>
 </html>

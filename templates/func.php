@@ -4,6 +4,7 @@ require_once "User.php";
 require_once "Report.php";
 require_once "Exercise.php";
 require_once "Program.php";
+require_once "Workout.php";
 
 function conn_check($conn){
     if ($conn->connect_error) {

@@ -3,10 +3,11 @@
 class Program {
     private $id;
     public $name;
-    private $program;
+    public $program; # []
     public $rating;
-    public $exercises=array();
+    public $workouts=array();
     public $muscles=array();
+    public $reps;
 
     public function __construct($conn, $id){
         $select_sql = "SELECT * FROM programs WHERE id=$id";
@@ -14,8 +15,9 @@ class Program {
             foreach ($select_result as $item){
                 $this->id = $item['id'];
                 $this->name = $item['name'];
-                $this->program = (array)json_decode($item['program']);
+                $this->program = json_decode($item['program']);
                 $this->rating = $item['rating'];
+                $this->reps = $item['reps'];
             }
         }else{
             echo $conn->error;
@@ -23,25 +25,9 @@ class Program {
         $select_result->free();
     }
 
-    public function set_exercises($conn){
-        foreach ($this->program as $key=>$value){
-            $reps = $value[0];
-            $approaches = $value[1];
-            array_push($this->exercises, new User_Exercise($conn, $key, $reps, $approaches));
-        }
-    }
-
-    public function set_muscles($conn){
-        if (count($this->muscles) == 0){
-            $this->set_exercises($conn);
-        }
-
-        foreach ($this->exercises as $exercise) {
-            foreach ($exercise->muscles as $muscle){
-                if (!in_array($muscle, $this->muscles)){
-                    array_push($this->muscles, $muscle);
-                }
-            }
+    public function set_workouts($conn){
+        for ($i = 0; $i < 7; $i++){
+            array_push($this->workouts, new Workout($conn, $this->program[$i], $i));
         }
     }
 }

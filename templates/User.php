@@ -14,6 +14,7 @@ class User {
     private $auth=false;
     public $featured_exercises = [];
     public $my_exercises = [];
+    public $program;
 
     public function __construct($conn, $id=-1, $auth=false){
         if (isset($id) && $id != -1) {
@@ -252,5 +253,18 @@ class User {
             array_splice($this->my_exercises, $index, 1);
         }
         $this->update($conn);
+    }
+
+    public function set_program($conn){
+        $select_sql = "SELECT program FROM program_to_user WHERE user=$this->id LIMIT 1";
+        if ($result_sql = $conn->query($select_sql)){
+            foreach ($result_sql as $item){
+                $this->program = new Program($conn, $item['program']);
+            }
+            return true;
+        }else{
+            echo $conn->error;
+            return false;
+        }
     }
 }

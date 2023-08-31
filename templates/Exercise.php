@@ -11,7 +11,7 @@ class Exercise {
     private $creator=1;
     public $difficulty;
 
-    private function set_exercise_data($select_result){
+    public function set_exercise_data($select_result){
         foreach ($select_result as $item){
             $this->id = $item['id'];
             $this->name = $item['name'];
@@ -34,8 +34,6 @@ class Exercise {
                 echo $conn->error;
             }
             $select_result->free();
-        }else{
-            echo "Error";
         }
     }
 
@@ -115,14 +113,40 @@ class User_Exercise extends Exercise {
     public $approaches;
 
     public function __construct($conn, $id, $reps, $approaches){
-        $select_sql = "SELECT * FROM exercises WHERE id=$id";
-        if ($select_result = $conn->query($select_sql)){
-            $this->select_exercise_data($select_result);
-            $this->reps = $reps;
-            $this->approaches = $approaches;
+        parent::__construct($conn, $id);
+        $this->reps = $reps;
+        $this->approaches = $approaches;
+    }
+
+    public function print_it($conn, $is_featured=false, $is_mine=false){
+        if ($this->description == ""){
+            $description = "No description for this exercise";
         }else{
-            echo $conn->error;
+            $description = $this->description;
         }
-        $select_result->free();
+        if ($is_featured){
+            $button_featured = '<button class="favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
+        }else{
+            $button_featured = '<button class="favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
+        }
+        $muscle_list = "";
+        foreach ($this->muscles as $muscle){
+            $muscle_list .= translate_group($muscle) . " ";
+        }
+        $muscle_list = str_replace(' ', '-', trim($muscle_list));
+
+        $replaces = array(
+            "{{ button_featured }}" => $button_featured,
+            "{{ image }}" => $this->get_image($conn),
+            "{{ name }}" => $this->name,
+            "{{ rating }}" => $this->rating,
+            "{{ difficulty }}" => $this->difficulty,
+            "{{ id }}" => $this->get_id(),
+            "{{ muscle }}" => $muscle_list,
+            "{{ reps }}" => $this->reps,
+            "{{ approaches }}" => $this->approaches,
+            "{{ description }}" => $description
+        );
+        echo render($replaces, "../templates/user_exercise.html");
     }
 }
