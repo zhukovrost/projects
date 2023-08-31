@@ -26,13 +26,16 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 <body>
 	<?php include "../templates/header.html" ?>
 
+	<!-- Exercise navigation -->
 	<nav class="exercise_nav">
 		<div class="container">
+			<!-- Buttons to (my / all) exercises -->
             <?php if ($my) { ?>
                 <a href="exercises.php?my=0">Все <img src="../img/arrow_exercise.svg" alt=""></a>
             <?php } else { ?>
                 <a href="exercises.php?my=1">Мои <img src="../img/arrow_exercise.svg" alt=""></a>
             <?php } ?>
+			<!-- Main search -->
 			<select name="exercise_sort" id="">
 				<option value="value1" selected>По умолчанию</option>
 				<option value="value2">Избранные</option>
@@ -41,6 +44,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				<option value="value5">Сложность(возрастание)</option>
 				<option value="value6">Сложность(убывание)</option>
 			</select>
+			<!-- Exercise search -->
 			<div class="search">
 				<input type="text" placeholder="Искать">
 				<button><img src="../img/search_black.svg" alt=""></button>
@@ -49,8 +53,11 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 	</nav>
 
 	<main>
+		<!-- Exercises and filter block -->
 		<div class="container exercises_cover">
+			<!-- Filter block -->
 			<form class="filter_block">
+				<!-- Muscle groups filter -->
 				<section class="muscle_groups">
 					<button type="button">Группы мышц <img src="../img/search_arrow.svg" alt=""></button>
 					<div class="content">
@@ -80,6 +87,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 						</div>
 					</div>
 				</section>
+				<!-- Difficult filter -->
 				<section class="difficult">
 					<button type="button">Сложность <img src="../img/search_arrow.svg" alt=""></button>
 					<div class="content">
@@ -105,6 +113,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 						</div>
 					</div>
 				</section>
+				<!-- Rating filter -->
 				<section class="rating">
 					<button type="button">Рейтинг <img src="../img/search_arrow.svg" alt=""></button>
 					<div class="content">
@@ -134,9 +143,11 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 						</div>
 					</div>
 				</section>
+				<!-- Buttons search and clear -->
 				<button type="submit" class="clear">Искать</button>
 				<button type="button" class="clear">Очистить</button>
 			</form>
+			<!-- Exercises array -->
 			<form method="post" class="exercise_block">
 				<?php
                 if ($my){
