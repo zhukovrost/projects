@@ -3168,10 +3168,27 @@ footer .about p:first-child{
     box-shadow: 3px 3px 0px 0px #9A9A9A;
     border: 1px solid #C6C6C6;
     margin: 10px 0px 20px;
-    padding: 10px 20px;
+    padding: 15px 30px;
 }
 
+.user_block .info .news .item .content button{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    margin-left: 20px;
+    padding: 3px 10px;
+}
 
+.user_block .info .news .item .content button img{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+}
+
+.user_block .info .news .item .content button:hover{
+    background-color: #000000;
+}
 
 
 .user_block .other{

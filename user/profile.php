@@ -117,7 +117,7 @@ include "../templates/settings.php";
 						</div>
 						<div class="content">
 							<p>Начал(а) программу</p>
-							<button>Подробнее <img src="../img/more_white.svg" alt=""></button>
+							<button class>Подробнее <img src="../img/more_white.svg" alt=""></button>
 						</div>
 					</section>
 					<section class="item">
