@@ -31,9 +31,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		<div class="container">
 			<!-- Buttons to (my / all) exercises -->
             <?php if ($my) { ?>
-                <a href="exercises.php?my=0">Все <img src="../img/arrow_exercise.svg" alt=""></a>
+                <a href="exercises.php?my=0">Все <img src="../img/arrow_white.svg" alt=""></a>
             <?php } else { ?>
-                <a href="exercises.php?my=1">Мои <img src="../img/arrow_exercise.svg" alt=""></a>
+                <a href="exercises.php?my=1">Мои <img src="../img/arrow_white.svg" alt=""></a>
             <?php } ?>
 			<!-- Main search -->
 			<select name="exercise_sort" id="">
