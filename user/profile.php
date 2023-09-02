@@ -1,12 +1,14 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+
+$user = $user_data;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-	<?php include "../templates/header.html" ?>
+	<?php include "../templates/header.html"; ?>
 
 	<main>
 		<div class="container user_block">
@@ -15,13 +17,17 @@ include "../templates/settings.php";
 				<section class="about">
                     <!-- User avatar, name and surname -->
 					<div class="avatar_block">
-						<img src="../img/man_avatar.svg" alt="">
-						<h1>Иван Иванов</h1>
-						<p><span>1</span> день назад</p>
+						<img src="<?php echo $user->get_avatar($conn); ?>" alt="">
+						<h1><?php echo $user->name." ",$user->surname; ?></h1>
+                        <?php if ($user->online == 0){ ?>
+						    <p>В поисках тренировок...</p>
+                        <?php } else { ?>
+                            <p><span><?php echo round((time() - $user->online) / 24, 0); ?></span> день назад</p>
+                        <?php } ?>
 					</div>
                     <!-- User info text -->
 					<div class="content">
-						<p>Занимаюсь спортом, жму 40. Буду рад знакомству!</p>
+						<p><?php echo $user->description; ?></p>
 						<button><img src="../img/edit_gray.svg" alt="">Изменить</button>
 					</div>
 				</section>
@@ -30,133 +36,21 @@ include "../templates/settings.php";
                     <!-- Button 'Новая запись' -->
 					<button class="new_post_btn">Новая запись <img src="../img/add.svg" alt=""></button>
 					<!-- News item -->
-                    <section class="item">
-						<div class="post_info">
-                            <!-- User's avatar -->
-							<img src="../img/man_avatar.svg" alt="">
-                            <!-- Name, surname, date -->
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.2023</p>
-							</div>
-                            <!-- Button more to dalete or change post -->
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-                        <!-- Post content -->
-						<div class="content">
-							<p>Начал(а) программу</p>
-							<button>Подробнее <img src="../img/more_white.svg" alt=""></button>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.1212</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Закончил(а) программу</p>
-							<button>Подробнее <img src="../img/more_white.svg" alt=""></button>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.1212</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Всем привет!</p>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.2023</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Начал(а) программу</p>
-							<button>Подробнее <img src="../img/more_white.svg" alt=""></button>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.1212</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Закончил(а) программу</p>
-							<button>Подробнее <img src="../img/more_white.svg" alt=""></button>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.1212</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Всем привет!</p>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.2023</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Начал(а) программу</p>
-							<button class>Подробнее <img src="../img/more_white.svg" alt=""></button>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.1212</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Закончил(а) программу</p>
-							<button>Подробнее <img src="../img/more_white.svg" alt=""></button>
-						</div>
-					</section>
-					<section class="item">
-						<div class="post_info">
-							<img src="../img/man_avatar.svg" alt="">
-							<div>
-								<p>Иван иванов</p>
-								<p>12.12.1212</p>
-							</div>
-							<button class="more" ><img src="../img/more.svg" alt=""></button>
-						</div>
-						<div class="content">
-							<p>Всем привет!</p>
-						</div>
-					</section>
+                    <?php
+                    if ($news = $user->get_news($conn)) {
+                        foreach ($news as $new){
+                            $date = date("d.m.Y", $new['date']);
+                            $replacements = array(
+                                "{{ user_name }}" => $new['name'].' '.$new['surname'],
+                                "{{ link }}" => '',
+                                "{{ date }}" => $date,
+                                "{{ message }}" => $new['message'],
+                                "{{ avatar }}" => $new['file']
+                            );
+                            echo render($replacements, "../templates/news_item.html");
+                        }
+                    }
+                    ?>
 				</section>
 			</section>
 			<section class="other">
@@ -393,7 +287,7 @@ include "../templates/settings.php";
 				<section class="buttons">
 					<button>Редактировать профиль <img src="../img/edit.svg" alt=""></button>
 					<button>Поиск спортсменов <img src="../img/search_white.svg" alt=""></button>
-					<button class="logout">Выйти <img src="../img/logout.svg" alt=""></button>
+					<a href="../clear.php" class="logout">Выйти <img src="../img/logout.svg" alt=""></a>
 				</section>
 			</section>
 		</div>

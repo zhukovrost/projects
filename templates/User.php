@@ -7,14 +7,39 @@ class User {
     public $online=0;
     public $name="Guest";
     public $surname='';
+    public $description='';
     private $email;
     public $avatar=1;
     private $password='';
-    private $subscriptions = [];
+    public $subscriptions = [];
+    public $subscribers = [];
     private $auth=false;
     public $featured_exercises = [];
     public $my_exercises = [];
     public $program;
+
+    function set_subscriptions($conn){
+        $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
+        $this->subscriptions = array();
+        if ($result = $conn->query($sql)){
+            foreach ($result as $user){
+                array_push($this->subscriptions, $user['user']);
+            }
+        }else{
+            echo $conn->query;
+        }
+    }
+    function set_subscribers($conn){
+        $sql = "SELECT subscriber FROM subs WHERE user=$this->id";
+        $this->subscribers = array();
+        if ($result = $conn->query($sql)){
+            foreach ($result as $user){
+                array_push($this->subscribers, $user['subscriber']);
+            }
+        }else{
+            echo $conn->query;
+        }
+    }
 
     public function __construct($conn, $id=-1, $auth=false){
         if (isset($id) && $id != -1) {
@@ -29,12 +54,12 @@ class User {
                     $this->status = $item['status'];
                     $this->avatar = $item['avatar'];
                     $this->password = $item['password'];
-                    $this->subscriptions = json_decode($item['subscriptions']);
+                    $this->description = $item['description'];
                     $this->online = $item['online'];
                     $this->featured_exercises = json_decode($item['featured_exercises']);
                     $this->my_exercises = json_decode($item['my_exercises']);
                 }
-                $this->auth = true;
+                $this->auth = $auth;
             }else{
                 echo $conn -> error;
             }
@@ -169,6 +194,8 @@ class User {
             header("Location: reg_log.php?reg=1");
             # return $error_array;
         }
+
+        insert_news($conn, "Пользователь $login зарегистрировался на платформе.", mysqli_insert_id($conn), false);
         /*
         $stats_sql = "INSERT INTO stats(user) VALUES (LAST_INSERT_ID())";
         if ($conn->query($stats_sql)) { # querying
@@ -185,8 +212,7 @@ class User {
     public function update($conn){
         $my_exercise = json_encode($this->my_exercises);
         $featured_exercises = json_encode($this->featured_exercises);
-        $subscriptions = json_encode($this->subscriptions);
-        $sql = "UPDATE users SET my_exercises='$my_exercise', featured_exercises='$featured_exercises', subscriptions='$subscriptions' WHERE id=$this->id";
+        $sql = "UPDATE users SET my_exercises='$my_exercise', featured_exercises='$featured_exercises' WHERE id=$this->id";
         if ($conn->query($sql)){
             return true;
         }else{
@@ -262,6 +288,26 @@ class User {
                 $this->program = new Program($conn, $item['program']);
             }
             return true;
+        }else{
+            echo $conn->error;
+            return false;
+        }
+    }
+    public function get_news($conn){
+        $sql = "SELECT news.message, news.date, news.personal, avatars.file, users.name, users.surname, users.login FROM ((news INNER JOIN users ON news.user=users.id) INNER JOIN avatars ON users.avatar=avatars.id) WHERE (user=$this->id";
+        if (count($this->subscriptions) == 0){
+            $this->set_subscriptions($conn);
+        }
+        if (count($this->subscriptions) != 0){
+            $sql .= " OR ";
+            foreach ($this->subscriptions as $subscription){
+                $sql .= "(user=$subscription AND personal=0) OR ";
+            }
+            $sql = substr($sql, 0, -4);
+        }
+        $sql .= ") ORDER BY date";
+        if ($result = $conn->query($sql)){
+            return $result;
         }else{
             echo $conn->error;
             return false;

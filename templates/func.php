@@ -70,3 +70,15 @@ function get_day($day_number) {
     $day_of_week = $days_of_week[$day_number];
     return $day_of_week;
 }
+
+function insert_news($conn, $message, $user_id, $is_personal){
+    $date = time();
+    $is_personal = (int)$is_personal;
+    $sql = "INSERT INTO news (message, user, date, personal) VALUES ('$message', $user_id, $date, $is_personal)";
+    if ($conn->query($sql)){
+        return mysqli_insert_id($conn);
+    }else{
+        echo $conn->error;
+        return false;
+    }
+}
