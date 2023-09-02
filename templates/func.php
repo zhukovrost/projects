@@ -82,3 +82,24 @@ function insert_news($conn, $message, $user_id, $is_personal){
         return false;
     }
 }
+
+function print_user_list($conn, $id_list){
+    if (count($id_list) == 0){
+        echo "<p>Пользователь ни на кого не подписан</p>";
+        return 0;
+    }
+    for ($i = 0; $i < count($id_list); $i+=4){
+        echo "<swiper-slide>";
+        for ($j = $i; $j < count($id_list) - $i * 4; $j++){
+            $user_id = $id_list[$j];
+            $user = new User($conn, $user_id);
+            $replacements = array(
+                "{{ id }}" => $user->get_id(),
+                "{{ avatar }}" => $user->get_avatar($conn),
+                "{{ name }}" => $user->name.' '.$user->surname
+            );
+            echo render($replacements, "../templates/user_card.html");
+        }
+        echo "</swiper-slide>";
+    }
+}

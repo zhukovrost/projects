@@ -1,8 +1,13 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
-
-$user = $user_data;
+if ($_GET["user"]){
+    $user = new User($conn, $_GET["user"]);
+}else{
+    $user = $user_data;
+}
+$user->set_subscriptions($conn);
+$user->set_subscribers($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,16 +33,20 @@ $user = $user_data;
                     <!-- User info text -->
 					<div class="content">
 						<p><?php echo $user->description; ?></p>
-						<button><img src="../img/edit_gray.svg" alt="">Изменить</button>
+                        <?php if ($user->get_auth()){ ?>
+						    <button><img src="../img/edit_gray.svg" alt="">Изменить</button>
+                        <?php } ?>
 					</div>
 				</section>
                 <!-- User's news -->
 				<section class="news">
                     <!-- Button 'Новая запись' -->
-					<button class="new_post_btn">Новая запись <img src="../img/add.svg" alt=""></button>
+                    <?php if ($user->get_auth()){ ?>
+					    <button class="new_post_btn">Новая запись <img src="../img/add.svg" alt=""></button>
+                    <?php } ?>
 					<!-- News item -->
                     <?php
-                    if ($news = $user->get_news($conn)) {
+                    if ($news = $user->get_my_news($conn)) {
                         foreach ($news as $new){
                             $date = date("d.m.Y", $new['date']);
                             $replacements = array(
@@ -49,64 +58,26 @@ $user = $user_data;
                             );
                             echo render($replacements, "../templates/news_item.html");
                         }
-                    }
-                    ?>
+                    }?>
 				</section>
 			</section>
 			<section class="other">
 				<section class="friends">
                     <!-- Title and button to search friends -->
                     <div class="title">
-                        <h1>Друзья</h1>
+                        <h1>Подписки</h1>
                         <a href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends swiper -->
                     <swiper-container class="content swiper_friends" navigation="true">
-                        <!-- slide -->
-                        <swiper-slide>
-                            <!-- friend item -->
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                        </swiper-slide>
-						<swiper-slide>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                    	</swiper-slide>
+                        <?php print_user_list($conn, $user->subscriptions); ?>
 					</swiper-container>
                 </section>
                 <!-- User's staff (coach and doctor) -->
 				<section class="staff">
                     <!-- Coach info and buttons to chat, ptofile and delete -->
 					<div class="coach">
-						<p>Тренер: <span>Штангов К.Г.</span></p>
+						<p>Тренер: <span>Штангов К.</span></p>
 						<button><img src="../img/message.svg" alt=""></button>
 						<button><img src="../img/profile_black.svg" alt=""></button>
 						<button><img src="../img/delete_black.svg" alt=""></button>
@@ -118,8 +89,8 @@ $user = $user_data;
 					</div>
                     <!-- Count of subscribers and subscriptions -->
 					<div class="users_count">
-						<a href=""><span>25 подписчиков</span></a>
-						<a href=""><span>15 подписок</span></a>
+						<a href=""><span><?php echo count($user->subscribers); ?> подписчик(ов)</span></a>
+						<a href=""><span><?php echo count($user->subscriptions); ?> подписок</span></a>
 					</div>
 				</section>
 				<section class="last_trainings">
@@ -285,15 +256,24 @@ $user = $user_data;
                 </section>
                 <!-- Buttons to edit profile, search sportsmen and logout -->
 				<section class="buttons">
-					<button>Редактировать профиль <img src="../img/edit.svg" alt=""></button>
 					<button>Поиск спортсменов <img src="../img/search_white.svg" alt=""></button>
+                    <?php if ($user->get_auth()){ ?>
+                    <button>Редактировать профиль <img src="../img/edit.svg" alt=""></button>
 					<a href="../clear.php" class="logout">Выйти <img src="../img/logout.svg" alt=""></a>
+                    <?php }else{
+                        if (in_array($user_data->get_id(), $user->subscribers)){ ?>
+                            <p>Вы подписаны</p>
+                            <a href="unsub.php?id=<?php echo $user->get_id(); ?>">Отписаться</a>
+                        <?php }else{ ?>
+                            <a href="sub.php?id=<?php echo $user->get_id(); ?>">Подписаться</a>
+                        <?php }
+                    }?>
 				</section>
 			</section>
 		</div>
 	</main>
 
-	<?php include "../templates/footer.html" ?>
+	<?php include "../templates/footer.html";?>
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 </body>

@@ -4,6 +4,10 @@ include "../templates/settings.php";
 
 $user_data->set_program($conn);
 $weekday = date("N") - 1;
+$user_data->set_program($conn);
+if ($user_data->program < 1){
+    header("Location: c_program_info.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,44 +125,10 @@ $weekday = date("N") - 1;
                     </div>
                     <!-- Friends' workout swiper -->
                     <swiper-container class="content swiper_friends" navigation="true">
-                        <!-- slide -->
-                        <swiper-slide>
-                            <!-- friend item -->
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                        </swiper-slide>
-                        <swiper-slide>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                            <a href="" class="item">
-                                <img src="../img/man_avatar.svg" alt="">
-                                <p>Иван Иванов</p>
-                            </a>
-                        </swiper-slide>
+                        <?php
+                        $user_data->set_subscriptions($conn);
+                        print_user_list($conn, $user_data->subscriptions);
+                        ?>
                       </swiper-container>
                 </section>
                 <!-- last trainings -->

@@ -91,7 +91,7 @@ class User {
 
     public function redirect_logged($way=''){
         if ($this->auth){
-            header("Location: ".$way."user/workout.php");
+            header("Location: ".$way."user/profile.php");
         }
     }
 
@@ -133,7 +133,7 @@ class User {
                 return $error_array;
             }
         }
-        header('Location: index.php');
+        header('Location: profile.php');
     }
 
     public function reg($conn, $login, $status, $password, $password2, $name, $surname, $email)
@@ -306,6 +306,16 @@ class User {
             $sql = substr($sql, 0, -4);
         }
         $sql .= ") ORDER BY date";
+        if ($result = $conn->query($sql)){
+            return $result;
+        }else{
+            echo $conn->error;
+            return false;
+        }
+    }
+
+    public function get_my_news($conn){
+        $sql = "SELECT news.message, news.date, news.personal, avatars.file, users.name, users.surname, users.login FROM ((news INNER JOIN users ON news.user=users.id) INNER JOIN avatars ON users.avatar=avatars.id) WHERE user=$this->id ORDER BY date";
         if ($result = $conn->query($sql)){
             return $result;
         }else{
