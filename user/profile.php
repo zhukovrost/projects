@@ -10,29 +10,39 @@ include "../templates/settings.php";
 
 	<main>
 		<div class="container user_block">
+            <!-- Info about user -->
 			<section class="info">
 				<section class="about">
+                    <!-- User avatar, name and surname -->
 					<div class="avatar_block">
 						<img src="../img/man_avatar.svg" alt="">
 						<h1>Иван Иванов</h1>
 						<p><span>1</span> день назад</p>
 					</div>
+                    <!-- User info text -->
 					<div class="content">
 						<p>Занимаюсь спортом, жму 40. Буду рад знакомству!</p>
 						<button><img src="../img/edit_gray.svg" alt="">Изменить</button>
 					</div>
 				</section>
+                <!-- User's news -->
 				<section class="news">
+                    <!-- Button 'Новая запись' -->
 					<button class="new_post_btn">Новая запись <img src="../img/add.svg" alt=""></button>
-					<section class="item">
+					<!-- News item -->
+                    <section class="item">
 						<div class="post_info">
+                            <!-- User's avatar -->
 							<img src="../img/man_avatar.svg" alt="">
+                            <!-- Name, surname, date -->
 							<div>
 								<p>Иван иванов</p>
 								<p>12.12.2023</p>
 							</div>
+                            <!-- Button more to dalete or change post -->
 							<button class="more" ><img src="../img/more.svg" alt=""></button>
 						</div>
+                        <!-- Post content -->
 						<div class="content">
 							<p>Начал(а) программу</p>
 							<button>Подробнее <img src="../img/more_white.svg" alt=""></button>
@@ -153,10 +163,10 @@ include "../templates/settings.php";
 				<section class="friends">
                     <!-- Title and button to search friends -->
                     <div class="title">
-                        <h1>Тренировки друзей</h1>
+                        <h1>Друзья</h1>
                         <a href=""><img src="../img/search.svg" alt=""></a>
                     </div>
-                    <!-- Friends' workout swiper -->
+                    <!-- Friends swiper -->
                     <swiper-container class="content swiper_friends" navigation="true">
                         <!-- slide -->
                         <swiper-slide>
@@ -198,17 +208,21 @@ include "../templates/settings.php";
                     	</swiper-slide>
 					</swiper-container>
                 </section>
+                <!-- User's staff (coach and doctor) -->
 				<section class="staff">
+                    <!-- Coach info and buttons to chat, ptofile and delete -->
 					<div class="coach">
 						<p>Тренер: <span>Штангов К.Г.</span></p>
 						<button><img src="../img/message.svg" alt=""></button>
 						<button><img src="../img/profile_black.svg" alt=""></button>
 						<button><img src="../img/delete_black.svg" alt=""></button>
 					</div>
+                    <!-- Doctor info -->
 					<div class="doctor">
 						<p>Врач: <span>нет</span></p>
 						<button><img src="../img/add_black.svg" alt=""></button>
 					</div>
+                    <!-- Count of subscribers and subscriptions -->
 					<div class="users_count">
 						<a href=""><span>25 подписчиков</span></a>
 						<a href=""><span>15 подписок</span></a>
@@ -375,6 +389,7 @@ include "../templates/settings.php";
                         </section>
                     </div>
                 </section>
+                <!-- Buttons to edit profile, search sportsmen and logout -->
 				<section class="buttons">
 					<button>Редактировать профиль <img src="../img/edit.svg" alt=""></button>
 					<button>Поиск спортсменов <img src="../img/search_white.svg" alt=""></button>

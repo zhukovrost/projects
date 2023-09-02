@@ -36,8 +36,9 @@ $muscles = array(
                             }
                         ?>
                         <section class="item">
-                            <h2><?php echo get_day($i); ?></h2>
+                            <h3><?php echo get_day($i); ?></h3>
                             <div class="content">
+                                <h2>День рук</h2>
                                 <?php if ($workout->holiday){ ?>
                                     <div class="day_off">Выходной</div>
                                 <?php }else{ ?>

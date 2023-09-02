@@ -2075,7 +2075,7 @@ footer .about p:first-child{
 }
 
 /* Day of week */
-.my_program .cover .item h2{
+.my_program .cover .item h3{
     font-size: 18px;
     color: #828282;
 }
@@ -2089,6 +2089,11 @@ footer .about p:first-child{
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     border: 1px solid #C6C6C6;
+}
+
+/* Workout title */
+.my_program .cover .item .content h2{
+    font-size: 21px;
 }
 
 /* Muscle groups */
@@ -3000,6 +3005,7 @@ footer .about p:first-child{
     margin-bottom: 20px;
 }
 
+/* Info about user */
 .user_block .info{
     min-width: 50%;
     margin-right: 50px;
@@ -3010,23 +3016,27 @@ footer .about p:first-child{
     justify-content: space-between;
 }
 
+/* User avatar, name and surname */
 .user_block .info .avatar_block img{
     width: 200px;
     height: 200px;
 }
 
+/* name and surname */
 .user_block .info .avatar_block h1{
     text-align: center;
     font-size: 23px;
     font-weight: 500;
 }
 
+/* last training date */
 .user_block .info .avatar_block p{
     text-align: center;
     font-size: 17px;
     color: #727272;
 }
 
+/* User info text */
 .user_block .info .about .content{
     position: relative;
     background-color: #FAFAFA;
@@ -3037,6 +3047,7 @@ footer .about p:first-child{
     padding: 20px 40px;
 }
 
+/* button 'edit' */
 .user_block .info .about .content button{
     position: absolute;
     bottom: 1%;
@@ -3053,6 +3064,7 @@ footer .about p:first-child{
 }
 
 
+/* User's news  */
 .user_block .info .news{
     display: flex;
     flex-direction: column;
@@ -3064,6 +3076,7 @@ footer .about p:first-child{
     border-radius: 3px;
 }
 
+/* Button 'Новая запись' */
 .user_block .info .news .new_post_btn{
     display: flex;
     align-items: center;
@@ -3116,7 +3129,7 @@ footer .about p:first-child{
 }
 
 
-
+/* News item */
 .user_block .info .news .item{
     border-bottom: 1px solid #CECECE;
     margin-bottom: 30px;
@@ -3132,11 +3145,13 @@ footer .about p:first-child{
     margin-left: 0px;
 }
 
+/* User's avatar */
 .user_block .info .news .item img{
     width: 70px;
     height: 70px;
 }
 
+/* Name, surname, date */
 .user_block .info .news .item div{
     margin-left: 10px;
 }
@@ -3150,6 +3165,7 @@ footer .about p:first-child{
     font-size: 15px;
 }
 
+/* Button more to dalete or change post */
 .user_block .info .news .item .more{
     margin-left: auto;
     margin-bottom: auto;
@@ -3162,6 +3178,7 @@ footer .about p:first-child{
     opacity: 1;
 }
 
+/* Post content */
 .user_block .info .news .item .content{
     display: flex;
     background-color: #ffffff;
@@ -3171,6 +3188,7 @@ footer .about p:first-child{
     padding: 15px 30px;
 }
 
+/* Button 'подробнее' to see info about program */
 .user_block .info .news .item .content button{
     display: flex;
     align-items: center;
@@ -3195,7 +3213,7 @@ footer .about p:first-child{
     max-width: 48%;
 }
 
-/* Friends' workouts */
+/* Friends block */
 .user_block .friends{
     width: 100%;
     padding: 10px 20px;
@@ -3256,7 +3274,7 @@ footer .about p:first-child{
 }
 
 
-
+/* User's staff (coach and doctor) */
 .user_block .staff{
     background-color: #FAFAFA;
     box-shadow: 3px 3px 0px 0px #9A9A9A;
@@ -3265,6 +3283,7 @@ footer .about p:first-child{
     padding: 20px 40px;
 }
 
+/* Coach info */
 .user_block .staff .coach{
     display: flex;
     align-items: center;
@@ -3275,6 +3294,7 @@ footer .about p:first-child{
     margin-right: 20px;
 }
 
+/*  buttons to chat, ptofile and delete */
 .user_block .staff .coach button{
     display: flex;
     align-items: center;
@@ -3291,6 +3311,7 @@ footer .about p:first-child{
     height: 23px;
 }
 
+/* Doctor info */
 .user_block .staff .doctor{
     margin-top: 10px;
     display: flex;
@@ -3305,6 +3326,7 @@ footer .about p:first-child{
     margin-right: 10px;
 }
 
+/* buttons to chat, ptofile and delete  */
 .user_block .staff .doctor button{
     display: flex;
     align-items: center;
@@ -3321,7 +3343,7 @@ footer .about p:first-child{
     height: 20px;
 }
 
-
+/* Count of subscribers and subscriptions */
 .user_block .staff .users_count{
     display: flex;
     justify-content: space-around;
@@ -3336,51 +3358,7 @@ footer .about p:first-child{
     color: #000000;
 }
 
-
-.user_block .buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-}
-
-.user_block .buttons button{
-    display: flex;
-    align-items: center;
-    background-color: #000000;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
-    font-size: 25px;
-    padding: 7px 15px 7px 25px;
-    width: 55%;
-    margin-bottom: 10px;
-    transition: .1s ease-in-out;
-}
-
-.user_block .buttons button img{
-    margin-left: auto;
-    width: 23px;
-    height: 23px;
-    transition: .1s ease-in-out;
-}
-
-.user_block .buttons button:hover{
-    box-shadow: 4px 4px 0px 0px #00CD1E;
-}
-
-.user_block .buttons button:hover img{
-    transform: translateY(-3px);
-}
-
-.user_block .buttons .logout{
-    width: fit-content;
-    padding: 7px 10px 7px 20px;
-}
-
-.user_block .buttons .logout img{
-    margin-left: 15px;
-}
-
+/* last trainings block */
 .user_block .last_trainings{
     max-height: 43vh;
     display: flex;
@@ -3476,3 +3454,55 @@ footer .about p:first-child{
 .user_block .last_trainings .item .right button img{
     margin-left: 10px;
 }
+
+
+/* Buttons to edit profile, search sportsmen and logout */
+.user_block .buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.user_block .buttons button{
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 25px;
+    padding: 7px 15px 7px 25px;
+    width: 55%;
+    margin-bottom: 10px;
+    transition: .1s ease-in-out;
+}
+
+.user_block .buttons button img{
+    margin-left: auto;
+    width: 23px;
+    height: 23px;
+    transition: .1s ease-in-out;
+}
+
+.user_block .buttons button:hover{
+    box-shadow: 4px 4px 0px 0px #00CD1E;
+}
+
+.user_block .buttons button:hover img{
+    transform: translateY(-3px);
+}
+
+.user_block .buttons .logout{
+    width: fit-content;
+    padding: 7px 10px 7px 20px;
+}
+
+.user_block .buttons .logout img{
+    margin-left: 15px;
+}
+
+
+/* ================================================== */
+
+
+/* ============PROGRAMS' CONCTRUCTOR INFO============ */
