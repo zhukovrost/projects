@@ -1,0 +1,28 @@
+<!-- Item -->
+<section class="item">
+  <!-- Left part of last exercise item -->
+  <div class="left">
+    <!-- Time of training -->
+    <div>
+      <img src="../img/time.svg" alt="">
+      <p><span>{{ minutes }}</span> мин</p>
+    </div>
+    <!-- Exercise count of training -->
+    <div>
+      <img src="img/cards.svg" alt="">
+      <p><span>{{ exercise_amount }}</span> упражнений</p>
+    </div>
+  </div>
+  <!-- Right part of last exercise item -->
+  <div class="right">
+    <!-- Muscle groups count of training -->
+    <div>
+      <img src="img/cards.svg" alt="">
+      <p><span>{{ muscle_group_amount }}</span> группы мышц</p>
+    </div>
+    <!-- Button 'Подробнее' for more info about exercise -->
+    <div>
+      <a href="{{ link }}">Подробнее <img src="../img/other.svg" alt=""></a>
+    </div>
+  </div>
+</section>

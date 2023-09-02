@@ -70,4 +70,12 @@ class Workout {
             $exercise->print_it($conn);
         }
     }
+
+    public function get_groups_amount(){
+        $cnt = 0;
+        foreach ($this->muscles as $key=>$value){
+            if ($value!=0) $cnt++;
+        }
+        return $cnt;
+    }
 }

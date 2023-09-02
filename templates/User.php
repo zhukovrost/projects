@@ -323,4 +323,34 @@ class User {
             return false;
         }
     }
+
+    public function print_workout_history($conn){ ?>
+        <section class="last_trainings">
+            <h1>Последние тренировки</h1>
+            <div class="content">
+                <?php
+                    $sql = "SELECT * FROM workout_history WHERE user=$this->id";
+                    if ($result = $conn->query($sql)){
+                        if ($result->numrows == 0){
+                            echo "<p>Нет тренировок</p>";
+                        }else{
+                            foreach ($result as $item){
+                                $workout = new Workout($conn, $item['workout'], date("N", $item['date_completed']));
+                                $workout->set_muscles();
+                                $replacements = array(
+                                    "{{ minutes }}" => round($item['time_spent'] / 60, 0),
+                                    "{{ muscle_group_amount }}" => $workout->get_groups_amount(),
+                                    "{{ exercise_amount }}" => count($workout->exercises),
+                                    "{{ link }}" => ''
+                                );
+                                echo render($replacements, "../templates/workout_history_item.html");
+                            }
+                        }
+                    }else{
+                        echo "<p>".$conn->error."</p>";
+                    }
+                ?>
+            </div>
+        </section>
+    <?php }
 }
