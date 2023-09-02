@@ -133,7 +133,7 @@ class User {
                 return $error_array;
             }
         }
-        header('Location: profile.php');
+        header('Location: user/profile.php');
     }
 
     public function reg($conn, $login, $status, $password, $password2, $name, $surname, $email)

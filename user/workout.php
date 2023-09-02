@@ -5,9 +5,6 @@ include "../templates/settings.php";
 $user_data->set_program($conn);
 $weekday = date("N") - 1;
 $user_data->set_program($conn);
-if ($user_data->program < 1){
-    header("Location: c_program_info.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +14,7 @@ if ($user_data->program < 1){
 
     <main>
         <div class="container workouts">
+            <?php if ($user_data->program > 0){ ?>
             <!-- Day's workout swiper -->
             <swiper-container navigation="true">
                 <swiper-slide>
@@ -115,6 +113,9 @@ if ($user_data->program < 1){
                     <?php } ?>
                 </swiper-slide>
             </swiper-container>
+            <?php } else { ?>
+                <p>Нет программы</p>
+            <?php } ?>
             <section class="other">
                 <!-- Friends' workouts -->
                 <section class="friends">
