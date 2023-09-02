@@ -2,7 +2,9 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 $user_data->check_the_login();
-$user_data->set_program($conn);
+if (!$user_data->set_program($conn)){
+    header("Location: c_program_info.php");
+}
 $user_data->program->set_workouts($conn);
 $muscles = array(
     "arms" => 0,
