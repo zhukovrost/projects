@@ -59,7 +59,7 @@ $muscles = array(
                         <?php } ?>
                     </swiper-slide>
                     <?php } ?>
-                  </swiper-container>
+                </swiper-container>
             </section>
             <?php $diagram_muscles = json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>
             <section class="info">

@@ -22,7 +22,7 @@ include "../templates/settings.php";
 				</ol>
 			</div>
 		</div>
-		<a href="">СОЗДАТЬ ПРОГРАММУ <img src="../img/arrow_white.svg" alt=""></a>
+		<a href="c_program.php">СОЗДАТЬ ПРОГРАММУ <img src="../img/arrow_white.svg" alt=""></a>
 	</main>
 
     <?php include "../templates/footer.html" ?>
