@@ -3574,6 +3574,10 @@ footer .about p:first-child{
 /* ================================================ */
 
 /* ============PROGRAM CONSTRUCTOR PAGE============ */
+.c_program .container{
+    max-width: 90%;
+}
+
 .c_program .cover{
     display: flex;
     justify-content: space-around;
@@ -3601,7 +3605,7 @@ footer .about p:first-child{
 
 /* Workout title */
 .c_program .cover .item .content h2{
-    font-size: 23px;
+    font-size: 21px;
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
     border-bottom: 1px solid #C6C6C6;
@@ -3612,12 +3616,12 @@ footer .about p:first-child{
 
 /* Muscle groups */
 .c_program .cover .item .content p{
-    font-size: 21px;
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
 .c_program .cover .item .content p span{
-    font-size: 22px;
+    font-size: 19px;
     background-color: rgba(236, 236, 236, 1);
     padding: 1px 7px;
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
@@ -3641,14 +3645,14 @@ footer .about p:first-child{
     color: #ffffff;
     box-shadow: 2px 2px 0px 0px #00CD1E;
     font-size: 25px;
-    padding: 5px 10px;
+    padding: 7px;
     margin: 0px 7px;
     transition: .1s ease-in-out;
 }
 
 .c_program .cover .item .content button img{
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 
 .c_program .cover .item .content button:hover{
@@ -3766,7 +3770,8 @@ footer .about p:first-child{
     align-items: center;
 }
 
-.c_program .create_block .buttons button{
+.c_program .create_block .buttons button,
+.c_program .create_block .buttons a {
     width: 100%;
     display: flex;
     align-items: center;
@@ -3779,22 +3784,25 @@ footer .about p:first-child{
     transition: .1s ease-in-out;
 }
 
-.c_program .create_block .buttons button p{
+.c_program .create_block .buttons button p, 
+.c_program .create_block .buttons a p{
     margin-right: 10px;
 }
 
-.c_program .create_block .buttons button img{
+.c_program .create_block .buttons button img,
+.c_program .create_block .buttons a img{
     width: 25px;
     height: 25px;
     margin-left: auto;
 }
 
-.c_program .create_block .buttons button:hover{
+.c_program .create_block .buttons button:hover,
+.c_program .create_block .buttons a:hover{
     box-shadow: 3px 3px 0px 0px #00CD1E;
     background-color: #000000;
 }
 
-.c_program .create_block .buttons button:first-child:hover img{
+.c_program .create_block .buttons a:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
@@ -3927,4 +3935,406 @@ footer .about p:first-child{
 .c_program .friends .item p{
     font-size: 20px;
     color: #000000;
+}
+
+
+/* ============================================ */
+
+
+/* ==========WORKOUT CONSTRUCTOR PAGE========== */
+.c_workout .container{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+/* Content of workout */
+.c_workout .content{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #C6C6C6;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    padding: 20px 50px;
+}
+
+/* Exercises array */
+.c_workout .exercise_cover{
+    max-height: 65vh;
+    overflow: auto;
+    margin-top: 15px;
+}
+
+/* Exercise item */
+.c_workout .exercise_item{
+    position: relative;
+    margin: 0px 10px 15px 0px;
+    padding: 8px 30px 20px;
+    background-color: #FAFAFA;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #C6C6C6;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    transition: .1s ease-in-out;
+    overflow: hidden;
+}
+
+/* Exercise info */
+.c_workout .exercise_item .info{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    opacity: 0.8;
+    transition: .1s ease-in-out;
+}
+
+.c_workout .exercise_item .info:hover{
+    opacity: 1;
+}
+
+/* Info text  */
+.c_workout .exercise_item .info_block{
+    position: absolute;
+    z-index: 1;
+    border-radius: 12px;
+    border: 1px solid #C6C6C6;
+    top: -101%;
+    left: -1%;
+    width: 101%;
+    height: 101%;
+    background-color: #FAFAFA;
+    text-align: start;
+    padding: 30px 40px;
+    transition: .3s ease-in-out;
+}
+
+.c_workout .exercise_item .info_block p{
+    font-size: 15px;
+}
+
+.c_workout .exercise_item .info_block .info_close{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    opacity: 0.8;
+}
+
+.c_workout .exercise_item .info_block .info_close:hover{
+    opacity: 1;
+}
+
+/* Exercise muscle groups */
+.c_workout .exercise_item .muscle_groups{
+    color: rgba(143, 143, 143, 1);
+    font-size: 15px;
+    word-break: break-all;
+    max-width: 70%;
+    margin: 0 auto 40px;
+}
+
+/* Exercise images */
+.c_workout .exercise_item .exercise_img{
+    margin-bottom: 20px;
+}
+
+/* Exercise decoration line */
+.c_workout .exercise_item .line{
+    width: 100%;
+    margin: 0 auto;
+    height: 1px;
+    background-color: rgba(206, 206, 206, 1);
+}
+
+/* Exercise title */
+.c_workout .exercise_item h2{
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* Exercise rating + statistic */
+.c_workout .exercise_item .statistic{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.c_workout .exercise_item .statistic .rating{
+    display: flex;
+    align-items: center;
+}
+
+.c_workout .exercise_item .statistic .rating p{
+    font-size: 21px;
+    margin-right: 3px;
+}
+
+.c_workout .exercise_item .statistic .difficult{
+    display: flex;
+    margin-left: 10px;
+}
+
+.c_workout .exercise_item .statistic .difficult div{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    margin: 0px 2px;
+}
+
+.c_workout .exercise_item .statistic .difficult div.disabled{
+    background-color: rgb(155, 194, 161);
+}
+
+/* Count of repetitions */
+.c_workout .exercise_item .caption{
+    background-color: rgba(234, 234, 234, 1);
+    border: 1px solid #C6C6C6;
+    width:  fit-content;
+    margin: 20px auto 10px;
+    padding: 5px 60px;
+    border-radius: 3px;
+}
+
+.c_workout .exercise_item .caption p{
+    font-size: 25px;
+}
+
+.c_workout .exercise_item .buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.c_workout .exercise_item .buttons button{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 8px;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    padding: 10px;
+    transition: .1s ease-in-out;
+}
+
+.c_workout .exercise_item .buttons button.arrow{
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 1px #00CD1E;
+}
+
+.c_workout .exercise_item .buttons button.arrow:hover{
+    box-shadow: 0px 0px 0px 0px #00CD1E;
+}
+
+.c_workout .exercise_item .buttons button.arrow:hover img{
+    transform: translateY(3px);
+}
+
+.c_workout .exercise_item .buttons button.arrow.up{
+    margin-left: 30px;
+    transform: rotate(180deg);
+}
+
+.c_workout .exercise_item .buttons button img{
+    width: 25px;
+    height: 25px;
+    transition: .1s ease-in-out;
+}
+
+.c_workout .exercise_item .buttons button:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+/* ===Info about day workout===*/
+.c_workout .workout_info{
+    margin-top: 20px;
+    margin-left: 3vw;
+    min-width: 15vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.c_workout .workout_info p{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.c_workout .workout_info p span{
+    font-weight: 500;
+    background-color: rgba(236, 236, 236, 1);
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+    padding: 0px 10px;
+    border: 1px solid #C6C6C6;
+    float: right;
+    margin-left: 5px;
+}
+
+/* Decorative line */
+.c_workout .workout_info .line{
+    height: 1px;
+    width: 100%;
+    background: #CECECE;
+    margin: 10px 0px 20px;
+}
+
+/* Time for workout  */
+.c_workout .workout_info .time{
+    font-size: 26px;
+}
+
+.c_workout .workout_info .time span{
+    border: 1px solid rgb(145, 145, 145);
+    padding: 3px 12px;
+}
+
+/* Buttons edit and start */
+.c_workout .workout_info .buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+}
+
+.c_workout .workout_info .buttons button{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    padding: 5px 15px 5px 25px;
+    margin-top: 10px;
+    transition: .1s ease-in-out;
+}
+
+.c_workout .workout_info .buttons button p{
+    font-size: 27px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.c_workout .workout_info .buttons button img{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    transition: .1s ease-in-out;
+}
+
+.c_workout .workout_info .buttons button:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+.c_workout .workout_info .buttons button:first-child:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+
+
+
+.c_workout .other{
+    margin-left: 1vw;
+}
+
+.c_workout .other .title{
+    display: flex;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #C6C6C6;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.c_workout .other .title h1{
+    font-size: 33px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.c_workout .other .title input{
+    background-color: rgba(236, 236, 236, 1);
+    border: 1px solid #7D7D7D;
+    margin-left: 30px;
+    padding: 3px 5px;
+    font-size: 25px;
+}
+
+
+
+.c_workout .other .days{
+    text-align: center;
+    margin-top: 10px;
+    padding: 20px 50px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #C6C6C6;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.c_workout .other .days h1{
+    font-size: 35px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.c_workout .other .days form{
+    text-align: start;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.c_workout .other .days form input{
+    width: 20px;
+    height: 20px;
+}
+
+.c_workout .other .days form label.free{
+    color: #016310;
+}
+
+.c_workout .other .days form label.busy{
+    color: #750000;
+}
+
+
+.c_workout .other a{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 20px auto 0px;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    padding: 5px 15px 5px 25px;
+    transition: .1s ease-in-out;
+}
+
+.c_workout .other a p{
+    font-size: 27px;
+    margin-right: 20px;
+}
+
+.c_workout .other a img{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    transition: .1s ease-in-out;
+}
+
+.c_workout .other a:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+.c_workout .other a:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
 }

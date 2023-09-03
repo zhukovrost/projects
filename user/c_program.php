@@ -82,6 +82,23 @@ include "../templates/settings.php";
 				<section class="item">
 					<h3>Понедельник</h3>
 					<div class="content">
+						<h2>День рук</h2>
+						<p>Руки: <span>70 %</span></p>
+						<p>Ноги: <span>70 %</span></p>
+						<p>Грудь: <span>70 %</span></p>
+						<p>Спина: <span>70 %</span></p>
+						<p>Пресс: <span>70 %</span></p>
+						<p>Кардио: <span>70 %</span></p>
+						<div class="buttons">
+							<button><img src="../img/more_white.svg" alt=""></button>
+							<button><img src="../img/edit.svg" alt=""></button>
+							<button><img src="../img/delete.svg" alt=""></button>
+						</div>
+					</div>
+				</section>
+				<section class="item">
+					<h3>Понедельник</h3>
+					<div class="content">
 						<div class="day_off">Выходной</div>
 					</div>
 				</section>
@@ -126,7 +143,7 @@ include "../templates/settings.php";
 						</div>
 					</section>
 					<div class="buttons">
-						<button><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></button>
+						<a href="c_workout.php"><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></a>
 						<button><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></button>
 					</div>
 				</section>
