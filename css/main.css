@@ -4198,7 +4198,8 @@ footer .about p:first-child{
     margin-top: auto;
 }
 
-.c_workout .workout_info .buttons button{
+.c_workout .workout_info .buttons button,
+.c_workout .workout_info .buttons a{
     display: flex;
     align-items: center;
     background-color: #272727;
@@ -4209,25 +4210,28 @@ footer .about p:first-child{
     transition: .1s ease-in-out;
 }
 
-.c_workout .workout_info .buttons button p{
+.c_workout .workout_info .buttons button p,
+.c_workout .workout_info .buttons a p{
     font-size: 27px;
     margin-right: 20px;
     margin-bottom: 0px;
 }
 
-.c_workout .workout_info .buttons button img{
+.c_workout .workout_info .buttons button img,
+.c_workout .workout_info .buttons a img{
     width: 25px;
     height: 25px;
     margin-left: auto;
     transition: .1s ease-in-out;
 }
 
-.c_workout .workout_info .buttons button:hover{
+.c_workout .workout_info .buttons button:hover,
+.c_workout .workout_info .buttons a:hover{
     box-shadow: 3px 3px 0px 0px #00CD1E;
     background-color: #000000;
 }
 
-.c_workout .workout_info .buttons button:first-child:hover img{
+.c_workout .workout_info .buttons a:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
@@ -4335,6 +4339,210 @@ footer .about p:first-child{
 }
 
 .c_workout .other button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+
+/* ====================================================== */
+
+
+/* ==============CONSTRUCTOR EXERCISES PAGE============== */
+.popup_exercise{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.644);
+}
+
+/*  */
+.popup_exercise .content{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 30px 60px;
+}
+
+.popup_exercise .exercise_item{
+    position: relative;
+    margin: 0px 10px 15px 0px;
+    padding: 8px 30px 20px;
+    background-color: #FAFAFA;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #e4e4e4;
+    box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: .1s ease-in-out;
+    overflow: hidden;
+}
+
+/* Exercise info */
+.popup_exercise  .exercise_item .info{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    opacity: 0.8;
+    transition: .1s ease-in-out;
+}
+
+.popup_exercise .exercise_item .info:hover{
+    opacity: 1;
+}
+
+/* Info text  */
+.popup_exercise .exercise_item .info_block{
+    position: absolute;
+    z-index: 1;
+    border-radius: 12px;
+    border: 1px solid #e4e4e4;
+    top: -101%;
+    left: -1%;
+    width: 101%;
+    height: 101%;
+    background-color: #FAFAFA;
+    text-align: start;
+    padding: 30px 40px;
+    transition: .3s ease-in-out;
+}
+
+.popup_exercise .exercise_item .info_block p{
+    font-size: 15px;
+}
+
+.popup_exercise .exercise_item .info_block .info_close{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    opacity: 0.8;
+}
+
+.popup_exercise .exercise_item .info_block .info_close:hover{
+    opacity: 1;
+}
+
+/* Exercise muscle groups */
+.popup_exercise .exercise_item .muscle_groups{
+    color: rgba(143, 143, 143, 1);
+    font-size: 15px;
+    word-break: break-all;
+    max-width: 70%;
+    margin: 0 auto 40px;
+}
+
+/* Exercise images */
+.popup_exercise .exercise_item .exercise_img{
+    margin-bottom: 20px;
+}
+
+/* Exercise decoration line */
+.popup_exercise .exercise_item .line{
+    width: 100%;
+    margin: 0 auto;
+    height: 1px;
+    background-color: rgba(206, 206, 206, 1);
+}
+
+/* Exercise title */
+.popup_exercise .exercise_item h1{
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* Exercise rating + statistic */
+.popup_exercise .exercise_item .statistic{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.popup_exercise .exercise_item .statistic .rating{
+    display: flex;
+    align-items: center;
+}
+
+.popup_exercise .exercise_item .statistic .rating p{
+    font-size: 21px;
+    margin-right: 3px;
+}
+
+.popup_exercise .exercise_item .statistic .difficult{
+    display: flex;
+}
+
+.popup_exercise .exercise_item .statistic .difficult div{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    margin: 0px 2px;
+}
+
+.popup_exercise .exercise_item .statistic .difficult div.disabled{
+    background-color: rgb(155, 194, 161);
+}
+
+
+.popup_exercise .info{
+    margin-left: 50px;
+}
+
+.popup_exercise .info div{
+    margin-bottom: 20px;
+}
+
+.popup_exercise .info label{
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.popup_exercise .info input{
+    background-color: rgba(236, 236, 236, 1);
+    border: 1px solid #7D7D7D;
+    padding: 3px 5px;
+    font-size: 25px;
+   float: right;
+}
+
+
+.popup_exercise .info button{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 50px auto 0px;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    padding: 5px 15px 5px 25px;
+    transition: .1s ease-in-out;
+}
+
+.popup_exercise .info button p{
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.popup_exercise .info button img{
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    transition: .1s ease-in-out;
+}
+
+.popup_exercise .info button:hover{
+    box-shadow: 3px 3px 0px 0px #00CD1E;
+    background-color: #000000;
+}
+
+.popup_exercise .info button:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
