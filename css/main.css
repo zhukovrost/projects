@@ -4283,7 +4283,7 @@ footer .about p:first-child{
     margin-bottom: 15px;
 }
 
-.c_workout .other .days form{
+.c_workout .other .days section{
     text-align: start;
     width: fit-content;
     margin: 0 auto;
@@ -4291,21 +4291,21 @@ footer .about p:first-child{
     font-weight: 500;
 }
 
-.c_workout .other .days form input{
+.c_workout .other .days section input{
     width: 20px;
     height: 20px;
 }
 
-.c_workout .other .days form label.free{
+.c_workout .other .days section label.free{
     color: #016310;
 }
 
-.c_workout .other .days form label.busy{
+.c_workout .other .days section label.busy{
     color: #750000;
 }
 
 
-.c_workout .other a{
+.c_workout .other button{
     display: flex;
     align-items: center;
     width: fit-content;
@@ -4317,24 +4317,24 @@ footer .about p:first-child{
     transition: .1s ease-in-out;
 }
 
-.c_workout .other a p{
+.c_workout .other button p{
     font-size: 27px;
     margin-right: 20px;
 }
 
-.c_workout .other a img{
+.c_workout .other button img{
     width: 25px;
     height: 25px;
     margin-left: auto;
     transition: .1s ease-in-out;
 }
 
-.c_workout .other a:hover{
+.c_workout .other button:hover{
     box-shadow: 3px 3px 0px 0px #00CD1E;
     background-color: #000000;
 }
 
-.c_workout .other a:hover img{
+.c_workout .other button:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }

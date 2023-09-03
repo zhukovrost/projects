@@ -254,9 +254,9 @@ include "../templates/settings.php";
 					<h1>Название:</h1>
 					<input type="text" placeholder="Название тренировки">
 				</section>
-				<section class="days">
+				<form action="" class="days">
 					<h1>ДНИ НЕДЕЛИ</h1>
-					<form action="">
+					<section>
 						<div>
 							<input type="checkbox" name="week_days" id="week_days1">
 							<label class="busy" for="week_days1">Понедельник</label>
@@ -285,9 +285,9 @@ include "../templates/settings.php";
 							<input type="checkbox" name="week_days" id="week_days7">
 							<label class="free"  for="week_days7">Воскресенье</label>
 						</div>
-					</form>
-				</section>
-				<a href="c_program.php"><p>Добавить в программу</p> <img src="../img/add.svg" alt=""></a>
+					</section>
+				</form>
+				<button><p>Добавить в программу</p> <img src="../img/add.svg" alt=""></button>
 			</section>
 		</div>
 	</main>
