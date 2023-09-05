@@ -231,8 +231,8 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 						</div>
 					</div>
 					<div class="buttons">
-					<button type="button" class="add" name="add" value="1">Добавить <img src="../img/add.svg" alt=""></button>
-							<button class="favorite" name="featured" value="1"><img src="../img/favorite.svg" alt=""></button>
+						<button type="button" class="add" name="add" value="1">Добавить <img src="../img/add.svg" alt=""></button>
+						<button class="favorite" name="featured" value="1"><img src="../img/favorite.svg" alt=""></button>
 					</div>
 				</section>
 			</form>
@@ -240,6 +240,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 		<section class="popup_exercise">
 			<section class="content">
+				<button class="close"><img src="../img/close.svg" alt=""></button>
 				<section class="exercise_item">
 					<!-- Exercise info button -->
 					<button class="info"><img src="../img/info.svg" alt=""></button>
@@ -273,12 +274,12 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				</section>
 				<section class="info">
 					<div>
-						<label for="c_exercise_reps">Количество подходов: </label>
-						<input type="number" id="c_exercise_reps">
+						<label for="c_exercise_circles">Количество подходов: </label>
+						<input type="number" id="c_exercise_circles">
 					</div>
 					<div>
-						<label for="c_exercise_circles">Количество повторений: </label>
-						<input type="number" id="c_exercise_circles">
+						<label for="c_exercise_reps">Количество повторений: </label>
+						<input type="number" id="c_exercise_reps">
 					</div>
 					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
 				</section>
@@ -355,36 +356,29 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				popupExerciseItem.innerHTML = item.innerHTML;
 				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
 
-				popupExerciseWindow.style.cssText = `display: flex`;
+				popupExerciseWindow.classList.add("open");
 			});
 		}
-		
-const feedbackBtn = document.querySelector('.popup_button');
-const popupWindow = document.querySelector('.popup_feedback');
 
-feedbackBtn.addEventListener('click', function(){
-    popupWindow.classList.add("open");
-});
+		const closeBtn = document.querySelector('.popup_exercise .close');
+		closeBtn.addEventListener('click', function(){
+			popupExerciseWindow.classList.remove("open");
+		});
 
-const closeBtn = document.querySelector('.popup_feedback .close');
-closeBtn.addEventListener('click', function(){
-    popupWindow.classList.remove("open");
-});
+		window.addEventListener('keydown', (e) => {
+		if(e.key == "Escape"){
+			popupExerciseWindow.classList.remove("open");
+		}
+		});
 
-window.addEventListener('keydown', (e) => {
-if(e.key == "Escape"){
-    popupWindow.classList.remove("open");
-}
-});
+		document.querySelector('.popup_exercise .content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
 
-document.querySelector('.popup_feedback form').addEventListener('click', event => {
-    event.isClickWithInModal = true;
-});
-
-popupWindow.addEventListener('click', event =>{
-if(event.isClickWithInModal) return;
-    event.currentTarget.classList.remove('open');
-});
+		popupExerciseWindow.addEventListener('click', event =>{
+		if(event.isClickWithInModal) return;
+			event.currentTarget.classList.remove('open');
+		});
 
 	</script>
 </body>

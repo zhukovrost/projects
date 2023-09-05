@@ -50,7 +50,7 @@ include "../templates/settings.php";
 							<p>24 x 5</p>
 						</div>
 						<div class="buttons">
-							<button><img src="../img/edit.svg" alt=""></button>
+							<button class="edit"><img src="../img/edit.svg" alt=""></button>
 							<button><img src="../img/delete.svg" alt=""></button>
 							<button class="arrow up"><img src="../img/arrow_noline.svg" alt=""></button>
 							<button class="arrow down"><img src="../img/arrow_noline.svg" alt=""></button>
@@ -91,7 +91,7 @@ include "../templates/settings.php";
 							<p>24 x 5</p>
 						</div>
 						<div class="buttons">
-							<button><img src="../img/edit.svg" alt=""></button>
+							<button class="edit"><img src="../img/edit.svg" alt=""></button>
 							<button><img src="../img/delete.svg" alt=""></button>
 							<button class="arrow up"><img src="../img/arrow_noline.svg" alt=""></button>
 							<button class="arrow down"><img src="../img/arrow_noline.svg" alt=""></button>
@@ -132,7 +132,7 @@ include "../templates/settings.php";
 							<p>24 x 5</p>
 						</div>
 						<div class="buttons">
-							<button><img src="../img/edit.svg" alt=""></button>
+							<button class="edit"><img src="../img/edit.svg" alt=""></button>
 							<button><img src="../img/delete.svg" alt=""></button>
 							<button class="arrow up"><img src="../img/arrow_noline.svg" alt=""></button>
 							<button class="arrow down"><img src="../img/arrow_noline.svg" alt=""></button>
@@ -173,7 +173,7 @@ include "../templates/settings.php";
 							<p>24 x 5</p>
 						</div>
 						<div class="buttons">
-							<button><img src="../img/edit.svg" alt=""></button>
+							<button class="edit"><img src="../img/edit.svg" alt=""></button>
 							<button><img src="../img/delete.svg" alt=""></button>
 							<button class="arrow up"><img src="../img/arrow_noline.svg" alt=""></button>
 							<button class="arrow down"><img src="../img/arrow_noline.svg" alt=""></button>
@@ -214,7 +214,7 @@ include "../templates/settings.php";
 							<p>24 x 5</p>
 						</div>
 						<div class="buttons">
-							<button><img src="../img/edit.svg" alt=""></button>
+							<button class="edit"><img src="../img/edit.svg" alt=""></button>
 							<button><img src="../img/delete.svg" alt=""></button>
 							<button class="arrow up"><img src="../img/arrow_noline.svg" alt=""></button>
 							<button class="arrow down"><img src="../img/arrow_noline.svg" alt=""></button>
@@ -290,18 +290,68 @@ include "../templates/settings.php";
 				<button><p>Добавить в программу</p> <img src="../img/add.svg" alt=""></button>
 			</section>
 		</div>
+
+
+		<section class="popup_exercise">
+			<section class="content">
+				<button class="close"><img src="../img/close.svg" alt=""></button>
+				<section class="exercise_item">
+					<!-- Exercise info button -->
+					<button class="info"><img src="../img/info.svg" alt=""></button>
+					<!-- Info text -->
+					<div class="info_block">
+						<button class="info_close"><img src="../img/close.svg" alt=""></button>
+						<p>{{ description }}</p>
+					</div>
+					<!-- Exercise muscle groups -->
+					<div class="muscle_groups">Руки - грудь</div>
+					<!-- Exercise image -->
+					<img class="exercise_img" src="../img/biceps_4.jpg" alt="">
+					<!-- Decoration line -->
+					<div class="line"></div>
+					<!-- Exercise title -->
+					<h2>атжумания</h2>
+					<!-- Rating and difficult -->
+					<div class="statistic">
+						<div class="rating">
+							<p>4,5</p>
+							<img src="../img/Star.svg" alt="">
+						</div>
+						<div class="difficult">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+				</section>
+				<section class="info">
+					<div>
+						<label for="c_exercise_circles">Количество подходов: </label>
+						<input type="number" id="c_exercise_circles">
+					</div>
+					<div>
+						<label for="c_exercise_reps">Количество повторений: </label>
+						<input type="number" id="c_exercise_reps">
+					</div>
+					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
+				</section>
+			</section>
+		</section>
 	</main>
 
     <?php include "../templates/footer.html" ?>
 
 	<script>
         // Button to see exercise info
-        let infoExerciseButton = document.querySelectorAll('.c_workout .exercise_item .info');
+        let	InfoExerciseButton = document.querySelectorAll('.c_workout .exercise_item .info');
+		console.log()
         let closeInfoExerciseButton = document.querySelectorAll('.c_workout .exercise_item .info_close');
         let infoBlock = document.querySelectorAll('.c_workout .exercise_item .info_block');
 
-        for(let i = 0; i < infoExerciseButton.length; i++){
-            infoExerciseButton[i].addEventListener('click', function(){
+        for(let i = 0; i < InfoExerciseButton.length; i++){
+            InfoExerciseButton[i].addEventListener('click', function(){
                 infoBlock[i].style.cssText = `top: -1%;`;
             });
         }
@@ -312,6 +362,46 @@ include "../templates/settings.php";
         }
 
 
+		// Popup exercises
+		let exercisesButtonsEdit = document.querySelectorAll('.exercise_block .exercise_item .buttons .add');
+		let popupExerciseItem = document.querySelector('.popup_exercise .exercise_item');
+		let popupExerciseWindow = document.querySelector('.popup_exercise');
+		let popupExerciseWReps = document.querySelector('#c_exercise_reps');
+		let popupExerciseCircles = document.querySelector('#c_exercise_circles');
+
+		for(let i = 0; i < exercisesButtonsEdit.length; i++){
+			exercisesButtonsEdit[i].addEventListener('click', function(){
+				let item = exercisesButtonsEdit[i].parentElement.parentElement;
+				popupExerciseItem.innerHTML = '';
+				popupExerciseItem.innerHTML = item.innerHTML;
+				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
+
+				popupExerciseWindow.classList.add("open");
+			});
+		}
+
+		// Popup exercise window
+		const closeBtn = document.querySelector('.popup_exercise .close');
+		closeBtn.addEventListener('click', function(){
+			popupExerciseWindow.classList.remove("open");
+		});
+
+		window.addEventListener('keydown', (e) => {
+		if(e.key == "Escape"){
+			popupExerciseWindow.classList.remove("open");
+		}
+		});
+
+		document.querySelector('.popup_exercise .content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
+
+		popupExerciseWindow.addEventListener('click', event =>{
+		if(event.isClickWithInModal) return;
+			event.currentTarget.classList.remove('open');
+		});
+
+	</script>
     </script>
 </body>
 </html>
