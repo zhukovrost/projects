@@ -150,7 +150,7 @@ include "../templates/settings.php";
 				<section class="duration">
 					<h4>Укажите продолжительность программы<br><span>(по желанию)</span></h4>
 					<div>
-						<input type="text" placeholder="Количество дней">
+						<input type="number" placeholder="Количество дней">
 						<p>начало с</p>
 						<input type="date">
 					</div>

@@ -244,7 +244,7 @@ include "../templates/settings.php";
 					<div class="line"></div>
 					<!-- Buttons edit and start -->
 					<div class="buttons">
-						<button><p>Добавить</p> <img src="../img/add.svg" alt=""></button>
+						<a href="c_exercises.php"><p>Добавить</p> <img src="../img/add.svg" alt=""></a>
 						<button><p>Очистить</p> <img src="../img/delete.svg" alt=""></button>
 					</div>
 				</section>

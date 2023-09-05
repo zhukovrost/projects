@@ -4416,14 +4416,14 @@ footer .about p:first-child{
     font-size: 15px;
 }
 
-.popup_exercise .exercise_item .info_block .info_close{
+.popup_exercise .exercise_item .info_close{
     position: absolute;
     top: 3%;
     right: 3%;
     opacity: 0.8;
 }
 
-.popup_exercise .exercise_item .info_block .info_close:hover{
+.popup_exercise .exercise_item .info_close:hover{
     opacity: 1;
 }
 
