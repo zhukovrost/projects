@@ -206,6 +206,54 @@ include "../templates/settings.php";
 					</swiper-container>
 			</section>
 		</div>
+
+		<section class="popup_exercise popup_workout">
+			<section class="content">
+				<button class="close"><img src="../img/close.svg" alt=""></button>
+				<section class="exercise_item">
+					<!-- Exercise info button -->
+					<button class="info"><img src="../img/info.svg" alt=""></button>
+					<!-- Info text -->
+					<div class="info_block">
+						<button class="info_close"><img src="../img/close.svg" alt=""></button>
+						<p>{{ description }}</p>
+					</div>
+					<!-- Exercise muscle groups -->
+					<div class="muscle_groups">Руки - грудь</div>
+					<!-- Exercise image -->
+					<img class="exercise_img" src="../img/biceps_4.jpg" alt="">
+					<!-- Decoration line -->
+					<div class="line"></div>
+					<!-- Exercise title -->
+					<h2>атжумания</h2>
+					<!-- Rating and difficult -->
+					<div class="statistic">
+						<div class="rating">
+							<p>4,5</p>
+							<img src="../img/Star.svg" alt="">
+						</div>
+						<div class="difficult">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+				</section>
+				<section class="info">
+					<div>
+						<label for="c_exercise_circles">Количество подходов: </label>
+						<input type="number" id="c_exercise_circles">
+					</div>
+					<div>
+						<label for="c_exercise_reps">Количество повторений: </label>
+						<input type="number" id="c_exercise_reps">
+					</div>
+					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
+				</section>
+			</section>
+		</section>
 	</main>
 
 	

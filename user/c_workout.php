@@ -346,7 +346,6 @@ include "../templates/settings.php";
 	<script>
         // Button to see exercise info
         let	InfoExerciseButton = document.querySelectorAll('.c_workout .exercise_item .info');
-		console.log()
         let closeInfoExerciseButton = document.querySelectorAll('.c_workout .exercise_item .info_close');
         let infoBlock = document.querySelectorAll('.c_workout .exercise_item .info_block');
 
@@ -363,10 +362,10 @@ include "../templates/settings.php";
 
 
 		// Popup exercises
-		let exercisesButtonsEdit = document.querySelectorAll('.exercise_block .exercise_item .buttons .add');
+		let exercisesButtonsEdit = document.querySelectorAll('.c_workout .exercise_item .buttons .edit');
 		let popupExerciseItem = document.querySelector('.popup_exercise .exercise_item');
 		let popupExerciseWindow = document.querySelector('.popup_exercise');
-		let popupExerciseWReps = document.querySelector('#c_exercise_reps');
+		let popupExerciseReps = document.querySelector('#c_exercise_reps');
 		let popupExerciseCircles = document.querySelector('#c_exercise_circles');
 
 		for(let i = 0; i < exercisesButtonsEdit.length; i++){
@@ -375,6 +374,11 @@ include "../templates/settings.php";
 				popupExerciseItem.innerHTML = '';
 				popupExerciseItem.innerHTML = item.innerHTML;
 				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
+				
+				let caption = item.children[7].children[0].innerHTML;
+				popupExerciseReps.value = caption.split(" x ")[0];
+				popupExerciseCircles.value = caption.split(" x ")[1];
+
 
 				popupExerciseWindow.classList.add("open");
 			});
