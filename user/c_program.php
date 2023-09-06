@@ -11,6 +11,39 @@ include "../templates/settings.php";
 	<main class="c_program">
 		<div class="container">
 			<section class="cover" navigation="true">
+				<?php for ($j = 0; $j < $user_data->program->reps; $j++){ # $j = number of week doing program ?>
+					<?php for($i = 0; $i < 7; $i++){
+						$workout = $user_data->program->workouts[$i];
+						foreach ($workout->set_muscles() as $key=>$value){
+							$muscles[$key] += $value;
+						}
+					?>
+					<section class="item">
+						<h3><?php echo get_day($i); ?></h3>
+						<div class="content">
+							<h2>День рук</h2>
+							<?php if ($workout->holiday){ ?>
+								<div class="day_off">Выходной</div>
+							<?php }else{ ?>
+							<p>Руки: <span><?php echo $workout->muscles["arms"]; ?>%</span></p>
+							<p>Ноги: <span><?php echo $workout->muscles["legs"]; ?>%</span></p>
+							<p>Грудь: <span><?php echo $workout->muscles["chest"]; ?>%</span></p>
+							<p>Спина: <span><?php echo $workout->muscles["back"]; ?>%</span></p>
+							<p>Пресс: <span><?php echo $workout->muscles["press"]; ?>%</span></p>
+							<p>Кардио: <span><?php echo $workout->muscles["cardio"]; ?>%</span></p>
+							<div class="buttons">
+								<button><img src="../img/more_white.svg" alt=""></button>
+								<button><img src="../img/edit.svg" alt=""></button>
+								<button><img src="../img/delete.svg" alt=""></button>
+							</div>
+							<?php } ?>
+						</div>
+					</section>
+					<?php } ?>
+				<?php } ?>
+			</section>
+
+			<!-- <section class="cover" navigation="true">
 				<section class="item">
 					<h3>Понедельник</h3>
 					<div class="content">
@@ -119,7 +152,7 @@ include "../templates/settings.php";
 						</div>
 					</div>
 				</section>
-			</section>
+			</section> -->
 			<section class="create_block">
 				<section class="workouts_block">
 					<section class="list">

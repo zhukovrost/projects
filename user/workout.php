@@ -95,7 +95,7 @@ $user_data->set_program($conn);
                 </swiper-slide>
             </swiper-container>
             <?php } else { ?>
-                <p>Нет программы</p>
+                <p>Нет тренировки</p>
             <?php } ?>
             <section class="other">
                 <!-- Friends' workouts -->

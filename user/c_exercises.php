@@ -30,7 +30,11 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 	<nav class="exercise_nav">
 		<div class="container">
 			<!-- Buttons to (my / all) exercises -->
-            <a href="">Все <img src="../img/arrow_white.svg" alt=""></a>
+            <?php if ($my) { ?>
+                <a href="exercises.php?my=0">Все <img src="../img/arrow_white.svg" alt=""></a>
+            <?php } else { ?>
+                <a href="exercises.php?my=1">Мои <img src="../img/arrow_white.svg" alt=""></a>
+            <?php } ?>
 			<!-- Main search -->
 			<select name="exercise_sort" id="">
 				<option value="value1" selected>По умолчанию</option>
@@ -145,96 +149,27 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			</form>
 			<!-- Exercises array -->
 			<form method="post" class="exercise_block">
-				<section class="exercise_item">
-					<!-- Exercise info -->
-					<button type="button" class="info"><img src="../img/info.svg" alt=""></button>
-					<div class="info_block">
-						<button type="button" class="info_close"><img src="../img/close.svg" alt=""></button>
-						<p>{{ description }}</p>
-					</div>
-					<!-- Exercise muscle groups -->
-					<div class="muscle_groups">{{ muscle }}</div>
-					<!-- Exercise image -->
-					<img class="exercise_img" src="{{ image }}" alt="">
-					<!-- Decoration line -->
-					<div class="line"></div>
-					<!-- Exercise title -->
-					<h1>{{ name }}</h1>
-					<div class="statistic">
-						<div class="rating">
-							<p>{{ rating }}</p>
-							<img src="../img/Star.svg" alt="">
-						</div>
-						<div class="difficult">
-							<p>{{ difficulty }}</p>
-							<div></div>
-						</div>
-					</div>
-					<div class="buttons">
-							<button type="button" class="add" name="add" value="1">Добавить <img src="../img/add.svg" alt=""></button>
-							<button class="favorite" name="featured" value="1"><img src="../img/favorite.svg" alt=""></button>
-						</div>
-				</section>
-				<section class="exercise_item">
-					<!-- Exercise info -->
-					<button type="button" class="info"><img src="../img/info.svg" alt=""></button>
-					<div class="info_block">
-						<button type="button" class="info_close"><img src="../img/close.svg" alt=""></button>
-						<p>{{ description }}</p>
-					</div>
-					<!-- Exercise muscle groups -->
-					<div class="muscle_groups">{{ muscle }}</div>
-					<!-- Exercise image -->
-					<img class="exercise_img" src="{{ image }}" alt="">
-					<!-- Decoration line -->
-					<div class="line"></div>
-					<!-- Exercise title -->
-					<h1>{{ name }}</h1>
-					<div class="statistic">
-						<div class="rating">
-							<p>{{ rating }}</p>
-							<img src="../img/Star.svg" alt="">
-						</div>
-						<div class="difficult">
-							<p>{{ difficulty }}</p>
-							<div></div>
-						</div>
-					</div>
-					<div class="buttons">
-							<button type="button" class="add" name="add" value="1">Добавить <img src="../img/add.svg" alt=""></button>
-							<button class="favorite" name="featured" value="1"><img src="../img/favorite.svg" alt=""></button>
-						</div>
-				</section>
-				<section class="exercise_item">
-					<!-- Exercise info -->
-					<button type="button" class="info"><img src="../img/info.svg" alt=""></button>
-					<div class="info_block">
-						<button type="button" class="info_close"><img src="../img/close.svg" alt=""></button>
-						<p>{{ description }}</p>
-					</div>
-					<!-- Exercise muscle groups -->
-					<div class="muscle_groups">{{ muscle }}</div>
-					<!-- Exercise image -->
-					<img class="exercise_img" src="{{ image }}" alt="">
-					<!-- Decoration line -->
-					<div class="line"></div>
-					<!-- Exercise title -->
-					<h1>{{ name }}</h1>
-					<div class="statistic">
-						<div class="rating">
-							<p>{{ rating }}</p>
-							<img src="../img/Star.svg" alt="">
-						</div>
-						<div class="difficult">
-							<p>{{ difficulty }}</p>
-							<div></div>
-						</div>
-					</div>
-					<div class="buttons">
-						<button type="button" class="add" name="add" value="1">Добавить <img src="../img/add.svg" alt=""></button>
-						<button class="favorite" name="featured" value="1"><img src="../img/favorite.svg" alt=""></button>
-					</div>
-				</section>
+				<?php
+                if ($my){
+                    foreach ($user_data->my_exercises as $exercise_id){
+                        $exercise = new Exercise($conn, $exercise_id);
+                        $is_featured = $exercise->is_featured($user_data);
+                        $exercise->print_it($conn, $is_featured, 1);
+                    }
+                }else{
+                    $select_sql = "SELECT id FROM exercises";
+                    if ($select_result = $conn->query($select_sql)){
+                        foreach ($select_result as $item){
+                            $exercise = new Exercise($conn, $item['id']);
+                            $is_featured = $exercise->is_featured($user_data);
+                            $is_mine = $exercise->is_mine($user_data);
+                            $exercise->print_it($conn, $is_featured, $is_mine);
+                        }
+                    }else{
+                        echo $conn->error;
+                    }
+                }
+                ?>
 			</form>
         </div>
 
