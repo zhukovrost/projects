@@ -3210,6 +3210,7 @@ footer .about p:first-child{
     width: 70px;
     height: 70px;
     border: 1px solid #616161;
+    border-radius: 50%;
 }
 
 /* Name, surname, date */
