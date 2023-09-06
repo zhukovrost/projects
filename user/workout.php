@@ -88,26 +88,7 @@ $user_data->set_program($conn);
                             <section class="exercise_cover">
                                 <?php $workout->print_exercises($conn); ?>
                             </section>
-                            <div class="workout_info">
-                                <div class="muscle_groups">
-                                    <p>Руки: <span><?php echo $workout->muscles["arms"]; ?>%</span></p>
-                                    <p>Ноги: <span><?php echo $workout->muscles["legs"]; ?>%</span></p>
-                                    <p>Грудь: <span><?php echo $workout->muscles["chest"]; ?>%</span></p>
-                                    <p>Спина: <span><?php echo $workout->muscles["back"]; ?>%</span></p>
-                                    <p>Пресс: <span><?php echo $workout->muscles["press"]; ?>%</span></p>
-                                    <p>Кардио: <span><?php echo $workout->muscles["cardio"]; ?>%</span></p>
-                                </div>
-                                <div class="line"></div>
-                                <div class="exercise">
-                                    <p>Упражнений: <span><?php echo count($workout->exercises); ?></span></p>
-                                    <p>Кругов: <span><?php echo $workout->loops; ?></span></p>
-                                </div>
-                                <div class="line"></div>
-                                <div class="buttons">
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <button>Начать</button>
-                                </div>
-                            </div>
+                            <?php $workout->print_workout_info(); ?>
                         </section>
                     </section>
                     <?php } ?>
