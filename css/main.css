@@ -3189,6 +3189,7 @@ footer .about p:first-child{
 
 .user_block .other{
     max-width: 48%;
+    min-width: 48%;
 }
 
 /* Friends block */
