@@ -81,7 +81,7 @@ class Workout {
         return $cnt;
     }
 
-    public function print_workout_info($day, $expand_buttons=false){ ?>
+    public function print_workout_info($day, $expand_buttons=0){ ?>
         <section class="item">
             <h3><?php echo get_day($day); ?></h3>
             <div class="content">
@@ -95,14 +95,19 @@ class Workout {
                     <p>Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
                     <p>Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
                     <p>Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
-                    <?php if ($expand_buttons){ ?>
+                    <?php if ($expand_buttons == 1){ ?>
                     <div class="buttons">
                         <button><img src="../img/more_white.svg" alt=""></button>
                         <button><img src="../img/edit.svg" alt=""></button>
                         <img src="../img/done.svg" alt="">
                     </div>
+                <?php } else if ($expand_buttons == 2){ ?>
+                    <div class="buttons">
+                        <button><img src="../img/edit.svg" alt=""></button>
+                        <button>Начать</button>
+                    </div>
                 <?php }
-                } ?>
+                }?>
             </div>
         </section>
     <?php }

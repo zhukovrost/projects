@@ -36,7 +36,7 @@ $muscles = array(
                             foreach ($workout->set_muscles() as $key=>$value){
                                 $muscles[$key] += $value;
                             }
-                            $workout->print_workout_info($i, true);
+                            $workout->print_workout_info($i, 1);
                         } ?>
                     </swiper-slide>
                     <?php } ?>
