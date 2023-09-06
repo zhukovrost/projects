@@ -14,6 +14,7 @@ class Workout {
         "cardio" => 0
     );
     public $holiday = false;
+    public $name = '';
 
     public function __construct($conn, $workout_id, $weekday){
         if ($workout_id == 0){
@@ -28,6 +29,7 @@ class Workout {
                     $exercises = json_decode($item['exercises']);
                     $reps = json_decode($item['reps']);
                     $approaches = json_decode($item['approaches']);
+                    $this->name = $item['name'];
                 }
 
                 for ($i = 0; $i < count($exercises); $i++){

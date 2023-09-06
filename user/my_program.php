@@ -95,42 +95,10 @@ $muscles = array(
                         </section>
                     </section>
                 </section>
-                <section class="friends">
-                    <h2>Программы друзей</h2>
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-                    <a href="" class="item">
-                        <img src="../img/man_avatar.svg" alt="">
-                        <p>Иван Иванов</p>
-                    </a>
-                </section>
+                <?php
+                $user_data->set_subscriptions($conn);
+                print_user_list($conn, $user_data->subscriptions);
+                ?>
             </section>
         </div>
     </main>
