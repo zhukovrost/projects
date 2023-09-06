@@ -23,27 +23,27 @@ body {
 }
 
 /* ===LOGO=== */
-.logo{
+.welcome-header__item--logo{
     text-align: center;
     margin-right: 10vw;
     color: #000000;
     opacity: 0.85;
 }
 
-.logo:hover{
+.welcome-header__item--logo:hover{
     opacity: 1;
 }
 
-.welcome_logo{
+.welcome-header__item--logo--welcome{
     text-align: center;
     margin-right: 0vw;
 }
 
-.welcome_logo p{
+.welcome-header__item--logo--welcome p{
     color: #ffffff;
 }
 
-/* ===HEADER=== */
+/* ============HEADER============*/
 header{
     display: flex;
     justify-content: space-between;
@@ -53,21 +53,23 @@ header{
     border-bottom: 1px solid rgb(224, 224, 224);
 }
 
-header a{
+.header__item{
     text-align: center;
     color: #000000;
     opacity: 0.85;
 }
 
-header a:hover{
+.header__item:hover{
     opacity: 1;
 }
 
-header a .other_img{
+.header__item .other_img{
     transform: translateY(12px);
 }
 
-/* ===FOOTER=== */
+/* ============================== */
+
+/* ============FOOTER============ */
 footer{
     position: absolute;
     left: 5%;
@@ -111,13 +113,13 @@ footer .about p:first-child{
     margin-bottom: 5px;
 }
 
-/* ============================================ */
+/* ========================= */
 
 
 /* ================WELCOME PAGE================ */
 
 /* ===FIRST BLOCK=== */
-.welcome_block_1{
+.welcome-block-1{
     overflow: hidden;
     position: relative;
     background-color: #000000;
@@ -129,14 +131,15 @@ footer .about p:first-child{
 }
 
 
-.welcome_header{
+.welcome-header{
+    color: #ffffff;
     justify-content: space-around;
     border-bottom: 1px solid #3a3a3a;
     padding: 0px 0px 10px;
 }
 
 /* hedaer item */
-.welcome_header a{
+.welcome-header__item{
     align-items: center;
     color: #ffffff;
     text-align: center;
@@ -144,43 +147,43 @@ footer .about p:first-child{
     transition: .05s ease;
 }
 
-.welcome_header a:hover{
+.welcome-header__item:hover{
     opacity: 1;
 }
 
-.welcome_header a p{
+.welcome-header__item p{
     font-size: 15px;
 }
 
-.welcome_header a:last-child{
+.welcome-header__item:last-child{
     font-size: 25px;
 }
 
-.welcome_header a .other_img{
+.welcome-header__item .other_img{
     transform: translateY(12px);
 }
 
 /* Title */
-.welcome_block_1 .title{
+.welcome-block-1__title{
     margin-top: 15vh;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
 
-.welcome_block_1 .title h1{
+.welcome-block-1__title h1{
     font-size: 100px;
     letter-spacing: 3px;
     font-weight: bold;
 }
 
-.welcome_block_1 .title h2{
+.welcome-block-1__title h2{
     font-weight: medium;
     font-size: 65px;
     transform: translateY(-15px);
 }
 
 /* decoration images */
-.welcome_hand_img{
+.welcome-block-1__hand_img{
     position: absolute;
     bottom: -3%;
     left: 37%;
@@ -199,26 +202,26 @@ footer .about p:first-child{
     }
 }
 
-.welcome_biceps1{
+.welcome-block-1__biceps-1{
     transition: .2s ease-in-out;
 }
 
-.welcome_biceps2{
+.welcome-block-1__biceps-2{
     display: block;
     float: right;
     transition: .3s ease-in-out;
 }
 
-.welcome_biceps1:hover{
+.welcome-block-1__biceps-1:hover{
     transform: rotate(-20deg) translateX(-20px) translateY(-70px);
 }
 
-.welcome_biceps2:hover{
+.welcome-block-1__biceps-2:hover{
     transform: rotate(20deg) translateX(20px) translateY(-70px);
 }
 
 /* Удобно. Просто. Эффективно */
-.welcome_subtitle{
+.welcome-page__subtitle{
     text-align: center;
     font-size: 50px;
     font-family: 'Ubuntu', sans-serif;

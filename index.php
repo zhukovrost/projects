@@ -7,47 +7,46 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head("Welcome!", true);  ?>
-<body>
+<body class="welcome-page">
     <!-- Welcome block first -->
-    <section class="welcome_block_1">
+    <section class="welcome-block-1">
         <!-- Welcome header -->
-        <header class="welcome_header">
+        <header class="welcome-header">
             <!-- Logo -->
-            <a href="index.php" class="logo welcome_logo">
+            <a href="index.php" class="welcome-header__item  welcome-header__item--logo welcome-header__item--logo--welcome">
                 <img src="img/logo.svg" alt="">
                 <p>Training</p>
             </a>
-            <a href="user/workout.php">
+            <a class="welcome-header__item" href="user/workout.php">
                 <img src="img/workout.svg" alt="">
                 <p>Тренировки</p>
             </a>
-            <a href="">
+            <a class="welcome-header__item" href="">
                 <img src="img/progress.svg" alt="">
                 <p>Прогресс</p>
             </a>
-            <a href="">
+            <a class="welcome-header__item" href="">
                 <img src="img/exercises.svg" alt="">
                 <p>Упражнения</p>
             </a>
-            <a href="">
+            <a class="welcome-header__item" href="">
                 <img class="other_img" src="img/other.svg" alt="">
                 <p>Другое</p>
             </a>
-            <a href="reg_log.php">Войти</a>
-
+            <a class="welcome-header__item" href="reg_log.php">Войти</a>
         </header>
         <!-- Title -->
-        <div class="title">
+        <div class="welcome-block-1__title">
             <h1>OpenDoor Training</h1>
             <h2>Твои цели - наши цели</h2>
         </div>
         <!-- Decoration images -->
-        <button class="welcome_hand_img" ><img src="img/welcome_hand.svg" alt=""></button>
-        <img class="welcome_biceps1" src="img/welcome_biceps_1.svg" alt="">
-        <img class="welcome_biceps2" src="img/welcome_biceps_2.svg" alt="">
+        <button class="welcome-block-1__hand_img" ><img src="img/welcome_hand.svg" alt=""></button>
+        <img class="welcome-block-1__biceps-1" src="img/welcome_biceps_1.svg" alt="">
+        <img class="welcome-block-1__biceps-2" src="img/welcome_biceps_2.svg" alt="">
     </section>
     <!-- Subtitle -->
-    <h1 class="welcome_subtitle">Удобно. Просто. Эффективно</h1>
+    <h1 class="welcome-page__subtitle">Удобно. Просто. Эффективно</h1>
 
     <!-- WELCOME block second -->
     <section class="welcome_block_2">
