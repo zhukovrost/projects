@@ -3077,14 +3077,12 @@ footer .about p:first-child{
     box-shadow: 0px 0px 0px #317f97;
 }
 
-.profile_block .avatar #avatar_file{
+.user_block .avatar #avatar_file{
     display: none;
 }
 
-.profile_block .avatar{
-    position: absolute;
-    top: -6%;
-    left: -4%;
+.user_block .avatar{
+    position: relative;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -3092,12 +3090,12 @@ footer .about p:first-child{
     overflow: hidden;
 }
 
-.profile_block .avatar img{
+.user_block .avatar img{
     height: 100%;
     width: 100%;
 }
 
-.profile_block .avatar .uppload_button{
+.user_block .avatar .uppload_button{
     height: 50px;
     width: 100%;
     position: absolute;
@@ -3113,7 +3111,7 @@ footer .about p:first-child{
     transition: .3s ease;
 }
 
-.profile_block .avatar:hover .uppload_button{
+.user_block .avatar:hover .uppload_button{
     opacity: 1;
 }
 
