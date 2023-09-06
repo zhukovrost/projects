@@ -82,34 +82,34 @@ footer{
     font-size: 16px;
 }
 
-footer .social_media{
+.footer__social-media{ 
     display: flex;
     margin-bottom: 5px;
 }
 
-footer .social_media a{
+.footer__social-media a{
     margin-left: 8px;
 }
 
-footer .social_media a img{
+.footer__social-media a img{
     width: 25px;
     height: 25px;
 }
 
-footer .email{
+.footer__email{
     display: flex;
 }
 
-footer .email a{
+.footer__email a{
     color: #292929;
     margin-left: 8px;
 }
 
-footer .email a:hover{
+.footer__email a:hover{
     color: #000000;
 }
 
-footer .about p:first-child{
+.footer__about p:first-child{
     margin-bottom: 5px;
 }
 
