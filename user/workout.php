@@ -88,7 +88,7 @@ $user_data->set_program($conn);
                             <section class="exercise_cover">
                                 <?php $workout->print_exercises($conn); ?>
                             </section>
-                            <?php $workout->print_workout_info(); ?>
+                            <?php $workout->print_workout_info(date("N")); ?>
                         </section>
                     </section>
                     <?php } ?>

@@ -81,26 +81,29 @@ class Workout {
         return $cnt;
     }
 
-    public function print_workout_info(){ ?>
-        <div class="workout_info">
-            <div class="muscle_groups">
-                <p>Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
-                <p>Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
-                <p>Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
-                <p>Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
-                <p>Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
-                <p>Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
+    public function print_workout_info($day, $expand_buttons=false){ ?>
+        <section class="item">
+            <h3><?php echo get_day($day); ?></h3>
+            <div class="content">
+                <h2><?php echo $this->name; ?></h2>
+                <?php if ($this->holiday){ ?>
+                    <div class="day_off">Выходной</div>
+                <?php }else{ ?>
+                    <p>Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
+                    <p>Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
+                    <p>Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
+                    <p>Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
+                    <p>Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
+                    <p>Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
+                    <?php if ($expand_buttons){ ?>
+                    <div class="buttons">
+                        <button><img src="../img/more_white.svg" alt=""></button>
+                        <button><img src="../img/edit.svg" alt=""></button>
+                        <img src="../img/done.svg" alt="">
+                    </div>
+                <?php }
+                } ?>
             </div>
-            <div class="line"></div>
-            <div class="exercise">
-                <p>Упражнений: <span><?php echo count($this->exercises); ?></span></p>
-                <p>Кругов: <span><?php echo $this->loops; ?></span></p>
-            </div>
-            <div class="line"></div>
-            <div class="buttons">
-                <button><img src="../img/edit.svg" alt=""></button>
-                <button>Начать</button>
-            </div>
-        </div>
+        </section>
     <?php }
 }
