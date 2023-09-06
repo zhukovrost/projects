@@ -3016,24 +3016,105 @@ footer .about p:first-child{
     justify-content: space-between;
 }
 
-/* User avatar, name and surname */
-.user_block .info .avatar_block img{
+
+/* User's avatar photo */
+.preview_cover{
+    position: fixed;
+    top: 10vh;
+    left: 12vw;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.preview_block{
+    width: 75vw;
+    height: 60vh;
+}
+
+.preview_block #preview{
+    width: 50%;
+    height: 50%;
+}
+
+.cropper-dashed {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px dashed #fff;
+}
+
+.cropper-modal{
+    width: 100%;
+    height: 100%;
+}
+
+.cropper-view-box, .cropper-face {
+    border-radius: 50%;
+}
+
+.cropper-canvas{
+    height: 100%;
+}
+
+#saveAvatar{
+    margin: 30px auto 20px;
+    font-size: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #54d7ff;
+    box-shadow: 0px 6px 0px #317f97;
+    padding: 20px 40px;
+    width: fit-content;
+    transition: .2s ease;
+}
+
+#saveAvatar:hover{
+    background-color: #4bbee0;
+}
+
+#saveAvatar:active{
+    transform: translateY(6px);
+    box-shadow: 0px 0px 0px #317f97;
+}
+
+.profile_block .avatar #avatar_file{
+    display: none;
+}
+
+.profile_block .avatar{
+    position: absolute;
+    top: -6%;
+    left: -4%;
     width: 200px;
     height: 200px;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    overflow: hidden;
 }
 
-/* name and surname */
-.user_block .info .avatar_block h1{
-    text-align: center;
-    font-size: 23px;
-    font-weight: 500;
+.profile_block .avatar img{
+    height: 100%;
+    width: 100%;
 }
 
-/* last training date */
-.user_block .info .avatar_block p{
+.profile_block .avatar .uppload_button{
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
-    font-size: 17px;
-    color: #727272;
+    background-color: rgb(0, 0, 0, 0.7);
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 30px;
+    opacity: 0;
+    transition: .3s ease;
+}
+
+.profile_block .avatar:hover .uppload_button{
+    opacity: 1;
 }
 
 /* User info text */

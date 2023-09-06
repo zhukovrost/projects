@@ -8,6 +8,13 @@ if ($_GET["user"]){
 }
 $user->set_subscriptions($conn);
 $user->set_subscribers($conn);
+
+# ---------------- avatar upload ------------------------
+
+if(isset($_POST['image_to_php'])) {
+    $user->update_avatar($conn, $_POST['image_to_php']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,20 +23,24 @@ $user->set_subscribers($conn);
 	<?php include "../templates/header.html"; ?>
 
 	<main>
+        <section class="preview_cover">
+            <div class="preview_block">
+                <img id="preview" src="#" alt="Preview"/>
+            </div>
+            <button id="saveAvatar">Сохранить</button>
+        </section>
+
 		<div class="container user_block">
             <!-- Info about user -->
 			<section class="info">
 				<section class="about">
-                    <!-- User avatar, name and surname -->
-					<div class="avatar_block">
-						<img src="<?php echo $user->get_avatar($conn); ?>" alt="">
-						<h1><?php echo $user->name." ",$user->surname; ?></h1>
-                        <?php if ($user->online == 0){ ?>
-						    <p>В поисках тренировок...</p>
-                        <?php } else { ?>
-                            <p><span><?php echo round((time() - $user->online) / 24, 0); ?></span> день назад</p>
-                        <?php } ?>
-					</div>
+					<!-- User avatar, name and surname -->
+                    <form id="avatar_form" class="avatar" method="post">
+                        <img id="profileImage" src="<?php echo $user->get_avatar($conn); ?>">
+                        <input type="file" id="avatar_file" accept="image/*" />
+                        <label for="avatar_file" class="uppload_button">Choose photo</label>
+                        <input type="hidden" id="image_to_php" name="image_to_php" value="">
+                    </form>
                     <!-- User info text -->
 					<div class="content">
 						<p><?php echo $user->description; ?></p>
@@ -116,5 +127,81 @@ $user->set_subscribers($conn);
 	<?php include "../templates/footer.html";?>
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+    <!-- Подключение скриптов для Cropper.js и jQuery (если требуется) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script>
+        avatar_file.addEventListener('click', function(){
+            document.querySelector('.preview_cover').style.cssText = `display: flex;`;
+        });
+
+        $(document).ready(function () {
+          var croppedImageDataURL; // Переменная для хранения Data URL обрезанного изображения
+      
+          // При выборе файла для загрузки
+          $("#avatar_file").on("change", function (e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+      
+            // Чтение файла и отображение его в элементе img#preview
+            reader.onload = function (event) {
+              $("#preview").attr("src", event.target.result);
+              initCropper();
+            };
+      
+            reader.readAsDataURL(file);
+          });
+      
+          // Инициализация Cropper.js
+          function initCropper() {
+            var image = document.getElementById("preview");
+            var cropper = new Cropper(image, {
+                aspectRatio: 1, // Соотношение сторон 1:1 для круглой области обрезки
+                viewMode: 2,    // Позволяет обрезать изображение внутри области обрезки
+
+
+                // Позиционируем область обрезки в центре
+                autoCropArea: 0.6,
+
+
+                // Обработка обрезки изображения
+                crop: function (event) {
+                    // Получение координат и размеров обрезанной области
+                    var x = event.detail.x;
+                    var y = event.detail.y;
+                    var width = event.detail.width;
+                    var height = event.detail.height;
+
+                    // Создание canvas с обрезанным изображением
+                    var canvas = cropper.getCroppedCanvas({
+                        width: width,
+                        height: height,
+                        left: x,
+                        top: y,
+                    });
+
+                    // Преобразование canvas в Data URL изображения
+                    croppedImageDataURL = canvas.toDataURL("png");
+                },
+            });
+        }
+      
+          // Обработка сохранения обновленной аватарки
+          $("#saveAvatar").on("click", function () {
+            if (croppedImageDataURL) {
+                location.reload()
+                image_to_php.value = croppedImageDataURL
+                document.getElementById("avatar_form").submit();
+            } 
+            else {
+              alert("Сначала выберите и обрежьте изображение");
+            }
+          });
+        });
+
+        saveAvatar.addEventListener('click', function(){
+            document.querySelector('.preview_cover').style.cssText = `display: none;`;
+        });
+    <script>
 </body>
 </html>
