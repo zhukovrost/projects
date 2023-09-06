@@ -202,6 +202,5 @@ if(isset($_POST['image_to_php'])) {
         saveAvatar.addEventListener('click', function(){
             document.querySelector('.preview_cover').style.cssText = `display: none;`;
         });
-    <script>
+    </script>
 </body>
-</html>

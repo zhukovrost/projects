@@ -3024,6 +3024,7 @@ footer .about p:first-child{
     left: 12vw;
     z-index: 1000;
     display: none;
+    border: 3px solid #333333;
     flex-direction: column;
     background-color: #ffffff;
 }
@@ -3061,15 +3062,17 @@ footer .about p:first-child{
     font-size: 30px;
     font-weight: 500;
     text-transform: uppercase;
-    background-color: #54d7ff;
-    box-shadow: 0px 6px 0px #317f97;
+    background-color: #272727;
+    color: #ffffff;
+    box-shadow: 5px 5px 0px 0px #00CD1E;
     padding: 20px 40px;
     width: fit-content;
     transition: .2s ease;
 }
 
 #saveAvatar:hover{
-    background-color: #4bbee0;
+    background-color: #000000;
+    box-shadow: 7px 7px 0px 0px #00CD1E;
 }
 
 #saveAvatar:active{
@@ -3203,9 +3206,10 @@ footer .about p:first-child{
 }
 
 /* User's avatar */
-.user_block .info .news .item img{
+.user_block .info .news .item .avatar_img{
     width: 70px;
     height: 70px;
+    border: 1px solid #616161;
 }
 
 /* Name, surname, date */
@@ -3246,7 +3250,7 @@ footer .about p:first-child{
 }
 
 /* Button 'подробнее' to see info about program */
-.user_block .info .news .item .content button{
+.user_block .info .news .item .content a{
     display: flex;
     align-items: center;
     background-color: #272727;
@@ -3255,13 +3259,13 @@ footer .about p:first-child{
     padding: 3px 10px;
 }
 
-.user_block .info .news .item .content button img{
+.user_block .info .news .item .content a img{
     width: 25px;
     height: 25px;
     margin-left: 10px;
 }
 
-.user_block .info .news .item .content button:hover{
+.user_block .info .news .item .content a:hover{
     background-color: #000000;
 }
 
