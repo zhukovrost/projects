@@ -284,7 +284,7 @@ class User {
     public function set_program($conn){
         $select_sql = "SELECT program FROM program_to_user WHERE user=$this->id LIMIT 1";
         if ($result_sql = $conn->query($select_sql)){
-            if ($result_sql->numrows == 0){
+            if ($result_sql->num_rows == 0){
                 return false;
             }
             foreach ($result_sql as $item){
@@ -334,7 +334,7 @@ class User {
                 <?php
                     $sql = "SELECT * FROM workout_history WHERE user=$this->id";
                     if ($result = $conn->query($sql)){
-                        if ($result->numrows == 0){
+                        if ($result->num_rows == 0){
                             echo "<p>Нет тренировок</p>";
                         }else{
                             foreach ($result as $item){
