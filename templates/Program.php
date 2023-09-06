@@ -48,4 +48,14 @@ class Program {
         }
         return $cnt * $this->reps;
     }
+
+    public function print_program_info(){ ?>
+        <section class="cover" navigation="true">
+            <?php
+            foreach ($this->workouts as $workout){
+                $workout->print_workout_info(true);
+            }
+            ?>
+        </section>
+    <?php }
 }

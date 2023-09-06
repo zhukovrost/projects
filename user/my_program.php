@@ -36,29 +36,8 @@ $muscles = array(
                             foreach ($workout->set_muscles() as $key=>$value){
                                 $muscles[$key] += $value;
                             }
-                        ?>
-                        <section class="item">
-                            <h3><?php echo get_day($i); ?></h3>
-                            <div class="content">
-                                <h2>День рук</h2>
-                                <?php if ($workout->holiday){ ?>
-                                    <div class="day_off">Выходной</div>
-                                <?php }else{ ?>
-                                <p>Руки: <span><?php echo $workout->muscles["arms"]; ?>%</span></p>
-                                <p>Ноги: <span><?php echo $workout->muscles["legs"]; ?>%</span></p>
-                                <p>Грудь: <span><?php echo $workout->muscles["chest"]; ?>%</span></p>
-                                <p>Спина: <span><?php echo $workout->muscles["back"]; ?>%</span></p>
-                                <p>Пресс: <span><?php echo $workout->muscles["press"]; ?>%</span></p>
-                                <p>Кардио: <span><?php echo $workout->muscles["cardio"]; ?>%</span></p>
-                                <div class="buttons">
-                                    <button><img src="../img/more_white.svg" alt=""></button>
-                                    <button><img src="../img/edit.svg" alt=""></button>
-                                    <img src="../img/done.svg" alt="">
-                                </div>
-                                <?php } ?>
-                            </div>
-                        </section>
-                        <?php } ?>
+                            $workout->print_workout_info($i, 1);
+                        } ?>
                     </swiper-slide>
                     <?php } ?>
                 </swiper-container>
