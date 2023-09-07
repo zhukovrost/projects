@@ -1,29 +1,29 @@
-<section class="exercise_item">
+<section class="exercise-item">
     <!-- Exercise info -->
-    <button type="button" class="info"><img src="../img/info.svg" alt=""></button>
-    <div class="info_block">
-        <button type="button" class="info_close"><img src="../img/close.svg" alt=""></button>
-        <p>{{ description }}</p>
+    <button type="button" class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
+    <div class="exercise-item__info-content">
+        <button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
+        <p class="exercise-item__info-text">{{ description }}</p>
     </div>
     <!-- Exercise muscle groups -->
-    <div class="muscle_groups">{{ muscle }}</div>
+    <div class="exercise-item__muscle-groups">{{ muscle }}</div>
     <!-- Exercise image -->
-    <img class="exercise_img" src="{{ image }}" alt="">
+    <img class="exercise-item__img" src="{{ image }}" alt="">
     <!-- Decoration line -->
-    <div class="line"></div>
+    <div class="exercise-item__line"></div>
     <!-- Exercise title -->
-    <h1>{{ name }}</h1>
-    <div class="statistic">
-        <div class="rating">
-            <p>{{ rating }}</p>
-            <img src="../img/Star.svg" alt="">
+    <h1 class="exercise-item__title">{{ name }}</h1>
+    <div class="exercise-item__statistic">
+        <div class="exercise-item__rating">
+            <p class="exercise-item__rating-number">{{ rating }}</p>
+            <img class="exercise-item__rating-img" src="../img/Star.svg" alt="">
         </div>
-        <div class="difficult">
-            <p>{{ difficulty }}</p>
-            <div></div>
+        <div class="exercise-item__difficult">
+            <p class="exercise-item__difficult-number">{{ difficulty }}</p>
+            <div class="exercise-item__difficult-item"></div>
         </div>
     </div>
-    <div class="buttons">
+    <div class="exercise-item__buttons-block">
         {{ button }}
         {{ button_featured }}
     </div>

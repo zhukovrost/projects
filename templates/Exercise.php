@@ -79,14 +79,14 @@ class Exercise {
             $description = $this->description;
         }
         if ($is_mine){
-            $button = '<button class="add delete" name="delete" value="'.$this->id.'">Удалить <img src="../img/delete.svg" alt=""></button>';
+            $button = '<button class="exercise-item__button-text exercise-item__button-text--delite" name="delete" value="'.$this->id.'">Удалить <img src="../img/delete.svg" alt=""></button>';
         }else{
-            $button = '<button class="add" name="add" value="'.$this->id.'">Добавить <img src="../img/add.svg" alt=""></button>';
+            $button = '<button class="exercise-item__button-text" name="add" value="'.$this->id.'">Добавить <img src="../img/add.svg" alt=""></button>';
         }
         if ($is_featured){
-            $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
+            $button_featured = '<button class="exercise-item__button-img" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
         }else{
-            $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
+            $button_featured = '<button class="exercise-item__button-img" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
         }
         $muscle_list = "";
         foreach ($this->muscles as $muscle){
@@ -125,9 +125,9 @@ class User_Exercise extends Exercise {
             $description = $this->description;
         }
         if ($is_featured){
-            $button_featured = '<button class="favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
+            $button_featured = '<button class="exercise-item__button-img" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
         }else{
-            $button_featured = '<button class="favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
+            $button_featured = '<button class="exercise-item__button-img" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
         }
         $muscle_list = "";
         foreach ($this->muscles as $muscle){

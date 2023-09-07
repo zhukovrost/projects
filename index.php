@@ -41,7 +41,7 @@ $conn->close();
             <h2>Твои цели - наши цели</h2>
         </div>
         <!-- Decoration images -->
-        <button class="welcome-block-1__hand_img" ><img src="img/welcome_hand.svg" alt=""></button>
+        <button class="welcome-block-1__hand-img" ><img src="img/welcome_hand.svg" alt=""></button>
         <img class="welcome-block-1__biceps-1" src="img/welcome_biceps_1.svg" alt="">
         <img class="welcome-block-1__biceps-2" src="img/welcome_biceps_2.svg" alt="">
     </section>
@@ -51,69 +51,69 @@ $conn->close();
     <!-- WELCOME block second -->
     <section class="welcome-block-2">
         <!-- Title -->
-        <div class="title">
+        <div class="welcome-block-2__title">
             <h1>ВЫБИРАЙ</h1>
             <h2>или</h2>
             <h1>СОЗДАВАЙ</h1>
         </div>
-        <section class="content">
+        <section class="welcome-block-2__content">
             <!-- Item -->
-            <section class="exercise_item">
+            <section class="exercise-item">
                 <!-- Exercise info -->
-                <button class="info"><img src="img/info.svg" alt=""></button>
-                <div class="info_block">
-                    <button class="info_close"><img src="img/close.svg" alt=""></button>
-                    <p>Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
+                <button class="exercise-item__info-btn"><img src="img/info.svg" alt=""></button>
+                <div class="exercise-item__info-content">
+                    <button class="exercise-item__info-close"><img src="img/close.svg" alt=""></button>
+                    <p class="exercise-item__info-text">Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
                 </div>
                 <!-- Exercise muscle groups -->
-                <div class="muscle_groups">Руки - плечи - грудь</div>
+                <div class="exercise-item__muscle-groups">Руки - плечи - грудь</div>
                 <!-- Exercise image -->
-                <img class="exercise_img" src="img/exercises/arms/triceps_2.jpg" alt="">
+                <img class="exercise-item__img" src="img/biceps_4.jpg" alt="">
                 <!-- Decoration line -->
-                <div class="line"></div>
+                <div class="exercise-item__line"></div>
                 <!-- Exercise title -->
-                <h1>Алмазные отжимания</h1>
-                <div class="statistic">
-                    <div class="rating">
-                        <p>4,5</p>
-                        <img src="img/Star.svg" alt="">
+                <h1 class="exercise-item__title">Алмазные отжимания</h1>
+                <div class="exercise-item__statistic">
+                    <div class="exercise-item__rating">
+                        <p class="exercise-item__rating-number">4,5</p>
+                        <img class="exercise-item__rating-img" src="img/Star.svg" alt="">
                     </div>
-                    <div class="difficult">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div class="disabled"></div>
+                    <div class="exercise-item__difficult">
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item exercise-item__difficult-item--disabled"></div>
                     </div>
                 </div>
-                <div class="buttons">
-                    <button class="add">Добавить <img src="img/add.svg" alt=""></button>
-                    <button class="favorite"><img src="img/favorite.svg" alt=""></button>
+                <div class="exercise-item__buttons-block">
+                    <button class="exercise-item__button-text">Добавить <img src="img/add.svg" alt=""></button>
+                    <button class="exercise-item__button-img"><img src="img/favorite.svg" alt=""></button>
                 </div>
             </section>
-            <section class="exercise_item add_exercise_item">
+            <section class="exercise-item exercise-item--add">
                 <!-- Add photo button -->
-                <button class="add_photo">Добавить фото</button>
+                <button class="exercise-item__add-img">Добавить фото</button>
                 <!-- Decoration -->
-                <div class="line"></div>
-                <div class="content">
+                <div class="exercise-item__line"></div>
+                <div class="exercise-item__add-block">
                     <!-- Add muscle groups -->
-                    <div class="add_muscle_groups">
-                        <p>Группы мышц</p>
-                        <button><img src="img/add_black.svg" alt=""></button>
+                    <div class="exercise-item__muscle-groups-add">
+                        <p class="exercise-item__muscle-groups-title">Группы мышц</p>
+                        <button class="exercise-item__muscle-groups-btn"><img src="img/add_black.svg" alt=""></button>
                     </div>
                     <!-- Name of exercise -->
-                    <div class="name">
-                        <p>Название</p>
-                        <input type="text" placeholder="Не более 250 символов">
+                    <div class="exercise-item__name-add">
+                        <p class="exercise-item__name-title">Название</p>
+                        <input class="exercise-item__name-text" type="text" placeholder="Не более 250 символов">
                     </div>
                     <!-- Info of exercise -->
-                    <div class="info_text">
-                        <p>Описание</p>
-                        <textarea name="add_exercise_info"></textarea>
+                    <div class="exercise-item__info-add">
+                        <p class="exercise-item__info-title">Описание</p>
+                        <textarea class="exercise-item__info-textarea" name="add_exercise_info"></textarea>
                     </div>
                     <!-- Button 'Add' exercise -->
-                    <button class="add">Создать <img src="img/add.svg" alt=""></button>
+                    <button class="exercise-item__button-text exercise-item__button-text--add">Создать <img src="img/add.svg" alt=""></button>
                 </div>
             </section>
         </section>
@@ -306,114 +306,114 @@ $conn->close();
     </section>
 
     <!-- WELCOME block fourth -->
-    <section class="welcome_block_4">
+    <section class="welcome-block-4">
         <!-- Title -->
-        <h1>Следи за друзьями</h1>
+        <h1 class="welcome-block-4__title">Следи за друзьями</h1>
         <!-- user profile -->
-        <div class="user_profile">
+        <div class="profile-welcome">
             <!-- Avatar block -->
-            <section class="avatar">
+            <section class="profile-welcome__avatar">
                 <!-- avatar image -->
-                <img src="img/man_avatar.svg" alt="">
+                <img class="profile-welcome__avatar-img" src="img/man_avatar.svg" alt="">
                 <!-- name -->
-                <h2>Иван Иванов</h2>
+                <h2 class="profile-welcome__title">Иван Иванов</h2>
                 <!-- last training time -->
-                <p>Тренировался: 1 день назад</p>
+                <p class="profile-welcome__subtitle">Тренировался: 1 день назад</p>
                 <!-- Button 'подписаться' -->
-                <button>Подписаться <img src="img/add_black.svg" alt=""></button>
+                <button class="profile-welcome__button">Подписаться <img src="img/add_black.svg" alt=""></button>
             </section>
             <!-- info block -->
-            <section class="info">
+            <section class="profile-welcome__info">
                 <!-- text about user -->
-                <div class="about">
-                    <h3>О себе</h3>
-                    <p>Занимаюсь спортом, жму 40. Буду рад знакомству!</p>
+                <div class="profile-welcome__about">
+                    <h3 class="profile-welcome__about-title">О себе</h3>
+                    <p class="profile-welcome__about-text">Занимаюсь спортом, жму 40. Буду рад знакомству!</p>
                 </div>
                 <!-- Follow & followers -->
-                <div class="followers">
-                    <a href=""><span>25</span> подписчиков</a>
-                    <a href=""><span>15</span> подписок</a>
+                <div class="profile-welcome__users">
+                    <a class="profile-welcome__follows" href=""><span>25</span> подписчиков</a>
+                    <a class="profile-welcome__followers" href=""><span>15</span> подписок</a>
                 </div>
             </section>
         </div>
     </section>
 
     <!-- WELOCOME block fifth -->
-    <section class="welcome_block_5">
+    <section class="welcome-block-5">
         <!-- Decoration circles -->
-        <div class="first"></div>
-        <div class="second"></div>
-        <div class="third"></div>
-        <div class="fourth"></div>
+        <div class="welcome-block-5__first"></div>
+        <div class="welcome-block-5__second"></div>
+        <div class="welcome-block-5__third"></div>
+        <div class="welcome-block-5__fourth"></div>
         <!-- Titles -->
-        <h1>ТРЕНИРУЙСЯ</h1>
-        <h1>СОВЕРШЕНСТВУЙСЯ</h1>
-        <h1>ДОСТИГАЙ ЦЕЛЕЙ</h1>
+        <h1 class="welcome-block-5__title">ТРЕНИРУЙСЯ</h1>
+        <h1 class="welcome-block-5__title">СОВЕРШЕНСТВУЙСЯ</h1>
+        <h1 class="welcome-block-5__title">ДОСТИГАЙ ЦЕЛЕЙ</h1>
     </section>
 
     <!-- WELOCOME block sixth -->
-    <section class="welcome_block_6">
+    <section class="welcome-block-6">
         <!-- Title -->
-        <h1>Кроссплатформенность</h1>
+        <h1 class="welcome-block-6__title">Кроссплатформенность</h1>
         <!-- Content -->
-        <div class="content">
+        <div class="welcome-block-6__content">
             <img src="img/telephone.svg" alt="">
             <h2>ДОСТУП</h2>
             <img src="img/computer.svg" alt="">
         </div>
-        <h2>с любого устройства</h2>
+        <h2 class="welcome-block-6__subtitle">с любого устройства</h2>
     </section>
 
     <!-- WELOCOME block seventh -->
-    <section class="welcome_block_7">
+    <section class="welcome-block-7">
         <div class="container">
             <!-- Level of user -->
-        <div class="level">
-            <!-- Title -->
-            <h1>Подойдёт любому</h1>
-            <!-- Users level block -->
-            <div class="users">
-                <!-- Beginner -->
-                <div class="item">
-                    <img src="img/beginner.svg" alt="">
-                    <h3>Новичок</h3>
+            <div class="welcome-block-7__level">
+                <!-- Title -->
+                <h1 class="welcome-block-7__title">Подойдёт любому</h1>
+                <!-- Users level block -->
+                <div class="welcome-block-7__users">
+                    <!-- Beginner -->
+                    <div class="welcome-block-7__item">
+                        <img src="img/beginner.svg" alt="">
+                        <h3>Новичок</h3>
+                    </div>
+                    <!-- Professional -->
+                    <div class="welcome-block-7__item welcome-block-7__item--professional">
+                        <img src="img/professional.svg" alt="">
+                        <h3>Профессионал</h3>
+                    </div>
+                    <div class="welcome-block-7__item">
+                        <img src="img/advanced.svg" alt="">
+                        <h3>Продвинутый</h3>
+                    </div>
                 </div>
-                 <!-- Professional -->
-                <div class="item professional">
-                    <img src="img/professional.svg" alt="">
-                    <h3>Профессионал</h3>
-                </div>
-                <div class="item">
-                    <img src="img/advanced.svg" alt="">
-                    <h3>Продвинутый</h3>
-                </div>
+                <h2 class="welcome-block-7__subtitle">Уровень подготовки не важен</h2>
+                <!-- Decoration -->
+                <div class="welcome-block-7__line"></div>
             </div>
-            <h2>Уровень подготовки не важен</h2>
-            <!-- Decoration -->
-            <div class="line"></div>
-        </div>
-        <div class="chats">
-            <div class="profiles">
-                <div class="sportsman">
-                    <img class="arrow_coach" src="img/arrow_coach.svg" alt="">
-                    <img class="arrow_doctor" src="img/arrow_doctor.svg" alt="">
+        <div class="welcome-block-7__chats">
+            <div class="welcome-block-7__profiles">
+                <div class="welcome-block-7__sportsman">
+                    <img class="welcome-block-7__arrow-coach" src="img/arrow_coach.svg" alt="">
+                    <img class="welcome-block-7__arrow-doctor" src="img/arrow_doctor.svg" alt="">
                     <img src="img/sportsman.svg" alt="">
                     <p>Спортсмен</p>
                 </div>
-                <div class="personal">
-                    <div class="item">
+                <div class="welcome-block-7__personal">
+                    <div class="welcome-block-7__profile">
                         <img src="img/coach.svg" alt="">
                         <p>Тренер</p>
                     </div>
-                    <div class="item">
+                    <div class="welcome-block-7__profile">
                         <img src="img/doctor.png" alt="">
                         <p>Врач</p>
                     </div>
                 </div>
             </div>
-            <div class="info">
+            <div class="welcome-block-7__info">
                 <h2>Платформа облегчает процесс взаимодействия с тренером и лечащим врачом</h2>
-                <div class="content">
+                <div class="welcome-block-7__list">
                     <ul>
                         <li>чат с тренером и врачом</li>
                         <li>просмотр тренировок, расписания и программ от тренера</li>
