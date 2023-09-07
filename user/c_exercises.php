@@ -181,38 +181,37 @@ var_dump($_SESSION);
 		<section class="popup_exercise">
 			<section class="content">
 				<button class="close"><img src="../img/close.svg" alt=""></button>
-				<section class="exercise_item">
-					<!-- Exercise info button -->
-					<button class="info"><img src="../img/info.svg" alt=""></button>
-					<!-- Info text -->
-					<div class="info_block">
-						<button class="info_close"><img src="../img/close.svg" alt=""></button>
-						<p>{{ description }}</p>
+				<section class="exercise-item">
+					<!-- Exercise info -->
+					<button type="button" class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
+					<div class="exercise-item__info-content">
+						<button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
+						<p class="exercise-item__info-text">{{ description }}</p>
 					</div>
 					<!-- Exercise muscle groups -->
-					<div class="muscle_groups">Руки - грудь</div>
+					<div class="exercise-item__muscle-groups">{{ muscle }}</div>
 					<!-- Exercise image -->
-					<img class="exercise_img" src="../img/biceps_4.jpg" alt="">
+					<img class="exercise-item__img" src="{{ image }}" alt="">
 					<!-- Decoration line -->
-					<div class="line"></div>
+					<div class="exercise-item__line"></div>
 					<!-- Exercise title -->
-					<h2>атжумания</h2>
-					<!-- Rating and difficult -->
-					<div class="statistic">
-						<div class="rating">
-							<p>4,5</p>
-							<img src="../img/Star.svg" alt="">
+					<h1 class="exercise-item__title">{{ name }}</h1>
+					<div class="exercise-item__statistic">
+						<div class="exercise-item__rating">
+							<p class="exercise-item__score">{{ rating }}</p>
+							<img class="exercise-item__star" src="../img/Star.svg" alt="">
 						</div>
-						<div class="difficult">
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
+						<div class="exercise-item__difficult">
+							<p class="exercise-item__difficult-number">{{ difficulty }}</p>
+							<div class="exercise-item__difficult-item"></div>
 						</div>
 					</div>
+					<div class="exercise-item__buttons">
+						{{ button }}
+						{{ button_featured }}
+					</div>
 				</section>
-				<form method="post" class="info">
+								<form method="post" class="info">
 					<div>
 						<label for="c_exercise_circles">Количество подходов: </label>
 						<input type="number" id="c_exercise_circles" name="approaches">
@@ -232,9 +231,9 @@ var_dump($_SESSION);
 
 	<script>
         // Button to see exercise info
-        let infoExerciseButton = document.querySelectorAll('.exercise_block .exercise_item .info');
-        let closeInfoExerciseButton = document.querySelectorAll('.exercise_block .exercise_item .info_close');
-        let infoBlock = document.querySelectorAll('.exercise_block .exercise_item .info_block');
+        let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
 
         for(let i = 0; i < infoExerciseButton.length; i++){
             infoExerciseButton[i].addEventListener('click', function(){
@@ -269,8 +268,8 @@ var_dump($_SESSION);
 
 
 		//Difficult
-		let difficultCountArr = document.querySelectorAll('.exercise_block .exercise_item .statistic .difficult p');
-		let difficultBlockArr = document.querySelectorAll('.exercise_block .exercise_item .statistic .difficult');
+		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
+		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
 		for(let i = 0; i < difficultCountArr.length; i++){
 			difficultBlockArr[i].innerHTML = '';
@@ -286,8 +285,8 @@ var_dump($_SESSION);
 		FilterButtonsArr[0].click();
 
 		// Popup exercises
-		let exercisesButtons = document.querySelectorAll('.exercise_block .exercise_item .buttons .add');
-		let popupExerciseItem = document.querySelector('.popup_exercise .exercise_item');
+		let exercisesButtons = document.querySelectorAll('.exercise-item__add');
+		let popupExerciseItem = document.querySelector('.popup_exercise .exercise-item');
 		let popupExerciseWindow = document.querySelector('.popup_exercise');
 		let inputExerciseId = document.querySelector('.popup_exercise .exercise_id');
 
