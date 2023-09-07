@@ -14,7 +14,7 @@ $user_data->set_program($conn);
 
     <main>
         <div class="container workouts">
-            <?php if ($user_data->program > 0){ ?>
+            <?php if ($user_data->program->get_id() > 0){ ?>
             <!-- Day's workout swiper -->
             <swiper-container navigation="true">
                 <swiper-slide>

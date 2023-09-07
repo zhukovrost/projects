@@ -25,6 +25,10 @@ class Program {
         $select_result->free();
     }
 
+    public function get_id(){
+        return $this->id;
+    }
+
     public function set_workouts($conn){
         for ($i = 0; $i < 7; $i++){
             array_push($this->workouts, new Workout($conn, $this->program[$i], $i));
