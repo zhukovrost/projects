@@ -3,15 +3,17 @@ include "../templates/func.php";
 include "../templates/settings.php";
 $user_data->check_the_login();
 
+if (empty($_SESSION['workout'])){
+    $_SESSION['workout'] = array();
+}
+
 if (isset($_POST['featured'])){
     $user_data->change_featured($conn, $_POST['featured']);
 }
 
-if (isset($_POST['add'])){
-    $user_data->add_exercise($conn, $_POST['add']);
-}
-if (isset($_POST['delete'])){
-    $user_data->delete_exercise($conn, $_POST['delete']);
+if (isset($_POST['reps']) && isset($_POST['approaches'])){
+    $user_exercise = new User_Exercise($conn, 0, $_POST['reps'], $_POST['approaches']);
+    array_push($_SESSION['workout'], $user_exercise);
 }
 
 if (isset($_GET['my']) && is_numeric($_GET['my'])){
@@ -19,6 +21,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 }else{
     $my = 1;
 }
+
+var_dump($_SESSION);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +36,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		<div class="container">
 			<!-- Buttons to (my / all) exercises -->
             <?php if ($my) { ?>
-                <a href="exercises.php?my=0">Все <img src="../img/arrow_white.svg" alt=""></a>
+                <a href="c_exercises.php?my=0">Все <img src="../img/arrow_white.svg" alt=""></a>
             <?php } else { ?>
-                <a href="exercises.php?my=1">Мои <img src="../img/arrow_white.svg" alt=""></a>
+                <a href="c_exercises.php?my=1">Мои <img src="../img/arrow_white.svg" alt=""></a>
             <?php } ?>
 			<!-- Main search -->
 			<select name="exercise_sort" id="">
@@ -154,7 +159,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
                     foreach ($user_data->my_exercises as $exercise_id){
                         $exercise = new Exercise($conn, $exercise_id);
                         $is_featured = $exercise->is_featured($user_data);
-                        $exercise->print_it($conn, $is_featured, 1);
+                        $exercise->print_it($conn, $is_featured, 1, 1);
                     }
                 }else{
                     $select_sql = "SELECT id FROM exercises";
@@ -163,7 +168,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
                             $exercise = new Exercise($conn, $item['id']);
                             $is_featured = $exercise->is_featured($user_data);
                             $is_mine = $exercise->is_mine($user_data);
-                            $exercise->print_it($conn, $is_featured, $is_mine);
+                            $exercise->print_it($conn, $is_featured, $is_mine, 1);
                         }
                     }else{
                         echo $conn->error;
@@ -207,17 +212,18 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 						</div>
 					</div>
 				</section>
-				<section class="info">
+				<form method="post" class="info">
 					<div>
 						<label for="c_exercise_circles">Количество подходов: </label>
-						<input type="number" id="c_exercise_circles">
+						<input type="number" id="c_exercise_circles" name="approaches">
 					</div>
 					<div>
 						<label for="c_exercise_reps">Количество повторений: </label>
-						<input type="number" id="c_exercise_reps">
+						<input type="number" id="c_exercise_reps" name="reps">
 					</div>
+                    <input type="hidden" value="">
 					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
-				</section>
+				</form>
 			</section>
 		</section>
 	</main>

@@ -72,22 +72,29 @@ class Exercise {
         return false;
     }
 
-    public function print_it($conn, $is_featured=false, $is_mine=false){
+    public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false){
         if ($this->description == ""){
             $description = "No description for this exercise";
         }else{
             $description = $this->description;
         }
-        if ($is_mine){
-            $button = '<button class="add delete" name="delete" value="'.$this->id.'">Удалить <img src="../img/delete.svg" alt=""></button>';
+
+        if ($construct){
+            $button = '<button class="add" name="add" value="'.$this->id.'" type="button">Добавить <img src="../img/add.svg" alt=""></button>';
+            $button_featured = '';
         }else{
-            $button = '<button class="add" name="add" value="'.$this->id.'">Добавить <img src="../img/add.svg" alt=""></button>';
+            if ($is_mine){
+                $button = '<button class="add delete" name="delete" value="'.$this->id.'">Удалить <img src="../img/delete.svg" alt=""></button>';
+            }else{
+                $button = '<button class="add" name="add" value="'.$this->id.'">Добавить <img src="../img/add.svg" alt=""></button>';
+            }
+            if ($is_featured){
+                $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
+            }else{
+                $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
+            }
         }
-        if ($is_featured){
-            $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
-        }else{
-            $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
-        }
+
         $muscle_list = "";
         foreach ($this->muscles as $muscle){
             $muscle_list .= translate_group($muscle) . " ";
@@ -102,7 +109,8 @@ class Exercise {
             "{{ rating }}" => $this->rating,
             "{{ difficulty }}" => $this->difficulty,
             "{{ id }}" => $this->id,
-            "{{ muscle }}" => $muscle_list
+            "{{ muscle }}" => $muscle_list,
+            "{{ description }}" => $description
         );
         echo render($replaces, "../templates/exercise.html");
     }
@@ -118,7 +126,7 @@ class User_Exercise extends Exercise {
         $this->approaches = $approaches;
     }
 
-    public function print_it($conn, $is_featured=false, $is_mine=false){
+    public function print_it($conn, $is_featured=false, $is_mine=false, $constrict=false){
         if ($this->description == ""){
             $description = "No description for this exercise";
         }else{
