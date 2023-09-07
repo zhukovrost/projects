@@ -221,7 +221,7 @@ var_dump($_SESSION);
 						<label for="c_exercise_reps">Количество повторений: </label>
 						<input type="number" id="c_exercise_reps" name="reps">
 					</div>
-                    <input type="hidden" value="">
+                    <input class="exercise_id" type="hidden" value="">
 					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
 				</form>
 			</section>
@@ -289,12 +289,14 @@ var_dump($_SESSION);
 		let exercisesButtons = document.querySelectorAll('.exercise_block .exercise_item .buttons .add');
 		let popupExerciseItem = document.querySelector('.popup_exercise .exercise_item');
 		let popupExerciseWindow = document.querySelector('.popup_exercise');
+		let inputExerciseId = document.querySelector('.popup_exercise .exercise_id');
 
 		for(let i = 0; i < exercisesButtons.length; i++){
 			exercisesButtons[i].addEventListener('click', function(){
 				let item = exercisesButtons[i].parentElement.parentElement;
 				popupExerciseItem.innerHTML = '';
 				popupExerciseItem.innerHTML = item.innerHTML;
+				inputExerciseId.value = exercisesButtons[i].value;
 				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
 
 				popupExerciseWindow.classList.add("open");
