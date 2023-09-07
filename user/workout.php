@@ -14,7 +14,7 @@ $user_data->set_program($conn);
 
     <main>
         <div class="container workouts">
-            <?php if ($user_data->program > 0){ ?>
+            <?php if ($user_data->program->get_id() > 0){ ?>
             <!-- Day's workout swiper -->
             <swiper-container navigation="true">
                 <swiper-slide>
@@ -117,7 +117,7 @@ $user_data->set_program($conn);
                 <!-- Buttons favorite workouts and my program -->
                 <section class="buttons">
                     <a href="">Избранное <img src="../img/favorite_white.svg" alt=""></a>
-                    <a href="my_program.php">Моя программа <img src="../img/my_programm.svg" alt=""></a>
+                    <a href="c_program.php">Моя программа <img src="../img/my_programm.svg" alt=""></a>
                 </section>
             </section>
         </div>

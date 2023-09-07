@@ -18,6 +18,7 @@ $user_data->check_the_login();
 						foreach ($workout->set_muscles() as $key=>$value){
 							$muscles[$key] += $value;
 						}
+                        $workout->print_workout_info($j);
 					?>
 					<section class="item">
 						<h3><?php echo get_day($i); ?></h3>
