@@ -49,7 +49,7 @@ $conn->close();
     <h1 class="welcome-page__subtitle">Удобно. Просто. Эффективно</h1>
 
     <!-- WELCOME block second -->
-    <section class="welcome_block_2">
+    <section class="welcome-block-2">
         <!-- Title -->
         <div class="title">
             <h1>ВЫБИРАЙ</h1>
@@ -481,9 +481,9 @@ $conn->close();
 
 
         // Buttons for exercise info
-        let infoExerciseButton = document.querySelector('.welcome_block_2 .content .exercise_item .info');
-        let closeInfoExerciseButton = document.querySelector('.welcome_block_2 .exercise_item .info_close');
-        let infoBlock = document.querySelector('.welcome_block_2 .exercise_item .info_block');
+        let infoExerciseButton = document.querySelector('.welcome-block-2 .content .exercise_item .info');
+        let closeInfoExerciseButton = document.querySelector('.welcome-block-2 .exercise_item .info_close');
+        let infoBlock = document.querySelector('.elcome-block-2 .exercise_item .info_block');
 
         infoExerciseButton.addEventListener('click', function(){
             infoBlock.style.cssText = `top: -1%;`;
