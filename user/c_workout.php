@@ -15,45 +15,36 @@ include "../templates/settings.php";
 				<!-- Exercises array -->
 				<section class="exercise_cover">
 					<!-- Exercise items -->
-					<section class="exercise_item">
+					<section class="exercise-item exercise-item--workout">
 						<!-- Exercise info button -->
-						<button class="info"><img src="../img/info.svg" alt=""></button>
+						<button type="button"  class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
 						<!-- Info text -->
-						<div class="info_block">
-							<button class="info_close"><img src="../img/close.svg" alt=""></button>
-							<p>{{ description }}</p>
+						<div class="exercise-item__info-content">
+							<button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
+							<p class="exercise-item__info-text">{{ description }}</p>
 						</div>
 						<!-- Exercise muscle groups -->
-						<div class="muscle_groups">Руки - грудь</div>
+						<div class="exercise-item__muscle-groups">{{ muscle }}</div>
 						<!-- Exercise image -->
-						<img class="exercise_img" src="../img/biceps_4.jpg" alt="">
+						<img class="exercise-item__img" src="{{ image }}" alt="">
 						<!-- Decoration line -->
-						<div class="line"></div>
+						<div class="exercise-item__line"></div>
 						<!-- Exercise title -->
-						<h2>атжумания</h2>
+						<h1 class="exercise-item__title">{{ name }}</h1>
 						<!-- Rating and difficult -->
-						<div class="statistic">
-							<div class="rating">
-								<p>4,5</p>
-								<img src="../img/Star.svg" alt="">
+						<div class="exercise-item__statistic">
+							<div class="exercise-item__rating">
+								<p class="exercise-item__score">{{ rating }}</p>
+								<img class="exercise-item__star" src="../img/Star.svg" alt="">
 							</div>
-							<div class="difficult">
-								<div></div>
-								<div></div>
-								<div></div>
-								<div></div>
-								<div></div>
+							<div class="exercise-item__difficult">
+								<p class="exercise-item__difficult-number">{{ difficulty }}</p>
+								<div class="exercise-item__difficult-item"></div>
 							</div>
 						</div>
 						<!-- Count of repetitions -->
-						<div class="caption">
-							<p>24 x 5</p>
-						</div>
-						<div class="buttons">
-							<button class="edit"><img src="../img/edit.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-							<button class="arrow up"><img src="../img/arrow_noline.svg" alt=""></button>
-							<button class="arrow down"><img src="../img/arrow_noline.svg" alt=""></button>
+						<div class="exercise-item__caption">
+							<p class="exercise-item__caption-title">{{ reps }} x {{ approaches }}</p>
 						</div>
 					</section>
 				</section>

@@ -80,20 +80,19 @@ class Exercise {
         }
 
         if ($construct){
-            $button = '<button class="add" name="add" value="'.$this->id.'" type="button">Добавить <img src="../img/add.svg" alt=""></button>';
+            $button = '<button class="button-text exercise-item__add" name="add" value="'.$this->id.'" type="button"><p>Добавить</p> <img src="../img/add.svg" alt=""></button>';
             $button_featured = '';
         }else{
             if ($is_mine){
-                $button = '<button class="add delete" name="delete" value="'.$this->id.'">Удалить <img src="../img/delete.svg" alt=""></button>';
+                $button = '<button class="button-text exercise-item__delite" name="delete" value="'.$this->id.'"><p>Удалить</p> <img src="../img/delete.svg" alt=""></button>';
             }else{
-                $button = '<button class="add" name="add" value="'.$this->id.'">Добавить <img src="../img/add.svg" alt=""></button>';
+                $button = '<button class="button-text exercise-item__add" name="add" value="'.$this->id.'"><p>Добавить</p> <img src="../img/add.svg" alt=""></button>';
             }
             if ($is_featured){
-                $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
+                $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
             }else{
-                $button_featured = '<button class="favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
+                $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
             }
->>>>>>> 907c4e3aed72405e4427023f724ef9c41ed27930
         }
 
         $muscle_list = "";
@@ -134,9 +133,9 @@ class User_Exercise extends Exercise {
             $description = $this->description;
         }
         if ($is_featured){
-            $button_featured = '<button class="exercise-item__button-img" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
+            $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
         }else{
-            $button_featured = '<button class="exercise-item__button-img" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
+            $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
         }
         $muscle_list = "";
         foreach ($this->muscles as $muscle){

@@ -42,8 +42,8 @@ $conn->close();
         </div>
         <!-- Decoration images -->
         <button class="welcome-block-1__hand-img" ><img src="img/welcome_hand.svg" alt=""></button>
-        <img class="welcome-block-1__biceps-1" src="img/welcome_biceps_1.svg" alt="">
-        <img class="welcome-block-1__biceps-2" src="img/welcome_biceps_2.svg" alt="">
+        <img class="welcome-block-1__biceps-left" src="img/welcome_biceps_1.svg" alt="">
+        <img class="welcome-block-1__biceps-right" src="img/welcome_biceps_2.svg" alt="">
     </section>
     <!-- Subtitle -->
     <h1 class="welcome-page__subtitle">Удобно. Просто. Эффективно</h1>
@@ -75,8 +75,8 @@ $conn->close();
                 <h1 class="exercise-item__title">Алмазные отжимания</h1>
                 <div class="exercise-item__statistic">
                     <div class="exercise-item__rating">
-                        <p class="exercise-item__rating-number">4,5</p>
-                        <img class="exercise-item__rating-img" src="img/Star.svg" alt="">
+                        <p class="exercise-item__score">4,5</p>
+                        <img class="exercise-item__star" src="img/Star.svg" alt="">
                     </div>
                     <div class="exercise-item__difficult">
                         <div class="exercise-item__difficult-item"></div>
@@ -86,34 +86,34 @@ $conn->close();
                         <div class="exercise-item__difficult-item exercise-item__difficult-item--disabled"></div>
                     </div>
                 </div>
-                <div class="exercise-item__buttons-block">
-                    <button class="exercise-item__button-text">Добавить <img src="img/add.svg" alt=""></button>
-                    <button class="exercise-item__button-img"><img src="img/favorite.svg" alt=""></button>
+                <div class="exercise-item__buttons">
+                    <button class="button-text exercise-item__add"><p>Добавить</p> <img src="img/add.svg" alt=""></button>
+                    <button class="button-img exercise-item__favorite"><img src="img/favorite.svg" alt=""></button>
                 </div>
             </section>
             <section class="exercise-item exercise-item--add">
                 <!-- Add photo button -->
-                <button class="exercise-item__add-img">Добавить фото</button>
+                <button class="exercise-item--add__img">Добавить фото</button>
                 <!-- Decoration -->
                 <div class="exercise-item__line"></div>
-                <div class="exercise-item__add-block">
+                <div class="exercise-item--add__content">
                     <!-- Add muscle groups -->
-                    <div class="exercise-item__muscle-groups-add">
-                        <p class="exercise-item__muscle-groups-title">Группы мышц</p>
-                        <button class="exercise-item__muscle-groups-btn"><img src="img/add_black.svg" alt=""></button>
+                    <div class="exercise-item--add__muscle-groups">
+                        <p class="exercise-item--add__muscle-groups-title">Группы мышц</p>
+                        <button class="exercise-item--add__muscle-groups-btn"><img src="img/add_black.svg" alt=""></button>
                     </div>
                     <!-- Name of exercise -->
-                    <div class="exercise-item__name-add">
-                        <p class="exercise-item__name-title">Название</p>
-                        <input class="exercise-item__name-text" type="text" placeholder="Не более 250 символов">
+                    <div class="exercise-item--add__name">
+                        <p class="exercise-item--add__name-title">Название</p>
+                        <input class="exercise-item--add__name-text" type="text" placeholder="Не более 250 символов">
                     </div>
                     <!-- Info of exercise -->
-                    <div class="exercise-item__info-add">
-                        <p class="exercise-item__info-title">Описание</p>
-                        <textarea class="exercise-item__info-textarea" name="add_exercise_info"></textarea>
+                    <div class="exercise-item--add__info">
+                        <p class="exercise-item--add__info-title">Описание</p>
+                        <textarea class="exercise-item--add__info-textarea" name="add_exercise_info"></textarea>
                     </div>
                     <!-- Button 'Add' exercise -->
-                    <button class="exercise-item__button-text exercise-item__button-text--add">Создать <img src="img/add.svg" alt=""></button>
+                    <button class="button-text exercise-item__add exercise-item--add_btn">Создать <img src="img/add.svg" alt=""></button>
                 </div>
             </section>
         </section>

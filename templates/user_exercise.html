@@ -1,9 +1,9 @@
-<section class="exercise-item">
+<section class="exercise-item exercise-item--workout">
     <!-- Exercise info button -->
-    <button class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
+    <button type="button"  class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
     <!-- Info text -->
     <div class="exercise-item__info-content">
-        <button class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
+        <button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
         <p class="exercise-item__info-text">{{ description }}</p>
     </div>
     <!-- Exercise muscle groups -->
@@ -17,8 +17,8 @@
     <!-- Rating and difficult -->
     <div class="exercise-item__statistic">
         <div class="exercise-item__rating">
-            <p class="exercise-item__rating-number">{{ rating }}</p>
-            <img class="exercise-item__rating-img" src="../img/Star.svg" alt="">
+            <p class="exercise-item__score">{{ rating }}</p>
+            <img class="exercise-item__star" src="../img/Star.svg" alt="">
         </div>
         <div class="exercise-item__difficult">
             <p class="exercise-item__difficult-number">{{ difficulty }}</p>

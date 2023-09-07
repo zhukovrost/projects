@@ -52,6 +52,15 @@
     transform: translateY(12px);
 }
 
+.welcome-header__item--logo--welcome{
+    text-align: center;
+    margin-right: 0vw;
+}
+
+.welcome-header__item--logo--welcome p{
+    color: #ffffff;
+}
+
 /* Title */
 .welcome-block-1__title{
     margin-top: 15vh;
@@ -79,35 +88,37 @@
     animation: welcome_hand_move 3s cubic-bezier(0.42, 0, 0.5, 1.22) infinite;
 }
 
-.welcome-block-1__biceps-1{
+.welcome-block-1__biceps-left{
     transition: .2s ease-in-out;
 }
 
-.welcome-block-1__biceps-2{
+.welcome-block-1__biceps-right{
     display: block;
     float: right;
     transition: .3s ease-in-out;
 }
 
-.welcome-block-1__biceps-1:hover{
+.welcome-block-1__biceps-left:hover{
     transform: rotate(-20deg) translateX(-20px) translateY(-70px);
 }
 
-.welcome-block-1__biceps-2:hover{
+.welcome-block-1__biceps-right:hover{
     transform: rotate(20deg) translateX(20px) translateY(-70px);
 }
 
-/* Удобно. Просто. Эффективно */
+/* ===Удобно. Просто. Эффективно=== */
 .welcome-page__subtitle{
     background-color: #ffffff;
     text-align: center;
     font-size: 50px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
-    padding: 0px 0px;
+    padding: 20px 0px;
 }
 
-/* ===SECOND BLOCK */
+/* ============================ */
+
+/* ========SECOND BLOCK======== */
 .welcome-block-2{
     padding: 0px 0px 40px 0px;
     padding-top: 15vh;
