@@ -13,7 +13,7 @@ $conn->close();
         <!-- Welcome header -->
         <header class="welcome-header">
             <!-- Logo -->
-            <a href="index.php" class="welcome-header__item  welcome-header__item--logo welcome-header__item--logo--welcome">
+            <a href="index.php" class="welcome-header__item  welcome-header__item--logo">
                 <img src="img/logo.svg" alt="">
                 <p>Training</p>
             </a>
@@ -63,7 +63,7 @@ $conn->close();
                 <button class="exercise-item__info-btn"><img src="img/info.svg" alt=""></button>
                 <div class="exercise-item__info-content">
                     <button class="exercise-item__info-close"><img src="img/close.svg" alt=""></button>
-                    <p class="exercise-item__info-text">Встаньте в упор лежа, ладони в 10 см от друг друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
+                    <p class="exercise-item__info-text">Встаньте в упор лежа, ладони в 10 см друг от друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
                 </div>
                 <!-- Exercise muscle groups -->
                 <div class="exercise-item__muscle-groups">Руки - плечи - грудь</div>
@@ -113,7 +113,7 @@ $conn->close();
                         <textarea class="exercise-item--add__info-textarea" name="add_exercise_info"></textarea>
                     </div>
                     <!-- Button 'Add' exercise -->
-                    <button class="button-text exercise-item__add exercise-item--add_btn">Создать <img src="img/add.svg" alt=""></button>
+                    <button class="button-text exercise-item__add exercise-item--add__btn">Создать <img src="img/add.svg" alt=""></button>
                 </div>
             </section>
         </section>
@@ -320,7 +320,7 @@ $conn->close();
                 <!-- last training time -->
                 <p class="profile-welcome__subtitle">Тренировался: 1 день назад</p>
                 <!-- Button 'подписаться' -->
-                <button class="profile-welcome__button">Подписаться <img src="img/add_black.svg" alt=""></button>
+                <button class="button-text profile-welcome__button">Подписаться <img src="img/add_black.svg" alt=""></button>
             </section>
             <!-- info block -->
             <section class="profile-welcome__info">
@@ -341,10 +341,10 @@ $conn->close();
     <!-- WELOCOME block fifth -->
     <section class="welcome-block-5">
         <!-- Decoration circles -->
-        <div class="welcome-block-5__first"></div>
-        <div class="welcome-block-5__second"></div>
-        <div class="welcome-block-5__third"></div>
-        <div class="welcome-block-5__fourth"></div>
+        <div class="welcome-block-5__circle welcome-block-5__circle--first"></div>
+        <div class="welcome-block-5__circle welcome-block-5__circle--second"></div>
+        <div class="welcome-block-5__circle welcome-block-5__circle--third"></div>
+        <div class="welcome-block-5__circle welcome-block-5__circle--fourth"></div>
         <!-- Titles -->
         <h1 class="welcome-block-5__title">ТРЕНИРУЙСЯ</h1>
         <h1 class="welcome-block-5__title">СОВЕРШЕНСТВУЙСЯ</h1>
@@ -370,25 +370,25 @@ $conn->close();
             <!-- Level of user -->
             <div class="welcome-block-7__level">
                 <!-- Title -->
-                <h1 class="welcome-block-7__title">Подойдёт любому</h1>
+                <h1 class="welcome-block-7__level-title">Подойдёт любому</h1>
                 <!-- Users level block -->
-                <div class="welcome-block-7__users">
+                <div class="welcome-block-7__level-users">
                     <!-- Beginner -->
-                    <div class="welcome-block-7__item">
+                    <div class="welcome-block-7__level-item">
                         <img src="img/beginner.svg" alt="">
                         <h3>Новичок</h3>
                     </div>
                     <!-- Professional -->
-                    <div class="welcome-block-7__item welcome-block-7__item--professional">
+                    <div class="welcome-block-7__level-item welcome-block-7__level-item--professional">
                         <img src="img/professional.svg" alt="">
                         <h3>Профессионал</h3>
                     </div>
-                    <div class="welcome-block-7__item">
+                    <div class="welcome-block-7__level-item">
                         <img src="img/advanced.svg" alt="">
                         <h3>Продвинутый</h3>
                     </div>
                 </div>
-                <h2 class="welcome-block-7__subtitle">Уровень подготовки не важен</h2>
+                <h2 class="welcome-block-7__level-subtitle">Уровень подготовки не важен</h2>
                 <!-- Decoration -->
                 <div class="welcome-block-7__line"></div>
             </div>
@@ -397,15 +397,15 @@ $conn->close();
                 <div class="welcome-block-7__sportsman">
                     <img class="welcome-block-7__arrow-coach" src="img/arrow_coach.svg" alt="">
                     <img class="welcome-block-7__arrow-doctor" src="img/arrow_doctor.svg" alt="">
-                    <img src="img/sportsman.svg" alt="">
+                    <img class="welcome-block-7__sportsman-img" src="img/sportsman.svg" alt="">
                     <p>Спортсмен</p>
                 </div>
                 <div class="welcome-block-7__personal">
-                    <div class="welcome-block-7__profile">
+                    <div class="welcome-block-7__coach">
                         <img src="img/coach.svg" alt="">
                         <p>Тренер</p>
                     </div>
-                    <div class="welcome-block-7__profile">
+                    <div class="welcome-block-7__doctor">
                         <img src="img/doctor.png" alt="">
                         <p>Врач</p>
                     </div>
@@ -422,27 +422,26 @@ $conn->close();
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
     <!-- WELOCOME block eighth -->
-    <section class="welcome_block_8">
-        <h1>ИСПЫТАЙ</h1>
-        <h1>ВСЕ ВОЗМОЖНОСТИ</h1>
-        <h1>ПЛАТФОРМЫ</h1>
+    <section class="welcome-block-8">
+        <h1 class="welcome-block-8__title">ИСПЫТАЙ</h1>
+        <h1 class="welcome-block-8__title">ВСЕ ВОЗМОЖНОСТИ</h1>
+        <h1 class="welcome-block-8__title">ПЛАТФОРМЫ</h1>
     </section>
 
     <!-- WELOCOME block nineth -->
-    <section class="welcome_block_9">
+    <section class="welcome-block-9">
         <!-- Title -->
-        <div class="title">
-            <img src="img/goal.svg" alt="">
+        <div class="welcome-block-9__title">
+            <img class="welcome-block-9__goal-img" src="img/goal.svg" alt="">
             <h1>Начни совершенствоваться прямо сейчас</h1>
         </div>
         <!-- Button to login -->
-        <div class="content">
-            <h2>Повышаем <span>эффективность</span> и <span>удобство</span> ваших тренировок</h2>
-            <a href="reg_log.php">Начать <img src="img/start_arrow.svg" alt=""></a>
+        <div class="welcome-block-9__content">
+            <h2 class="welcome-block-9__text">Повышаем <span>эффективность</span> и <span>удобство</span> ваших тренировок</h2>
+            <a class="button-text welcome-block-9__button" href="reg_log.php">Начать <img src="img/start_arrow.svg" alt=""></a>
         </div>
     </section>
 
@@ -450,19 +449,19 @@ $conn->close();
         <!-- Contacts -->
         <div class="footer__contacts">
             <div class="footer__social-media">
-                <p>Контакты:</p>
-                <a href="https://t.me/Xcvbnmzd"><img src="img/tg.svg" alt=""></a>
-                <a href="https://vk.com/id497007918"><img src="img/vk.svg" alt=""></a>
+                <p class="footer__contacts-title">Контакты:</p>
+                <a class="footer__contact-btn" href="https://t.me/Xcvbnmzd"><img src="img/tg.svg" alt=""></a>
+                <a class="footer__contact-btn" href="https://vk.com/id497007918"><img src="img/vk.svg" alt=""></a>
             </div>
             <div class="footer__email">
-                <p>Email:</p>
-                <a href="mailto:ivanbarbash06@gmail.com?subject=Вопрос по сайту">ivanbarbash06@gmail.com</a>
+                <p class="footer__email-title">Email:</p>
+                <a class="footer__email-btn" href="mailto:ivanbarbash06@gmail.com?subject=Вопрос по сайту">ivanbarbash06@gmail.com</a>
             </div>
         </div>
         <!-- About -->
         <div class="footer__about">
-            <p>Все права защищены &#169;</p>
-            <p>Иван Барбашин</p>
+            <p class="footer__about-item">Все права защищены &#169;</p>
+            <p class="footer__about-item">Иван Барбашин</p>
         </div>
     </footer>
 
@@ -470,10 +469,10 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Decorative hand
-        let decorativeHand = document.querySelector('.welcome_hand_img');
+        let decorativeHand = document.querySelector('.welcome-block-1__hand-img');
 
         decorativeHand.addEventListener('click', function(){
-            document.querySelector('.welcome_block_2').scrollIntoView({
+            document.querySelector('.welcome-block-2').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
@@ -481,9 +480,9 @@ $conn->close();
 
 
         // Buttons for exercise info
-        let infoExerciseButton = document.querySelector('.welcome-block-2 .content .exercise_item .info');
-        let closeInfoExerciseButton = document.querySelector('.welcome-block-2 .exercise_item .info_close');
-        let infoBlock = document.querySelector('.elcome-block-2 .exercise_item .info_block');
+        let infoExerciseButton = document.querySelector('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelector('.exercise-item__info-close');
+        let infoBlock = document.querySelector('.exercise-item__info-content');
 
         infoExerciseButton.addEventListener('click', function(){
             infoBlock.style.cssText = `top: -1%;`;

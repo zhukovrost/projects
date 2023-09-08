@@ -52,12 +52,12 @@
     transform: translateY(12px);
 }
 
-.welcome-header__item--logo--welcome{
-    text-align: center;
+.welcome-header__item--logo{
     margin-right: 0vw;
+    text-align: center;
 }
 
-.welcome-header__item--logo--welcome p{
+.welcome-header__item--logo p{
     color: #ffffff;
 }
 
@@ -533,16 +533,12 @@
 
 /* Button 'подписаться' */
 .profile-welcome__button{
-    display: flex;
-    align-items: center;
     background-color: rgb(218, 218, 218);
     color: #000000;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
     border: 1px solid #474747;
     font-size: 23px;
     padding: 5px 10px 5px 20px;
     margin-top: 20px;
-    transition: .1s ease-in-out;
 }
 
 .profile-welcome__button img{
@@ -553,7 +549,6 @@
 
 .profile-welcome__button:hover{
     background-color: rgba(245, 245, 245, 1);
-    box-shadow: 3px 3px 0px 0px #00CD1E;
 }
 
 .profile-welcome__button:hover img{
@@ -615,49 +610,40 @@
     padding-bottom: 5vh;
 }
 
-/* Decoration circles */
-.welcome-block-5__first{
+.welcome-block-5__circle{
     position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 132, 19, 1);
+    z-index: -1;
+}
+
+/* Decoration circles */
+.welcome-block-5__circle--first{
     bottom: -15%;
     left: -5%;
     width: 460px;
     height: 460px;
-    border-radius: 50%;
-    background-color: rgba(0, 132, 19, 1);
-    z-index: -1;
 }
 
-.welcome-block-5__second{
-    position: absolute;
+.welcome-block-5__circle--second{
     bottom: 20%;
     left: 20%;
     width: 330px;
     height: 330px;
-    border-radius: 50%;
-    background-color: rgba(0, 132, 19, 1);
-    z-index: -1;
 }
 
-.welcome-block-5__third{
-    position: absolute;
+.welcome-block-5__circle--third{
     bottom: 38%;
     right: 17%;
     width: 250px;
     height: 250px;
-    border-radius: 50%;
-    background-color: rgba(0, 132, 19, 1);
-    z-index: -1;
 }
 
-.welcome-block-5__fourth{
-    position: absolute;
+.welcome-block-5__circle--fourth{
     bottom: 3%;
     right: -5%;
     width: 300px;
     height: 300px;
-    border-radius: 50%;
-    background-color: rgba(0, 132, 19, 1);
-    z-index: -1;
 }
 
 /* Titles */
@@ -738,7 +724,7 @@
 }
 
 /* Title */
-.welcome-block-7__title{
+.welcome-block-7__level-title{
     text-align: center;
     font-size: 80px;
     font-family: 'Ubuntu', sans-serif;
@@ -746,17 +732,17 @@
 }
 
 /* Users level block */
-.welcome-block-7__users{
+.welcome-block-7__level-users{
     display: flex;
     margin-top: 110px;
 }
 
-.welcome-block-7__item{
+.welcome-block-7__level-item{
     margin: 0px 50px;
     text-align: center;
 }
 
-.welcome-block-7__item--professional{
+.welcome-block-7__level-item--professional{
     transform: translateY(-70px);
 }
 
@@ -764,12 +750,12 @@
     font-size: 32px;
 }
 
-.welcome-block-7__item h3{
+.welcome-block-7__level-item h3{
     font-size: 30px;
     font-weight: 500;
 }
 
-.welcome-block-7__subtitle{
+.welcome-block-7__level-subtitle{
     margin-top: 40px;
     font-size: 70px;
     font-family: 'Ubuntu', sans-serif;
@@ -862,7 +848,7 @@
 
 
 /* ===WELOCOME block eighth=== */
-.welcome_block_8{
+.welcome-block-8{
     background-color: #000000;
     min-height: 100vh;
     display: flex;
@@ -872,7 +858,7 @@
     color: #ffffff;
 }
 
-.welcome_block_8 h1{
+.welcome-block-8__title{
     font-size: 160px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 600;
@@ -880,7 +866,7 @@
 
 
 /* ===WELOCOME block nineth===*/
-.welcome_block_9{
+.welcome-block-9{
     background-color: #000000;
     color: #ffffff;
     width: fit-content;
@@ -890,18 +876,18 @@
 }
 
 /* Title */
-.welcome_block_9 .title{
+.welcome-block-9__title{
     display: flex;
     align-items: center;
 }
 
-.welcome_block_9 .title h1{
+.welcome-block-9__title h1{
     font-size: 50px;
     margin-left: 20px;
 }
 
 /* Motivation words */
-.welcome_block_9 .content{
+.welcome-block-9__content{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -909,44 +895,40 @@
     margin: 50px auto 0px;
 }
 
-.welcome_block_9 .content h2{
+.welcome-block-9__text{
     font-size: 25px;
 }
 
-.welcome_block_9 .content h2 span{
+.welcome-block-9__text span{
     font-weight: 600;
 }
 
 /* Button to login */
-.welcome_block_9 .content a{
-    display: flex;
-    align-items: center;
+.welcome-block-9__button{
     border-radius: 6px;
     background-color: #068D1A;
-    color: #ffffff;
-    filter: drop-shadow(0px 5px 0px #0DF630);
+    box-shadow: 0px 5px 0px #0DF630;
     font-size: 30px;
     font-weight: 600;
     padding: 10px 30px;
-    transition: .2s ease-in-out;
 }
 
-.welcome_block_9 .content a img{
+.welcome-block-9__button img{
     margin-left: 20px;
-    transition: .2s ease-in-out;
 }
 
-.welcome_block_9 .content a:hover{
+.welcome-block-9__button:hover{
     background-color: #08a820;
+    box-shadow: 0px 5px 0px #0DF630;
 }
 
-.welcome_block_9 .content a:hover img{
+.welcome-block-9__button:hover img{
     transform: translateX(10px);
 }
 
-.welcome_block_9 .content a:active{
+.welcome-block-9__button:active{
     transform: translateY(5px);
-    filter: drop-shadow(0px 0px 0px #0DF630);
+    box-shadow: 0px 0px 0px 0px #0DF630;
 }
 
 /* ============================================= */
@@ -954,7 +936,7 @@
 
 /* ==================LOGIN PAGE================== */
 /* Log & reg body */
-.log_reg_body{
+.log-reg{
     position: relative;
     background-image: url('../img/background_reg.png');
     background-repeat: no-repeat;
@@ -963,7 +945,7 @@
     backdrop-filter: blur(2px);
 }
 
-.log_reg_body .container{
+.log-reg .container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -973,17 +955,20 @@
 }
 
 /* Log and reg logo */
-.log_reg_body .container .logo{
+.reg-log__logo{
     position: absolute;
     top: 0;
-    left: 0;
+    left: -1%;
     margin-top: 10px;
-    width: fit-content;
+    color: #ffffff;
+}
+
+.reg-log__logo:hover{
     color: #ffffff;
 }
 
 /* Content of log & reg */
-.log_reg_body .container .content{
+.log-reg__content{
     text-align: center;
     color: #ffffff;
     background-color: rgba(63, 63, 63, 0.808);
@@ -993,20 +978,20 @@
 }
 
 /* title */
-.log_reg_body .container .content h1{
+.log-reg__title{
     font-size: 40px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 600;
 }
 
 /* Switch buttons (login or registration) */
-.log_reg_body .container .content .buttons{
+.log-reg__switch-buttons{
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
 }
 
-.log_reg_body .container .buttons button{
+.log-reg__switch-button{
     padding: 10px 40px;
     margin: 0 20px;
     background-color: transparent;
@@ -1021,8 +1006,8 @@
     transition: .4s ease-in-out;
 }
 
-.log_reg_body .container .buttons button::before,
- .log_reg_body .container .buttons button::after {
+.log-reg__switch-button::before,
+ .log-reg__switch-button::after {
     content: '';
     display: block;
     width: 50px;
@@ -1035,36 +1020,36 @@
     transition: .5s ease;
 }
 
-.log_reg_body .container .buttons button::before {
+.log-reg__switch-button::before {
     top: -1em;
     left: -1em;
 }
 
-.log_reg_body .container .buttons button::after {
+.log-reg__switch-button::after {
     left: calc(100% + 1em);
     top: calc(100% + 1em);
 }
 
-.log_reg_body .container .buttons button:hover::before,
-.log_reg_body .container .buttons button:hover::after {
+.log-reg__switch-button:hover::before,
+.log-reg__switch-button:hover::after {
     height: 410px;
     width: 410px;
 }
 
-.log_reg_body .container .buttons button:hover {
+.log-reg__switch-button:hover {
     color: rgb(0, 0, 0);
 }
 
-.log_reg_body .container .buttons button:active {
+.log-reg__switch-button:active {
     filter: brightness(.8);
 }
 
-.log_reg_body .container .buttons button.active{
+.log-reg__switch-button--active{
     background-color: #000000;
 }
 
 /* ===login form=== */
-.log_reg_body .container .log_form{
+.log-form{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -1072,12 +1057,12 @@
 }
 
 /* label */
-.log_reg_body .container .log_form label{
+.log-form__label{
     font-size: 18px;
 }
 
 /* input */
-.log_reg_body .container .log_form input{
+.log-form__input{
     background-color: rgba(240, 240, 240, 1);
     font-size: 35px;
     color: #000000;
@@ -1086,39 +1071,32 @@
 }
 
 /* button 'Войти' */
-.log_reg_body .container .log_form button[type=submit]{
-    display: flex;
-    align-items: center;
-    width: fit-content;
+.log-form__submit{
     margin: 30px auto 10px;
-    background-color: rgb(20, 20, 20);
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
     border: 1px solid #474747;
     font-size: 35px;
-    padding: 10px 40px;
-    transition: .2s ease-in-out;    
+    padding: 10px 40px;   
 }
 
-.log_reg_body .container .log_form button[type=submit]:hover{
+.log-form__submit:hover{
     background-color: rgb(0, 0, 0);
     box-shadow: 5px 5px 0px 0px #00CD1E;
 }
 
 /* Button 'забыли пароль?' */
-.log_reg_body .container .forgot_password{
+.log-form__forgot-password{
     margin-left: 7px;
     color: #e4e3e3;
     margin: 0 auto;
 }
 
-.log_reg_body .container .forgot_password:hover{
+.log-form__forgot-password:hover{
     color: #ffffff;
 }
 
 
 /* ===Registration form=== */
-.reg_form{
+.reg-form{
     position: relative;
     display: none;
     flex-direction: column;
@@ -1129,12 +1107,12 @@
 }
 
 /* label */
-.reg_form label{
+.reg-form__label{
     font-size: 18px;
 }
 
 /* input */
-.reg_form input{
+.reg-form__input{
     background-color: rgba(240, 240, 240, 1);
     font-size: 23px;
     color: #000000;
@@ -1143,44 +1121,37 @@
 }
 
 /* title 'выберите профиль' */
-.reg_form  h2{
+.reg-form__profile-title{
     text-align: center;
     font-size: 30px;
     margin-top: 5px;
 }
 
 /* User's profile */
-.reg_form .profiles{
+.reg-form__profiles{
     display: flex;
     justify-content: space-around;
     margin-bottom: 5px;
 }
 
-.reg_form .profiles label{
+.reg-form__profile-label{
     font-size: 25px;
 }
 
-.reg_form .profiles input{
+.reg-form__profile-input{
     width: 20px;
     height: 20px;
 }
 
 /* Button 'зарегистрироваться' */
-.log_reg_body .container .reg_form button[type=submit]{
-    display: flex;
-    align-items: center;
-    width: fit-content;
+.reg-form__submit{
     margin: 10px auto 0px;
-    background-color: rgb(20, 20, 20);
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
     border: 1px solid #474747;
     font-size: 27px;
-    padding: 10px 30px;
-    transition: .2s ease-in-out;    
+    padding: 10px 30px;  
 }
 
-.log_reg_body .container .reg_form button[type=submit]:hover{
+.reg-form__submit:hover{
     background-color: rgb(0, 0, 0);
     box-shadow: 5px 5px 0px 0px #00CD1E;
 }

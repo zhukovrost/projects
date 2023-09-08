@@ -27,31 +27,31 @@ if (isset($_POST['log'])){
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head("OpenDoor", true); ?>
-<body class="log_reg_body">
+<body class="log-reg">
     <div class="container">
         <!-- Log and reg logo -->
-        <a href="index.php" class="logo">
+        <a href="index.php" class="header__item--logo reg-log__logo">
             <img src="img/logo_reg_log.svg" alt="">
             <p>Training</p>
         </a>
 
         <!-- Content of log & reg -->
-        <section class="content">
+        <section class="log-reg__content">
             <!-- title -->
-            <h1>ЛИЧНЫЙ КАБИНЕТ</h1>
+            <h1 class="log-reg__title">ЛИЧНЫЙ КАБИНЕТ</h1>
             <!-- Switch buttons (login or registration) -->
-            <div class="buttons">
-                <button class="log_button active">Вход</button>
-                <button class="reg_button">Регистрация</button>
+            <div class="log-reg__switch-buttons">
+                <button class="log-reg__switch-button log-reg__switch-button--log log-reg__switch-button--active">Вход</button>
+                <button class="log-reg__switch-button log-reg__switch-button--reg">Регистрация</button>
             </div>
             <!-- Login form -->
-            <form class="log_form" action="" method="post">
-                <label for="login_entry">Логин</label>
-                <input name="log_login" type="text" id="login_entry">
-                <label for="password_entry">Пароль</label>
-                <input name="log_password" type="password" id="password_entry">
-                <button type="submit" name="log" value="1">Войти</button>
-                <a class="forgot_password" href="">Не помнишь пароль?</a>
+            <form class="log-form" action="" method="post">
+                <label class="log-form__label" for="login_entry">Логин</label>
+                <input class="log-form__input" name="log_login" type="text" id="login_entry">
+                <label class="log-form__label" for="password_entry">Пароль</label>
+                <input class="log-form__input" name="log_password" type="password" id="password_entry">
+                <button class="button-text log-form__submit" type="submit" name="log" value="1">Войти</button>
+                <a class="log-form__forgot-password" href="">Не помнишь пароль?</a>
                 <?php
                 log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
                 log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
@@ -61,36 +61,36 @@ if (isset($_POST['log'])){
                 ?>
             </form>
             <!-- Registration form -->
-            <form class="reg_form" action="" method="post">
-                <label for="name">Имя</label>
-                <input name="reg_name" type="text" id="name">
-                <label for="surname">Фамилия</label>
-                <input name="reg_surname" type="text" id="surname">
-                <h2>Выберите профиль</h2>
+            <form class="reg-form" action="" method="post">
+                <label class="reg-form__label" for="name">Имя</label>
+                <input class="reg-form__input" name="reg_name" type="text" id="name">
+                <label class="reg-form__label" for="surname">Фамилия</label>
+                <input class="reg-form__input" name="reg_surname" type="text" id="surname">
+                <h2 class="reg-form__profile-title">Выберите профиль</h2>
                 <!-- User's profile -->
-                <div class="profiles">
-                    <div>
-                        <input type="radio" name="reg_status" id="sportsman" value="user">
-                        <label for="sportsman">Спортсмен</label>
+                <div class="reg-form__profiles">
+                    <div class="reg-form__profile">
+                        <input class="reg-form__profile-input" type="radio" name="reg_status" id="sportsman" value="user">
+                        <label class="reg-form__profile-label" for="sportsman">Спортсмен</label>
                     </div>
-                    <div>
-                        <input type="radio" name="reg_status" id="coach" value="coach">
-                        <label for="sportsman">Тренер</label>
+                    <div class="reg-form__profile">
+                        <input class="reg-form__profile-input" type="radio" name="reg_status" id="coach" value="coach">
+                        <label class="reg-form__profile-label" for="sportsman">Тренер</label>
                     </div>
-                    <div>
-                        <input type="radio" name="reg_status" id="doctor" value="doctor">
-                        <label for="sportsman">Врач</label>
+                    <div class="reg-form__profile">
+                        <input class="reg-form__profile-input" type="radio" name="reg_status" id="doctor" value="doctor">
+                        <label class="reg-form__profile-label" for="sportsman">Врач</label>
                     </div>
                 </div>
-                <label for="email">Почта</label>
-                <input name="reg_email" type="email" id="email">
-                <label for="login">Логин</label>
-                <input name="reg_login" type="text" id="login">
-                <label for="password">Пароль</label>
-                <input name="reg_password" type="text" id="password">
-                <label for="check_password">Подтвердите пароль</label>
-                <input name="reg_password2" type="text" id="check_password">
-                <button type="submit" name="reg" value="1">Зарегистрироваться</button>
+                <label class="reg-form__label" for="email">Почта</label>
+                <input class="reg-form__input" name="reg_email" type="email" id="email">
+                <label class="reg-form__label" for="login">Логин</label>
+                <input class="reg-form__input" name="reg_login" type="text" id="login">
+                <label class="reg-form__label" for="password">Пароль</label>
+                <input class="reg-form__input" name="reg_password" type="text" id="password">
+                <label class="reg-form__label" for="check_password">Подтвердите пароль</label>
+                <input class="reg-form__input" name="reg_password2" type="text" id="check_password">
+                <button class="button-text reg-form__submit" type="submit" name="reg" value="1">Зарегистрироваться</button>
                 <?php
                 reg_warning($error_array['reg_login_is_used'], "This login is not available");
                 reg_warning($error_array['reg_passwords_are_not_the_same'], "Passwords are not equal, try again");
@@ -105,24 +105,24 @@ if (isset($_POST['log'])){
 
     <script>
         // Switch buttons (login or registration)
-        let logButton = document.querySelector('.log_button');
-        let regButton = document.querySelector('.reg_button');
-        let logForm = document.querySelector('.log_form');
-        let regForm = document.querySelector('.reg_form');
+        let logButton = document.querySelector('.log-reg__switch-button--log');
+        let regButton = document.querySelector('.log-reg__switch-button--reg');
+        let logForm = document.querySelector('.log-form');
+        let regForm = document.querySelector('.reg-form');
 
         logButton.addEventListener('click', function(){
-            if (logButton.classList.contains('active') == false){
-                logButton.classList.add('active');
-                regButton.classList.remove('active');
+            if (logButton.classList.contains('log-reg__switch-button--active') == false){
+                logButton.classList.add('log-reg__switch-button--active');
+                regButton.classList.remove('log-reg__switch-button--active');
                 logForm.style.cssText = `display: flex;`;
                 regForm.style.cssText = `display: nonr;`;
             }
         });
 
         regButton.addEventListener('click', function(){
-            if (regButton.classList.contains('active') == false){
-                logButton.classList.remove('active');
-                regButton.classList.add('active');
+            if (regButton.classList.contains('log-reg__switch-button--active') == false){
+                logButton.classList.remove('log-reg__switch-button--active');
+                regButton.classList.add('log-reg__switch-button--active');
                 regForm.style.cssText = `display: flex;`;
                 logForm.style.cssText = `display: none;`;
             }

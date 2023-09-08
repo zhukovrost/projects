@@ -25,14 +25,15 @@ body {
 /* ========BLOCKS & ELEMENTS========= */
 
 /* ===LOGO=== */
-.welcome-header__item--logo{
+.header__item--logo{
     text-align: center;
     margin-right: 10vw;
     color: #000000;
     opacity: 0.85;
 }
 
-.welcome-header__item--logo:hover{
+
+.header__item--logo:hover{
     opacity: 1;
 }
 
@@ -46,7 +47,7 @@ body {
 .button-text{
     display: flex;
     align-items: center;
-    background-color: #272727;
+    background-color: #111111;
     color: #ffffff;
     box-shadow: 3px 3px 0px 0px #00CD1E;
     transition: .1s ease-in-out;
@@ -133,11 +134,11 @@ footer{
     margin-bottom: 5px;
 }
 
-.footer__social-media a{
+.footer__contact-btn{
     margin-left: 8px;
 }
 
-.footer__social-media a img{
+.footer__contact-btnt img{
     width: 25px;
     height: 25px;
 }
@@ -146,16 +147,16 @@ footer{
     display: flex;
 }
 
-.footer__email a{
+.footer__email-btn{
     color: #292929;
     margin-left: 8px;
 }
 
-.footer__email a:hover{
+.footer__email-btn:hover{
     color: #000000;
 }
 
-.footer__about p:first-child{
+.footer__about-item:first-child{
     margin-bottom: 5px;
 }
 
@@ -465,7 +466,7 @@ footer{
 }
 
 /* Button 'Add' exercise */
-.exercise-item--add_btn{
+.exercise-item--add__btn{
     margin: 20px auto 0px;
 }
 
