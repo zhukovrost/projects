@@ -267,6 +267,7 @@ footer{
     justify-content: space-around;
     align-items: center;
     margin-top: 3px;
+    margin-bottom: 15px;
 }
 
 .exercise-item__rating{
@@ -655,6 +656,14 @@ footer{
 .friends-block__name{
     font-size: 20px;
     color: #000000;
+}
+
+
+.friends-block__no-friends{
+    margin: 10px auto 0px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 23px;
+    font-weight: 500;
 }
 
 

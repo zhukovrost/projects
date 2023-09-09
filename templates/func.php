@@ -85,7 +85,7 @@ function insert_news($conn, $message, $user_id, $is_personal){
 
 function print_user_list($conn, $id_list){
     if (count($id_list) == 0){
-        echo "<p>Пользователь ни на кого не подписан</p>";
+        echo "<p class='friends-block__no-friends'>Вы ни на кого не подписаны</p>";
         return 0;
     }
     for ($i = 0; $i < count($id_list); $i+=4){
