@@ -83,9 +83,9 @@ $user_data->set_program($conn);
                                     <!-- Decorative line -->
                                     <div class="workouts-card__info-line"></div>
                                     <!-- Buttons edit and start -->
-                                    <div class="workouts-card__info-buttons">
-                                        <button class="button-img workouts-card__info-button"><img src="../img/edit.svg" alt=""></button>
-                                        <button class="button-text workouts-card__info-button">Начать</button>
+                                    <div class="workouts-card__buttons">
+                                        <button class="button-img workouts-card__edit-button"><img src="../img/edit.svg" alt=""></button>
+                                        <button class="button-text workouts-card__start-button">Начать</button>
                                     </div>
                                 </section>
                             </section>

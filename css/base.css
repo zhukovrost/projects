@@ -578,18 +578,19 @@ footer{
 }
 
 /* Buttons edit and start */
-.workouts-card__info-buttons{
+.workouts-card__buttons{
     display: flex;
     margin-top: auto;
 }
 
-.workouts-card__info-button{
+.workouts-card__edit-button,
+.workouts-card__start-button{
     font-size: 27px;
     padding: 5px 30px 5px;
     margin-right: 15px;
 }
 
-.workouts-card__info-button img{
+.workouts-card__edit-button img{
     width: 30px;
     height: 30px;
 }
