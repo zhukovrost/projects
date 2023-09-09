@@ -51,7 +51,7 @@ $conn->close();
     <!-- WELCOME block second -->
     <section class="welcome-block-2">
         <!-- Title -->
-        <div class="welcome-block-2__title">
+        <div class="welcome-block-2__header">
             <h1>ВЫБИРАЙ</h1>
             <h2>или</h2>
             <h1>СОЗДАВАЙ</h1>
@@ -434,9 +434,9 @@ $conn->close();
     <!-- WELOCOME block nineth -->
     <section class="welcome-block-9">
         <!-- Title -->
-        <div class="welcome-block-9__title">
+        <div class="welcome-block-9__header">
             <img class="welcome-block-9__goal-img" src="img/goal.svg" alt="">
-            <h1>Начни совершенствоваться прямо сейчас</h1>
+            <h1 class="welcome-block-9__title">Начни совершенствоваться прямо сейчас</h1>
         </div>
         <!-- Button to login -->
         <div class="welcome-block-9__content">

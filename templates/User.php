@@ -328,14 +328,14 @@ class User {
     }
 
     public function print_workout_history($conn){ ?>
-        <section class="last_trainings">
-            <h1>Последние тренировки</h1>
-            <div class="content">
+        <section class="last-trainings">
+            <h1 class="last-trainings__title">Последние тренировки</h1>
+            <div class="last-trainings__content">
                 <?php
                     $sql = "SELECT * FROM workout_history WHERE user=$this->id";
                     if ($result = $conn->query($sql)){
                         if ($result->num_rows == 0){
-                            echo "<p>Нет тренировок</p>";
+                            echo "<p class='last-trainings__no-workout'>Нет тренировок</p>";
                         }else{
                             foreach ($result as $item){
                                 $workout = new Workout($conn, $item['workout'], date("N", $item['date_completed']));

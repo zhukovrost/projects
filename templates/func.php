@@ -89,7 +89,7 @@ function print_user_list($conn, $id_list){
         return 0;
     }
     for ($i = 0; $i < count($id_list); $i+=4){
-        echo "<swiper-slide>";
+        echo "<swiper-slide class='friends-block__slide'>";
         for ($j = $i; $j < count($id_list) - $i * 4; $j++){
             $user_id = $id_list[$j];
             $user = new User($conn, $user_id);
