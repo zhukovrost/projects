@@ -24,7 +24,7 @@ body {
 
 /* ========BLOCKS & ELEMENTS========= */
 
-/* ===LOGO=== */
+/* ==========LOGO========== */
 .header__item--logo{
     text-align: center;
     margin-right: 10vw;
@@ -37,11 +37,11 @@ body {
     opacity: 1;
 }
 
-/* ======== */
+/* ====================== */
 
 
 
-/* ==========BUTTONS========== */
+/* ==================BUTTONS================== */
 
 /* ===Button with text(+ optional image)=== */
 .button-text{
@@ -87,7 +87,7 @@ body {
 }
 
 
-/* =================== */
+/* ====================================== */
 
 
 
@@ -117,7 +117,7 @@ header{
 
 
 
-/* ===FOOTER==== */
+/* =========FOOTER========== */
 footer{
     position: absolute;
     left: 5%;
@@ -161,9 +161,10 @@ footer{
     margin-bottom: 5px;
 }
 
+/* =========================== */
 
 
-/* ===Exercise item=== */
+/* ==========Exercise item========== */
 .exercise-item{
     display: flex;
     flex-direction: column;
@@ -182,28 +183,6 @@ footer{
 .exercise-item:hover{
     box-shadow: 14px 14px 4px 0px rgba(0, 0, 0, 0.25);
     transform: translate(-5px, -5px);
-}
-
-.exercise-item--workout{
-    margin: 10px 6px 0px 0px;
-}
-
-.exercise-item--workout:hover{
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-    transform: none;
-}
-
-.exercise-item--workout:first-child{
-    margin-top: 0px;
-}
-
-.exercise-item--list{
-    margin: 0px 0px 0px 0px;
-}
-
-.exercise-item--list:hover{
-    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.25);
-    transform: translate(-2px, -2px);
 }
 
 
@@ -295,6 +274,7 @@ footer{
     align-items: center;
 }
 
+/* rating number */
 .exercise-item__score{
     font-size: 21px;
     margin-right: 3px;
@@ -336,7 +316,7 @@ footer{
     font-size: 25px;
 }
 
-
+/* Buttons of exercise */
 .exercise-item__buttons{
     display: flex;
     justify-content: space-around;
@@ -408,6 +388,7 @@ footer{
     background-color: #eeeded;
 }
 
+/* Muscle groups */
 .exercise-item--add__muscle-groups{
     display: flex;
     align-items: center;
@@ -415,6 +396,7 @@ footer{
     margin-top: 20px;
 }
 
+/* Button to add muscle groups */
 .exercise-item--add__muscle-groups-btn{
     margin-left: 10px;
     background-color: #ebebeb;
@@ -484,9 +466,9 @@ footer{
 	animation: rotate-center 0.3s ease-in-out both;
 }
 
-/* ======================= */
+/* ============================================= */
 
-/* slide(no arrows) */
+/* workout-slide(no arrows) */
 .workouts-card{
     height: 100%;
     padding: 15px 20px 20px;
@@ -501,6 +483,9 @@ footer{
     display: flex;
     justify-content: space-between;
     color: rgba(130, 130, 130, 1);
+}
+
+.workouts-card__date{
     font-size: 25px;
 }
 
@@ -609,9 +594,9 @@ footer{
     border: 2px solid #00C91D;
 }
 
-/* ======================= */
+/* ======================================== */
 
-/* Friends list */
+/* ==============Friends list============== */
 .friends-block{
     padding: 8px 15px;
     background-color: rgba(255, 255, 255, 1);
@@ -673,9 +658,9 @@ footer{
 }
 
 
-/* ======================== */
+/* ==================================== */
 
-/* last trainings */
+/* ===========last trainings=========== */
 .last-trainings{
     max-height: 43vh;
     display: flex;

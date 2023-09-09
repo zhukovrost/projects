@@ -19,7 +19,7 @@
     background-position: bottom center;
 }
 
-
+/* Welcome header */
 .welcome-header{
     color: #ffffff;
     justify-content: space-around;
@@ -52,6 +52,7 @@
     transform: translateY(12px);
 }
 
+/* logo welcome */
 .welcome-header__item--logo{
     margin-right: 0vw;
     text-align: center;
@@ -610,6 +611,7 @@
     padding-bottom: 5vh;
 }
 
+/* Decorative circles */
 .welcome-block-5__circle{
     position: absolute;
     border-radius: 50%;
@@ -685,6 +687,9 @@
     display: flex;
     justify-content: space-between;
     margin: 50px auto;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 50px;
 }
 
 .welcome-block-6__content h2{
@@ -694,12 +699,6 @@
     text-align: center;
     font-size: 70px;
     margin: 0 12vw 0;
-}
-
-.welcome-block-6__content{
-    text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 50px;
 }
 
 .welcome-block-6__subtitle{
@@ -771,6 +770,7 @@
 }
 
 
+/* User's chats */
 .welcome-block-7__chats{
     display: flex;
     justify-content: space-around;
@@ -778,6 +778,7 @@
     margin-top: 40px;
 }
 
+/* User's profiles */
 .welcome-block-7__profiles{
     width: 35%;
 }
@@ -801,6 +802,7 @@
     right: 7%;
 }
 
+/* Personal block */
 .welcome-block-7__personal{
     display: flex;
     justify-content: space-between;
@@ -808,7 +810,7 @@
     font-weight: 500;
 }
 
-
+/* Info about chats */
 .welcome-block-7__info{
     display: flex;
     flex-direction: column;
@@ -1173,6 +1175,25 @@
 
 .workouts-slide{
     padding: 0px 50px 10px;
+}
+
+/* Exercises cover */
+.workouts-card__exercises-cover{
+    padding-bottom: 7px;
+}
+
+/* Workout card exercise items */
+.exercise-item--workout{
+    margin: 10px 6px 0px 0px;
+}
+
+.exercise-item--workout:hover{
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    transform: none;
+}
+
+.exercise-item--workout:first-child{
+    margin-top: 0px;
 }
 
 
