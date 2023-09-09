@@ -720,21 +720,6 @@ footer{
     font-weight: 700;
 }
 
-.workouts .last_trainings .item .left div img{
-    margin-right: 5px;
-}
-
-/* Minutes & exercise & muscle groups & info button */
-.workouts .last_trainings .item .right div{
-    display: flex;
-    font-size: 21px;
-    margin-bottom: 5px;
-}
-
-.workouts .last_trainings .item .right div span{
-    font-weight: 700;
-}
-
 .last-trainings__item-img{
     margin-right: 5px;
 }
