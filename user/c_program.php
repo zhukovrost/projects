@@ -243,7 +243,7 @@ if (empty($_SESSION["program"])){
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 	<script>
 		// Workout items
-        let workoutItemArr = document.querySelectorAll('.c_program .cover .item .content');
+        let workoutItemArr = document.querySelectorAll('.day-workouts__card-content');
 
         let maxWorkoutItemHeight = 0;
 

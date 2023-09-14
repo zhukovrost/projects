@@ -763,3 +763,120 @@ footer{
     font-size: 23px;
     font-weight: 500;
 }
+
+/* ======================================= */
+
+/* ==========WORKOUT DAYS LIST============ */
+/* Choose date of workouts */
+.day-workouts__date{
+    display: flex;
+    float: right;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.day-workouts__date-title{
+    font-size: 25px;
+}
+
+.day-workouts__date-input{
+    margin-left: 10px;
+    font-size: 25px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border: 1px solid rgba(198, 198, 198, 1);
+}
+
+/* Swiper of day workouts */
+.day-workouts__swiper{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* slide */
+.day-workouts__slide{
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40px 10px;
+}
+
+/* Day of week */
+.day-workouts__card-title{
+    font-size: 18px;
+    color: #828282;
+}
+
+/* Content of day workout */
+.day-workouts__card-content{
+    height: 100%;
+    display: table-cell;
+    vertical-align:middle;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    border: 1px solid #C6C6C6;
+}
+
+/* Workout title */
+.day-workouts__card-name{
+    font-size: 21px;
+    font-weight: 600;
+    padding-bottom: 7px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+/* Muscle groups */
+.day-workouts__card-item{
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.day-workouts__card-item span{
+    font-size: 22px;
+    background-color: rgba(236, 236, 236, 1);
+    padding: 1px 7px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+    float: right;
+    margin-left: 5px;
+}
+
+/* Buttons edit, more and image(complete or not) */
+.day-workouts__card-buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #CECECE;
+}
+
+.day-workouts__card-button{
+    font-size: 18px;
+    padding: 5px 10px;
+    margin-right: 15px;
+}
+
+.day-workouts__card-button img{
+    width: 25px;
+    height: 25px;
+}
+
+.day-workouts__card-img{
+    width: 30px;
+    height: 30px;
+    margin: auto 0;
+}
+
+/* Title 'Выходной' */
+.day-workouts__card-day-off{
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    font-size: 21px;
+    padding: 5px 10px;
+}

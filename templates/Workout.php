@@ -85,10 +85,10 @@ class Workout {
         <section class="day-workouts__card">
             <h3 class="day-workouts__card-title"><?php echo get_day($day); ?></h3>
             <div class="day-workouts__card-content">
-                <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
                 <?php if ($this->holiday){ ?>
                     <div class="day-workouts__card-day-off">Выходной</div>
                 <?php }else{ ?>
+                    <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
                     <p class="day-workouts__card-item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
                     <p class="day-workouts__card-item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
                     <p class="day-workouts__card-item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
