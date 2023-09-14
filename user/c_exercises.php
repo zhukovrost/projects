@@ -288,6 +288,10 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		let popupExerciseWindow = document.querySelector('.popup_exercise');
 		let inputExerciseId = document.querySelector('.popup_exercise .exercise_id');
 
+		let popupExerciseItemInfo = document.querySelector('.popup_exercise .exercise-item__info-btn');
+		let popupExerciseItemClose = document.querySelector('.popup_exercise .exercise-item__info-close');
+		let popupExerciseItemContent = document.querySelector('.popup_exercise .exercise-item__info-content');
+
 		for(let i = 0; i < exercisesButtons.length; i++){
 			exercisesButtons[i].addEventListener('click', function(){
 				let item = exercisesButtons[i].parentElement.parentElement;
@@ -297,8 +301,22 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
 
 				popupExerciseWindow.classList.add("open");
+
+				popupExerciseItemInfo = document.querySelector('.popup_exercise .exercise-item__info-btn');
+				popupExerciseItemClose = document.querySelector('.popup_exercise .exercise-item__info-close');
+				popupExerciseItemContent = document.querySelector('.popup_exercise .exercise-item__info-content');
+			
+				popupExerciseItemInfo.addEventListener('click', function(){
+					popupExerciseItemContent.style.cssText = `top: -1%;`;
+				});
+				popupExerciseItemClose.addEventListener('click', function(){
+					popupExerciseItemContent.style.cssText = `top: -101%;`;
+				});
 			});
 		}
+
+		
+		
 
 		const closeBtn = document.querySelector('.popup_exercise .close');
 		closeBtn.addEventListener('click', function(){
