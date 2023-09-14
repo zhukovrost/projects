@@ -140,3 +140,10 @@ function print_workout_info_function($workout){
     </div>
 <?php }
 }
+
+function busy_or_free($id){
+    if ($id == 0)
+        echo "free";
+    else
+        echo "busy";
+}
