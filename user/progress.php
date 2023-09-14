@@ -8,12 +8,12 @@ include "../templates/settings.php";
 <body>
 	<?php include "../templates/header.html" ?>
 
-	<main>
-		<div class="container progress_block">
+	<main class="progress-block">
+		<div class="container">
 			<!-- First part of statistic(trainings diagram & lasr trainings) -->
-			<section class="statistic_block">
+			<section class="progress-block__trainings">
 				<!-- Count of trainings chart -->
-				<section class="trainingChart">
+				<section class="progress-block__trainings-chart">
 					<canvas id="trainingStatisticChart"></canvas>
 				</section>
 				<!-- Last trainings block -->
@@ -21,72 +21,72 @@ include "../templates/settings.php";
 			</section>
 
 			<!-- Second part of statistic(training info and muscles & physical diagram) -->
-			<section class="statistic_block second">
+			<section class="progress-block__info">
 				<!-- Training info -->
-				<section class="training">
+				<section class="progress-block__workouts">
 					<!-- Muscle groups diagram -->
-					<div class="info">
-						<section class="muscle_groups">
-							<h2>Группы мышц</h2>
-							<canvas id="muscleGroupsChart"></canvas>
+					<div class="progress-block__workouts-info">
+						<section class="progress-block__muscle-groups">
+							<h2 class="progress-block__muscle-groups-title">Группы мышц</h2>
+							<canvas class="progress-block__muscle-groups-chart" id="muscleGroupsChart"></canvas>
 						</section>
 						<!-- Statistic info -->
-						<section class="statistic">
-							<p>Тренировки: <span>156</span></p>
-							<p>Время: <span>1247 мин</span></p>
-							<p>Программы: <span>3</span></p>
-							<p>Упражнений: <span>129</span></p>
+						<section class="progress-block__workouts-statistic">
+							<p class="progress-block__workouts-statistic-item">Тренировки: <span>156</span></p>
+							<p class="progress-block__workouts-statistic-item">Время: <span>1247 мин</span></p>
+							<p class="progress-block__workouts-statistic-item">Программы: <span>3</span></p>
+							<p class="progress-block__workouts-statistic-item">Упражнений: <span>129</span></p>
 						</section>
 					</div>
 					<!-- Current info -->
-					<section class="physical_info">
-						<p>Вес: 80 кг</p>
-						<p>Рост: 180 см</p>
-						<button>Добавить<img src="../img/add.svg" alt=""></button>
+					<section class="progress-block__physical-info">
+						<p class="progress-block__physical-info-item">Вес: 80 кг</p>
+						<p class="progress-block__physical-info-item">Рост: 180 см</p>
+						<button class="button-text progress-block__physical-info-button">Добавить<img src="../img/add.svg" alt=""></button>
 					</section>
 				</section>
 				<!-- Physical block -->
-				<section class="physical_data">
+				<section class="progress-block__physical-data">
 					<!-- Navigation -->
-					<nav>
+					<nav class="progress-block__physical-data-navigation">
 						<!-- Year & month & week -->
-						<select name="" id="">
+						<select class="progress-block__physical-data-select" name="" id="">
 							<option value="value1" selected>Год</option>
 							<option value="value2">Месяц</option>
 							<option value="value3">Неделя</option>
 						</select>
 						<!-- Button to other physic(weight or length) -->
-						<button>РОСТ</button>
+						<button class="button-text progress-block__physical-data-button">РОСТ</button>
 					</nav>
 					
 					<!-- Diagram swiper -->
-					<swiper-container class="mySwiper" navigation="true">
-						<swiper-slide>
-							<div class="chart">
-								<canvas id="weightDataChart"></canvas>
+					<swiper-container class="progress-block__physical-data-swiper" navigation="true">
+						<swiper-slide class="progress-block__physical-data-slide">
+							<div class="progress-block__physical-data-chart">
+								<canvas id="weightDataChart_1"></canvas>
 							</div>
 						</swiper-slide>
-						<swiper-slide>
-							<div class="chart">
-								<canvas id="lengthDataChart"></canvas>
+						<swiper-slide class="progress-block__physical-data-slide">
+							<div class="progress-block__physical-data-chart">
+								<canvas id="weightDataChart_2"></canvas>
 							</div>
 						</swiper-slide>
 					</swiper-container>
 				</section>
 			</section>
-			<section class="programm_progress">
+			<section class="progress-block__programm">
 				<!-- Progress line and count of percent -->
-				<div class="progress_bar">
-				  <h2>Моя программа</h2>
-				  <div class="info">
-					<div class="percents">
-						<p>40%</p>
-						<div class="finish"></div>
-					  </div>
-					  <a href="my_program.php"><img src="../img/my_programm_black.svg" alt=""></a>
+				<div class="progress-block__programm-progress">
+				  <h2 class="progress-block__programm-title">Моя программа</h2>
+				  <div class="progress-block__programm-info">
+					<div class="progress-block__programm-line">
+						<p class="progress-block__programm-percents">40%</p>
+						<div class="progress-block__programm-finish" class="finish"></div>
+					</div>
+					<a class="progress-block__programm-button" href="my_program.php"><img src="../img/my_programm_black.svg" alt=""></a>
 				  </div>
 				</div>
-			  </section>
+			</section>
 		</div>
 	</main>
 
