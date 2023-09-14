@@ -172,9 +172,9 @@ include "../templates/settings.php";
 
 	<script>
         // Button to see exercise info
-        let	InfoExerciseButton = document.querySelectorAll('.c_workout .exercise_item .info');
-        let closeInfoExerciseButton = document.querySelectorAll('.c_workout .exercise_item .info_close');
-        let infoBlock = document.querySelectorAll('.c_workout .exercise_item .info_block');
+        let	InfoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
 
         for(let i = 0; i < InfoExerciseButton.length; i++){
             InfoExerciseButton[i].addEventListener('click', function(){
