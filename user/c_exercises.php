@@ -211,7 +211,7 @@ var_dump($_SESSION);
 						{{ button_featured }}
 					</div>
 				</section>
-								<form method="post" class="info">
+				<form method="post" class="info">
 					<div>
 						<label for="c_exercise_circles">Количество подходов: </label>
 						<input type="number" id="c_exercise_circles" name="approaches">
