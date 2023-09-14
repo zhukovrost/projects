@@ -121,7 +121,7 @@ $user_data->set_program($conn);
             <?php } else { ?>
                 <p>Нет тренировки</p>
             <?php } ?>
-            <section class="workouts-other">
+            <section class="workout-other">
                 <!-- Friends' workouts -->
                 <section class="friends-block">
                     <!-- Title and button to search friends -->
@@ -139,9 +139,9 @@ $user_data->set_program($conn);
                 </section>
                 <?php $user_data->print_workout_history($conn); ?>
                 <!-- Buttons favorite workouts and my program -->
-                <section class="workouts-other__buttons">
-                    <a class="button-text workouts-other__button" href=""><p>Избранное</p> <img src="../img/favorite_white.svg" alt=""></a>
-                    <a class="button-text workouts-other__button" href="c_program.php"><p>Моя программа</p> <img src="../img/my_programm.svg" alt=""></a>
+                <section class="workout-other__buttons">
+                    <a class="button-text workout-other__button" href=""><p>Избранное</p> <img src="../img/favorite_white.svg" alt=""></a>
+                    <a class="button-text workout-other__button" href="my_program.php"><p>Моя программа</p> <img src="../img/my_programm.svg" alt=""></a>
                 </section>
             </section>
         </div>

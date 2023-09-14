@@ -1198,7 +1198,7 @@
 
 
 /* ===Other workouts info=== */
-.workouts-other{
+.workout-other{
     width: 50vw;
     overflow: hidden;
     margin-left: 20px;
@@ -1206,20 +1206,20 @@
 
 
 /* Buttons favorite workouts and my program */
-.workouts-other__buttons{
+.workout-other__buttons{
     display: flex;
     justify-content: space-around;
     padding-bottom: 15px;
 }
 
-.workouts-other__button{
+.workout-other__button{
     width: fit-content;
     font-size: 25px;
     padding: 5px 10px 5px 15px;
     margin-right: 15px;
 }
 
-.workouts-other__button img{
+.workout-other__button img{
     margin-left: 10px;
     width: 30px;
     height: 30px;
@@ -1229,23 +1229,23 @@
 
 
 /* ==============MY PROGRAM PAGE============== */
-.my_program{
-    margin-top: 50px;
+.my-program .container{
+    padding-top: 50px;
 }
 
 /* Choose date of workouts */
-.my_program .day_workouts .date{
+.day-workouts__date{
     display: flex;
     float: right;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.my_program .day_workouts .date h1{
+.day-workouts__date-title{
     font-size: 25px;
 }
 
-.my_program .day_workouts .date input{
+.day-workouts__date-input{
     margin-left: 10px;
     font-size: 25px;
     background-color: #ffffff;
@@ -1254,27 +1254,28 @@
 }
 
 /* Swiper of day workouts */
-.my_program .day_workouts .cover{
+.day-workouts__swiper{
     display: flex;
     align-items: center;
     width: 100%;
 }
 
 /* slide */
-.my_program .day_workouts .cover swiper-slide{
+.day-workouts__slide{
     display: flex;
     justify-content: space-around;
     padding: 0 40px 10px;
 }
 
 /* Day of week */
-.my_program .cover .item h3{
+.day-workouts__card-title{
     font-size: 18px;
     color: #828282;
 }
 
 /* Content of day workout */
-.my_program .cover .item .content{
+.day-workouts__card-content{
+    height: 100%;
     display: table-cell;
     vertical-align:middle;
     background-color: #ffffff;
@@ -1285,17 +1286,17 @@
 }
 
 /* Workout title */
-.my_program .cover .item .content h2{
+.day-workouts__card-name{
     font-size: 21px;
 }
 
 /* Muscle groups */
-.my_program .cover .item .content p{
+.day-workouts__card-item{
     font-size: 21px;
     margin-bottom: 10px;
 }
 
-.my_program .cover .item .content p span{
+.day-workouts__card-item span{
     font-size: 22px;
     background-color: rgba(236, 236, 236, 1);
     padding: 1px 7px;
@@ -1305,7 +1306,7 @@
 }
 
 /* Buttons edit, more and image(complete or not) */
-.my_program .cover .item .content .buttons{
+.day-workouts__card-buttons{
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -1313,36 +1314,25 @@
     border-top: 1px solid #CECECE;
 }
 
-.my_program .cover .item .content button{
-    display: flex;
-    align-items: center;
-    background-color: #272727;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
-    font-size: 25px;
+.day-workouts__card-button{
+    font-size: 18px;
     padding: 5px 10px;
     margin-right: 15px;
-    transition: .1s ease-in-out;
 }
 
-.my_program .cover .item .content button img{
+.day-workouts__card-button img{
     width: 25px;
     height: 25px;
 }
 
-.my_program .cover .item .content button:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-    background-color: #000000;
-}
-
-.my_program .cover .item .content img{
+.day-workouts__card-img{
     width: 30px;
     height: 30px;
     margin: auto 0;
 }
 
 /* Title 'Выходной' */
-.my_program .cover .item .day_off{
+.day-workouts__card-day-off{
     display: flex;
     margin-top: auto;
     align-items: center;
@@ -1355,15 +1345,15 @@
 
 
 /* Info about program */
-.my_program .info{
+.my-program__info{
     display: flex;
     justify-content: space-between;
     margin: 20px 50px 20px;
 }
 
 /* Statistic of my_program */
-.my_program .info .statistic{
-    width: 100%;
+.my-program__statistic{
+    width: 75%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -1375,19 +1365,19 @@
 }
 
 /* Muscle groups chart */
-.my_program .info .muscle_groups{
+.my-program__muscle-groups{
     text-align: center;
     width: 30%;
 }
 
-.my_program .info .muscle_groups h2{
+.my-program__muscle-groups-title{
     font-size: 25px;
     font-weight: 500;
     transform: translateY(40px);
 }
 
 /* Content of workouts progress */
-.my_program .info .content{
+.my-program__statistic-content{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1395,17 +1385,17 @@
 }
 
 /* All workouts count */
-.my_program .info .content .all{
+.my-program__statistic-all{
     margin-bottom: 25px;
     border-bottom: 1px solid #CECECE;
 }
 
-.my_program .info .content .all p{
+.my-program__statistic-all-item{
     font-size: 27px;
     margin-bottom: 15px;
 }
 
-.my_program .info .content .all span{
+.my-program__statistic-all-item span{
     background-color: rgba(236, 236, 236, 1);
     border: 1px solid #C6C6C6;
     padding: 1px 15px;
@@ -1415,14 +1405,14 @@
 }
 
 /* Progress of program */
-.my_program .info .content .progress{
+.my-program__progress{
     width: 100%;
     display: flex;
     text-align: center;
     justify-content: space-between;
 }
 
-.my_program .info .content .progress .item div{
+.my-program__progress-percent{
     width: fit-content;
     font-size: 25px;
     font-weight: 600;
@@ -1433,17 +1423,17 @@
     box-shadow: 0px 2px 0px 0px #00C91D;
 }
 
-.my_program .info .content .progress .item h3{
+.my-program__progress-item-title{
     font-size: 23px;
     margin-bottom: 15px;
 }
 
-.my_program .info .content .progress .item p{
+.my-program__progress-item-text{
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.my_program .info .content .progress .item p span{
+.my-program__progress-item-text span{
     background-color: rgba(236, 236, 236, 1);
     border: 1px solid #C6C6C6;
     padding: 1px 12px;
@@ -1514,103 +1504,10 @@
 
 }
 
-/* Last trainings block */
-.progress_block .last_trainings{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 3px;
-    border: 1px solid #C6C6C6;
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-    padding-top: 40px;
-    padding-right: 5px;
+.progress_block .last-trainings{
     width: 40%;
-}
-
-/* Last training content */
-.progress_block .last_trainings .content{
-    height: 100%;
-    padding: 0px 70px 10px 70px;
-    overflow: auto;
-}
-
-/* Title */
-.progress_block .last_trainings h2{
-    position: absolute;
-    top: 1%;
-    left: 2%;
-    font-size: 20px;
-    color: rgba(150, 150, 150, 1);
-    font-weight: 500;
-}
-
-/* Trainings content item */
-.progress_block .last_trainings .item{
-    display: flex;
-}
-
-/* Left part of last exercise item */
-.progress_block .last_trainings .item .left{
-    margin-right: 5vw;
-}
-
-/* Minutes & exercise & muscle groups & info button */
-.progress_block .last_trainings .item .left div{
-    display: flex;
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.progress_block .last_trainings .item .left div span{
-    font-weight: 700;
-}
-
-.progress_block .last_trainings .item .left div img{
-    margin-right: 5px;
-}
-
-/* Minutes & exercise & muscle groups & info button */
-.progress_block .last_trainings .item .right div{
-    display: flex;
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.progress_block .last_trainings .item .right div span{
-    font-weight: 700;
-}
-
-.progress_block .last_trainings .item .right div img{
-    margin-right: 5px;
-}
-
-/* Button 'Подробнее' for more info about exercise */
-.progress_block .last_trainings .item .right button{
-    background-color: #272727;
-    display: flex;
-    align-items: center;
-    color: #ffffff;
-    width: 100%;
-    text-align: center;
-    padding: 3px 7px 3px 12px;
-    transition: .1s ease-in-out;
-}
-
-.progress_block .last_trainings .item .right button:hover{
-    background-color: #000000;
-}
-
-.progress_block .last_trainings .item .right button img{
-    margin-left: 10px;
-}
-
-/* Decoration line */
-.progress_block .last_trainings .content .line{
-    height: 1px;
-    background-color: #C6C6C6;
-    margin-bottom: 20px;
+    margin: 0px;
+    max-height: 49vh;
 }
 
 
@@ -2950,63 +2847,9 @@
 
 
 /* Friends' workouts */
-.c_program .friends{
+.c_program .friends-block{
     width: 50%;
-    padding: 10px 20px;
-    margin: 30px auto 20px;
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 3px 3px 0px 0px #9A9A9A;
-    border: 1px solid #C6C6C6;
-    border-radius: 3px;
-    overflow-x: auto;
-}
-
-/* Title and button to search friends */
-.c_program .friends h1{
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 20px;
-    color: rgba(130, 130, 130, 1);
-}
-
-.c_program .friends .title{
-    display: flex;
-    justify-content: space-between;
-}
-
-.c_program .friends .title img{
-    width: 35px;
-    height: 35px;
-    opacity: 0.8;
-}
-
-.c_program .friends .title img:hover{
-    opacity: 1;
-}
-
-/* Friends' workout swiper */
-.c_program .friends .content{
-    width: 100%;
-    display: flex;
-    margin-top: 10px;
-}
-
-/* slide */
-.c_program .friends swiper-slide{
-    display: flex;
-    padding: 0px 30px;
-}
-
-/* friend item */
-.c_program .friends .item{
-    text-align: center;
-    width: 7vw;
-    margin: 0px 20px;
-}
-
-.c_program .friends .item p{
-    font-size: 20px;
-    color: #000000;
+    margin: 0 auto;
 }
 
 

@@ -631,6 +631,15 @@ footer{
     opacity: 1;
 }
 
+
+.friends-block__cover{
+    display: flex;
+    align-items: center;
+    margin: 20px 10px 10px 10px;
+    max-height: 35vh;
+    overflow: auto;
+}
+
 /* Friends' workout swiper */
 .friends-block__swiper{
     width: 100%;

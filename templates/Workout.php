@@ -82,29 +82,29 @@ class Workout {
     }
 
     public function print_workout_info($day, $expand_buttons=0){ ?>
-        <section class="item">
-            <h3><?php echo get_day($day); ?></h3>
-            <div class="content">
-                <h2><?php echo $this->name; ?></h2>
+        <section class="day-workouts__card">
+            <h3 class="day-workouts__card-title"><?php echo get_day($day); ?></h3>
+            <div class="day-workouts__card-content">
+                <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
                 <?php if ($this->holiday){ ?>
-                    <div class="day_off">Выходной</div>
+                    <div class="day-workouts__card-day-off">Выходной</div>
                 <?php }else{ ?>
-                    <p>Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
-                    <p>Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
-                    <p>Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
-                    <p>Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
-                    <p>Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
-                    <p>Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
                     <?php if ($expand_buttons == 1){ ?>
-                    <div class="buttons">
-                        <button><img src="../img/more_white.svg" alt=""></button>
-                        <button><img src="../img/edit.svg" alt=""></button>
-                        <img src="../img/done.svg" alt="">
+                    <div class="day-workouts__card-buttons">
+                        <button class="button-img day-workouts__card-button"><img src="../img/more_white.svg" alt=""></button>
+                        <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
+                        <img class="day-workouts__card-img" src="../img/done.svg" alt="">
                     </div>
                 <?php } else if ($expand_buttons == 2){ ?>
-                    <div class="buttons">
-                        <button><img src="../img/edit.svg" alt=""></button>
-                        <button>Начать</button>
+                    <div class="day-workouts__card-buttons">
+                        <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
+                        <button class="button-text day-workouts__card-button">Начать</button>
                     </div>
                 <?php }
                 }?>
