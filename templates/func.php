@@ -127,10 +127,6 @@ function print_workout_info_function($workout){
     }
     ?>
     <div class="muscle_groups">
-        <h2><?php echo $workout->name; ?></h2>
-        <?php if ($workout->holiday){ ?>
-            <div class="day_off">Выходной</div>
-        <?php }else{ ?>
             <p>Руки: <span><?php echo $muscles["arms"]; ?>%</span></p>
             <p>Ноги: <span><?php echo $muscles["legs"]; ?>%</span></p>
             <p>Грудь: <span><?php echo $muscles["chest"]; ?>%</span></p>
@@ -138,7 +134,7 @@ function print_workout_info_function($workout){
             <p>Пресс: <span><?php echo $muscles["press"]; ?>%</span></p>
             <p>Кардио: <span><?php echo $muscles["cardio"]; ?>%</span></p>
     </div>
-<?php }
+<?php
 }
 
 function busy_or_free($id){
