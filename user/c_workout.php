@@ -1,6 +1,7 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+$user_data->check_the_login();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,57 +16,21 @@ include "../templates/settings.php";
 				<!-- Exercises array -->
 				<section class="exercise_cover">
 					<!-- Exercise items -->
-					<section class="exercise-item exercise-item--workout">
-						<!-- Exercise info button -->
-						<button type="button"  class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
-						<!-- Info text -->
-						<div class="exercise-item__info-content">
-							<button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
-							<p class="exercise-item__info-text">{{ description }}</p>
-						</div>
-						<!-- Exercise muscle groups -->
-						<div class="exercise-item__muscle-groups">{{ muscle }}</div>
-						<!-- Exercise image -->
-						<img class="exercise-item__img" src="{{ image }}" alt="">
-						<!-- Decoration line -->
-						<div class="exercise-item__line"></div>
-						<!-- Exercise title -->
-						<h1 class="exercise-item__title">{{ name }}</h1>
-						<!-- Rating and difficult -->
-						<div class="exercise-item__statistic">
-							<div class="exercise-item__rating">
-								<p class="exercise-item__score">{{ rating }}</p>
-								<img class="exercise-item__star" src="../img/Star.svg" alt="">
-							</div>
-							<div class="exercise-item__difficult">
-								<p class="exercise-item__difficult-number">{{ difficulty }}</p>
-								<div class="exercise-item__difficult-item"></div>
-							</div>
-						</div>
-						<!-- Count of repetitions -->
-						<div class="exercise-item__caption">
-							<p class="exercise-item__caption-title">{{ reps }} x {{ approaches }}</p>
-						</div>
-					</section>
+					<?php
+                    foreach ($_SESSION["workout"] as $exercise){
+                        $exercise->print_it($conn);
+                    }
+                    ?>
 				</section>
 				<!-- Info about day workout -->
 				<section class="workout_info">
 					<!-- Muscle groups -->
-					<div class="muscle_groups">
-						<p>Руки: <span>70 %</span></p>
-						<p>Ноги: <span>70 %</span></p>
-						<p>Грудь: <span>70 %</span></p>
-						<p>Спина: <span>70 %</span></p>
-						<p>Пресс: <span>70 %</span></p>
-						<p>Кардио: <span>70 %</span></p>
-					</div>
+					<?php print_workout_info_function($_SESSION["workout"]); ?>
 					<!-- Decorative line -->
 					<div class="line"></div>
 					<!-- Exercise info -->
 					<div class="exercise">
-						<p>Упражнений: <span>15</span></p>
-						<p>Подходов: <span>15</span></p>
-						<p>Повторений: <span>15</span></p>
+						<p>Упражнений: <span><?php echo count($_SESSION["workout"]); ?></span></p>
 					</div>
 					<!-- Decorative line -->
 					<div class="line"></div>
@@ -79,8 +44,12 @@ include "../templates/settings.php";
 			<section class="other">
 				<section class="title">
 					<h1>Название:</h1>
-					<input type="text" placeholder="Название тренировки">
+					<input type="text" placeholder="Название тренировки" value="Моя тренировка">
 				</section>
+                <section class="title">
+                    <h2>Количество куругов</h2>
+                    <input type="number" value="1">
+                </section>
 				<form action="" class="days">
 					<h1>ДНИ НЕДЕЛИ</h1>
 					<section>

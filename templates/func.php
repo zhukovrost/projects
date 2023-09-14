@@ -103,3 +103,40 @@ function print_user_list($conn, $id_list){
         echo "</swiper-slide>";
     }
 }
+
+function print_workout_info_function($workout){
+    $muscles = array(
+        "arms" => 0,
+        "legs" => 0,
+        "press" => 0,
+        "back" => 0,
+        "chest" => 0,
+        "cardio" => 0,
+        "cnt" => 0
+    );
+    foreach ($workout as $exercise){
+        foreach ($exercise->muscles as $muscle){
+            $muscles[$muscle]++;
+            $muscles['cnt']++;
+        }
+    }
+    foreach ($muscles as $muscle=>$value){
+        if ($value != 0){
+            $muscles[$muscle] = round($value / $muscles['cnt'] * 100, 0);
+        }
+    }
+    ?>
+    <div class="muscle_groups">
+        <h2><?php echo $workout->name; ?></h2>
+        <?php if ($workout->holiday){ ?>
+            <div class="day_off">Выходной</div>
+        <?php }else{ ?>
+            <p>Руки: <span><?php echo $muscles["arms"]; ?>%</span></p>
+            <p>Ноги: <span><?php echo $muscles["legs"]; ?>%</span></p>
+            <p>Грудь: <span><?php echo $muscles["chest"]; ?>%</span></p>
+            <p>Спина: <span><?php echo $muscles["back"]; ?>%</span></p>
+            <p>Пресс: <span><?php echo $muscles["press"]; ?>%</span></p>
+            <p>Кардио: <span><?php echo $muscles["cardio"]; ?>%</span></p>
+    </div>
+<?php }
+}

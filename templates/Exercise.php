@@ -120,7 +120,7 @@ class User_Exercise extends Exercise {
     public $reps;
     public $approaches;
 
-    public function __construct($conn, $id, $reps, $approaches){
+    public function __construct($conn, $id = 0, $reps = 0, $approaches = 0) {
         parent::__construct($conn, $id);
         $this->reps = $reps;
         $this->approaches = $approaches;

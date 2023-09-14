@@ -12,7 +12,7 @@ if (isset($_POST['featured'])){
 }
 
 if (isset($_POST['reps']) && isset($_POST['approaches'])){
-    $user_exercise = new User_Exercise($conn, 0, $_POST['reps'], $_POST['approaches']);
+    $user_exercise = new User_Exercise($conn, $_POST["id"], $_POST['reps'], $_POST['approaches']);
     array_push($_SESSION['workout'], $user_exercise);
 }
 
@@ -21,9 +21,6 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 }else{
     $my = 1;
 }
-
-var_dump($_SESSION);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +31,7 @@ var_dump($_SESSION);
 	<!-- Exercise navigation -->
 	<nav class="exercise_nav">
 		<div class="container">
+            <a href="c_workout.php">Назад</a>
 			<!-- Buttons to (my / all) exercises -->
             <?php if ($my) { ?>
                 <a href="c_exercises.php?my=0">Все <img src="../img/arrow_white.svg" alt=""></a>
@@ -220,7 +218,7 @@ var_dump($_SESSION);
 						<label for="c_exercise_reps">Количество повторений: </label>
 						<input type="number" id="c_exercise_reps" name="reps">
 					</div>
-                    <input class="exercise_id" type="hidden" value="">
+                    <input class="exercise_id" name="id" type="hidden" value="">
 					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
 				</form>
 			</section>
