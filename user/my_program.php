@@ -21,16 +21,16 @@ $muscles = array(
 <?php inc_head(); ?>
 <body>
     <?php include "../templates/header.html" ?>
-    <main>
-        <div class="container my_program">
-            <section class="day_workouts">
-                <section class="date">
-                    <h1>Выберите дату:</h1>
-                    <input type="week">
+    <main class="my-program">
+        <div class="container">
+            <section class="day-workouts">
+                <section class="day-workouts__date">
+                    <h1 class="day-workouts__date-title">Выберите дату:</h1>
+                    <input class="day-workouts__date-input" type="week">
                 </section>
-                <swiper-container class="cover" navigation="true">
+                <swiper-container class="day-workouts__swiper" navigation="true">
                     <?php for ($j = 0; $j < $user_data->program->reps; $j++){ # $j = number of week doing program ?>
-                    <swiper-slide>
+                    <swiper-slide class="day-workouts__slide">
                         <?php for($i = 0; $i < 7; $i++){
                             $workout = $user_data->program->workouts[$i];
                             foreach ($workout->set_muscles() as $key=>$value){
@@ -43,41 +43,51 @@ $muscles = array(
                 </swiper-container>
             </section>
             <?php $diagram_muscles = json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>
-            <section class="info">
-                <section class="statistic">
-                    <section class="muscle_groups">
-                        <h2>Группы мышц</h2>
+            <section class="my-program__info">
+                <section class="my-program__statistic">
+                    <section class="my-program__muscle-groups">
+                        <h2 class="my-program__muscle-groups-title">Группы мышц</h2>
                         <canvas id="muscleGroupsChart"></canvas>
                     </section>
-                    <section class="content">
-                        <section class="all">
-                            <p>Всего тренировок: <span><?php echo $user_data->program->count_workouts(); ?></span></p>
-                            <p>Всего упражнений: <span><?php echo $user_data->program->count_exercises(); ?></span></p>
+                    <section class="my-program__statistic-content">
+                        <section class="my-program__statistic-all">
+                            <p class="my-program__statistic-all-item">Всего тренировок: <span><?php echo $user_data->program->count_workouts(); ?></span></p>
+                            <p class="my-program__statistic-all-item">Всего упражнений: <span><?php echo $user_data->program->count_exercises(); ?></span></p>
                         </section>
-                        <section class="progress">
-                            <div class="item">
-                                <div>
+                        <section class="my-program__progress">
+                            <div class="my-program__progress-item">
+                                <div class="my-program__progress-percent">
                                     69 %
                                 </div>
-                                <h3>Выполнен(но)</h3>
-                                <p>Тренировок: <span>23</span></p>
-                                <p>Упражнений: <span>23</span></p>
+                                <h3 class="my-program__progress-item-title">Выполнен(но)</h3>
+                                <p class="my-program__progress-item-text">Тренировок: <span>23</span></p>
+                                <p class="my-program__progress-item-text">Упражнений: <span>23</span></p>
                             </div>
-                            <div class="item">
-                                <div>
+                            <div class="my-program__progress-item">
+                                <div class="my-program__progress-percent">
                                     31 %
                                 </div>
-                                <h3>Осталось(ся)</h3>
-                                <p>Тренировок: <span>23</span></p>
-                                <p>Упражнений: <span>23</span></p>
+                                <h3 class="my-program__progress-item-title">Осталось(ся)</h3>
+                                <p class="my-program__progress-item-text">Тренировок: <span>23</span></p>
+                                <p class="my-program__progress-item-text">Упражнений: <span>23</span></p>
                             </div>
                         </section>
                     </section>
                 </section>
-                <?php
-                $user_data->set_subscriptions($conn);
-                print_user_list($conn, $user_data->subscriptions);
-                ?>
+                <section class="friends-block">
+                    <!-- Title and button to search friends -->
+                    <div class="friends-block__header">
+                        <h1 class="friends-block__header-title">Тренировки друзей</h1>
+                        <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
+                    </div>
+                    <!-- Friends' workout swiper -->
+                    <section class="friends-block__cover" navigation="true">
+                        <?php
+                        $user_data->set_subscriptions($conn);
+                        print_user_list($conn, $user_data->subscriptions);
+                        ?>
+                    </section>
+                </section>
             </section>
         </div>
     </main>
@@ -88,7 +98,7 @@ $muscles = array(
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Workout items
-        let workoutItemArr = document.querySelectorAll('.my_program .cover .item .content');
+        let workoutItemArr = document.querySelectorAll('.day-workouts__card-content');
 
         let maxWorkoutItemHeight = 0;
 

@@ -192,20 +192,20 @@ $user_data->check_the_login();
 					<button>Начать программу <img src="../img/arrow_white.svg" alt=""></button>
 				</section>
 			</section>
-			<section class="friends">
+			<section class="friends-block">
 				<!-- Title and button to search friends -->
-				<div class="title">
-					<h1>Программы друзей</h1>
-					<a href=""><img src="../img/search.svg" alt=""></a>
+				<div class="friends-block__header">
+					<h1 class="friends-block__header-title">Программы друзей</h1>
+					<a class="friends-block__header-button img" href=""><img src="../img/search.svg" alt=""></a>
 				</div>
 				<!-- Friends' workout swiper -->
-				<swiper-container class="content swiper_friends" navigation="true">
+				<swiper-container class="friends-block__swiper" navigation="true">
 					<!-- slide -->
                     <?php
                     $user_data->set_subscriptions($conn);
                     print_user_list($conn, $user_data->subscriptions);
                     ?>
-					</swiper-container>
+				</swiper-container>
 			</section>
 		</div>
 
