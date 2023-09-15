@@ -75,6 +75,9 @@ class User {
     public function is_admin(){
         return $this->status == "admin";
     }
+    public function get_status(){
+        return $this->status;
+    }
 
     public function check_the_login($header=true, $way="../"){
         if (!$this->get_auth()){

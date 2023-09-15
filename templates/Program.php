@@ -7,7 +7,7 @@ class Program {
     public $rating;
     public $workouts=array();
     public $muscles=array();
-    public $reps;
+    public $reps=1;
 
     public function __construct($conn, $id){
         $select_sql = "SELECT * FROM programs WHERE id=$id";
@@ -17,7 +17,6 @@ class Program {
                 $this->name = $item['name'];
                 $this->program = json_decode($item['program']);
                 $this->rating = $item['rating'];
-                $this->reps = $item['reps'];
             }
         }else{
             echo $conn->error;

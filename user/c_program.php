@@ -6,6 +6,47 @@ $user_data->check_the_login();
 if (empty($_SESSION["program"])){
     $_SESSION["program"] = array(0, 0, 0, 0, 0, 0, 0);
 }
+
+if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
+    if (empty($_POST["date_start"])){
+        $date_start = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
+    }else{
+        $date_ex = explode('-', $_POST["date_start"]);
+        $date_start = mktime(0, 0, 0, $date_ex[1], $date_ex[2], $date_ex[0]);
+    }
+
+    // insert_program and user_to_program and news
+
+    $sql = "INSERT INTO programs (name, program, creator) VALUES ('".$_POST["name"]."', '".json_encode($_SESSION["program"])."', ".$user_data->get_id().")";
+    if ($conn->query($sql)){
+        $program_id = mysqli_insert_id($conn);
+        if ($user_data->get_status() == "user") {
+            $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user_data->get_id().", $program_id, $date_start, ".$_POST['weeks'].")";
+            $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу.', ".$user_data->get_id().", ".time().", 0)";
+            if ($conn->query($sql2) && $conn->query($sql3)){
+                header("Location: my_program.php");
+            }else{
+                echo $conn->error;
+            }
+        } else if ($user_data->get_status() == "coach") {
+            $users = $_POST["users"];
+            if (count($users) > 0){
+                foreach ($users as $user){
+                    $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user.", $program_id, $date_start, ".$_POST['weeks'].")";
+                    $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу.', ".$user.", ".time().", 0)";
+                    if (!$conn->query($sql2) || !$conn->query($sql3)){
+                        echo $conn->error;
+                    }
+                }
+                header("Location: profile.php");
+            }else{
+                echo "Ошибка: вы не выбрали пользователя";
+            }
+        }
+    }else{
+        echo $conn->error;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,117 +64,6 @@ if (empty($_SESSION["program"])){
                         $workout->print_workout_info($i);
                     } ?>
 			</section>
-
-			<!-- <section class="cover" navigation="true">
-				<section class="item">
-					<h3>Понедельник</h3>
-					<div class="content">
-						<h2>День рук</h2>
-						<p>Руки: <span>70 %</span></p>
-						<p>Ноги: <span>70 %</span></p>
-						<p>Грудь: <span>70 %</span></p>
-						<p>Спина: <span>70 %</span></p>
-						<p>Пресс: <span>70 %</span></p>
-						<p>Кардио: <span>70 %</span></p>
-						<div class="buttons">
-							<button><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/edit.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-						</div>
-					</div>
-				</section>
-				<section class="item">
-					<h3>Понедельник</h3>
-					<div class="content">
-						<h2>День рук</h2>
-						<p>Руки: <span>70 %</span></p>
-						<p>Ноги: <span>70 %</span></p>
-						<p>Грудь: <span>70 %</span></p>
-						<p>Спина: <span>70 %</span></p>
-						<p>Пресс: <span>70 %</span></p>
-						<p>Кардио: <span>70 %</span></p>
-						<div class="buttons">
-							<button><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/edit.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-						</div>
-					</div>
-				</section>
-				<section class="item">
-					<h3>Понедельник</h3>
-					<div class="content">
-						<h2>День рук</h2>
-						<p>Руки: <span>70 %</span></p>
-						<p>Ноги: <span>70 %</span></p>
-						<p>Грудь: <span>70 %</span></p>
-						<p>Спина: <span>70 %</span></p>
-						<p>Пресс: <span>70 %</span></p>
-						<p>Кардио: <span>70 %</span></p>
-						<div class="buttons">
-							<button><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/edit.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-						</div>
-					</div>
-				</section>
-				<section class="item">
-					<h3>Понедельник</h3>
-					<div class="content">
-						<h2>День рук</h2>
-						<p>Руки: <span>70 %</span></p>
-						<p>Ноги: <span>70 %</span></p>
-						<p>Грудь: <span>70 %</span></p>
-						<p>Спина: <span>70 %</span></p>
-						<p>Пресс: <span>70 %</span></p>
-						<p>Кардио: <span>70 %</span></p>
-						<div class="buttons">
-							<button><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/edit.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-						</div>
-					</div>
-				</section>
-				<section class="item">
-					<h3>Понедельник</h3>
-					<div class="content">
-						<h2>День рук</h2>
-						<p>Руки: <span>70 %</span></p>
-						<p>Ноги: <span>70 %</span></p>
-						<p>Грудь: <span>70 %</span></p>
-						<p>Спина: <span>70 %</span></p>
-						<p>Пресс: <span>70 %</span></p>
-						<p>Кардио: <span>70 %</span></p>
-						<div class="buttons">
-							<button><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/edit.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-						</div>
-					</div>
-				</section>
-				<section class="item">
-					<h3>Понедельник</h3>
-					<div class="content">
-						<div class="day_off">Выходной</div>
-					</div>
-				</section>
-				<section class="item">
-					<h3>Понедельник</h3>
-					<div class="content">
-						<h2>День ффффффффф</h2>
-						<p>Руки: <span>70 %</span></p>
-						<p>Ноги: <span>70 %</span></p>
-						<p>Грудь: <span>70 %</span></p>
-						<p>Спина: <span>70 %</span></p>
-						<p>Пресс: <span>70 %</span></p>
-						<p>Кардио: <span>70 %</span></p>
-						<div class="buttons">
-							<button><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/edit.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-						</div>
-					</div>
-				</section>
-			</section> -->
 			<section class="create_block">
 				<section class="workouts_block">
 					<section class="list">
@@ -161,15 +91,16 @@ if (empty($_SESSION["program"])){
 						<button><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></button>
 					</div>
 				</section>
-				<section class="duration">
-					<h4>Укажите продолжительность программы<br><span>(по желанию)</span></h4>
+				<form class="duration" method="post">
+					<h4>Укажите продолжительность и название программы<br></h4>
+                    <input type="text" name="name">
 					<div>
-						<input type="number" placeholder="Количество дней">
-						<p>начало с</p>
-						<input type="date">
+						<input type="number" placeholder="Количество недель" name="weeks">
+						<p>начать с</p>
+                        <input type="date" name="date_start">
 					</div>
 					<button>Начать программу <img src="../img/arrow_white.svg" alt=""></button>
-				</section>
+				</form>
 			</section>
 			<section class="friends-block">
 				<!-- Title and button to search friends -->
