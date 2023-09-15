@@ -6,6 +6,8 @@ if (!$user_data->set_program($conn)){
     header("Location: c_program_info.php");
 }
 $user_data->program->set_workouts($conn);
+$user_data->program->set_additional_data($conn, $user_data->get_id());
+
 $muscles = array(
     "arms" => 0,
     "legs" => 0,
@@ -15,6 +17,9 @@ $muscles = array(
     "cardio" => 0,
     "cnt" => 0
 );
+
+$cnt = 0;
+$flag = false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,15 +34,35 @@ $muscles = array(
                     <input class="day-workouts__date-input" type="week">
                 </section>
                 <swiper-container class="day-workouts__swiper" navigation="true">
-                    <?php for ($j = 0; $j < $user_data->program->reps; $j++){ # $j = number of week doing program ?>
+                    <?php for ($j = time(); $j < $user_data->program->date_start + $user_data->program->weeks * 604800; $j += 604800){
+                        $days = 7;
+                        if ($j + 604800 >= $user_data->program->date_start + $user_data->program->weeks * 604800){
+                            $flag = true;
+                        }
+                        if ($flag){
+                            $days = $cnt;
+                        }
+                        ?>
                     <swiper-slide class="day-workouts__slide">
-                        <?php for($i = 0; $i < 7; $i++){
-                            $workout = $user_data->program->workouts[$i];
-                            foreach ($workout->set_muscles() as $key=>$value){
-                                $muscles[$key] += $value;
+                        <?php
+                        for($i = 0; $i < $days; $i++){
+                            if ($user_data->program->date_start <= ($j + $i * 86400)){
+                                $workout = $user_data->program->workouts[$i];
+                                foreach ($workout->set_muscles() as $key=>$value){
+                                    $muscles[$key] += $value;
+                                }
+                                $workout->print_workout_info($i, 1);
+                            }else{
+                                echo render(array("{{ day }}" => get_day($i)), "../templates/out_of_workout.html");
+                                $cnt++;
                             }
-                            $workout->print_workout_info($i, 1);
-                        } ?>
+                        }
+                        if ($flag){
+                            for ($i = $cnt; $i < 7; $i++){
+                                echo render(array("{{ day }}" => get_day($i)), "../templates/out_of_workout.html");
+                            }
+                        }
+                        ?>
                     </swiper-slide>
                     <?php } ?>
                 </swiper-container>

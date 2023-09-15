@@ -7,7 +7,8 @@ class Program {
     public $rating;
     public $workouts=array();
     public $muscles=array();
-    public $reps=1;
+    public $weeks=1;
+    public $date_start;
 
     public function __construct($conn, $id){
         $select_sql = "SELECT * FROM programs WHERE id=$id";
@@ -61,4 +62,17 @@ class Program {
             ?>
         </section>
     <?php }
+
+    public function set_additional_data($conn, $user){
+        $sql = "SELECT date_start, weeks FROM program_to_user WHERE user=$user AND (date_start + 604800 * weeks) > ".time()." LIMIT 1";
+        if ($result = $conn->query($sql)){
+            foreach ($result as $times){
+                $this->date_start = $times['date_start'];
+                $this->weeks = $times["weeks"];
+            }
+        }else{
+            echo $conn->error;
+        }
+
+    }
 }
