@@ -311,7 +311,7 @@ class User {
             }
             $sql = substr($sql, 0, -4);
         }
-        $sql .= ") ORDER BY date";
+        $sql .= ") ORDER BY news.date DESC";
         if ($result = $conn->query($sql)){
             return $result;
         }else{
@@ -321,7 +321,7 @@ class User {
     }
 
     public function get_my_news($conn){
-        $sql = "SELECT news.message, news.date, news.personal, avatars.file, users.name, users.surname, users.login FROM ((news INNER JOIN users ON news.user=users.id) INNER JOIN avatars ON users.avatar=avatars.id) WHERE user=$this->id ORDER BY date";
+        $sql = "SELECT news.message, news.date, news.personal, avatars.file, users.name, users.surname, users.login FROM ((news INNER JOIN users ON news.user=users.id) INNER JOIN avatars ON users.avatar=avatars.id) WHERE user=$this->id ORDER BY date DESC";
         if ($result = $conn->query($sql)){
             return $result;
         }else{

@@ -39,55 +39,7 @@ $user_data->set_program($conn);
                                     <?php $workout->print_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
-                                <section class="workouts-card__info">
-                                    <!-- Muscle groups -->
-                                    <div class="workouts-card__muscle-groups">
-                                        <div class="workouts-card__info-item">
-                                            <p>Руки:</p>
-                                            <span><?php echo $workout->muscles["arms"]; ?>%</span>
-                                        </div>
-                                        <div class="workouts-card__info-item">
-                                            <p>Ноги:</p>
-                                            <span><?php echo $workout->muscles["legs"]; ?>%</span>
-                                        </div>
-                                        <div class="workouts-card__info-item">
-                                            <p>Грудь:</p>
-                                            <span><?php echo $workout->muscles["chest"]; ?>%</span>
-                                        </div>
-                                        <div class="workouts-card__info-item">
-                                            <p>Спина:</p>
-                                            <span><?php echo $workout->muscles["back"]; ?>%</span>
-                                        </div>
-                                        <div class="workouts-card__info-item">
-                                            <p>Пресс:</p>
-                                            <span><?php echo $workout->muscles["press"]; ?>%</span>
-                                        </div>
-                                        <div class="workouts-card__info-item">
-                                            <p>Кардио:</p>
-                                            <span><?php echo $workout->muscles["cardio"]; ?>%</span>
-                                        </div>
-                                    </div>
-                                    <!-- Decorative line -->
-                                    <div class="workouts-card__info-line"></div>
-                                    <!-- Exercise info -->
-                                    <div class="workouts-card__repeats-info">
-                                        <div class="workouts-card__info-item">
-                                            <p>Упражнений:</p>
-                                            <span><?php echo count($workout->exercises); ?></span>
-                                        </div>
-                                        <div class="workouts-card__info-item">
-                                            <p>Кругов:</p>
-                                            <span><?php echo $workout->loops; ?></span>
-                                        </div>
-                                    </div>
-                                    <!-- Decorative line -->
-                                    <div class="workouts-card__info-line"></div>
-                                    <!-- Buttons edit and start -->
-                                    <div class="workouts-card__buttons">
-                                        <button class="button-img workouts-card__edit-button"><img src="../img/edit.svg" alt=""></button>
-                                        <button class="button-text workouts-card__start-button">Начать</button>
-                                    </div>
-                                </section>
+                                <?php $workout->print_workout_info(date("N"), 2, $user_data->get_id()); ?>
                             </section>
                         </section>
                     <?php } ?>
@@ -112,7 +64,7 @@ $user_data->set_program($conn);
                             <section class="workouts-card__exercises-cover">
                                 <?php $workout->print_exercises($conn); ?>
                             </section>
-                            <?php $workout->print_workout_info(date("N"), 2); ?>
+                            <?php $workout->print_workout_info(date("N"), 2, $user_data->get_id()); ?>
                         </section>
                     </section>
                     <?php } ?>
@@ -141,7 +93,7 @@ $user_data->set_program($conn);
                 <!-- Buttons favorite workouts and my program -->
                 <section class="workout-other__buttons">
                     <a class="button-text workout-other__button" href=""><p>Избранное</p> <img src="../img/favorite_white.svg" alt=""></a>
-                    <a class="button-text workout-other__button" href="c_program.php"><p>Моя программа</p> <img src="../img/my_programm.svg" alt=""></a>
+                    <a class="button-text workout-other__button" href="my_program.php"><p>Моя программа</p> <img src="../img/my_programm.svg" alt=""></a>
                 </section>
             </section>
         </div>

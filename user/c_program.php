@@ -38,6 +38,8 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
                         echo $conn->error;
                     }
                 }
+                $_SESSION["workout"] = array();
+                $_SESSION["program"] = array();
                 header("Location: profile.php");
             }else{
                 echo "Ошибка: вы не выбрали пользователя";

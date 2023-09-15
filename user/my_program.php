@@ -19,6 +19,8 @@ $muscles = array(
 );
 
 $cnt = 0;
+$cnt_workouts_done = 0;
+$cnt_workouts_left = 0;
 $flag = false;
 ?>
 <!DOCTYPE html>
@@ -51,7 +53,13 @@ $flag = false;
                                 foreach ($workout->set_muscles() as $key=>$value){
                                     $muscles[$key] += $value;
                                 }
-                                $workout->print_workout_info($i, 1);
+                                if ($workout->print_workout_info($i, 1, $user_data->get_id())){
+                                    if ($workout->is_done($conn, $user_data->get_id(), $j + $i * 86400)){
+                                        $cnt_workouts_done++;
+                                    }else{
+                                        $cnt_workouts_left++;
+                                    }
+                                }
                             }else{
                                 echo render(array("{{ day }}" => get_day($i)), "../templates/out_of_workout.html");
                                 $cnt++;
