@@ -9,15 +9,33 @@ $user_data->set_program($conn);
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body>
+<body class="workout-session">
     <header class="workout-session__header">
         <a href="../index.php" class="header__item header__item--logo header__item--logo--workout">
             <img src="../img/logo.svg" alt="">
             <p>Training</p>
         </a>
-        <nav>
+        <section class="workout-session__navigation">
+            <!-- Progress of test(in percents) -->
+            <section class="workout-session__progress">
+                <!-- Progress line and count of percent -->
+                <div class="workout-session__progress-bar">
+                    <h2 class="workout-session__progress-title">Progress</h2>
+                    <div class="workout-session__progress-percents">
+                        <p class="workout-session__percents-number">0%</p>
+                        <div class="workout-session__finish-line"></div>
+                    </div>
+                </div>
+                <!-- Navigation of test -->
+                <nav class="workout-session__navigation">
 
-        </nav>
+                </nav>
+            </section>
+            <!-- Timer(rest time) -->
+            <div class="workout-session__time">
+                00:00
+            </div>
+        </section>
     </header>
     
     <main class="session-exercises">
@@ -92,7 +110,7 @@ $user_data->set_program($conn);
     <footer class="workout-session-footer">
         <h1 class="workout-session-footer__title">Осталось:</h1>
         <h2 class="workout-session-footer__item"><span>9</span> упражнений</h2>
-        <h2 class="workout-session-footer__item"><span>9</span> упражнений</h2>
+        <h2 class="workout-session-footer__item"><span>9</span> подходов</h2>
         <button class="button-text workout-session-footer__button">Завершить</button>
     </footer>
     
