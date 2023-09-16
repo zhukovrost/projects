@@ -110,7 +110,7 @@ class Workout {
                         <?php if ($this->creator == $user_id){ ?>
                             <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
                         <?php } ?>
-                        <button class="button-text day-workouts__card-button">Начать</button>
+                        <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
                     </div>
                 <?php }
                 }?>

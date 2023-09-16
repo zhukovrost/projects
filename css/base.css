@@ -32,6 +32,12 @@ body {
     opacity: 0.85;
 }
 
+.header__item--logo--workout{
+    display: block;
+    width: fit-content;
+    margin-right: 0vw;
+}
+
 
 .header__item--logo:hover{
     opacity: 1;
@@ -92,7 +98,7 @@ body {
 
 
 /* ===HEADER===*/
-header{
+.main-header{
     display: flex;
     justify-content: space-between;
     align-items:end;
@@ -118,7 +124,7 @@ header{
 
 
 /* =========FOOTER========== */
-footer{
+.main_footer{
     position: absolute;
     left: 5%;
     bottom: 0%;
