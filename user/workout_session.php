@@ -115,5 +115,165 @@ $user_data->set_program($conn);
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+    <script>
+        // Navigation
+        let questionsArr = document.querySelectorAll('.exercise-item');
+
+        
+        const testNavigation = document.querySelector('.workout-session__navigation');
+        const progressBar = document.querySelector('.workout-session__finish-line');
+        let percents = document.querySelector('.workout-session__percents-number');
+
+        for(let i = 0; i < questionsArr.length; i++){
+            let newElem = document.createElement('button');
+            newElem.classList.add('button-text');
+            newElem.classList.add('workout-session__navigation-button');
+            newElem.innerHTML = `${i+1}`;
+            testNavigation.appendChild(newElem);
+        }
+
+        const navigationButtons = document.querySelectorAll('.workout-session__navigation-button');
+
+        for(let i = 0; i < navigationButtons.length; i++){
+            navigationButtons[i].addEventListener('click', function(){
+                questionsArr[i].scrollIntoView({
+                    behavior: "smooth", block: "center", inline: "start";
+                });
+            });
+        }
+
+        // ===============================================
+
+        // Progress
+        let finishQuestions = [];
+        for(let i = 0; i < questionsArr.length; i++){
+            finishQuestions[i] = {
+                number: i,
+                flag: false
+            }
+        }
+
+        for(let i = 0; i < questionsArr.length; i++){
+            let inputBlocksArr = questionsArr[i].children[1].children[2].children;
+            let CountFinishInputs = new Array(questionsArr.length).fill(0);
+
+            for(let j = 0; j < inputBlocksArr.length; j++){
+                if(inputBlocksArr[j].tagName != "IMG"){
+                let inputItem = inputBlocksArr[j].children[0];
+                let previousValue = ""
+
+                if(inputItem.type == 'checkbox'){
+                    inputItem.addEventListener('change', function(){
+                    if (inputItem.checked){
+                        CountFinishInputs[i] += 1;
+
+                        finishQuestions[i].flag = true;
+
+                        let finishCount = 0
+                        for(let q = 0; q < finishQuestions.length; q++){
+                            if(finishQuestions[q].flag == true){
+                                finishCount++;
+
+                                navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                            }
+                        }
+                        currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                        progressBar.style.cssText = `width: ${currentWidth}%`;
+                        percents.innerHTML = `${currentWidth} %`;
+
+                        if(currentWidth == 100){
+                            document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                        }
+                    }
+                    else if(inputItem.checked == false){
+                        CountFinishInputs[i] -= 1;
+                        if (CountFinishInputs[i] == 0){
+
+                        finishQuestions[i].flag = false;
+
+                        let finishCount = 0
+                        for(let q = 0; q < finishQuestions.length; q++){
+                            if(finishQuestions[q].flag == true){
+                                finishCount++;
+
+                                navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                            }
+                            else{
+                                navigationButtons[q].style.cssText = `background-color: #54d7ff; color: #000000;`;
+                            }
+                        }
+                        currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                        progressBar.style.cssText = `width: ${currentWidth}%`;
+                        percents.innerHTML = `${currentWidth} %`;
+
+                        if(currentWidth == 100){
+                            document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                        }
+                        }
+                    }
+                    })
+                }
+
+                inputItem.oninput =  function(){
+
+                    if (inputItem.value != ''){
+                    if (inputItem.value.length == 1 && previousValue.length != 2){
+                        CountFinishInputs[i] += 1;
+                    }
+                    
+                    
+                    finishQuestions[i].flag = true;
+
+                    let finishCount = 0
+                    for(let q = 0; q < finishQuestions.length; q++){
+                        if(finishQuestions[q].flag == true){
+                            finishCount++;
+
+                            navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                        }
+                    }
+                    currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                    progressBar.style.cssText = `width: ${currentWidth}%`;
+                    percents.innerHTML = `${currentWidth} %`;
+
+                    if(currentWidth == 100){
+                        document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                    }
+
+                    previousValue = inputItem.value;
+                    }
+                    else{
+                    CountFinishInputs[i] -= 1;
+                    if (CountFinishInputs[i] == 0){
+
+                        finishQuestions[i].flag = false;
+
+                        let finishCount = 0
+                        for(let q = 0; q < finishQuestions.length; q++){
+                            if(finishQuestions[q].flag == true){
+                                finishCount++;
+
+                                navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
+                            }
+                            else{
+                                navigationButtons[q].style.cssText = `background-color: #54d7ff; color: #000000;`;
+                            }
+                        }
+                        currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
+                        progressBar.style.cssText = `width: ${currentWidth}%`;
+                        percents.innerHTML = `${currentWidth} %`;
+
+                        if(currentWidth == 100){
+                            document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
+                        }
+                    }
+                    }
+
+                };
+                }
+                
+            }
+        }
+    </script>
 </body>
 </html>
