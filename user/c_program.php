@@ -24,6 +24,8 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
             $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user_data->get_id().", $program_id, $date_start, ".$_POST['weeks'].")";
             $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу.', ".$user_data->get_id().", ".time().", 0)";
             if ($conn->query($sql2) && $conn->query($sql3)){
+                $_SESSION["workout"] = array();
+                $_SESSION["program"] = array();
                 header("Location: my_program.php");
             }else{
                 echo $conn->error;
@@ -90,7 +92,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 					</section>
 					<div class="buttons">
 						<a href="c_workout.php"><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></a>
-						<button><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></button>
+						<a href="clear.php"><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
 				<form class="duration" method="post">

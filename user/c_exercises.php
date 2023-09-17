@@ -154,10 +154,14 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			<form method="post" class="exercise_block">
 				<?php
                 if ($my){
-                    foreach ($user_data->my_exercises as $exercise_id){
-                        $exercise = new Exercise($conn, $exercise_id);
-                        $is_featured = $exercise->is_featured($user_data);
-                        $exercise->print_it($conn, $is_featured, 1, 1);
+                    if (count($user_data->my_exercises) > 0){
+                        foreach ($user_data->my_exercises as $exercise_id){
+                            $exercise = new Exercise($conn, $exercise_id);
+                            $is_featured = $exercise->is_featured($user_data);
+                            $exercise->print_it($conn, $is_featured, 1, 1);
+                        }
+                    }else{
+                        echo "<h1>У вас нет тренировок. Перейите на вкладку все тренировки.</h1>";
                     }
                 }else{
                     $select_sql = "SELECT id FROM exercises";

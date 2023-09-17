@@ -41,7 +41,7 @@ $flag = false;
                         if ($j + 604800 >= $user_data->program->date_start + $user_data->program->weeks * 604800){
                             $flag = true;
                         }
-                        if ($flag){
+                        if ($flag && $cnt != 0){
                             $days = $cnt;
                         }
                         ?>
@@ -66,7 +66,7 @@ $flag = false;
                                 $cnt++;
                             }
                         }
-                        if ($flag){
+                        if ($flag && $cnt != 0){
                             for ($i = $cnt; $i < 7; $i++){
                                 echo render(array("{{ day }}" => get_day($i)), "../templates/out_of_workout.html");
                             }
