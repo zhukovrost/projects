@@ -63,7 +63,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
                     for($i = 0; $i < 7; $i++){
 						$workout = new Workout($conn, $_SESSION["program"][$i], $i);
                         $workout->set_muscles();
-                        $workout->print_workout_info($i);
+                        $workout->print_workout_info_block($i, 0, $user_data->get_id());
                     } ?>
 			</section>
 			<section class="create_block">

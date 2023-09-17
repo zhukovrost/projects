@@ -39,7 +39,7 @@ $user_data->set_program($conn);
                                     <?php $workout->print_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
-                                <?php $workout->print_workout_info(date("N"), 2, $user_data->get_id()); ?>
+                                <?php $workout->print_workout_info(2, $user_data->get_id()); ?>
                             </section>
                         </section>
                     <?php } ?>
@@ -64,7 +64,7 @@ $user_data->set_program($conn);
                             <section class="workouts-card__exercises-cover">
                                 <?php $workout->print_exercises($conn); ?>
                             </section>
-                            <?php $workout->print_workout_info(date("N"), 2, $user_data->get_id()); ?>
+                            <?php $workout->print_workout_info(0, $user_data->get_id()); ?>
                         </section>
                     </section>
                     <?php } ?>

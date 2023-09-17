@@ -83,40 +83,44 @@ class Workout {
         return $cnt;
     }
 
-    public function print_workout_info($day, $expand_buttons=0, $user_id=-1){
+    public function print_workout_info($expand_buttons=0, $user_id=-1){
         $workout = false;
-        ?>
+        if ($this->holiday){ ?>
+            <div class="day-workouts__card-day-off">Выходной</div>
+        <?php }else{ $workout = true; ?>
+            <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
+            <p class="day-workouts__card-item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
+            <p class="day-workouts__card-item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
+            <p class="day-workouts__card-item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
+            <p class="day-workouts__card-item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
+            <p class="day-workouts__card-item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
+            <p class="day-workouts__card-item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
+            <?php if ($expand_buttons == 1){ ?>
+            <div class="day-workouts__card-buttons">
+                <button class="button-img day-workouts__card-button"><img src="../img/more_white.svg" alt=""></button>
+                <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
+                <img class="day-workouts__card-img" src="../img/done.svg" alt="">
+            </div>
+        <?php } else if ($expand_buttons == 2){ ?>
+            <div class="day-workouts__card-buttons">
+                <?php if ($this->creator == $user_id){ ?>
+                    <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
+                <?php } ?>
+                <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
+            </div>
+        <?php }
+        }
+        return $workout;
+    }
+
+    public function print_workout_info_block($day, $expand_buttons=0, $user_id=-1){ ?>
         <section class="day-workouts__card">
             <h3 class="day-workouts__card-title"><?php echo get_day($day); ?></h3>
             <div class="day-workouts__card-content">
-                <?php if ($this->holiday){ ?>
-                    <div class="day-workouts__card-day-off">Выходной</div>
-                <?php }else{ $workout = true; ?>
-                    <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
-                    <p class="day-workouts__card-item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
-                    <?php if ($expand_buttons == 1){ ?>
-                    <div class="day-workouts__card-buttons">
-                        <button class="button-img day-workouts__card-button"><img src="../img/more_white.svg" alt=""></button>
-                        <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
-                        <img class="day-workouts__card-img" src="../img/done.svg" alt="">
-                    </div>
-                <?php } else if ($expand_buttons == 2){ ?>
-                    <div class="day-workouts__card-buttons">
-                        <?php if ($this->creator == $user_id){ ?>
-                            <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
-                        <?php } ?>
-                        <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
-                    </div>
-                <?php }
-                }?>
+                <?php $this->print_workout_info($expand_buttons, $user_id); ?>
             </div>
         </section>
-        <?php return $workout;
+    <?php
     }
 
     public function is_done($conn, $user_id, $date){
