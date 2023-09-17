@@ -11,13 +11,14 @@ class Workout {
         "press" => 0,
         "back" => 0,
         "chest" => 0,
-        "cardio" => 0
+        "cardio" => 0,
+        "cnt" => 0
     );
     public $holiday = false;
     public $name = '';
     private $creator = 0;
 
-    public function __construct($conn, $workout_id, $weekday){
+    public function __construct($conn, $workout_id, $weekday=0){
         if ($workout_id == 0){
             $this->holiday = true;
         }else{

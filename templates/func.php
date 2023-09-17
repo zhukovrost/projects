@@ -143,3 +143,29 @@ function busy_or_free($id){
     else
         echo "busy";
 }
+
+function get_graph_workout_data($history){
+    $currentYear = date("Y"); // Get the current year
+    $result = array_fill(0, 12, 0); // Initialize an array with 12 zeros for each month
+
+    foreach ($history as $workout) {
+        $timestamp = $workout["date_completed"];
+        $month = date("n", $timestamp); // Get the month (1 to 12) of the timestamp
+
+        // Check if the workout is in the current year
+        if (date("Y", $timestamp) == $currentYear) {
+            $result[$month - 1]++; // Increment the count for the corresponding month
+        }
+    }
+
+    return $result;
+}
+
+function get_exercise_muscles($conn, $exercise_id){
+    $sql = "SELECT muscles FROM exercises WHERE id=$exercise_id";
+    if ($result = $conn->query($sql)){
+        foreach ($result as $item){
+            return json_decode($item['muscles']);
+        }
+    }
+}

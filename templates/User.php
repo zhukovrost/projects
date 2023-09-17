@@ -17,6 +17,8 @@ class User {
     public $featured_exercises = [];
     public $my_exercises = [];
     public $program;
+    public $workout_history = [];
+
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -359,4 +361,25 @@ class User {
             </div>
         </section>
     <?php }
+
+
+    public function get_workout_history($conn){
+        $sql = "SELECT workout_history.id, workout_history.date_completed, workouts.exercises, workouts.approaches FROM workout_history INNER JOIN workouts ON workout_history.workout = workouts.id WHERE workout_history.user=$this->id ORDER BY workout_history.date_completed DESC";
+        if ($result = $conn->query($sql)){
+            foreach ($result as $item){
+                array_push($this->workout_history, $item);
+            }
+        }else{
+            echo $conn->error;
+        }
+    }
+
+    function get_program_amount($conn){
+        $sql = "SELECT program FROM program_to_user WHERE user=$this->id";
+        if ($result = $conn->query($sql)){
+            return $result->num_rows;
+        }else{
+            echo $conn->error;
+        }
+    }
 }

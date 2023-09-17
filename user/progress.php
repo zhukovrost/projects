@@ -1,6 +1,30 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+
+$user_data->get_workout_history($conn);
+$muscles = array(
+    "arms" => 0,
+    "legs" => 0,
+    "press" => 0,
+    "back" => 0,
+    "chest" => 0,
+    "cardio" => 0,
+    "cnt" => 0
+);
+
+$exercise_cnt = 0;
+
+foreach ($user_data->workout_history as $item){
+    $exercises = json_decode($item["exercises"]);
+    foreach ($exercises as $exercise){
+        foreach (get_exercise_muscles($conn, $exercise) as $muscle){
+            $muscles["cnt"]++;
+            $muscles[$muscle]++;
+        }
+        $exercise_cnt++;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,10 +56,9 @@ include "../templates/settings.php";
 						</section>
 						<!-- Statistic info -->
 						<section class="progress-block__workouts-statistic">
-							<p class="progress-block__workouts-statistic-item">Тренировки: <span>156</span></p>
-							<p class="progress-block__workouts-statistic-item">Время: <span>1247 мин</span></p>
-							<p class="progress-block__workouts-statistic-item">Программы: <span>3</span></p>
-							<p class="progress-block__workouts-statistic-item">Упражнений: <span>129</span></p>
+							<p class="progress-block__workouts-statistic-item">Тренировки: <span><?php echo count($user_data->workout_history); ?></span></p>
+							<p class="progress-block__workouts-statistic-item">Программы: <span><?php echo $user_data->get_program_amount($conn); ?></span></p>
+							<p class="progress-block__workouts-statistic-item">Упражнений: <span><?php echo $exercise_cnt; ?></span></p>
 						</section>
 					</div>
 					<!-- Current info -->
@@ -104,7 +127,7 @@ include "../templates/settings.php";
             labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
             datasets: [{
                 label: 'Колво тренировок',
-                data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+                data: <?php echo json_encode(get_graph_workout_data($user_data->workout_history)); ?>,
                 borderWidth: 3,
                 backgroundColor: '#00C91D',
                 color: '#000000',
@@ -167,10 +190,10 @@ include "../templates/settings.php";
         new Chart(ctx2, {
             type: 'pie',
             data: {
-                labels: ['Руки', 'Ноги', 'Спина'],
+                labels: ['Руки', 'Ноги', 'Грудь', 'Спина', 'Пресс', 'Кардио'],
                 datasets: [{
                     label: 'Количество упражнений',
-                    data: [12, 19, 3],
+                    data: <?php echo json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>,
                     borderWidth: 1,
                     color: '#000000',
                 }]
