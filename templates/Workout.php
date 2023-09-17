@@ -122,8 +122,4 @@ class Workout {
         </section>
     <?php
     }
-
-    public function is_done($conn, $user_id, $date){
-        return false;
-    }
 }

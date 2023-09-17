@@ -48,12 +48,13 @@ $flag = false;
                     <swiper-slide class="day-workouts__slide">
                         <?php
                         for($i = 0; $i < $days; $i++){
-                            if ($user_data->program->date_start <= ($j + $i * 86400)){
+                            $date = $j + $i * 86400;
+                            if ($user_data->program->date_start <= $date){
                                 $workout = $user_data->program->workouts[$i];
                                 foreach ($workout->set_muscles() as $key=>$value){
                                     $muscles[$key] += $value;
                                 }
-                                if ($workout->print_workout_info($i, 1, $user_data->get_id())){
+                                if ($workout->print_workout_info_block($i, 1, $user_data->get_id())){
                                     if ($workout->is_done($conn, $user_data->get_id(), $j + $i * 86400)){
                                         $cnt_workouts_done++;
                                     }else{

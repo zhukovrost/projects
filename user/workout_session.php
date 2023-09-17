@@ -2,9 +2,11 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
-$user_data->set_program($conn);
 $weekday = date("N") - 1;
 $user_data->set_program($conn);
+$workout_id = $user_data->program->program[$weekday];
+$workout = new Workout($conn, $workout_id, $weekday);
+$cnt_apps = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,78 +42,24 @@ $user_data->set_program($conn);
     
     <main class="session-exercises">
         <swiper-container class="session-exercises__swiper" navigation="true">
+            <!-- for loop -->
+            <?php foreach ($workout->exercises as $exercise){?>
             <swiper-slide class="session-exercises__slide">
-                <section class="exercise-item exercise-item--list  exercise-item--session">
-                    <!-- Exercise info -->
-                    <button type="button" class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
-                    <div class="exercise-item__info-content">
-                        <button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
-                        <p class="exercise-item__info-text">{{ description }}</p>
-                    </div>
-                    <!-- Exercise muscle groups -->
-                    <div class="exercise-item__muscle-groups">{{ muscle }}</div>
-                    <!-- Exercise image -->
-                    <img class="exercise-item__img" src="{{ image }}" alt="">
-                    <!-- Decoration line -->
-                    <div class="exercise-item__line"></div>
-                    <!-- Exercise title -->
-                    <h1 class="exercise-item__title">{{ name }}</h1>
-                    <div class="exercise-item__statistic">
-                        <div class="exercise-item__rating">
-                            <p class="exercise-item__score">{{ rating }}</p>
-                            <img class="exercise-item__star" src="../img/Star.svg" alt="">
-                        </div>
-                        <div class="exercise-item__difficult">
-                            <p class="exercise-item__difficult-number">{{ difficulty }}</p>
-                            <div class="exercise-item__difficult-item"></div>
-                        </div>
-                    </div>
-                    <div class="exercise-item__buttons">
-                        {{ button }}
-                        {{ button_featured }}
-                    </div>
-                </section>
+                <?php
+                $cnt_apps += $exercise->approaches;
+                $exercise->print_it($conn);
+                # echo render($replaces, "../templates/user_exercise.html");
+                ?>
             </swiper-slide>
-            <swiper-slide class="session-exercises__slide">
-                <section class="exercise-item exercise-item--list exercise-item--session">
-                    <!-- Exercise info -->
-                    <button type="button" class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
-                    <div class="exercise-item__info-content">
-                        <button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
-                        <p class="exercise-item__info-text">{{ description }}</p>
-                    </div>
-                    <!-- Exercise muscle groups -->
-                    <div class="exercise-item__muscle-groups">{{ muscle }}</div>
-                    <!-- Exercise image -->
-                    <img class="exercise-item__img" src="{{ image }}" alt="">
-                    <!-- Decoration line -->
-                    <div class="exercise-item__line"></div>
-                    <!-- Exercise title -->
-                    <h1 class="exercise-item__title">{{ name }}</h1>
-                    <div class="exercise-item__statistic">
-                        <div class="exercise-item__rating">
-                            <p class="exercise-item__score">{{ rating }}</p>
-                            <img class="exercise-item__star" src="../img/Star.svg" alt="">
-                        </div>
-                        <div class="exercise-item__difficult">
-                            <p class="exercise-item__difficult-number">{{ difficulty }}</p>
-                            <div class="exercise-item__difficult-item"></div>
-                        </div>
-                    </div>
-                    <div class="exercise-item__buttons">
-                        {{ button }}
-                        {{ button_featured }}
-                    </div>
-                </section>
-            </swiper-slide>
+            <?php } ?>
         </swiper-container>
     </main>
 
     <footer class="workout-session-footer">
         <h1 class="workout-session-footer__title">Осталось:</h1>
-        <h2 class="workout-session-footer__item"><span>9</span> упражнений</h2>
-        <h2 class="workout-session-footer__item"><span>9</span> подходов</h2>
-        <button class="button-text workout-session-footer__button">Завершить</button>
+        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений</h2>
+        <h2 class="workout-session-footer__item"><span><?php echo $cnt_apps; ?></span> подходов</h2>
+        <a href="end_workout.php" class="button-text workout-session-footer__button">Завершить</a>
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
