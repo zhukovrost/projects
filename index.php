@@ -11,7 +11,7 @@ $conn->close();
     <!-- Welcome block first -->
     <section class="welcome-block-1">
         <!-- Welcome header -->
-        <header class="welcome-header">
+        <header class="main-header welcome-header">
             <!-- Logo -->
             <a href="index.php" class="welcome-header__item  welcome-header__item--logo">
                 <img src="img/logo.svg" alt="">
