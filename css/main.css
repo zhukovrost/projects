@@ -1587,6 +1587,12 @@
 
 
 /* =================EXERCISES PAGE================= */
+.exercises__none{
+    margin: 15px auto;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: 'Ubuntu', sans-serif;
+}
 
 /* ===Exercise navigation=== */
 .exercise_nav .container{

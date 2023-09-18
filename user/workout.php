@@ -3,8 +3,8 @@ include "../templates/func.php";
 include "../templates/settings.php";
 
 $user_data->set_program($conn);
+var_dump($user_data);
 $weekday = date("N") - 1;
-$user_data->set_program($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">

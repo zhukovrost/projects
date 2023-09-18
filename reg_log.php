@@ -87,9 +87,9 @@ if (isset($_POST['log'])){
                 <label class="reg-form__label" for="login">Логин</label>
                 <input class="reg-form__input" name="reg_login" type="text" id="login">
                 <label class="reg-form__label" for="password">Пароль</label>
-                <input class="reg-form__input" name="reg_password" type="text" id="password">
+                <input class="reg-form__input" name="reg_password" type="password" id="password">
                 <label class="reg-form__label" for="check_password">Подтвердите пароль</label>
-                <input class="reg-form__input" name="reg_password2" type="text" id="check_password">
+                <input class="reg-form__input" name="reg_password2" type="password" id="check_password">
                 <button class="button-text reg-form__submit" type="submit" name="reg" value="1">Зарегистрироваться</button>
                 <?php
                 reg_warning($error_array['reg_login_is_used'], "This login is not available");

@@ -151,33 +151,35 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				<button type="button" class="clear">Очистить</button>
 			</form>
 			<!-- Exercises array -->
-			<form method="post" class="exercise_block">
-				<?php
-                if ($my){
-                    if (count($user_data->my_exercises) > 0){
-                        foreach ($user_data->my_exercises as $exercise_id){
-                            $exercise = new Exercise($conn, $exercise_id);
-                            $is_featured = $exercise->is_featured($user_data);
-                            $exercise->print_it($conn, $is_featured, 1, 1);
-                        }
-                    }else{
-                        echo "<h1>У вас нет тренировок. Перейите на вкладку все тренировки.</h1>";
-                    }
-                }else{
-                    $select_sql = "SELECT id FROM exercises";
-                    if ($select_result = $conn->query($select_sql)){
-                        foreach ($select_result as $item){
-                            $exercise = new Exercise($conn, $item['id']);
-                            $is_featured = $exercise->is_featured($user_data);
-                            $is_mine = $exercise->is_mine($user_data);
-                            $exercise->print_it($conn, $is_featured, $is_mine, 1);
-                        }
-                    }else{
-                        echo $conn->error;
-                    }
-                }
-                ?>
-			</form>
+			<?php
+			if ($my){
+				if (count($user_data->my_exercises) > 0){
+					echo "<form method='post' class='exercise_block'>";
+					foreach ($user_data->my_exercises as $exercise_id){
+						$exercise = new Exercise($conn, $exercise_id);
+						$is_featured = $exercise->is_featured($user_data);
+						$exercise->print_it($conn, $is_featured, 1, 1);
+					}
+					echo "</form>";
+				}else{
+					echo "<h1>У вас нет тренировок. Перейите на вкладку все тренировки.</h1>";
+				}
+			}else{
+				$select_sql = "SELECT id FROM exercises";
+				if ($select_result = $conn->query($select_sql)){
+					echo "<form method='post' class='exercise_block'>";
+					foreach ($select_result as $item){
+						$exercise = new Exercise($conn, $item['id']);
+						$is_featured = $exercise->is_featured($user_data);
+						$is_mine = $exercise->is_mine($user_data);
+						$exercise->print_it($conn, $is_featured, $is_mine, 1);
+					}
+					echo "</form>";
+				}else{
+					echo $conn->error;
+				}
+			}
+			?>
         </div>
 
 		<section class="popup_exercise">
