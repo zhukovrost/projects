@@ -115,7 +115,7 @@ if (isset($_POST["week_days"])){
 					</section>
 				</form>
 				<button type="submit"><p>Добавить в программу</p> <img src="../img/add.svg" alt=""></button>
-                <a href="c_program.php">Назад</a>
+                <a class="button-text c-workout__back-button" href="c_program.php">Назад</a>
 			</section>
 		</div>
 

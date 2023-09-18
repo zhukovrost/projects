@@ -2945,6 +2945,13 @@
 	animation: rotate-center 0.3s ease-in-out both;
 }
 
+.c-workout__back-button{
+    width: fit-content;
+    font-size: 27px;
+    padding: 5px 40px;
+    margin: 10px auto 0px;
+}
+
 
 /* ====================================================== */
 
