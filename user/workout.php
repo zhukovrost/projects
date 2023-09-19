@@ -38,7 +38,20 @@ $weekday = date("N") - 1;
                                     <?php $workout->print_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
-                                <?php $workout->print_workout_info(2, $user_data->get_id()); ?>
+                                <?php
+                                $date1 = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
+                                $date2 = mktime(23, 59, 59, date("m"), date("d"), date("Y"));
+                                $sql = "SELECT id FROM workout_history WHERE date_completed > $date1 AND date_completed < $date2";
+                                if ($result = $conn->query($sql)){
+                                    if ($result->num_rows == 0){
+                                        $workout->print_workout_info(2, $user_data->get_id(), 1);
+                                    }else{
+                                        $workout->print_workout_info(2, $user_data->get_id());
+                                    }
+                                }else{
+                                    $workout->print_workout_info(2, $user_data->get_id());
+                                }
+                                ?>
                             </section>
                         </section>
                     <?php } ?>

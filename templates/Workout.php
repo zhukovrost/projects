@@ -84,7 +84,7 @@ class Workout {
         return $cnt;
     }
 
-    public function print_workout_info($expand_buttons=0, $user_id=-1){
+    public function print_workout_info($expand_buttons=0, $user_id=-1, $start=false){
         $workout = false;
         if ($this->holiday){ ?>
             <div class="day-workouts__card-day-off">Выходной</div>
@@ -106,8 +106,10 @@ class Workout {
             <div class="day-workouts__card-buttons">
                 <?php if ($this->creator == $user_id){ ?>
                     <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
+                <?php }
+                if ($start){ ?>
+                    <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
                 <?php } ?>
-                <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
             </div>
         <?php }
         }

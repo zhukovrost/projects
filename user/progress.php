@@ -103,7 +103,21 @@ foreach ($user_data->workout_history as $item){
 				  <h2 class="progress-block__programm-title">Моя программа</h2>
 				  <div class="progress-block__programm-info">
 					<div class="progress-block__programm-line">
-						<p class="progress-block__programm-percents">40%</p>
+						<p class="progress-block__programm-percents"><?php
+                            if ($user_data->set_program($conn)){
+                                $user_data->program->set_additional_data($conn, $user_data->get_id());
+                                $progress = (time() - $user_data->program->date_start) / ($user_data->program->weeks * 604800) * 100;
+                                if ($progress < 0){
+                                    echo '0';
+                                }else if ($progress > 100){
+                                    echo '100';
+                                }else{
+                                    echo round($progress);
+                                }
+                            }else{
+                                echo '0';
+                            }
+                            ?>%</p>
 						<div class="progress-block__programm-finish" class="finish"></div>
 					</div>
 					<a class="progress-block__programm-button" href="my_program.php"><img src="../img/my_programm_black.svg" alt=""></a>
