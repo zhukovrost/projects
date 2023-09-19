@@ -290,6 +290,7 @@ class User {
         $select_sql = "SELECT program FROM program_to_user WHERE user=$this->id LIMIT 1";
         if ($result_sql = $conn->query($select_sql)){
             if ($result_sql->num_rows == 0){
+                $this->program = new Program($conn, 0);
                 return false;
             }
             foreach ($result_sql as $item){

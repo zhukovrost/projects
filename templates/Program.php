@@ -11,18 +11,22 @@ class Program {
     public $date_start;
 
     public function __construct($conn, $id){
-        $select_sql = "SELECT * FROM programs WHERE id=$id";
-        if ($select_result = $conn->query($select_sql)){
-            foreach ($select_result as $item){
-                $this->id = $item['id'];
-                $this->name = $item['name'];
-                $this->program = json_decode($item['program']);
-                $this->rating = $item['rating'];
+        if ($id != 0){
+            $select_sql = "SELECT * FROM programs WHERE id=$id";
+            if ($select_result = $conn->query($select_sql)){
+                foreach ($select_result as $item){
+                    $this->id = $item['id'];
+                    $this->name = $item['name'];
+                    $this->program = json_decode($item['program']);
+                    $this->rating = $item['rating'];
+                }
+            }else{
+                echo $conn->error;
             }
+            $select_result->free();
         }else{
-            echo $conn->error;
+            $this->id = $id;
         }
-        $select_result->free();
     }
 
     public function get_id(){

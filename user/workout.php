@@ -3,7 +3,6 @@ include "../templates/func.php";
 include "../templates/settings.php";
 
 $user_data->set_program($conn);
-var_dump($user_data);
 $weekday = date("N") - 1;
 ?>
 <!DOCTYPE html>
@@ -71,7 +70,7 @@ $weekday = date("N") - 1;
                 </swiper-slide>
             </swiper-container>
             <?php } else { ?>
-                <p>Нет тренировки</p>
+                <p>Нет программы</p>
             <?php } ?>
             <section class="workout-other">
                 <!-- Friends' workouts -->
