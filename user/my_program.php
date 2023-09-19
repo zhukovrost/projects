@@ -7,6 +7,9 @@ if (!$user_data->set_program($conn)){
 }
 $user_data->program->set_workouts($conn);
 $user_data->program->set_additional_data($conn, $user_data->get_id());
+$cnt_workouts_done = 0;
+$cnt_workouts_left = 0;
+$weekday_start = date("N", $user_data->program->date_start) - 1;
 
 $muscles = array(
     "arms" => 0,
@@ -18,10 +21,12 @@ $muscles = array(
     "cnt" => 0
 );
 
-$cnt = 0;
-$cnt_workouts_done = 0;
-$cnt_workouts_left = 0;
-$flag = false;
+#counting muscles
+foreach ($user_data->program->workouts as $workout){
+    foreach ($workout->set_muscles() as $key=>$value){
+        $muscles[$key] += $value * $user_data->program->weeks;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,43 +41,51 @@ $flag = false;
                     <input class="day-workouts__date-input" type="week">
                 </section>
                 <swiper-container class="day-workouts__swiper" navigation="true">
-                    <?php for ($j = time(); $j < $user_data->program->date_start + $user_data->program->weeks * 604800; $j += 604800){
-                        $days = 7;
-                        if ($j + 604800 >= $user_data->program->date_start + $user_data->program->weeks * 604800){
-                            $flag = true;
-                        }
-                        if ($flag && $cnt != 0){
-                            $days = $cnt;
-                        }
-                        ?>
+                    <?php if ($weekday_start){ ?>
+                    <!-- first slide -->
                     <swiper-slide class="day-workouts__slide">
                         <?php
-                        for($i = 0; $i < $days; $i++){
-                            $date = $j + $i * 86400;
-                            if ($user_data->program->date_start <= $date){
-                                $workout = $user_data->program->workouts[$i];
-                                foreach ($workout->set_muscles() as $key=>$value){
-                                    $muscles[$key] += $value;
-                                }
-                                if ($workout->print_workout_info_block($i, 1, $user_data->get_id())){
-                                    if ($workout->is_done($conn, $user_data->get_id(), $j + $i * 86400)){
-                                        $cnt_workouts_done++;
-                                    }else{
-                                        $cnt_workouts_left++;
-                                    }
-                                }
-                            }else{
-                                echo render(array("{{ day }}" => get_day($i)), "../templates/out_of_workout.html");
-                                $cnt++;
+                            for ($j = 0; $j < $weekday_start; $j++){
+                                echo render(array("{{ day }}" => get_day($j)), "../templates/out_of_workout.html");
                             }
-                        }
-                        if ($flag && $cnt != 0){
-                            for ($i = $cnt; $i < 7; $i++){
-                                echo render(array("{{ day }}" => get_day($i)), "../templates/out_of_workout.html");
+                            for ($j = $weekday_start; $j < 7; $j++){
+                                $workout = $user_data->program->workouts[$j];
+                                $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400);
+                                $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
                             }
+                        ?>
+                    </swiper-slide>
+                    <?php }
+
+                    $from = 0;
+                    if ($weekday_start) $from = 1;
+                    for ($i = $from; $i < $user_data->program->weeks; $i++){ ?>
+                    <swiper-slide class="day-workouts__slide">
+                        <?php
+                        for ($j = 0; $j < 7; $j ++){
+                            $workout = $user_data->program->workouts[$j];
+                            $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400 + $i * 604800);
+                            $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
                         }
                         ?>
                     </swiper-slide>
+                    <?php }
+
+                    if ($weekday_start){ ?>
+                        <!-- last slide -->
+                        <swiper-slide class="day-workouts__slide">
+                            <?php
+                            for ($j = 0; $j < $weekday_start; $j++){
+                                $workout = $user_data->program->workouts[$j];
+                                $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400 + ($user_data->program->weeks - 1) * 604800);
+                                $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                            }
+
+                            for ($j = $weekday_start; $j < 7; $j++){
+                                echo render(array("{{ day }}" => get_day($j)), "../templates/out_of_workout.html");
+                            }
+                            ?>
+                        </swiper-slide>
                     <?php } ?>
                 </swiper-container>
             </section>
