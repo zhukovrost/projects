@@ -154,325 +154,26 @@
 
 
 /* ===welcome_block_3=== */
-.welcome_block_3{
+.welcome-block-3{
     min-height: 100vh;
     padding-top: 5vh;
     padding-bottom: 50px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(245, 245, 245, 1);
     color: #ffffff;
 }
 
-.statistic_block{
-    display: flex;
-    position: relative;
+.welcome-block-3 .container{
+    max-width: 90%;
 }
 
-.welcome_block_3 .title{
+.welcome-block-3__title{
     font-family: 'Ubuntu', sans-serif;
+    color: #000000;
     font-size: 90px;
     letter-spacing: 3px;
     font-weight: 800;
     text-align: center;
     margin-bottom: 30px;
-}
-
-/* Count of trainings chart */
-.welcome_block_3 .trainingChart{
-    width: 60%;
-    margin-right: 20px
-}
-
-/* Last training content */
-.welcome_block_3 .last_trainings .content{
-    max-height: 50vh;
-    background-color: rgba(21, 21, 21, 1);
-    padding: 20px 70px 10px 70px;
-    border: 1px solid rgba(81, 81, 81, 1);
-    box-shadow: 3px 3px 0px 0px #414141;
-    border-radius: 3px;
-    overflow: auto;
-}
-
-/* Last trainings block */
-.welcome_block_3 .last_trainings{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 40%;
-}
-
-/* Title */
-.welcome_block_3 .last_trainings h2{
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-/* Trainings content item */
-.welcome_block_3 .last_trainings .item{
-    display: flex;
-}
-
-/* Left part of last exercise item */
-.welcome_block_3 .last_trainings .item .left{
-    margin-right: 5vw;
-}
-
-/* Minutes & exercise & muscle groups & info button */
-.welcome_block_3 .last_trainings .item .left div{
-    display: flex;
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.welcome_block_3 .last_trainings .item .left div span{
-    font-weight: 700;
-}
-
-.welcome_block_3 .last_trainings .item .left div img{
-    margin-right: 5px;
-}
-
-/* Minutes & exercise & muscle groups & info button */
-.welcome_block_3 .last_trainings .item .right div{
-    display: flex;
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
-.welcome_block_3 .last_trainings .item .right div span{
-    font-weight: 700;
-}
-
-.welcome_block_3 .last_trainings .item .right div img{
-    margin-right: 5px;
-}
-
-/* Button 'Подробнее' for more info about exercise */
-.welcome_block_3 .last_trainings .item .right button{
-    background-color: rgb(218, 218, 218);
-    display: flex;
-    align-items: center;
-    color: #000000;
-    padding: 3px 7px 3px 10px;
-    transition: .1s ease-in-out;
-}
-
-.welcome_block_3 .last_trainings .item .right button:hover{
-    background-color: rgba(245, 245, 245, 1);
-}
-
-.welcome_block_3 .last_trainings .item .right button img{
-    margin-left: 10px;
-}
-
-/* Decoration line */
-.welcome_block_3 .last_trainings .content .line{
-    height: 1px;
-    background-color: rgba(81, 81, 81, 1);
-    margin-bottom: 20px;
-}
-
-
-/* Second part of statistic(training info and muscles & physical diagram) */
-.statistic_block.second{
-    position: relative;
-    display: flex;
-    margin-top: 30px;
-}
-
-/*  Training info */
-.statistic_block.second .training{
-    width: 45%;
-    background-color: rgba(21, 21, 21, 1);
-    padding: 20px 40px 10px 40px;
-    border: 1px solid rgba(81, 81, 81, 1);
-    box-shadow: 3px 3px 0px 0px #414141;
-    border-radius: 3px;
-}
-
-/* Muscle groups diagram */
-.statistic_block.second .training .info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.statistic_block.second .muscle_groups h2{
-    font-size: 25px;
-    text-align: center;
-    transform: translateY(40px);
-    color: rgb(194, 194, 194);
-}
-
-/* Statistic info */
-.statistic_block.second .training .info .statistic{
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    padding: 40px 50px;
-    border-radius: 3px;
-    border: 2px solid rgba(108, 108, 108, 1);
-    background-color: rgba(71, 71, 71, 1);
-}
-
-.statistic_block.second .training .statistic p{
-    font-size: 23px;
-    margin-bottom: 10px;
-}
-
-.statistic_block.second .training .statistic p span{
-    font-weight: 700;
-}
-
-/* Current info */
-.statistic_block.second .training .physical_info{
-    width: 70%;
-    margin: 20px auto 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.statistic_block.second .training .physical_info p{
-    font-size: 20px;
-}
-
-/* Button 'добавить' to add physical parametrs */
-.statistic_block.second .training .physical_info button{
-    display: flex;
-    align-items: center;
-    background-color: rgb(218, 218, 218);
-    color: #000000;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
-    font-size: 21px;
-    padding: 2px 10px 5px 15px;
-    transition: .1s ease-in-out;
-}
-
-.statistic_block.second .training .physical_info button img{
-    margin-left: 8px;
-    width: 15px;
-    height: 15px;
-    color: #000000;
-    transition: .1s ease-in-out;
-}
-
-.statistic_block.second .training .physical_info button:hover{
-    background-color: rgba(245, 245, 245, 1);
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-}
-
-.statistic_block.second .training .physical_info button:hover img{
-    -webkit-animation: rotate-center 0.3s ease-in-out both;
-	animation: rotate-center 0.3s ease-in-out both;
-}
-
-/* Physical block  */
-.statistic_block.second .physical_data{
-    width: 55%;
-    margin-left: 20px;
-    background-color: rgba(21, 21, 21, 1);
-    padding: 20px 10px 10px 10px;
-    border: 1px solid rgba(81, 81, 81, 1);
-    box-shadow: 3px 3px 0px 0px #414141;
-    border-radius: 3px;
-}
-
-/* Navigation */
-.statistic_block.second .physical_data nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 20px;
-}
-
-/* Year & month & week  */
-.statistic_block.second .physical_data nav select{
-    border: 1px solid rgba(245, 245, 245, 1);
-    background: #000000;
-    color: #ffffff;
-    font-size: 20px;
-    padding: 2px 5px;
-    height: fit-content;
-}
-
-/* Button to other physic(weight or length) */
-.statistic_block.second .physical_data nav button{
-    display: flex;
-    align-items: center;
-    background-color: rgb(218, 218, 218);
-    color: #000000;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
-    border: 1px solid #474747;
-    font-size: 23px;
-    padding: 5px 20px 5px 20px;
-    transition: .1s ease-in-out;
-}
-
-.statistic_block.second .physical_data nav button:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-    background-color: rgba(245, 245, 245, 1);
-}
-
-.statistic_block.second .physical_data .chart{
-    margin: 0px 50px;
-    color: #00CD1E;
-}
-
-/* Progress of current programm */
-.programm_progress{
-    margin-top: 30px;
-}
-
-.programm_progress .progress_bar .info{
-    display: flex;
-}
-
-.programm_progress .progress_bar .percents{
-    position: relative;
-    background-color: rgb(0, 0, 0);
-    border: 1px solid rgb(97, 97, 97);
-    text-align: end;
-    padding: 5px 7px;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.programm_progress .progress_bar .percents p{
-    position: relative;
-    font-size: 25px;
-    z-index: 2;
-    transition: .2s ease;
-}
-
-.programm_progress .progress_bar .finish{
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 40%;
-    height: 100%;
-    background-color: rgba(0, 132, 19, 1);
-    border-radius: 5px 5px 5px 0px;
-    transition: .2s ease;
-}
-
-.programm_progress .progress_bar .info button{
-    margin-left: 20px;
-    opacity: 0.8;
-    transition: .2s ease;
-}
-
-.programm_progress .progress_bar .info button:hover{
-    opacity: 1;
-}
-
-/* title 'progress' */
-.programm_progress .progress_bar h2{
-    transform: translateX(1%);
-    font-size: 20px;
-    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -550,6 +251,7 @@
 
 .profile-welcome__button:hover{
     background-color: rgba(245, 245, 245, 1);
+    color: #000000;
 }
 
 .profile-welcome__button:hover img{
@@ -3168,8 +2870,6 @@
 .exercise-item--session{
     width: 100%;
 }
-
-
 
 .workout-session-footer{
     display: flex;

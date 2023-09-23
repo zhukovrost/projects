@@ -56,8 +56,8 @@ foreach ($user_data->workout_history as $item){
 						</section>
 						<!-- Statistic info -->
 						<section class="progress-block__workouts-statistic">
-							<p class="progress-block__workouts-statistic-item">Тренировки: <span><?php echo count($user_data->workout_history); ?></span></p>
-							<p class="progress-block__workouts-statistic-item">Программы: <span><?php echo $user_data->get_program_amount($conn); ?></span></p>
+							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo count($user_data->workout_history); ?></span></p>
+							<p class="progress-block__workouts-statistic-item">Программ: <span><?php echo $user_data->get_program_amount($conn); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Упражнений: <span><?php echo $exercise_cnt; ?></span></p>
 						</section>
 					</div>
@@ -299,9 +299,9 @@ foreach ($user_data->workout_history as $item){
             },
         });
 
-		// Height of friends block
-        let friendsBlock = document.querySelector('.last_trainings');
-        friendsBlock.style.cssText = `height: ${document.querySelector('.trainingChart').clientHeight}px;`;
+		// Height of last-trainings block
+        let lastTrainingsBlock = document.querySelector('.last-trainings');
+        lastTrainingsBlock.style.cssText = `height: ${document.querySelector('.progress-block__trainings-chart').clientHeight}px;`;
     </script>
 </body>
 </html>

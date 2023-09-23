@@ -120,188 +120,199 @@ $conn->close();
     </section>
 
     <!-- WELCOME block third -->
-    <section class="welcome_block_3">
+    <section class="welcome-block-3">
         <div class="container">
             <!-- Title -->
-            <h1 class="title">ПОДРОБНАЯ СТАТИСТИКА</h1>
+            <h1 class="welcome-block-3__title">ПОДРОБНАЯ СТАТИСТИКА</h1>
             <!-- First part of statistic(trainings diagram & lasr trainings) -->
-            <section class="statistic_block">
-                <!-- Count of trainings chart -->
-                <section class="trainingChart">
-                    <canvas id="trainingStatisticChart"></canvas>
-                </section>
-                <!-- Last trainings block -->
-                <section class="last_trainings">
-                    <!-- Title -->
-                    <h2>Последние тренировки</h2>
-                    <!-- Trainings content -->
-                    <div class="content">
-                        <!-- Item -->
-                        <section class="item">
-                            <!-- Left part of last exercise item -->
-                            <div class="left">
-                                <!-- Time of training -->
-                                <div>
-                                    <img src="img/time.svg" alt="">
-                                    <p><span>65</span> мин</p>
-                                </div>
-                                <!-- Exercise count of training -->
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>10</span> упражнений</p>
-                                </div>
-                            </div>
-                            <!-- Right part of last exercise item -->
-                            <div class="right">
-                                <!-- Muscle groups count of training -->
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>3</span> группы мышц</p>
-                                </div>
-                                <!-- Button 'Подробнее' for more info about exercise -->
-                                <div>
-                                    <button>Подробнее <img src="img/more.svg" alt=""></button>
-                                </div>
+            <section class="progress-block">
+                <div class="container">
+                    <!-- First part of statistic(trainings diagram & lasr trainings) -->
+                    <section class="progress-block__trainings">
+                        <!-- Count of trainings chart -->
+                        <section class="progress-block__trainings-chart">
+                            <canvas id="trainingStatisticChart"></canvas>
+                        </section>
+                        <!-- Last trainings block -->
+                        <section class="last-trainings">
+                            <h1 class="last-trainings__title">Последние тренировки</h1>
+                            <div class="last-trainings__content">
+                                <!-- Item -->
+                                <section class="last-trainings__card">
+                                    <!-- Left part of last exercise item -->
+                                    <div class="last-trainings__card-left">
+                                        <!-- Time of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/time.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> мин</p>
+                                        </div>
+                                        <!-- Exercise count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> упражнений</p>
+                                        </div>
+                                    </div>
+                                    <!-- Right part of last exercise item -->
+                                    <div class="last-trainings__card-right">
+                                        <!-- Muscle groups count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> группы мышц</p>
+                                        </div>
+                                        <!-- Button 'Подробнее' for more info about exercise -->
+                                        <div class="last-trainings__item">
+                                        <a class="button-text last-trainings__item-button" href="">Подробнее <img src="img/other.svg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="last-trainings__card">
+                                    <!-- Left part of last exercise item -->
+                                    <div class="last-trainings__card-left">
+                                        <!-- Time of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/time.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> мин</p>
+                                        </div>
+                                        <!-- Exercise count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> упражнений</p>
+                                        </div>
+                                    </div>
+                                    <!-- Right part of last exercise item -->
+                                    <div class="last-trainings__card-right">
+                                        <!-- Muscle groups count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> группы мышц</p>
+                                        </div>
+                                        <!-- Button 'Подробнее' for more info about exercise -->
+                                        <div class="last-trainings__item">
+                                        <a class="button-text last-trainings__item-button" href="">Подробнее <img src="img/other.svg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="last-trainings__card">
+                                    <!-- Left part of last exercise item -->
+                                    <div class="last-trainings__card-left">
+                                        <!-- Time of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/time.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> мин</p>
+                                        </div>
+                                        <!-- Exercise count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> упражнений</p>
+                                        </div>
+                                    </div>
+                                    <!-- Right part of last exercise item -->
+                                    <div class="last-trainings__card-right">
+                                        <!-- Muscle groups count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> группы мышц</p>
+                                        </div>
+                                        <!-- Button 'Подробнее' for more info about exercise -->
+                                        <div class="last-trainings__item">
+                                        <a class="button-text last-trainings__item-button" href="">Подробнее <img src="img/other.svg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="last-trainings__card">
+                                    <!-- Left part of last exercise item -->
+                                    <div class="last-trainings__card-left">
+                                        <!-- Time of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/time.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> мин</p>
+                                        </div>
+                                        <!-- Exercise count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> упражнений</p>
+                                        </div>
+                                    </div>
+                                    <!-- Right part of last exercise item -->
+                                    <div class="last-trainings__card-right">
+                                        <!-- Muscle groups count of training -->
+                                        <div class="last-trainings__item">
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span>24</span> группы мышц</p>
+                                        </div>
+                                        <!-- Button 'Подробнее' for more info about exercise -->
+                                        <div class="last-trainings__item">
+                                        <a class="button-text last-trainings__item-button" href="">Подробнее <img src="img/other.svg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </section>
-                        <!-- Decoration line -->
-                        <div class="line"></div>
-                        <section class="item">
-                            <div class="left">
-                                <div>
-                                    <img src="img/time.svg" alt="">
-                                    <p><span>65</span> мин</p>
-                                </div>
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>10</span> упражнений</p>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>3</span> группы мышц</p>
-                                </div>
-                                <div>
-                                    <button>Подробнее <img src="img/more.svg" alt=""></button>
-                                </div>
-                            </div>
-                        </section>
-                        <div class="line"></div>
-                        <section class="item">
-                            <div class="left">
-                                <div>
-                                    <img src="img/time.svg" alt="">
-                                    <p><span>65</span> мин</p>
-                                </div>
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>10</span> упражнений</p>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>3</span> группы мышц</p>
-                                </div>
-                                <div>
-                                    <button>Подробнее <img src="img/more.svg" alt=""></button>
-                                </div>
-                            </div>
-                        </section>
-                        <div class="line"></div>
-                        <section class="item">
-                            <div class="left">
-                                <div>
-                                    <img src="img/time.svg" alt="">
-                                    <p><span>65</span> мин</p>
-                                </div>
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>10</span> упражнений</p>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div>
-                                    <img src="img/cards.svg" alt="">
-                                    <p><span>3</span> группы мышц</p>
-                                </div>
-                                <div>
-                                    <button>Подробнее <img src="img/more.svg" alt=""></button>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </section>
-            </section>
-
-            <!-- Second part of statistic(training info and muscles & physical diagram) -->
-            <section class="statistic_block second">
-                <!-- Training info -->
-                <section class="training">
-                    <!-- Muscle groups diagram -->
-                    <div class="info">
-                        <section class="muscle_groups">
-                            <h2>Группы мышц</h2>
-                            <canvas id="muscleGroupsChart"></canvas>
-                        </section>
-                        <!-- Statistic info -->
-                        <section class="statistic">
-                            <p>Тренировки: <span>156</span></p>
-                            <p>Время: <span>1247 мин</span></p>
-                            <p>Программы: <span>3</span></p>
-                            <p>Упражнений: <span>129</span></p>
-                        </section>
-                    </div>
-                    <!-- Current info -->
-                    <section class="physical_info">
-                        <p>Вес: 80 кг</p>
-                        <p>Рост: 180 см</p>
-                        <button>Добавить<img src="img/add_black.svg" alt=""></button>
                     </section>
-                </section>
-                <!-- Physical block -->
-                <section class="physical_data">
-                    <!-- Navigation -->
-                    <nav>
-                        <!-- Year & month & week -->
-                        <select name="" id="">
-                            <option value="value1" selected>Год</option>
-                            <option value="value2">Месяц</option>
-                            <option value="value3">Неделя</option>
-                        </select>
-                        <!-- Button to other physic(weight or length) -->
-                        <button>РОСТ</button>
-                    </nav>
-                    
-                    <!-- Diagram swiper -->
-                    <swiper-container class="mySwiper" navigation="true">
-                        <swiper-slide>
-                            <div class="chart">
-                                <canvas id="weightDataChart"></canvas>
+
+                    <!-- Second part of statistic(training info and muscles & physical diagram) -->
+                    <section class="progress-block__info">
+                        <!-- Training info -->
+                        <section class="progress-block__workouts">
+                            <!-- Muscle groups diagram -->
+                            <div class="progress-block__workouts-info">
+                                <section class="progress-block__muscle-groups">
+                                    <h2 class="progress-block__muscle-groups-title">Группы мышц</h2>
+                                    <canvas class="progress-block__muscle-groups-chart" id="muscleGroupsChart"></canvas>
+                                </section>
+                                <!-- Statistic info -->
+                                <section class="progress-block__workouts-statistic">
+                                    <p class="progress-block__workouts-statistic-item">Тренировок: <span>24</span></p>
+                                    <p class="progress-block__workouts-statistic-item">Программ: <span>24</span></p>
+                                    <p class="progress-block__workouts-statistic-item">Упражнений: <span>24</span></p>
+                                </section>
                             </div>
-                        </swiper-slide>
-                        <swiper-slide>
-                            <div class="chart">
-                                <canvas id="lengthDataChart"></canvas>
+                            <!-- Current info -->
+                            <section class="progress-block__physical-info">
+                                <p class="progress-block__physical-info-item">Вес: 80 кг</p>
+                                <p class="progress-block__physical-info-item">Рост: 180 см</p>
+                                <button class="button-text progress-block__physical-info-button">Добавить<img src="img/add.svg" alt=""></button>
+                            </section>
+                        </section>
+                        <!-- Physical block -->
+                        <section class="progress-block__physical-data">
+                            <!-- Navigation -->
+                            <nav class="progress-block__physical-data-navigation">
+                                <!-- Year & month & week -->
+                                <select class="progress-block__physical-data-select" name="" id="">
+                                    <option value="value1" selected>Год</option>
+                                    <option value="value2">Месяц</option>
+                                    <option value="value3">Неделя</option>
+                                </select>
+                                <!-- Button to other physic(weight or length) -->
+                                <button class="button-text progress-block__physical-data-button">РОСТ</button>
+                            </nav>
+                            
+                            <!-- Diagram swiper -->
+                            <swiper-container class="progress-block__physical-data-swiper" navigation="true">
+                                <swiper-slide class="progress-block__physical-data-slide">
+                                    <div class="progress-block__physical-data-chart">
+                                        <canvas id="weightDataChart"></canvas>
+                                    </div>
+                                </swiper-slide>
+                            </swiper-container>
+                        </section>
+                    </section>
+                    <section class="progress-block__programm">
+                        <!-- Progress line and count of percent -->
+                        <div class="progress-block__programm-progress">
+                        <h2 class="progress-block__programm-title">Моя программа</h2>
+                        <div class="progress-block__programm-info">
+                            <div class="progress-block__programm-line">
+                                <p class="progress-block__programm-percents">60%</p>
+                                <div class="progress-block__programm-finish" class="finish"></div>
                             </div>
-                        </swiper-slide>
-                    </swiper-container>
-                </section>
-            </section>
-            <section class="programm_progress">
-                <!-- Progress line and count of percent -->
-                <div class="progress_bar">
-                  <h2>Моя программа</h2>
-                  <div class="info">
-                    <div class="percents">
-                        <p>40%</p>
-                        <div class="finish"></div>
-                      </div>
-                      <button><img src="img/my_programm.svg" alt=""></button>
-                  </div>
+                            <a class="progress-block__programm-button" href="reg_log.php"><img src="img/my_programm_black.svg" alt=""></a>
+                        </div>
+                        </div>
+                    </section>
                 </div>
-              </section>
+            </section>
         </div>
     </section>
 
@@ -504,8 +515,8 @@ $conn->close();
                 data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
                 borderWidth: 3,
                 backgroundColor: '#ffffff',
-                color: '#ffffff',
-                borderColor: '#ffffff'
+                color: '#000000',
+                borderColor: '#000000'
             }]
             },
             options: {
@@ -569,7 +580,7 @@ $conn->close();
                     label: 'Количество упражнений',
                     data: [12, 19, 3],
                     borderWidth: 1,
-                    color: '#ffffff',
+                    color: '#000000',
                 }]
             },
             options: {
@@ -583,7 +594,7 @@ $conn->close();
                                 family: 'Open Sans',
                                 size: 20,
                             },
-                            color: '#dadada',
+                            color: '#000000',
                         },
                     },
                 title: {
@@ -607,7 +618,7 @@ $conn->close();
                 borderWidth: 3,
                 backgroundColor: '#ffffff',
                 color: '#00CD1E',
-                borderColor: '#ffffff'
+                borderColor: '#000000'
             }]
             },
             options: {
@@ -617,7 +628,7 @@ $conn->close();
                     x: {
                         grid: {
                             display: true,
-                            color: 'rgba(255, 255, 255, 0.2)'
+                            color: 'rgba(0, 0, 0, 0.2)'
                         },
                         title: {
                             display: true,
@@ -631,7 +642,7 @@ $conn->close();
                     y: {
                         grid: {
                             display: true,
-                            color: 'rgba(255, 255, 255, 0.2)'
+                            color: 'rgba(0, 0, 0, 0.2)'
                         },
                         title: {
                             display: true,
@@ -658,6 +669,10 @@ $conn->close();
                 }
             },
         });
+
+        // Height of last-trainings block
+        let lastTrainingsBlock = document.querySelector('.last-trainings');
+        lastTrainingsBlock.style.cssText = `height: ${document.querySelector('.progress-block__trainings-chart').clientHeight}px;`;
     </script>
 </body>
 </html>

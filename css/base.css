@@ -755,8 +755,8 @@ body {
 }
 
 /* Left part of last exercise item */
-.last-trainings__item-left{
-    margin-right: 5vw;
+.last-trainings__card-left{
+    margin-right: 50px;
 }
 
 /* Minutes & exercise & muscle groups & info button */
