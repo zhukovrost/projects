@@ -1073,6 +1073,7 @@
 
 
 .my-program__finish{
+    width: fit-content;
     font-size: 30px;
     padding: 7px 30px;
     margin: 10px auto 20px;
