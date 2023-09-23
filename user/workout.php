@@ -83,7 +83,9 @@ $weekday = date("N") - 1;
                 </swiper-slide>
             </swiper-container>
             <?php } else { ?>
-                <p>Нет программы</p>
+                <div class="workouts-card__no-program">
+                    <p class="workouts-card__no-program-title">Нет программы</p>
+                </div>
             <?php } ?>
             <section class="workout-other">
                 <!-- Friends' workouts -->

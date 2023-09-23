@@ -1204,6 +1204,10 @@
     margin-left: 20px;
 }
 
+.workouts-block .friends-block{
+    margin-right: 15px;
+}
+
 
 /* Buttons favorite workouts and my program */
 .workout-other__buttons{
@@ -1365,6 +1369,12 @@
     margin-bottom: 20px;
 }
 
+
+.my-program__finish{
+    font-size: 30px;
+    padding: 7px 30px;
+    margin: 10px auto 20px;
+}
 
 /* ======================================== */
 

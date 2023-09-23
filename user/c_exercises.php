@@ -162,7 +162,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 					}
 					echo "</form>";
 				}else{
-					echo "<h1>У вас нет тренировок. Перейите на вкладку все тренировки.</h1>";
+					echo "<h1 class='exercises__none'>У вас нет тренировок. Перейите на вкладку все тренировки.</h1>";
 				}
 			}else{
 				$select_sql = "SELECT id FROM exercises";

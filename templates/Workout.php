@@ -86,37 +86,47 @@ class Workout {
 
     public function print_workout_info($expand_buttons=0, $user_id=-1, $additional_info=false){
         $workout = false;
-        if ($this->holiday){ ?>
-            <div class="day-workouts__card-day-off">Выходной</div>
-        <?php }else{ $workout = true; ?>
-            <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
-            <p class="day-workouts__card-item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
-            <p class="day-workouts__card-item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
-            <p class="day-workouts__card-item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
-            <p class="day-workouts__card-item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
-            <p class="day-workouts__card-item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
-            <p class="day-workouts__card-item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
-            <?php if ($expand_buttons == 1){ ?>
-            <div class="day-workouts__card-buttons">
-                <button class="button-img day-workouts__card-button"><img src="../img/more_white.svg" alt=""></button>
-                <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
-                <?php if ($additional_info){ ?>
-                    <img class="day-workouts__card-img" src="../img/done.svg" alt="">
-                <?php }else{ ?>
-                    <img class="day-workouts__card-img" src="../img/not_done.svg" alt="">
-                <?php }?>
-            </div>
-        <?php } else if ($expand_buttons == 2){ ?>
-            <div class="day-workouts__card-buttons">
-                <?php if ($this->creator == $user_id){ ?>
+        ?>
+        <section class="workouts-card__info">
+            <?php
+            if ($this->holiday){ ?>
+                <div class="day-workouts__card-day-off">Выходной</div>
+            <?php }else{ $workout = true; ?>
+                <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
+                <div class="workouts-card__info-line"></div>
+                <div class="workouts-card__muscle-groups">
+                    <p class="day-workouts__card-item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
+                    <p class="day-workouts__card-item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
+                </div>
+                <div class="workouts-card__info-line"></div>
+                <?php if ($expand_buttons == 1){ ?>
+                <div class="day-workouts__card-buttons">
+                    <button class="button-img day-workouts__card-button"><img src="../img/more_white.svg" alt=""></button>
                     <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
-                <?php }
-                if ($additional_info){ ?>
-                    <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
-                <?php } ?>
-            </div>
-        <?php }
-        }
+                    <?php if ($additional_info){ ?>
+                        <img class="day-workouts__card-img" src="../img/done.svg" alt="">
+                    <?php }else{ ?>
+                        <img class="day-workouts__card-img" src="../img/not_done.svg" alt="">
+                    <?php }?>
+                </div>
+            <?php } else if ($expand_buttons == 2){ ?>
+                <div class="day-workouts__card-buttons">
+                    <?php if ($this->creator == $user_id){ ?>
+                        <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
+                    <?php }
+                    if ($additional_info){ ?>
+                        <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
+                    <?php } ?>
+                </div>
+            <?php }
+            }
+            ?>
+        </section>
+            <?php
         return $workout;
     }
 

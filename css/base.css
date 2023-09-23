@@ -485,6 +485,26 @@ body {
     border-radius: 3px;
 }
 
+.workouts-card__no-program{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 5px 5px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    border-radius: 3px;
+}
+
+.workouts-card__no-program-title{
+    font-size: 30px;
+    padding: 10px 40px;
+    background-color: rgb(238, 238, 238);
+    border: 1px solid #dfdede;
+    color: #000000;
+    box-shadow: 0px 3px 0px 0px #00CD1E;
+}
+
 /* Title and button to add to favorite collection */
 .workouts-card__header{
     display: flex;
@@ -530,6 +550,12 @@ body {
     flex-direction: column;
 }
 
+/* Workout title */
+.day-workouts__card-name{
+    font-size: 21px;
+    font-weight: 600;
+}
+
 .workouts-card__muscle-groups{
     width: 100%;
     padding: 0px 20px;
@@ -555,9 +581,9 @@ body {
 /* Decorative line */
 .workouts-card__info-line{
     height: 1px;
-    width: 100%;
+    width: 90%;
+    margin: 10px auto 15px; 
     background: #CECECE;
-    margin: 10px 0px 20px;
 }
 
 .workouts-card__repeats-info{
@@ -825,15 +851,6 @@ body {
     border: 1px solid #C6C6C6;
 }
 
-/* Workout title */
-.day-workouts__card-name{
-    font-size: 21px;
-    font-weight: 600;
-    padding-bottom: 7px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #D3D3D3;
-}
-
 /* Muscle groups */
 .day-workouts__card-item{
     font-size: 21px;
@@ -853,9 +870,7 @@ body {
 .day-workouts__card-buttons{
     display: flex;
     justify-content: center;
-    margin-top: 20px;
     padding-top: 10px;
-    border-top: 1px solid #CECECE;
 }
 
 .day-workouts__card-button{
