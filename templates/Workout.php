@@ -33,10 +33,9 @@ class Workout {
                     $approaches = json_decode($item['approaches']);
                     $this->name = $item['name'];
                     $this->creator = $item["creator"];
-                }
-
-                for ($i = 0; $i < count($exercises); $i++){
-                    array_push($this->exercises, new User_Exercise($conn, $exercises[$i], $reps[$i], $approaches[$i]));
+                    for ($i = 0; $i < count($exercises); $i++){
+                        array_push($this->exercises, new User_Exercise($conn, $exercises[$i], $reps[$i], $approaches[$i]));
+                    }
                 }
             }else{
                 echo $conn->error;
