@@ -95,12 +95,12 @@ class Workout {
                 <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
                 <div class="workouts-card__info-line"></div>
                 <div class="workouts-card__muscle-groups">
-                    <p class="day-workouts__card-item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
-                    <p class="day-workouts__card-item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
+                    <p class="workouts-card__item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
+                    <p class="workouts-card__item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
+                    <p class="workouts-card__item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
+                    <p class="workouts-card__item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
+                    <p class="workouts-card__item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
+                    <p class="workouts-card__item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
                 </div>
                 <?php if ($expand_buttons == 1){ ?>
                 <div class="day-workouts__card-buttons">
