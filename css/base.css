@@ -567,23 +567,6 @@ body {
     padding: 0px 20px;
 }
 
-.workouts-card__info-item{
-    display: flex;
-    justify-content: space-between;
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
-.workouts-card__info-item span{
-    text-align: center;
-    font-weight: 500;
-    background-color: rgba(236, 236, 236, 1);
-    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
-    padding: 0px 10px;
-    border: 1px solid rgb(218, 218, 218);
-    margin-left: 5px;
-}
-
 /* Decorative line */
 .workouts-card__info-line{
     height: 1px;
@@ -858,18 +841,18 @@ body {
 }
 
 /* Muscle groups */
-.day-workouts__card-item{
+.workouts-card__item{
     font-size: 21px;
     margin-bottom: 10px;
 }
 
-.day-workouts__card-item span{
+.workouts-card__item span{
     font-size: 22px;
     background-color: rgba(236, 236, 236, 1);
     padding: 1px 7px;
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
     float: right;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 /* Buttons edit, more and image(complete or not) */
