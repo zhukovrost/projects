@@ -43,7 +43,7 @@ $cnt_apps = 0;
     <main class="session-exercises">
         <swiper-container class="session-exercises__swiper" navigation="true">
             <!-- for loop -->
-            <?php foreach ($workout->exercises as $exercise){?>
+            <?php for ($i = 0; $i < $workout->loops; $i++) { foreach ($workout->exercises as $exercise){?>
             <swiper-slide class="session-exercises__slide">
                 <?php
                 $cnt_apps += $exercise->approaches;
@@ -51,7 +51,7 @@ $cnt_apps = 0;
                 # echo render($replaces, "../templates/user_exercise.html");
                 ?>
             </swiper-slide>
-            <?php } ?>
+            <?php } } ?>
         </swiper-container>
     </main>
 
