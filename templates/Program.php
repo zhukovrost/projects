@@ -46,7 +46,7 @@ class Program {
                 $cnt++;
             }
         }
-        return $cnt * $this->reps;
+        return $cnt * $this->weeks;
     }
 
     public function count_exercises(){
@@ -54,7 +54,7 @@ class Program {
         foreach ($this->workouts as $workout){
             $cnt += count($workout->exercises);
         }
-        return $cnt * $this->reps;
+        return $cnt * $this->weeks;
     }
 
     public function print_program_info(){ ?>

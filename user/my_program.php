@@ -137,7 +137,7 @@ foreach ($user_data->program->workouts as $workout){
                 </section>
             </section>
 
-            <button class="button-text my-program__finish">Завершить досрочно</button>
+            <a href="end_program.php" class="button-text my-program__finish">Завершить досрочно</a>
         </div>
     </main>
 
