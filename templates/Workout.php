@@ -102,7 +102,6 @@ class Workout {
                     <p class="day-workouts__card-item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
                     <p class="day-workouts__card-item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
                 </div>
-                <div class="workouts-card__info-line"></div>
                 <?php if ($expand_buttons == 1){ ?>
                 <div class="day-workouts__card-buttons">
                     <button class="button-img day-workouts__card-button"><img src="../img/more_white.svg" alt=""></button>
@@ -114,6 +113,7 @@ class Workout {
                     <?php }?>
                 </div>
             <?php } else if ($expand_buttons == 2){ ?>
+                <div class="workouts-card__info-line"></div>
                 <div class="day-workouts__card-buttons">
                     <?php if ($this->creator == $user_id){ ?>
                         <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>

@@ -556,6 +556,12 @@ body {
     font-weight: 600;
 }
 
+.day-workouts__card .workouts-card__info{
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
 .workouts-card__muscle-groups{
     width: 100%;
     padding: 0px 20px;
