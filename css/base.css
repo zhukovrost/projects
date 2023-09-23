@@ -830,11 +830,10 @@ body {
 
 /* Content of day workout */
 .day-workouts__card-content{
-    height: 100%;
     display: table-cell;
     vertical-align:middle;
     background-color: #ffffff;
-    padding: 10px 20px;
+    padding: 10px;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     border: 1px solid #C6C6C6;
