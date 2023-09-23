@@ -26,17 +26,17 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 <body>
 	<?php include "../templates/header.html" ?>
 
-	<!-- Exercise navigation -->
-	<nav class="exercise_nav">
+	<!-- Exercises navigation -->
+	<nav class="exercises-nav">
 		<div class="container">
 			<!-- Buttons to (my / all) exercises -->
             <?php if ($my) { ?>
-                <a href="exercises.php?my=0">Все <img src="../img/arrow_white.svg" alt=""></a>
+                <a class="button-text exercises-nav__item" href="exercises.php?my=0">Все <img src="../img/arrow_white.svg" alt=""></a>
             <?php } else { ?>
-                <a href="exercises.php?my=1">Мои <img src="../img/arrow_white.svg" alt=""></a>
+                <a class="button-text exercises-nav__item" href="exercises.php?my=1">Мои <img src="../img/arrow_white.svg" alt=""></a>
             <?php } ?>
 			<!-- Main search -->
-			<select name="exercise_sort" id="">
+			<select class="exercises-nav__select" name="exercise_sort" id="">
 				<option value="value1" selected>По умолчанию</option>
 				<option value="value2">Избранные</option>
 				<option value="value3">Рейтинг(возрастание)</option>
@@ -45,113 +45,113 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				<option value="value6">Сложность(убывание)</option>
 			</select>
 			<!-- Exercise search -->
-			<div class="search">
-				<input type="text" placeholder="Искать">
-				<button><img src="../img/search_black.svg" alt=""></button>
+			<div class="exercises-nav__search">
+				<input class="exercises-nav__search-input" type="text" placeholder="Искать">
+				<button class="exercises-nav__search-button"><img src="../img/search_black.svg" alt=""></button>
 			</div>
 		</div>
 	</nav>
 
-	<main>
+	<main class="exercises-block">
 		<!-- Exercises and filter block -->
-		<div class="container exercises_cover">
+		<div class="container">
 			<!-- Filter block -->
-			<form class="filter_block">
+			<form class="exercises-filter">
 				<!-- Muscle groups filter -->
-				<section class="muscle_groups">
-					<button type="button">Группы мышц <img src="../img/search_arrow.svg" alt=""></button>
-					<div class="content">
-						<div>
-							<input type="checkbox" name="muscle_groups_search" id="muscle_groups_search1">
-							<label for="muscle_groups_search1">Спина</label>
+				<section class="exercises-filter__muscle-groups">
+					<button class="exercises-filter__button" type="button">Группы мышц <img src="../img/search_arrow.svg" alt=""></button>
+					<div class="exercises-filter__content">
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="muscle_groups_search" id="muscle_groups_search1">
+							<label class="exercises-filter__item-label" for="muscle_groups_search1">Спина</label>
 						</div>
-						<div>
-							<input type="checkbox" name="muscle_groups_search" id="muscle_groups_search2">
-							<label for="muscle_groups_search2">Ноги</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="muscle_groups_search" id="muscle_groups_search2">
+							<label class="exercises-filter__item-label" for="muscle_groups_search2">Ноги</label>
 						</div>
-						<div>
-							<input type="checkbox" name="muscle_groups_search" id="muscle_groups_search3">
-							<label for="muscle_groups_search3">Руки</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="muscle_groups_search" id="muscle_groups_search3">
+							<label class="exercises-filter__item-label" for="muscle_groups_search3">Руки</label>
 						</div>
-						<div>
-							<input type="checkbox" name="muscle_groups_search" id="muscle_groups_search4">
-							<label for="muscle_groups_search4">Грудь</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="muscle_groups_search" id="muscle_groups_search4">
+							<label class="exercises-filter__item-label" for="muscle_groups_search4">Грудь</label>
 						</div>
-						<div>
-							<input type="checkbox" name="muscle_groups_search" id="muscle_groups_search5">
-							<label for="muscle_groups_search5">Пресс</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="muscle_groups_search" id="muscle_groups_search5">
+							<label class="exercises-filter__item-label" for="muscle_groups_search5">Пресс</label>
 						</div>
-						<div>
-							<input type="checkbox" name="muscle_groups_search" id="muscle_groups_search6">
-							<label for="muscle_groups_search6">Кардио</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="muscle_groups_search" id="muscle_groups_search6">
+							<label class="exercises-filter__item-label" for="muscle_groups_search6">Кардио</label>
 						</div>
 					</div>
 				</section>
 				<!-- Difficult filter -->
-				<section class="difficult">
-					<button type="button">Сложность <img src="../img/search_arrow.svg" alt=""></button>
-					<div class="content">
-						<div>
-							<input type="checkbox" name="difficult_search" id="difficult_search1">
-							<label for="difficult_search1">5</label>
+				<section class="exercises-filter__difficult">
+					<button class="exercises-filter__button" type="button">Сложность <img src="../img/search_arrow.svg" alt=""></button>
+					<div class="exercises-filter__content">
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="difficult_search" id="difficult_search1">
+							<label class="exercises-filter__item-label" for="difficult_search1">5</label>
 						</div>
-						<div>
-							<input type="checkbox" name="difficult_search" id="difficult_search2">
-							<label for="difficult_search2">4</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="difficult_search" id="difficult_search2">
+							<label class="exercises-filter__item-label" for="difficult_search2">4</label>
 						</div>
-						<div>
-							<input type="checkbox" name="difficult_search" id="difficult_search3">
-							<label for="difficult_search3">3</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="difficult_search" id="difficult_search3">
+							<label class="exercises-filter__item-label" for="difficult_search3">3</label>
 						</div>
-						<div>
-							<input type="checkbox" name="difficult_search" id="difficult_search4">
-							<label for="difficult_search4">2</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="difficult_search" id="difficult_search4">
+							<label class="exercises-filter__item-label" for="difficult_search4">2</label>
 						</div>
-						<div>
-							<input type="checkbox" name="difficult_search" id="difficult_search5">
-							<label for="difficult_search5">1</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="checkbox" name="difficult_search" id="difficult_search5">
+							<label class="exercises-filter__item-label" for="difficult_search5">1</label>
 						</div>
 					</div>
 				</section>
 				<!-- Rating filter -->
-				<section class="rating">
-					<button type="button">Рейтинг <img src="../img/search_arrow.svg" alt=""></button>
-					<div class="content">
-						<div>
-							<input type="radio" name="rating_search" id="rating_search1">
-							<label for="rating_search1">5</label>
+				<section class="exercises-filter__rating">
+					<button class="exercises-filter__button" type="button">Рейтинг <img src="../img/search_arrow.svg" alt=""></button>
+					<div class="exercises-filter__content">
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="radio" name="rating_search" id="rating_search1">
+							<label class="exercises-filter__item-label" for="rating_search1">5</label>
 						</div>
-						<div>
-							<input type="radio" name="rating_search" id="rating_search2">
-							<label for="rating_search2">от 4</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="radio" name="rating_search" id="rating_search2">
+							<label class="exercises-filter__item-label" for="rating_search2">от 4</label>
 						</div>
-						<div>
-							<input type="radio" name="rating_search" id="rating_search3">
-							<label for="rating_search3">от 3</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="radio" name="rating_search" id="rating_search3">
+							<label class="exercises-filter__item-label" for="rating_search3">от 3</label>
 						</div>
-						<div>
-							<input type="radio" name="rating_search" id="rating_search4">
-							<label for="rating_search4">от 2</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="radio" name="rating_search" id="rating_search4">
+							<label class="exercises-filter__item-label" for="rating_search4">от 2</label>
 						</div>
-						<div>
-							<input type="radio" name="rating_search" id="rating_search5">
-							<label for="rating_search6">от 1</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="radio" name="rating_search" id="rating_search5">
+							<label class="exercises-filter__item-label" for="rating_search6">от 1</label>
 						</div>
-						<div>
-							<input type="radio" name="rating_search" id="rating_search6">
-							<label for="rating_search6">любой</label>
+						<div class="exercises-filter__item">
+							<input class="exercises-filter__item-input" type="radio" name="rating_search" id="rating_search6">
+							<label class="exercises-filter__item-label" for="rating_search6">любой</label>
 						</div>
 					</div>
 				</section>
 				<!-- Buttons search and clear -->
-				<button type="submit" class="clear">Искать</button>
-				<button type="button" class="clear">Очистить</button>
+				<button class="exercises-filter__search-button" type="submit" class="clear">Искать</button>
+				<button class="exercises-filter__search-button" type="button" class="clear">Очистить</button>
 			</form>
 			<!-- Exercises array -->
 			<?php
 			if ($my){
 				if (count($user_data->my_exercises) > 0){
-					echo "<form method='post' class='exercise_block'>";
+					echo "<form method='post' class='exercise-block'>";
 					foreach ($user_data->my_exercises as $exercise_id){
 						$exercise = new Exercise($conn, $exercise_id);
 						$is_featured = $exercise->is_featured($user_data);
@@ -164,7 +164,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			}else{
 				$select_sql = "SELECT id FROM exercises";
 				if ($select_result = $conn->query($select_sql)){
-					echo "<form method='post' class='exercise_block'>";
+					echo "<form method='post' class='exercise-block'>";
 					foreach ($select_result as $item){
 						$exercise = new Exercise($conn, $item['id']);
 						$is_featured = $exercise->is_featured($user_data);
@@ -184,9 +184,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 	<script>
         // Button to see exercise info
-        let infoExerciseButton = document.querySelectorAll('.exercise_block .exercise_item .info');
-        let closeInfoExerciseButton = document.querySelectorAll('.exercise_block .exercise_item .info_close');
-        let infoBlock = document.querySelectorAll('.exercise_block .exercise_item .info_block');
+        let infoExerciseButton = document.querySelectorAll('.exercise-block .exercise_item .info');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-block .exercise_item .info_close');
+        let infoBlock = document.querySelectorAll('.exercise-block .exercise_item .info_block');
 
         for(let i = 0; i < infoExerciseButton.length; i++){
             infoExerciseButton[i].addEventListener('click', function(){
@@ -201,9 +201,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 
 		// Filter buttons
-		let FilterButtonsArr = document.querySelectorAll('.exercises_cover .filter_block section button');
-		let FilterBlocksArr = document.querySelectorAll('.exercises_cover .filter_block .content');
-		let FilterButtonsArrowArr = document.querySelectorAll('.exercises_cover .filter_block section button img');
+		let FilterButtonsArr = document.querySelectorAll('.exercises-filter__button');
+		let FilterBlocksArr = document.querySelectorAll('.exercises-filter__content');
+		let FilterButtonsArrowArr = document.querySelectorAll('.exercises-filter__button img');
 
 
 		for(let i = 0; i < FilterButtonsArr.length; i++){
@@ -221,8 +221,8 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 
 		//Difficult
-		let difficultCountArr = document.querySelectorAll('.exercise_block .exercise_item .statistic .difficult p');
-		let difficultBlockArr = document.querySelectorAll('.exercise_block .exercise_item .statistic .difficult');
+		let difficultCountArr = document.querySelectorAll('.exercise-block .exercise_item .statistic .difficult p');
+		let difficultBlockArr = document.querySelectorAll('.exercise-block .exercise_item .statistic .difficult');
 
 		for(let i = 0; i < difficultCountArr.length; i++){
 			difficultBlockArr[i].innerHTML = '';

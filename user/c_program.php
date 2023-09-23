@@ -123,9 +123,9 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 			</section>
 		</div>
 
-		<section class="popup_exercise popup_workout">
-			<section class="content">
-				<button class="close"><img src="../img/close.svg" alt=""></button>
+		<section class="popup-exercise">
+			<section class="popup-exercise__content">
+				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<section class="exercise_item">
 					<!-- Exercise info button -->
 					<button class="info"><img src="../img/info.svg" alt=""></button>
@@ -157,16 +157,16 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 						</div>
 					</div>
 				</section>
-				<section class="info">
-					<div>
-						<label for="c_exercise_circles">Количество подходов: </label>
-						<input type="number" id="c_exercise_circles">
+				<section class="popup-exercise__info">
+					<div class="popup-exercise__info-item">
+						<label class="popup-exercise__info-label" for="c_exercise_circles">Количество подходов: </label>
+						<input class="popup-exercise__info-input" type="number" id="c_exercise_circles">
 					</div>
-					<div>
-						<label for="c_exercise_reps">Количество повторений: </label>
-						<input type="number" id="c_exercise_reps">
+					<div class="popup-exercise__info-item">
+						<label class="popup-exercise__info-label" for="c_exercise_reps">Количество повторений: </label>
+						<input class="popup-exercise__info-input" type="number" id="c_exercise_reps">
 					</div>
-					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
+					<button class="popup-exercise__add-button"><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
 				</section>
 			</section>
 		</section>

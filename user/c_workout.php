@@ -120,9 +120,9 @@ if (isset($_POST["week_days"])){
 		</div>
 
 
-		<section class="popup_exercise">
-			<section class="content">
-				<button class="close"><img src="../img/close.svg" alt=""></button>
+		<section class="popup-exercise">
+			<section class="popup-exercise__content">
+				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<section class="exercise_item">
 					<!-- Exercise info button -->
 					<button class="info"><img src="../img/info.svg" alt=""></button>
@@ -154,16 +154,16 @@ if (isset($_POST["week_days"])){
 						</div>
 					</div>
 				</section>
-				<section class="info">
-					<div>
-						<label for="c_exercise_circles">Количество подходов: </label>
-						<input type="number" id="c_exercise_circles">
+				<section class="popup-exercise__inf">
+					<div class="popup-exercise__info-item">
+						<label class="popup-exercise__info-label" for="c_exercise_circles">Количество подходов: </label>
+						<input class="popup-exercise__info-input" type="number" id="c_exercise_circles">
 					</div>
-					<div>
-						<label for="c_exercise_reps">Количество повторений: </label>
-						<input type="number" id="c_exercise_reps">
+					<div class="popup-exercise__info-item">
+						<label class="popup-exercise__info-label" for="c_exercise_reps">Количество повторений: </label>
+						<input class="popup-exercise__info-input" type="number" id="c_exercise_reps">
 					</div>
-					<button><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
+					<button class="popup-exercise__add-button"><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
 				</section>
 			</section>
 		</section>
@@ -191,8 +191,8 @@ if (isset($_POST["week_days"])){
 
 		// Popup exercises
 		let exercisesButtonsEdit = document.querySelectorAll('.c_workout .exercise_item .buttons .edit');
-		let popupExerciseItem = document.querySelector('.popup_exercise .exercise_item');
-		let popupExerciseWindow = document.querySelector('.popup_exercise');
+		let popupExerciseItem = document.querySelector('.popup-exercise .exercise_item');
+		let popupExerciseWindow = document.querySelector('.popup-exercise');
 		let popupExerciseReps = document.querySelector('#c_exercise_reps');
 		let popupExerciseCircles = document.querySelector('#c_exercise_circles');
 
@@ -213,7 +213,7 @@ if (isset($_POST["week_days"])){
 		}
 
 		// Popup exercise window
-		const closeBtn = document.querySelector('.popup_exercise .close');
+		const closeBtn = document.querySelector('.popup-exercise .close');
 		closeBtn.addEventListener('click', function(){
 			popupExerciseWindow.classList.remove("open");
 		});
@@ -224,7 +224,7 @@ if (isset($_POST["week_days"])){
 		}
 		});
 
-		document.querySelector('.popup_exercise .content').addEventListener('click', event => {
+		document.querySelector('.popup-exercise .content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
 		});
 
