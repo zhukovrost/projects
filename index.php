@@ -6,8 +6,11 @@ if ($user_data->get_auth()){
   header('Location: user/profile.php');
 }
 
-$conn->close();
-
+function is_out(&$day){
+    if ($day > 268){
+        $day = $day % 268;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,39 +50,22 @@ $conn->close();
             </h3>
             <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="0"
             centered-slides="true" autoplay-delay="3000" autoplay-disable-on-interaction="false" speed="1000">
-                <swiper-slide>
-                    <h2>
-                    Light weight - легкий вес
-                    </h2>
-                    <p class="example_title">
-                        Example:
-                    </p>
-                    <p class="example_text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </swiper-slide>
-                <swiper-slide>
-                    <h2>
-                    Light weight - легкий вес
-                    </h2>
-                    <p class="example_title">
-                        Example:
-                    </p>
-                    <p class="example_text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </swiper-slide>
-                <swiper-slide>
-                    <h2>
-                    Light weight - легкий вес
-                    </h2>
-                    <p class="example_title">
-                        Example:
-                    </p>
-                    <p class="example_text">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </swiper-slide>
+                <?php
+                for ($i = 0; $i < 3; $i++){
+                    $date = date('z') + 1 + $i;
+                    is_out($date);
+                    $sql = "SELECT word, translate FROM words WHERE day=$date";
+                    if ($result = $conn->query($sql)){
+                        foreach ($result as $item){
+                            $word = $item['word'];
+                            $translate = $item['translate']; ?>
+                            <swiper-slide>
+                                <h2>
+                                    <?php echo $word; ?> - <?php echo $translate; ?>
+                                </h2>
+                            </swiper-slide>
+                <?php } } } ?>
+
             </swiper-container>
         </section>
 
@@ -95,7 +81,10 @@ $conn->close();
     </div>
 </main>
 
-<?php include "templates/footer.html"; ?>
+<?php
+include "templates/footer.html";
+$conn->close();
+?>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 </body>
