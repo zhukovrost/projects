@@ -5,6 +5,16 @@ $user_data->check_the_login();
 if (!$user_data->set_program($conn)){
     header("Location: c_program_info.php");
 }
+
+if (isset($_POST['end'])){
+    $sql = "UPDATE program_to_user SET date_start=0 WHERE user=".$user_data->get_id()."  AND date_start + weeks * 604800 >= ".time()." LIMIT 1";
+    if ($conn->query($sql)){
+        header("Refresh: 0");
+    }else{
+        echo $conn->error;
+    }
+}
+
 $user_data->program->set_workouts($conn);
 $user_data->program->set_additional_data($conn, $user_data->get_id());
 $cnt_workouts_done = 0;
@@ -136,8 +146,10 @@ foreach ($user_data->program->workouts as $workout){
                     </section>
                 </section>
             </section>
-
-            <a href="end_program.php" class="button-text my-program__finish">Завершить досрочно</a>
+            <form action="" method="post">
+                <input type="hidden" name="end" value="1">
+                <button type="submit" class="button-text my-program__finish">Завершить досрочно</button>
+            </form>
         </div>
     </main>
 

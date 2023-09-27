@@ -287,7 +287,7 @@ class User {
     }
 
     public function set_program($conn){
-        $select_sql = "SELECT program FROM program_to_user WHERE user=$this->id LIMIT 1";
+        $select_sql = "SELECT program FROM program_to_user WHERE user=$this->id AND date_start + weeks * 604800 >= ".time()." LIMIT 1"; // fix it
         if ($result_sql = $conn->query($select_sql)){
             if ($result_sql->num_rows == 0){
                 $this->program = new Program($conn, 0);
