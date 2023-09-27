@@ -18,7 +18,7 @@ if (isset($_POST['end'])){
 $user_data->program->set_workouts($conn);
 $user_data->program->set_additional_data($conn, $user_data->get_id());
 $cnt_workouts_done = 0;
-$cnt_workouts_left = 0;
+$cnt_workouts_all = 0;
 $weekday_start = date("N", $user_data->program->date_start) - 1;
 
 $muscles = array(
@@ -61,7 +61,9 @@ foreach ($user_data->program->workouts as $workout){
                             for ($j = $weekday_start; $j < 7; $j++){
                                 $workout = $user_data->program->workouts[$j];
                                 $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400);
-                                $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                                $is_workout = $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                                $cnt_workouts_all += (int)!$workout->holiday;
+                                $cnt_workouts_done += (int)$is_done;
                             }
                         ?>
                     </swiper-slide>
@@ -75,8 +77,9 @@ foreach ($user_data->program->workouts as $workout){
                         for ($j = 0; $j < 7; $j ++){
                             $workout = $user_data->program->workouts[$j];
                             $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400 + $i * 604800);
-                            $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
-                        }
+                            $is_workout = $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                            $cnt_workouts_all += (int)!$workout->holiday;
+                            $cnt_workouts_done += (int)$is_done;                        }
                         ?>
                     </swiper-slide>
                     <?php }
@@ -88,8 +91,9 @@ foreach ($user_data->program->workouts as $workout){
                             for ($j = 0; $j < $weekday_start; $j++){
                                 $workout = $user_data->program->workouts[$j];
                                 $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400 + ($user_data->program->weeks - 1) * 604800);
-                                $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
-                            }
+                                $is_workout = $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                                $cnt_workouts_all += (int)!$workout->holiday;
+                                $cnt_workouts_done += (int)$is_done;                            }
 
                             for ($j = $weekday_start; $j < 7; $j++){
                                 echo render(array("{{ day }}" => get_day($j)), "../templates/out_of_workout.html");
@@ -114,19 +118,17 @@ foreach ($user_data->program->workouts as $workout){
                         <section class="my-program__progress">
                             <div class="my-program__progress-item">
                                 <div class="my-program__progress-percent">
-                                    69 %
+                                    <?php echo round($cnt_workouts_done / $cnt_workouts_all, 2) * 100; ?> %
                                 </div>
                                 <h3 class="my-program__progress-item-title">Выполнен(но)</h3>
-                                <p class="my-program__progress-item-text">Тренировок: <span>23</span></p>
-                                <p class="my-program__progress-item-text">Упражнений: <span>23</span></p>
+                                <p class="my-program__progress-item-text">Тренировок: <span><?php echo $cnt_workouts_done; ?></span></p>
                             </div>
                             <div class="my-program__progress-item">
                                 <div class="my-program__progress-percent">
-                                    31 %
+                                    <?php echo round(($cnt_workouts_all - $cnt_workouts_done) / $cnt_workouts_all, 2) * 100; ?> %
                                 </div>
                                 <h3 class="my-program__progress-item-title">Осталось(ся)</h3>
-                                <p class="my-program__progress-item-text">Тренировок: <span>23</span></p>
-                                <p class="my-program__progress-item-text">Упражнений: <span>23</span></p>
+                                <p class="my-program__progress-item-text">Тренировок: <span><?php echo $cnt_workouts_all - $cnt_workouts_done; ?></span></p>
                             </div>
                         </section>
                     </section>
