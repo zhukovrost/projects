@@ -22,7 +22,7 @@ if(isset($_POST['image_to_php'])) {
 <body>
 	<?php include "../templates/header.html"; ?>
 
-	<main>
+	<main class="user-block">
         <section class="preview_cover">
             <div class="preview_block">
                 <img id="preview" src="#" alt="Preview"/>
@@ -30,10 +30,10 @@ if(isset($_POST['image_to_php'])) {
             <button id="saveAvatar">Сохранить</button>
         </section>
 
-		<div class="container user_block">
+		<div class="container">
             <!-- Info about user -->
-			<section class="info">
-				<section class="about">
+			<section class="user-block__info">
+				<section class="user-about">
 					<!-- User avatar, name and surname -->
                     <form id="avatar_form" class="avatar" method="post">
                         <img id="profileImage" src="<?php echo $user->get_avatar($conn); ?>">
@@ -42,18 +42,18 @@ if(isset($_POST['image_to_php'])) {
                         <input type="hidden" id="image_to_php" name="image_to_php" value="">
                     </form>
                     <!-- User info text -->
-					<div class="content">
-						<p><?php echo $user->description; ?></p>
+					<div class="user-about__description">
+						<p class="user-about__description-text"><?php echo $user->description; ?></p>
                         <?php if ($user->get_auth()){ ?>
-						    <button><img src="../img/edit_gray.svg" alt="">Изменить</button>
+						    <button class="user-about__description-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
                         <?php } ?>
 					</div>
 				</section>
                 <!-- User's news -->
-				<section class="news">
+				<section class="user-news">
                     <!-- Button 'Новая запись' -->
                     <?php if ($user->get_auth()){ ?>
-					    <button class="new_post_btn">Новая запись <img src="../img/add.svg" alt=""></button>
+					    <button class="button-text user-news__add">Новая запись <img src="../img/add.svg" alt=""></button>
                     <?php } ?>
 					<!-- News item -->
                     <?php
@@ -72,45 +72,45 @@ if(isset($_POST['image_to_php'])) {
                     }?>
 				</section>
 			</section>
-			<section class="other">
-				<section class="friends">
+			<section class="user-block__other">
+				<section class="friends-block">
                     <!-- Title and button to search friends -->
-                    <div class="title">
-                        <h1>Подписки</h1>
-                        <a href=""><img src="../img/search.svg" alt=""></a>
+                    <div class="friends-block__header">
+                        <h1 class="friends-block__header-title">Подписки</h1>
+                        <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends swiper -->
-                    <swiper-container class="content swiper_friends" navigation="true">
+                    <swiper-container class="friends-block__swiper" navigation="true">
                         <?php print_user_list($conn, $user->subscriptions); ?>
 					</swiper-container>
                 </section>
                 <!-- User's staff (coach and doctor) -->
-				<section class="staff">
+				<section class="user-block__staff">
                     <!-- Coach info and buttons to chat, ptofile and delete -->
-					<div class="coach">
-						<p>Тренер: <span>Штангов К.</span></p>
-						<button><img src="../img/message.svg" alt=""></button>
-						<button><img src="../img/profile_black.svg" alt=""></button>
-						<button><img src="../img/delete_black.svg" alt=""></button>
+					<div class="user-block__coach">
+						<p class="user-block__staff-title">Тренер: <span>Штангов К.</span></p>
+						<button class="user-block__staff-button"><img src="../img/message.svg" alt=""></button>
+						<button class="user-block__staff-button"><img src="../img/profile_black.svg" alt=""></button>
+						<button class="user-block__staff-button"><img src="../img/delete_black.svg" alt=""></button>
 					</div>
                     <!-- Doctor info -->
-					<div class="doctor">
-						<p>Врач: <span>нет</span></p>
-						<button><img src="../img/add_black.svg" alt=""></button>
+					<div class="user-block__doctor">
+						<p class="user-block__staff-title">Врач: <span>нет</span></p>
+						<button class="user-block__staff-button"><img src="../img/add_black.svg" alt=""></button>
 					</div>
                     <!-- Count of subscribers and subscriptions -->
-					<div class="users_count">
-						<a href=""><span><?php echo count($user->subscribers); ?> подписчик(ов)</span></a>
-						<a href=""><span><?php echo count($user->subscriptions); ?> подписок</span></a>
+					<div class="user-block__sub-count">
+						<a class="user-block__sub-count-item" href=""><span><?php echo count($user->subscribers); ?> подписчик(ов)</span></a>
+						<a class="user-block__sub-count-item" href=""><span><?php echo count($user->subscriptions); ?> подписок</span></a>
 					</div>
 				</section>
 				<?php $user->print_workout_history($conn); ?>
                 <!-- Buttons to edit profile, search sportsmen and logout -->
-				<section class="buttons">
-					<button>Поиск спортсменов <img src="../img/search_white.svg" alt=""></button>
+				<section class="user-block__buttons">
+					<button class="button-text user-block__button"><p>Поиск спортсменов</p> <img src="../img/search_white.svg" alt=""></button>
                     <?php if ($user->get_auth()){ ?>
-                    <button>Редактировать профиль <img src="../img/edit.svg" alt=""></button>
-					<a href="../clear.php" class="logout">Выйти <img src="../img/logout.svg" alt=""></a>
+                    <button class="button-text user-block__button"><p>Редактировать профиль</p> <img src="../img/edit.svg" alt=""></button>
+					<a href="../clear.php" class="button-text user-block__button-logout">Выйти <img src="../img/logout.svg" alt=""></a>
                     <?php }else{
                         if (in_array($user_data->get_id(), $user->subscribers)){ ?>
                             <p>Вы подписаны</p>
