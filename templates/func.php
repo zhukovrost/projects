@@ -127,12 +127,12 @@ function print_workout_info_function($workout){
     }
     ?>
     <div class="muscle_groups">
-            <p>Руки: <span><?php echo $muscles["arms"]; ?>%</span></p>
-            <p>Ноги: <span><?php echo $muscles["legs"]; ?>%</span></p>
-            <p>Грудь: <span><?php echo $muscles["chest"]; ?>%</span></p>
-            <p>Спина: <span><?php echo $muscles["back"]; ?>%</span></p>
-            <p>Пресс: <span><?php echo $muscles["press"]; ?>%</span></p>
-            <p>Кардио: <span><?php echo $muscles["cardio"]; ?>%</span></p>
+        <p class="workouts-card__item">Руки: <span><?php echo $muscles["arms"]; ?>%</span></p>
+        <p class="workouts-card__item">Ноги: <span><?php echo $muscles["legs"]; ?>%</span></p>
+        <p class="workouts-card__item">Грудь: <span><?php echo $muscles["chest"]; ?>%</span></p>
+        <p class="workouts-card__item">Спина: <span><?php echo $muscles["back"]; ?>%</span></p>
+        <p class="workouts-card__item">Пресс: <span><?php echo $muscles["press"]; ?>%</span></p>
+        <p class="workouts-card__item">Кардио: <span><?php echo $muscles["cardio"]; ?>%</span></p>
     </div>
 <?php
 }

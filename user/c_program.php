@@ -125,37 +125,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 		<section class="popup-exercise">
 			<section class="popup-exercise__content">
 				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<section class="exercise_item">
-					<!-- Exercise info button -->
-					<button class="info"><img src="../img/info.svg" alt=""></button>
-					<!-- Info text -->
-					<div class="info_block">
-						<button class="info_close"><img src="../img/close.svg" alt=""></button>
-						<p>{{ description }}</p>
-					</div>
-					<!-- Exercise muscle groups -->
-					<div class="muscle_groups">Руки - грудь</div>
-					<!-- Exercise image -->
-					<img class="exercise_img" src="../img/biceps_4.jpg" alt="">
-					<!-- Decoration line -->
-					<div class="line"></div>
-					<!-- Exercise title -->
-					<h2>атжумания</h2>
-					<!-- Rating and difficult -->
-					<div class="statistic">
-						<div class="rating">
-							<p>4,5</p>
-							<img src="../img/Star.svg" alt="">
-						</div>
-						<div class="difficult">
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-						</div>
-					</div>
-				</section>
+				<!-- Тренировка -->
 				<section class="popup-exercise__info">
 					<div class="popup-exercise__info-item">
 						<label class="popup-exercise__info-label" for="c_exercise_circles">Количество подходов: </label>
@@ -177,7 +147,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 	<script>
 		// Workout items
-        let workoutItemArr = document.querySelectorAll('.c_program .cover .item .content');
+        let workoutItemArr = document.querySelectorAll('.day-workouts__card-content');
 
         let maxWorkoutItemHeight = 0;
 

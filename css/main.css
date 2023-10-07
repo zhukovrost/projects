@@ -2139,127 +2139,25 @@
 
 
 /* ==========WORKOUT CONSTRUCTOR PAGE========== */
-.c_workout .container{
+.c-workout .container{
     display: flex;
     justify-content: center;
     padding-top: 50px;
 }
 
-/* Content of workout */
-.c_workout .content{
+.workouts-card--c{
+    min-width: 50%;
     display: flex;
-    justify-content: space-between;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border: 1px solid #C6C6C6;
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-    padding: 20px 50px;
+    width: fit-content;
 }
 
-/* Exercises array */
-.c_workout .exercise_cover{
-    max-height: 65vh;
-    overflow: auto;
-    margin-top: 15px;
-}
-
-/* ===Info about day workout===*/
-.c_workout .workout_info{
-    margin-top: 20px;
-    margin-left: 3vw;
-    min-width: 15vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.c_workout .workout_info p{
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
-.c_workout .workout_info p span{
-    font-weight: 500;
-    background-color: rgba(236, 236, 236, 1);
-    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
-    padding: 0px 10px;
-    border: 1px solid #C6C6C6;
-    float: right;
-    margin-left: 5px;
-}
-
-/* Decorative line */
-.c_workout .workout_info .line{
-    height: 1px;
-    width: 100%;
-    background: #CECECE;
-    margin: 10px 0px 20px;
-}
-
-/* Time for workout  */
-.c_workout .workout_info .time{
-    font-size: 26px;
-}
-
-.c_workout .workout_info .time span{
-    border: 1px solid rgb(145, 145, 145);
-    padding: 3px 12px;
-}
-
-/* Buttons edit and start */
-.c_workout .workout_info .buttons{
-    display: flex;
-    flex-direction: column;
-    margin-top: auto;
-}
-
-.c_workout .workout_info .buttons button,
-.c_workout .workout_info .buttons a{
-    display: flex;
-    align-items: center;
-    background-color: #272727;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
-    padding: 5px 15px 5px 25px;
-    margin-top: 10px;
-    transition: .1s ease-in-out;
-}
-
-.c_workout .workout_info .buttons button p,
-.c_workout .workout_info .buttons a p{
-    font-size: 27px;
-    margin-right: 20px;
-    margin-bottom: 0px;
-}
-
-.c_workout .workout_info .buttons button img,
-.c_workout .workout_info .buttons a img{
-    width: 25px;
-    height: 25px;
-    margin-left: auto;
-    transition: .1s ease-in-out;
-}
-
-.c_workout .workout_info .buttons button:hover,
-.c_workout .workout_info .buttons a:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-    background-color: #000000;
-}
-
-.c_workout .workout_info .buttons a:hover img{
-    -webkit-animation: rotate-center 0.3s ease-in-out both;
-	animation: rotate-center 0.3s ease-in-out both;
-}
-
-
-
-
-.c_workout .other{
+.c-workout__info{
     margin-left: 1vw;
 }
 
-.c_workout .other .title{
+.c-workout__info-header{
     display: flex;
+    margin-bottom: 10px;
     align-items: center;
     padding: 20px 50px;
     background-color: #ffffff;
@@ -2268,14 +2166,14 @@
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
-.c_workout .other .title h1{
+.c-workout__info-title{
     font-size: 33px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
-    text-transform: uppercase;
 }
 
-.c_workout .other .title input{
+.c-workout__info-name,
+.c-workout__info-circles{
     background-color: rgba(236, 236, 236, 1);
     border: 1px solid #7D7D7D;
     margin-left: 30px;
@@ -2285,7 +2183,7 @@
 
 
 
-.c_workout .other .days{
+.c-workout__days{
     text-align: center;
     margin-top: 10px;
     padding: 20px 50px;
@@ -2295,14 +2193,14 @@
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
-.c_workout .other .days h1{
+.c-workout__days-title{
     font-size: 35px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
     margin-bottom: 15px;
 }
 
-.c_workout .other .days section{
+.c-workout__days-content{
     text-align: start;
     width: fit-content;
     margin: 0 auto;
@@ -2310,50 +2208,38 @@
     font-weight: 500;
 }
 
-.c_workout .other .days section input{
+.c-workout__days-checkbox{
     width: 20px;
     height: 20px;
 }
 
-.c_workout .other .days section label.free{
+.c-workout__days-content label.free{
     color: #016310;
 }
 
-.c_workout .other .days section label.busy{
+.c-workout__days-content label.busy{
     color: #750000;
 }
 
 
-.c_workout .other button{
-    display: flex;
-    align-items: center;
+.c-workout__days-add{
     width: fit-content;
     margin: 20px auto 0px;
-    background-color: #272727;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
     padding: 5px 15px 5px 25px;
-    transition: .1s ease-in-out;
 }
 
-.c_workout .other button p{
+.c-workout__days-add p{
     font-size: 27px;
     margin-right: 20px;
 }
 
-.c_workout .other button img{
+.c-workout__days-add img{
     width: 25px;
     height: 25px;
     margin-left: auto;
-    transition: .1s ease-in-out;
 }
 
-.c_workout .other button:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-    background-color: #000000;
-}
-
-.c_workout .other button:hover img{
+.c-workout__days-add:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
