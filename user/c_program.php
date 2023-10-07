@@ -58,9 +58,9 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 <body>
     <?php include "../templates/header.html" ?>
 
-	<main class="c_program">
+	<main class="c-program">
 		<div class="container">
-			<section class="cover" navigation="true">
+			<section class="day-workouts" navigation="true">
 				<?php
                     for($i = 0; $i < 7; $i++){
 						$workout = new Workout($conn, $_SESSION["program"][$i], $i);
@@ -68,42 +68,41 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
                         $workout->print_workout_info_block($i, 0, $user_data->get_id());
                     } ?>
 			</section>
-			<section class="create_block">
-				<section class="workouts_block">
-					<section class="list">
-						<div>
-							<p>1. День рук</p>
-							<button class="more"><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-							<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
+			<section class="c-program__create">
+				<section class="c-program__workouts">
+					<section class="c-program__workouts-list">
+						<div class="c-program__workouts-item">
+							<p class="c-program__workouts-name">1. День рук</p>
+							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
+							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
+							<button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button>
 						</div>
-						<div>
-							<p>2. День ног</p>
-							<button class="more"><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-							<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
+						<div class="c-program__workouts-item">
+						<p class="c-program__workouts-name">2. ффффффя</p>
+							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
+							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
+							<button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button>
 						</div>
-						<div>
-							<p>3. Без названия</p>
-							<button class="more"><img src="../img/more_white.svg" alt=""></button>
-							<button><img src="../img/delete.svg" alt=""></button>
-							<button class="favorite"><img src="../img/favorite.svg" alt=""></button>
+						<div class="c-program__workouts-item">
+							<p class="c-program__workouts-name">3. Без названия</p>
+							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
+							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
+							<button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button>
 						</div>
 					</section>
-					<div class="buttons">
-						<a href="c_workout.php"><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></a>
-						<a href="clear.php"><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></a>
+					<div class="c-program__workouts-buttons">
+						<a class="button-text c-program__workouts-button c-program__workouts-button--create" href="c_workout.php"><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></a>
+						<a class="button-text c-program__workouts-button" href="clear.php"><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
-				<form class="duration" method="post">
-					<h4>Укажите продолжительность и название программы<br></h4>
-                    <input type="text" name="name">
-					<div>
-						<input type="number" placeholder="Количество недель" name="weeks">
-						<p>начать с</p>
-                        <input type="date" name="date_start">
+				<form class="c-program__duration" method="post">
+					<h4 class="c-program__duration-title">Укажите продолжительность программы<br></h4>
+					<div class="c-program__duration-date">
+						<input class="c-program__duration-weeks" type="number" placeholder="Количество недель" name="weeks">
+						<p class="c-program__duration-date-text">начать с</p>
+                        <input class="c-program__duration-date-start" type="date" name="date_start">
 					</div>
-					<button>Начать программу <img src="../img/arrow_white.svg" alt=""></button>
+					<button class="button-text c-program__duration-button">Начать программу <img src="../img/arrow_white.svg" alt=""></button>
 				</form>
 			</section>
 			<section class="friends-block">

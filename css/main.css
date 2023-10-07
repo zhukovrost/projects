@@ -1698,8 +1698,7 @@
 
 /* Button more to dalete or change post */
 .user-news__item-more{
-    margin-left: auto;
-    margin-bottom: auto;
+    margin: auto 0 auto auto;
     width: 30px;
     height: 30px;
     opacity: .8;
@@ -1737,6 +1736,7 @@
 
 .user-news__item-link:hover{
     background-color: #000000;
+    color: #ffffff;
 }
 
 
@@ -1883,7 +1883,7 @@
 
 
 /* ============PROGRAMS' CONCTRUCTOR INFO============ */
-.c_program_info .container{
+.c-program-info .container{
     max-width: 80%;
     margin-top: 3vh;
     padding: 30px 50px 40px;
@@ -1896,20 +1896,20 @@
     border-radius: 5px;
 }
 
-.c_program_info h1{
+.c-program-info__title{
     font-size: 45px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
 }
 
-.c_program_info h2{
+.c-program-info__subtitle{
     font-size: 27px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
 }
 
-.c_program_info .content{
+.c-program-info__content{
     width: 70%;
     border: 1px solid #C6C6C6;
     background-color: #FAFAFA;
@@ -1919,47 +1919,45 @@
     margin-top: 30px;
 }
 
-.c_program_info .content li{
+.c-program-info__content-item{
     font-size: 25px;
     margin-bottom: 15px;
 }
 
-.c_program_info a{
+.c-program-info__link{
     width: fit-content;
-    display: flex;
-    align-items: center;
-    background-color: #000000;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
     font-size: 30px;
     padding: 5px 20px 5px 25px;
     margin: 50px auto 20px;
-    transition: .1s ease-in-out;
 }
 
-.c_program_info a img{
+.c-program-info__link img{
     margin-left: 20px;
     width: 50px;
     height: 50px;
     transition: .1s ease-in-out;
 }
 
-.c_program_info a:hover{
+.c-program-info__link p{
+    margin-right: 15px;
+}
+
+.c-program-info__link:hover{
     box-shadow: 4px 4px 0px 0px #00CD1E;
 }
 
-.c_program_info a:hover img{
+.c-program-info__link:hover img{
     transform: translateX(5px);
 }
 
 /* ================================================ */
 
 /* ============PROGRAM CONSTRUCTOR PAGE============ */
-.c_program .container{
+.c-program .container{
     max-width: 90%;
 }
 
-.c_program .cover{
+.c-program .day-workouts{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -1967,107 +1965,14 @@
     margin-top: 50px;
 }
 
-/* Day of week */
-.c_program .cover .item h3{
-    font-size: 18px;
-    color: #828282;
-}
 
-/* Content of day workout */
-.c_program .cover .item .content{
-    display: table-cell;
-    vertical-align:middle;
-    background-color: #ffffff;
-    padding: 10px 30px;
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 3px;
-    border: 1px solid #C6C6C6;
-}
-
-/* Workout title */
-.c_program .cover .item .content h2{
-    font-size: 21px;
-    font-family: 'Ubuntu', sans-serif;
-    text-align: center;
-    border-bottom: 1px solid #C6C6C6;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
-
-}
-
-/* Muscle groups */
-.c_program .cover .item .content p{
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.c_program .cover .item .content p span{
-    font-size: 19px;
-    background-color: rgba(236, 236, 236, 1);
-    padding: 1px 7px;
-    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
-    float: right;
-    margin-left: 5px;
-}
-
-/* Buttons edit, more and image(complete or not) */
-.c_program .cover .item .content .buttons{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 1px solid #CECECE;
-}
-
-.c_program .cover .item .content button{
-    display: flex;
-    align-items: center;
-    background-color: #272727;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
-    font-size: 25px;
-    padding: 7px;
-    margin: 0px 7px;
-    transition: .1s ease-in-out;
-}
-
-.c_program .cover .item .content button img{
-    width: 20px;
-    height: 20px;
-}
-
-.c_program .cover .item .content button:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-    background-color: #000000;
-}
-
-.c_program .cover .item .content img{
-    width: 30px;
-    height: 30px;
-    margin: auto 0;
-}
-
-/* Title 'Выходной' */
-.c_program .cover .item .day_off{
-    display: flex;
-    margin-top: auto;
-    align-items: center;
-    background-color: #000000;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
-    font-size: 21px;
-    padding: 5px 10px;
-}
-
-
-
-.c_program .create_block{
+.c-program__create{
     display: flex;
     justify-content: center;
     margin: 40px auto;
 }
 
-.c_program .create_block .workouts_block{
+.c-program__workouts{
     display: flex;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 3px 3px 0px 0px #9A9A9A;
@@ -2076,7 +1981,7 @@
     padding: 20px 50px;
 }
 
-.c_program .create_block .workouts_block .list{
+.c-program__workouts-list{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2085,7 +1990,7 @@
     border-right: 1px solid #9b9b9b;
 }
 
-.c_program .create_block .workouts_block .list div{
+.c-program__workouts-item{
     display: flex;
     align-items: start;
     justify-content: start;
@@ -2095,101 +2000,76 @@
     margin-bottom: 15px;
 }
 
-.c_program .create_block .workouts_block .list div:last-child{
+.c-program__workouts-item:last-child{
     border-bottom: none;
     margin-bottom: 0px;
 }
 
-.c_program .create_block .workouts_block .list button{
-    display: flex;
-    align-items: center;
-    background-color: #272727;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
+.c-program__workouts-name{
+    margin-right: 15px;
+}
+
+.c-program__workouts-more,
+.c-program__workouts-delete{
     font-size: 25px;
     padding: 5px 10px;
     margin: 0px 5px;
-    transition: .1s ease-in-out;
 }
 
-.c_program .create_block .workouts_block .list .more{
+.c-program__workouts-more{
     margin-left: auto;
 }
 
-.c_program .create_block .workouts_block .list button img{
+.c-program__workouts-more img,
+.c-program__workouts-delete img{
     width: 25px;
     height: 25px;
 }
 
-.c_program .create_block .workouts_block .list button:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-    background-color: #000000;
-}
-
-.c_program .create_block .workouts_block .list .favorite{
-    background-color: transparent;
-    box-shadow: none;
-    padding: 0px;
+.c-program__workouts-favorite{
+    display: flex;
+    align-items: center;
     margin: auto 5px;
     opacity: .8;
 }
 
-.c_program .create_block .workouts_block .list .favorite:hover{
+.c-program__workouts-favorite:hover{
     opacity: 1;
     box-shadow: none;
     background-color: transparent;
 }
 
-.c_program .create_block .workouts_block .list p{
-    margin-right: 15px;
-}
-
-.c_program .create_block .buttons{
+.c-program__workouts-buttons{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.c_program .create_block .buttons button,
-.c_program .create_block .buttons a {
+.c-program__workouts-button{
     width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: #272727;
-    color: #ffffff;
-    box-shadow: 2px 2px 0px 0px #00CD1E;
     font-size: 25px;
     padding: 5px 10px;
     margin: 0px 0px 10px;
-    transition: .1s ease-in-out;
 }
 
-.c_program .create_block .buttons button p, 
-.c_program .create_block .buttons a p{
+.c-program__workouts-button p{
     margin-right: 10px;
 }
 
-.c_program .create_block .buttons button img,
-.c_program .create_block .buttons a img{
+.c-program__workouts-button img{
     width: 25px;
     height: 25px;
     margin-left: auto;
 }
 
-.c_program .create_block .buttons button:hover,
-.c_program .create_block .buttons a:hover{
-    box-shadow: 3px 3px 0px 0px #00CD1E;
-    background-color: #000000;
-}
-
-.c_program .create_block .buttons a:hover img{
+.c-program__workouts-button--create:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
 
 
-.c_program .create_block .duration{
+.c-program__duration{
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 3px 3px 0px 0px #9A9A9A;
     border: 1px solid #C6C6C6;
@@ -2198,68 +2078,58 @@
     padding: 20px 50px;
 }
 
-.c_program .create_block .duration h4{
+.c-program__duration-title{
     text-align: center;
     font-family: 'Ubumtu', sans-serif;
     font-size: 25px;
 }
 
-.c_program .create_block .duration h4 span{
+.c-program__duration-title span{
     font-weight: 600;
     font-size: 23px;
 }
 
-.c_program .create_block .duration div{
+.c-program__duration-date{
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-top: 20px;
 }
 
-.c_program .create_block .duration div input{
+.c-program__duration-weeks,
+.c-program__duration-date-start{
     border: 1px solid #C1C1C1;
     background-color: #ECECEC;
     font-size: 20px;
     padding: 3px 5px;
 }
 
-.c_program .create_block .duration div p{
+.c-program__duration-date-text{
     font-size: 18px;
     margin-left: 35px;
     margin-right: 7px;
 }
 
-.c_program .create_block .duration button{
+.c-program__duration-button{
     width: fit-content;
-    display: flex;
-    align-items: center;
-    background-color: #272727;
-    color: #ffffff;
-    box-shadow: 3px 3px 0px 0px #00CD1E;
     font-size: 25px;
     padding: 7px 25px;
     margin: 30px auto 0px;
-    transition: .1s ease-in-out;
 }
-.c_program .create_block .duration button img{
+
+.c-program__duration-button img{
     width: 35px;
     height: 35px;
     margin-left: 15px;
-    transition: .1s ease-in-out;
 }
 
-.c_program .create_block .duration button:hover{
-    box-shadow: 4px 4px 0px 0px #00CD1E;
-    background-color: #000000;
-}
-
-.c_program .create_block .duration button:hover img{
+.c-program__duration-button:hover img{
     transform: translateX(5px);
 }
 
 
 /* Friends' workouts */
-.c_program .friends-block{
+.c-program .friends-block{
     width: 50%;
     margin: 0 auto;
 }
