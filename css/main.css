@@ -2386,3 +2386,69 @@
     font-size: 25px;
     padding: 10px 40px;
 }
+
+
+
+/* ============================================= */
+
+/* ==============USERS SEARCH PAGE============== */
+/* ===Users navigation=== */
+.users-search-nav .container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.users-search-nav__item{
+    font-size: 25px;
+    padding: 5px 15px 5px 20px;
+    margin-right: 15px;
+}
+
+
+.users-search-nav__item img{
+    margin-left: 10px;
+    transition: .1s ease-in-out;
+}
+
+.users-search-nav__item:hover img{
+    transform: translateX(3px);
+}
+
+/* Exercise search */
+.users-search-nav__search{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 25%;
+    height: 40px;
+    padding: 0px 7px 0 12px;
+    border: 1px solid #C1C1C1;
+    background-color: #ECECEC;
+}
+
+.users-search-nav__search-input{
+    width: 100%;
+    margin-right: 5px;
+    font-size: 21px;
+}
+
+.users-search-nav__search-button{
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+}
+
+.users-search-nav__search-button:hover{
+    background-color: #dad8d8;
+}
+
+
+.users-list .container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+}

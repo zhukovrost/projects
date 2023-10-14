@@ -986,3 +986,44 @@ body {
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
+
+/* ======================================================== */
+
+/* ======================USER CARD========================= */
+.user-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px 30px 20px;
+    background-color: #FAFAFA;
+    border-radius: 3px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.user-card__name{
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.user-card__button{
+    margin-top: 15px;
+    padding: 7px 20px;
+    font-size: 25px;
+}
+
+.user-card__button p{
+    margin-right: 10px;
+}
+
+.user-card__button img{
+    width: 25px;
+    height: 25px;
+}
+
+.user-card__button--add:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
