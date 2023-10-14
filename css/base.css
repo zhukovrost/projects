@@ -655,6 +655,7 @@ body {
 
 .friends-block__cover{
     display: flex;
+    justify-content: space-around;
     align-items: center;
     margin: 20px 10px 10px 10px;
     max-height: 35vh;

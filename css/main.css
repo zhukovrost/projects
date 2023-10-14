@@ -2452,3 +2452,463 @@
     margin-top: 30px;
     padding-bottom: 30px;
 }
+
+
+
+/* ======================================== */
+
+
+/* ===============STAFF PAGE=============== */
+.staff-cover .container{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.staff-block__line{
+    height: 1px;
+    width: 100%;
+    background-color: #CECECE;
+}
+
+.staff-block{
+    width: 48%;
+    position: relative;
+    background-color: #FAFAFA;
+    border-radius: 3px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    padding: 40px 70px 30px;
+}
+
+.staff-block__title{
+    position: absolute;
+    top: 1%;
+    left: 2%;
+    color: #828282;
+    font-size: 20px;
+}
+
+
+.staff-block__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.staff-block__avatar{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin-right: 40px;
+}
+
+
+.staff-block__name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.staff-block__name-text{
+    font-size: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-right: 10px;
+}
+
+.staff-block__profile-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: #DDDDDD;
+    margin: 0 5px;
+    border-radius: 50%;
+}
+
+.staff-block__profile-link:hover{
+    background-color: #d4d4d4;
+}
+
+.staff-block__profile-link img{
+    width: 25px;
+    height: 25px;
+}
+
+.staff-block__buttons{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.staff-block__button{
+    margin: 0 5px;
+}
+
+.staff-block__button--img{
+    opacity: 0.95;
+}
+
+.staff-block__button--img:hover{
+    opacity: 1;
+}
+
+.staff-block__button--img img{
+    width: 35px;
+    height: 35px;
+}
+
+.staff-block__button--delite{
+    font-size: 25px;
+    padding: 3px 20px;
+    margin-left: 20px;
+}
+
+.staff-block__button--delite p{
+    margin-right: 10px;
+}
+
+.staff-block__button--delite img{
+    width: 25px;
+    height: 25px;
+}
+
+
+
+.staff-block__subtitle{
+    text-align: center;
+    color: #929292;
+    font-size: 19px;
+}
+
+.staff-block__item{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.staff-block__nearest-workout-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.staff-block__nearest-workout-date{
+    background-color: #ECECEC;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 20px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.staff-block__button-more{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    color: #ffffff;
+    padding: 5px 15px;
+    transition: .1s ease-in-out;
+}
+
+.staff-block__button-more:hover{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.staff-block__button-more p{
+    margin-right: 10px;
+}
+
+
+.staff-block__goals-list{
+    width: fit-content;
+    margin: 15px auto 0px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-block__goals-item{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.staff-block__goals-item-cover{
+    display: flex;
+}
+
+.staff-block__goals-item-cover p{
+    margin-right: 5px;
+}
+
+.staff-block__goals-item-cover img{
+    width: 25px;
+    height: 25px;
+}
+
+
+.staff-block__control-workout-nearest{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.staff-block__control-workout-info{
+    display: flex;
+    align-items: center;
+}
+
+.staff-block__control-workout-text{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.staff-block__control-workouts-date{
+    background-color: #ECECEC;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 20px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.staff-block__competitions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.staff-block__competition-item{
+    display: flex;
+    margin-top: 12px;
+}
+
+.staff-block__competition-text{
+    font-size: 21px;
+    margin-right: 40px;
+}
+
+.staff-block__item-buttons{
+    display: flex;
+    align-items: center;
+}
+
+.staff-block__link-button img{
+    width: 25px;
+    height: 25px;
+}
+
+.staff-block__link-button{
+    margin: 0 5px;
+    opacity: 0.9;
+}
+
+.staff-block__link-button:hover{
+    opacity: 1;
+}
+
+
+.staff-block__useful-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.staff-block__useful-links-item{
+    display: flex;
+    margin-top: 12px;
+}
+
+.staff-block__useful-links-text{
+    font-size: 21px;
+    margin-right: 40px;
+}
+
+
+
+
+
+.staff-block__medicines{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.staff-block__medicine-item{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.staff-block__medicine-name{
+    font-size: 23px;
+    margin-right: 30px;
+}
+
+.staff-block__medicine-dose{
+    background-color: #ECECEC;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 21px;
+    margin-right: 5px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.staff-block__treatment-date{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    margin: 10px auto 20px;
+}
+
+.staff-block__treatment-date-item{
+    background-color: #ECECEC;
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: 21px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.staff-block__treatment-date-line{
+    height: 2px;
+    background-color: #000000;
+    width: 35%;
+    margin: 0 5px;
+}
+
+.staff-block__treatment-recommendation{
+    font-size: 21px;
+    margin: 10px 15px;
+}
+
+
+/* ========FOR COACH======== */
+.staff-block__goal-name{
+    display: flex;
+    margin-right: 50px;
+}
+
+.staff-block__goal-buttons{
+    display: flex;
+}
+
+.staff-block__item-button{
+    width: fit-content;
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 18px;
+}
+
+.staff-block__item-button img{
+    width: 25px;
+    height: 25px;
+}
+
+.staff-block__goal-button--text{
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.staff-block__item-button--add{
+    margin-top: 15px;
+    font-size: 25px;
+    padding: 4px 15px;
+}
+
+.staff-block__item-button--add p{
+    margin-right: 10px;
+}
+
+.staff-block__item-button--add img{
+    width: 20px;
+    height: 20px;
+}
+
+.staff-block__item-button--add:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+
+
+.staff-other{
+    width: 48%;
+}
+
+.last-trainings--coach{
+    margin-top: 0px;
+    width: 100%;
+    box-shadow: 3px 3px 0px 0px #9A9A9A;
+}
+
+.staff-other__buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.staff-other__button{
+    width: 60%;
+    font-size: 25px;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+}
+
+.staff-other__button p{
+    margin-right: 15px;
+}
+
+.staff-other__button img{
+    margin-left: auto;
+    width: 35px;
+    height: 35px;
+}
+
+
+/* ======FOR DOCTOR====== */
+.staff-block__treatment-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.staff-block__item-button--date{
+    padding: 10px;
+}
+
+/* ============================================= */
+
+
+
+/* ============USERS COMPARISON PAGE============ */
+.user-comparison .container{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+.comparison-block{
+    width: 48%;
+    position: relative;
+    background-color: #FAFAFA;
+    border-radius: 3px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    padding: 40px 70px 30px;
+}
