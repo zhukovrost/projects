@@ -92,6 +92,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 					</section>
 					<div class="c-program__workouts-buttons">
 						<a class="button-text c-program__workouts-button c-program__workouts-button--create" href="c_workout.php"><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></a>
+						<button class="button-text c-program__workouts-button day-workouts__card-button--favorite" href="c_exercises.php"><p>Избранные тренировки</p> <img src="../img/add.svg" alt=""></button>
 						<a class="button-text c-program__workouts-button" href="clear.php"><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
@@ -126,17 +127,80 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 			<section class="popup-exercise__content">
 				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<!-- Тренировка -->
-				<section class="popup-exercise__info">
-					<div class="popup-exercise__info-item">
-						<label class="popup-exercise__info-label" for="c_exercise_circles">Количество подходов: </label>
-						<input class="popup-exercise__info-input" type="number" id="c_exercise_circles">
-					</div>
-					<div class="popup-exercise__info-item">
-						<label class="popup-exercise__info-label" for="c_exercise_reps">Количество повторений: </label>
-						<input class="popup-exercise__info-input" type="number" id="c_exercise_reps">
-					</div>
-					<button class="popup-exercise__add-button"><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
+				<section class="workouts-card workouts-card--c">
+				<!-- Exercises array -->
+				<section class="workouts-card__exercises-cover">
+					<!-- Exercise items -->
+                    <?php
+                    if ($flag) {
+                        foreach ($_SESSION["workout"] as $exercise){
+                            $exercise->print_it($conn);
+                        }
+                    }
+                    ?>
 				</section>
+				<!-- Info about day workout -->
+				<section class="workouts-card__info">
+					<!-- Muscle groups -->
+                    <?php print_workout_info_function($_SESSION["workout"]); ?>
+					<!-- Decorative line -->
+					<div class="workouts-card__info-line"></div>
+					<!-- Exercise info -->
+                    <p class="workouts-card__item">Упражнений: <span><?php if ($flag) echo count($_SESSION["workout"]); else echo 0; ?></span></p>
+					<!-- Decorative line -->
+					<div class="workouts-card__info-line"></div>
+					<!-- Buttons edit and start -->
+					<div class="day-workouts__card-buttons">
+						<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_exercises.php"><p>Добавить</p> <img src="../img/add.svg" alt=""></a>
+						<button class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></button>
+					</div>
+				</section>
+			</section>
+			<form method="post" class="c-workout__info">
+				<div class="c-workout__info-header">
+					<h1 class="c-workout__info-title">Название:</h1>
+                    <input class="c-workout__info-name" type="text" placeholder="Название тренировки" value="" name="name">
+				</div>
+                <section class="c-workout__info-header">
+                    <h2 class="c-workout__info-subtitle">Количество кругов</h2>
+                    <input class="c-workout__info-circles" type="number" value="1" name="loops">
+                </section>
+				<section class="c-workout__days">
+					<h1 class="c-workout__days-title">ДНИ НЕДЕЛИ</h1>
+					<section class="c-workout__days-content">
+						<div class="c-workout__days-item">
+							<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days1" value="0">
+							<label class="<?php busy_or_free($_SESSION["program"][0]); ?>" for="week_days1">Понедельник</label>
+						</div>
+						<div class="c-workout__days-item">
+							<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days2" value="1">
+							<label class="<?php busy_or_free($_SESSION["program"][1]); ?>" for="week_days2">Вторник</label>
+						</div>
+						<div class="c-workout__days-item">
+							<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days3" value="2">
+							<label class="<?php busy_or_free($_SESSION["program"][2]); ?>" for="week_days3">Среда</label>
+						</div>
+						<div class="c-workout__days-item">
+							<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days4" value="3">
+							<label class="<?php busy_or_free($_SESSION["program"][3]); ?>"  for="week_days4">Четверг</label>
+						</div>
+						<div class="c-workout__days-item">
+							<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days5" value="4">
+							<label class="<?php busy_or_free($_SESSION["program"][4]); ?>" for="week_days5">Пятница</label>
+						</div>
+						<div class="c-workout__days-item">
+							<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days6" value="5">
+							<label class="<?php busy_or_free($_SESSION["program"][5]); ?>" for="week_days6">Суббота</label>
+						</div>
+						<div class="c-workout__days-item">
+							<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days7" value="6">
+							<label class="<?php busy_or_free($_SESSION["program"][6]); ?>"  for="week_days7">Воскресенье</label>
+						</div>
+					</section>
+				</form>
+				<button class="button-text c-workout__days-add" type="submit"><p>Добавить в программу</p> <img src="../img/add.svg" alt=""></button>
+                <a class="button-text c-workout__back-button" href="c_program.php">Назад</a>
+			</section>
 			</section>
 		</section>
 	</main>
@@ -160,6 +224,45 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
         for(let i = 0; i < workoutItemArr.length; i++){
             workoutItemArr[i].style.cssText = `height: ${maxWorkoutItemHeight}px;`;
         }
+
+
+		// Popup workouts
+		let popupExerciseWindow = document.querySelector('.popup-exercise');
+		let workoutButtonMoreArr = document.querySelectorAll('.c-program__workouts-more');
+
+		for(let i = 0; i < workoutButtonMoreArr.length; i++){
+			workoutButtonMoreArr[i].addEventListener('click', function(){
+				let item = workoutButtonMoreArr[i].parentElement.children[0];
+				let WorkoutName = (item.innerHTML).split(' ');
+				WorkoutName[0] = '';
+				WorkoutName = WorkoutName.join(' ');
+
+				let PopupWorkoutName = document.querySelector('.c-workout__info-name');
+				PopupWorkoutName.value = WorkoutName;
+
+				popupExerciseWindow.classList.add("open");
+			});
+		}
+
+		const closeBtn = document.querySelector('.popup-exercise__close-button');
+		closeBtn.addEventListener('click', function(){
+			popupExerciseWindow.classList.remove("open");
+		});
+
+		window.addEventListener('keydown', (e) => {
+		if(e.key == "Escape"){
+			popupExerciseWindow.classList.remove("open");
+		}
+		});
+
+		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
+
+		popupExerciseWindow.addEventListener('click', event =>{
+		if(event.isClickWithInModal) return;
+			event.currentTarget.classList.remove('open');
+		});
 
 	</script>
 </body>
