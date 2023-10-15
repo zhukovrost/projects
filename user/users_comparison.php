@@ -13,20 +13,8 @@ include "../templates/settings.php";
 			<section class="comparison-block">
 				<p class="staff-block__title">Первый спортсмен</p>
 				<section class="staff-block__header">
-					<img class="staff-block__avatar" src="../img/man_avatar.svg" alt="">
-					<section class="staff-block__info">
-						<div class="staff-block__name">
-							<h1 class="staff-block__name-text">Иван Иванов</h1>
-							<a class="staff-block__profile-link" href=""><img src="../img/profile_black.svg" alt=""></a>
-						</div>
-						<div class="staff-block__buttons">
-							<a href="" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
-							<a href="../img/tg.svg" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>
-							<button class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../img/delete.svg" alt=""></button>
-						</div>
-					</section>
+					<button class="button-text comparison-block__add-button"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
 				</section>
-				<div class="staff-block__line"></div>
 			</section>
 			<section class="comparison-block">
 				<p class="staff-block__title">Второй спортсмен</p>
@@ -46,17 +34,21 @@ include "../templates/settings.php";
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="comparison-block__physics">
-					<div class="comparison-block__physics-item">
-						<p class="comparison-block__physics-name">Вес</p>
-						<div class="comparison-block__physics-number">70 кг</div>
-					</div>
-					<div class="comparison-block__physics-item">
-						<p class="comparison-block__physics-name">Рост</p>
-						<div class="comparison-block__physics-number">180 см</div>
+					<h2 class="staff-block__subtitle">Физические данные</h2>
+					<div class="comparison-block__physics-content">
+						<div class="comparison-block__physics-item">
+							<p class="comparison-block__physics-name">Вес</p>
+							<div class="comparison-block__physics-number">70 кг</div>
+						</div>
+						<div class="comparison-block__physics-item">
+							<p class="comparison-block__physics-name">Рост</p>
+							<div class="comparison-block__physics-number">180 см</div>
+						</div>
 					</div>
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="comparison-block__exercises">
+					<h2 class="staff-block__subtitle">Контрольная тренировка</h2>
 					<section class="exercise-item exercise-item--workout">
 						<!-- Exercise info button -->
 						<button type="button"  class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
@@ -85,9 +77,13 @@ include "../templates/settings.php";
 							</div>
 						</div>
 						<!-- Count of repetitions -->
-						<div class="exercise-item__repetitions">
-							<p class="exercise-item__repetitions-title">{{ reps }} x {{ approaches }}</p>
+						<div class="exercise-item__progress">
+							<div class="exercise-item__repetitions">
+								<p class="exercise-item__repetitions-title">22 x 33</p>
+							</div>
+							<p class="exercise-item__progress-number exercise-item__progress-number--green">+ 30%</p>
 						</div>
+						
 					</section>
 				</section>
 			</section>

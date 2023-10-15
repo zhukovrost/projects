@@ -28,7 +28,7 @@ include "../templates/settings.php";
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
-					<h2 class="staff-block__subtitle">Близжайшая тренировка</h2>
+					<h2 class="staff-block__subtitle">Ближайшая тренировка</h2>
 					<div class="staff-block__nearest-workout-content">
 						<div class="staff-block__nearest-workout-date">12.12.2023</div>
 						<a href="" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>

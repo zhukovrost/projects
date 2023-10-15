@@ -24,33 +24,33 @@ include "../templates/settings.php";
 	<main class="users-list">
 		<div class="container">
 			<section class="user-card">
-				<img class="user-card__image" src="../img/man_avatar.svg" alt="">
+				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
 				<p class="user-card__name">Иван Иванов</p>
 				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
 				<!-- <a class="button-text user-card__button"><p>Программа</p><img src="../img/my_programm.svg" alt=""></a> -->
 			</section>
 			<section class="user-card">
-				<img class="user-card__image" src="../img/man_avatar.svg" alt="">
+				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
 				<p class="user-card__name">Иван Иванов</p>
 				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
 			</section>
 			<section class="user-card">
-				<img class="user-card__image" src="../img/man_avatar.svg" alt="">
+				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
 				<p class="user-card__name">Иван Иванов</p>
 				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
 			</section>
 			<section class="user-card">
-				<img class="user-card__image" src="../img/man_avatar.svg" alt="">
+				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
 				<p class="user-card__name">Иван Иванов</p>
 				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
 			</section>
 			<section class="user-card">
-				<img class="user-card__image" src="../img/man_avatar.svg" alt="">
+				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
 				<p class="user-card__name">Иван Иванов</p>
 				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
 			</section>
 			<section class="user-card">
-				<img class="user-card__image" src="../img/man_avatar.svg" alt="">
+				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
 				<p class="user-card__name">Иван Иванов</p>
 				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
 			</section>

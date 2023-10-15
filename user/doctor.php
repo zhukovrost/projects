@@ -43,6 +43,7 @@ include "../templates/settings.php";
 							<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
 						</div>
 					</div>
+					<button class="button-text staff-block__item-button--add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">

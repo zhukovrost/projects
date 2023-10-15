@@ -2826,6 +2826,8 @@
 }
 
 .staff-block__item-button--add{
+    margin: 0 auto;
+    width: fit-content;
     margin-top: 15px;
     font-size: 25px;
     padding: 4px 15px;
@@ -2911,4 +2913,78 @@
     border: 1px solid #CCCCCC;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     padding: 40px 70px 30px;
+}
+
+
+.comparison-block__add-button{
+    margin-top: 20px;
+    font-size: 27px;
+    padding: 10px 30px;
+}
+
+.comparison-block__add-button p{
+    margin-right: 15px;
+}
+
+.comparison-block__add-button img{
+    width: 30px;
+    height: 30px;
+}
+
+.comparison-block__add-button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
+
+
+.comparison-block__physics{
+    margin: 10px 0px 20px;
+}
+
+.comparison-block__physics-content{
+    display: flex;
+    justify-content: space-around;
+}
+
+.comparison-block__physics-item{
+    display: flex;
+    align-items: center;
+}
+
+.comparison-block__physics-name{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.comparison-block__physics-number{
+    background-color: #ECECEC;
+    padding: 5px 10px;
+    font-size: 21px;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+.comparison-block__exercises{
+    width: 80%;
+    margin:  20px auto;
+}
+
+/* =========================================== */
+
+
+/* ============CONTROL WORKOUT CREATE============ */
+/* For control */
+.c-program__duration-date-text--control{
+    margin: 0px 10px 0px 0px;
+}
+
+
+.c-control-workout{
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
 }

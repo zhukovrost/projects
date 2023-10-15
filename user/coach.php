@@ -28,7 +28,7 @@ include "../templates/settings.php";
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
-					<h2 class="staff-block__subtitle">Близжайшая тренировка</h2>
+					<h2 class="staff-block__subtitle">Ближайшая тренировка</h2>
 					<div class="staff-block__nearest-workout-content">
 						<div class="staff-block__nearest-workout-date">12.12.2023</div>
 						<a href="" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
@@ -62,16 +62,18 @@ include "../templates/settings.php";
 								</div>
 							</div>
 						</li>
+					</ul>
+					<button class="button-text staff-block__item-button--add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
-					<h2 class="staff-block__subtitle">Контрольная тренировка</h2>
+					<h2 class="staff-block__subtitle">Контрольные тренировки</h2>
 					<div class="staff-block__control-workout-nearest">
 						<div class="staff-block__control-workout-info">
-							<p class="staff-block__control-workout-text">Близжайшая:</p>
+							<p class="staff-block__control-workout-text">Ближайшая:</p>
 							<div class="staff-block__control-workouts-date">12.12.2023</div>
 						</div>
-						<a href="" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
+						<a href="control_workouts.php" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
 					</div>
 				</section>
 				<div class="staff-block__line"></div>
@@ -214,9 +216,9 @@ include "../templates/settings.php";
 					</section>
 			</section>
 			<section class="staff-other__buttons">
-				<button class="button-text staff-other__button"><p>Программа</p> <img src="../img/my_programm.svg" alt=""></button>
-				<button class="button-text staff-other__button"><p>Сравнить спортсменов</p> <img src="../img/my_programm.svg" alt=""></button>
-				<button class="button-text staff-other__button"><p>Группы</p> <img src="../img/my_programm.svg" alt=""></button>
+				<a href="" class="button-text staff-other__button"><p>Программа</p> <img src="../img/my_programm.svg" alt=""></a>
+				<a href="users_comparison.php" class="button-text staff-other__button"><p>Сравнить спортсменов</p> <img src="../img/my_programm.svg" alt=""></a>
+				<a href="" class="button-text staff-other__button"><p>Группы</p> <img src="../img/my_programm.svg" alt=""></a>
 			</section>
 		</div>
 	</main>

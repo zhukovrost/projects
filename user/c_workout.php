@@ -71,10 +71,10 @@ if (isset($_POST["week_days"])){
 				</section>
 			</section>
 			<form method="post" class="c-workout__info">
-				<div class="c-workout__info-header">
+				<section class="c-workout__info-header">
 					<h1 class="c-workout__info-title">Название:</h1>
                     <input class="c-workout__info-name" type="text" placeholder="Название тренировки" value="" name="name">
-				</div>
+				</section>
                 <section class="c-workout__info-header">
                     <h2 class="c-workout__info-subtitle">Количество кругов</h2>
                     <input class="c-workout__info-circles" type="number" value="1" name="loops">
@@ -111,10 +111,10 @@ if (isset($_POST["week_days"])){
 							<label class="<?php busy_or_free($_SESSION["program"][6]); ?>"  for="week_days7">Воскресенье</label>
 						</div>
 					</section>
-				</form>
+				</section>
 				<button class="button-text c-workout__days-add" type="submit"><p>Добавить в программу</p> <img src="../img/add.svg" alt=""></button>
                 <a class="button-text c-workout__back-button" href="c_program.php">Назад</a>
-			</section>
+			</form>
 		</div>
 
 
@@ -227,6 +227,5 @@ if (isset($_POST["week_days"])){
 		});
 
 	</script>
-    </script>
 </body>
 </html>
