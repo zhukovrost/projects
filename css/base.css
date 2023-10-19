@@ -1023,6 +1023,11 @@ body {
 	animation: rotate-center 0.3s ease-in-out both;
 }
 
+.popup-exercise__submit-button{
+    font-size: 25px;
+    padding: 10px 40px;
+}
+
 /* ======================================================== */
 
 /* ======================USER CARD========================= */

@@ -28,7 +28,7 @@ include "../templates/settings.php";
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
-					<h2 class="staff-block__subtitle">Курс лечения</h2>
+					<h2 class="staff-block__subtitle">Прием лекарств</h2>
 					<div class="staff-block__medicines">
 						<div class="staff-block__medicine-item">
 							<p class="staff-block__medicine-name">Мазь</p>
@@ -47,15 +47,11 @@ include "../templates/settings.php";
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
-					<h2 class="staff-block__subtitle">Переиод лечения</h2>
+					<h2 class="staff-block__subtitle">Период лечения</h2>
 					<div class="staff-block__treatment-date">
-						<div class="staff-block__treatment-date-item">
-							12.02.2023
-						</div>
+						<div class="staff-block__treatment-date-item">12.02.2023</div>
 						<div class="staff-block__treatment-date-line"></div>
-						<div class="staff-block__treatment-date-item">
-							12.03.2023
-						</div>
+						<div class="staff-block__treatment-date-item">12.03.2023</div>
 					</div>
 					<div class="staff-block__treatment-buttons">
 						<button class="button-img staff-block__item-button staff-block__item-button--date"><img src="../img/edit.svg" alt=""></button>
@@ -64,11 +60,9 @@ include "../templates/settings.php";
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Рекомендации по лечению</h2>
-					<div class="staff-block__treatment-recommendation">
-						Избегать физических нагрузок, побольше кайфа и чайку оформить. АААААААААААААААААААААА
-					</div>
+					<div class="staff-block__treatment-recommendation">Избегать физических нагрузок, побольше кайфа и чайку оформить. АААААААААААААААААААААА</div>
 					<div class="staff-block__treatment-buttons">
-						<button class="button-img staff-block__item-button staff-block__item-button--date"><img src="../img/edit.svg" alt=""></button>
+						<button class="button-img staff-block__item-button staff-block__item-button--recommendation"><img src="../img/edit.svg" alt=""></button>
 					</div>
 				</section>
 			</section>
@@ -103,8 +97,113 @@ include "../templates/settings.php";
 				<button class="button-text staff-other__button"><p>Группы</p> <img src="../img/my_programm.svg" alt=""></button>
 			</section>
 		</div>
+
+		<!-- Edit medicine -->
+		<section class="popup-exercise popup-exercise--edit-medicine">
+			<form method="post" class="popup-exercise__content">
+				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<input class="doctor-input-item edit-medicine__name" type="text" placeholder="название">
+				<input class="doctor-input-item edit-medicine__dose" type="text" placeholder="доза">
+				<button class="button-text popup-exercise__submit-button">Сохранить</button>
+			</form>
+		</section>
+
+		<!-- Add medicine -->
+		<section class="popup-exercise popup-exercise--add-medicine">
+			<form method="post" class="popup-exercise__content">
+				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<input class="doctor-input-item add-medicine__name" type="text" placeholder="название">
+				<input class="doctor-input-item add-medicine__dose" type="text" placeholder="доза">
+				<button class="button-text popup-exercise__submit-button">Добавить</button>
+			</form>
+		</section>
+
+		<!-- Treatment date -->
+		<section class="popup-exercise popup-exercise--treatment-date">
+			<form method="post" class="popup-exercise__content">
+				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<input class="doctor-input-item treatment-date__start" type="text" placeholder="начало">
+				<input class="doctor-input-item treatment-date__end" type="text" placeholder="начало">
+				<button class="button-text popup-exercise__submit-button">Сохранить</button>
+			</form>
+		</section>
+
+		<!-- Treatment recommendation -->
+		<section class="popup-exercise popup-exercise--treatment-recommendation">
+			<form method="post" class="popup-exercise__content">
+				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<textarea class="doctor-texterea-item treatment-recommendation__edit" name="" id="" placeholder="рекомендации"></textarea>
+				<button class="button-text popup-exercise__submit-button">Сохранить</button>
+			</form>
+		</section>
 	</main>
 
     <?php include "../templates/footer.html" ?>
+
+	<script>
+		// Popup workouts
+		let MedicineEditPopupExercise = document.querySelector('.popup-exercise--edit-medicine');
+		let MedicineAddPopupExercise = document.querySelector('.popup-exercise--add-medicine');
+		let TreatmentDatePopupExercise = document.querySelector('.popup-exercise--treatment-date');
+		let RecommendationPopupExercise = document.querySelector('.popup-exercise--treatment-recommendation');
+		
+		let MedicineEditButtons = document.querySelectorAll('.staff-block__medicines .staff-block__item-button');
+		let MedicineAddButton = document.querySelector('.staff-block__item-button--add');
+		let TreatmentDateEditButton = document.querySelector('.staff-block__item-button--date');
+		let RecommendationEditButton = document.querySelector('.staff-block__item-button--recommendation');
+
+		let MedicineNameText = document.querySelectorAll('.staff-block__medicine-name');
+		let MedicineDoseText = document.querySelectorAll('.staff-block__medicine-dose');
+
+		for(let i = 0; i < MedicineEditButtons.length; i++){
+			MedicineEditButtons[i].addEventListener('click', function(){
+				document.querySelector('.edit-medicine__name').value = MedicineNameText[i].innerHTML;
+				document.querySelector('.edit-medicine__dose').value = MedicineDoseText[i].innerHTML;
+				MedicineEditPopupExercise.classList.add("open");
+			});
+		}
+
+		MedicineAddButton.addEventListener('click', function(){
+			MedicineAddPopupExercise.classList.add("open");
+		});
+
+		let TreatmentDateText = document.querySelectorAll('.staff-block__treatment-date-item');
+
+		TreatmentDateEditButton.addEventListener('click', function(){
+			document.querySelector('.treatment-date__start').value = TreatmentDateText[0].innerHTML;
+			document.querySelector('.treatment-date__end').value = TreatmentDateText[1].innerHTML;
+			TreatmentDatePopupExercise.classList.add("open");
+		});
+
+		RecommendationEditButton.addEventListener('click', function(){
+			document.querySelector('.treatment-recommendation__edit').value = document.querySelector('.staff-block__treatment-recommendation').innerHTML;
+			RecommendationPopupExercise.classList.add("open");
+		});
+
+		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
+		for(let i = 0; i < closeBtn.length; i++){
+			closeBtn[i].addEventListener('click', function(){
+				MedicineEditPopupExercise.classList.remove("open");
+				MedicineAddPopupExercise.classList.remove("open");
+				TreatmentDatePopupExercise.classList.remove("open");
+				RecommendationPopupExercise.classList.remove("open");
+			});
+		}
+
+		window.addEventListener('keydown', (e) => {
+		if(e.key == "Escape"){
+			MedicineEditPopupExercise.classList.remove("open");
+			MedicineAddPopupExercise.classList.remove("open");
+			TreatmentDatePopupExercise.classList.remove("open");
+			RecommendationPopupExercise.classList.remove("open");
+		}
+		});
+
+		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
+
+
+	</script>
 </body>
 </html>
