@@ -69,6 +69,10 @@ class Workout {
         return $muscles;
     }
 
+    public function get_id(){
+        return $this->id;
+    }
+
     public function print_exercises($conn){
         foreach ($this->exercises as $exercise){
             $exercise->print_it($conn);

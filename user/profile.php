@@ -107,7 +107,7 @@ if(isset($_POST['image_to_php'])) {
 				<?php $user->print_workout_history($conn); ?>
                 <!-- Buttons to edit profile, search sportsmen and logout -->
 				<section class="user-block__buttons">
-					<button class="button-text user-block__button"><p>Поиск спортсменов</p> <img src="../img/search_white.svg" alt=""></button>
+					<a href="search_users.php" class="button-text user-block__button"><p>Поиск спортсменов</p> <img src="../img/search_white.svg" alt=""></a>
                     <?php if ($user->get_auth()){ ?>
                     <button class="button-text user-block__button"><p>Редактировать профиль</p> <img src="../img/edit.svg" alt=""></button>
 					<a href="../clear.php" class="button-text user-block__button-logout">Выйти <img src="../img/logout.svg" alt=""></a>

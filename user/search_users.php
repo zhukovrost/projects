@@ -1,6 +1,20 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+
+$users_array = array();
+if (isset($_POST['search']) && trim($_POST['search']) != ""){
+    $searches = explode(' ', $_POST['search']);
+    foreach ($searches as $search){
+        $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.login LIKE '$search' OR users.name LIKE '$search' OR users.surname LIKE '$search'";
+        $result = $conn->query($sql);
+        foreach ($result as $item){
+            array_push($users_array, $item);
+        }
+    }
+}
+
+$user_data->set_subscriptions($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,46 +28,25 @@ include "../templates/settings.php";
 
 			<a class="button-text users-search-nav__item" href="c_exercises.php?my=1">Подписчики <img src="../img/arrow_white.svg" alt=""></a>
 			<!-- Exercise search -->
-			<div class="users-search-nav__search">
-				<input class="users-search-nav__search-input" type="text" placeholder="Искать">
+			<form method="post" class="users-search-nav__search">
+				<input class="users-search-nav__search-input" type="text" placeholder="Искать" name="search">
 				<button class="users-search-nav__search-button"><img src="../img/search_black.svg" alt=""></button>
-			</div>
+			</form>
 		</div>
 	</nav>
 
 	<main class="users-list">
 		<div class="container">
-			<section class="user-card">
-				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
-				<p class="user-card__name">Иван Иванов</p>
-				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
-				<!-- <a class="button-text user-card__button"><p>Программа</p><img src="../img/my_programm.svg" alt=""></a> -->
-			</section>
-			<section class="user-card">
-				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
-				<p class="user-card__name">Иван Иванов</p>
-				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
-			</section>
-			<section class="user-card">
-				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
-				<p class="user-card__name">Иван Иванов</p>
-				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
-			</section>
-			<section class="user-card">
-				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
-				<p class="user-card__name">Иван Иванов</p>
-				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
-			</section>
-			<section class="user-card">
-				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
-				<p class="user-card__name">Иван Иванов</p>
-				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
-			</section>
-			<section class="user-card">
-				<a href=""><img class="user-card__image" src="../img/man_avatar.svg" alt=""></a>
-				<p class="user-card__name">Иван Иванов</p>
-				<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>
-			</section>
+            <?php
+            if (count($users_array) != 0){
+                foreach ($users_array as $user){
+                    if ($user_data->get_auth())
+                        print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], array_search($user['id'], $user_data->subscriptions));
+                    else
+                        print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], false);
+                }
+            }
+            ?>
 		</div>
 	</main>
 

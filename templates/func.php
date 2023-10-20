@@ -85,7 +85,7 @@ function insert_news($conn, $message, $user_id, $is_personal){
 
 function print_user_list($conn, $id_list){
     if (count($id_list) == 0){
-        echo "<p class='friends-block__no-friends'>Вы ни на кого не подписаны</p>";
+        echo "<p class='friends-block__no-friends'>Нет подписок</p>";
         return 0;
     }
     for ($i = 0; $i < count($id_list); $i+=4){
@@ -168,4 +168,19 @@ function get_exercise_muscles($conn, $exercise_id){
             return json_decode($item['muscles']);
         }
     }
+}
+
+function print_user_block($name, $surname, $file, $id, $is_subscribed=false){
+    if ($is_subscribed){
+        $button = '<button class="button-text user-card__button user-card__button--add"><p>У вас в друзьях</p><img src="../img/add.svg" alt=""></button>';
+    }else{
+        $button = '<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>';
+    }
+    $replacements = array(
+        "{{ name }}" => $name." ".$surname,
+        "{{ image }}" => $file,
+        "{{ button }}" => $button,
+        "{{ link }}" => "profile.php?user=".$id
+    );
+    echo render($replacements, "../templates/user_block.html");
 }

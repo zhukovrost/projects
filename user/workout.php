@@ -4,6 +4,10 @@ include "../templates/settings.php";
 
 $user_data->set_program($conn);
 $weekday = date("N") - 1;
+
+if (isset($_POST["workout_to_fav"])){
+    $user_data->change_featured_workouts($conn, $_POST['workout_to_fav']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +30,17 @@ $weekday = date("N") - 1;
                         <!-- slide(no arrows) -->
                         <section class="workouts-card">
                             <!-- Title and button to add to favorite collection -->
-                            <div class="workouts-card__header">
+                            <form method="post" class="workouts-card__header">
                                 <h2 class="workouts-card__date"><?php echo date("d.m.Y"); ?></h2>
-                                <button class="workouts-card__favorite-btn"><img src="../img/favorite.svg" alt=""></button>
-                            </div>
+                                <input type="hidden" name="workout_to_fav" value="<?php echo $workout->get_id(); ?>">
+                                <button type="submit" class="workouts-card__favorite-btn">
+                                    <?php if (array_search((string)$workout->get_id(), $user_data->featured_workouts)){ // fix ?>
+                                        <img src="../img/favorite_added.svg" alt="">
+                                    <?php }else{ ?>
+                                        <img src="../img/favorite.svg" alt="">
+                                    <?php } ?>
+                                </button>
+                            </form>
                             <!-- Content of workout -->
                             <section class="workouts-card__content">
                                 <!-- Exercises array -->
@@ -70,7 +81,14 @@ $weekday = date("N") - 1;
                     <section class="workouts-card">
                         <div class="workouts-card__header">
                             <h2 class="workouts-card__date"><?php echo date("d.m.Y", time() + 86400); ?></h2>
-                            <button class="workouts-card__favorite-btn"><img src="../img/favorite.svg" alt=""></button>
+                            <input type="hidden" name="workout_to_fav" value="<?php echo $workout->get_id(); ?>">
+                            <button type="submit" class="workouts-card__favorite-btn">
+                                <?php if (array_search((string)$workout->get_id(), $user_data->featured_workouts)){ ?>
+                                    <img src="../img/favorite_added.svg" alt="">
+                                <?php }else{ ?>
+                                    <img src="../img/favorite.svg" alt="">
+                                <?php } ?>
+                            </button>
                         </div>
                         <section class="workouts-card__content">
                             <section class="workouts-card__exercises-cover">

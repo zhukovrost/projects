@@ -18,7 +18,7 @@ class User {
     public $my_exercises = [];
     public $program;
     public $workout_history = [];
-
+    public $featured_workouts = [];
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -60,6 +60,7 @@ class User {
                     $this->online = $item['online'];
                     $this->featured_exercises = json_decode($item['featured_exercises']);
                     $this->my_exercises = json_decode($item['my_exercises']);
+                    $this->featured_workouts = json_decode($item['featured_workouts']);
                 }
                 $this->auth = $auth;
             }else{
@@ -217,7 +218,8 @@ class User {
     public function update($conn){
         $my_exercise = json_encode($this->my_exercises);
         $featured_exercises = json_encode($this->featured_exercises);
-        $sql = "UPDATE users SET my_exercises='$my_exercise', featured_exercises='$featured_exercises' WHERE id=$this->id";
+        $featured_workouts = json_encode($this->featured_workouts);
+        $sql = "UPDATE users SET my_exercises='$my_exercise', featured_exercises='$featured_exercises', featured_workouts='$featured_workouts' WHERE id=$this->id";
         if ($conn->query($sql)){
             return true;
         }else{
@@ -269,6 +271,17 @@ class User {
             array_splice($this->featured_exercises, $index, 1);
         }else{
             array_push($this->featured_exercises, $exercise_id);
+        }
+
+        $this->update($conn);
+    }
+
+    public function change_featured_workouts($conn, $workout_id){
+        $index = array_search($workout_id, $this->featured_workouts);
+        if (is_numeric($index)) {
+            array_splice($this->featured_workouts, $index, 1);
+        }else{
+            array_push($this->featured_workouts, $workout_id);
         }
 
         $this->update($conn);
