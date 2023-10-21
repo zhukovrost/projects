@@ -39,10 +39,10 @@ include "../templates/settings.php";
 					<h2 class="staff-block__subtitle">Цели</h2>
 					<ul class="staff-block__goals-list">
 						<li class="staff-block__goals-item">
-							<div><p>Атжуания 20.5 раз</p> <img src="../img/green_check_mark.svg" alt=""></div>
+							<div class="staff-block__goals-item-cover"><p>Атжуания 20.5 раз</p> <img src="../img/green_check_mark.svg" alt=""></div>
 						</li>
 						<li class="staff-block__goals-item">
-							<div><p>Атжуания 20.5 раз</p> <img src="../img/blue_question_mark.svg" alt=""></div>
+							<div class="staff-block__goals-item-cover"><p>Атжуания 20.5 раз</p> <img src="../img/blue_question_mark.svg" alt=""></div>
 						</li>
 				</section>
 				<div class="staff-block__line"></div>
