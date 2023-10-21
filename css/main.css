@@ -2895,12 +2895,16 @@
     padding: 10px;
 }
 
-.popup-exercise .doctor-input-item{
+.popup-exercise__input-item{
     background-color: rgba(236, 236, 236, 1);
     border: 1px solid #7D7D7D;
     padding: 3px 5px;
     font-size: 25px;
     margin-right: 15px;
+}
+
+.popup-exercise__input-item--file{
+    font-size: 18px;
 }
 
 .treatment-recommendation__edit{
