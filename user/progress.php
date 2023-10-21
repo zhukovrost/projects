@@ -125,6 +125,24 @@ foreach ($user_data->workout_history as $item){
 				</div>
 			</section>
 		</div>
+
+
+
+        <!-- Physics data edit -->
+		<section class="popup-exercise popup-exercise--physics-data">
+			<form method="post" class="popup-exercise__content">
+				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<div class="popup-physics-data__item">
+                    <p class="popup-physics-data__item-name">Укажите текущий рост (см)</p>
+                    <input class="popup-physics-data__item-input popup-physics-data__item-input--height" type="number">
+                </div>
+                <div class="popup-physics-data__item">
+                    <p class="popup-physics-data__item-name">Укажите текущий вес (кг)</p>
+                    <input class="popup-physics-data__item-input popup-physics-data__item-input--weight" type="number">
+                </div>
+				<button class="button-text popup-exercise__submit-button popup-exercise__submit-button--physic">Добавить</button>
+			</form>
+		</section>
 	</main>
 
 	<?php include "../templates/footer.html" ?>
@@ -302,6 +320,40 @@ foreach ($user_data->workout_history as $item){
 		// Height of last-trainings block
         let lastTrainingsBlock = document.querySelector('.last-trainings');
         lastTrainingsBlock.style.cssText = `height: ${document.querySelector('.progress-block__trainings-chart').clientHeight}px;`;
+    
+    
+    
+        // Popup window for physic data
+        let PhysicDataEditButton = document.querySelector('.progress-block__physical-info-button');
+
+        let PhysicDataPopup = document.querySelector('.popup-exercise--physics-data');
+
+        let PhysicDataCurrent = document.querySelectorAll('.progress-block__physical-info-item');
+
+        PhysicDataEditButton.addEventListener('click', function(){
+            document.querySelector('.popup-physics-data__item-input--height').value = (PhysicDataCurrent[1].innerHTML).split(' ')[1];
+            document.querySelector('.popup-physics-data__item-input--weight').value = (PhysicDataCurrent[0].innerHTML).split(' ')[1];
+			PhysicDataPopup.classList.add("open");
+		});
+
+
+        const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
+		for(let i = 0; i < closeBtn.length; i++){
+			closeBtn[i].addEventListener('click', function(){
+				PhysicDataPopup.classList.remove("open");
+			});
+		}
+
+		window.addEventListener('keydown', (e) => {
+            if(e.key == "Escape"){
+                PhysicDataEditButton.classList.remove("open");
+            }
+		});
+
+		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
+    
     </script>
 </body>
 </html>

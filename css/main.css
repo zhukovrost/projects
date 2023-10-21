@@ -1296,6 +1296,33 @@
 }
 
 
+.popup-exercise--physics-data form{
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.popup-physics-data__item{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.popup-physics-data__item-name{
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.popup-physics-data__item-input{
+    font-size: 25px;
+    background-color: #FAFAFA;
+    border: 1px solid #C6C6C6;
+    padding: 3px 5px;
+}
+
+.popup-exercise__submit-button--physic{
+    margin-top: 30px;
+}
+
+
 /* ================================================ */
 
 
