@@ -35,15 +35,26 @@ if(isset($_POST['image_to_php'])) {
 			<section class="user-block__info">
 				<section class="user-about">
 					<!-- User avatar, name and surname -->
-                    <form id="avatar_form" class="avatar" method="post">
-                        <img id="profileImage" src="<?php echo $user->get_avatar($conn); ?>">
-                        <input type="file" id="avatar_file" accept="image/*" />
-                        <label for="avatar_file" class="uppload_button">Choose photo</label>
-                        <input type="hidden" id="image_to_php" name="image_to_php" value="">
-                    </form>
+                    <section class="user-block__avatar">
+                        <form id="avatar_form" class="avatar" method="post">
+                            <img id="profileImage" src="<?php echo $user->get_avatar($conn); ?>">
+                            <input type="file" id="avatar_file" accept="image/*" />
+                            <label for="avatar_file" class="uppload_button">Choose photo</label>
+                            <input type="hidden" id="image_to_php" name="image_to_php" value="">
+                        </form>
+                        <div class="user-block__avatar-name">
+                            <h1>Иван Иванов</h1>
+                        </div>
+                        <button class="user-block__avatar-more"><img src="../img/info.svg" alt=""><p>Подробнее</p></button>
+                    </section>
+                    
                     <!-- User info text -->
 					<div class="user-about__description">
-						<p class="user-about__description-text"><?php echo $user->description; ?></p>
+                        <?php if ($user->description){ ?>
+						    <p class="user-about__description-text"><?php echo $user->description; ?></p>
+                        <?php } else{ ?>
+                            <p class="user-about__description-text">Нет описания</p>
+                        <?php } ?>
                         <?php if ($user->get_auth()){ ?>
 						    <button class="user-about__description-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
                         <?php } ?>
@@ -52,9 +63,9 @@ if(isset($_POST['image_to_php'])) {
                 <!-- User's news -->
 				<section class="user-news">
                     <!-- Button 'Новая запись' -->
-                    <?php if ($user->get_auth()){ ?>
+                    <!-- <?php if ($user->get_auth()){ ?>
 					    <button class="button-text user-news__add">Новая запись <img src="../img/add.svg" alt=""></button>
-                    <?php } ?>
+                    <?php } ?> -->
 					<!-- News item -->
                     <?php
                     if ($news = $user->get_my_news($conn)) {
@@ -122,6 +133,105 @@ if(isset($_POST['image_to_php'])) {
 				</section>
 			</section>
 		</div>
+
+
+        <!-- User more information -->
+        <section class="popup-exercise popup-exercise--user-info">
+			<section class="popup-exercise__content popup-exercise__content--user-info">
+                <button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+                <!-- Спортсмен / тренер / врач -->
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип пользователя</p>
+                    <p class="popup-user__info-item-info">Спортсмен</p>
+                </div>
+                <!-- Для тренера
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип тренера</p>
+                    <p class="popup-user__info-item-info">Тренер команды / Личный тренер</p>
+                </div> -->
+                <!-- Для врача
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип тренера</p>
+                    <p class="popup-user__info-item-info">Врач команды / Личный врач</p>
+                </div> -->
+
+                <!-- Люитель / профессионал / не указан -->
+				<div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип спортсмена</p>
+                    <p class="popup-user__info-item-info">Любитель</p>
+                </div>
+
+                <!-- низкий / средний / высокий / не указан-->
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Уровень физической подготовки</p>
+                    <p class="popup-user__info-item-info">Не указан</p>
+                </div>
+
+                <button class="popup-user__edit-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
+			</section>
+		</section>
+
+        <!-- User more information (version for editting) -->
+        <section class="popup-exercise popup-exercise--user-info-edit">
+			<form method="post" class="popup-exercise__content popup-exercise__content--user-info">
+                <button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+                <!-- Спортсмен / тренер / врач -->
+                <div class="popup-user__info-item">
+                <p class="popup-user__info-item-name">Тип пользователя</p>
+                    <p class="popup-user__info-item-info">Спортсмен</p>
+                </div>
+                <!-- Для тренера
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип тренера</p>
+                    <select class="popup-user__select" name="" id="">
+                        <option class="popup-user__option" selected value="не указан">не указан</option>
+                        <option class="popup-user__option" value="личный тренер">личный тренер</option>
+                        <option class="popup-user__option" value="тренер команды">тренер команды</option>
+                    </select>
+                </div> -->
+                <!-- Для врача
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип тренера</p>
+                    <select class="popup-user__select" name="" id="">
+                        <option class="popup-user__option" selected value="не указан">не указан</option>
+                        <option class="popup-user__option" value="личный врач">личный тренер</option>
+                        <option class="popup-user__option" value="врач команды">тренер команды</option>
+                    </select>
+                </div> -->
+
+                <!-- Люитель / профессионал / не указан -->
+				<div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип спортсмена</p>
+                    <select class="popup-user__select" name="" id="">
+                        <option class="popup-user__option" selected value="не указан">не указан</option>
+                        <option class="popup-user__option" value="личный тренер">любитель</option>
+                        <option class="popup-user__option" value="тренер команды">профессионал</option>
+                    </select>
+                </div>
+
+                <!-- низкий / средний / высокий / не указан-->
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Уровень физической подготовки</p>
+                    <select class="popup-user__select" name="" id="">
+                        <option class="popup-user__option" selected value="не указан">не указан</option>
+                        <option class="popup-user__option" value="личный тренер">низкий</option>
+                        <option class="popup-user__option" value="тренер команды">средний</option>
+                        <option class="popup-user__option" value="тренер команды">высокий</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="button-text popup-user__save-button">Сохранить</button>
+            </form>
+		</section>
+
+        <!-- description edit -->
+		<section class="popup-exercise popup-exercise--description-edit">
+			<form method="post" class="popup-exercise__content">
+                <button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<textarea class="popup-user__description-edit-text" name="" id=""></textarea>
+				<button class="button-text popup-exercise__submit-button">Сохранить</button>
+			</form>
+		</section>
 	</main>
 
 	<?php include "../templates/footer.html";?>
@@ -202,5 +312,66 @@ if(isset($_POST['image_to_php'])) {
         saveAvatar.addEventListener('click', function(){
             document.querySelector('.preview_cover').style.cssText = `display: none;`;
         });
+
+
+
+
+
+        // =========Подробная информация=========
+        let MoreInfoButton = document.querySelector('.user-block__avatar-more');
+
+        let UserInfoPopup = document.querySelector('.popup-exercise--user-info');
+
+        MoreInfoButton.addEventListener('click', function(){
+			UserInfoPopup.classList.add("open");
+		});
+
+
+
+        // Подробная информация (изменение)
+        let MoreInfoEditButton = document.querySelector('.popup-user__edit-button');
+
+        let UserInfoEditPopup = document.querySelector('.popup-exercise--user-info-edit');
+
+        MoreInfoEditButton.addEventListener('click', function(){
+            UserInfoPopup.classList.remove("open");
+			UserInfoEditPopup.classList.add("open");
+		});
+
+
+
+        // Изменение описания
+        let DescriptionEditButton = document.querySelector('.user-about__description-button');
+
+        let DescriptionPopup = document.querySelector('.popup-exercise--description-edit');
+
+        DescriptionEditButton.addEventListener('click', function(){
+            document.querySelector('.popup-user__description-edit-text').value = document.querySelector('.user-about__description-text').innerHTML;
+			DescriptionPopup.classList.add("open");
+		});
+
+
+
+        const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
+		for(let i = 0; i < closeBtn.length; i++){
+			closeBtn[i].addEventListener('click', function(){
+				UserInfoPopup.classList.remove("open");
+			    UserInfoEditPopup.classList.remove("open");
+                DescriptionPopup.classList.remove("open");
+			});
+		}
+
+		window.addEventListener('keydown', (e) => {
+            if(e.key == "Escape"){
+                UserInfoPopup.classList.remove("open");
+                UserInfoEditPopup.classList.remove("open");
+                DescriptionPopup.classList.remove("open");
+            }
+		});
+
+		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
+
     </script>
 </body>

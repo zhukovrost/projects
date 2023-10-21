@@ -1561,6 +1561,7 @@
 }
 
 .user-about{
+    position: relative;
     display: flex;
 }
 
@@ -1598,8 +1599,33 @@
     opacity: 1;
 }
 
+
+.user-block__avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-block__avatar-name{
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.user-block__avatar-more{
+    display: flex;
+    align-items: center;
+}
+
+.user-block__avatar-more img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
 /* User info text */
 .user-about__description{
+    display: block;
+    flex: 1;
     position: relative;
     background-color: #FAFAFA;
     box-shadow: 3px 3px 0px 0px #9A9A9A;
@@ -1623,6 +1649,21 @@
 
 .user-about__description-button:hover{
     opacity: 1;
+}
+
+
+.popup-exercise--description-edit form{
+    flex-direction: column;
+}
+
+.popup-user__description-edit-text{
+    padding: 5px 7px;
+    font-size: 20px;
+    background-color: #FAFAFA;
+    border: 1px solid #C6C6C6;
+    min-height: 30vh;
+    min-width: 30vw;
+    margin-bottom: 20px;
 }
 
 
@@ -1683,7 +1724,7 @@
 }
 
 /* Name, surname, date */
-.uuser-news__item-initials{
+.user-news__item-initials{
     margin-left: 10px;
 }
 
@@ -1697,14 +1738,16 @@
 }
 
 /* Button more to dalete or change post */
-.user-news__item-more{
+.user-news__item-delete{
+    border-radius: 50%;
+    background-color: #DDDDDD;
     margin: auto 0 auto auto;
     width: 30px;
     height: 30px;
     opacity: .8;
 }
 
-.user-news__item-more:hover{
+.user-news__item-delete:hover{
     opacity: 1;
 }
 
@@ -1877,6 +1920,67 @@
 
 .user-block__button-logout:hover img{
     transform: translateY(-3px);
+}
+
+
+
+/* Popup window */
+.popup-exercise__content--user-info{
+    flex-direction: column;
+    align-items:start;
+    padding-bottom: 50px;
+}
+
+.popup-user__info-item{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.popup-user__info-item-name{
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+.popup-user__info-item-info{
+    font-size: 25px;
+    padding: 3px 10px;
+    background-color: #ECECEC;
+    border: 1px solid #C1C1C1;
+    box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.popup-user__edit-button{
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+    font-size: 18px;
+    margin-left: auto;
+    opacity: 0.9;
+}
+
+.popup-user__edit-button img{
+    margin-right: 3px;
+}
+
+.popup-user__edit-button:hover{
+    opacity: 1;
+}
+
+
+.popup-exercise--user-info-edit .popup-exercise__content--user-info{
+    padding-bottom: 20px;
+}
+
+.popup-user__select{
+    font-size: 25px;
+    background-color: #ECECEC;
+    border: 1px solid #C1C1C1;
+}
+
+.popup-user__save-button{
+    font-size: 25px;
+    margin: 20px auto 0px;
+    padding: 7px 30px;
 }
 
 /* ================================================== */
