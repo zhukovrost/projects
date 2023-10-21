@@ -42,7 +42,7 @@ foreach ($user_data->program->workouts as $workout){
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-    <?php include "../templates/header.html" ?>
+    <?php include "../templates/header.php" ?>
     <main class="my-program">
         <div class="container">
             <section class="day-workouts">

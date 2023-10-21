@@ -26,7 +26,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-	<?php include "../templates/header.html" ?>
+	<?php include "../templates/header.php" ?>
 
 	<!-- Exercise navigation -->
 	<nav class="exercises-nav">

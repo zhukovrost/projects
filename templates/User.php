@@ -19,6 +19,8 @@ class User {
     public $program;
     public $workout_history = [];
     public $featured_workouts = [];
+    public $type;
+    public $preparation;
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -61,6 +63,8 @@ class User {
                     $this->featured_exercises = json_decode($item['featured_exercises']);
                     $this->my_exercises = json_decode($item['my_exercises']);
                     $this->featured_workouts = json_decode($item['featured_workouts']);
+                    $this->preparation = $item["preparation"];
+                    $this->type = $item["type"];
                 }
                 $this->auth = $auth;
             }else{

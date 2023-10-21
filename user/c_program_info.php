@@ -6,7 +6,7 @@ include "../templates/settings.php";
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-    <?php include "../templates/header.html" ?>
+    <?php include "../templates/header.php" ?>
 
 	<main class="c-program-info">
 		<div class="container">

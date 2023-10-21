@@ -36,7 +36,7 @@ if (isset($_POST["week_days"])){
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-    <?php include "../templates/header.html" ?>
+    <?php include "../templates/header.php" ?>
 
 	<main class="c-workout">
 		<div class="container">

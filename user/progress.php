@@ -30,7 +30,7 @@ foreach ($user_data->workout_history as $item){
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-	<?php include "../templates/header.html" ?>
+	<?php include "../templates/header.php" ?>
 
 	<main class="progress-block">
 		<div class="container">

@@ -16,16 +16,19 @@
         <img src="../img/exercises_black.svg" alt="">
         <p>Упражнения</p>
     </a>
+    <?php
+    if ($user_data->get_auth() && ($user_data->get_status() == "user" || $user_data->get_status() == "admin")){ ?>
     <!-- Для спортсмена -->
     <a class="header__item" href="../user/staff.php">
         <img src="../img/coach_header.svg" alt="">
         <p>Персонал</p>
     </a>
-    <!-- Для тренера и врача -->
-    <!-- <a class="header__item" href="../user/staff.php">
+    <?php } else if ($user_data->get_auth() && ($user_data->get_status() == "coach" || $user_data->get_status() == "doctor")) { ?>
+     <a class="header__item" href="../user/staff.php">
         <img src="../img/sportsman_header.svg" alt="">
         <p>Спортсмен</p>
-    </a> -->
+     </a>
+    <?php } ?>
     <a class="header__item" href="">
         <img src="../img/news_black.svg" alt="">
         <p>Новости</p>

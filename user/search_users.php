@@ -20,7 +20,7 @@ $user_data->set_subscriptions($conn);
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-    <?php include "../templates/header.html" ?>
+    <?php include "../templates/header.php" ?>
 
 	<nav class="users-search-nav">
 		<div class="container">

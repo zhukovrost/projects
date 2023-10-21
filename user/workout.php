@@ -13,7 +13,7 @@ if (isset($_POST["workout_to_fav"])){
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-    <?php include "../templates/header.html" ?>
+    <?php include "../templates/header.php" ?>
 
     <main class="workouts-block">
         <div class="container">

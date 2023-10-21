@@ -56,7 +56,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-    <?php include "../templates/header.html" ?>
+    <?php include "../templates/header.php" ?>
 
 	<main class="c-control-workout">
 		<div class="container">
