@@ -1,9 +1,11 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
-
+$request_flag = false;
 if ($_GET["user"]){
     $user = new User($conn, $_GET["user"]);
+    $user_data->set_staff($conn);
+    $request_flag = $user_data->check_request($conn, $user->get_id());
 }else{
     $user = $user_data;
 }
@@ -71,7 +73,9 @@ if (isset($_POST["prep"])){
                         <form id="avatar_form" class="avatar" method="post">
                             <img id="profileImage" src="<?php echo $user->get_avatar($conn); ?>">
                             <input type="file" id="avatar_file" accept="image/*" />
+                            <?php if ($user->get_auth()){?>
                             <label for="avatar_file" class="uppload_button">Choose photo</label>
+                            <?php } ?>
                             <input type="hidden" id="image_to_php" name="image_to_php" value="">
                         </form>
                         <div class="user-block__avatar-name">
@@ -79,9 +83,9 @@ if (isset($_POST["prep"])){
                         </div>
                         <button class="user-block__avatar-more"><img src="../img/info.svg" alt=""><p>Подробнее</p></button>
                         <?php
-                         if (in_array($user->get_id(), $user->subscribers)){ ?>
+                         if (!$user->get_auth() && in_array($user_data->get_id(), $user->subscribers)){ ?>
                             <a class="button-text user-block__sub-button" href="unsub.php?id=<?php echo $user->get_id(); ?>">Отписаться</a>
-                        <?php }else{ ?>
+                        <?php }else if (!$user->get_auth()){ ?>
                             <a class="button-text user-block__sub-button" href="sub.php?id=<?php echo $user->get_id(); ?>">Подписаться</a>
                         <?php }
                          ?>
@@ -134,6 +138,7 @@ if (isset($_POST["prep"])){
                         <?php print_user_list($conn, $user->subscriptions); ?>
 					</swiper-container>
                 </section>
+                <?php if ($user->get_status() == "user"){ ?>
                 <!-- User's staff (coach and doctor) -->
 				<section class="user-block__staff">
                     <!-- Coach info and buttons to chat, ptofile and delete -->
@@ -170,10 +175,15 @@ if (isset($_POST["prep"])){
 						<a class="user-block__sub-count-item" href=""><span><?php echo count($user->subscriptions); ?> подписок</span></a>
 					</div>
 				</section>
+
 				<?php $user->print_workout_history($conn); ?>
+
+                <?php } ?>
                 <!-- Buttons to edit profile, search sportsmen and logout -->
 				<section class="user-block__buttons">
-                    <button class="button-text user-block__button"><p>Отправить заявку</p> <img src="../img/send.svg" alt=""></button>
+                    <?php if (!$user->get_auth() && $user_data->get_status() == "user" && (($user->get_status() == "coach" && $user_data->coach == NULL) || ($user->get_status() == "doctor" && $user_data->doctor == NULL)) && !$request_flag){ ?>
+                        <button class="button-text user-block__button"><p>Отправить заявку</p> <img src="../img/send.svg" alt=""></button>
+                    <?php } ?>
 					<a href="search_users.php" class="button-text user-block__button"><p>Поиск спортсменов</p> <img src="../img/search_white.svg" alt=""></a>
                     <?php if ($user->get_auth()){ ?>
                     <button class="button-text user-block__button"><p>Редактировать профиль</p> <img src="../img/edit.svg" alt=""></button>

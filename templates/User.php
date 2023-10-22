@@ -491,4 +491,15 @@ class User {
             }
         }
     }
+
+    public function check_request($conn, $id){
+        $user = $this->get_id();
+        $sql = "SELECT id FROM requests WHERE user=$user AND receiver=$id";
+        if ($result = $conn->query($sql)){
+            return $result->num_rows > 0;
+        }else{
+            echo $conn->error;
+            return false;
+        }
+    }
 }
