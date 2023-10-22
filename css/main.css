@@ -2421,22 +2421,17 @@
 
 /* =================WORKOUT SESSION PAGE================= */
 .workout-session__header{
+    position: relative;
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 10px 50px;
 }
 
 /* Right side of header */
-.workout-session__navigation{
-    display: flex;
-    align-items: center;
-    width: 50%;
-    margin-right: 50px;
-}
-
-/* Progress of test */
 .workout-session__progress{
-    width: 90%;
+    width: 50%;
 }
 
 /* title 'progress' */
@@ -2473,20 +2468,47 @@
     transition: .2s ease;
 }
 
-/* Navifation the test */
-.workout-session__navigation{
-    margin-top: 15px;
-    transform: translateX(4%);
+.session-exercises{
+    display: flex;
+    align-items: center;
+    height: 75vh;
 }
 
-.workout-session__navigation-button{
-    background-color: #54d7ff;
-    padding: 4px 10px;
-    margin-right: 10px;
-    margin-bottom: 8px;
-    font-size: 23px;
+.session-exercises__info-cover{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.session-exercises__info{
+    padding: 15px 50px;
+    background-color: #FAFAFA;
+    border-radius: 3px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.session-exercises__help{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.session-exercises__help-item{
+    font-size: 18px;
     font-weight: 600;
-    transition: .2s ease;
+    margin: 0 3px;
+}
+
+.session-exercises__help-item--green{
+    color: rgb(1, 221, 34);
+}
+
+.session-exercises__help-item--white{
+    color: rgba(0, 94, 13, 1);
 }
 
 /* remaining time for the test */
@@ -2494,19 +2516,32 @@
     background-color: rgb(1, 221, 34);
     font-size: 25px;
     padding: 15px 20px;
-    margin-left: 20px;
     box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);
 }
 
-.session-exercises{
+/* Navifation the test */
+.workout-session__navigation{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 75vh;
+    margin-top: 20px;
 }
 
+.workout-session__navigation-button{
+    background-color: rgb(0, 0, 0);
+    padding: 4px 10px;
+    margin: 0 8px;
+    margin-bottom: 8px;
+    font-size: 23px;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+.workout-session__navigation-button:hover{
+    background-color: rgb(39, 39, 39);
+}
+
+
 .session-exercises__swiper{
-    width: 30%;
+    width: 40%;
     margin: 0 auto;
 }
 

@@ -653,6 +653,10 @@ body {
     border-radius: 3px;
 }
 
+.friends-block--program{
+    min-width: 24%;
+}
+
 /* Title and button to search friends */
 .friends-block__header{
     font-size: 20px;

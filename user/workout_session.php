@@ -17,30 +17,35 @@ $cnt_apps = 0;
             <img src="../img/logo.svg" alt="">
             <p>Training</p>
         </a>
-        <section class="workout-session__navigation">
-            <!-- Progress of test(in percents) -->
-            <section class="workout-session__progress">
-                <!-- Progress line and count of percent -->
-                <div class="workout-session__progress-bar">
-                    <h2 class="workout-session__progress-title">Progress</h2>
-                    <div class="workout-session__progress-percents">
-                        <p class="workout-session__percents-number">0%</p>
-                        <div class="workout-session__finish-line"></div>
-                    </div>
+        <!-- Progress of test(in percents) -->
+        <section class="workout-session__progress">
+            <!-- Progress line and count of percent -->
+            <h2 class="workout-session__progress-title">Progress</h2>
+            <div class="workout-session__progress-percents">
+                <p class="workout-session__percents-number">0%</p>
+                <div class="workout-session__finish-line"></div>
+            </div>
+        </section>
+    </header>
+    
+    <main class="session-exercises">
+        <div class="session-exercises__info-cover">
+            <section class="session-exercises__info">
+                <div class="session-exercises__help">
+                    <p class="session-exercises__help-item session-exercises__help-item--green">время на подход</p>
+                    <p class="session-exercises__help-item"> | </p>
+                    <p class="session-exercises__help-item session-exercises__help-item--white">время на отдых</p>
+                </div>
+                <!-- Timer -->
+                <div class="workout-session__time">
+                    00:00
                 </div>
                 <!-- Navigation of test -->
                 <nav class="workout-session__navigation">
 
                 </nav>
             </section>
-            <!-- Timer(rest time) -->
-            <div class="workout-session__time">
-                00:00
-            </div>
-        </section>
-    </header>
-    
-    <main class="session-exercises">
+        </div>
         <swiper-container class="session-exercises__swiper" navigation="true">
             <!-- for loop -->
             <?php for ($i = 0; $i < $workout->loops; $i++) { foreach ($workout->exercises as $exercise){?>
@@ -82,146 +87,43 @@ $cnt_apps = 0;
 
         const navigationButtons = document.querySelectorAll('.workout-session__navigation-button');
 
-        for(let i = 0; i < navigationButtons.length; i++){
-            navigationButtons[i].addEventListener('click', function(){
-                questionsArr[i].scrollIntoView({
-                    behavior: "smooth", block: "center", inline: "start";
-                });
+        
+
+        // Button to see exercise info
+        let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
+
+        for(let i = 0; i < infoExerciseButton.length; i++){
+            infoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -1%;`;
+            });
+        }
+        for(let i = 0; i < closeInfoExerciseButton.length; i++){
+            closeInfoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -101%;`;
             });
         }
 
-        // ===============================================
 
-        // Progress
-        let finishQuestions = [];
-        for(let i = 0; i < questionsArr.length; i++){
-            finishQuestions[i] = {
-                number: i,
-                flag: false
-            }
+
+        //Difficult
+		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
+		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
+
+		for(let i = 0; i < difficultCountArr.length; i++){
+			difficultBlockArr[i].innerHTML = '';
+			console.log(Number(difficultCountArr[i].innerHTML) - 1)
+            for(let j = 0; j < 5; j++){
+				let newElem = document.createElement('div');
+				newElem.classList.add('exercise-item__difficult-item');
+				if(j > Number(difficultCountArr[i].innerHTML) - 1){
+					newElem.classList.add('exercise-item__difficult-item--disabled');
+				}
+				difficultBlockArr[i].appendChild(newElem);
+			}
         }
 
-        for(let i = 0; i < questionsArr.length; i++){
-            let inputBlocksArr = questionsArr[i].children[1].children[2].children;
-            let CountFinishInputs = new Array(questionsArr.length).fill(0);
-
-            for(let j = 0; j < inputBlocksArr.length; j++){
-                if(inputBlocksArr[j].tagName != "IMG"){
-                let inputItem = inputBlocksArr[j].children[0];
-                let previousValue = ""
-
-                if(inputItem.type == 'checkbox'){
-                    inputItem.addEventListener('change', function(){
-                    if (inputItem.checked){
-                        CountFinishInputs[i] += 1;
-
-                        finishQuestions[i].flag = true;
-
-                        let finishCount = 0
-                        for(let q = 0; q < finishQuestions.length; q++){
-                            if(finishQuestions[q].flag == true){
-                                finishCount++;
-
-                                navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
-                            }
-                        }
-                        currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
-                        progressBar.style.cssText = `width: ${currentWidth}%`;
-                        percents.innerHTML = `${currentWidth} %`;
-
-                        if(currentWidth == 100){
-                            document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
-                        }
-                    }
-                    else if(inputItem.checked == false){
-                        CountFinishInputs[i] -= 1;
-                        if (CountFinishInputs[i] == 0){
-
-                        finishQuestions[i].flag = false;
-
-                        let finishCount = 0
-                        for(let q = 0; q < finishQuestions.length; q++){
-                            if(finishQuestions[q].flag == true){
-                                finishCount++;
-
-                                navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
-                            }
-                            else{
-                                navigationButtons[q].style.cssText = `background-color: #54d7ff; color: #000000;`;
-                            }
-                        }
-                        currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
-                        progressBar.style.cssText = `width: ${currentWidth}%`;
-                        percents.innerHTML = `${currentWidth} %`;
-
-                        if(currentWidth == 100){
-                            document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
-                        }
-                        }
-                    }
-                    })
-                }
-
-                inputItem.oninput =  function(){
-
-                    if (inputItem.value != ''){
-                    if (inputItem.value.length == 1 && previousValue.length != 2){
-                        CountFinishInputs[i] += 1;
-                    }
-                    
-                    
-                    finishQuestions[i].flag = true;
-
-                    let finishCount = 0
-                    for(let q = 0; q < finishQuestions.length; q++){
-                        if(finishQuestions[q].flag == true){
-                            finishCount++;
-
-                            navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
-                        }
-                    }
-                    currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
-                    progressBar.style.cssText = `width: ${currentWidth}%`;
-                    percents.innerHTML = `${currentWidth} %`;
-
-                    if(currentWidth == 100){
-                        document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
-                    }
-
-                    previousValue = inputItem.value;
-                    }
-                    else{
-                    CountFinishInputs[i] -= 1;
-                    if (CountFinishInputs[i] == 0){
-
-                        finishQuestions[i].flag = false;
-
-                        let finishCount = 0
-                        for(let q = 0; q < finishQuestions.length; q++){
-                            if(finishQuestions[q].flag == true){
-                                finishCount++;
-
-                                navigationButtons[q].style.cssText = `background-color: #004fe3; color: #ffffff;`;
-                            }
-                            else{
-                                navigationButtons[q].style.cssText = `background-color: #54d7ff; color: #000000;`;
-                            }
-                        }
-                        currentWidth = Math.trunc((finishCount / finishQuestions.length) * 100);
-                        progressBar.style.cssText = `width: ${currentWidth}%`;
-                        percents.innerHTML = `${currentWidth} %`;
-
-                        if(currentWidth == 100){
-                            document.querySelector('.curtest_header .progress_bar p').style.color = "#ffffff";
-                        }
-                    }
-                    }
-
-                };
-                }
-                
-            }
-        }
     </script>
 </body>
 </html>
