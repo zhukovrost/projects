@@ -162,7 +162,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 					}
 					echo "</form>";
 				}else{
-					echo "<h1 class='exercises__none'>У вас нет тренировок. Перейите на вкладку все тренировки.</h1>";
+					echo "<h1 class='exercises__none'>У Вас нет своих упражнений. Вы можете добавить их на вкладке 'Упражнения'.</h1>";
 				}
 			}else{
 				$select_sql = "SELECT id FROM exercises";
@@ -186,34 +186,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			<section class="popup-exercise__content">
 				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<section class="exercise-item">
-					<!-- Exercise info -->
-					<button type="button" class="exercise-item__info-btn"><img src="../img/info.svg" alt=""></button>
-					<div class="exercise-item__info-content">
-						<button type="button" class="exercise-item__info-close"><img src="../img/close.svg" alt=""></button>
-						<p class="exercise-item__info-text">{{ description }}</p>
-					</div>
-					<!-- Exercise muscle groups -->
-					<div class="exercise-item__muscle-groups">{{ muscle }}</div>
-					<!-- Exercise image -->
-					<img class="exercise-item__img" src="{{ image }}" alt="">
-					<!-- Decoration line -->
-					<div class="exercise-item__line"></div>
-					<!-- Exercise title -->
-					<h1 class="exercise-item__title">{{ name }}</h1>
-					<div class="exercise-item__statistic">
-						<div class="exercise-item__rating">
-							<p class="exercise-item__score">{{ rating }}</p>
-							<img class="exercise-item__star" src="../img/Star.svg" alt="">
-						</div>
-						<div class="exercise-item__difficult">
-							<p class="exercise-item__difficult-number">{{ difficulty }}</p>
-							<div class="exercise-item__difficult-item"></div>
-						</div>
-					</div>
-					<div class="exercise-item__buttons">
-						{{ button }}
-						{{ button_featured }}
-					</div>
+					
 				</section>
 				<form method="post" class="popup-exercise__info">
 					<div class="popup-exercise__info-item">
@@ -279,8 +252,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			difficultBlockArr[i].innerHTML = '';
             for(let j = 0; j < 5; j++){
 				let newElem = document.createElement('div');
+				newElem.classList.add('exercise-item__difficult-item');
 				if(j > Number(difficultCountArr[i].innerHTML) - 1){
-					newElem.classList.add('disabled');
+					newElem.classList.add('exercise-item__difficult-item--disabled');
 				}
 				difficultBlockArr[i].appendChild(newElem);
 			}
@@ -337,11 +311,6 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
-		});
-
-		popupExerciseWindow.addEventListener('click', event =>{
-		if(event.isClickWithInModal) return;
-			event.currentTarget.classList.remove('open');
 		});
 
 	</script>

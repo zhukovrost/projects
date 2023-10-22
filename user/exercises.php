@@ -159,7 +159,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 					}
 					echo "</form>";
 				}else{
-					echo "<h1 class='exercises__none'>У вас нет тренировок. Перейдите на вкладку все тренировки.</h1>";
+					echo "<h1 class='exercises__none'>У вас нет своих упражнений. Вы можете добавить их из общего списка.</h1>";
 				}
 			}else{
 				$select_sql = "SELECT id FROM exercises";
@@ -178,15 +178,51 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			}
 			?>
         </div>
+
+
+		<!-- Popup for exercise rating-->
+		<section class="popup-exercise">
+			<section class="popup-exercise__content">
+				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<section class="exercise-item">
+					
+				</section>
+				<form method="post" class="popup-exercise__info popup-exercise__info--rating">
+					<p class="popup-exercise__info-title">Ваша оценка</p>
+					<div>
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate5" name="exercise_rate">
+						<label class="popup-exercise__info-label" for="c_exercise_rate5">5</label>
+					</div>
+					<div>
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate4" name="exercise_rate">
+						<label class="popup-exercise__info-label" for="c_exercise_rate4">4</label>
+					</div>
+					<div>
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate3" name="exercise_rate">
+						<label class="popup-exercise__info-label" for="c_exercise_rate3">3</label>
+					</div>
+					<div>
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate2" name="exercise_rate">
+						<label class="popup-exercise__info-label" for="c_exercise_rate2">2</label>
+					</div>
+					<div>
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate1" name="exercise_rate">
+						<label class="popup-exercise__info-label" for="c_exercise_rate1">1</label>
+					</div>
+                    <input class="exercise_id" name="id" type="hidden" value="">
+					<button class="button-text popup-exercise__rate-button"><p>Оценить</p></button>
+				</form>
+			</section>
+		</section>
 	</main>
 
 	<?php include "../templates/footer.html" ?>
 
 	<script>
         // Button to see exercise info
-        let infoExerciseButton = document.querySelectorAll('.exercise-block .exercise_item .info');
-        let closeInfoExerciseButton = document.querySelectorAll('.exercise-block .exercise_item .info_close');
-        let infoBlock = document.querySelectorAll('.exercise-block .exercise_item .info_block');
+        let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
 
         for(let i = 0; i < infoExerciseButton.length; i++){
             infoExerciseButton[i].addEventListener('click', function(){
@@ -221,20 +257,74 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 
 		//Difficult
-		let difficultCountArr = document.querySelectorAll('.exercise-block .exercise_item .statistic .difficult p');
-		let difficultBlockArr = document.querySelectorAll('.exercise-block .exercise_item .statistic .difficult');
+		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
+		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
 		for(let i = 0; i < difficultCountArr.length; i++){
 			difficultBlockArr[i].innerHTML = '';
 			console.log(Number(difficultCountArr[i].innerHTML) - 1)
             for(let j = 0; j < 5; j++){
 				let newElem = document.createElement('div');
+				newElem.classList.add('exercise-item__difficult-item');
 				if(j > Number(difficultCountArr[i].innerHTML) - 1){
-					newElem.classList.add('disabled');
+					newElem.classList.add('exercise-item__difficult-item--disabled');
 				}
 				difficultBlockArr[i].appendChild(newElem);
 			}
         }
+
+
+
+		// Popup exercises
+		let exercisesButtons = document.querySelectorAll('.exercise-item__rating');
+		let popupExerciseItem = document.querySelector('.popup-exercise .exercise-item');
+		let popupExerciseWindow = document.querySelector('.popup-exercise');
+		let inputExerciseId = document.querySelector('.popup-exercise .exercise_id');
+
+		let popupExerciseItemInfo = document.querySelector('.popup-exercise .exercise-item__info-btn');
+		let popupExerciseItemClose = document.querySelector('.popup-exercise__close-button');
+		let popupExerciseItemContent = document.querySelector('.popup-exercise .exercise-item__info-content');
+
+		for(let i = 0; i < exercisesButtons.length; i++){
+			exercisesButtons[i].addEventListener('click', function(){
+				let item = exercisesButtons[i].parentElement.parentElement;
+				popupExerciseItem.innerHTML = '';
+				popupExerciseItem.innerHTML = item.innerHTML;
+				inputExerciseId.value = exercisesButtons[i].value;
+				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
+
+				popupExerciseWindow.classList.add("open");
+
+				popupExerciseItemInfo = document.querySelector('.popup-exercise .exercise-item__info-btn');
+				popupExerciseItemClose = document.querySelector('.popup-exercise .exercise-item__info-close');
+				popupExerciseItemContent = document.querySelector('.popup-exercise .exercise-item__info-content');
+			
+				popupExerciseItemInfo.addEventListener('click', function(){
+					popupExerciseItemContent.style.cssText = `top: -1%;`;
+				});
+				popupExerciseItemClose.addEventListener('click', function(){
+					popupExerciseItemContent.style.cssText = `top: -101%;`;
+				});
+			});
+		}
+
+		
+		
+
+		const closeBtn = document.querySelector('.popup-exercise__close-button');
+		closeBtn.addEventListener('click', function(){
+			popupExerciseWindow.classList.remove("open");
+		});
+
+		window.addEventListener('keydown', (e) => {
+		if(e.key == "Escape"){
+			popupExerciseWindow.classList.remove("open");
+		}
+		});
+
+		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
 
 		FilterButtonsArr[0].click();
 	</script>

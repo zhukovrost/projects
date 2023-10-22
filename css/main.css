@@ -1492,6 +1492,39 @@
 }
 
 
+.popup-exercise__info--rating{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-exercise__info-title{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.popup-exercise__info div{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.popup-exercise__info input[type="radio"]{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+
+.popup-exercise__rate-button{
+    font-size: 23px;
+    padding: 7px 30px;
+    margin-top: 20px;
+}
+
+
 /* =================================================== */
 
 
