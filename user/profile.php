@@ -182,7 +182,7 @@ if (isset($_POST["prep"])){
                 <!-- Buttons to edit profile, search sportsmen and logout -->
 				<section class="user-block__buttons">
                     <?php if (!$user->get_auth() && $user_data->get_status() == "user" && (($user->get_status() == "coach" && $user_data->coach == NULL) || ($user->get_status() == "doctor" && $user_data->doctor == NULL)) && !$request_flag){ ?>
-                        <button class="button-text user-block__button"><p>Отправить заявку</p> <img src="../img/send.svg" alt=""></button>
+                        <a href="send_request.php?id=<?php echo $user->get_id();?>" class="button-text user-block__button"><p>Отправить заявку</p> <img src="../img/send.svg" alt=""></a>
                     <?php } ?>
 					<a href="search_users.php" class="button-text user-block__button"><p>Поиск спортсменов</p> <img src="../img/search_white.svg" alt=""></a>
                     <?php if ($user->get_auth()){ ?>
