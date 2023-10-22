@@ -133,7 +133,7 @@ foreach ($user_data->program->workouts as $workout){
                         </section>
                     </section>
                 </section>
-                <section class="friends-block">
+                <section class="friends-block friends-block--program">
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
                         <h1 class="friends-block__header-title">Тренировки друзей</h1>

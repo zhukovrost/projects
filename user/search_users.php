@@ -26,7 +26,7 @@ $user_data->set_subscriptions($conn);
 	<nav class="users-search-nav">
 		<div class="container">
 			<!-- Buttons to (sub / unsub) users -->
-
+            <a class="button-text users-search-nav__item" href="c_exercises.php?my=1">Новые заявки (3)<img src="../img/application.svg" alt=""></a>
 			<a class="button-text users-search-nav__item" href="c_exercises.php?my=1">Подписчики <img src="../img/arrow_white.svg" alt=""></a>
 			<!-- Exercise search -->
 			<form method="post" class="users-search-nav__search">
