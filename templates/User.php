@@ -21,6 +21,8 @@ class User {
     public $featured_workouts = [];
     public $type;
     public $preparation;
+    public $coach = NULL;
+    public $doctor = NULL;
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -43,6 +45,22 @@ class User {
         }else{
             echo $conn->query;
         }
+    }
+
+    function set_staff($conn){
+        $id = $this->get_id();
+        $sql = "SELECT (SELECT coach FROM user_to_coach WHERE user = $id) AS selected_coach, (SELECT doctor FROM user_to_doctor WHERE user = $id) AS selected_doctor";
+        if ($result = $conn->query($sql)){
+            foreach ($result as $item){
+                if ($item["selected_coach"] != null)
+                    $this->coach = new User($conn, $item["selected_coach"]);
+                if ($item["selected_doctor"] != null)
+                    $this->doctor = new User($conn, $item["selected_doctor"]);
+                return 1;
+            }
+        }
+        echo $conn->error;
+        return 0;
     }
 
     public function __construct($conn, $id=-1, $auth=false){
@@ -438,17 +456,38 @@ class User {
         }
     }
     public function print_type(){
+        if ($this->type == 0){
+            echo "Не указан";
+            return;
+        }
         if ($this->get_status() == "user" || $this->get_status() == "admin"){
             switch ($this->type){
-                case 0:
-                    echo "Не указан";
-                    break;
                 case 1:
                     echo "Любитель";
-                    break;
+                    return;
                 case 2:
                     echo "Проффесионал";
-                    break;
+                    return;
+            }
+        }
+        if ($this->get_status() == "coach"){
+            switch ($this->type){
+                case 1:
+                    echo "Тренер команды";
+                    return;
+                case 2:
+                    echo "Личный тренер";
+                    return;
+            }
+        }
+        if ($this->get_status() == "doctor"){
+            switch ($this->type){
+                case 1:
+                    echo "Врач команды";
+                    return;
+                case 2:
+                    echo "Личный врач";
+                    return;
             }
         }
     }

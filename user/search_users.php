@@ -6,10 +6,11 @@ $users_array = array();
 if (isset($_POST['search']) && trim($_POST['search']) != ""){
     $searches = explode(' ', $_POST['search']);
     foreach ($searches as $search){
-        $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.login LIKE '$search' OR users.name LIKE '$search' OR users.surname LIKE '$search'";
+        $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.login LIKE '%$search%' OR users.name LIKE '%$search%' OR users.surname LIKE '%$search%'";
         $result = $conn->query($sql);
         foreach ($result as $item){
-            array_push($users_array, $item);
+            if (!in_array($item, $users_array))
+                array_push($users_array, $item);
         }
     }
 }
@@ -45,8 +46,9 @@ $user_data->set_subscriptions($conn);
                     else
                         print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], false);
                 }
-            }
-            ?>
+            }else{ ?>
+                <p>Пользователь не найден</p>
+            <?php } ?>
 		</div>
 	</main>
 

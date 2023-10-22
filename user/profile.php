@@ -2,24 +2,23 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
-$flag = false;
 if ($_GET["user"]){
     $user = new User($conn, $_GET["user"]);
 }else{
     $user = $user_data;
-    $flag = true;
 }
 $user->set_subscriptions($conn);
 $user->set_subscribers($conn);
+$user->set_staff($conn);
 
 # ---------------- avatar upload ------------------------
 
-if(isset($_POST['image_to_php']) && $flag) {
+if(isset($_POST['image_to_php']) && $user->get_auth()) {
     $user->update_avatar($conn, $_POST['image_to_php']);
 }
 
 
-if (isset($_POST["change_disc"]) && $flag){
+if (isset($_POST["change_disc"]) && $user->get_auth()){
     $new_disc = trim($_POST["change_disc"]);
     if ($new_disc == ''){
         $new_disc = "Нет описания";
@@ -88,7 +87,7 @@ if (isset($_POST["prep"])){
                         <?php } else{ ?>
                             <p class="user-about__description-text">Нет описания</p>
                         <?php } ?>
-                        <?php if ($flag){ ?>
+                        <?php if ($user->get_auth()){ ?>
 						    <button class="user-about__description-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
                         <?php } ?>
 					</div>
@@ -132,15 +131,31 @@ if (isset($_POST["prep"])){
 				<section class="user-block__staff">
                     <!-- Coach info and buttons to chat, ptofile and delete -->
 					<div class="user-block__coach">
-						<p class="user-block__staff-title">Тренер: <span>Штангов К.</span></p>
-						<button class="user-block__staff-button"><img src="../img/message.svg" alt=""></button>
-						<button class="user-block__staff-button"><img src="../img/profile_black.svg" alt=""></button>
-						<button class="user-block__staff-button"><img src="../img/delete_black.svg" alt=""></button>
+                        <?php $has_coach = $user->coach != NULL; ?>
+						<p class="user-block__staff-title">Тренер: <span><?php if ($has_coach){ echo $user->coach->surname; }else{ echo "нет"; } ?></span></p>
+                        <?php if ($has_coach){ ?>
+                            <!-- <button class="user-block__staff-button"><img src="../img/message.svg" alt=""></button> -->
+                            <a href="profile.php?user=<?php echo $user->coach->get_id(); ?>" class="user-block__staff-button"><img src="../img/profile_black.svg" alt=""></a>
+                            <?php if ($user->get_auth()){ ?>
+                                <a href="delete_coach.php" class="user-block__staff-button"><img src="../img/delete_black.svg" alt=""></a>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <a href="search_users.php" class="user-block__staff-button"><img src="../img/add_black.svg" alt=""></a>
+                        <?php } ?>
 					</div>
                     <!-- Doctor info -->
 					<div class="user-block__doctor">
-						<p class="user-block__staff-title">Врач: <span>нет</span></p>
-						<button class="user-block__staff-button"><img src="../img/add_black.svg" alt=""></button>
+                        <?php $has_doctor = $user->doctor != NULL; ?>
+						<p class="user-block__staff-title">Врач: <span><?php if ($has_doctor){ echo $user->doctor->surname; }else{ echo "нет"; } ?></span></p>
+                        <?php if ($has_doctor){ ?>
+                            <!-- <button class="user-block__staff-button"><img src="../img/message.svg" alt=""></button> -->
+                            <a href="profile.php?user=<?php echo $user->doctor->get_id(); ?>" class="user-block__staff-button"><img src="../img/profile_black.svg" alt=""></a>
+                            <?php if ($user->get_auth()){ ?>
+                                <a href="delete_doctor.php" class="user-block__staff-button"><img src="../img/delete_black.svg" alt=""></a>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <a href="search_users.php" class="user-block__staff-button"><img src="../img/add_black.svg" alt=""></a>
+                        <?php } ?>
 					</div>
                     <!-- Count of subscribers and subscriptions -->
 					<div class="user-block__sub-count">
@@ -177,29 +192,20 @@ if (isset($_POST["prep"])){
                     <p class="popup-user__info-item-name">Тип пользователя</p>
                     <p class="popup-user__info-item-info"><?php $user->print_status(); ?></p>
                 </div>
-                <!-- Для тренера
-                <div class="popup-user__info-item">
-                    <p class="popup-user__info-item-name">Тип тренера</p>
-                    <p class="popup-user__info-item-info">Тренер команды / Личный тренер</p>
-                </div> -->
-                <!-- Для врача
-                <div class="popup-user__info-item">
-                    <p class="popup-user__info-item-name">Тип тренера</p>
-                    <p class="popup-user__info-item-info">Врач команды / Личный врач</p>
-                </div> -->
 
                 <!-- Люитель / профессионал / не указан -->
 				<div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Тип спортсмена</p>
                     <p class="popup-user__info-item-info"><?php $user->print_type(); ?></p>
                 </div>
-
-                <!-- низкий / средний / высокий / не указан-->
-                <div class="popup-user__info-item">
-                    <p class="popup-user__info-item-name">Уровень физической подготовки</p>
-                    <p class="popup-user__info-item-info"><?php $user->print_prep(); ?></p>
-                </div>
-                <?php if ($flag){  ?>
+                <?php if ($user->get_status() == "user"){ ?>
+                    <!-- низкий / средний / высокий / не указан-->
+                    <div class="popup-user__info-item">
+                        <p class="popup-user__info-item-name">Уровень физической подготовки</p>
+                        <p class="popup-user__info-item-info"><?php $user->print_prep(); ?></p>
+                    </div>
+                <?php } ?>
+                <?php if ($user->get_auth()){  ?>
                     <button type="button" class="popup-user__edit-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
                 <?php } ?>
 			</section>
@@ -212,9 +218,11 @@ if (isset($_POST["prep"])){
                 <!-- Спортсмен / тренер / врач -->
                 <div class="popup-user__info-item">
                 <p class="popup-user__info-item-name">Тип пользователя</p>
-                    <p class="popup-user__info-item-info">Спортсмен</p>
+                    <p class="popup-user__info-item-info"><?php $user->print_status(); ?></p>
                 </div>
-                <!-- Для тренера
+               <?php switch ($user->get_status()){
+                   case "coach":
+               ?>
                 <div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Тип тренера</p>
                     <select class="popup-user__select" name="type" id="">
@@ -222,18 +230,23 @@ if (isset($_POST["prep"])){
                         <option class="popup-user__option" value="1">личный тренер</option>
                         <option class="popup-user__option" value="2">тренер команды</option>
                     </select>
-                </div> -->
-                <!-- Для врача
-                <div class="popup-user__info-item">
-                    <p class="popup-user__info-item-name">Тип тренера</p>
-                    <select class="popup-user__select" name="type" id="">
-                        <option class="popup-user__option" selected value="0">не указан</option>
-                        <option class="popup-user__option" value="1">личный тренер</option>
-                        <option class="popup-user__option" value="2">тренер команды</option>
-                    </select>
-                </div> -->
+                </div>
+                   <?php
+                    break;
+                   case "doctor":?>
 
-                <!-- Люитель / профессионал / не указан -->
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Тип доктора</p>
+                    <select class="popup-user__select" name="type" id="">
+                        <option class="popup-user__option" selected value="0">не указан</option>
+                        <option class="popup-user__option" value="1">личный тренер</option>
+                        <option class="popup-user__option" value="2">тренер команды</option>
+                    </select>
+                </div>
+
+                <?php break;
+                   case "user":
+                ?>
 				<div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Тип спортсмена</p>
                     <select class="popup-user__select" name="type" id="">
@@ -242,18 +255,21 @@ if (isset($_POST["prep"])){
                         <option class="popup-user__option" value="2">профессионал</option>
                     </select>
                 </div>
+                <?php break;
+               } ?>
 
-                <!-- низкий / средний / высокий / не указан-->
-                <div class="popup-user__info-item">
-                    <p class="popup-user__info-item-name">Уровень физической подготовки</p>
-                    <select class="popup-user__select" name="prep" id="">
-                        <option class="popup-user__option" selected value="0">не указан</option>
-                        <option class="popup-user__option" value="1">низкий</option>
-                        <option class="popup-user__option" value="2">средний</option>
-                        <option class="popup-user__option" value="3">высокий</option>
-                    </select>
-                </div>
-
+                <?php if ($user->get_status() == "user"){ ?>
+                    <!-- низкий / средний / высокий / не указан-->
+                    <div class="popup-user__info-item">
+                        <p class="popup-user__info-item-name">Уровень физической подготовки</p>
+                        <select class="popup-user__select" name="prep" id="">
+                            <option class="popup-user__option" selected value="0">не указан</option>
+                            <option class="popup-user__option" value="1">низкий</option>
+                            <option class="popup-user__option" value="2">средний</option>
+                            <option class="popup-user__option" value="3">высокий</option>
+                        </select>
+                    </div>
+                <?php } ?>
                 <button type="submit" class="button-text popup-user__save-button">Сохранить</button>
             </form>
 		</section>
