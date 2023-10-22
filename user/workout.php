@@ -111,7 +111,7 @@ if (isset($_POST["workout_to_fav"])){
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
                         <h1 class="friends-block__header-title">Тренировки друзей</h1>
-                        <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
+                        <a href="search_users.php" class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends' workout swiper -->
                     <swiper-container class="friends-block__swiper" navigation="true">

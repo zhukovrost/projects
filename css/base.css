@@ -683,26 +683,17 @@ body {
 }
 
 
+
 .friends-block__cover{
     display: flex;
-    justify-content: space-around;
     align-items: center;
     margin: 20px 10px 10px 10px;
     max-height: 35vh;
-    overflow: auto;
-}
-
-/* Friends' workout swiper */
-.friends-block__swiper{
-    width: 100%;
-    display: flex;
-    padding: 10px 20px;
-    margin: 10px 15px 15px 0px;
-    overflow-x: auto;
 }
 
 /* slide */
 .friends-block__slide{
+    position: relative;
     display: flex;
     padding: 0px 30px;
 }
@@ -710,8 +701,7 @@ body {
 /* friend item */
 .friends-block__item{
     text-align: center;
-    width: 7vw;
-    margin: 0px 20px;
+    margin: 0px;
 }
 
 .friends-block__name{
@@ -725,6 +715,20 @@ body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 23px;
     font-weight: 500;
+}
+
+
+/* For program page */
+.friends-block__cover--program{
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.friends-block__cover--program .friends-block__item{
+    width: 9vw;
+    margin-top: 10px;
 }
 
 

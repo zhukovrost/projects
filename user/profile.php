@@ -134,9 +134,9 @@ if (isset($_POST["prep"])){
                         <a href="search_users.php" class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends swiper -->
-                    <swiper-container class="friends-block__swiper" navigation="true">
+                    <section class="friends-block__cover" navigation="true">
                         <?php print_user_list($conn, $user->subscriptions); ?>
-					</swiper-container>
+					</section>
                 </section>
                 <?php if ($user->get_status() == "user"){ ?>
                 <!-- User's staff (coach and doctor) -->

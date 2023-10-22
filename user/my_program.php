@@ -133,17 +133,17 @@ foreach ($user_data->program->workouts as $workout){
                         </section>
                     </section>
                 </section>
-                <section class="friends-block friends-block--program">
+                <section class="friends-block">
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
-                        <h1 class="friends-block__header-title">Тренировки друзей</h1>
-                        <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
+                        <h1 class="friends-block__header-title">Прграммы друзей</h1>
+                        <a href="search_users.php" class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends' workout swiper -->
-                    <section class="friends-block__cover" navigation="true">
+                    <section class="friends-block__cover friends-block__cover--program">
                         <?php
                         $user_data->set_subscriptions($conn);
-                        print_user_list($conn, $user_data->subscriptions);
+                        print_user_list_vert($conn, $user_data->subscriptions);
                         ?>
                     </section>
                 </section>

@@ -88,19 +88,37 @@ function print_user_list($conn, $id_list){
         echo "<p class='friends-block__no-friends'>Нет подписок</p>";
         return 0;
     }
-    for ($i = 0; $i < count($id_list); $i+=4){
-        echo "<swiper-slide class='friends-block__slide'>";
-        for ($j = $i; $j < count($id_list) - $i * 4; $j++){
-            $user_id = $id_list[$j];
-            $user = new User($conn, $user_id);
-            $replacements = array(
-                "{{ id }}" => $user->get_id(),
-                "{{ avatar }}" => $user->get_avatar($conn),
-                "{{ name }}" => $user->name.' '.$user->surname
-            );
-            echo render($replacements, "../templates/user_card.html");
-        }
-        echo "</swiper-slide>";
+    for ($i = 0; $i < 4; $i++){
+        echo "<section class='friends-block__slide'>";
+        $user_id = $id_list[$i];
+        $user = new User($conn, $user_id);
+        $replacements = array(
+            "{{ id }}" => $user->get_id(),
+            "{{ avatar }}" => $user->get_avatar($conn),
+            "{{ name }}" => $user->name
+        );
+        echo render($replacements, "../templates/user_card.html");
+        echo "</section>";
+    }
+}
+
+
+function print_user_list_vert($conn, $id_list){
+    if (count($id_list) == 0){
+        echo "<p class='friends-block__no-friends'>Нет подписок</p>";
+        return 0;
+    }
+    for ($i = 0; $i < 2; $i++){
+        echo "<section class='friends-block__slide'>";
+        $user_id = $id_list[$i];
+        $user = new User($conn, $user_id);
+        $replacements = array(
+            "{{ id }}" => $user->get_id(),
+            "{{ avatar }}" => $user->get_avatar($conn),
+            "{{ name }}" => $user->name
+        );
+        echo render($replacements, "../templates/user_card.html");
+        echo "</section>";
     }
 }
 
