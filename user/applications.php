@@ -22,20 +22,8 @@ $user_data->set_subscriptions($conn);
 <body>
     <?php include "../templates/header.php" ?>
 
-	<nav class="users-search-nav">
-		<div class="container">
-			<!-- Buttons to (sub / unsub) users -->
-            <a class="button-text users-search-nav__item" href="c_exercises.php?my=1">Новые заявки (3)<img src="../img/application.svg" alt=""></a>
-			<a class="button-text users-search-nav__item" href="c_exercises.php?my=1">Подписчики <img src="../img/arrow_white.svg" alt=""></a>
-			<!-- Exercise search -->
-			<form method="post" class="users-search-nav__search">
-				<input class="users-search-nav__search-input" type="text" placeholder="Искать" name="search">
-				<button class="users-search-nav__search-button"><img src="../img/search_black.svg" alt=""></button>
-			</form>
-		</div>
-	</nav>
-
 	<main class="users-list">
+		<h1 class="users-list__title">Входящие заявки</h1>
 		<div class="container">
             <?php
             if (count($users_array) != 0){
