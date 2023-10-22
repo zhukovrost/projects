@@ -1682,6 +1682,12 @@
     margin-right: 5px;
 }
 
+.user-block__sub-button{
+    font-size: 25px;
+    padding: 5px 20px;
+    margin-top: 10px;
+}
+
 /* User info text */
 .user-about__description{
     display: block;

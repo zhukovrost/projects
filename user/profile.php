@@ -78,6 +78,13 @@ if (isset($_POST["prep"])){
                             <h1><?php echo $user->name . " " . $user->surname; ?></h1>
                         </div>
                         <button class="user-block__avatar-more"><img src="../img/info.svg" alt=""><p>Подробнее</p></button>
+                        <?php
+                         if (in_array($user->get_id(), $user->subscribers)){ ?>
+                            <a class="button-text user-block__sub-button" href="unsub.php?id=<?php echo $user->get_id(); ?>">Отписаться</a>
+                        <?php }else{ ?>
+                            <a class="button-text user-block__sub-button" href="sub.php?id=<?php echo $user->get_id(); ?>">Подписаться</a>
+                        <?php }
+                         ?>
                     </section>
                     
                     <!-- User info text -->
@@ -120,7 +127,7 @@ if (isset($_POST["prep"])){
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
                         <h1 class="friends-block__header-title">Подписки</h1>
-                        <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
+                        <a href="search_users.php" class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends swiper -->
                     <swiper-container class="friends-block__swiper" navigation="true">
@@ -171,14 +178,7 @@ if (isset($_POST["prep"])){
                     <?php if ($user->get_auth()){ ?>
                     <button class="button-text user-block__button"><p>Редактировать профиль</p> <img src="../img/edit.svg" alt=""></button>
 					<a href="../clear.php" class="button-text user-block__button-logout">Выйти <img src="../img/logout.svg" alt=""></a>
-                    <?php }else{
-                        if (in_array($user->get_id(), $user->subscribers)){ ?>
-                            <p>Вы подписаны</p>
-                            <a href="unsub.php?id=<?php echo $user->get_id(); ?>">Отписаться</a>
-                        <?php }else{ ?>
-                            <a href="sub.php?id=<?php echo $user->get_id(); ?>">Подписаться</a>
-                        <?php }
-                    }?>
+                    <?php }?>
 				</section>
 			</section>
 		</div>
