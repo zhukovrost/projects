@@ -184,39 +184,3 @@ function print_user_block($name, $surname, $file, $id, $is_subscribed=false){
     );
     echo render($replacements, "../templates/user_block.html");
 }
-
-function print_type($num, $status){
-    if ($status == "user" || $status == "admin"){
-        switch ($num){
-            case 0:
-                echo "Не указан";
-                break;
-            case 1:
-                echo "Любитель";
-                break;
-            case 2:
-                echo "Проффесионал";
-                break;
-        }
-    }
-}
-
-function print_prep($num, $status){
-    if ($status == "user" || $status == "admin"){
-        switch ($num){
-            case 0:
-                echo "Не указан";
-                break;
-            case 1:
-                echo "Низкий";
-                break;
-            case 2:
-                echo "Средний";
-                break;
-            case 3:
-                echo "Высокий";
-                break;
-
-        }
-    }
-}

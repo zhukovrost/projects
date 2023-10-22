@@ -400,4 +400,56 @@ class User {
             echo $conn->error;
         }
     }
+
+    public function print_status(){
+        switch ($this->get_status()){
+            case "admin":
+                echo "Админ";
+                break;
+            case "user":
+                echo "Спортсмен";
+                break;
+            case "coach":
+                echo "Тренер";
+                break;
+            case "doctor":
+                echo "Доктор";
+                break;
+        }
+    }
+
+    public function print_prep()
+    {
+        if ($this->get_status() == "user" || $this->get_status() == "admin") {
+            switch ($this->preparation) {
+                case 0:
+                    echo "Не указан";
+                    break;
+                case 1:
+                    echo "Низкий";
+                    break;
+                case 2:
+                    echo "Средний";
+                    break;
+                case 3:
+                    echo "Высокий";
+                    break;
+            }
+        }
+    }
+    public function print_type(){
+        if ($this->get_status() == "user" || $this->get_status() == "admin"){
+            switch ($this->type){
+                case 0:
+                    echo "Не указан";
+                    break;
+                case 1:
+                    echo "Любитель";
+                    break;
+                case 2:
+                    echo "Проффесионал";
+                    break;
+            }
+        }
+    }
 }

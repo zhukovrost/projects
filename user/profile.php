@@ -32,7 +32,7 @@ if (isset($_POST["change_disc"]) && $flag){
 }
 
 if (isset($_POST["type"])){
-    $type = $_POST["type"];
+    $type = (int)$_POST["type"];
     $user->type = $type;
     $sql = "UPDATE users SET type=$type WHERE id=".$user->get_id();
     if (!$conn->query($sql)){
@@ -175,7 +175,7 @@ if (isset($_POST["prep"])){
                 <!-- Спортсмен / тренер / врач -->
                 <div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Тип пользователя</p>
-                    <p class="popup-user__info-item-info">Спортсмен</p>
+                    <p class="popup-user__info-item-info"><?php $user->print_status(); ?></p>
                 </div>
                 <!-- Для тренера
                 <div class="popup-user__info-item">
@@ -191,13 +191,13 @@ if (isset($_POST["prep"])){
                 <!-- Люитель / профессионал / не указан -->
 				<div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Тип спортсмена</p>
-                    <p class="popup-user__info-item-info"><?php print_type($user->type, $user->get_status()); ?></p>
+                    <p class="popup-user__info-item-info"><?php $user->print_type(); ?></p>
                 </div>
 
                 <!-- низкий / средний / высокий / не указан-->
                 <div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Уровень физической подготовки</p>
-                    <p class="popup-user__info-item-info"><?php print_prep($user->type, $user->get_status()); ?></p>
+                    <p class="popup-user__info-item-info"><?php $user->print_prep(); ?></p>
                 </div>
                 <?php if ($flag){  ?>
                     <button type="button" class="popup-user__edit-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
