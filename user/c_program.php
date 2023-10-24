@@ -103,14 +103,15 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 						<p class="c-program__duration-date-text">начать с</p>
                         <input class="c-program__duration-date-start" type="date" name="date_start">
 					</div>
-					<button class="button-text c-program__duration-button">Начать программу <img src="../img/arrow_white.svg" alt=""></button>
+					<button type="button" class="button-text c-program__add-button"><p>Добавить спортсменов</p><img src="../img/add.svg" alt=""></button>
+					<button class="button-text c-program__duration-button"><p>Начать программу</p> <img src="../img/arrow_white.svg" alt=""></button>
 				</form>
 			</section>
 			<section class="friends-block">
 				<!-- Title and button to search friends -->
 				<div class="friends-block__header">
 					<h1 class="friends-block__header-title">Программы друзей</h1>
-					<a class="friends-block__header-button img" href=""><img src="../img/search.svg" alt=""></a>
+					<a class="friends-block__header-button img" href="search_users.php"><img src="../img/search.svg" alt=""></a>
 				</div>
 				<!-- Friends' workout swiper -->
 				<swiper-container class="friends-block__swiper" navigation="true">
@@ -123,7 +124,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 			</section>
 		</div>
 
-		<section class="popup-exercise">
+		<section class="popup-exercise popup-exercise--c-workouts">
 			<section class="popup-exercise__content">
 				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<!-- Тренировка -->
@@ -203,6 +204,26 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
                 <a class="button-text c-workout__back-button" href="c_program.php">Назад</a>
 			</section>
 		</section>
+
+		<!-- Popup form for add users (for coach) -->
+        <section class="popup-exercise popup-exercise--add-users">
+			<form class="popup-exercise__content popup-exercise--add-users__form">
+                <button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+                <div class="popup-exercise--add-users__item">
+					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list1" name="users-list"/>
+					<label class="popup-exercise--add-users__label" for="users-list1">Иван Иванов</label>
+				</div>
+				<div class="popup-exercise--add-users__item">
+					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list2" name="users-list"/>
+					<label class="popup-exercise--add-users__label" for="users-list2">Иван Иванов</label>
+				</div>
+				<div class="popup-exercise--add-users__item">
+					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list3" name="users-list"/>
+					<label class="popup-exercise--add-users__label" for="users-list3">Иван Иванов</label>
+				</div>
+				<button class="button-text popup-exercise--add-users__button-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
+			</form>
+		</section>
 	</main>
 
 	
@@ -227,7 +248,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 
 
 		// Popup workouts
-		let popupExerciseWindow = document.querySelector('.popup-exercise');
+		let popupExerciseWindow = document.querySelector('.popup-exercise--c-workouts');
 		let workoutButtonMoreArr = document.querySelectorAll('.c-program__workouts-more');
 
 		for(let i = 0; i < workoutButtonMoreArr.length; i++){
@@ -244,24 +265,34 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 			});
 		}
 
-		const closeBtn = document.querySelector('.popup-exercise__close-button');
-		closeBtn.addEventListener('click', function(){
-			popupExerciseWindow.classList.remove("open");
+
+		// Popup window to add users for coach
+		let StartProgramButton = document.querySelector('.c-program__add-button');
+		let UsersListPopup = document.querySelector('.popup-exercise--add-users');
+
+		StartProgramButton.addEventListener('click', function(){
+			UsersListPopup.classList.add("open");
 		});
 
-		window.addEventListener('keydown', (e) => {
-		if(e.key == "Escape"){
-			popupExerciseWindow.classList.remove("open");
+
+
+        const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
+		for(let i = 0; i < closeBtn.length; i++){
+			closeBtn[i].addEventListener('click', function(){
+				popupExerciseWindow.classList.remove("open");
+				UsersListPopup.classList.remove("open");
+			});
 		}
+
+		window.addEventListener('keydown', (e) => {
+            if(e.key == "Escape"){
+                popupExerciseWindow.classList.remove("open");
+				UsersListPopup.classList.remove("open");
+            }
 		});
 
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
-		});
-
-		popupExerciseWindow.addEventListener('click', event =>{
-		if(event.isClickWithInModal) return;
-			event.currentTarget.classList.remove('open');
 		});
 
 	</script>
