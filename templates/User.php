@@ -23,6 +23,7 @@ class User {
     public $preparation;
     public $coach = NULL;
     public $doctor = NULL;
+    private $requests = [];
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -63,6 +64,10 @@ class User {
         return 0;
     }
 
+    public function get_requests(){
+        return $this->requests;
+    }
+
     public function __construct($conn, $id=-1, $auth=false){
         if (isset($id) && $id != -1) {
             $select_sql = "SELECT * FROM users WHERE id=$id LIMIT 1";
@@ -85,6 +90,17 @@ class User {
                     $this->type = $item["type"];
                 }
                 $this->auth = $auth;
+                if ($this->get_status() == "coach" || $this->get_status() == "doctor"){
+                    $sql2 = "SELECT id, user FROM requests WHERE receiver=".$this->get_id();
+                    if ($result = $conn->query($sql2)){
+                        foreach ($result as $item){
+                            array_push($this->requests, $item);
+                        }
+                        $result->free();
+                    }else{
+                        echo $conn->error;
+                    }
+                }
             }else{
                 echo $conn -> error;
             }

@@ -184,3 +184,15 @@ function print_user_block($name, $surname, $file, $id, $is_subscribed=false){
     );
     echo render($replacements, "../templates/user_block.html");
 }
+
+function print_user_block_request($name, $surname, $file, $id, $request_id){
+    $replacements = array(
+        "{{ name }}" => $name." ".$surname,
+        "{{ image }}" => $file,
+        "{{ link }}" => "profile.php?user=".$id,
+        "{{ button_accept }}" => "<a href='accept_request.php?id=$request_id'>Принять</a>",
+        "{{ button_deny }}" => "<a href='deny_request.php?id=$request_id'>Отклонить</a>"
+    );
+    echo render($replacements, "../templates/user_block_request.html");
+}
+
