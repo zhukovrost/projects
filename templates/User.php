@@ -21,9 +21,10 @@ class User {
     public $featured_workouts = [];
     public $type;
     public $preparation;
-    public $coach = NULL;
-    public $doctor = NULL;
-    private $requests = [];
+    public $coach = NULL; # only for sportsmen
+    public $doctor = NULL; # only for sportsmen
+    private $requests = []; # only for coaches and doctors
+    private $sportsmen = []; # only for coaches and doctors
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -68,6 +69,10 @@ class User {
         return $this->requests;
     }
 
+    public function get_sportsmen(){
+        return $this->sportsmen;
+    }
+
     public function __construct($conn, $id=-1, $auth=false){
         if (isset($id) && $id != -1) {
             $select_sql = "SELECT * FROM users WHERE id=$id LIMIT 1";
@@ -100,6 +105,31 @@ class User {
                     }else{
                         echo $conn->error;
                     }
+                    switch ($this->get_status()){
+                        case "coach":
+                            $sql3 = "SELECT user FROM user_to_coach WHERE coach=$this->id";
+                            if ($result = $conn->query($sql3)){
+                                foreach ($result as $item){
+                                    array_push($this->sportsmen, $item["user"]);
+                                }
+                                $result->free();
+                            }else{
+                                echo $conn->error;
+                            }
+                            break;
+                        case "doctor":
+                            $sql4 = "SELECT user FROM user_to_doctor WHERE doctor=$this->id";
+
+                            if ($result = $conn->query($sql4)){
+                                foreach ($result as $item){
+                                    array_push($this->sportsmen, $item["user"]);
+                                }
+                                $result->free();
+                            }else{
+                                echo $conn->error;
+                            }
+                            break;
+                    }
                 }
             }else{
                 echo $conn -> error;
@@ -118,6 +148,18 @@ class User {
     }
     public function get_status(){
         return $this->status;
+    }
+
+    public function has_program($conn){
+        $sql = "SELECT program FROM program_to_user WHERE user=$this->id AND (date_start + (604800 * weeks)) > " . time();
+        if ($result = $conn->query($sql)){
+            if ($result->num_rows == 0){
+                return 0;
+            }
+            foreach ($result as $item){
+                return (int)$item["program"];
+            }
+        }
     }
 
     public function check_the_login($header=true, $way="../"){

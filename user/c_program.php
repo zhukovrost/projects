@@ -2,7 +2,6 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 $user_data->check_the_login();
-
 if (empty($_SESSION["program"])){
     $_SESSION["program"] = array(0, 0, 0, 0, 0, 0, 0);
 }
@@ -35,7 +34,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
             if (count($users) > 0){
                 foreach ($users as $user){
                     $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user.", $program_id, $date_start, ".$_POST['weeks'].")";
-                    $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу.', ".$user.", ".time().", 0)";
+                    $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу. (Тренер).', ".$user.", ".time().", 0)";
                     if (!$conn->query($sql2) || !$conn->query($sql3)){
                         echo $conn->error;
                     }
@@ -62,8 +61,20 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 		<div class="container">
 			<section class="day-workouts" navigation="true">
 				<?php
+                $workout_array = array();
                     for($i = 0; $i < 7; $i++){
 						$workout = new Workout($conn, $_SESSION["program"][$i], $i);
+                        if ($_SESSION["program"][$i] != 0){
+                            $flag = true;
+                            foreach ($workout_array as $item){
+                                if ($item->get_id() == $workout->get_id()){
+                                    $flag = false;
+                                    break;
+                                }
+                            }
+                            if ($flag)
+                                array_push($workout_array, $workout);
+                        }
                         $workout->set_muscles();
                         $workout->print_workout_info_block($i, 0, $user_data->get_id());
                     } ?>
@@ -71,28 +82,22 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 			<section class="c-program__create">
 				<section class="c-program__workouts">
 					<section class="c-program__workouts-list">
+                        <?php
+                        if (count($workout_array) == 0){?>
+                            <p>Выберите тренировку</p>
+                        <?php }
+                        for ($i = 0; $i < count($workout_array); $i++){ ?>
 						<div class="c-program__workouts-item">
-							<p class="c-program__workouts-name">1. День рук</p>
-							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
-							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
-							<button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button>
+							<p class="c-program__workouts-name"><?php echo $i + 1 . ". " .  ($workout_array[$i])->name; ?></p>
+							<!-- <button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button> -->
+							<a href="delete_workout.php?id=<?php echo ($workout_array[$i])->get_id(); ?>" class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></a>
+							<!-- <button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button> -->
 						</div>
-						<div class="c-program__workouts-item">
-						<p class="c-program__workouts-name">2. ффффффя</p>
-							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
-							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
-							<button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button>
-						</div>
-						<div class="c-program__workouts-item">
-							<p class="c-program__workouts-name">3. Без названия</p>
-							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
-							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
-							<button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button>
-						</div>
+                        <?php } ?>
 					</section>
 					<div class="c-program__workouts-buttons">
 						<a class="button-text c-program__workouts-button c-program__workouts-button--create" href="c_workout.php"><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></a>
-						<button class="button-text c-program__workouts-button day-workouts__card-button--favorite" href="c_exercises.php"><p>Избранные тренировки</p> <img src="../img/add.svg" alt=""></button>
+						<!-- <a class="button-text c-program__workouts-button day-workouts__card-button--favorite" href="c_exercises.php"><p>Избранные тренировки</p> <img src="../img/add.svg" alt=""></a>-->
 						<a class="button-text c-program__workouts-button" href="clear.php"><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
@@ -103,7 +108,9 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 						<p class="c-program__duration-date-text">начать с</p>
                         <input class="c-program__duration-date-start" type="date" name="date_start">
 					</div>
-					<button type="button" class="button-text c-program__add-button"><p>Добавить спортсменов</p><img src="../img/add.svg" alt=""></button>
+                    <?php if ($user_data->get_status() == "coach"){ ?>
+					    <button type="button" class="button-text c-program__add-button"><p>Начать программу для спортсменов</p><img src="../img/add.svg" alt=""></button>
+                    <?php } ?>
 					<button class="button-text c-program__duration-button"><p>Начать программу</p> <img src="../img/arrow_white.svg" alt=""></button>
 				</form>
 			</section>
@@ -207,21 +214,31 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 
 		<!-- Popup form for add users (for coach) -->
         <section class="popup-exercise popup-exercise--add-users">
-			<form class="popup-exercise__content popup-exercise--add-users__form">
+			<form method="post" class="popup-exercise__content popup-exercise--add-users__form">
                 <button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+                <h4 class="c-program__duration-title">Укажите продолжительность программы<br></h4>
+                <div class="c-program__duration-date">
+                    <input class="c-program__duration-weeks" type="number" placeholder="Количество недель" name="weeks">
+                    <p class="c-program__duration-date-text">начать с</p>
+                    <input class="c-program__duration-date-start" type="date" name="date_start">
+                </div>
+                <?php
+                $cnt = 0;
+                foreach ($user_data->get_sportsmen() as $sportsman_id){
+                    $sportsman = new User($conn, $sportsman_id);
+                    if (!$sportsman->has_program($conn)){
+                        $cnt++; ?>
                 <div class="popup-exercise--add-users__item">
-					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list1" name="users-list"/>
-					<label class="popup-exercise--add-users__label" for="users-list1">Иван Иванов</label>
+					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list1" name="users[]" value="<?php echo $sportsman_id; ?>"/>
+					<label class="popup-exercise--add-users__label" for="users-list1"><?php echo $sportsman->name." ".$sportsman->surname; ?></label>
 				</div>
-				<div class="popup-exercise--add-users__item">
-					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list2" name="users-list"/>
-					<label class="popup-exercise--add-users__label" for="users-list2">Иван Иванов</label>
-				</div>
-				<div class="popup-exercise--add-users__item">
-					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list3" name="users-list"/>
-					<label class="popup-exercise--add-users__label" for="users-list3">Иван Иванов</label>
-				</div>
-				<button class="button-text popup-exercise--add-users__button-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
+                <?php }
+                    }
+                if ($cnt != 0){ ?>
+                    <button class="button-text popup-exercise--add-users__button-add" type="submit"><p>Выложить</p><img src="../img/add.svg" alt=""></button>
+                <?php } else { ?>
+                    <p>Нет выбора</p>
+                <?php } ?>
 			</form>
 		</section>
 	</main>
