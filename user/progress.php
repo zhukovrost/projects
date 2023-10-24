@@ -289,7 +289,7 @@ foreach ($user_data->workout_history as $item){
                         },
                         title: {
                             display: true,
-                            text: 'Количество тренировок',
+                            text: 'Вес в киллограмах',
                             font: {
                                 size: 16,
                                 family: 'Open Sans',
@@ -303,7 +303,7 @@ foreach ($user_data->workout_history as $item){
                     },
                     title: {
                         display: true,
-                        text: 'Вес - 2034',
+                        text: 'Вес',
                         font: {
                             size: 20,
                             family: 'Open Sans',
@@ -322,7 +322,7 @@ foreach ($user_data->workout_history as $item){
             data: {
             labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
             datasets: [{
-                label: 'Вес за неделю',
+                label: 'Рост за неделю',
                 data: [180, 181, 183, 179],
                 borderWidth: 3,
                 backgroundColor: '#00C91D',
@@ -355,7 +355,7 @@ foreach ($user_data->workout_history as $item){
                         },
                         title: {
                             display: true,
-                            text: 'Количество тренировок',
+                            text: 'Рост в сантиметрах',
                             font: {
                                 size: 16,
                                 family: 'Open Sans',
@@ -369,7 +369,7 @@ foreach ($user_data->workout_history as $item){
                     },
                     title: {
                         display: true,
-                        text: 'Вес - 2034',
+                        text: 'Рост',
                         font: {
                             size: 20,
                             family: 'Open Sans',
