@@ -2279,11 +2279,28 @@
     margin-right: 7px;
 }
 
+.c-program__add-button{
+    padding: 7px 25px;
+    font-size: 21px;
+    margin: 40px auto 10px;
+}
+
+.c-program__add-button img{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+}
+
+.c-program__add-button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
+
 .c-program__duration-button{
     width: fit-content;
     font-size: 25px;
     padding: 7px 25px;
-    margin: 30px auto 0px;
+    margin: 0px auto 0px;
 }
 
 .c-program__duration-button img{
@@ -2303,6 +2320,42 @@
     margin: 0 auto;
 }
 
+
+.popup-exercise--add-users__form{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.popup-exercise--add-users__item{
+    margin: 5px 0px;
+}
+
+.popup-exercise--add-users__input{
+    width: 20px;
+    height: 20px;
+}
+
+.popup-exercise--add-users__label{
+    font-size: 25px;
+}
+
+.popup-exercise--add-users__button-add{
+    padding: 7px 20px;
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.popup-exercise--add-users__button-add img{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+}
+
+.popup-exercise--add-users__button-add:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
+}
 
 /* ============================================ */
 
