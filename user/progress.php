@@ -79,22 +79,18 @@ foreach ($user_data->workout_history as $item){
 							<option value="value3">Неделя</option>
 						</select>
 						<!-- Button to other physic(weight or length) -->
-						<button class="button-text progress-block__physical-data-button">РОСТ</button>
+						<input type="button" value="РОСТ" class="button-text progress-block__physical-data-button">
 					</nav>
 					
 					<!-- Diagram swiper -->
-					<swiper-container class="progress-block__physical-data-swiper" navigation="true">
-						<swiper-slide class="progress-block__physical-data-slide">
-							<div class="progress-block__physical-data-chart">
-								<canvas id="weightDataChart_1"></canvas>
-							</div>
-						</swiper-slide>
-						<swiper-slide class="progress-block__physical-data-slide">
-							<div class="progress-block__physical-data-chart">
-								<canvas id="weightDataChart_2"></canvas>
-							</div>
-						</swiper-slide>
-					</swiper-container>
+					<section class="progress-block__physical-data-swiper">
+                        <div class="progress-block__physical-data-chart progress-block__physical-data-chart--weight">
+                            <canvas id="physicalDataChart_weight"></canvas>
+                        </div> 
+                        <div class="progress-block__physical-data-chart progress-block__physical-data-chart--height">
+                            <canvas id="physicalDataChart_height"></canvas>
+                        </div>
+					</section>
 				</section>
 			</section>
 			<section class="progress-block__programm">
@@ -253,7 +249,7 @@ foreach ($user_data->workout_history as $item){
 
 
         // Physical data chart
-        const ctx3 = document.getElementById('weightDataChart');
+        const ctx3 = document.getElementById('physicalDataChart_weight');
 
         new Chart(ctx3, {
             type: 'line',
@@ -315,6 +311,92 @@ foreach ($user_data->workout_history as $item){
                     }
                 }
             },
+        });
+
+
+        // Physical data chart
+        const ctx4 = document.getElementById('physicalDataChart_height');
+
+        new Chart(ctx4, {
+            type: 'line',
+            data: {
+            labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+            datasets: [{
+                label: 'Вес за неделю',
+                data: [180, 181, 183, 179],
+                borderWidth: 3,
+                backgroundColor: '#00C91D',
+                color: '#000000',
+                borderColor: '#000000'
+            }]
+            },
+            options: {
+                responsive: true,
+                responsive: true,
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: 'rgba(231, 231, 231, 1)'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Месяца',
+                            font: {
+                                size: 16,
+                                family: 'Open Sans',
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: true,
+                            color: 'rgba(231, 231, 231, 1)'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Количество тренировок',
+                            font: {
+                                size: 16,
+                                family: 'Open Sans',
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Вес - 2034',
+                        font: {
+                            size: 20,
+                            family: 'Open Sans',
+                        }               
+                    }
+                }
+            },
+        });
+
+
+        let togglePhysicalDataButton = document.querySelector('.progress-block__physical-data-button');
+        let weightChart = document.querySelector('.progress-block__physical-data-chart--weight');
+        let heightChart = document.querySelector('.progress-block__physical-data-chart--height');
+        weightChart.style.cssText = `display: none;`;
+
+        togglePhysicalDataButton.addEventListener('click', function(){
+            if(togglePhysicalDataButton.value == 'РОСТ'){
+                console.log(togglePhysicalDataButton.value)
+                togglePhysicalDataButton.value = 'ВЕС';
+                weightChart.style.cssText = `display: none;`;
+                heightChart.style.cssText = `display: block;`;
+            }
+            else if(togglePhysicalDataButton.value == 'ВЕС'){
+                togglePhysicalDataButton.value = 'РОСТ';
+                weightChart.style.cssText = `display: block;`;
+                heightChart.style.cssText = `display: none;`;
+            }
         });
 
 		// Height of last-trainings block

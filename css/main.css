@@ -1229,6 +1229,7 @@
 
 /* Button to other physic(weight or length) */
 .progress-block__physical-data-button{
+    cursor: pointer;
     border: 1px solid #474747;
     font-size: 23px;
     padding: 5px 20px 5px 20px;
