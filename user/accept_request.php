@@ -11,7 +11,7 @@ if ($result = $conn->query($sql)){
         foreach ($result as $item){
             $user = $item['user'];
         }
-        $sql2 = "DELETE FROM requests WHERE id=".$_GET["id"]." AND receiver=".$user_data->get_id();
+        $sql2 = "DELETE FROM requests WHERE user=$user";
         switch ($user_data->get_status()){
             case "coach":
                 $sql3 = "INSERT INTO user_to_coach(user, coach) values ($user, ".$user_data->get_id().")";
