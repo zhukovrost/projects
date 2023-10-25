@@ -24,7 +24,7 @@
         <p>Персонал</p>
     </a>
     <?php } else if ($user_data->get_auth() && ($user_data->get_status() == "coach" || $user_data->get_status() == "doctor")) { ?>
-     <a class="header__item" href="../user/staff.php">
+     <a class="header__item" href="../user/coach.php">
         <img src="../img/sportsman_header.svg" alt="">
         <p>Спортсмен</p>
      </a>

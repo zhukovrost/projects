@@ -2283,7 +2283,7 @@
 .c-program__add-button{
     padding: 7px 25px;
     font-size: 21px;
-    margin: 40px auto 10px;
+    margin: 40px auto 0px;
 }
 
 .c-program__add-button img{
@@ -2301,7 +2301,7 @@
     width: fit-content;
     font-size: 25px;
     padding: 7px 25px;
-    margin: 0px auto 0px;
+    margin: 20px auto 0px;
 }
 
 .c-program__duration-button img{
@@ -3119,6 +3119,10 @@
     width: 48%;
 }
 
+.coach-other{
+    width: 48%;
+}
+
 .last-trainings--coach{
     margin-top: 0px;
     width: 100%;
@@ -3274,4 +3278,13 @@
     min-height: 60vh;
     display: flex;
     align-items: center;
+}
+
+
+
+/* =============REQUESTS FOR COACH============= */
+.users-list__no-users{
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
 }

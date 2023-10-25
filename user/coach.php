@@ -196,7 +196,7 @@ include "../templates/settings.php";
                         <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends' workout swiper -->
-                   <section class="friends-block__cover" navigation="true">
+                   <section class="friends-block__cover">
 						<a href="../user/profile.php?user={{ id }}" class="friends-block__item">
 							<img class="friends-block__avatar" src="../img/man_avatar.svg" alt="">
 							<p class="friends-block__name">Иван Иванов</p>
