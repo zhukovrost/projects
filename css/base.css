@@ -701,7 +701,7 @@ body {
 /* friend item */
 .friends-block__item{
     text-align: center;
-    margin: 0px;
+    margin: 0px 20px;
 }
 
 .friends-block__name{
@@ -1046,6 +1046,7 @@ body {
     justify-content: center;
     position: relative;
     padding: 20px 30px 20px;
+    margin: 0 auto;
     background-color: #FAFAFA;
     border-radius: 3px;
     border: 1px solid #CCCCCC;
@@ -1061,6 +1062,14 @@ body {
     margin-top: 15px;
     padding: 7px 20px;
     font-size: 25px;
+}
+
+.user-card__button--reject{
+    margin-top: 7px;
+}
+
+.user-card__button--except{
+    margin-top: 20px;
 }
 
 .user-card__button p{

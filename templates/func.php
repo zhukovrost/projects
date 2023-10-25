@@ -208,8 +208,8 @@ function print_user_block_request($name, $surname, $file, $id, $request_id){
         "{{ name }}" => $name." ".$surname,
         "{{ image }}" => $file,
         "{{ link }}" => "profile.php?user=".$id,
-        "{{ button_accept }}" => "<a href='accept_request.php?id=$request_id'>Принять</a>",
-        "{{ button_deny }}" => "<a href='deny_request.php?id=$request_id'>Отклонить</a>"
+        "{{ button_accept }}" => "<a class='button-text user-card__button user-card__button--except' href='accept_request.php?id=$request_id'>Принять</a>",
+        "{{ button_deny }}" => "<a class='button-text user-card__button user-card__button--reject' href='deny_request.php?id=$request_id'>Отклонить</a>"
     );
     echo render($replacements, "../templates/user_block_request.html");
 }
