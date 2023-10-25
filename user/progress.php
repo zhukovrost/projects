@@ -2,6 +2,9 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
+if (isset($_POST["height"]) && isset($_POST["weight"]) && is_numeric($_POST["height"]) && is_numeric($_POST["weight"]) && $_POST["height"] >= 0 && $_POST["weight"] >= 0){
+    $user_data->update_phys($conn, $_POST["height"], $_POST["weight"]);
+}
 $user_data->get_workout_history($conn);
 $muscles = array(
     "arms" => 0,
@@ -23,6 +26,28 @@ foreach ($user_data->workout_history as $item){
             $muscles[$muscle]++;
         }
         $exercise_cnt++;
+    }
+}
+$user_data->get_phys_updates($conn);
+$height_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+$weight_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+$date_start = mktime(0, 0, 0, 1, 1, date("Y"));
+
+if (count($user_data->phys_updates) != 0){
+    $month_array = array($date_start);
+    for ($i = 2; $i <= 13; $i++){
+        array_push($month_array, mktime(0, 0, 0, $i, 1, date("Y")));
+    }
+    foreach ($user_data->phys_updates as $key=>$value){
+        if ((int)$key < $month_array[0])
+            break;
+        for ($i = 0; $i < 12; $i++){
+            if (($height_array[$i] == 0 and $weight_array[$i] == 0) and $month_array[$i] <= (int)$key && (int)$key < $month_array[$i + 1]){
+                $height_array[$i] = $value["height"];
+                $weight_array[$i] = $value["weight"];
+                break;
+            }
+        }
     }
 }
 ?>
@@ -130,11 +155,11 @@ foreach ($user_data->workout_history as $item){
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<div class="popup-physics-data__item">
                     <p class="popup-physics-data__item-name">Укажите текущий рост (см)</p>
-                    <input class="popup-physics-data__item-input popup-physics-data__item-input--height" type="number">
+                    <input name="height" class="popup-physics-data__item-input popup-physics-data__item-input--height" type="number">
                 </div>
                 <div class="popup-physics-data__item">
                     <p class="popup-physics-data__item-name">Укажите текущий вес (кг)</p>
-                    <input class="popup-physics-data__item-input popup-physics-data__item-input--weight" type="number">
+                    <input name="weight" class="popup-physics-data__item-input popup-physics-data__item-input--weight" type="number">
                 </div>
 				<button class="button-text popup-exercise__submit-button popup-exercise__submit-button--physic">Добавить</button>
 			</form>
@@ -257,7 +282,7 @@ foreach ($user_data->workout_history as $item){
             labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
             datasets: [{
                 label: 'Вес за неделю',
-                data: [80, 81, 83, 79],
+                data: <?php echo json_encode($weight_array); ?>,
                 borderWidth: 3,
                 backgroundColor: '#00C91D',
                 color: '#000000',
@@ -323,7 +348,7 @@ foreach ($user_data->workout_history as $item){
             labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
             datasets: [{
                 label: 'Рост за неделю',
-                data: [180, 181, 183, 179],
+                data: <?php echo json_encode($height_array); ?>,
                 borderWidth: 3,
                 backgroundColor: '#00C91D',
                 color: '#000000',

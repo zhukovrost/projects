@@ -25,6 +25,7 @@ class User {
     public $doctor = NULL; # only for sportsmen
     private $requests = []; # only for coaches and doctors
     private $sportsmen = []; # only for coaches and doctors
+    public $phys_updates = array();
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -558,6 +559,24 @@ class User {
         }else{
             echo $conn->error;
             return false;
+        }
+    }
+
+    public function update_phys($conn, $height, $weight){
+        $sql = "INSERT INTO phys_updates (user, height, weight, date) VALUES ($this->id, $height, $weight, ".time().")";
+        if (!$conn->query($sql)){
+            echo $conn->error;
+        }
+    }
+
+    public function get_phys_updates($conn){
+        $sql = "SELECT height, weight, date FROM phys_updates WHERE user=$this->id ORDER BY date DESC";
+        if ($result = $conn->query($sql)){
+            foreach ($result as $item){
+                $this->phys_updates[(string)$item["date"]] = array("height" => $item["height"], "weight" => $item["weight"]);
+            }
+        }else{
+            echo $conn->error;
         }
     }
 }
