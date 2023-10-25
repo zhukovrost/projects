@@ -460,6 +460,12 @@ if (count($user_data->phys_updates) != 0){
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
 		});
+
+
+        let progressProgrammLine = document.querySelector('.progress-block__programm-finish');
+        let progressProgrammPercents = document.querySelector('.progress-block__programm-percents');
+
+        progressProgrammLine.style.cssText = `width: ${progressProgrammPercents.innerHTML};`;
     
     </script>
 </body>
