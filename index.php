@@ -120,7 +120,7 @@ $conn->close();
                     </div>
                 </div>
                 <div class="exercise-item__buttons">
-                    <button class="button-text exercise-item__add"><p>Удалить</p> <img src="img/delete.svg" alt=""></button>
+                    <button class="button-text exercise-item__delite"><p>Удалить</p> <img src="img/delete.svg" alt=""></button>
                     <button class="button-img exercise-item__favorite"><img src="img/favorite.svg" alt=""></button>
                 </div>
             </section>
