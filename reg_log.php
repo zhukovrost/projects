@@ -51,7 +51,6 @@ if (isset($_POST['log'])){
                 <label class="log-form__label" for="password_entry">Пароль</label>
                 <input class="log-form__input" name="log_password" type="password" id="password_entry">
                 <button class="button-text log-form__submit" type="submit" name="log" value="1">Войти</button>
-                <a class="log-form__forgot-password" href="">Не помнишь пароль?</a>
                 <?php
                 log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
                 log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
