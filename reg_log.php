@@ -75,11 +75,11 @@ if (isset($_POST['log'])){
                     </div>
                     <div class="reg-form__profile">
                         <input class="reg-form__profile-input" type="radio" name="reg_status" id="coach" value="coach">
-                        <label class="reg-form__profile-label" for="sportsman">Тренер</label>
+                        <label class="reg-form__profile-label" for="coach">Тренер</label>
                     </div>
                     <div class="reg-form__profile">
                         <input class="reg-form__profile-input" type="radio" name="reg_status" id="doctor" value="doctor">
-                        <label class="reg-form__profile-label" for="sportsman">Врач</label>
+                        <label class="reg-form__profile-label" for="doctor">Врач</label>
                     </div>
                 </div>
                 <label class="reg-form__label" for="email">Почта</label>

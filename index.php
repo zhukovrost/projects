@@ -53,8 +53,8 @@ $conn->close();
         <!-- Title -->
         <div class="welcome-block-2__header">
             <h1>ВЫБИРАЙ</h1>
-            <h2>или</h2>
-            <h1>СОЗДАВАЙ</h1>
+            <h2>и</h2>
+            <h1>ДОБАВЛЯЙ</h1>
         </div>
         <section class="welcome-block-2__content">
             <!-- Item -->
@@ -91,29 +91,37 @@ $conn->close();
                     <button class="button-img exercise-item__favorite"><img src="img/favorite.svg" alt=""></button>
                 </div>
             </section>
-            <section class="exercise-item exercise-item--add">
-                <!-- Add photo button -->
-                <button class="exercise-item--add__img">Добавить фото</button>
-                <!-- Decoration -->
+            <section class="exercise-item">
+                <!-- Exercise info -->
+                <button class="exercise-item__info-btn"><img src="img/info.svg" alt=""></button>
+                <div class="exercise-item__info-content">
+                    <button class="exercise-item__info-close"><img src="img/close.svg" alt=""></button>
+                    <p class="exercise-item__info-text">Встаньте в упор лежа, ладони в 10 см друг от друга. Сделайте отжимание с касанием грудью пола и выпрямьте руки.</p>
+                </div>
+                <!-- Exercise muscle groups -->
+                <div class="exercise-item__muscle-groups">Руки - плечи - грудь</div>
+                <!-- Exercise image -->
+                <img class="exercise-item__img" src="img/biceps_4.jpg" alt="">
+                <!-- Decoration line -->
                 <div class="exercise-item__line"></div>
-                <div class="exercise-item--add__content">
-                    <!-- Add muscle groups -->
-                    <div class="exercise-item--add__muscle-groups">
-                        <p class="exercise-item--add__muscle-groups-title">Группы мышц</p>
-                        <button class="exercise-item--add__muscle-groups-btn"><img src="img/add_black.svg" alt=""></button>
+                <!-- Exercise title -->
+                <h1 class="exercise-item__title">Алмазные отжимания</h1>
+                <div class="exercise-item__statistic">
+                    <div class="exercise-item__rating">
+                        <p class="exercise-item__score">4,5</p>
+                        <img class="exercise-item__star" src="img/Star.svg" alt="">
                     </div>
-                    <!-- Name of exercise -->
-                    <div class="exercise-item--add__name">
-                        <p class="exercise-item--add__name-title">Название</p>
-                        <input class="exercise-item--add__name-text" type="text" placeholder="Не более 250 символов">
+                    <div class="exercise-item__difficult">
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item"></div>
+                        <div class="exercise-item__difficult-item exercise-item__difficult-item--disabled"></div>
                     </div>
-                    <!-- Info of exercise -->
-                    <div class="exercise-item--add__info">
-                        <p class="exercise-item--add__info-title">Описание</p>
-                        <textarea class="exercise-item--add__info-textarea" name="add_exercise_info"></textarea>
-                    </div>
-                    <!-- Button 'Add' exercise -->
-                    <button class="button-text exercise-item__add exercise-item--add__btn">Создать <img src="img/add.svg" alt=""></button>
+                </div>
+                <div class="exercise-item__buttons">
+                    <button class="button-text exercise-item__add"><p>Удалить</p> <img src="img/delete.svg" alt=""></button>
+                    <button class="button-img exercise-item__favorite"><img src="img/favorite.svg" alt=""></button>
                 </div>
             </section>
         </section>
@@ -305,7 +313,7 @@ $conn->close();
                         <div class="progress-block__programm-info">
                             <div class="progress-block__programm-line">
                                 <p class="progress-block__programm-percents">60%</p>
-                                <div class="progress-block__programm-finish" class="finish"></div>
+                                <div class="progress-block__programm-finish progress-block__programm-finish--welcome" class="finish"></div>
                             </div>
                             <a class="progress-block__programm-button" href="reg_log.php"><img src="img/my_programm_black.svg" alt=""></a>
                         </div>
@@ -329,7 +337,7 @@ $conn->close();
                 <!-- name -->
                 <h2 class="profile-welcome__title">Иван Иванов</h2>
                 <!-- last training time -->
-                <p class="profile-welcome__subtitle">Тренировался: 1 день назад</p>
+                <button class="user-block__avatar-more user-block__avatar-more--welcome"><img src="img/info_white.svg" alt=""><p>Подробнее</p></button>
                 <!-- Button 'подписаться' -->
                 <button class="button-text profile-welcome__button">Подписаться <img src="img/add_black.svg" alt=""></button>
             </section>
@@ -426,9 +434,9 @@ $conn->close();
                 <h2>Платформа облегчает процесс взаимодействия с тренером и лечащим врачом</h2>
                 <div class="welcome-block-7__list">
                     <ul>
-                        <li>чат с тренером и врачом</li>
                         <li>просмотр тренировок, расписания и программ от тренера</li>
                         <li>просмотр назначенных лекарств от врача</li>
+                        <li>сравнение спортсменов</li>
                     </ul>
                 </div>
             </div>
@@ -456,7 +464,7 @@ $conn->close();
         </div>
     </section>
 
-    <footer>
+    <footer class="main_footer">
         <!-- Contacts -->
         <div class="footer__contacts">
             <div class="footer__social-media">
@@ -471,7 +479,7 @@ $conn->close();
         </div>
         <!-- About -->
         <div class="footer__about">
-            <p class="footer__about-item">Все права защищены &#169;</p>
+            <p class="footer__about-item">Все права защищены &#169;</p> 
             <p class="footer__about-item">Иван Барбашин</p>
         </div>
     </footer>
@@ -491,17 +499,20 @@ $conn->close();
 
 
         // Buttons for exercise info
-        let infoExerciseButton = document.querySelector('.exercise-item__info-btn');
-        let closeInfoExerciseButton = document.querySelector('.exercise-item__info-close');
-        let infoBlock = document.querySelector('.exercise-item__info-content');
+        let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
 
-        infoExerciseButton.addEventListener('click', function(){
-            infoBlock.style.cssText = `top: -1%;`;
-        });
+        for(let i = 0; i < infoExerciseButton.length; i++){
+            infoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -1%;`;
+            });
 
-        closeInfoExerciseButton.addEventListener('click', function(){
-            infoBlock.style.cssText = `top: -101%;`;
-        });
+            closeInfoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -101%;`;
+            });
+        }
+        
 
         // Count of training chart
         const ctx1 = document.getElementById('trainingStatisticChart');
