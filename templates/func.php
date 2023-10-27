@@ -214,3 +214,14 @@ function print_user_block_request($name, $surname, $file, $id, $request_id){
     echo render($replacements, "../templates/user_block_request.html");
 }
 
+function print_medicine($conn, $id){
+    $sql = "SELECT name, caption FROM medicines WHERE id=$id";
+    if ($result = $conn->query($sql)){
+        foreach ($result as $item){
+            $reps = array("{{ name }}" => $item["name"], "{{ caption }}" => $item["caption"]);
+            echo render($reps, "../templates/medicine.html");
+        }
+    }else{
+        echo $conn->error;
+    }
+}

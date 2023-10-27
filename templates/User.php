@@ -585,4 +585,34 @@ class User {
             echo $conn->error;
         }
     }
+
+    public function get_doctor_data($conn, $user_id=NULL){
+        $sql = NULL;
+        switch ($this->get_status()){
+            case "doctor":
+                $sql = "SELECT * FROM doctor_data WHERE user=$user_id AND doctor=$this->id LIMIT 1";
+                break;
+            case "user":
+                $sql = "SELECT * FROM doctor_data WHERE user=$this->id AND doctor=".$this->doctor->get_id()." LIMIT 1";
+                break;
+        }
+        if ($sql != NULL && $result = $conn->query($sql)){
+            foreach ($result as $item)
+                return $item;
+        }
+        return NULL;
+    }
+
+    public function update_doctor_data($conn, $data){
+        if ($this->get_id() != $data["doctor"])
+            return;
+        if ($data["intake_start"] == NULL)
+            $data["intake_start"] = "NULL";
+        if ($data["intake_end"] == NULL)
+            $data["intake_end"] = "NULL";
+        $sql = "UPDATE doctor_data SET recommendations='".$data["recommendations"]."', intake_start=".$data["intake_start"].", intake_end=".$data["intake_end"].", medicines='".$data["medicines"]."' WHERE doctor=$this->id AND user=".$data["user"];
+        if (!$conn->query($sql)){
+            echo $conn->error;
+        }
+    }
 }

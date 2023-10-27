@@ -12,6 +12,54 @@ if (isset($_GET["user"]) && $_GET["user"] != ''){
 
 $is_selected = $user != NULL && $user->get_id() != NULL && in_array($user->get_id(), $user_data->get_sportsmen());
 $sportsmen = $user_data->get_sportsmen_advanced($conn);
+
+if (isset($_POST["request_name"])){
+    $data = $user_data->get_doctor_data($conn, $_POST["user_med"]);
+    switch ($_POST["request_name"]){
+        case "add_medicine":
+            if (empty($_POST["name"]) || $_POST["name"] == "")
+                break;
+            $sql = "INSERT INTO medicines (name, caption) VALUES ('".$_POST["name"]."', '".$_POST["caption"]."')";
+            if ($conn->query($sql)){
+                $id = mysqli_insert_id($conn);
+                if ($data != NULL){
+                    $medicines = json_decode($data["medicines"]);
+                    array_push($medicines, $id);
+                    $medicines = json_encode($medicines, 256);
+                    $data["medicines"] = $medicines;
+                    $user_data->update_doctor_data($conn, $data);
+                }else{
+                    echo "NULL";
+                }
+            }else{
+                echo $conn->error;
+            }
+            break;
+        case "update_period":
+            $start = strtotime($_POST["start"]);
+            $end = strtotime($_POST["end"]);
+            if (!$start)
+                $start = NULL;
+            if (!$end)
+                $end = NULL;
+            $data["intake_start"] = $start;
+            $data["intake_end"] = $end;
+            $user_data->update_doctor_data($conn, $data);
+            break;
+        case "update_recommendations":
+            if ($_POST["text"] == "")
+                $data["recommendations"] = NULL;
+            else
+                $data["recommendations"] = $_POST["text"];
+            $user_data->update_doctor_data($conn, $data);
+            break;
+    }
+}
+
+if ($is_selected){
+    $data = $user_data->get_doctor_data($conn, $user->get_id());
+    $data["medicines"] = json_decode($data["medicines"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,18 +90,12 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Прием лекарств</h2>
 					<div class="staff-block__medicines">
-						<div class="staff-block__medicine-item">
-							<p class="staff-block__medicine-name">Мазь</p>
-							<div class="staff-block__medicine-dose">2 раза в день</div>
-							<button class="button-img staff-block__item-button"><img src="../img/edit.svg" alt=""></button>
-							<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-						</div>
-						<div class="staff-block__medicine-item">
-							<p class="staff-block__medicine-name">Мазь</p>
-							<div class="staff-block__medicine-dose">2 раза в день</div>
-							<button class="button-img staff-block__item-button"><img src="../img/edit.svg" alt=""></button>
-							<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-						</div>
+                        <?php if (count($data["medicines"]) > 0)
+                            foreach ($data["medicines"] as $medicine)
+                                print_medicine($conn, (int)$medicine);
+                        else{ ?>
+                            <p>Нет назначенных лекарств</p>
+                        <?php } ?>
 					</div>
 					<button class="button-text staff-block__item-button--add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 				</section>
@@ -61,9 +103,9 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Период лечения</h2>
 					<div class="staff-block__treatment-date">
-						<div class="staff-block__treatment-date-item">12.02.2023</div>
+						<div class="staff-block__treatment-date-item"><?php if ($data["intake_start"] == NULL) echo "Не выбрано"; else echo date("d.m.Y", $data["intake_start"]) ?></div>
 						<div class="staff-block__treatment-date-line"></div>
-						<div class="staff-block__treatment-date-item">12.03.2023</div>
+						<div class="staff-block__treatment-date-item"><?php if ($data["intake_end"] == NULL) echo "Не выбрано"; else echo date("d.m.Y", $data["intake_end"]) ?></div>
 					</div>
 					<div class="staff-block__treatment-buttons">
 						<button class="button-img staff-block__item-button staff-block__item-button--date"><img src="../img/edit.svg" alt=""></button>
@@ -72,7 +114,7 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Рекомендации по лечению</h2>
-					<div class="staff-block__treatment-recommendation">Избегать физических нагрузок, побольше кайфа и чайку оформить. АААААААААААААААААААААА</div>
+					<div class="staff-block__treatment-recommendation"><?php if (isset($data["recommendations"]) && $data["recommendations"] != "") echo $data["recommendations"]; else echo "Нет рекоммендаций"; ?></div>
 					<div class="staff-block__treatment-buttons">
 						<button class="button-img staff-block__item-button staff-block__item-button--recommendation"><img src="../img/edit.svg" alt=""></button>
 					</div>
@@ -117,9 +159,11 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 		<section class="popup-exercise popup-exercise--add-medicine">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item add-medicine__name" type="text" placeholder="название">
-				<input class="popup-exercise__input-item add-medicine__dose" type="text" placeholder="доза">
-				<button class="button-text popup-exercise__submit-button">Добавить</button>
+				<input name="name" class="popup-exercise__input-item add-medicine__name" type="text" placeholder="название">
+				<input name="caption" class="popup-exercise__input-item add-medicine__dose" type="text" placeholder="доза">
+                <input type="hidden" name="request_name" value="add_medicine">
+                <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
+				<button type="submit" class="button-text popup-exercise__submit-button">Добавить</button>
 			</form>
 		</section>
 
@@ -127,8 +171,10 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 		<section class="popup-exercise popup-exercise--treatment-date">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item treatment-date__start" type="text" placeholder="начало">
-				<input class="popup-exercise__input-item treatment-date__end" type="text" placeholder="начало">
+				<input name="start" class="popup-exercise__input-item treatment-date__start" type="date" placeholder="начало">
+				<input name="end" class="popup-exercise__input-item treatment-date__end" type="date" placeholder="конец">
+                <input type="hidden" name="request_name" value="update_period">
+                <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
 				<button class="button-text popup-exercise__submit-button">Сохранить</button>
 			</form>
 		</section>
@@ -137,7 +183,9 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 		<section class="popup-exercise popup-exercise--treatment-recommendation">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<textarea class="doctor-texterea-item treatment-recommendation__edit" name="" id="" placeholder="рекомендации"></textarea>
+				<textarea class="doctor-texterea-item treatment-recommendation__edit" name="text" id="" placeholder="рекомендации"></textarea>
+                <input type="hidden" name="request_name" value="update_recommendations">
+                <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
 				<button class="button-text popup-exercise__submit-button">Сохранить</button>
 			</form>
 		</section>

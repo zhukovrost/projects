@@ -15,16 +15,17 @@ if ($result = $conn->query($sql)){
         switch ($user_data->get_status()){
             case "coach":
                 $sql3 = "INSERT INTO user_to_coach(user, coach) values ($user, ".$user_data->get_id().")";
+                $sql4 = NULL;
                 break;
             case "doctor":
                 $sql3 = "INSERT INTO user_to_doctor(user, doctor) values ($user, ".$user_data->get_id().")";
+                $sql4 = "INSERT INTO doctor_data(user, doctor) values ($user, ".$user_data->get_id().")";
                 break;
         }
-        echo $sql3;
         $conn->query($sql2);
-        echo $conn->error;
         $conn->query($sql3);
-        echo $conn->error;
+        if ($sql4 != NULL)
+            $conn->query($sql4);
     }
 }else{
     echo $conn->error;
