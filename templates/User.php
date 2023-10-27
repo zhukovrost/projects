@@ -73,6 +73,12 @@ class User {
     public function get_sportsmen(){
         return $this->sportsmen;
     }
+    public function get_sportsmen_advanced($conn){
+        $return_val = array();
+        foreach ($this->get_sportsmen() as $sportsman)
+            array_push($return_val, new User($conn, $sportsman));
+        return $return_val;
+    }
 
     public function __construct($conn, $id=-1, $auth=false){
         if (isset($id) && $id != -1) {

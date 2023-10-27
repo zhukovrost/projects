@@ -1,6 +1,17 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
+
+if ($user_data->get_status() != "doctor")
+    header("Location: profile.php");
+
+$user = NULL;
+if (isset($_GET["user"]) && $_GET["user"] != ''){
+    $user = new User($conn, $_GET["user"]);
+}
+
+$is_selected = $user != NULL && $user->get_id() != NULL && in_array($user->get_id(), $user_data->get_sportsmen());
+$sportsmen = $user_data->get_sportsmen_advanced($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,19 +21,20 @@ include "../templates/settings.php";
 
 	<main class="staff-cover">
 		<div class="container">
+            <?php if ($is_selected){ ?>
 			<section class="staff-block">
 				<p class="staff-block__title">Спортсмен</p>
 				<section class="staff-block__header">
-					<img class="staff-block__avatar" src="../img/man_avatar.svg" alt="">
+					<img class="staff-block__avatar" src="<?php echo $user->get_avatar($conn); ?>" alt="">
 					<section class="staff-block__info">
 						<div class="staff-block__name">
-							<h1 class="staff-block__name-text">Иван Иванов</h1>
-							<a class="staff-block__profile-link" href=""><img src="../img/profile_black.svg" alt=""></a>
+							<h1 class="staff-block__name-text"><?php echo $user->name." ".$user->surname; ?></h1>
+							<a class="staff-block__profile-link" href="profile.php?user=<?php echo $user->get_id(); ?>"><img src="../img/profile_black.svg" alt=""></a>
 						</div>
 						<div class="staff-block__buttons">
-							<a href="" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
-							<a href="../img/tg.svg" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>
-							<button class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../img/delete.svg" alt=""></button>
+							<!-- <a href="" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
+							<a href="../img/tg.svg" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a> -->
+							<a href="delete_sportsman.php?user=<?php echo $user->get_id(); ?>" class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../img/delete.svg" alt=""></a>
 						</div>
 					</section>
 				</section>
@@ -66,6 +78,9 @@ include "../templates/settings.php";
 					</div>
 				</section>
 			</section>
+            <?php } else { ?>
+                <p>Пользователь не выбран</p>
+            <?php } ?>
 			<section class="staff-other">
 				<section class="friends-block">
                     <!-- Title and button to search friends -->
@@ -75,22 +90,12 @@ include "../templates/settings.php";
                     </div>
                     <!-- Friends' workout swiper -->
                    <section class="friends-block__cover" navigation="true">
-						<a href="../user/profile.php?user={{ id }}" class="friends-block__item">
-							<img class="friends-block__avatar" src="../img/man_avatar.svg" alt="">
-							<p class="friends-block__name">Иван Иванов</p>
-						</a>
-						<a href="../user/profile.php?user={{ id }}" class="friends-block__item">
-							<img class="friends-block__avatar" src="../img/man_avatar.svg" alt="">
-							<p class="friends-block__name">Иван Иванов</p>
-						</a>
-						<a href="../user/profile.php?user={{ id }}" class="friends-block__item">
-							<img class="friends-block__avatar" src="../img/man_avatar.svg" alt="">
-							<p class="friends-block__name">Иван Иванов</p>
-						</a>
-						<a href="../user/profile.php?user={{ id }}" class="friends-block__item">
-							<img class="friends-block__avatar" src="../img/man_avatar.svg" alt="">
-							<p class="friends-block__name">Иван Иванов</p>
-						</a>
+                       <?php foreach ($sportsmen as $sportsman) { ?>
+                           <a href="../user/doctor.php?user=<?php echo $sportsman->get_id(); ?>" class="friends-block__item">
+                               <img class="friends-block__avatar" src="<?php echo $sportsman->get_avatar($conn); ?>" alt="">
+                               <p class="friends-block__name"><?php echo $sportsman->name." ".$sportsman->surname; ?></p>
+                           </a>
+                       <?php } ?>
 					</section>
 			</section>
 			<section class="staff-other__buttons">

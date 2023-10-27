@@ -23,8 +23,13 @@
         <img src="../img/coach_header.svg" alt="">
         <p>Персонал</p>
     </a>
-    <?php } else if ($user_data->get_auth() && ($user_data->get_status() == "coach" || $user_data->get_status() == "doctor")) { ?>
+    <?php } else if ($user_data->get_auth() && $user_data->get_status() == "coach") { ?>
      <a class="header__item" href="../user/coach.php">
+        <img src="../img/sportsman_header.svg" alt="">
+        <p>Спортсмен</p>
+     </a>
+    <?php } else if ($user_data->get_status() == "doctor"){ ?>
+    <a class="header__item" href="../user/doctor.php">
         <img src="../img/sportsman_header.svg" alt="">
         <p>Спортсмен</p>
      </a>
