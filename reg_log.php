@@ -51,7 +51,6 @@ if (isset($_POST['log'])){
                 <label class="log-form__label" for="password_entry">Пароль</label>
                 <input class="log-form__input" name="log_password" type="password" id="password_entry">
                 <button class="button-text log-form__submit" type="submit" name="log" value="1">Войти</button>
-                <a class="log-form__forgot-password" href="">Не помнишь пароль?</a>
                 <?php
                 log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
                 log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
@@ -75,11 +74,11 @@ if (isset($_POST['log'])){
                     </div>
                     <div class="reg-form__profile">
                         <input class="reg-form__profile-input" type="radio" name="reg_status" id="coach" value="coach">
-                        <label class="reg-form__profile-label" for="sportsman">Тренер</label>
+                        <label class="reg-form__profile-label" for="coach">Тренер</label>
                     </div>
                     <div class="reg-form__profile">
                         <input class="reg-form__profile-input" type="radio" name="reg_status" id="doctor" value="doctor">
-                        <label class="reg-form__profile-label" for="sportsman">Врач</label>
+                        <label class="reg-form__profile-label" for="doctor">Врач</label>
                     </div>
                 </div>
                 <label class="reg-form__label" for="email">Почта</label>

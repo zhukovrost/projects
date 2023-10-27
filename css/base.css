@@ -386,6 +386,8 @@ body {
 
 .exercise-item__favorite:hover{
     opacity: 1;
+    background-color: transparent;
+    box-shadow: none;
 }
 
 /* Exercise button 'delite' */
