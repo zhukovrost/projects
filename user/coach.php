@@ -12,6 +12,79 @@ if (isset($_GET["user"]) && $_GET["user"] != ''){
 
 $is_selected = $user != NULL && $user->get_id() != NULL && in_array($user->get_id(), $user_data->get_sportsmen());
 $sportsmen = $user_data->get_sportsmen_advanced($conn);
+
+if (isset($_POST["request_name"])) {
+    $data = $user_data->get_coach_data($conn, $_POST["user_med"]);
+    switch ($_POST["request_name"]) {
+        case "add_competition":
+            if (empty($_POST["name"]) || $_POST["name"] == "")
+                break;
+            if (!$date = strtotime($_POST["date"])){
+                $date = NULL;
+            }
+            $sql = "INSERT INTO competitions (name, link, date) VALUES ('" . $_POST["name"] . "', '" . $_POST["link"] . "', '$date')";
+            if ($conn->query($sql)) {
+                $id = mysqli_insert_id($conn);
+                if ($data != NULL) {
+                    $competitions = json_decode($data["competitions"]);
+                    array_push($competitions, $id);
+                    $competitions = json_encode($competitions, 256);
+                    $data["competitions"] = $competitions;
+                    $user_data->update_coach_data($conn, $data);
+                } else {
+                    echo "NULL";
+                }
+            } else {
+                echo $conn->error;
+            }
+            break;
+        case "add_info":
+            if (empty($_POST["name"]) || $_POST["name"] == "")
+                break;
+            $sql = "INSERT INTO coach_advice (name, link) VALUES ('" . $_POST["name"] . "', '" . $_POST["link"] . "')";
+            if ($conn->query($sql)) {
+                $id = mysqli_insert_id($conn);
+                if ($data != NULL) {
+                    $info = json_decode($data["info"]);
+                    array_push($info, $id);
+                    $info = json_encode($info, 256);
+                    $data["info"] = $info;
+                    $user_data->update_coach_data($conn, $data);
+                } else {
+                    echo "NULL";
+                }
+            } else {
+                echo $conn->error;
+            }
+            break;
+        case "add_goal":
+            if (empty($_POST["name"]) || $_POST["name"] == "")
+                break;
+            $sql = "INSERT INTO goals (name) VALUES ('" . $_POST["name"] . "')";
+            if ($conn->query($sql)) {
+                $id = mysqli_insert_id($conn);
+                if ($data != NULL) {
+                    $goals = json_decode($data["goals"]);
+                    array_push($goals, $id);
+                    $goals = json_encode($goals, 256);
+                    $data["goals"] = $goals;
+                    $user_data->update_coach_data($conn, $data);
+                } else {
+                    echo "NULL";
+                }
+            } else {
+                echo $conn->error;
+            }
+            break;
+    }
+}
+
+if ($is_selected){
+    $data = $user_data->get_coach_data($conn, $user->get_id());
+    $data["competitions"] = json_decode($data["competitions"]);
+    $data["goals"] = json_decode($data["goals"]);
+    $data["info"] = json_decode($data["info"]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +94,7 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 
 	<main class="staff-cover">
 		<div class="container">
-            <?php if ($is_selected){ ?>
-
+            <?php if ($is_selected && $user->set_program($conn)){ ?>
 			<section class="staff-block">
 				<p class="staff-block__title">Спортсмен</p>
 				<section class="staff-block__header">
@@ -40,41 +112,26 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 					</section>
 				</section>
 				<div class="staff-block__line"></div>
+                <?php if ($user->set_program($conn)){ ?>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Ближайшая тренировка</h2>
 					<div class="staff-block__nearest-workout-content">
-						<div class="staff-block__nearest-workout-date">12.12.2023</div>
+						<div class="staff-block__nearest-workout-date"><?php $cl_w = $user->get_closest_workout($conn);
+                        if ($cl_w != NULL) echo date("d.m.Y", $cl_w); else echo "Тренировок не будет" ?></div>
 						<a href="" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
 					</div>
 				</section>
+                <?php } ?>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Цели</h2>
 					<ul class="staff-block__goals-list">
-						<li class="staff-block__goals-item">
-							<div class="staff-block__goals-item-cover">
-								<div class="staff-block__goal-name">
-									<p class="staff-block__goal-text">Атжуания 20.5 раз</p> <img src="../img/green_check_mark.svg" alt="">
-								</div>
-								<div class="staff-block__goal-buttons">
-									<button class="staff-block__goal-button staff-block__goal-button--text">Не выполненна</button>
-									<button class="button-img staff-block__item-button staff-block__item-button--goal-edit"><img src="../img/edit.svg" alt=""></button>
-									<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-								</div>
-							</div>
-						</li>
-						<li class="staff-block__goals-item">
-							<div class="staff-block__goals-item-cover">
-								<div class="staff-block__goal-name">
-									<p class="staff-block__goal-text">Атжуания 20.5 раз</p> <img src="../img/blue_question_mark.svg" alt="">
-								</div>
-								<div class="staff-block__goal-buttons">
-									<button class="staff-block__goal-button staff-block__goal-button--text">Выполненна</button>
-									<button class="button-img staff-block__item-button staff-block__item-button--goal-edit"><img src="../img/edit.svg" alt=""></button>
-									<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-								</div>
-							</div>
-						</li>
+                        <?php if (count($data["goals"]) > 0)
+                            foreach ($data["goals"] as $goal)
+                                print_goal($conn, (int)$goal);
+                        else{ ?>
+                            <li>Нет назначенных целей</li>
+                        <?php } ?>
 					</ul>
 					<button class="button-text staff-block__item-button--add staff-block__item-button--goal-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 				</section>
@@ -93,24 +150,12 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Турниры и соревнования</h2>
 					<div class="staff-block__competitions">
-						<div class="staff-block__competition-item">
-							<p class="staff-block__competition-text">Игра с балбесами</p>
-							<div class="staff-block__item-buttons">
-								<a class="staff-block__link-button staff-block__link-button--competitions-file" href="" download><img src="../img/file.svg" alt=""></a>
-								<a class="staff-block__link-button staff-block__link-button--competitions-link" href=""><img src="../img/link.svg" alt=""></a>
-								<button class="button-img staff-block__item-button staff-block__item-button--competition-edit"><img src="../img/edit.svg" alt=""></button>
-								<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-							</div>
-						</div>
-						<div class="staff-block__competition-item">
-							<p class="staff-block__competition-text">Игра с балбесами</p>
-							<div class="staff-block__item-buttons">
-								<a class="staff-block__link-button staff-block__link-button--competitions-file" href="" download><img src="../img/file.svg" alt=""></a>
-								<a class="staff-block__link-button staff-block__link-button--competitions-link" href=""><img src="../img/link.svg" alt=""></a>
-								<button class="button-img staff-block__item-button staff-block__item-button--competition-edit"><img src="../img/edit.svg" alt=""></button>
-								<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-							</div>
-						</div>
+                        <?php if (count($data["competitions"]) > 0)
+                            foreach ($data["competitions"] as $competition)
+                                print_competition($conn, (int)$competition);
+                        else{ ?>
+                            <p>Нет назначенных соревнований</p>
+                        <?php } ?>
 						<button class="button-text staff-block__item-button--add staff-block__item-button--competition-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 					</div>
 				</section>
@@ -118,24 +163,12 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Полезная информация</h2>
 					<div class="staff-block__useful-links">
-						<div class="staff-block__useful-links-item">
-							<p class="staff-block__useful-links-text">Атжумания</p>
-							<div class="staff-block__item-buttons">
-								<a class="staff-block__link-button staff-block__link-button--info-file" href="" download><img src="../img/file.svg" alt=""></a>
-								<a class="staff-block__link-button staff-block__link-button--info-link" href=""><img src="../img/link.svg" alt=""></a>
-								<button class="button-img staff-block__item-button staff-block__item-button--link-edit"><img src="../img/edit.svg" alt=""></button>
-								<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-							</div>
-						</div>
-						<div class="staff-block__useful-links-item">
-							<p class="staff-block__useful-links-text">Атжумания</p>
-							<div class="staff-block__item-buttons">
-								<a class="staff-block__link-button staff-block__link-button--info-file" href="" download><img src="../img/file.svg" alt=""></a>
-								<a class="staff-block__link-button staff-block__link-button--info-link" href=""><img src="../img/link.svg" alt=""></a>
-								<button class="button-img staff-block__item-button staff-block__item-button--link-edit"><img src="../img/edit.svg" alt=""></button>
-								<button class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></button>
-							</div>
-						</div>
+                        <?php if (count($data["info"]) > 0)
+                            foreach ($data["info"] as $advice)
+                                print_advice($conn, (int)$advice);
+                        else{ ?>
+                            <p>Нет назначенных советов</p>
+                        <?php } ?>
 						<button class="button-text staff-block__item-button--add staff-block__item-button--link-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 					</div>
 				</section>
@@ -169,7 +202,7 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 		</div>
 
 
-		<!-- Goals edit -->
+		<!-- Goals edit
 		<section class="popup-exercise popup-exercise--goals-edit">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
@@ -177,17 +210,20 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<button class="button-text popup-exercise__submit-button">Сохранить</button>
 			</form>
 		</section>
+		-->
 
 		<!-- Goals add -->
 		<section class="popup-exercise popup-exercise--goals-add">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item goals-add__name" type="text" placeholder="название цели">
+				<input class="popup-exercise__input-item goals-add__name" type="text" placeholder="название цели" name="name">
+                <input type="hidden" name="request_name" value="add_goal">
+                <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
 				<button class="button-text popup-exercise__submit-button">Добавить</button>
 			</form>
 		</section>
 
-		<!-- Competitions edit -->
+		<!-- Competitions edit
 		<section class="popup-exercise popup-exercise--competitions-edit">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
@@ -197,19 +233,22 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<button class="button-text popup-exercise__submit-button">Сохранить</button>
 			</form>
 		</section>
+		-->
 
 		<!-- Competitions add-->
 		<section class="popup-exercise popup-exercise--competitions-add">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item competitions-add__name" type="text" placeholder="название соревнования">
-				<input class="popup-exercise__input-item popup-exercise__input-item--file competitions-add__file" type="file">
-				<input class="popup-exercise__input-item competitions-add__link" type="text" placeholder="вставьте ссылку">
+				<input class="popup-exercise__input-item competitions-add__name" type="text" placeholder="название соревнования" name="name">
+				<input class="popup-exercise__input-item popup-exercise__input-item--file competitions-add__file" type="date" name="date">
+				<input class="popup-exercise__input-item competitions-add__link" type="text" placeholder="вставьте ссылку" name="link">
+                <input type="hidden" name="request_name" value="add_competition">
+                <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
 				<button class="button-text popup-exercise__submit-button">Добавить</button>
 			</form>
 		</section>
 
-		<!-- Useful links edit-->
+		<!-- Useful links edit
 		<section class="popup-exercise popup-exercise--links-edit">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
@@ -219,14 +258,17 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 				<button class="button-text popup-exercise__submit-button">Сохранить</button>
 			</form>
 		</section>
+		-->
 
 		<!-- Useful links add-->
 		<section class="popup-exercise popup-exercise--links-add">
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item links-add__name" type="text" placeholder="название">
-				<input class="popup-exercise__input-item popup-exercise__input-item--file links-add__file" type="file">
-				<input class="popup-exercise__input-item links-add__link" type="text" placeholder="вставьте ссылку">
+				<input class="popup-exercise__input-item links-add__name" type="text" placeholder="название" name="name">
+				<!--<input class="popup-exercise__input-item popup-exercise__input-item--file links-add__file" type="file">-->
+				<input class="popup-exercise__input-item links-add__link" type="text" placeholder="вставьте ссылку" name="link">
+                <input type="hidden" name="request_name" value="add_info">
+                <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
 				<button class="button-text popup-exercise__submit-button">Добавить</button>
 			</form>
 		</section>

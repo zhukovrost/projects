@@ -15,7 +15,7 @@ if ($result = $conn->query($sql)){
         switch ($user_data->get_status()){
             case "coach":
                 $sql3 = "INSERT INTO user_to_coach(user, coach) values ($user, ".$user_data->get_id().")";
-                $sql4 = NULL;
+                $sql4 = "INSERT INTO coach_data(user, coach) values ($user, ".$user_data->get_id().")";
                 break;
             case "doctor":
                 $sql3 = "INSERT INTO user_to_doctor(user, doctor) values ($user, ".$user_data->get_id().")";

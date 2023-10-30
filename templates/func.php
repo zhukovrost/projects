@@ -225,3 +225,62 @@ function print_medicine($conn, $id){
         echo $conn->error;
     }
 }
+
+function print_goal($conn, $id){
+    $sql = "SELECT name, done FROM goals WHERE id=$id";
+    if ($result = $conn->query($sql)){
+        foreach ($result as $item){
+            if ((int)$item["done"]){
+                $done = '<a href="goal_done.php?id=$id&val=0" class="staff-block__goal-button staff-block__goal-button--text">Выполненна</a>';
+                $checkmark = "../img/green_check_mark.svg";
+            }else{
+                $done = '<a href="goal_done.php?id=$id&val=1" class="staff-block__goal-button staff-block__goal-button--text">Не выполненна</a>';
+                $checkmark = "../img/red_check_mark.svg";
+            }
+
+            $reps = array("{{ name }}" => $item["name"], "{{ done }}" => $done, "{{ checkmark }}" => $checkmark);
+            echo render($reps, "../templates/goal.html");
+        }
+    }else{
+        echo $conn->error;
+    }
+}
+
+function print_competition($conn, $id){
+    $sql = "SELECT name, link, date FROM competitions WHERE id=$id";
+    if ($result = $conn->query($sql)){
+        foreach ($result as $item){
+            if ($item["link"] == NULL)
+                $link = "";
+            else
+                $link = '<a class="staff-block__link-button staff-block__link-button--competitions-link" href="'.$item["link"].'"><img src="../img/link.svg" alt=""></a>';
+
+            if ($item["date"] == NULL)
+                $date = "Дата не указана";
+            else
+                $date = date("d.m.Y", $item["date"]);
+
+            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ date }}" => $date);
+            echo render($reps, "../templates/competition.html");
+        }
+    }else{
+        echo $conn->error;
+    }
+}
+
+function print_advice($conn, $id){
+    $sql = "SELECT name, link FROM coach_advice WHERE id=$id";
+    if ($result = $conn->query($sql)){
+        foreach ($result as $item){
+            if ($item["link"] == NULL)
+                $link = "";
+            else
+                $link = '<a class="staff-block__link-button staff-block__link-button--info-link" href="'.$item["link"].'"><img src="../img/link.svg" alt=""></a>';
+
+            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link);
+            echo render($reps, "../templates/advice.html");
+        }
+    }else{
+        echo $conn->error;
+    }
+}

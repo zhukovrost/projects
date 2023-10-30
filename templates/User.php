@@ -615,4 +615,52 @@ class User {
             echo $conn->error;
         }
     }
+
+    public function get_closest_workout($conn){
+        $this->program->set_additional_data($conn, $this->get_id());
+        for ($i = date("N"); $i <= 7; $i++){
+            $time = time() + ($i - 1) * 86400;
+            if ($time > ($this->program->date_start + $this->program->weeks * 604800))
+                return NULL;
+            if ($this->program->program[$i - 1] != 0)
+                return $time;
+        }
+
+        for ($i = 1; $i < date("N"); $i++){
+            $time = time() + ($i - 1) * 86400;
+            if ($time > ($this->program->date_start + $this->program->weeks * 604800))
+                return NULL;
+            if ($this->program->program[$i - 1] != 0){
+                return $time;
+            }
+        }
+
+        return NULL;
+    }
+
+    public function get_coach_data($conn, $user_id=NULL){
+        $sql = NULL;
+        switch ($this->get_status()){
+            case "coach":
+                $sql = "SELECT * FROM coach_data WHERE user=$user_id AND coach=$this->id LIMIT 1";
+                break;
+            case "user":
+                $sql = "SELECT * FROM coach_data WHERE user=$this->id AND coach=".$this->coach->get_id()." LIMIT 1";
+                break;
+        }
+        if ($sql != NULL && $result = $conn->query($sql)){
+            foreach ($result as $item)
+                return $item;
+        }
+        return NULL;
+    }
+
+    public function update_coach_data($conn, $data){
+        if ($this->get_id() != $data["coach"])
+            return;
+        $sql = "UPDATE coach_data SET competitions='".$data["competitions"]."', goals='".$data["goals"]."', info='".$data["info"]."' WHERE coach=$this->id AND user=".$data["user"];
+        if (!$conn->query($sql)){
+            echo $conn->error;
+        }
+    }
 }
