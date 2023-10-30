@@ -89,7 +89,7 @@ class Exercise {
                 $button = '<button class="button-text exercise-item__add" name="add" value="'.$this->id.'"><p>Добавить</p> <img src="../img/add.svg" alt=""></button>';
             }
             if ($is_featured){
-                $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
+                $button_featured = '<button class="exercise-item__favorite exercise-item__favorite--selected" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
             }else{
                 $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
             }
@@ -133,7 +133,7 @@ class User_Exercise extends Exercise {
             $description = $this->description;
         }
         if ($is_featured){
-            $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
+            $button_featured = '<button class="exercise-item__favorite exercise-item__favorite--selected" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
         }else{
             $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
         }

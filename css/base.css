@@ -1100,3 +1100,8 @@ body {
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
+
+/* Base styles */
+.hide{
+    display: none;
+}
