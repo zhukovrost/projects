@@ -122,9 +122,13 @@ class Workout {
                         <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
                     <?php }
                     if ($additional_info){ ?>
-                        <a href="workout_session.php" class="button-text day-workouts__card-button">Начать</a>
+                        <button class="button-text day-workouts__card-button day-workouts__card-button--time"><p>Таймер</p><img src="../img/time.svg" alt=""></button>
                     <?php } ?>
                 </div>
+                <?php
+                if ($additional_info){ ?>
+                    <a href="workout_session.php" class="button-text day-workouts__card-button day-workouts__card-button--start"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
+                <?php } ?>
             <?php }
             }
             ?>
