@@ -910,7 +910,7 @@ body {
 .day-workouts__card-button{
     font-size: 20px;
     padding: 5px 15px;
-    margin-right: 15px;
+    margin: 0px 7px;
 }
 
 .day-workouts__card-button--add:hover img,
@@ -923,6 +923,10 @@ body {
     margin-top: 10px;
 }
 
+.day-workouts__card-button--start{
+    margin: 10px auto 0px;
+}
+
 .day-workouts__card-button p{
     margin-right: 15px;
 }
@@ -930,6 +934,15 @@ body {
 .day-workouts__card-button img{
     width: 25px;
     height: 25px;
+}
+
+.day-workouts__card-button--time img{
+    width: 20px;
+    height: 20px;
+}
+
+.day-workouts__card-button--start:hover img{
+    transform: translateX(3px);
 }
 
 .day-workouts__card-img{

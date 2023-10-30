@@ -931,6 +931,37 @@
     height: 30px;
 }
 
+
+
+/* Popup */
+.popup-exercise--timer-edit__content{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.popup-exercise--timer-edit__item{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.popup-exercise--timer-edit__item__label{
+    font-size: 25px;
+    margin-right: 15px;
+}
+
+.popup-exercise--timer-edit__item__input{
+    float: right;
+    margin-right: 0px !important;
+    width: 10vw;
+}
+
+.popup-exercise__button--edit-timer{
+    margin-top: 30px;
+}
+
+
+
 /* ========================================== */
 
 
@@ -2537,7 +2568,7 @@
     transition: .2s ease;
 }
 
-.session-exercises{
+.session-exercises .container{
     display: flex;
     align-items: center;
     height: 75vh;
@@ -2550,7 +2581,7 @@
 }
 
 .session-exercises__info{
-    padding: 15px 50px;
+    padding: 20px 50px;
     background-color: #FAFAFA;
     border-radius: 3px;
     border: 1px solid #CCCCCC;
@@ -2572,11 +2603,11 @@
     margin: 0 3px;
 }
 
-.session-exercises__help-item--green{
+.session-exercises__help-item--white{
     color: rgb(1, 221, 34);
 }
 
-.session-exercises__help-item--white{
+.session-exercises__help-item--green{
     color: rgba(0, 94, 13, 1);
 }
 
@@ -2586,6 +2617,7 @@
     font-size: 25px;
     padding: 15px 20px;
     box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);
+    transition: .1s ease-in-out;
 }
 
 /* Navifation the test */
@@ -2605,7 +2637,16 @@
 }
 
 .workout-session__navigation-button:hover{
-    background-color: rgb(39, 39, 39);
+    color: #000000;
+    background-color: rgb(238, 238, 238);
+    box-shadow: 2px 2px 0px #00CD1E;
+}
+
+.workout-session__navigation-button--active{
+    color: #000000;
+    border: 1px solid #cccccc;
+    background-color: rgb(238, 238, 238);
+    box-shadow: 2px 2px 0px #00CD1E;
 }
 
 
@@ -2614,8 +2655,9 @@
     margin: 0 auto;
 }
 
+
 .session-exercises__slide{
-    padding: 10px 70px;
+    padding: 5px 70px;
 }
 
 .exercise-item--session{
