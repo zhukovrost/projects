@@ -48,10 +48,11 @@ $user_data->set_subscriptions($conn);
                     else
                         print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], false);
                 }
-            }else{ ?>
-                <p>Пользователь не найден</p>
-            <?php } ?>
+            }?>
 		</div>
+        <?php if (count($users_array) == 0){ ?>
+            <p class="users-list__title-none">Пользователь не найден</p>
+        <?php } ?>
 	</main>
 
     <?php include "../templates/footer.html" ?>

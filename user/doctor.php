@@ -94,7 +94,7 @@ if ($is_selected){
                             foreach ($data["medicines"] as $medicine)
                                 print_medicine($conn, (int)$medicine);
                         else{ ?>
-                            <p>Нет назначенных лекарств</p>
+                            <p class="staff-block__medicines-none">Нет назначенных лекарств</p>
                         <?php } ?>
 					</div>
 					<button class="button-text staff-block__item-button--add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
@@ -121,7 +121,9 @@ if ($is_selected){
 				</section>
 			</section>
             <?php } else { ?>
-                <p>Пользователь не выбран</p>
+                <section class="staff-block">
+					<p class="staff-block__title-none">Пользователь не выбран</p>
+				</section>
             <?php } ?>
 			<section class="staff-other">
 				<section class="friends-block">
@@ -200,7 +202,7 @@ if ($is_selected){
 		let TreatmentDatePopup = document.querySelector('.popup-exercise--treatment-date');
 		let RecommendationPopup = document.querySelector('.popup-exercise--treatment-recommendation');
 		
-		let MedicineEditButtons = document.querySelectorAll('.staff-block__medicines .staff-block__item-button');
+		let MedicineEditButtons = document.querySelectorAll('.staff-block__medicines .staff-block__item-button--edit');
 		let MedicineAddButton = document.querySelector('.staff-block__item-button--add');
 		let TreatmentDateEditButton = document.querySelector('.staff-block__item-button--date');
 		let RecommendationEditButton = document.querySelector('.staff-block__item-button--recommendation');
@@ -210,6 +212,7 @@ if ($is_selected){
 
 		for(let i = 0; i < MedicineEditButtons.length; i++){
 			MedicineEditButtons[i].addEventListener('click', function(){
+				console.log(i)
 				document.querySelector('.edit-medicine__name').value = MedicineNameText[i].innerHTML;
 				document.querySelector('.edit-medicine__dose').value = MedicineDoseText[i].innerHTML;
 				MedicineEditPopup.classList.add("open");

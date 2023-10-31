@@ -63,9 +63,10 @@ $cnt_apps = 0;
         <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений</h2>
         <h2 class="workout-session-footer__item"><span><?php echo $cnt_apps; ?></span> подходов</h2>
         <form method="post">
-
+            <input class="workout-session-footer__input" type="hidden" value="0">
+            <a href="end_workout.php" class="button-text workout-session-footer__button">Завершить</a>
         </form>
-        <a href="end_workout.php" class="button-text workout-session-footer__button">Завершить</a>
+        
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
@@ -114,8 +115,12 @@ $cnt_apps = 0;
         let FinsishButton = document.querySelector('.workout-session-footer__button');
         let time = 0;
 
+        let workoutSessionInputTime = document.querySelector('.workout-session-footer__input');
+
         if(localStorage.getItem(`SpendWorkoutTime`) && localStorage.getItem(`SpendWorkoutTime`) != -1){
             time = localStorage.getItem(`SpendWorkoutTime`);
+            workoutSessionInputTime.value = time;
+
             let minutes = Math.floor(time / 60);
             let seconds = time % 60;
             if (seconds < 10){
@@ -142,6 +147,7 @@ $cnt_apps = 0;
             let IntervalTimer = setInterval(UpdateTime, 1000);
             
             time++;
+            workoutSessionInputTime.value = time;
             localStorage.setItem(`SpendWorkoutTime`, time);
 
             FinsishButton.addEventListener('click', function(){
@@ -168,6 +174,7 @@ $cnt_apps = 0;
             timer.innerHTML = `${minutes}:${seconds}`;
 
             time++;
+            workoutSessionInputTime.value = time;
             localStorage.setItem(`SpendWorkoutTime`, time);
 
             if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) == TimeForWork){

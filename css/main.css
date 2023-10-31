@@ -1195,6 +1195,10 @@
 }
 
 .progress-block__workouts-statistic-item span{
+    margin-left: 5px;
+}
+
+.progress-block__workouts-statistic-item span{
     font-weight: 700;
 }
 
@@ -2039,12 +2043,29 @@
 
 .popup-user__info-item{
     display: flex;
+    align-items: center;
     margin-bottom: 25px;
 }
 
 .popup-user__info-item-name{
     font-size: 25px;
     margin-right: 25px;
+}
+
+.popup-user__info-social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.popup-user__info-social-name{
+    margin-right: 5px;
+}
+
+.popup-user__info-social img{
+    width: 35px;
+    height: 35px;
 }
 
 .popup-user__info-item-info{
@@ -2081,6 +2102,13 @@
     font-size: 25px;
     background-color: #ECECEC;
     border: 1px solid #C1C1C1;
+}
+
+.popup-user__input{
+    font-size: 25px;
+    background-color: #ECECEC;
+    border: 1px solid #C1C1C1;
+    padding: 3px 5px;
 }
 
 .popup-user__save-button{
@@ -2771,12 +2799,20 @@
     margin: 50px 0px 30px;
 }
 
+.users-list__title-none{
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+    margin: 50px 0px 30px;
+}
+
 
 /* ======================================== */
 
 
 /* ===============STAFF PAGE=============== */
 .staff-cover .container{
+    min-height: 70vh;
     display: flex;
     justify-content: space-around;
     padding-top: 20px;
@@ -3063,16 +3099,27 @@
     margin-top: 10px;
 }
 
+.staff-block__medicines-none{
+    font-size: 21px;
+    font-weight: 500;
+}
+
 
 .staff-block__medicine-item{
+    min-width: 65%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin: 10px auto 0px;
+}
+
+.staff-block__medicine-cover{
+    display: flex;
 }
 
 .staff-block__medicine-name{
     font-size: 23px;
-    margin-right: 30px;
+    margin-right: 15px;
 }
 
 .staff-block__medicine-dose{
@@ -3080,7 +3127,7 @@
     height: fit-content;
     padding: 5px 10px;
     font-size: 21px;
-    margin-right: 5px;
+    margin-right: 50px;
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -3237,6 +3284,33 @@
     height: fit-content;
     min-height: 40vh;
     min-width: 30vw;
+}
+
+
+/* No staff */
+.staff-block__title-none{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 27px;
+    font-weight: 500;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.staff-block__button-add{
+    font-size: 25px;
+    padding: 8px 20px 8px 30px;
+    margin: 10px auto 0px;
+}
+
+.staff-block__button-add img{
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+}
+
+.staff-block__button-add:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
 }
 
 /* ============================================= */

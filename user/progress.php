@@ -84,6 +84,7 @@ if (count($user_data->phys_updates) != 0){
 							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo count($user_data->workout_history); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Программ: <span><?php echo $user_data->get_program_amount($conn); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Упражнений: <span><?php echo $exercise_cnt; ?></span></p>
+                            <p class="progress-block__workouts-statistic-item">Всего минут:<span>19837</span></p>
 						</section>
 					</div>
 					<!-- Current info -->

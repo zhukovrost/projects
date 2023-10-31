@@ -216,6 +216,16 @@ if (isset($_POST["prep"])){
                         <p class="popup-user__info-item-info"><?php $user->print_prep(); ?></p>
                     </div>
                 <?php } ?>
+                <div class="popup-user__info-item">
+                    <div class="popup-user__info-social">
+                        <p class="popup-user__info-item-name popup-user__info-social-name">Телеграм:</p>
+                        <a href="https://t.me/Xcvbnmzd"><img src="../img/tg.svg" alt=""></a>
+                    </div>
+                    <div class="popup-user__info-social popup-user__info-social-name">
+                        <p class="popup-user__info-item-name popup-user__info-social-name">Вконтакте:</p>
+                        <a href=""><img src="../img/vk.svg" alt=""></a>
+                    </div>
+                </div>
                 <?php if ($user->get_auth()){  ?>
                     <button type="button" class="popup-user__edit-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
                 <?php } ?>
@@ -281,6 +291,17 @@ if (isset($_POST["prep"])){
                         </select>
                     </div>
                 <?php } ?>
+
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Телеграм:</p>
+                    <input class="popup-user__input" type="text" placeholder="вставьте ссылку">
+                </div>
+
+                <div class="popup-user__info-item">
+                    <p class="popup-user__info-item-name">Вконтакте:</p>
+                    <input class="popup-user__input" type="text" placeholder="вставьте ссылку">
+                </div>
+
                 <button type="submit" class="button-text popup-user__save-button">Сохранить</button>
             </form>
 		</section>
@@ -394,9 +415,18 @@ if (isset($_POST["prep"])){
 
         let UserInfoEditPopup = document.querySelector('.popup-exercise--user-info-edit');
 
+        let socialLinks = document.querySelectorAll('.popup-user__info-social a');
+        let socialLinksEdit = document.querySelectorAll('.popup-user__input');
+
         MoreInfoEditButton.addEventListener('click', function(){
             UserInfoPopup.classList.remove("open");
 			UserInfoEditPopup.classList.add("open");
+
+            for(let i = 0; i < socialLinksEdit.length; i++){
+                if(socialLinks[i].href != ''){
+                    socialLinksEdit[i].value = socialLinks[i].href;
+                }
+            }
 		});
 
 

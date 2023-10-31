@@ -672,6 +672,7 @@ body {
 
 .friends-block__header-title{
     font-size: 20px;
+    margin-right: 10px;
 }
 
 .friends-block__header-button img{
@@ -689,6 +690,7 @@ body {
 .friends-block__cover{
     display: flex;
     align-items: center;
+    justify-content: space-around;
     margin: 20px 10px 10px 10px;
     max-height: 35vh;
 }
@@ -702,8 +704,13 @@ body {
 
 /* friend item */
 .friends-block__item{
+    max-width: 150px;
     text-align: center;
     margin: 0px 20px;
+}
+
+.friends-block__avatar{
+    border-radius: 50%;
 }
 
 .friends-block__name{

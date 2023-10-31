@@ -174,7 +174,9 @@ if ($is_selected){
 				</section>
 			</section>
             <?php } else { ?>
-                <p>Пользователь не выбран</p>
+				<section class="staff-block">
+					<p class="staff-block__title-none">Пользователь не выбран</p>
+				</section>
             <?php } ?>
 			<section class="coach-other">
                 <?php if ($is_selected) $user->print_workout_history($conn); ?>

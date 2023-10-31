@@ -48,7 +48,7 @@ foreach ($user_data->program->workouts as $workout){
             <section class="day-workouts">
                 <section class="day-workouts__date">
                     <h1 class="day-workouts__date-title">Выберите дату:</h1>
-                    <input class="day-workouts__date-input" type="week">
+                    <form method="post" class="day-workouts__date-form"><input class="day-workouts__date-input" type="week"></form>
                 </section>
                 <swiper-container class="day-workouts__swiper" navigation="true">
                     <?php if ($weekday_start){ ?>
@@ -160,6 +160,15 @@ foreach ($user_data->program->workouts as $workout){
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Choose date
+        let chooseDateInput = document.querySelector('.day-workouts__date-input');
+        let chooseDateForm = document.querySelector('.day-workouts__date-form');
+
+        chooseDateInput.addEventListener('change', function(){
+            chooseDateForm.submit();
+        });
+
+
         // Workout items
         let workoutItemArr = document.querySelectorAll('.day-workouts__card-content');
 
