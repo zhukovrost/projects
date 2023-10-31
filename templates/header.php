@@ -34,7 +34,7 @@
         <p>Спортсмен</p>
      </a>
     <?php } ?>
-    <a class="header__item" href="">
+    <a class="header__item" href="all_news.php">
         <img src="../img/news_black.svg" alt="">
         <p>Новости</p>
     </a>
@@ -42,7 +42,7 @@
         <img src="../img/profile_black.svg" alt="">
         <p>Профиль</p>
     </a>
-    <a class="header__item" href="">
+    <a class="header__item" href="other.php">
         <img class="other_img" src="../img/other_black.svg" alt="">
         <p>Другое</p>
     </a>

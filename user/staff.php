@@ -107,7 +107,7 @@ $has_doctor = $user_data->doctor != NULL;
             <?php } else { ?>
 				<section class="staff-block">
 					<p class="staff-block__title-none">У вас нет тренера</p>
-					<button class="button-text staff-block__button-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
+					<a href="search_users.php" class="button-text staff-block__button-add"><p>Добавить</p><img src="../img/add.svg" alt=""></a>
 				</section>
             <?php }
             if ($has_doctor){ ?>
@@ -165,7 +165,7 @@ $has_doctor = $user_data->doctor != NULL;
             <?php } else { ?>
 				<section class="staff-block">
 					<p class="staff-block__title-none">У вас нет врача</p>
-					<button class="button-text staff-block__button-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
+					<a href="search_users.php" class="button-text staff-block__button-add"><p>Добавить</p><img src="../img/add.svg" alt=""></a>
 				</section>
             <?php } ?>
 		</div>
