@@ -1202,6 +1202,12 @@
     font-weight: 700;
 }
 
+.progress-block__line{
+    height: 1px;
+    background-color: rgb(216, 215, 215);
+    width: 100%;
+}
+
 /* Current info */
 .progress-block__physical-info{
     width: 70%;

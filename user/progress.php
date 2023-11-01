@@ -95,10 +95,11 @@ if (count($user_data->phys_updates) != 0){
 						</section>
 					</div>
 					<!-- Current info -->
+                    <div class="progress-block__line"></div>
 					<section class="progress-block__physical-info">
 						<p class="progress-block__physical-info-item">Вес: 80 кг</p>
 						<p class="progress-block__physical-info-item">Рост: 180 см</p>
-						<button class="button-text progress-block__physical-info-button">Добавить<img src="../img/add.svg" alt=""></button>
+						<button class="button-text progress-block__physical-info-button">Добавить данные<img src="../img/add.svg" alt=""></button>
 					</section>
 				</section>
 				<!-- Physical block -->
