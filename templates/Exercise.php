@@ -81,18 +81,18 @@ class Exercise {
 
         if ($construct){
             $button = '<button class="button-text exercise-item__add" name="add" value="'.$this->id.'" type="button"><p>Добавить</p> <img src="../img/add.svg" alt=""></button>';
-            $button_featured = '';
         }else{
             if ($is_mine){
                 $button = '<button class="button-text exercise-item__delite" name="delete" value="'.$this->id.'"><p>Удалить</p> <img src="../img/delete.svg" alt=""></button>';
             }else{
                 $button = '<button class="button-text exercise-item__add" name="add" value="'.$this->id.'"><p>Добавить</p> <img src="../img/add.svg" alt=""></button>';
             }
-            if ($is_featured){
-                $button_featured = '<button class="exercise-item__favorite exercise-item__favorite--selected" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
-            }else{
-                $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
-            }
+        }
+
+        if ($is_featured){
+            $button_featured = '<button class="exercise-item__favorite exercise-item__favorite--selected" name="featured" value="'.$this->id.'"><img src="../img/favorite_added.svg" alt=""></button>';
+        }else{
+            $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->id.'"><img src="../img/favorite.svg" alt=""></button>';
         }
 
         $muscle_list = "";
@@ -126,7 +126,7 @@ class User_Exercise extends Exercise {
         $this->approaches = $approaches;
     }
 
-    public function print_it($conn, $is_featured=false, $is_mine=false, $constrict=false){
+    public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false){
         if ($this->description == ""){
             $description = "No description for this exercise";
         }else{
