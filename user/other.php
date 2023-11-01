@@ -31,5 +31,11 @@ include "../templates/settings.php";
 
     <?php include "../templates/footer.html" ?>
 
+	<script>
+		let feedbackBlock = document.querySelector('.other-feedback');
+		let otherLinksBlock = document.querySelector('.other-links');
+
+		otherLinksBlock.style.cssText = `height: ${feedbackBlock.offsetHeight}px;`;
+	</script>
 </body>
 </html>

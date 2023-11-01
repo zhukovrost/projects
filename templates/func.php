@@ -162,7 +162,7 @@ function busy_or_free($id){
         echo "busy";
 }
 
-function get_graph_workout_data($history){
+function get_graph_workout_data_year($history){
     $currentYear = date("Y"); // Get the current year
     $result = array_fill(0, 12, 0); // Initialize an array with 12 zeros for each month
 

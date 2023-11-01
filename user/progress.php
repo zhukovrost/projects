@@ -63,6 +63,13 @@ if (count($user_data->phys_updates) != 0){
 			<section class="progress-block__trainings">
 				<!-- Count of trainings chart -->
 				<section class="progress-block__trainings-chart">
+                    <form class="progress-block__physical-data-form" method="post">
+                        <select class="progress-block__physical-data-select" name="" id="">
+                            <option value="year">Год</option>
+                            <option value="month">Месяц</option>
+                            <option value="week">Неделя</option>
+                        </select>
+                    </form>
 					<canvas id="trainingStatisticChart"></canvas>
 				</section>
 				<!-- Last trainings block -->
@@ -99,11 +106,13 @@ if (count($user_data->phys_updates) != 0){
 					<!-- Navigation -->
 					<nav class="progress-block__physical-data-navigation">
 						<!-- Year & month & week -->
-						<select class="progress-block__physical-data-select" name="" id="">
-							<option value="value1" selected>Год</option>
-							<option value="value2">Месяц</option>
-							<option value="value3">Неделя</option>
-						</select>
+                        <form class="progress-block__physical-data-form" method="post">
+                            <select class="progress-block__physical-data-select" name="" id="">
+                                <option value="year">Год</option>
+                                <option value="month">Месяц</option>
+                                <option value="week">Неделя</option>
+                            </select>
+                        </form>
 						<!-- Button to other physic(weight or length) -->
 						<input type="button" value="РОСТ" class="button-text progress-block__physical-data-button">
 					</nav>
@@ -172,16 +181,60 @@ if (count($user_data->phys_updates) != 0){
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Choose period to see progress data
+        let periodSelects = document.querySelectorAll('.progress-block__physical-data-select');
+        let periodForms = document.querySelectorAll('.progress-block__physical-data-form');
+
+        if(localStorage.getItem('trainingDataPeriod')){
+            periodSelects[0].value = localStorage.getItem('trainingDataPeriod');
+        }
+        else{
+            localStorage.setItem('trainingDataPeriod', periodSelects[0].value);
+        }
+
+        if(localStorage.getItem('physicDataPeriod')){
+            periodSelects[1].value = localStorage.getItem('physicDataPeriod');
+        }
+        else{
+            localStorage.setItem('physicDataPeriod', periodSelects[1].value);
+        }
+
+        for(let i = 0; i < periodSelects.length; i++) {
+            periodSelects[i].addEventListener('change', function(){
+                if(i == 0){
+                    localStorage.setItem('trainingDataPeriod', periodSelects[i].value);
+                }
+                if(i == 1){
+                    localStorage.setItem('physicDataPeriod', periodSelects[i].value);
+                }
+                periodForms[i].submit();
+            });
+        }
+
+
         // Count of training chart
         const ctx1 = document.getElementById('trainingStatisticChart');
+
+        trainingPeriodArray = [];
+        trainingPeriodData = [];
+        if(periodSelects[0].value == 'year'){
+            trainingPeriodArray = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_year($user_data->workout_history)); ?>;
+        }
+        if(periodSelects[0].value == 'month'){
+            trainingPeriodArray = ['1ая неделя', '2ая неделя', '3я неделя', '4ая неделя', '5ая неделя'];
+        }
+        if(periodSelects[0].value == 'week'){
+            trainingPeriodArray = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+        }
 
         new Chart(ctx1, {
             type: 'line',
             data: {
-            labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            labels:  trainingPeriodArray,
             datasets: [{
-                label: 'Колво тренировок',
-                data: <?php echo json_encode(get_graph_workout_data($user_data->workout_history)); ?>,
+                label: 'Кол-во тренировок',
+                data: trainingPeriodData,
                 borderWidth: 3,
                 backgroundColor: '#00C91D',
                 color: '#000000',
@@ -246,7 +299,7 @@ if (count($user_data->phys_updates) != 0){
             data: {
                 labels: ['Руки', 'Ноги', 'Грудь', 'Спина', 'Пресс', 'Кардио'],
                 datasets: [{
-                    label: 'Количество упражнений',
+                    label: 'Кол-во упражнений',
                     data: <?php echo json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>,
                     borderWidth: 1,
                     color: '#000000',
@@ -277,10 +330,21 @@ if (count($user_data->phys_updates) != 0){
         // Physical data chart
         const ctx3 = document.getElementById('physicalDataChart_weight');
 
+        physicPeriodArray = [];
+        if(periodSelects[1].value == 'year'){
+            physicPeriodArray = ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д']
+        }
+        if(periodSelects[1].value == 'month'){
+            physicPeriodArray = ['1ая неделя', '2ая неделя', '3я неделя', '4ая неделя', '5ая неделя']
+        }
+        if(periodSelects[1].value == 'week'){
+            physicPeriodArray = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+        }
+
         new Chart(ctx3, {
             type: 'line',
             data: {
-            labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+            labels: physicPeriodArray,
             datasets: [{
                 label: 'Вес за неделю',
                 data: <?php echo json_encode($weight_array); ?>,
@@ -346,7 +410,7 @@ if (count($user_data->phys_updates) != 0){
         new Chart(ctx4, {
             type: 'line',
             data: {
-            labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+            labels: physicPeriodArray,
             datasets: [{
                 label: 'Рост за неделю',
                 data: <?php echo json_encode($height_array); ?>,
@@ -425,8 +489,10 @@ if (count($user_data->phys_updates) != 0){
             }
         });
 
+        
 		// Height of last-trainings block
         let lastTrainingsBlock = document.querySelector('.last-trainings');
+        console.log(document.querySelector('.progress-block__trainings-chart').clientHeight)
         lastTrainingsBlock.style.cssText = `height: ${document.querySelector('.progress-block__trainings-chart').clientHeight}px;`;
     
     
