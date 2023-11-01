@@ -75,8 +75,8 @@ if (isset($_POST["week_days"])){
 					<h1 class="c-workout__info-title">Название:</h1>
                     <input class="c-workout__info-name" type="text" placeholder="Название тренировки" value="" name="name">
 				</section>
-                <section class="c-workout__info-header">
-                    <h2 class="c-workout__info-subtitle c-workout__info-header--circle">Количество кругов</h2>
+                <section class="c-workout__info-header c-workout__info-header--circle">
+                    <h2 class="c-workout__info-subtitle">Количество кругов</h2>
                     <input class="c-workout__info-circles" type="number" value="1" name="loops">
                 </section>
 				<section class="c-workout__days">
