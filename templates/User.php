@@ -25,6 +25,8 @@ class User {
     private $requests = []; # only for coaches and doctors
     private $sportsmen = []; # only for coaches and doctors
     public $phys_updates = array();
+    public $vk = NULL;
+    public $tg = NULL;
 
     function set_subscriptions($conn){
         $sql = "SELECT user FROM subs WHERE subscriber=$this->id";
@@ -98,6 +100,8 @@ class User {
                     $this->featured_workouts = json_decode($item['featured_workouts']);
                     $this->preparation = $item["preparation"];
                     $this->type = $item["type"];
+                    $this->vk = $item["vk"];
+                    $this->tg = $item["tg"];
                 }
                 $this->auth = $auth;
                 if ($this->get_status() == "coach" || $this->get_status() == "doctor"){

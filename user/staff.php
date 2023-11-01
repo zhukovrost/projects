@@ -26,8 +26,11 @@ $has_doctor = $user_data->doctor != NULL;
 							<a class="staff-block__profile-link" href="profile.php?user=<?php echo $user_data->coach->get_id(); ?>"><img src="../img/profile_black.svg" alt=""></a>
 						</div>
 						<div class="staff-block__buttons">
-                            <!-- <a href="" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
-							<a href="../img/tg.svg" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a> -->
+                            <?php if ($user_data->coach->vk != NULL){ ?>
+                            <a href="<?php echo $user_data->coach->vk; ?>" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
+                            <?php }if ($user_data->coach->tg != NULL){ ?>
+							<a href="<?php echo $user_data->coach->tg; ?>" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>
+                            <?php } ?>
 							<a href="delete_coach.php?id=<?php echo $user_data->coach->get_id(); ?>" class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../img/delete.svg" alt=""></a>
 						</div>
 					</section>
@@ -121,8 +124,11 @@ $has_doctor = $user_data->doctor != NULL;
 							<a class="staff-block__profile-link" href="profile.php?user=<?php echo $user_data->doctor->get_id(); ?>"><img src="../img/profile_black.svg" alt=""></a>
 						</div>
 						<div class="staff-block__buttons">
-							<!--<a href="" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
-							<a href="../img/tg.svg" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>-->
+                            <?php if ($user_data->doctor->vk != NULL){ ?>
+                                <a href="<?php echo $user_data->doctor->vk; ?>" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
+                            <?php }if ($user_data->doctor->tg != NULL){ ?>
+                                <a href="<?php echo $user_data->doctor->tg; ?>" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>
+                            <?php } ?>
 							<a href="delete_doctor.php?id=<?php echo $user_data->doctor->get_id(); ?>" class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../img/delete.svg" alt=""></a>
 						</div>
 					</section>

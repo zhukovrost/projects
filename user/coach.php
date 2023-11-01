@@ -105,8 +105,11 @@ if ($is_selected){
 							<a class="staff-block__profile-link" href="profile.php?user=<?php echo $user->get_id(); ?>"><img src="../img/profile_black.svg" alt=""></a>
 						</div>
 						<div class="staff-block__buttons">
-							<!-- <a href="" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
-							<a href="../img/tg.svg" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>-->
+                            <?php if ($user->vk != NULL) { ?>
+                                <a href=<?php echo $user->vk; ?>"" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
+                            <?php } if ($user->tg != NULL) { ?>
+                                <a href="<?php echo $user->tg; ?>" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>
+                            <?php } ?>
 							<a href="delete_sportsman.php?user=<?php echo $user->get_id(); ?>" class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../img/delete.svg" alt=""></a>
 						</div>
 					</section>

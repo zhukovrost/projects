@@ -49,6 +49,25 @@ if (isset($_POST["prep"])){
         echo $conn->error;
     }
 }
+
+if (isset($_POST["tg"]) && $_POST["tg"] != $user->tg){
+    $tg=$_POST["tg"];
+    $sql = "UPDATE users SET tg='$tg' WHERE id=".$user->get_id();
+    if ($conn->query($sql))
+        $user->tg = $tg;
+    else
+        echo $conn->error;
+
+}
+
+if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
+    $vk=$_POST["vk"];
+    $sql = "UPDATE users SET vk='$vk' WHERE id=".$user->get_id();
+    if ($conn->query($sql))
+        $user->vk = $vk;
+    else
+        echo $conn->error;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,10 +124,6 @@ if (isset($_POST["prep"])){
 				</section>
                 <!-- User's news -->
 				<section class="user-news">
-                    <!-- Button 'Новая запись' -->
-                    <!-- <?php if ($user->get_auth()){ ?>
-					    <button class="button-text user-news__add">Новая запись <img src="../img/add.svg" alt=""></button>
-                    <?php } ?> -->
 					<!-- News item -->
                     <?php
                     if ($news = $user->get_my_news($conn)) {
@@ -217,14 +232,18 @@ if (isset($_POST["prep"])){
                     </div>
                 <?php } ?>
                 <div class="popup-user__info-item">
+                    <?php if ($user->tg != NULL){ ?>
                     <div class="popup-user__info-social">
                         <p class="popup-user__info-item-name popup-user__info-social-name">Телеграм:</p>
-                        <a href="https://t.me/Xcvbnmzd"><img src="../img/tg.svg" alt=""></a>
+                        <a href="<?php echo $user->tg; ?>"><img src="../img/tg.svg" alt=""></a>
                     </div>
+                    <?php }
+                    if ($user->vk != NULL){ ?>
                     <div class="popup-user__info-social popup-user__info-social-name">
                         <p class="popup-user__info-item-name popup-user__info-social-name">Вконтакте:</p>
-                        <a href=""><img src="../img/vk.svg" alt=""></a>
+                        <a href="<?php echo $user->vk; ?>"><img src="../img/vk.svg" alt=""></a>
                     </div>
+                    <?php } ?>
                 </div>
                 <?php if ($user->get_auth()){  ?>
                     <button type="button" class="popup-user__edit-button"><img src="../img/edit_gray.svg" alt="">Изменить</button>
@@ -294,12 +313,12 @@ if (isset($_POST["prep"])){
 
                 <div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Телеграм:</p>
-                    <input class="popup-user__input" type="text" placeholder="вставьте ссылку">
+                    <input name="tg" class="popup-user__input" type="text" placeholder="вставьте ссылку">
                 </div>
 
                 <div class="popup-user__info-item">
                     <p class="popup-user__info-item-name">Вконтакте:</p>
-                    <input class="popup-user__input" type="text" placeholder="вставьте ссылку">
+                    <input name="vk" class="popup-user__input" type="text" placeholder="вставьте ссылку">
                 </div>
 
                 <button type="submit" class="button-text popup-user__save-button">Сохранить</button>
