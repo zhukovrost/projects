@@ -95,7 +95,7 @@ if ($is_selected){
 					<div class="staff-block__medicines">
                         <?php if (count($data["medicines"]) > 0)
                             foreach ($data["medicines"] as $medicine)
-                                print_medicine($conn, (int)$medicine);
+                                print_medicine($conn, (int)$medicine, $user->get_id());
                         else{ ?>
                             <p class="staff-block__medicines-none">Нет назначенных лекарств</p>
                         <?php } ?>

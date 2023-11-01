@@ -131,7 +131,7 @@ if ($is_selected){
 					<ul class="staff-block__goals-list">
                         <?php if (count($data["goals"]) > 0)
                             foreach ($data["goals"] as $goal)
-                                print_goal($conn, (int)$goal);
+                                print_goal($conn, (int)$goal, $user->get_id());
                         else{ ?>
                             <li>Нет назначенных целей</li>
                         <?php } ?>
@@ -155,7 +155,7 @@ if ($is_selected){
 					<div class="staff-block__competitions">
                         <?php if (count($data["competitions"]) > 0)
                             foreach ($data["competitions"] as $competition)
-                                print_competition($conn, (int)$competition);
+                                print_competition($conn, (int)$competition, $user->get_id());
                         else{ ?>
                             <p>Нет назначенных соревнований</p>
                         <?php } ?>
@@ -168,7 +168,7 @@ if ($is_selected){
 					<div class="staff-block__useful-links">
                         <?php if (count($data["info"]) > 0)
                             foreach ($data["info"] as $advice)
-                                print_advice($conn, (int)$advice);
+                                print_advice($conn, (int)$advice, $user->get_id());
                         else{ ?>
                             <p>Нет назначенных советов</p>
                         <?php } ?>

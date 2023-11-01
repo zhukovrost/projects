@@ -210,11 +210,13 @@ function print_user_block_request($name, $surname, $file, $id, $request_id){
     echo render($replacements, "../templates/user_block_request.html");
 }
 
-function print_medicine($conn, $id){
+function print_medicine($conn, $id, $user_id){
     $sql = "SELECT name, caption FROM medicines WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
-            $reps = array("{{ name }}" => $item["name"], "{{ caption }}" => $item["caption"]);
+            $update = '';
+            $delete = '<a href="delete_medicine.php?option=delete&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+            $reps = array("{{ name }}" => $item["name"], "{{ caption }}" => $item["caption"], "{{ update }}" => $update, "{{ delete }}" => $delete);
             echo render($reps, "../templates/medicine.html");
         }
     }else{
@@ -222,19 +224,21 @@ function print_medicine($conn, $id){
     }
 }
 
-function print_goal($conn, $id){
+function print_goal($conn, $id, $user_id){
     $sql = "SELECT name, done FROM goals WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
             if ((int)$item["done"]){
-                $done = '<a href="goal_done.php?id=$id&val=0" class="staff-block__goal-button staff-block__goal-button--text">Выполненна</a>';
+                $done = '<a href="goal_done.php?id='.$id.'&val=0&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Выполненна</a>';
                 $checkmark = "../img/green_check_mark.svg";
             }else{
-                $done = '<a href="goal_done.php?id=$id&val=1" class="staff-block__goal-button staff-block__goal-button--text">Не выполненна</a>';
+                $done = '<a href="goal_done.php?id='.$id.'&val=1&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Не выполненна</a>';
                 $checkmark = "../img/red_check_mark.svg";
             }
 
-            $reps = array("{{ name }}" => $item["name"], "{{ done }}" => $done, "{{ checkmark }}" => $checkmark);
+            $delete = '<a href="delete_coach_info.php?item=goal&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+
+            $reps = array("{{ name }}" => $item["name"], "{{ done }}" => $done, "{{ checkmark }}" => $checkmark, "{{ delete }}" => $delete);
             echo render($reps, "../templates/goal.html");
         }
     }else{
@@ -242,7 +246,7 @@ function print_goal($conn, $id){
     }
 }
 
-function print_competition($conn, $id){
+function print_competition($conn, $id, $user_id){
     $sql = "SELECT name, link, date FROM competitions WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
@@ -256,7 +260,9 @@ function print_competition($conn, $id){
             else
                 $date = date("d.m.Y", $item["date"]);
 
-            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ date }}" => $date);
+            $delete = '<a href="delete_coach_info.php?item=competition&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+
+            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ date }}" => $date, "{{ delete }}" => $delete);
             echo render($reps, "../templates/competition.html");
         }
     }else{
@@ -264,7 +270,7 @@ function print_competition($conn, $id){
     }
 }
 
-function print_advice($conn, $id){
+function print_advice($conn, $id, $user_id){
     $sql = "SELECT name, link FROM coach_advice WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
@@ -273,7 +279,9 @@ function print_advice($conn, $id){
             else
                 $link = '<a class="staff-block__link-button staff-block__link-button--info-link" href="'.$item["link"].'"><img src="../img/link.svg" alt=""></a>';
 
-            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link);
+            $delete = '<a href="delete_coach_info.php?item=info&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+
+            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ delete }}" => $delete);
             echo render($reps, "../templates/advice.html");
         }
     }else{
