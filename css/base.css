@@ -914,10 +914,18 @@ body {
     padding-top: 10px;
 }
 
+.day-workouts__card-buttons--c{
+    flex-direction: column;
+}
+
 .day-workouts__card-button{
     font-size: 20px;
     padding: 5px 15px;
-    margin: 0px 7px;
+    margin: 5px 7px;
+}
+
+.day-workouts__card-button img{
+    margin-left: auto;
 }
 
 .day-workouts__card-button--add:hover img,

@@ -278,6 +278,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 		// Popup exercises
 		let exercisesButtons = document.querySelectorAll('.exercise-item__rating');
+		let deliteButtons = document.querySelectorAll('.exercise-item__buttons .button-text');
 		let popupExerciseItem = document.querySelector('.popup-exercise .exercise-item');
 		let popupExerciseWindow = document.querySelector('.popup-exercise');
 		let inputExerciseId = document.querySelector('.popup-exercise .exercise_id');
@@ -291,7 +292,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				let item = exercisesButtons[i].parentElement.parentElement;
 				popupExerciseItem.innerHTML = '';
 				popupExerciseItem.innerHTML = item.innerHTML;
-				inputExerciseId.value = exercisesButtons[i].value;
+				inputExerciseId.value = deliteButtons[i].value;
 				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
 
 				popupExerciseWindow.classList.add("open");
