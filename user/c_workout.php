@@ -66,7 +66,7 @@ if (isset($_POST["week_days"])){
 					<!-- Buttons edit and start -->
 					<div class="day-workouts__card-buttons">
 						<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_exercises.php"><p>Добавить</p> <img src="../img/add.svg" alt=""></a>
-						<button class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></button>
+						<a href="clear.php" class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
 			</section>
