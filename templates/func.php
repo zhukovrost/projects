@@ -29,19 +29,15 @@ function inc_head($title="OpenDoor", $main_dir=false){
     include "head.php";
 }
 
-function log_warning($if, $warning){
-    if (isset($_POST['log_done'])){
-        if ($if){
-            echo "<p class='warning'>".$warning."</p>";
-        }
+function log_warning($if, $error){
+    if ($if){
+        echo "<p class='warning'>".$error."</p>";
     }
 }
 
-function reg_warning($if, $warning){
-    if (isset($_POST['reg_done'])){
-        if ($if){
-            echo "<p class='warning'>".$warning."</p>";
-        }
+function reg_warning($if, $error){
+    if ($if){
+        echo "<p class='warning'>".$error."</p>";
     }
 }
 

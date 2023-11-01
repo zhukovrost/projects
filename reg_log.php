@@ -17,7 +17,7 @@ $error_array = array(
 );
 
 if (isset($_POST['reg'])){
-    $error_array = $user_data->reg($conn, $_POST['reg_login'], $_POST['reg_status'], $_POST['reg_password'], $_POST['reg_password2'], $_POST['reg_name'], $_POST['reg_surname'], $_POST['reg_email']);
+    $error_array = $user_data->reg($conn, $_POST['reg_login'], $_POST['reg_status'], $_POST['reg_password'], $_POST['reg_password2'], $_POST['reg_name'], $_POST['reg_surname']);
 }
 
 if (isset($_POST['log'])){
@@ -81,8 +81,6 @@ if (isset($_POST['log'])){
                         <label class="reg-form__profile-label" for="doctor">Врач</label>
                     </div>
                 </div>
-                <label class="reg-form__label" for="email">Почта</label>
-                <input class="reg-form__input" name="reg_email" type="email" id="email">
                 <label class="reg-form__label" for="login">Логин</label>
                 <input class="reg-form__input" name="reg_login" type="text" id="login">
                 <label class="reg-form__label" for="password">Пароль</label>
@@ -91,10 +89,10 @@ if (isset($_POST['log'])){
                 <input class="reg-form__input" name="reg_password2" type="password" id="check_password">
                 <button class="button-text reg-form__submit" type="submit" name="reg" value="1">Зарегистрироваться</button>
                 <?php
-                reg_warning($error_array['reg_login_is_used'], "This login is not available");
-                reg_warning($error_array['reg_passwords_are_not_the_same'], "Passwords are not equal, try again");
-                reg_warning($error_array['reg_fill_all_input_fields'], "Fill all the fields");
-                reg_warning($error_array["too_long_string"], "Too long string");
+                reg_warning($error_array['reg_login_is_used'], "Логин занят");
+                reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают");
+                reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
+                reg_warning($error_array["too_long_string"], "Превышел лимит символов");
                 if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Error: " . $conn->error); }
                 $conn->close();
                 ?>

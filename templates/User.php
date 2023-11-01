@@ -8,7 +8,6 @@ class User {
     public $name="Guest";
     public $surname='';
     public $description='';
-    private $email;
     public $avatar=1;
     private $password='';
     public $subscriptions = [];
@@ -89,7 +88,6 @@ class User {
                     $this->login = $item['login'];
                     $this->name = $item['name'];
                     $this->surname = $item['surname'];
-                    $this->email = $item['email'];
                     $this->status = $item['status'];
                     $this->avatar = $item['avatar'];
                     $this->password = $item['password'];
@@ -229,7 +227,7 @@ class User {
         header('Location: user/profile.php');
     }
 
-    public function reg($conn, $login, $status, $password, $password2, $name, $surname, $email)
+    public function reg($conn, $login, $status, $password, $password2, $name, $surname)
     {
         # ---------- collecting errors ---------------
         $error_array = array(
@@ -251,7 +249,6 @@ class User {
         $password2 = trim($password2);
         $name = trim($name);
         $surname = trim($surname);
-        $email = trim($email);
 
         # --------- checking data --------------
 
@@ -264,7 +261,7 @@ class User {
             return $error_array;
         }
         $password = $password2 = md5($password); # hashing password
-        if (strlen($login) > 32 || strlen($surname) > 32 || strlen($email) > 64 || strlen($name) > 32 || strlen($password) > 256) { # checking length
+        if (strlen($login) > 32 || strlen($surname) > 32 || strlen($name) > 32 || strlen($password) > 256) { # checking length
             $error_array["too_long_string"] = true;
             return $error_array;
         }
@@ -281,7 +278,7 @@ class User {
             return $error_array;
         }
 
-        $reg_sql = "INSERT INTO users(login, status, password, name, surname, email) VALUES('$login', '$status', '$password', '$name', '$surname', '$email')";
+        $reg_sql = "INSERT INTO users(login, status, password, name, surname) VALUES('$login', '$status', '$password', '$name', '$surname')";
         if (!($conn->query($reg_sql))) { # querying
             $error_array['reg_conn_error'] = true;
             header("Location: reg_log.php?reg=1");
