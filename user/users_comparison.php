@@ -41,8 +41,69 @@ if (isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user2
                     } ?>
 			</section>
 		</div>
+
+        <section class="popup-exercise popup-exercise--user-first">
+			<form class="popup-exercise__content popup-exercise--add-users__form">
+				<button type="button" type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+                <div class="popup-exercise--add-users__item">
+					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list1" name="users[]" value="1"/>
+					<label class="popup-exercise--add-users__label" for="users-list1">sdvsadvsadv</label>
+				</div>
+				<button type="submit" class="button-text popup-exercise--add-users__button-add" type="submit"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
+			</form>
+		</section>
+
+        <section class="popup-exercise popup-exercise--user-second">
+            <form class="popup-exercise__content popup-exercise--add-users__form">
+				<button type="button" type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+                <div class="popup-exercise--add-users__item">
+					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list2" name="users[]" value="1"/>
+					<label class="popup-exercise--add-users__label" for="users-list2">sdvsadvsadv</label>
+				</div>
+				<button type="submit" class="button-text popup-exercise--add-users__button-add" type="submit"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
+			</form> 
+		</section>
+	</main>
 	</main>
 
     <?php include "../templates/footer.html" ?>
+
+    <script>
+        let FirstUserAddPopup = document.querySelector('.popup-exercise--user-first');
+        let SecondUserAddPopup = document.querySelector('.popup-exercise--user-second');
+
+        let userAddButton = document.querySelectorAll('.comparison-block__add-button');
+
+        for(let i = 0; i < userAddButton.length; i++){
+            userAddButton[i].addEventListener('click', function(){
+                console.log(1)
+                if(i == 0){
+                    FirstUserAddPopup.classList.add("open");
+                }
+                if(i == 1){
+                    SecondUserAddPopup.classList.add("open");
+                }
+            });
+        }
+
+        const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
+		for(let i = 0; i < closeBtn.length; i++){
+			closeBtn[i].addEventListener('click', function(){
+				FirstUserAddPopup.classList.remove("open");
+                SecondUserAddPopup.classList.remove("open");
+			});
+		}
+
+		window.addEventListener('keydown', (e) => {
+            if(e.key == "Escape"){
+                FirstUserAddPopup.classList.remove("open");
+                SecondUserAddPopup.classList.remove("open");
+            }
+		});
+
+		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
+    </script>
 </body>
 </html>

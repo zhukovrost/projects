@@ -53,7 +53,6 @@ $user_data->set_subscriptions($conn);
         <?php if (count($users_array) == 0){ ?>
             <p class="users-list__title-none">Пользователь не найден</p>
         <?php } ?>
-	</main>
 
     <?php include "../templates/footer.html" ?>
 </body>

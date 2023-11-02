@@ -208,16 +208,6 @@ if ($is_selected){
 		</div>
 
 
-		<!-- Goals edit
-		<section class="popup-exercise popup-exercise--goals-edit">
-			<form method="post" class="popup-exercise__content">
-				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item goals-edit__name" type="text" placeholder="название цели">
-				<button class="button-text popup-exercise__submit-button">Сохранить</button>
-			</form>
-		</section>
-		-->
-
 		<!-- Goals add -->
 		<section class="popup-exercise popup-exercise--goals-add">
 			<form method="post" class="popup-exercise__content">
@@ -229,17 +219,6 @@ if ($is_selected){
 			</form>
 		</section>
 
-		<!-- Competitions edit
-		<section class="popup-exercise popup-exercise--competitions-edit">
-			<form method="post" class="popup-exercise__content">
-				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item competitions-edit__name" type="text" placeholder="название соревнования">
-				<input class="popup-exercise__input-item popup-exercise__input-item--file competitions-edit__file" type="file">
-				<input class="popup-exercise__input-item competitions-edit__link" type="text" placeholder="вставьте ссылку">
-				<button class="button-text popup-exercise__submit-button">Сохранить</button>
-			</form>
-		</section>
-		-->
 
 		<!-- Competitions add-->
 		<section class="popup-exercise popup-exercise--competitions-add">
@@ -254,17 +233,6 @@ if ($is_selected){
 			</form>
 		</section>
 
-		<!-- Useful links edit
-		<section class="popup-exercise popup-exercise--links-edit">
-			<form method="post" class="popup-exercise__content">
-				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<input class="popup-exercise__input-item links-edit__name" type="text" placeholder="название">
-				<input class="popup-exercise__input-item popup-exercise__input-item--file links-edit__file" type="file">
-				<input class="popup-exercise__input-item links-edit__link" type="text" placeholder="вставьте ссылку">
-				<button class="button-text popup-exercise__submit-button">Сохранить</button>
-			</form>
-		</section>
-		-->
 
 		<!-- Useful links add-->
 		<section class="popup-exercise popup-exercise--links-add">
