@@ -72,7 +72,7 @@ class Exercise {
         return false;
     }
 
-    public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false){
+    public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false, $is_current=false){
         if ($this->description == ""){
             $description = "No description for this exercise";
         }else{
@@ -126,7 +126,7 @@ class User_Exercise extends Exercise {
         $this->approaches = $approaches;
     }
 
-    public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false){
+    public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false, $is_current=false){
         if ($this->description == ""){
             $description = "No description for this exercise";
         }else{

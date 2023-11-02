@@ -288,3 +288,24 @@ function print_advice($conn, $id, $user_id){
         echo $conn->error;
     }
 }
+
+function get_reps_for_comparison($user, $conn){
+    $tg = '';
+    if ($user->vk != NULL)
+        $tg = '<a href="'.$user->vk.'" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>';
+    $vk = '';
+    if ($user->tg != NULL)
+        $vk = '<a href="'.$user->tg.'" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>';
+    $reps = array(
+        "{{ name }}" => $user->name,
+        "{{ surname }}" => $user->surname,
+        "{{ avatar }}" => $user->get_avatar($conn),
+        "{{ vk_button }}" => $vk,
+        "{{ tg_button }}" => $tg,
+        "{{ delete_link }}" => "delete_sportsman.php?".$user->get_id(),
+        "{{ weight }}" => $user->weight,
+        "{{ height }}" => $user->height
+    );
+
+    return $reps;
+}
