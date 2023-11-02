@@ -291,11 +291,8 @@ if ($is_selected){
 		let LinksEditPopup = document.querySelector('.popup-exercise--links-edit');
 		let LinksAddPopup = document.querySelector('.popup-exercise--links-add');
 
-		let GoalsEditButtons = document.querySelectorAll('.staff-block__item-button--goal-edit');
 		let GoalsAddButton = document.querySelector('.staff-block__item-button--goal-add');
-		let CompetitionsEditButtons = document.querySelectorAll('.staff-block__item-button--competition-edit');
 		let CompetitionsAddButton = document.querySelector('.staff-block__item-button--competition-add');
-		let LinksEditButtons = document.querySelectorAll('.staff-block__item-button--link-edit');
 		let LinksAddButton = document.querySelector('.staff-block__item-button--link-add');
 
 		let GoalNameText = document.querySelectorAll('.staff-block__goal-text');
@@ -306,36 +303,16 @@ if ($is_selected){
 		let InfoFileText = document.querySelectorAll('.staff-block__link-button--info-file');
 		let InfoLinkText = document.querySelectorAll('.staff-block__link-button--info-link');
 
-		for(let i = 0; i < GoalsEditButtons.length; i++){
-			GoalsEditButtons[i].addEventListener('click', function(){
-				document.querySelector('.goals-edit__name').value = GoalNameText[i].innerHTML;
-				GoalsEditPopup.classList.add("open");
-			});
-		}
 
 		GoalsAddButton.addEventListener('click', function(){
 			GoalsAddPopup.classList.add("open");
 		});
 
-		for(let i = 0; i < CompetitionsEditButtons.length; i++){
-			CompetitionsEditButtons[i].addEventListener('click', function(){
-				document.querySelector('.competitions-edit__name').value = CompetitionNameText[i].innerHTML;
-				document.querySelector('.competitions-edit__link').value = CompetitionLinkText[i].href;
-				CompetitionsEditPopup.classList.add("open");
-			});
-		}
 
 		CompetitionsAddButton.addEventListener('click', function(){
 			CompetitionsAddPopup.classList.add("open");
 		});
 
-		for(let i = 0; i < LinksEditButtons.length; i++){
-			LinksEditButtons[i].addEventListener('click', function(){
-				document.querySelector('.links-edit__name').value = InfoNameText[i].innerHTML;
-				document.querySelector('.links-edit__link').value = InfoLinkText[i].href;
-				LinksEditPopup.classList.add("open");
-			});
-		}
 
 		LinksAddButton.addEventListener('click', function(){
 			LinksAddPopup.classList.add("open");
@@ -344,22 +321,16 @@ if ($is_selected){
 		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){
-				GoalsEditPopup.classList.remove("open");
 				GoalsAddPopup.classList.remove("open");
-				CompetitionsEditPopup.classList.remove("open");
 				CompetitionsAddPopup.classList.remove("open");
-				LinksEditPopup.classList.remove("open");
 				LinksAddPopup.classList.remove("open");
 			});
 		}
 
 		window.addEventListener('keydown', (e) => {
 		if(e.key == "Escape"){
-			GoalsEditPopup.classList.remove("open");
 			GoalsAddPopup.classList.remove("open");
-			CompetitionsEditPopup.classList.remove("open");
 			CompetitionsAddPopup.classList.remove("open");
-			LinksEditPopup.classList.remove("open");
 			LinksAddPopup.classList.remove("open");
 		}
 		});
