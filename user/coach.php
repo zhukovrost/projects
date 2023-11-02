@@ -85,6 +85,7 @@ if ($is_selected){
     $data["goals"] = json_decode($data["goals"]);
     $data["info"] = json_decode($data["info"]);
 }
+$user->set_program($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +95,7 @@ if ($is_selected){
 
 	<main class="staff-cover">
 		<div class="container">
-            <?php if ($is_selected && $user->set_program($conn)){ ?>
+            <?php if ($is_selected){ ?>
 			<section class="staff-block">
 				<p class="staff-block__title">Спортсмен</p>
 				<section class="staff-block__header">
