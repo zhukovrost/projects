@@ -587,6 +587,19 @@ class User {
         }
     }
 
+    public function get_current_phys_data($conn){
+        $id = $this->get_id();
+        $sql = "SELECT height, weight FROM phys_updates WHERE user=$id ORDER BY date DESC LIMIT 1";
+        if ($result = $conn->query($sql)){
+            foreach ($result as $item){
+                return array("height" => $item["height"], "weight" => $item["weight"]);
+            }
+            return array("height" => 0, "weight" => 0);
+        }else{
+            echo $conn->error;
+        }
+    }
+
     public function get_doctor_data($conn, $user_id=NULL){
         $sql = NULL;
         switch ($this->get_status()){

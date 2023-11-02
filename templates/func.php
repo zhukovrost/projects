@@ -289,22 +289,27 @@ function print_advice($conn, $id, $user_id){
     }
 }
 
-function get_reps_for_comparison($user, $conn){
+function get_reps_for_comparison($user, $conn, $user_number, $second_user_id){
+    $phys_data = $user->get_current_phys_data($conn);
     $tg = '';
     if ($user->vk != NULL)
         $tg = '<a href="'.$user->vk.'" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>';
     $vk = '';
     if ($user->tg != NULL)
         $vk = '<a href="'.$user->tg.'" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>';
+    if ($user_number == 1)
+        $delete = "users_comparison.php?user1=&user2=$second_user_id";
+    else
+        $delete = "users_comparison.php?user1=$second_user_id&user2=";
     $reps = array(
         "{{ name }}" => $user->name,
         "{{ surname }}" => $user->surname,
         "{{ avatar }}" => $user->get_avatar($conn),
         "{{ vk_button }}" => $vk,
         "{{ tg_button }}" => $tg,
-        "{{ delete_link }}" => "delete_sportsman.php?".$user->get_id(),
-        "{{ weight }}" => $user->weight,
-        "{{ height }}" => $user->height
+        "{{ delete_link }}" => $delete,
+        "{{ weight }}" => $phys_data["weight"],
+        "{{ height }}" => $phys_data["height"]
     );
 
     return $reps;

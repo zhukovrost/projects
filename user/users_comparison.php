@@ -7,8 +7,8 @@ $sportsmen = $user_data->get_sportsmen();
 if (isset($_GET["user1"]) && is_numeric($_GET["user1"]) && in_array($_GET["user1"], $sportsmen))
     $user1 = new User($conn, $_GET["user1"]);
 
-if (isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user1"], $sportsmen))
-    $user2 = new User($_GET["user2"]);
+if (isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user2"], $sportsmen))
+    $user2 = new User($conn, $_GET["user2"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,17 +25,19 @@ if (isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user1
                             <button class="button-text comparison-block__add-button"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
                         </section>
                     <?php } else {
-                        $reps = get_reps_for_comparison($user1, $conn);
+                        $reps = get_reps_for_comparison($user1, $conn, 1, $_GET["user2"]);
+                        echo render($reps, "../templates/comparison_block.html");
                     } ?>
 			</section>
 			<section class="comparison-block">
 				<p class="staff-block__title">Второй спортсмен</p>
-                    <?php if ($user1 == NULL){ ?>
+                    <?php if ($user2 == NULL){ ?>
                         <section class="staff-block__header">
                             <button class="button-text comparison-block__add-button"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
                         </section>
                     <?php } else {
-                        $reps = get_reps_for_comparison($user2, $conn);
+                        $reps = get_reps_for_comparison($user2, $conn, 2, $_GET["user1"]);
+                        echo render($reps, "../templates/comparison_block.html");
                     } ?>
 			</section>
 		</div>
