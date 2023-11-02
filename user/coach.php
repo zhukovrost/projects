@@ -84,14 +84,14 @@ if ($is_selected){
     $data["competitions"] = json_decode($data["competitions"]);
     $data["goals"] = json_decode($data["goals"]);
     $data["info"] = json_decode($data["info"]);
+    $user->set_program($conn);
 }
-$user->set_program($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
 <body>
-    <?php include "../templates/header.php" ?>
+    <?php include "../templates/header.php"; ?>
 
 	<main class="staff-cover">
 		<div class="container">

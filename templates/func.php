@@ -212,12 +212,15 @@ function print_user_block_request($name, $surname, $file, $id, $request_id){
     echo render($replacements, "../templates/user_block_request.html");
 }
 
-function print_medicine($conn, $id, $user_id){
+function print_medicine($conn, $id, $user_id, $edit=true){
     $sql = "SELECT name, caption FROM medicines WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
             $update = '';
-            $delete = '<a href="delete_medicine.php?option=delete&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+            if ($edit)
+                $delete = '<a href="delete_medicine.php?option=delete&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+            else
+                $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ caption }}" => $item["caption"], "{{ update }}" => $update, "{{ delete }}" => $delete);
             echo render($reps, "../templates/medicine.html");
         }
@@ -226,20 +229,27 @@ function print_medicine($conn, $id, $user_id){
     }
 }
 
-function print_goal($conn, $id, $user_id){
+function print_goal($conn, $id, $user_id, $edit=true){
     $sql = "SELECT name, done FROM goals WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
             if ((int)$item["done"]){
-                $done = '<a href="goal_done.php?id='.$id.'&val=0&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Выполненна</a>';
                 $checkmark = "../img/green_check_mark.svg";
+                if ($edit)
+                    $done = '<a href="goal_done.php?id='.$id.'&val=0&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Выполнена</a>';
+                else
+                    $done = '<p>Выполнена</p>';
             }else{
-                $done = '<a href="goal_done.php?id='.$id.'&val=1&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Не выполненна</a>';
                 $checkmark = "../img/red_check_mark.svg";
+                if ($edit)
+                    $done = '<a href="goal_done.php?id='.$id.'&val=1&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Не выполнена</a>';
+                else
+                    $done = '<p>Не выполнена</p>';
             }
-
-            $delete = '<a href="delete_coach_info.php?item=goal&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
-
+            if ($edit)
+                $delete = '<a href="delete_coach_info.php?item=goal&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+            else
+                $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ done }}" => $done, "{{ checkmark }}" => $checkmark, "{{ delete }}" => $delete);
             echo render($reps, "../templates/goal.html");
         }
@@ -248,7 +258,7 @@ function print_goal($conn, $id, $user_id){
     }
 }
 
-function print_competition($conn, $id, $user_id){
+function print_competition($conn, $id, $user_id, $edit=true){
     $sql = "SELECT name, link, date FROM competitions WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
@@ -261,9 +271,10 @@ function print_competition($conn, $id, $user_id){
                 $date = "Дата не указана";
             else
                 $date = date("d.m.Y", $item["date"]);
-
-            $delete = '<a href="delete_coach_info.php?item=competition&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
-
+            if ($edit)
+                $delete = '<a href="delete_coach_info.php?item=competition&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+            else
+                $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ date }}" => $date, "{{ delete }}" => $delete);
             echo render($reps, "../templates/competition.html");
         }
@@ -272,7 +283,7 @@ function print_competition($conn, $id, $user_id){
     }
 }
 
-function print_advice($conn, $id, $user_id){
+function print_advice($conn, $id, $user_id, $edit=true){
     $sql = "SELECT name, link FROM coach_advice WHERE id=$id";
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
@@ -280,9 +291,10 @@ function print_advice($conn, $id, $user_id){
                 $link = "";
             else
                 $link = '<a class="staff-block__link-button staff-block__link-button--info-link" href="'.$item["link"].'"><img src="../img/link.svg" alt=""></a>';
-
-            $delete = '<a href="delete_coach_info.php?item=info&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
-
+            if ($edit)
+                $delete = '<a href="delete_coach_info.php?item=info&user='.$user_id.'&id='.$id.'" class="button-img staff-block__item-button"><img src="../img/delete.svg" alt=""></a>';
+            else
+                $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ delete }}" => $delete);
             echo render($reps, "../templates/advice.html");
         }
