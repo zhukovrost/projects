@@ -279,8 +279,8 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                     <p class="popup-user__info-item-name">Тип доктора</p>
                     <select class="popup-user__select" name="type" id="">
                         <option class="popup-user__option" selected value="0">не указан</option>
-                        <option class="popup-user__option" value="1">личный тренер</option>
-                        <option class="popup-user__option" value="2">тренер команды</option>
+                        <option class="popup-user__option" value="1">личный врач</option>
+                        <option class="popup-user__option" value="2">врач команды</option>
                     </select>
                 </div>
 

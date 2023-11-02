@@ -548,10 +548,10 @@ class User {
         }
         if ($this->get_status() == "doctor"){
             switch ($this->type){
-                case 1:
+                case 2:
                     echo "Врач команды";
                     return;
-                case 2:
+                case 1:
                     echo "Личный врач";
                     return;
             }
