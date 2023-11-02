@@ -17,9 +17,11 @@ $muscles = array(
 );
 
 $exercise_cnt = 0;
+$time_cnt = 0;
 
 foreach ($user_data->workout_history as $item){
     $exercises = json_decode($item["exercises"]);
+    $time_cnt += $item["time_spent"];
     foreach ($exercises as $exercise){
         foreach (get_exercise_muscles($conn, $exercise) as $muscle){
             $muscles["cnt"]++;
@@ -28,6 +30,8 @@ foreach ($user_data->workout_history as $item){
         $exercise_cnt++;
     }
 }
+$time_cnt = round($time_cnt/60, 0);
+
 $user_data->get_phys_updates($conn);
 $height_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 $weight_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -91,7 +95,7 @@ if (count($user_data->phys_updates) != 0){
 							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo count($user_data->workout_history); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Программ: <span><?php echo $user_data->get_program_amount($conn); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Упражнений: <span><?php echo $exercise_cnt; ?></span></p>
-                            <p class="progress-block__workouts-statistic-item">Всего минут:<span>19837</span></p>
+                            <p class="progress-block__workouts-statistic-item">Всего минут:<span><?php echo $time_cnt; ?></span></p>
 						</section>
 					</div>
 					<!-- Current info -->

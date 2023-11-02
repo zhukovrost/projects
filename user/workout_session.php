@@ -62,9 +62,9 @@ $cnt_apps = 0;
         <h1 class="workout-session-footer__title">Осталось:</h1>
         <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений</h2>
         <h2 class="workout-session-footer__item"><span><?php echo $cnt_apps; ?></span> подходов</h2>
-        <form method="post">
-            <input class="workout-session-footer__input" type="hidden" value="0">
-            <a href="end_workout.php" class="button-text workout-session-footer__button">Завершить</a>
+        <form method="post" action="end_workout.php">
+            <input class="workout-session-footer__input" name="time" type="hidden" value="0">
+            <button class="button-text workout-session-footer__button">Завершить</button>
         </form>
         
     </footer>

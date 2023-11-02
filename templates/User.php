@@ -451,7 +451,7 @@ class User {
                                     "{{ minutes }}" => round($item['time_spent'] / 60, 0),
                                     "{{ muscle_group_amount }}" => $workout->get_groups_amount(),
                                     "{{ exercise_amount }}" => count($workout->exercises),
-                                    "{{ link }}" => ''
+                                    "{{ date }}" => date("d.m.Y", $item["date_completed"])
                                 );
                                 echo render($replacements, "../templates/workout_history_item.html");
                             }
@@ -466,7 +466,7 @@ class User {
 
 
     public function get_workout_history($conn){
-        $sql = "SELECT workout_history.id, workout_history.date_completed, workouts.exercises, workouts.approaches FROM workout_history INNER JOIN workouts ON workout_history.workout = workouts.id WHERE workout_history.user=$this->id ORDER BY workout_history.date_completed DESC";
+        $sql = "SELECT workout_history.id, workout_history.date_completed, workout_history.time_spent, workouts.exercises, workouts.approaches FROM workout_history INNER JOIN workouts ON workout_history.workout = workouts.id WHERE workout_history.user=$this->id ORDER BY workout_history.date_completed DESC";
         if ($result = $conn->query($sql)){
             foreach ($result as $item){
                 array_push($this->workout_history, $item);

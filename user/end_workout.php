@@ -8,7 +8,12 @@ $user_data->set_program($conn);
 $user_id = $user_data->get_id();
 $workout_id = $user_data->program->program[$weekday];
 $date_completed = time();
-$sql = "INSERT INTO workout_history (user, workout, date_completed) VALUES ($user_id, $workout_id, $date_completed)";
+if (empty($_POST["time"]) || !is_numeric($_POST["time"]))
+    $time = 0;
+else
+    $time = (int)$_POST["time"];
+
+$sql = "INSERT INTO workout_history (user, workout, date_completed, time_spent) VALUES ($user_id, $workout_id, $date_completed, $time)";
 if ($conn->query($sql)){
     header("Location: my_program.php");
 }else{
