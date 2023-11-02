@@ -87,6 +87,8 @@ function print_user_list($conn, $id_list){
     for ($i = 0; $i < 4; $i++){
         echo "<section class='friends-block__slide'>";
         $user_id = $id_list[$i];
+        if ($user_id == 0 || $user_id == NULL)
+            break;
         $user = new User($conn, $user_id);
         $replacements = array(
             "{{ id }}" => $user->get_id(),
