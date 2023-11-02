@@ -538,10 +538,10 @@ class User {
         }
         if ($this->get_status() == "coach"){
             switch ($this->type){
-                case 1:
+                case 2:
                     echo "Тренер команды";
                     return;
-                case 2:
+                case 1:
                     echo "Личный тренер";
                     return;
             }
