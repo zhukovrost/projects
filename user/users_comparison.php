@@ -26,7 +26,7 @@ $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
 				<p class="staff-block__title">Первый спортсмен</p>
                     <?php if ($user1 == NULL){ ?>
                         <section class="staff-block__header">
-                            <button class="button-text comparison-block__add-button"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
+                            <button class="button-text comparison-block__add-button comparison-block__add-button--first"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
                         </section>
                     <?php } else {
                         $reps = get_reps_for_comparison($user1, $conn, 1, $_GET["user2"]);
@@ -37,7 +37,7 @@ $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
 				<p class="staff-block__title">Второй спортсмен</p>
                     <?php if ($user2 == NULL){ ?>
                         <section class="staff-block__header">
-                            <button class="button-text comparison-block__add-button"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
+                            <button class="button-text comparison-block__add-button comparison-block__add-button--second"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
                         </section>
                     <?php } else {
                         $reps = get_reps_for_comparison($user2, $conn, 2, $_GET["user1"]);
@@ -85,19 +85,20 @@ $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
         let FirstUserAddPopup = document.querySelector('.popup-exercise--user-first');
         let SecondUserAddPopup = document.querySelector('.popup-exercise--user-second');
 
-        let userAddButton = document.querySelectorAll('.comparison-block__add-button');
+        let userAddButtonFirst = document.querySelector('.comparison-block__add-button--first');
+        let userAddButtonSecond = document.querySelector('.comparison-block__add-button--second');
 
-        for(let i = 0; i < userAddButton.length; i++){
-            userAddButton[i].addEventListener('click', function(){
-                console.log(1)
-                if(i == 0){
-                    FirstUserAddPopup.classList.add("open");
-                }
-                if(i == 1){
-                    SecondUserAddPopup.classList.add("open");
-                }
+        if(userAddButtonFirst){
+            userAddButtonFirst.addEventListener('click', function(){
+                FirstUserAddPopup.classList.add("open");
             });
         }
+        if(userAddButtonSecond){
+            userAddButtonSecond.addEventListener('click', function(){
+                SecondUserAddPopup.classList.add("open");
+            });
+        }
+        
 
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
