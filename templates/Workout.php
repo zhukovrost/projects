@@ -107,8 +107,7 @@ class Workout {
                 </div>
                 <?php if ($expand_buttons == 1){ ?>
                 <div class="day-workouts__card-buttons">
-                    <button class="button-img day-workouts__card-button"><img src="../img/more_white.svg" alt=""></button>
-                    <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
+                    <div class="workouts-card__info-line"></div>
                     <?php if ($additional_info){ ?>
                         <img class="day-workouts__card-img" src="../img/done.svg" alt="">
                     <?php }else{ ?>
@@ -116,12 +115,10 @@ class Workout {
                     <?php }?>
                 </div>
             <?php } else if ($expand_buttons == 2){ ?>
-                <div class="workouts-card__info-line"></div>
                 <div class="day-workouts__card-buttons">
-                    <?php if ($this->creator == $user_id){ ?>
-                        <button class="button-img day-workouts__card-button"><img src="../img/edit.svg" alt=""></button>
-                    <?php }
+                    <?php
                     if ($additional_info){ ?>
+                        <div class="workouts-card__info-line"></div>
                         <button class="button-text day-workouts__card-button day-workouts__card-button--time"><p>Таймер</p><img src="../img/time.svg" alt=""></button>
                     <?php } ?>
                 </div>

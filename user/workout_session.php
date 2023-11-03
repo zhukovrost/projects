@@ -104,8 +104,8 @@ $cnt_apps = 0;
 			}
         }
 
-        
 
+    
         // Timer
         let TimeForWork = localStorage.getItem('TimeForWork') * 60;
         let TimeForRest = localStorage.getItem('TimeForRest') * 60;
@@ -143,22 +143,20 @@ $cnt_apps = 0;
             localStorage.setItem(`Period`, 'Work');
         }
 
-        if(TimeForWork != -1 && TimeForRest != -1){
-            let IntervalTimer = setInterval(UpdateTime, 1000);
-            
-            time++;
-            workoutSessionInputTime.value = time;
-            localStorage.setItem(`SpendWorkoutTime`, time);
 
-            FinsishButton.addEventListener('click', function(){
-                clearInterval(IntervalTimer);
-                localStorage.setItem("TimeForWork", -1);
-                localStorage.setItem("TimeForRest", -1);
-                time = 0;
-                localStorage.setItem(`SpendWorkoutTime`, -1);
-            });
-        }
+        let IntervalTimer = setInterval(UpdateTime, 1000);
 
+        time++;
+        workoutSessionInputTime.value = time;
+        localStorage.setItem(`SpendWorkoutTime`, time);
+
+        FinsishButton.addEventListener('click', function(){
+            clearInterval(IntervalTimer);
+            localStorage.setItem("TimeForWork", -1);
+            localStorage.setItem("TimeForRest", -1);
+            time = 0;
+            localStorage.setItem(`SpendWorkoutTime`, -1);
+        });
 
         
         function UpdateTime(){
@@ -177,16 +175,50 @@ $cnt_apps = 0;
             workoutSessionInputTime.value = time;
             localStorage.setItem(`SpendWorkoutTime`, time);
 
-            if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) == TimeForWork){
-                timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
-                localStorage.setItem(`Period`, 'Rest');
-            }
-            else if (time % (TimeForWork + TimeForRest) == 0){
-                timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
-                localStorage.setItem(`Period`, 'Work');
+            if(TimeForWork >= 0 && TimeForRest >= 0){
+                if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) == TimeForWork){
+                    timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
+                    localStorage.setItem(`Period`, 'Rest');
+                }
+                else if (time % (TimeForWork + TimeForRest) == 0){
+                    timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
+                    localStorage.setItem(`Period`, 'Work');
+                }
             }
             
         }
+
+
+
+        // Progress
+        let repetDoneButtons = document.querySelectorAll('.exercise-item__done');
+        let exercisesLeft = document.querySelectorAll('.workout-session-footer__item span')[0];
+        let AllrepetsLeft = document.querySelectorAll('.workout-session-footer__item span')[1];
+        let exerciseRepetsLeft = document.querySelectorAll('.exercise-item__repetitions-title span');
+        let exerciseTitle = document.querySelectorAll('.exercise-item__repetitions-title');
+        
+        for(let i = 0; i < repetDoneButtons.length; i++){
+            repetDoneButtons[i].addEventListener('click', function(){
+                let Count = parseInt(exerciseRepetsLeft[i].innerHTML);
+                Count -= 1;
+                if(Count == 0){
+                    exerciseTitle[i].innerHTML = `сделанно`;
+                    exercisesLeft.innerHTML = `${parseInt(exercisesLeft.innerHTML) - 1}`;
+                    repetDoneButtons[i].style.cssText = `display: none;`;
+                }
+                exerciseRepetsLeft[i].innerHTML = `${parseInt(exerciseRepetsLeft[i].innerHTML) - 1}`;
+                AllrepetsLeft.innerHTML = `${parseInt(AllrepetsLeft.innerHTML) - 1}`;
+                if(parseInt(exercisesLeft.innerHTML) == 0){
+                    clearInterval(IntervalTimer);
+                    localStorage.setItem("TimeForWork", -1);
+                    localStorage.setItem("TimeForRest", -1);
+                    time = 0;
+                    localStorage.setItem(`SpendWorkoutTime`, -1);
+                    FinsishButton.click();
+                }
+            });
+        }
+
 
     </script>
 </body>

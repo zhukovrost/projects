@@ -409,6 +409,17 @@ body {
 }
 
 
+.exercise-item__done{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 23px;
+    padding: 5px 20px 5px 30px;
+}
+
+.exercise-item__done p{
+    margin-right: 20px;
+}
+
 
 /* ===ADD EXERCISE ITEM=== */
 /* Photo of exercise */
@@ -599,7 +610,7 @@ body {
 .workouts-card__info-line{
     height: 1px;
     width: 90%;
-    margin: 10px auto 15px; 
+    margin: 10px auto 5px;
     background: #CECECE;
 }
 
@@ -751,11 +762,15 @@ body {
     justify-content: center;
     position: relative;
     padding: 45px 10px 10px 10px;
-    margin: 20px 15px 15px 0px;
+    margin: 10px 15px 15px 0px;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 5px 5px 0px 0px #9A9A9A;
     border: 1px solid #C6C6C6;
     border-radius: 3px;
+}
+
+.coach-other .last-trainings{
+    margin: 0px 15px 15px 0px;
 }
 
 /* Title */
@@ -942,6 +957,12 @@ body {
     margin: 10px auto 0px;
 }
 
+.day-workouts__card-button--start-c{
+    width: fit-content;
+    margin: 15px auto 0px;
+    font-size: 20px;
+}
+
 .day-workouts__card-button p{
     margin-right: 15px;
 }
@@ -1008,6 +1029,10 @@ body {
     background-color: #ffffff;
     border-radius: 5px;
     padding: 30px 70px;
+}
+
+.popup-exercise__content .exercise-item{
+    max-width: 25vw;
 }
 
 .popup-exercise__close-button{

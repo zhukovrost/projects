@@ -2842,7 +2842,7 @@
     border-radius: 3px;
     border: 1px solid #CCCCCC;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-    padding: 40px 70px 30px;
+    padding: 40px 70px 10px;
 }
 
 .staff-block__title{
@@ -3003,15 +3003,16 @@
     font-size: 20px;
 }
 
-.staff-block__goals-item-cover{
+.staff-block__item-cover{
     display: flex;
+    justify-content: space-between;
 }
 
 .staff-block__goal-text{
     margin-right: 5px;
 }
 
-.staff-block__goals-item-cover img{
+.staff-block__item-cover img{
     width: 25px;
     height: 25px;
 }
@@ -3045,6 +3046,7 @@
 
 
 .staff-block__competitions{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3052,13 +3054,15 @@
 }
 
 .staff-block__competition-item{
+    width: 70%;
     display: flex;
+    justify-content: space-between;
     margin-top: 12px;
 }
 
 .staff-block__competition-text{
     font-size: 21px;
-    margin-right: 40px;
+    margin-right: 10px;
 }
 
 .staff-block__item-buttons{
@@ -3091,6 +3095,8 @@
 .staff-block__useful-links-item{
     display: flex;
     margin-top: 12px;
+    width: 30%;
+    justify-content: space-between;
 }
 
 .staff-block__useful-links-text{
@@ -3171,9 +3177,10 @@
 
 
 /* ========FOR COACH======== */
-.staff-block__goal-name{
+.staff-block__item-name{
     display: flex;
-    margin-right: 50px;
+    align-items: center;
+    margin-right: 30px;
 }
 
 .staff-block__goal-buttons{

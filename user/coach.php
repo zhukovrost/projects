@@ -107,7 +107,7 @@ if ($is_selected){
 						</div>
 						<div class="staff-block__buttons">
                             <?php if ($user->vk != NULL) { ?>
-                                <a href=<?php echo $user->vk; ?>"" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
+                                <a href=<?php echo $user->vk; ?> class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
                             <?php } if ($user->tg != NULL) { ?>
                                 <a href="<?php echo $user->tg; ?>" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>
                             <?php } ?>
@@ -149,6 +149,7 @@ if ($is_selected){
 						</div>
 						<a href="control_workouts.php" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
 					</div>
+					<a href="workout_session.php" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
