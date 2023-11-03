@@ -3402,6 +3402,17 @@
 }
 
 
+.comparison-block__statistic-button{
+    width: fit-content;
+    font-size: 23px;
+    padding: 8px 20px 8px 30px;
+    margin: 20px auto 0px;
+}
+
+.comparison-block__statistic-button p{
+    margin-right: 15px;
+}
+
 .comparison-block__exercises{
     width: 80%;
     margin:  20px auto;
