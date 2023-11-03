@@ -4,11 +4,15 @@ include "../templates/settings.php";
 $user1 = NULL;
 $user2 = NULL;
 $sportsmen = $user_data->get_sportsmen();
-if (isset($_GET["user1"]) && is_numeric($_GET["user1"]) && in_array($_GET["user1"], $sportsmen))
+$is_valid1 = isset($_GET["user1"]) && is_numeric($_GET["user1"]) && in_array($_GET["user1"], $sportsmen);
+$is_valid2 = isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user2"], $sportsmen);
+if ($is_valid1)
     $user1 = new User($conn, $_GET["user1"]);
 
-if (isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user2"], $sportsmen))
+if ($is_valid2)
     $user2 = new User($conn, $_GET["user2"]);
+
+$sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,10 +49,15 @@ if (isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user2
         <section class="popup-exercise popup-exercise--user-first">
 			<form class="popup-exercise__content popup-exercise--add-users__form">
 				<button type="button" type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-                <div class="popup-exercise--add-users__item">
-					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list1" name="users[]" value="1"/>
-					<label class="popup-exercise--add-users__label" for="users-list1">sdvsadvsadv</label>
-				</div>
+                    <?php foreach ($sportsmen_advanced as $sportsman){ ?>
+                    <div class="popup-exercise--add-users__item">
+                        <input class="popup-exercise--add-users__input" type="radio" id="users-list1" name="user1" value="<?php echo $sportsman->get_id(); ?>"/>
+                        <label class="popup-exercise--add-users__label" for="users-list1"><?php echo $sportsman->name. " " . $sportsman->surname; ?></label>
+                    </div>
+                    <?php }
+                    if ($is_valid2){ ?>
+                        <input type="hidden" name="user2" value="<?php echo $user2->get_id(); ?>">
+                    <?php } ?>
 				<button type="submit" class="button-text popup-exercise--add-users__button-add" type="submit"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 			</form>
 		</section>
@@ -56,14 +65,18 @@ if (isset($_GET["user2"]) && is_numeric($_GET["user2"]) && in_array($_GET["user2
         <section class="popup-exercise popup-exercise--user-second">
             <form class="popup-exercise__content popup-exercise--add-users__form">
 				<button type="button" type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+                <?php if ($is_valid1){ ?>
+                    <input type="hidden" name="user1" value="<?php echo $user1->get_id(); ?>">
+                <?php }
+                foreach ($sportsmen_advanced as $sportsman){ ?>
                 <div class="popup-exercise--add-users__item">
-					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list2" name="users[]" value="1"/>
-					<label class="popup-exercise--add-users__label" for="users-list2">sdvsadvsadv</label>
+					<input class="popup-exercise--add-users__input" type="radio" id="users-list2" name="user2" value="<?php echo $sportsman->get_id(); ?>"/>
+					<label class="popup-exercise--add-users__label" for="users-list2"><?php echo $sportsman->name. " " . $sportsman->surname; ?></label>
 				</div>
+                <?php } ?>
 				<button type="submit" class="button-text popup-exercise--add-users__button-add" type="submit"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 			</form> 
 		</section>
-	</main>
 	</main>
 
     <?php include "../templates/footer.html" ?>
