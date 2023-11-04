@@ -179,7 +179,7 @@ class User_Exercise extends Exercise {
 
         if ($current) {
             $btn_done = '';
-            $inp = '';
+            $inp = '<input type="text">';
         }
 
         $replaces = array(

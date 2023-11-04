@@ -11,7 +11,7 @@ $cnt_apps = 0;
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body class="workout-session">
+<form method="post" class="workout-session">
 <header class="workout-session__header">
     <a href="../index.php" class="header__item header__item--logo header__item--logo--workout">
         <img src="../img/logo.svg" alt="">
@@ -44,10 +44,11 @@ $cnt_apps = 0;
     </div>
 </main>
 
-<footer class="workout-session-footer">
-    <h1 class="workout-session-footer__title">Осталось:</h1>
-    <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений</h2>
-    <h2 class="workout-session-footer__item"><span><?php echo $cnt_apps; ?></span> подходов</h2>
+<footer class="workout-session-footer workout-session-footer--с">
+    <div class="workout-session-footer-cover">
+        <h1 class="workout-session-footer__title">Осталось:</h1>
+        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений(ия)</h2>
+    </div>
 
     <a href="end_control_workout.php?id=<?php echo $_GET["id"]; ?>" class="button-text workout-session-footer__button">Завершить</a>
 
@@ -90,90 +91,6 @@ $cnt_apps = 0;
 
 
 
-    // Timer
-    let TimeForWork = localStorage.getItem('TimeForWork') * 60;
-    let TimeForRest = localStorage.getItem('TimeForRest') * 60;
-    let currentWorkTime = 0;
-    let currentRestTime = 0;
-    const timer = document.querySelector('.workout-session__time');
-    let FinsishButton = document.querySelector('.workout-session-footer__button');
-    let time = 0;
-
-    let workoutSessionInputTime = document.querySelector('.workout-session-footer__input');
-
-    if(localStorage.getItem(`SpendWorkoutTime`) && localStorage.getItem(`SpendWorkoutTime`) != -1){
-        time = localStorage.getItem(`SpendWorkoutTime`);
-        workoutSessionInputTime.value = time;
-
-        let minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-        if (seconds < 10){
-            seconds = '0' + seconds;
-        }
-        if (minutes < 10){
-            minutes = '0' + minutes;
-        }
-        timer.innerHTML = `${minutes}:${seconds}`;
-
-        if (localStorage.getItem(`Period`) == 'Rest'){
-            timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
-        }
-        else{
-            timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
-        }
-    }
-    else{
-        localStorage.setItem(`SpendWorkoutTime`, 0);
-        localStorage.setItem(`Period`, 'Work');
-    }
-
-
-    let IntervalTimer = setInterval(UpdateTime, 1000);
-
-    time++;
-    workoutSessionInputTime.value = time;
-    localStorage.setItem(`SpendWorkoutTime`, time);
-
-    FinsishButton.addEventListener('click', function(){
-        clearInterval(IntervalTimer);
-        localStorage.setItem("TimeForWork", -1);
-        localStorage.setItem("TimeForRest", -1);
-        time = 0;
-        localStorage.setItem(`SpendWorkoutTime`, -1);
-    });
-
-
-    function UpdateTime(){
-        let minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-        if (seconds < 10){
-            seconds = '0' + seconds;
-        }
-        if (minutes < 10){
-            minutes = '0' + minutes;
-        }
-
-        timer.innerHTML = `${minutes}:${seconds}`;
-
-        time++;
-        workoutSessionInputTime.value = time;
-        localStorage.setItem(`SpendWorkoutTime`, time);
-
-        if(TimeForWork >= 0 && TimeForRest >= 0){
-            if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) == TimeForWork){
-                timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
-                localStorage.setItem(`Period`, 'Rest');
-            }
-            else if (time % (TimeForWork + TimeForRest) == 0){
-                timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
-                localStorage.setItem(`Period`, 'Work');
-            }
-        }
-
-    }
-
-
-
     // Progress
     let repetDoneButtons = document.querySelectorAll('.exercise-item__done');
     let exercisesLeft = document.querySelectorAll('.workout-session-footer__item span')[0];
@@ -187,75 +104,6 @@ $cnt_apps = 0;
     let allRepetsNumber = parseInt(allrepetsLeft.innerHTML);
 
 
-    // save data to local storage
-    if(localStorage.getItem('currentRepetsLeft') && localStorage.getItem('allRepetsNumber')){
-        let array = localStorage.getItem('currentRepetsLeft').split(',');
-        let exercisesLeftNumber = 0;
-        let doneRepetsNumber = parseInt(allrepetsLeft.innerHTML);
-
-        for(let i = 0; i < array.length; i++){
-            if(array[i] == '0'){
-                exerciseTitle[i].innerHTML = `сделанно`;
-                exercisesLeftNumber += 1;
-                repetDoneButtons[i].style.cssText = `display: none;`;
-            }
-            currentRepetsLeft[i].innerHTML = `${parseInt(array[i])}`;
-            doneRepetsNumber -= parseInt(array[i]);
-        }
-
-        allRepetsNumber = parseInt(localStorage.getItem('allRepetsNumber'));
-
-        allrepetsLeft.innerHTML = `${parseInt(allrepetsLeft.innerHTML) - doneRepetsNumber}`;
-        exercisesLeft.innerHTML = `${parseInt(exercisesLeft.innerHTML) - exercisesLeftNumber}`;
-        progressPercents.innerHTML = `${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
-        progressLine.style.cssText = `width:${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
-
-    }
-    else{
-        let array = [];
-        for(let i = 0; i < currentRepetsLeft.length; i++){
-            array.push(currentRepetsLeft[i].innerHTML);
-        }
-        localStorage.setItem('currentRepetsLeft', array);
-        localStorage.setItem('allRepetsNumber', parseInt(allrepetsLeft.innerHTML));
-    }
-
-
-    for(let i = 0; i < repetDoneButtons.length; i++){
-        repetDoneButtons[i].addEventListener('click', function(){
-            let Count = parseInt(currentRepetsLeft[i].innerHTML) - 1;
-
-            if(Count == 0){
-                exerciseTitle[i].innerHTML = `сделанно`;
-                exercisesLeft.innerHTML = `${parseInt(exercisesLeft.innerHTML) - 1}`;
-                repetDoneButtons[i].style.cssText = `display: none;`;
-            }
-
-            currentRepetsLeft[i].innerHTML = `${parseInt(currentRepetsLeft[i].innerHTML) - 1}`;
-            allrepetsLeft.innerHTML = `${parseInt(allrepetsLeft.innerHTML) - 1}`;
-            progressPercents.innerHTML = `${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
-            progressLine.style.cssText = `width:${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
-
-
-            let array = [];
-            for(let i = 0; i < currentRepetsLeft.length; i++){
-                array.push(currentRepetsLeft[i].innerHTML);
-            }
-            localStorage.setItem('currentRepetsLeft', array);
-            console.log(parseInt(exercisesLeft.innerHTML))
-
-            if(parseInt(exercisesLeft.innerHTML) == 0){
-                clearInterval(IntervalTimer);
-                localStorage.setItem("TimeForWork", -1);
-                localStorage.setItem("TimeForRest", -1);
-                localStorage.setItem(`SpendWorkoutTime`, -1);
-                localStorage.removeItem(`currentRepetsLeft`);
-                localStorage.removeItem(`allRepetsNumber`);
-                FinsishButton.click();
-            }
-        });
-    }
-
 
     let maximunExerciseCardHeight = 0;
     let exerciseCards = document.querySelectorAll('.exercise-item');
@@ -267,5 +115,5 @@ $cnt_apps = 0;
         exerciseCards[i].style.cssText = `height: ${maximunExerciseCardHeight}px;`;
     }
 </script>
-</body>
+</form>
 </html>

@@ -2229,8 +2229,13 @@
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
+.workout-session-footer--с{
+    width: 50%;
+}
+
 .workout-session-footer__title{
     font-size: 35px;
+    margin-right: 20px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
 }
@@ -2247,6 +2252,15 @@
 .workout-session-footer__button{
     font-size: 25px;
     padding: 10px 40px;
+}
+
+.workout-session-footer-cover{
+    display: flex;
+    align-items: center;
+}
+
+.workout-session-footer-cover .workout-session-footer__item{
+    transform: translateY(4px);
 }
 
 
