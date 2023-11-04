@@ -160,7 +160,7 @@ foreach ($user_data->program->workouts as $workout){
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Choose date
+        // Choose date of workouts
         let chooseDateInput = document.querySelector('.day-workouts__date-input');
         let chooseDateForm = document.querySelector('.day-workouts__date-form');
 
@@ -220,6 +220,7 @@ foreach ($user_data->program->workouts as $workout){
                 }
             },
         });
+
 
         // Height of friends block
         let friendsBlock = document.querySelector('.friends-block');
