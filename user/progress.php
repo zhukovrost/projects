@@ -92,10 +92,11 @@ if (count($user_data->phys_updates) != 0){
 						</section>
 						<!-- Statistic info -->
 						<section class="progress-block__workouts-statistic">
+                            <h3 class="progress-block__workouts-statistic-title">Всего:</h3>
 							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo count($user_data->workout_history); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Программ: <span><?php echo $user_data->get_program_amount($conn); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Упражнений: <span><?php echo $exercise_cnt; ?></span></p>
-                            <p class="progress-block__workouts-statistic-item">Всего минут:<span><?php echo $time_cnt; ?></span></p>
+                            <p class="progress-block__workouts-statistic-item">Затрачено минут:<span><?php echo $time_cnt; ?></span></p>
 						</section>
 					</div>
 					<!-- Current info -->

@@ -136,7 +136,7 @@ foreach ($user_data->program->workouts as $workout){
                 <section class="friends-block">
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
-                        <h1 class="friends-block__header-title">Прграммы друзей</h1>
+                        <h1 class="friends-block__header-title">Программы друзей</h1>
                         <a href="search_users.php" class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends' workout swiper -->
@@ -222,8 +222,8 @@ foreach ($user_data->program->workouts as $workout){
         });
 
         // Height of friends block
-        let friendsBlock = document.querySelector('.friends');
-        friendsBlock.style.cssText = `height: ${document.querySelector('.my_program .info .statistic').clientHeight}px;`;
+        let friendsBlock = document.querySelector('.friends-block');
+        friendsBlock.style.cssText = `height: ${document.querySelector('.my-program__statistic').clientHeight}px;`;
     </script>
 </body>
 </html>
