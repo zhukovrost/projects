@@ -85,6 +85,8 @@ function print_user_list($conn, $id_list){
         return 0;
     }
     for ($i = 0; $i < 4; $i++){
+        if (count($id_list) == $i)
+            break;
         $user_id = $id_list[$i];
         if ($user_id == 0 || $user_id == NULL)
             break;
