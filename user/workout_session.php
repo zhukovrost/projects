@@ -202,6 +202,7 @@ $cnt_apps = 0;
 
         let allRepetsNumber = parseInt(allrepetsLeft.innerHTML);
 
+
         // save data to local storage
         if(localStorage.getItem('currentRepetsLeft') && localStorage.getItem('allRepetsNumber')){
             let array = localStorage.getItem('currentRepetsLeft').split(',');
@@ -212,7 +213,6 @@ $cnt_apps = 0;
                 if(array[i] == '0'){
                     exerciseTitle[i].innerHTML = `сделанно`;
                     exercisesLeftNumber += 1;
-                    currentRepetsLeft[i].style.cssText = `display: none;`;
                     repetDoneButtons[i].style.cssText = `display: none;`;
                 }
                 currentRepetsLeft[i].innerHTML = `${parseInt(array[i])}`;
@@ -235,6 +235,7 @@ $cnt_apps = 0;
             localStorage.setItem('currentRepetsLeft', array);
             localStorage.setItem('allRepetsNumber', parseInt(allrepetsLeft.innerHTML));
         }
+
             
         for(let i = 0; i < repetDoneButtons.length; i++){
             repetDoneButtons[i].addEventListener('click', function(){
@@ -265,12 +266,22 @@ $cnt_apps = 0;
                     localStorage.setItem("TimeForRest", -1);
                     localStorage.setItem(`SpendWorkoutTime`, -1);
                     localStorage.removeItem(`currentRepetsLeft`);
+                    localStorage.removeItem(`allRepetsNumber`);
                     FinsishButton.click();
                 }
             });
             }
 
 
+            let maximunExerciseCardHeight = 0;
+            let exerciseCards = document.querySelectorAll('.exercise-item');
+            for(let i = 0; i < exerciseCards.length; i++){
+                maximunExerciseCardHeight = Math.max(maximunExerciseCardHeight, exerciseCards[i].clientHeight);
+            }
+
+            for(let i = 0; i < exerciseCards.length; i++){
+                exerciseCards[i].style.cssText = `height: ${maximunExerciseCardHeight}px;`;
+            }
     </script>
 </body>
 </html>

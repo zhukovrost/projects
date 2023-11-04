@@ -37,7 +37,7 @@ function log_warning($if, $error){
 
 function reg_warning($if, $error){
     if ($if){
-        echo "<p class='warning'>".$error."</p>";
+        echo "<p class='reg-form__warning'>".$error."</p>";
     }
 }
 
