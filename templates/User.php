@@ -677,4 +677,29 @@ class User {
             echo $conn->error;
         }
     }
+
+    public function get_control_workouts($conn, $user_id=NULL, $is_done){
+        $sql = NULL;
+        switch ($this->get_status()) {
+            case "coach":
+                $sql = "SELECT id FROM control_workouts WHERE user=$user_id ";
+                break;
+            case "user":
+                $sql = "SELECT id FROM control_workouts WHERE user=$this->id ";
+                break;
+        }
+        if ($is_done)
+            $sql .= "AND is_done=1 ORDER BY date DESC";
+        else
+            $sql .= "AND is_done=0 ORDER BY date";
+        $returnval = array();
+        if ($result = $conn->query($sql)){
+            foreach ($result as $item){
+                array_push($returnval, new Control_Workout($conn, $item["id"]));
+            }
+        }else{
+            echo $conn->error;
+        }
+        return $returnval;
+    }
 }

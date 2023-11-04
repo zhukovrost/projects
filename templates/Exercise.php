@@ -142,6 +142,9 @@ class User_Exercise extends Exercise {
             $muscle_list .= translate_group($muscle) . " ";
         }
         $muscle_list = str_replace(' ', '-', trim($muscle_list));
+        $btn_done = '';
+        if ($is_current)
+            $btn_done = '<button class="button-text exercise-item__done"><p>Подход сделан</p><img src="../img/done_white.svg" alt=""></button>';
 
         $replaces = array(
             "{{ button_featured }}" => $button_featured,
@@ -153,8 +156,43 @@ class User_Exercise extends Exercise {
             "{{ muscle }}" => $muscle_list,
             "{{ reps }}" => $this->reps,
             "{{ approaches }}" => $this->approaches,
-            "{{ description }}" => $description
+            "{{ description }}" => $description,
+            "{{ button_done }}" => $btn_done
         );
         echo render($replaces, "../templates/user_exercise.html");
+    }
+
+    public function print_control_exercise($conn, $current=false){
+        if ($this->description == ""){
+            $description = "No description for this exercise";
+        }else{
+            $description = $this->description;
+        }
+        $muscle_list = "";
+        foreach ($this->muscles as $muscle){
+            $muscle_list .= translate_group($muscle) . " ";
+        }
+        $muscle_list = str_replace(' ', '-', trim($muscle_list));
+
+        $btn_done = '';
+        $inp = '';
+
+        if ($current) {
+            $btn_done = '';
+            $inp = '';
+        }
+
+        $replaces = array(
+            "{{ image }}" => $this->get_image($conn),
+            "{{ name }}" => $this->name,
+            "{{ rating }}" => $this->rating,
+            "{{ difficulty }}" => $this->difficulty,
+            "{{ muscle }}" => $muscle_list,
+            "{{ approaches }}" => $this->approaches,
+            "{{ description }}" => $description,
+            "{{ button }}" => $btn_done,
+            "{{ input }}" => $inp
+        );
+        echo render($replaces, "../templates/control_exercise.html");
     }
 }

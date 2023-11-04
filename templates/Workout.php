@@ -75,7 +75,7 @@ class Workout {
 
     public function print_exercises($conn){
         foreach ($this->exercises as $exercise){
-            $exercise->print_it($conn);
+            $exercise->print_control_exercise($conn);
         }
     }
 
@@ -155,5 +155,47 @@ class Workout {
             echo $conn->error;
         }
         return false;
+    }
+}
+
+class Control_Workout extends Workout{
+    private $is_done = false;
+    public $date;
+
+    public function __construct($conn, $workout_id){
+        if ($workout_id == 0){
+            $this->holiday = true;
+        }else{
+            $select_sql = "SELECT * FROM control_workouts WHERE id=$workout_id";
+            if ($select_result = $conn->query($select_sql)){
+                foreach ($select_result as $item){
+                    $this->id = $item['id'];
+                    $this->loops = $item['loops'];
+                    $exercises = json_decode($item['exercises']);
+                    $reps = json_decode($item['reps']);
+                    $approaches = json_decode($item['approaches']);
+                    $this->name = $item['name'];
+                    $this->creator = $item["creator"];
+                    $this->is_done = $item["is_done"];
+                    $this->date = $item["date"];
+                    $this->weekday = date("N", $item["date"]);
+                    if ($this->is_done)
+                        for ($i = 0; $i < count($exercises); $i++)
+                            array_push($this->exercises, new User_Exercise($conn, $exercises[$i], $reps[$i], $approaches[$i]));
+                    else
+                        for ($i = 0; $i < count($exercises); $i++)
+                            array_push($this->exercises, new User_Exercise($conn, $exercises[$i], 0, $approaches[$i]));
+
+                }
+            }else{
+                echo $conn->error;
+            }
+            $select_result->free();
+        }
+    }
+
+    public function get_is_done()
+    {
+        return $this->is_done;
     }
 }

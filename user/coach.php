@@ -85,6 +85,7 @@ if ($is_selected){
     $data["goals"] = json_decode($data["goals"]);
     $data["info"] = json_decode($data["info"]);
     $user->set_program($conn);
+    $control_workouts = $user_data->get_control_workouts($conn, $user->get_id(), 0);
 }
 ?>
 <!DOCTYPE html>
@@ -142,15 +143,20 @@ if ($is_selected){
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Контрольные тренировки</h2>
-					<div class="staff-block__control-workout-nearest">
-						<div class="staff-block__control-workout-info">
-							<p class="staff-block__control-workout-text">Ближайшая:</p>
-							<div class="staff-block__control-workouts-date">12.12.2023</div>
-						</div>
-						<a href="control_workouts.php" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
-					</div>
-					<a href="workout_session.php" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
-				</section>
+                    <?php if (count($control_workouts) > 0){ ?>
+                        <div class="staff-block__control-workout-nearest">
+                            <div class="staff-block__control-workout-info">
+                                <p class="staff-block__control-workout-text">Ближайшая:</p>
+                                <div class="staff-block__control-workouts-date"><?php echo date("d.m.Y", ($control_workouts[0])->date); ?></div>
+                            </div>
+                            <a href="control_workouts.php?user=<?php echo $user->get_id(); ?>" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
+                        </div>
+                        <a href="workout_session.php?id=<?php echo $control_workouts[0]->id; ?>" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
+				    <?php } else { ?>
+                        <p>Нет назначенных контрольных тренировок</p>
+                        <a href="control_workouts.php?user=<?php echo $user->get_id(); ?>">Подробнее</a>
+                    <?php } ?>
+                </section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Турниры и соревнования</h2>
