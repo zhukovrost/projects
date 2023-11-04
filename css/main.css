@@ -1182,11 +1182,18 @@
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 40px 50px;
-    margin-left: 50px;
+    padding: 20px 50px 30px;
+    margin-left: 40px;
     border-radius: 3px;
     border: 2px solid #C6C6C6;
     background-color: #FAFAFA
+}
+
+.progress-block__workouts-statistic-title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .progress-block__workouts-statistic-item{
