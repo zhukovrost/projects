@@ -29,7 +29,7 @@ $user_data->set_subscriptions($conn);
             <?php if ($user_data->get_status() == "coach" || $user_data->get_status() == "doctor"){ ?>
             <a class="button-text users-search-nav__item" href="requests.php">Новые заявки (<?php echo count($user_data->get_requests()); ?>)<img src="../img/application.svg" alt=""></a>
             <?php } ?>
-			<a class="button-text users-search-nav__item" href="c_exercises.php?my=1">Подписчики <img src="../img/arrow_white.svg" alt=""></a>
+			<a class="button-text users-search-nav__item" href="c_exercises.php?my=1"><p>Подписки</p><img src="../img/arrow_white.svg" alt=""></a>
 			<!-- Exercise search -->
 			<form method="post" class="users-search-nav__search">
 				<input class="users-search-nav__search-input" type="text" placeholder="Искать" name="search">

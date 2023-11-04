@@ -111,6 +111,7 @@ if (isset($_POST['log'])){
         let regButton = document.querySelector('.log-reg__switch-button--reg');
         let logForm = document.querySelector('.log-form');
         let regForm = document.querySelector('.reg-form');
+        let regDoneButton = document.querySelector('.reg-form__warning');
 
 
         logButton.addEventListener('click', function(){
@@ -133,6 +134,10 @@ if (isset($_POST['log'])){
             }
         });
 
+        if(regDoneButton.length == 0){
+            localStorage.setItem('SwitchRegLogButton', 'log');
+        }
+
         //local storage buttons data
         if(localStorage.getItem('SwitchRegLogButton')){
             if(localStorage.getItem('SwitchRegLogButton') == 'reg'){
@@ -143,7 +148,7 @@ if (isset($_POST['log'])){
             }
         }
         else{
-            localStorage.setItem('SwitchRegLogButton', 'log')
+            localStorage.setItem('SwitchRegLogButton', 'log');
         }
 
         

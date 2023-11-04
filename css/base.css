@@ -133,16 +133,8 @@ body {
     width: 90%;
     padding: 5px 20px 5px;
     border-top: 1px solid rgb(41, 41, 41);
-    color: #ffffff;
+    color: #000000;
     font-size: 16px;
-}
-
-.main_footer .footer__email-btn{
-    color: #ececec;
-}
-
-.main_footer .footer__email-btn:hover{
-    color: #ffffff;
 }
 
 .footer__social-media{ 

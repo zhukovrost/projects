@@ -11,6 +11,19 @@
     padding-bottom: 60px;
 }
 
+.welcome-page .main_footer{
+    color: #ffffff;
+}
+
+.welcome-page .footer__email-btn{
+    color: #ececec;
+}
+
+.welcome-page .footer__email-btn:hover{
+    color: #ffffff;
+}
+
+
 /* ===FIRST BLOCK=== */
 .welcome-block-1{
     overflow: hidden;
@@ -1226,8 +1239,22 @@
 
 .user-block__sub-button{
     font-size: 25px;
-    padding: 5px 20px;
+    padding: 5px 15px 5px 20px;
     margin-top: 10px;
+}
+
+.user-block__sub-button p{
+    margin-right: 10px;
+}
+
+.user-block__sub-button img{
+    width: 20px;
+    height: 20px;
+}
+
+.user-block__sub-button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
 }
 
 /* User info text */
@@ -1458,12 +1485,8 @@
 }
 
 .user-block__sub-count-item{
-    color: #5e5d5d;
-    font-size: 20px;
-}
-
-.user-block__sub-count-item:hover{
     color: #000000;
+    font-size: 20px;
 }
 
 
