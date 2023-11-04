@@ -17,7 +17,11 @@ $error_array = array(
 );
 
 if (isset($_POST['reg'])){
-    $error_array = $user_data->reg($conn, $_POST['reg_login'], $_POST['reg_status'], $_POST['reg_password'], $_POST['reg_password2'], $_POST['reg_name'], $_POST['reg_surname']);
+    $reg_stat = NULL;
+    if (isset($_POST['reg_status'])){
+        $reg_stat = $_POST['reg_status'];
+    }
+    $error_array = $user_data->reg($conn, $_POST['reg_login'], $reg_stat, $_POST['reg_password'], $_POST['reg_password2'], $_POST['reg_name'], $_POST['reg_surname']);
 }
 
 if (isset($_POST['log'])){

@@ -256,7 +256,7 @@ class User {
 
         # --------- checking data --------------
 
-        if ($login == '' || $password == '' || $name == '' || $surname == '' || empty($status)) { # checking blank fields
+        if ($login == '' || $password == '' || $name == '' || $surname == '' || $status == NULL) { # checking blank fields
             $error_array['reg_fill_all_input_fields'] = true;
             return $error_array;
         }
