@@ -93,7 +93,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                             <img id="profileImage" src="<?php echo $user->get_avatar($conn); ?>">
                             <input type="file" id="avatar_file" accept="image/*" />
                             <?php if ($user->get_auth()){?>
-                            <label for="avatar_file" class="uppload_button">Choose photo</label>
+                            <label for="avatar_file" class="uppload_button">Выбрать фото</label>
                             <?php } ?>
                             <input type="hidden" id="image_to_php" name="image_to_php" value="">
                         </form>
@@ -186,8 +186,8 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 					</div>
                     <!-- Count of subscribers and subscriptions -->
 					<div class="user-block__sub-count">
-						<p class="user-block__sub-count-item" href=""><span><?php echo count($user->subscribers); ?> подписчика(ов)</span></p>
-						<p class="user-block__sub-count-item" href=""><span><?php echo count($user->subscriptions); ?> подписок(ски)</span></p>
+						<p class="user-block__sub-count-item" href=""><span>Подписчики: <?php echo count($user->subscribers); ?></span></p>
+						<p class="user-block__sub-count-item" href=""><span>Подписки: <?php echo count($user->subscriptions); ?></span></p>
 					</div>
 				</section>
 

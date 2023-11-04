@@ -14,20 +14,20 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body>
+<body> 
     <?php include "../templates/header.php" ?>
 
 	<main class="workouts-block">
         <div class="container">
-            <!-- Day's workout swiper -->
-            <section class="workouts-swiper" navigation="true">
-                <!-- Slide -->
                 <?php
                 if (count($not_done_workouts) > 0){
                     $workout = $not_done_workouts[0];
                     if ($workout->holiday){
                         include "../templates/holiday.html";
                     }else{ $workout->set_muscles(); ?>
+                    <!-- Day's workout swiper -->
+                    <section class="workouts-swiper">
+                        <!-- Slide -->
                         <!-- slide(no arrows) -->
                         <section class="workouts-card">
                             <!-- Title and button to add to favorite collection -->
@@ -47,12 +47,14 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                 <a href="control_workout_session.php?id=<?php echo $workout->id; ?>">Начать</a>
                             </section>
                         </section>
+                    </section>
                     <?php
                     }
                 }else { ?>
-                    <p>Нет тренировки</p>
+                    <div class="workouts-card__no-program">
+                        <p class="workouts-card__no-program-title">Нет тренировки</p>
+                    </div>
                 <?php } ?>
-            </section>
 
             <section class="workout-other">
 			<section class="last-trainings last-trainings--coach">
@@ -96,7 +98,6 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 				</section>
                 <!-- Buttons favorite workouts and my program -->
                 <section class="workout-other__buttons">
-                    <a class="button-text workout-other__button" href=""><p>Вся история</p> <img src="../img/my_programm.svg" alt=""></a>
                     <a class="button-text workout-other__button" href="my_program.php"><p>Новая</p> <img src="../img/my_programm.svg" alt=""></a>
                 </section>
             </section>

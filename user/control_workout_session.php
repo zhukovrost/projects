@@ -92,18 +92,39 @@ $cnt_apps = 0;
 
 
     // Progress
-    let repetDoneButtons = document.querySelectorAll('.exercise-item__done');
-    let exercisesLeft = document.querySelectorAll('.workout-session-footer__item span')[0];
-    let allrepetsLeft = document.querySelectorAll('.workout-session-footer__item span')[1];
-    let currentRepetsLeft = document.querySelectorAll('.exercise-item__repetitions-title span');
-    let exerciseTitle = document.querySelectorAll('.exercise-item__repetitions-title');
-
+    let repetDoneInputs = document.querySelectorAll('.exercise-item__input');
+    let exercisesLeft = document.querySelector('.workout-session-footer__item span');
     let progressLine = document.querySelector('.workout-session__finish-line');
     let progressPercents = document.querySelector('.workout-session__percents-number');
 
-    let allRepetsNumber = parseInt(allrepetsLeft.innerHTML);
+    let completedExercises = [];
+    for(let i = 0; i < repetDoneInputs.length; i++){
+        completedExercises.push(0);
+    }
 
+    for(let i = 0; i < repetDoneInputs.length; i++){
+        repetDoneInputs[i].addEventListener('input', function(){
+            if(repetDoneInputs[i].value != ''){
+                completedExercises[i] = 1;
+            }
+            else{
+                completedExercises[i] = 0;
+            }
+            
+            let completedCount = 0;
+            let allCount = completedExercises.length;
+            for(let i = 0; i < completedExercises.length; i++){
+                completedCount += completedExercises[i];
+            }
 
+            progressPercents.innerHTML = `${Math.round(completedCount / allCount * 100)}%`;
+            progressLine.style.cssText = `width:${Math.round(completedCount / allCount * 100)}%`;
+
+            if(progressPercents.innerHTML == '100%'){
+                progressPercents.style.cssText = `color: #ffffff;`;
+            }
+        });
+    }
 
     let maximunExerciseCardHeight = 0;
     let exerciseCards = document.querySelectorAll('.exercise-item');

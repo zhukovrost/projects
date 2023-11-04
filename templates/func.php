@@ -238,13 +238,13 @@ function print_goal($conn, $id, $user_id, $edit=true){
             if ((int)$item["done"]){
                 $checkmark = "../img/green_check_mark.svg";
                 if ($edit)
-                    $done = '<a class="staff-block__item-button" href="goal_done.php?id='.$id.'&val=0&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Выполнена</a>';
+                    $done = '<a class="staff-block__goal-button--text" href="goal_done.php?id='.$id.'&val=0&user='.$user_id.'">Не выполнена</a>';
                 else
                     $done = '<p>Выполнена</p>';
             }else{
                 $checkmark = "../img/blue_question_mark.svg";
                 if ($edit)  
-                    $done = '<a class="staff-block__item-button" href="goal_done.php?id='.$id.'&val=1&user='.$user_id.'" class="staff-block__goal-button staff-block__goal-button--text">Не выполнена</a>';
+                    $done = '<a class="staff-block__goal-button--text" href="goal_done.php?id='.$id.'&val=1&user='.$user_id.'">Выполнена</a>';
                 else
                     $done = '<p>Не выполнена</p>';
             }

@@ -225,6 +225,9 @@ $cnt_apps = 0;
             exercisesLeft.innerHTML = `${parseInt(exercisesLeft.innerHTML) - exercisesLeftNumber}`;
             progressPercents.innerHTML = `${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
             progressLine.style.cssText = `width:${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
+            if(progressPercents.innerHTML == '100%'){
+                progressPercents.style.cssText = `color: #ffffff;`;
+            }
 
         }
         else{
@@ -251,6 +254,9 @@ $cnt_apps = 0;
                 allrepetsLeft.innerHTML = `${parseInt(allrepetsLeft.innerHTML) - 1}`;
                 progressPercents.innerHTML = `${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
                 progressLine.style.cssText = `width:${Math.round((allRepetsNumber - parseInt(allrepetsLeft.innerHTML)) / allRepetsNumber * 100)}%`;
+                if(progressPercents.innerHTML == '100%'){
+                    progressPercents.style.cssText = `color: #ffffff;`;
+                }
 
 
                 let array = [];
@@ -258,7 +264,6 @@ $cnt_apps = 0;
                     array.push(currentRepetsLeft[i].innerHTML);
                 }
                 localStorage.setItem('currentRepetsLeft', array);
-                console.log(parseInt(exercisesLeft.innerHTML))
 
                 if(parseInt(exercisesLeft.innerHTML) == 0){
                     clearInterval(IntervalTimer);

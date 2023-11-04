@@ -35,7 +35,7 @@ include "../templates/settings.php";
 		let feedbackBlock = document.querySelector('.other-feedback');
 		let otherLinksBlock = document.querySelector('.other-links');
 
-		otherLinksBlock.style.cssText = `height: ${feedbackBlock.offsetHeight}px;`;
+		otherLinksBlock.style.cssText = `height: ${feedbackBlock.clientHeight}px;`;
 	</script>
 </body>
 </html>

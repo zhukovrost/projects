@@ -123,7 +123,7 @@ if ($is_selected){
 					<div class="staff-block__nearest-workout-content">
 						<div class="staff-block__nearest-workout-date"><?php $cl_w = $user->get_closest_workout($conn);
                         if ($cl_w != NULL) echo date("d.m.Y", $cl_w); else echo "Тренировок не будет" ?></div>
-						<a href="" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
+						<a href="workout.php" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
 					</div>
 				</section>
                 <?php } ?>
@@ -135,7 +135,7 @@ if ($is_selected){
                             foreach ($data["goals"] as $goal)
                                 print_goal($conn, (int)$goal, $user->get_id());
                         else{ ?>
-                            <li>Нет назначенных целей</li>
+                            <li class="staff-block__goals-item">Нет назначенных целей</li>
                         <?php } ?>
 					</ul>
 					<button class="button-text staff-block__item-button--add staff-block__item-button--goal-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
@@ -153,8 +153,8 @@ if ($is_selected){
                         </div>
                         <a href="workout_session.php?id=<?php echo $control_workouts[0]->id; ?>" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
 				    <?php } else { ?>
-                        <p>Нет назначенных контрольных тренировок</p>
-                        <a href="control_workouts.php?user=<?php echo $user->get_id(); ?>">Подробнее</a>
+                        <p class="staff-block__control-none">Нет назначенных контрольных тренировок</p>
+                        <a class="staff-block__button-more staff-block__button-more--control" href="control_workouts.php?user=<?php echo $user->get_id(); ?>"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
                     <?php } ?>
                 </section>
 				<div class="staff-block__line"></div>
@@ -165,7 +165,7 @@ if ($is_selected){
                             foreach ($data["competitions"] as $competition)
                                 print_competition($conn, (int)$competition, $user->get_id());
                         else{ ?>
-                            <p>Нет назначенных соревнований</p>
+                            <p class="staff-block__control-none">Нет назначенных соревнований</p>
                         <?php } ?>
 						<button class="button-text staff-block__item-button--add staff-block__item-button--competition-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 					</div>
@@ -178,7 +178,7 @@ if ($is_selected){
                             foreach ($data["info"] as $advice)
                                 print_advice($conn, (int)$advice, $user->get_id());
                         else{ ?>
-                            <p>Нет назначенных советов</p>
+                            <p class="staff-block__control-none">Нет полезной информации</p>
                         <?php } ?>
 						<button class="button-text staff-block__item-button--add staff-block__item-button--link-add"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
 					</div>
@@ -195,7 +195,7 @@ if ($is_selected){
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
                         <h1 class="friends-block__header-title">Другие спортсмены</h1>
-                        <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
+                        <a class="friends-block__header-button" href="search_users.php"><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends' workout swiper -->
                    <section class="friends-block__cover">
@@ -209,8 +209,7 @@ if ($is_selected){
 			</section>
 			<section class="staff-other__buttons">
 				<a href="" class="button-text staff-other__button"><p>Программа</p> <img src="../img/my_programm.svg" alt=""></a>
-				<a href="users_comparison.php" class="button-text staff-other__button"><p>Сравнить спортсменов</p> <img src="../img/my_programm.svg" alt=""></a>
-				<a href="" class="button-text staff-other__button"><p>Группы</p> <img src="../img/my_programm.svg" alt=""></a>
+				<a href="users_comparison.php" class="button-text staff-other__button"><p>Сравнить спортсменов</p> <img src="../img/comparison.svg" alt=""></a>
 			</section>
 		</div>
 

@@ -29,7 +29,7 @@ if (isset($_POST["workout_to_fav"])){
                     }else{ $workout->set_muscles(); ?>
                         <!-- slide(no arrows) -->
                         <section class="workouts-card">
-                            <!-- Title and button to add to favorite collection -->
+                            <!-- Title -->
                             <form method="post" class="workouts-card__header">
                                 <h2 class="workouts-card__date"><?php echo date("d.m.Y"); ?></h2>
                                 <input type="hidden" name="workout_to_fav" value="<?php echo $workout->get_id(); ?>">

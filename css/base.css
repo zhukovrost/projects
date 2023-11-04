@@ -421,6 +421,16 @@ body {
 }
 
 
+.exercise-item__input{
+    background-color: rgba(234, 234, 234, 1);
+    border: 1px solid rgb(204, 204, 204);
+    margin: 20px auto 10px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: 25px;
+}
+
+
 /* ===ADD EXERCISE ITEM=== */
 /* Photo of exercise */
 .exercise-item--add__img{

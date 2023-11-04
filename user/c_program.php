@@ -102,16 +102,23 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 					</div>
 				</section>
 				<form class="c-program__duration" method="post">
-					<h4 class="c-program__duration-title">Укажите продолжительность программы<br></h4>
-					<div class="c-program__duration-date">
-						<input class="c-program__duration-weeks" type="number" placeholder="Количество недель" name="weeks">
-						<p class="c-program__duration-date-text">начать с</p>
-                        <input class="c-program__duration-date-start" type="date" name="date_start">
-					</div>
-                    <?php if ($user_data->get_status() == "coach"){ ?>
+					<?php if ($user_data->get_status() == "coach"){ ?>
+					    <h4 class="c-program__duration-title">Выберите спортсменов<br></h4>
+                    <?php }?>
+					<?php if ($user_data->get_status() == "user"){ ?>
 					    <button type="button" class="button-text c-program__add-button"><p>Начать программу для спортсменов</p><img src="../img/add.svg" alt=""></button>
+						<h4 class="c-program__duration-title">Укажите продолжительность программы<br></h4>
+						<div class="c-program__duration-date">
+							<input class="c-program__duration-weeks" type="number" placeholder="Количество недель" name="weeks">
+							<p class="c-program__duration-date-text">начать с</p>
+							<input class="c-program__duration-date-start" type="date" name="date_start">
+						</div>
                     <?php } ?>
+                    <?php if ($user_data->get_status() == "coach"){ ?>
+					    <button type="button" class="button-text c-program__add-button"><p>Добавить спортсменов</p><img src="../img/add.svg" alt=""></button>
+                    <?php } else { ?>
 					<button class="button-text c-program__duration-button"><p>Начать программу</p> <img src="../img/arrow_white.svg" alt=""></button>
+					<?php } ?>
 				</form>
 			</section>
 			<section class="friends-block">
@@ -217,11 +224,12 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 			<form method="post" class="popup-exercise__content popup-exercise--add-users__form">
                 <button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
                 <h4 class="c-program__duration-title">Укажите продолжительность программы<br></h4>
-                <div class="c-program__duration-date">
+                <div class="c-program__duration-date c-program__duration-date--popup">
                     <input class="c-program__duration-weeks" type="number" placeholder="Количество недель" name="weeks">
                     <p class="c-program__duration-date-text">начать с</p>
                     <input class="c-program__duration-date-start" type="date" name="date_start">
                 </div>
+				<div class="workouts-card__info-line"></div>
                 <?php
                 $cnt = 0;
                 foreach ($user_data->get_sportsmen() as $sportsman_id){
@@ -237,7 +245,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
                 if ($cnt != 0){ ?>
                     <button class="button-text popup-exercise--add-users__button-add" type="submit"><p>Выложить</p><img src="../img/add.svg" alt=""></button>
                 <?php } else { ?>
-                    <p>Нет выбора</p>
+                    <p class="c-program__duration-title-none">У Вас нет спортсменов</p>
                 <?php } ?>
 			</form>
 		</section>

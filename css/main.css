@@ -1461,11 +1461,23 @@
     background-color: #DDDDDD;
     margin: 0 5px;
     border-radius: 50%;
+    transition: .2s ease-in-out;
 }
 
 .user-block__staff-button img{
     width: 23px;
     height: 23px;
+    border-radius: 50%;
+    transition: .2s ease-in-out;
+}
+
+.user-block__staff-button:hover{
+    background-color: #cccccc;
+}
+
+.user-block__staff-button:hover img{
+    -webkit-animation: rotate-center 0.3s ease-in-out both;
+	animation: rotate-center 0.3s ease-in-out both;
 }
 
 /* Doctor info */
@@ -1549,7 +1561,7 @@
 }
 
 .user-block__button-logout:hover img{
-    transform: translateY(-3px);
+    transform: translateX(3px);
 }
 
 
@@ -1847,11 +1859,19 @@
     font-size: 23px;
 }
 
+.c-program__duration-title-none{
+    font-size: 25px;
+}
+
 .c-program__duration-date{
     display: flex;
     align-items: center;
     justify-content: space-around;
     margin-top: 20px;
+}
+
+.c-program__duration-date--popup{
+    margin-bottom: 20px;
 }
 
 .c-program__duration-weeks,
@@ -2230,12 +2250,12 @@
 }
 
 .workout-session-footer--с{
-    width: 50%;
+    width: 60vw;
 }
 
 .workout-session-footer__title{
     font-size: 35px;
-    margin-right: 20px;
+    margin-right: 40px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
 }
@@ -2427,8 +2447,9 @@
 }
 
 .staff-block__profile-link img{
+    border-radius: 50%;
     width: 25px;
-    height: 25px;
+    height: 30px;
 }
 
 .staff-block__buttons{
@@ -2489,24 +2510,31 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 10px;
+    margin: 10px auto 0px;
 }
 
 .staff-block__nearest-workout-date{
     background-color: #ECECEC;
     height: fit-content;
     padding: 5px 10px;
+    margin-right: 20px;
     font-size: 20px;
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
 .staff-block__button-more{
+    width: fit-content;
+    margin: 0px;
     display: flex;
     align-items: center;
     background-color: #272727;
     color: #ffffff;
     padding: 5px 15px;
     transition: .1s ease-in-out;
+}
+
+.staff-block__button-more--control{
+    margin: 10px auto 0px;
 }
 
 .staff-block__button-more:hover{
@@ -2562,6 +2590,12 @@
 .staff-block__control-workout-text{
     font-size: 20px;
     margin-right: 10px;
+}
+
+.staff-block__control-none{
+    margin-top: 5px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .staff-block__control-workouts-date{
@@ -2624,7 +2658,7 @@
 .staff-block__useful-links-item{
     display: flex;
     margin-top: 12px;
-    width: 80%;
+
     justify-content: space-between;
 }
 
@@ -2729,10 +2763,15 @@
 }
 
 .staff-block__goal-button--text{
+    color: #5a5a5a;
     padding: 5px;
     margin: 0 5px;
     font-size: 18px;
-    text-decoration: underline;
+    text-decoration: underline !important;
+}
+
+.staff-block__goal-button--text:hover{
+    color: #000000;
 }
 
 .staff-block__item-button--add{
@@ -2767,8 +2806,9 @@
     width: 48%;
 }
 
-.last-trainings--coach{
+.coach-other .last-trainings{
     margin-top: 0px;
+    margin-right: 0px;
     width: 100%;
     box-shadow: 3px 3px 0px 0px #9A9A9A;
 }

@@ -174,12 +174,10 @@ class User_Exercise extends Exercise {
         }
         $muscle_list = str_replace(' ', '-', trim($muscle_list));
 
-        $btn_done = '';
-        $inp = '';
+        $inp = '<input class="exercise-item__input" type="number" placeholder="результат"';
 
         if ($current) {
-            $btn_done = '';
-            $inp = '<input type="text">';
+            $inp = '<input class="exercise-item__input" type="number" placeholder="результат">';
         }
 
         $replaces = array(
@@ -190,7 +188,6 @@ class User_Exercise extends Exercise {
             "{{ muscle }}" => $muscle_list,
             "{{ approaches }}" => $this->approaches,
             "{{ description }}" => $description,
-            "{{ button }}" => $btn_done,
             "{{ input }}" => $inp
         );
         echo render($replaces, "../templates/control_exercise.html");
