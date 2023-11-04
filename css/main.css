@@ -2610,7 +2610,7 @@
 .staff-block__useful-links-item{
     display: flex;
     margin-top: 12px;
-    width: 30%;
+    width: 80%;
     justify-content: space-between;
 }
 

@@ -132,8 +132,7 @@ body {
     justify-content: space-between;
     width: 90%;
     padding: 5px 20px 5px;
-    border-top: 1px solid rgb(41, 41, 41);
-    color: #000000;
+    border-top: 1px solid rgba(208, 208, 208, 1);
     font-size: 16px;
 }
 
@@ -711,14 +710,14 @@ body {
 .friends-block__slide{
     position: relative;
     display: flex;
-    padding: 0px 30px;
+    padding: 0px 20px;
 }
 
 /* friend item */
 .friends-block__item{
     max-width: 150px;
     text-align: center;
-    margin: 0px 20px;
+    margin: 0px;
 }
 
 .friends-block__avatar{
