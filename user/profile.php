@@ -105,7 +105,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                          if (!$user->get_auth() && in_array($user_data->get_id(), $user->subscribers)){ ?>
                             <a class="button-text user-block__sub-button" href="unsub.php?id=<?php echo $user->get_id(); ?>">Отписаться</a>
                         <?php }else if (!$user->get_auth()){ ?>
-                            <a class="button-text user-block__sub-button" href="sub.php?id=<?php echo $user->get_id(); ?>">Подписаться</a>
+                            <a class="button-text user-block__sub-button" href="sub.php?id=<?php echo $user->get_id(); ?>"><p>Подписаться</p><img src="../img/add.svg" alt=""></a>
                         <?php }
                          ?>
                     </section>
@@ -186,8 +186,8 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 					</div>
                     <!-- Count of subscribers and subscriptions -->
 					<div class="user-block__sub-count">
-						<a class="user-block__sub-count-item" href=""><span><?php echo count($user->subscribers); ?> подписчик(ов)</span></a>
-						<a class="user-block__sub-count-item" href=""><span><?php echo count($user->subscriptions); ?> подписок</span></a>
+						<p class="user-block__sub-count-item" href=""><span><?php echo count($user->subscribers); ?> подписчика(ов)</span></p>
+						<p class="user-block__sub-count-item" href=""><span><?php echo count($user->subscriptions); ?> подписок(ски)</span></p>
 					</div>
 				</section>
 

@@ -105,18 +105,22 @@ if (isset($_POST['log'])){
     </div>
 
     <script>
+
         // Switch buttons (login or registration)
         let logButton = document.querySelector('.log-reg__switch-button--log');
         let regButton = document.querySelector('.log-reg__switch-button--reg');
         let logForm = document.querySelector('.log-form');
         let regForm = document.querySelector('.reg-form');
+        let regDoneButton = document.querySelector('.reg-form__warning');
+
 
         logButton.addEventListener('click', function(){
             if (logButton.classList.contains('log-reg__switch-button--active') == false){
                 logButton.classList.add('log-reg__switch-button--active');
                 regButton.classList.remove('log-reg__switch-button--active');
                 logForm.style.cssText = `display: flex;`;
-                regForm.style.cssText = `display: nonr;`;
+                regForm.style.cssText = `display: none;`;
+                localStorage.setItem('SwitchRegLogButton', 'log')
             }
         });
 
@@ -126,8 +130,28 @@ if (isset($_POST['log'])){
                 regButton.classList.add('log-reg__switch-button--active');
                 regForm.style.cssText = `display: flex;`;
                 logForm.style.cssText = `display: none;`;
+                localStorage.setItem('SwitchRegLogButton', 'reg')
             }
         });
+
+        if(regDoneButton.length == 0){
+            localStorage.setItem('SwitchRegLogButton', 'log');
+        }
+
+        //local storage buttons data
+        if(localStorage.getItem('SwitchRegLogButton')){
+            if(localStorage.getItem('SwitchRegLogButton') == 'reg'){
+                regButton.click();
+            }
+            if(localStorage.getItem('SwitchRegLogButton') == 'log'){
+                logButton.click();
+            }
+        }
+        else{
+            localStorage.setItem('SwitchRegLogButton', 'log');
+        }
+
+        
     </script>
 </body>
 </html>

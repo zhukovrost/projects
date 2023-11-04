@@ -37,7 +37,7 @@ function log_warning($if, $error){
 
 function reg_warning($if, $error){
     if ($if){
-        echo "<p class='warning'>".$error."</p>";
+        echo "<p class='reg-form__warning'>".$error."</p>";
     }
 }
 
@@ -190,9 +190,9 @@ function get_exercise_muscles($conn, $exercise_id){
 
 function print_user_block($name, $surname, $file, $id, $is_subscribed=false){
     if ($is_subscribed){
-        $button = '<button class="button-text user-card__button user-card__button--add"><p>У вас в друзьях</p><img src="../img/add.svg" alt=""></button>';
+        $button = '<button class="button-text user-card__button user-card__button--add"><p>Отписаться</p><img src="../img/add.svg" alt=""></button>';
     }else{
-        $button = '<button class="button-text user-card__button user-card__button--add"><p>Добавить в друзья</p><img src="../img/add.svg" alt=""></button>';
+        $button = '<button class="button-text user-card__button user-card__button--add"><p>Подписаться</p><img src="../img/add.svg" alt=""></button>';
     }
     $replacements = array(
         "{{ name }}" => $name." ".$surname,
