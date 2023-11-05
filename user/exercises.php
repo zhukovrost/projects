@@ -3,13 +3,26 @@ include "../templates/func.php";
 include "../templates/settings.php";
 $user_data->check_the_login();
 
+# rate this exercise
+if (isset($_POST["rate_id"])){
+    $exercise = new Exercise($conn, $_POST["rate_id"]);
+    if (!$exercise->is_rated($user_data->get_id())){
+        $sql = "INSERT INTO exercise_ratings(user, exercise, rate) VALUES (".$user_data->get_id().", ".$_POST["rate_id"].", ".$_POST["exercise_rate"].")";
+        if (!$conn->query($sql))
+            echo $conn->error;
+    }
+    unset($exercise);
+}
+
+# feature
 if (isset($_POST['featured'])){
     $user_data->change_featured($conn, $_POST['featured']);
 }
-
+# add
 if (isset($_POST['add'])){
     $user_data->add_exercise($conn, $_POST['add']);
 }
+# delete
 if (isset($_POST['delete'])){
     $user_data->delete_exercise($conn, $_POST['delete']);
 }
@@ -190,26 +203,26 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				<form method="post" class="popup-exercise__info popup-exercise__info--rating">
 					<p class="popup-exercise__info-title">Ваша оценка</p>
 					<div>
-						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate5" name="exercise_rate">
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate5" name="exercise_rate" value="5">
 						<label class="popup-exercise__info-label" for="c_exercise_rate5">5</label>
 					</div>
 					<div>
-						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate4" name="exercise_rate">
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate4" name="exercise_rate" value="4">
 						<label class="popup-exercise__info-label" for="c_exercise_rate4">4</label>
 					</div>
 					<div>
-						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate3" name="exercise_rate">
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate3" name="exercise_rate" value="3">
 						<label class="popup-exercise__info-label" for="c_exercise_rate3">3</label>
 					</div>
 					<div>
-						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate2" name="exercise_rate">
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate2" name="exercise_rate" value="2">
 						<label class="popup-exercise__info-label" for="c_exercise_rate2">2</label>
 					</div>
 					<div>
-						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate1" name="exercise_rate">
+						<input class="popup-exercise__info-input" type="radio" id="c_exercise_rate1" name="exercise_rate" value="1">
 						<label class="popup-exercise__info-label" for="c_exercise_rate1">1</label>
 					</div>
-                    <input class="exercise_id" name="id" type="hidden" value="">
+                    <input class="exercise_id" name="rate_id" type="hidden" value="">
 					<button class="button-text popup-exercise__rate-button"><p>Оценить</p></button>
 				</form>
 			</section>

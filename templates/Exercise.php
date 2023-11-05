@@ -7,9 +7,37 @@ class Exercise {
     public $description="";
     public $muscles=[];
     private $image=0;
-    public $rating;
+    public $ratings = array();
+    public $difficulty=3;
     private $creator=1;
-    public $difficulty;
+
+    public function set_rating($conn){
+        $sql = "SELECT user, rate FROM exercise_ratings WHERE exercise=".$this->id;
+        if ($result = $conn->query($sql)){
+            foreach ($result as $rate) {
+                $this->ratings[$rate["user"]] = $rate["rate"];
+            }
+        }else
+            echo $conn->error;
+    }
+
+    public function is_rated($user_id){
+        foreach ($this->ratings as $key=>$value)
+            if ($key == $user_id) return 1;
+        return 0;
+    }
+
+    public function get_rating(){
+        if (count($this->ratings) == 0)
+            return 0;
+        $cnt = 0;
+        $rating = 0;
+        foreach ($this->ratings as $key=>$value){
+            $cnt++;
+            $rating += $value;
+        }
+        return round($rating/$cnt, 0);
+    }
 
     public function set_exercise_data($select_result){
         foreach ($select_result as $item){
@@ -18,11 +46,10 @@ class Exercise {
             $this->description = $item['description'];
             $this->muscles = json_decode($item['muscles']);
             $this->image = $item['image'];
-            $this->rating = $item['rating'];
             $this->static = $item['static'];
             $this->creator = $item['creator'];
-            $this->difficulty = $item['difficulty'];
-        }
+            $this->difficulty = $item["difficulty"];
+        };
     }
 
     public function __construct($conn, $id=0){
@@ -30,6 +57,7 @@ class Exercise {
             $select_sql = "SELECT * FROM exercises WHERE id=$id";
             if ($select_result = $conn->query($select_sql)){
                 $this->set_exercise_data($select_result);
+                $this->set_rating($conn);
             }else{
                 echo $conn->error;
             }
@@ -106,7 +134,7 @@ class Exercise {
             "{{ button_featured }}" => $button_featured,
             "{{ image }}" => $this->get_image($conn),
             "{{ name }}" => $this->name,
-            "{{ rating }}" => $this->rating,
+            "{{ rating }}" => $this->get_rating(),
             "{{ difficulty }}" => $this->difficulty,
             "{{ id }}" => $this->id,
             "{{ muscle }}" => $muscle_list,
