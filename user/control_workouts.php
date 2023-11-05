@@ -43,8 +43,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     <?php $workout->print_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
-                                <?php $workout->print_workout_info(); ?>
-                                <a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id=<?php echo $workout->id; ?>"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
+                                <?php $workout->print_workout_info(date("N", $workout->date), 0, -1, false, '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$workout->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'); ?>
                             </section>
                         </section>
                     </section>

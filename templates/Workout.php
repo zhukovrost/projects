@@ -134,12 +134,13 @@ class Workout {
         return $workout;
     }
 
-    public function print_workout_info_block($day, $expand_buttons=0, $user_id=-1, $is_done=false){ ?>
+    public function print_workout_info_block($day, $expand_buttons=0, $user_id=-1, $is_done=false, $button=''){ ?>
         <section class="day-workouts__card">
             <h3 class="day-workouts__card-title"><?php echo get_day($day); ?></h3>
             <div class="day-workouts__card-content">
                 <?php $this->print_workout_info($expand_buttons, $user_id, $is_done); ?>
             </div>
+            <?php if ($button != '') echo $button; ?>
         </section>
     <?php
     }
