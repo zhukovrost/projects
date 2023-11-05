@@ -196,11 +196,15 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 				<section class="user-block__buttons">
                     <?php if (!$user->get_auth() && $user_data->get_status() == "user" && (($user->get_status() == "coach" && $user_data->coach == NULL) || ($user->get_status() == "doctor" && $user_data->doctor == NULL)) && !$request_flag){ ?>
                         <a href="send_request.php?id=<?php echo $user->get_id();?>" class="button-text user-block__button"><p>Отправить заявку</p> <img src="../img/send.svg" alt=""></a>
+                    <?php }
+                    if ($user->get_auth()){ ?>
+                        <?php if ($user->set_program($conn)){ ?>
+                            <a href="my_program.php" class="button-text user-block__button">Моя программа<img src="../img/my_programm.svg" alt=""></a>
+                        <?php } ?>
+					    <a href="../clear.php" class="button-text user-block__button-logout">Выйти <img src="../img/logout.svg" alt=""></a>
+                    <?php } else if ($user->set_program($conn)) { ?>
+                        <a href="my_program.php?user=<?php echo $user->get_id(); ?>" class="button-text user-block__button">Программа пользователя<img src="../img/my_programm.svg" alt=""></a>
                     <?php } ?>
-                    <?php if ($user->get_auth()){ ?>
-                        <a href="../my_program.php" class="button-text user-block__button">Программа пользователя<img src="../img/my_programm.svg" alt=""></a>
-					<a href="../clear.php" class="button-text user-block__button-logout">Выйти <img src="../img/logout.svg" alt=""></a>
-                    <?php }?>
 				</section>
 			</section>
 		</div>

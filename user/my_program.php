@@ -2,12 +2,21 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 $user_data->check_the_login();
-if (!$user_data->set_program($conn)){
-    header("Location: c_program_info.php");
+if (isset($_GET["user"]) && is_numeric($_GET["user"]))
+    if ($_GET["user"] == $user_data->get_id())
+        $user = $user_data;
+    else
+        $user = new User($conn, $_GET["user"]);
+
+if (!$user->set_program($conn)){
+    if ($user->get_auth())
+        header("Location: c_program_info.php");
+    else
+        header("Location: profile.php");
 }
 
-if (isset($_POST['end'])){
-    $sql = "UPDATE program_to_user SET date_start=0 WHERE user=".$user_data->get_id()."  AND date_start + weeks * 604800 >= ".time()." LIMIT 1";
+if (isset($_POST['end']) && $user->get_auth()){
+    $sql = "UPDATE program_to_user SET date_start=0 WHERE user=".$user->get_id()."  AND date_start + weeks * 604800 >= ".time()." LIMIT 1";
     if ($conn->query($sql)){
         header("Refresh: 0");
     }else{
@@ -15,11 +24,11 @@ if (isset($_POST['end'])){
     }
 }
 
-$user_data->program->set_workouts($conn);
-$user_data->program->set_additional_data($conn, $user_data->get_id());
+$user->program->set_workouts($conn);
+$user->program->set_additional_data($conn, $user->get_id());
 $cnt_workouts_done = 0;
 $cnt_workouts_all = 0;
-$weekday_start = date("N", $user_data->program->date_start) - 1;
+$weekday_start = date("N", $user->program->date_start) - 1;
 
 $muscles = array(
     "arms" => 0,
@@ -32,9 +41,9 @@ $muscles = array(
 );
 
 #counting muscles
-foreach ($user_data->program->workouts as $workout){
+foreach ($user->program->workouts as $workout){
     foreach ($workout->set_muscles() as $key=>$value){
-        $muscles[$key] += $value * $user_data->program->weeks;
+        $muscles[$key] += $value * $user->program->weeks;
     }
 }
 ?>
@@ -59,9 +68,9 @@ foreach ($user_data->program->workouts as $workout){
                                 echo render(array("{{ day }}" => get_day($j)), "../templates/out_of_workout.html");
                             }
                             for ($j = $weekday_start; $j < 7; $j++){
-                                $workout = $user_data->program->workouts[$j];
-                                $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400);
-                                $is_workout = $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                                $workout = $user->program->workouts[$j];
+                                $is_done = $workout->is_done($conn, $user->get_id(), $user->program->date_start - $weekday_start * 86400 + $j * 86400);
+                                $is_workout = $workout->print_workout_info_block($j, 1, $user->get_id(), $is_done);
                                 $cnt_workouts_all += (int)!$workout->holiday;
                                 $cnt_workouts_done += (int)$is_done;
                             }
@@ -71,13 +80,13 @@ foreach ($user_data->program->workouts as $workout){
 
                     $from = 0;
                     if ($weekday_start) $from = 1;
-                    for ($i = $from; $i < $user_data->program->weeks; $i++){ ?>
+                    for ($i = $from; $i < $user->program->weeks; $i++){ ?>
                     <swiper-slide class="day-workouts__slide">
                         <?php
                         for ($j = 0; $j < 7; $j ++){
-                            $workout = $user_data->program->workouts[$j];
-                            $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400 + $i * 604800);
-                            $is_workout = $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                            $workout = $user->program->workouts[$j];
+                            $is_done = $workout->is_done($conn, $user->get_id(), $user->program->date_start - $weekday_start * 86400 + $j * 86400 + $i * 604800);
+                            $is_workout = $workout->print_workout_info_block($j, 1, $user->get_id(), $is_done);
                             $cnt_workouts_all += (int)!$workout->holiday;
                             $cnt_workouts_done += (int)$is_done;                        }
                         ?>
@@ -89,9 +98,9 @@ foreach ($user_data->program->workouts as $workout){
                         <swiper-slide class="day-workouts__slide">
                             <?php
                             for ($j = 0; $j < $weekday_start; $j++){
-                                $workout = $user_data->program->workouts[$j];
-                                $is_done = $workout->is_done($conn, $user_data->get_id(), $user_data->program->date_start - $weekday_start * 86400 + $j * 86400 + ($user_data->program->weeks - 1) * 604800);
-                                $is_workout = $workout->print_workout_info_block($j, 1, $user_data->get_id(), $is_done);
+                                $workout = $user->program->workouts[$j];
+                                $is_done = $workout->is_done($conn, $user->get_id(), $user->program->date_start - $weekday_start * 86400 + $j * 86400 + ($user->program->weeks - 1) * 604800);
+                                $is_workout = $workout->print_workout_info_block($j, 1, $user->get_id(), $is_done);
                                 $cnt_workouts_all += (int)!$workout->holiday;
                                 $cnt_workouts_done += (int)$is_done;                            }
 
@@ -112,8 +121,8 @@ foreach ($user_data->program->workouts as $workout){
                     </section>
                     <section class="my-program__statistic-content">
                         <section class="my-program__statistic-all">
-                            <p class="my-program__statistic-all-item">Всего тренировок: <span><?php echo $user_data->program->count_workouts(); ?></span></p>
-                            <p class="my-program__statistic-all-item">Всего упражнений: <span><?php echo $user_data->program->count_exercises(); ?></span></p>
+                            <p class="my-program__statistic-all-item">Всего тренировок: <span><?php echo $user->program->count_workouts(); ?></span></p>
+                            <p class="my-program__statistic-all-item">Всего упражнений: <span><?php echo $user->program->count_exercises(); ?></span></p>
                         </section>
                         <section class="my-program__progress">
                             <div class="my-program__progress-item">
@@ -142,15 +151,19 @@ foreach ($user_data->program->workouts as $workout){
                     <!-- Friends' workout swiper -->
                     <section class="friends-block__cover friends-block__cover--program">
                         <?php
-                        $user_data->set_subscriptions($conn);
-                        print_user_list_vert($conn, $user_data->subscriptions);
+                        $user->set_subscriptions($conn);
+                        print_user_list_vert($conn, $user->subscriptions);
                         ?>
                     </section>
                 </section>
             </section>
             <form action="" method="post">
-                <input type="hidden" name="end" value="1">
-                <button type="submit" class="button-text my-program__finish">Завершить досрочно</button>
+                <?php if ($user->get_auth()){ ?>
+                    <input type="hidden" name="end" value="1">
+                    <button type="submit" class="button-text my-program__finish">Завершить досрочно</button>
+                <?php } else if (!$user->get_auth() && !$user_data->set_program($conn)) { ?>
+                    <button type="button">Начать эту программу</button>
+                <?php } ?>
             </form>
         </div>
     </main>
