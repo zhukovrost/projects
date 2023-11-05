@@ -477,7 +477,7 @@
 
 /* Statistic of my_program */
 .my-program__statistic{
-    width: 75%;
+    width: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -1937,7 +1937,7 @@
 /* Friends' workouts */
 .c-program .friends-block{
     width: 50%;
-    margin: 0 auto;
+    margin: 0 auto 10px;
 }
 
 
