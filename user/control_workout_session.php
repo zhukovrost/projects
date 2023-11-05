@@ -11,7 +11,7 @@ $cnt_apps = 0;
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<form method="post" class="workout-session">
+<form method="post" class="workout-session" action="end_control_workout.php">
 <header class="workout-session__header">
     <a href="../index.php" class="header__item header__item--logo header__item--logo--workout">
         <img src="../img/logo.svg" alt="">
@@ -49,8 +49,8 @@ $cnt_apps = 0;
         <h1 class="workout-session-footer__title">Осталось:</h1>
         <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений(ия)</h2>
     </div>
-
-    <a href="end_control_workout.php?id=<?php echo $_GET["id"]; ?>" class="button-text workout-session-footer__button">Завершить</a>
+    <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>">
+    <button type="submit" class="button-text workout-session-footer__button">Завершить</button>
 
 </footer>
 

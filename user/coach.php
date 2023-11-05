@@ -151,7 +151,7 @@ if ($is_selected){
                             </div>
                             <a href="control_workouts.php?user=<?php echo $user->get_id(); ?>" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
                         </div>
-                        <a href="workout_session.php?id=<?php echo $control_workouts[0]->id; ?>" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
+                        <a href="control_workout_session.php?id=<?php echo $control_workouts[0]->id; ?>" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
 				    <?php } else { ?>
                         <p class="staff-block__control-none">Нет назначенных контрольных тренировок</p>
                         <a class="staff-block__button-more staff-block__button-more--control" href="control_workouts.php?user=<?php echo $user->get_id(); ?>"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>

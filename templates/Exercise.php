@@ -174,10 +174,10 @@ class User_Exercise extends Exercise {
         }
         $muscle_list = str_replace(' ', '-', trim($muscle_list));
 
-        $inp = '<input class="exercise-item__input" type="number" placeholder="результат"';
+        $inp = "<p>$this->approaches подхода</p>";
 
         if ($current) {
-            $inp = '<input class="exercise-item__input" type="number" placeholder="результат">';
+            $inp = '<input class="exercise-item__input" type="number" placeholder="результат" name="reps[]">';
         }
 
         $replaces = array(
@@ -186,7 +186,6 @@ class User_Exercise extends Exercise {
             "{{ rating }}" => $this->rating,
             "{{ difficulty }}" => $this->difficulty,
             "{{ muscle }}" => $muscle_list,
-            "{{ approaches }}" => $this->approaches,
             "{{ description }}" => $description,
             "{{ input }}" => $inp
         );
