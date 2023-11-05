@@ -107,20 +107,6 @@ if (isset($_POST["workout_to_fav"])){
             <?php } ?>
             <section class="workout-other">
                 <!-- Friends' workouts -->
-                <section class="friends-block">
-                    <!-- Title and button to search friends -->
-                    <div class="friends-block__header">
-                        <h1 class="friends-block__header-title">Тренировки друзей</h1>
-                        <a href="search_users.php" class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
-                    </div>
-                    <!-- Friends' workout swiper -->
-                    <swiper-container class="friends-block__swiper" navigation="true">
-                        <?php
-                        $user_data->set_subscriptions($conn);
-                        print_user_list($conn, $user_data->subscriptions);
-                        ?>
-                      </swiper-container>
-                </section>
                 <?php $user_data->print_workout_history($conn); ?>
                 <!-- Buttons favorite workouts and my program -->
                 <section class="workout-other__buttons">

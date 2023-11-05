@@ -162,20 +162,6 @@ foreach ($user->program->workouts as $workout){
                         </section>
                     </section>
                 </section>
-                <section class="friends-block friends-block--program">
-                    <!-- Title and button to search friends -->
-                    <div class="friends-block__header">
-                        <h1 class="friends-block__header-title">Программы друзей</h1>
-                        <a href="search_users.php" class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
-                    </div>
-                    <!-- Friends' workout swiper -->
-                    <section class="friends-block__cover friends-block__cover--program">
-                        <?php
-                        $user->set_subscriptions($conn);
-                        print_user_list_vert($conn, $user->subscriptions);
-                        ?>
-                    </section>
-                </section>
             </section>
             <form action="" method="post">
                 <?php if ($user->get_auth()){ ?>

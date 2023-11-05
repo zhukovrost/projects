@@ -403,6 +403,10 @@
     margin-left: 20px;
 }
 
+.workout-other .last-trainings{
+    margin-top: 0px;
+}
+
 .workouts-block .friends-block{
     margin-right: 15px;
 }
@@ -478,6 +482,7 @@
 /* Statistic of my_program */
 .my-program__statistic{
     width: 80%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
     align-items: center;

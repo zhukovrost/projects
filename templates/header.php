@@ -34,6 +34,10 @@
         <p>Спортсмен</p>
      </a>
     <?php } ?>
+    <a class="header__item" href="search_users.php">
+        <img src="../img/friends.svg" alt="">
+        <p>Пользователи</p>
+    </a>
     <a class="header__item" href="all_news.php">
         <img src="../img/news_black.svg" alt="">
         <p>Новости</p>
