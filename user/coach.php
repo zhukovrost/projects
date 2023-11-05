@@ -208,7 +208,7 @@ if ($is_selected){
 					</section>
 			</section>
 			<section class="staff-other__buttons">
-				<a href="" class="button-text staff-other__button"><p>Программа</p> <img src="../img/my_programm.svg" alt=""></a>
+				<a href="my_program.php?user=<?php echo $user->get_id(); ?>" class="button-text staff-other__button"><p>Программа</p> <img src="../img/my_programm.svg" alt=""></a>
 				<a href="users_comparison.php" class="button-text staff-other__button"><p>Сравнить спортсменов</p> <img src="../img/comparison.svg" alt=""></a>
 			</section>
 		</div>

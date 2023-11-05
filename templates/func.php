@@ -325,7 +325,8 @@ function get_reps_for_comparison($user, $conn, $user_number, $second_user_id){
         "{{ tg_button }}" => $tg,
         "{{ delete_link }}" => $delete,
         "{{ weight }}" => $phys_data["weight"],
-        "{{ height }}" => $phys_data["height"]
+        "{{ height }}" => $phys_data["height"],
+        "{{ id }}" => $user->get_id()
     );
 
     return $reps;

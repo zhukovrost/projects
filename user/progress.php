@@ -2,10 +2,18 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
-if (isset($_POST["height"]) && isset($_POST["weight"]) && is_numeric($_POST["height"]) && is_numeric($_POST["weight"]) && $_POST["height"] >= 0 && $_POST["weight"] >= 0){
-    $user_data->update_phys($conn, $_POST["height"], $_POST["weight"]);
+if (isset($_GET["user"]) && is_numeric($_GET["user"]))
+    if ($_GET["user"] == $user_data->get_id())
+        $user = $user_data;
+    else
+        $user = new User($conn, $_GET["user"]);
+else
+    $user = $user_data;
+
+if ($user->get_auth() && isset($_POST["height"]) && isset($_POST["weight"]) && is_numeric($_POST["height"]) && is_numeric($_POST["weight"]) && $_POST["height"] >= 0 && $_POST["weight"] >= 0){
+    $user->update_phys($conn, $_POST["height"], $_POST["weight"]);
 }
-$user_data->get_workout_history($conn);
+$user->get_workout_history($conn);
 $muscles = array(
     "arms" => 0,
     "legs" => 0,
@@ -19,7 +27,7 @@ $muscles = array(
 $exercise_cnt = 0;
 $time_cnt = 0;
 
-foreach ($user_data->workout_history as $item){
+foreach ($user->workout_history as $item){
     $exercises = json_decode($item["exercises"]);
     $time_cnt += $item["time_spent"];
     foreach ($exercises as $exercise){
@@ -32,17 +40,17 @@ foreach ($user_data->workout_history as $item){
 }
 $time_cnt = round($time_cnt/60, 0);
 
-$user_data->get_phys_updates($conn);
+$user->get_phys_updates($conn);
 $height_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 $weight_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 $date_start = mktime(0, 0, 0, 1, 1, date("Y"));
 
-if (count($user_data->phys_updates) != 0){
+if (count($user->phys_updates) != 0){
     $month_array = array($date_start);
     for ($i = 2; $i <= 13; $i++){
         array_push($month_array, mktime(0, 0, 0, $i, 1, date("Y")));
     }
-    foreach ($user_data->phys_updates as $key=>$value){
+    foreach ($user->phys_updates as $key=>$value){
         if ((int)$key < $month_array[0])
             break;
         for ($i = 0; $i < 12; $i++){
@@ -77,7 +85,7 @@ if (count($user_data->phys_updates) != 0){
 					<canvas id="trainingStatisticChart"></canvas>
 				</section>
 				<!-- Last trainings block -->
-                <?php $user_data->print_workout_history($conn); ?>
+                <?php $user->print_workout_history($conn); ?>
 			</section>
 
 			<!-- Second part of statistic(training info and muscles & physical diagram) -->
@@ -93,8 +101,8 @@ if (count($user_data->phys_updates) != 0){
 						<!-- Statistic info -->
 						<section class="progress-block__workouts-statistic">
                             <h3 class="progress-block__workouts-statistic-title">Всего:</h3>
-							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo count($user_data->workout_history); ?></span></p>
-							<p class="progress-block__workouts-statistic-item">Программ: <span><?php echo $user_data->get_program_amount($conn); ?></span></p>
+							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo count($user->workout_history); ?></span></p>
+							<p class="progress-block__workouts-statistic-item">Программ: <span><?php echo $user->get_program_amount($conn); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Упражнений: <span><?php echo $exercise_cnt; ?></span></p>
                             <p class="progress-block__workouts-statistic-item">Затрачено минут:<span><?php echo $time_cnt; ?></span></p>
 						</section>
@@ -104,7 +112,9 @@ if (count($user_data->phys_updates) != 0){
 					<section class="progress-block__physical-info">
 						<p class="progress-block__physical-info-item">Вес: 80 кг</p>
 						<p class="progress-block__physical-info-item">Рост: 180 см</p>
-						<button class="button-text progress-block__physical-info-button">Добавить данные<img src="../img/add.svg" alt=""></button>
+                        <?php if ($user->get_auth()){ ?>
+						    <button class="button-text progress-block__physical-info-button">Добавить данные<img src="../img/add.svg" alt=""></button>
+                        <?php } ?>
 					</section>
 				</section>
 				<!-- Physical block -->
@@ -141,9 +151,9 @@ if (count($user_data->phys_updates) != 0){
 				  <div class="progress-block__programm-info">
 					<div class="progress-block__programm-line">
 						<p class="progress-block__programm-percents"><?php
-                            if ($user_data->set_program($conn)){
-                                $user_data->program->set_additional_data($conn, $user_data->get_id());
-                                $progress = (time() - $user_data->program->date_start) / ($user_data->program->weeks * 604800) * 100;
+                            if ($user->set_program($conn)){
+                                $user->program->set_additional_data($conn, $user->get_id());
+                                $progress = (time() - $user->program->date_start) / ($user->program->weeks * 604800) * 100;
                                 if ($progress < 0){
                                     echo '0';
                                 }else if ($progress > 100){
@@ -157,7 +167,7 @@ if (count($user_data->phys_updates) != 0){
                             ?>%</p>
 						<div class="progress-block__programm-finish" class="finish"></div>
 					</div>
-					<a class="progress-block__programm-button" href="my_program.php"><img src="../img/my_programm_black.svg" alt=""></a>
+					<a class="progress-block__programm-button" href="my_program.php?user=<?php echo $user->get_id(); ?>"><img src="../img/my_programm_black.svg" alt=""></a>
 				  </div>
 				</div>
 			</section>
@@ -225,7 +235,7 @@ if (count($user_data->phys_updates) != 0){
         trainingPeriodData = [];
         if(periodSelects[0].value == 'year'){
             trainingPeriodArray = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_year($user_data->workout_history)); ?>;
+            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_year($user->workout_history)); ?>;
         }
         if(periodSelects[0].value == 'month'){
             trainingPeriodArray = ['1ая неделя', '2ая неделя', '3я неделя', '4ая неделя', '5ая неделя'];
