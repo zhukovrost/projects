@@ -190,9 +190,9 @@ function get_exercise_muscles($conn, $exercise_id){
 
 function print_user_block($name, $surname, $file, $id, $is_subscribed=false){
     if ($is_subscribed){
-        $button = '<button class="button-text user-card__button user-card__button--add"><p>Отписаться</p><img src="../img/add.svg" alt=""></button>';
-    }else{
-        $button = '<button class="button-text user-card__button user-card__button--add"><p>Подписаться</p><img src="../img/add.svg" alt=""></button>';
+        $button = '<a class="button-text user-block__sub-button" href="unsub.php?id='.$id.'">Отписаться</a>';
+    }else {
+        $button = '<a class="button-text user-block__sub-button" href="sub.php?id='.$id.'"><p>Подписаться</p><img src="../img/add.svg" alt=""></a>';
     }
     $replacements = array(
         "{{ name }}" => $name." ".$surname,

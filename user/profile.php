@@ -101,13 +101,11 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                             <h1><?php echo $user->name . " " . $user->surname; ?></h1>
                         </div>
                         <button class="user-block__avatar-more"><img src="../img/info.svg" alt=""><p>Подробнее</p></button>
-                        <?php
-                         if (!$user->get_auth() && in_array($user_data->get_id(), $user->subscribers)){ ?>
+                        <?php if (!$user->get_auth() && in_array($user_data->get_id(), $user->subscribers)){ ?>
                             <a class="button-text user-block__sub-button" href="unsub.php?id=<?php echo $user->get_id(); ?>">Отписаться</a>
                         <?php }else if (!$user->get_auth()){ ?>
                             <a class="button-text user-block__sub-button" href="sub.php?id=<?php echo $user->get_id(); ?>"><p>Подписаться</p><img src="../img/add.svg" alt=""></a>
-                        <?php }
-                         ?>
+                        <?php } ?>
                     </section>
                     
                     <!-- User info text -->

@@ -6,12 +6,18 @@ $users_array = array();
 if (isset($_POST['search']) && trim($_POST['search']) != ""){
     $searches = explode(' ', $_POST['search']);
     foreach ($searches as $search){
-        $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.login LIKE '%$search%' OR users.name LIKE '%$search%' OR users.surname LIKE '%$search%'";
+        $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.id!=".$user_data->get_id()." AND (users.login LIKE '%$search%' OR users.name LIKE '%$search%' OR users.surname LIKE '%$search%')";
         $result = $conn->query($sql);
         foreach ($result as $item){
             if (!in_array($item, $users_array))
                 array_push($users_array, $item);
         }
+    }
+}else {
+    $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.id!=".$user_data->get_id();
+    $result = $conn->query($sql);
+    foreach ($result as $item){
+        array_push($users_array, $item);
     }
 }
 
