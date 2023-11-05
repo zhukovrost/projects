@@ -48,7 +48,6 @@ if ($has_doctor){
 					</section>
 				</section>
 				<div class="staff-block__line"></div>
-				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Цели</h2>
 					<ul class="staff-block__goals-list">
@@ -56,7 +55,7 @@ if ($has_doctor){
                             foreach ($coach_data["goals"] as $goal)
                                 print_goal($conn, (int)$goal, $user_data->coach->get_id(), 0);
                         else{ ?>
-                            <li>Нет назначенных целей</li>
+                            <li class="staff-block__goals-item">Нет назначенных целей</li>
                         <?php } ?>
 				</section>
 				<div class="staff-block__line"></div>
@@ -78,7 +77,7 @@ if ($has_doctor){
                             foreach ($coach_data["competitions"] as $competition)
                                 print_competition($conn, (int)$competition, $user_data->get_id(), 0);
                         else{ ?>
-                            <p>Нет назначенных соревнований</p>
+                            <p class="staff-block__control-none">Нет назначенных соревнований</p>
                         <?php } ?>
 					</div>
 				</section>
@@ -90,7 +89,7 @@ if ($has_doctor){
                             foreach ($coach_data["info"] as $advice)
                                 print_advice($conn, (int)$advice, $user_data->get_id(), 0);
                         else{ ?>
-                            <p>Нет назначенных советов</p>
+                            <p class="staff-block__control-none">Нет назначенных советов</p>
                         <?php } ?>
 					</div>
 					

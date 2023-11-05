@@ -141,6 +141,7 @@ $cnt_apps = 0;
         else{
             localStorage.setItem(`SpendWorkoutTime`, 0);
             localStorage.setItem(`Period`, 'Work');
+            time += 1;
         }
 
 
@@ -195,7 +196,7 @@ $cnt_apps = 0;
         let repetDoneButtons = document.querySelectorAll('.exercise-item__done');
         let exercisesLeft = document.querySelectorAll('.workout-session-footer__item span')[0];
         let allrepetsLeft = document.querySelectorAll('.workout-session-footer__item span')[1];
-        let currentRepetsLeft = document.querySelectorAll('.workout-session-footer__item span');
+        let currentRepetsLeft = document.querySelectorAll('.exercise-item__repetitions-title span');
         let exerciseTitle = document.querySelectorAll('.exercise-item__repetitions-title');
 
         let progressLine = document.querySelector('.workout-session__finish-line');

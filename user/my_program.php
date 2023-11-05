@@ -195,9 +195,11 @@ foreach ($user->program->workouts as $workout){
         let programAddButton = document.querySelector('.my-program__friend-program');
         let programAddPopup = document.querySelector('.popup-exercise__program-add');
 
-        programAddButton.addEventListener('click', function(){
-			programAddPopup.classList.add("open");
-		});
+        if(programAddButton){
+            programAddButton.addEventListener('click', function(){
+                programAddPopup.classList.add("open");
+            });
+        }
 
 		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){

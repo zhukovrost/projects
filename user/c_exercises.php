@@ -591,6 +591,8 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			for(let i = 0; i < allFilterInputs.length; i++){
 				allFilterInputs[i].checked = allFilterInputsChecked[i];
 			}
+
+			searchButton.click();
 		}
 		else{
 			allFilterInputsChecked = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true];

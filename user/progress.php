@@ -193,7 +193,6 @@ if (count($user->phys_updates) != 0){
 	</main>
 
 	<?php include "../templates/footer.html" ?>
-
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -520,11 +519,14 @@ if (count($user->phys_updates) != 0){
 
         let PhysicDataCurrent = document.querySelectorAll('.progress-block__physical-info-item');
 
-        PhysicDataEditButton.addEventListener('click', function(){
-            document.querySelector('.popup-physics-data__item-input--height').value = (PhysicDataCurrent[1].innerHTML).split(' ')[1];
-            document.querySelector('.popup-physics-data__item-input--weight').value = (PhysicDataCurrent[0].innerHTML).split(' ')[1];
-			PhysicDataPopup.classList.add("open");
-		});
+        if(PhysicDataEditButton){
+            PhysicDataEditButton.addEventListener('click', function(){
+                document.querySelector('.popup-physics-data__item-input--height').value = (PhysicDataCurrent[1].innerHTML).split(' ')[1];
+                document.querySelector('.popup-physics-data__item-input--weight').value = (PhysicDataCurrent[0].innerHTML).split(' ')[1];
+                PhysicDataPopup.classList.add("open");
+            });
+        }
+        
 
 
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
@@ -535,7 +537,7 @@ if (count($user->phys_updates) != 0){
 		}
 
 		window.addEventListener('keydown', (e) => {
-            if(e.key == "Escape"){
+            if(e.key == "Escape" && PhysicDataEditButton){
                 PhysicDataEditButton.classList.remove("open");
             }
 		});
