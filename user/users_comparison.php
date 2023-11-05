@@ -29,7 +29,10 @@ $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
                             <button class="button-text comparison-block__add-button comparison-block__add-button--first"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
                         </section>
                     <?php } else {
-                        $reps = get_reps_for_comparison($user1, $conn, 1, $_GET["user2"]);
+                        if ($is_valid2)
+                            $reps = get_reps_for_comparison($user1, $conn, 1, $_GET["user2"]);
+                        else
+                            $reps = get_reps_for_comparison($user1, $conn, 1, NULL);
                         echo render($reps, "../templates/comparison_block.html");
                     } ?>
 			</section>
@@ -40,7 +43,10 @@ $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
                             <button class="button-text comparison-block__add-button comparison-block__add-button--second"><p>Добавить спортсмена</p> <img src="../img/add.svg" alt=""></button>
                         </section>
                     <?php } else {
-                        $reps = get_reps_for_comparison($user2, $conn, 2, $_GET["user1"]);
+                        if ($is_valid1)
+                            $reps = get_reps_for_comparison($user2, $conn, 2, $_GET["user1"]);
+                        else
+                            $reps = get_reps_for_comparison($user2, $conn, 2, NULL);
                         echo render($reps, "../templates/comparison_block.html");
                     } ?>
 			</section>
