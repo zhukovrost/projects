@@ -50,7 +50,7 @@ $user_data->set_subscriptions($conn);
             if (count($users_array) != 0){
                 foreach ($users_array as $user){
                     if ($user_data->get_auth())
-                        print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], array_search($user['id'], $user_data->subscriptions));
+                        print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], in_array($user['id'], $user_data->subscriptions));
                     else
                         print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], false);
                 }
