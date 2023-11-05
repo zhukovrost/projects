@@ -2,31 +2,27 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
-$user_data->check_the_login();
-$flag = isset($_SESSION["workout"]);
+if ($user_data->get_status() != "coach" || empty($_GET["for"]) || !is_numeric($_GET["for"]))
+    header("Location: coach.php");
 
-if (isset($_POST["week_days"])){
+$user_id = $_GET["for"];
+
+$flag = isset($_SESSION["c_workout"]);
+
+if (isset($_POST["name"]) && isset($_POST["date"])){
     $name = $_POST["name"];
     $loops = $_POST["loops"];
     $exercises = [];
-    $reps = [];
-    $approaches = [];
-    foreach ($_SESSION["workout"] as $exercise){
+    $date = strtotime($_POST["date"]);
+    foreach ($_SESSION["c_workout"] as $exercise){
         array_push($exercises, $exercise->get_id());
-        array_push($reps, $exercise->reps);
-        array_push($approaches, $exercise->approaches);
     }
-    $user_id = $user_data->get_id();
-    $sql = "INSERT INTO workouts (creator, name, exercises, reps, approaches, loops) VALUES ($user_id, '$name', '".json_encode($exercises)."', '".json_encode($reps)."', '".json_encode($approaches)."', $loops)";
+
+    $sql = "INSERT INTO control_workouts (creator, user, name, exercises, date) VALUES (".$user_data->get_id().", $user_id, '$name', '".json_encode($exercises)."', $date)";
+    echo $sql;
     if ($conn->query($sql)){
-        $lid = mysqli_insert_id($conn);
-
-        foreach ($_POST["week_days"] as $week_day) {
-            $_SESSION["program"][(int)$week_day] = $lid;
-        }
-        $_SESSION["workout"] = array();
-        header("Location: c_program.php");
-
+        $_SESSION["c_workout"] = array();
+        header("Location: control_workouts.php?user=".$user_id);
     }else{
         echo $conn->error;
     }
@@ -47,8 +43,8 @@ if (isset($_POST["week_days"])){
 					<!-- Exercise items -->
                     <?php
                     if ($flag) {
-                        foreach ($_SESSION["workout"] as $exercise){
-                            $exercise->print_it($conn);
+                        foreach ($_SESSION["c_workout"] as $exercise){
+                            $exercise->print_control_exercise($conn, false);
                         }
                     }
                     ?>
@@ -56,27 +52,29 @@ if (isset($_POST["week_days"])){
 				<!-- Info about day workout -->
 				<section class="workouts-card__info">
 					<!-- Muscle groups -->
-                    <?php print_workout_info_function($_SESSION["workout"]); ?>
+                    <?php print_workout_info_function($_SESSION["c_workout"]); ?>
 					<!-- Decorative line -->
 					<div class="workouts-card__info-line"></div>
 					<!-- Exercise info -->
-                    <p class="workouts-card__item">Упражнений: <span><?php if ($flag) echo count($_SESSION["workout"]); else echo 0; ?></span></p>
+                    <p class="workouts-card__item">Упражнений: <span><?php if ($flag) echo count($_SESSION["c_workout"]); else echo 0; ?></span></p>
 					<!-- Decorative line -->
 					<div class="workouts-card__info-line"></div>
 					<!-- Buttons edit and start -->
 					<div class="day-workouts__card-buttons">
-						<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_exercises.php"><p>Добавить</p> <img src="../img/add.svg" alt=""></a>
-						<button class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></button>
+						<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_control_exercises.php?for=<?php echo $user_id; ?>"><p>Добавить</p> <img src="../img/add.svg" alt=""></a>
+						<a href="c_clear.php?for=<?php echo $user_id; ?>" class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
 			</section>
 			<form method="post" class="c-workout__info">
 				<section class="c-workout__info-header">
 					<h1 class="c-workout__info-title">Название:</h1>
-                    <input class="c-workout__info-name" type="text" placeholder="Название тренировки" value="" name="name">
+                    <input class="c-workout__info-name" type="text" placeholder="Название тренировки" name="name">
+                    <h1 class="c-workout__info-title">Дата:</h1>
+                    <input class="c-workout__info-name" type="date" placeholder="Название тренировки" name="date">
 				</section>
 				<button class="button-text c-workout__days-add" type="submit"><p>Добавить тренировку</p> <img src="../img/add.svg" alt=""></button>
-                <a class="button-text c-workout__back-button" href="c_program.php">Назад</a>
+                <a class="button-text c-workout__back-button" href="control_workouts.php?user=<?php echo $user_id; ?>">Назад</a>
 			</form>
 		</div>
 

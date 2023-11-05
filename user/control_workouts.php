@@ -61,7 +61,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 					<h1 class="last-trainings__title">Последние тренировки</h1>
 					<div class="last-trainings__content">
                         <?php if (count($done_workouts) != 0){
-                            foreach ($done_workouts as $done_workout) { ?>
+                            foreach ($done_workouts as $done_workout) { $done_workout->set_muscles(); ?>
 						    <!-- Item -->
                             <section class="last-trainings__card">
                                 <!-- Left part of last exercise item -->
@@ -69,7 +69,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     <!-- Time of training -->
                                     <div class="last-trainings__item">
                                     <img class="last-trainings__item-img" src="../img/time.svg" alt="">
-                                    <p class="last-trainings__item-text"><span>0</span> мин</p>
+                                    <p class="last-trainings__item-text"><span><?php echo date("d.m.Y", $done_workout->date); ?></span></p>
                                     </div>
                                     <!-- Exercise count of training -->
                                     <div class="last-trainings__item">
@@ -98,7 +98,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 				</section>
                 <!-- Buttons favorite workouts and my program -->
                 <section class="workout-other__buttons">
-                    <a class="button-text workout-other__button" href="my_program.php"><p>Новая</p> <img src="../img/my_programm.svg" alt=""></a>
+                    <a class="button-text workout-other__button" href="c_control_workout.php?for=<?php echo $user->get_id(); ?>"><p>Новая</p> <img src="../img/my_programm.svg" alt=""></a>
                 </section>
             </section>
         </div>

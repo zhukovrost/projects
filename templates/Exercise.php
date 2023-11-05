@@ -162,7 +162,7 @@ class User_Exercise extends Exercise {
         echo render($replaces, "../templates/user_exercise.html");
     }
 
-    public function print_control_exercise($conn, $current=false){
+    public function print_control_exercise($conn, $current=false, $construct=false){
         if ($this->description == ""){
             $description = "No description for this exercise";
         }else{
@@ -173,12 +173,13 @@ class User_Exercise extends Exercise {
             $muscle_list .= translate_group($muscle) . " ";
         }
         $muscle_list = str_replace(' ', '-', trim($muscle_list));
-
-        $inp = "<p>$this->approaches подхода</p>";
-
+        $inp = '';
         if ($current) {
             $inp = '<input class="exercise-item__input" type="number" placeholder="результат" name="reps[]">';
         }
+
+        if ($construct)
+            $inp = "<input type='hidden' name='exercise' value='".$this->get_id()."'><button>Добавить</button>";
 
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),

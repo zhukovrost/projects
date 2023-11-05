@@ -32,14 +32,14 @@ $cnt_apps = 0;
     <div class="container">
         <swiper-container class="session-exercises__swiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30" loop="true">
             <!-- for loop -->
-            <?php for ($i = 0; $i < $workout->loops; $i++) { foreach ($workout->exercises as $exercise){?>
+            <?php foreach ($workout->exercises as $exercise){?>
                 <swiper-slide class="session-exercises__slide">
                     <?php
                     $cnt_apps += $exercise->approaches;
                     $exercise->print_control_exercise($conn, 1);
                     ?>
                 </swiper-slide>
-            <?php } } ?>
+            <?php } ?>
         </swiper-container>
     </div>
 </main>
