@@ -185,7 +185,6 @@ if (isset($_POST["workout_to_fav"])){
         // Timer
         let TimerEditButton = document.querySelector('.day-workouts__card-button--time');
         let TimerEditPopup = document.querySelector('.popup-exercise--timer-edit');
-        console.log(TimerEditPopup)
 
         TimerEditButton.addEventListener('click', function(){
 			TimerEditPopup.classList.add("open");
@@ -214,6 +213,8 @@ if (isset($_POST["workout_to_fav"])){
         let TimerEditInputs = document.querySelectorAll('.popup-exercise--timer-edit__item__input');
         let time = localStorage.getItem(`SpendWorkoutTime`);
 
+        let IntervalTimer = setInterval(UpdateTime, 1000); 
+
         if(localStorage.getItem("TimeForWork") == -1 && localStorage.getItem("TimeForRest") == -1){
             localStorage.setItem("TimeForWork", -1);
             localStorage.setItem("TimeForRest", -1);
@@ -222,8 +223,6 @@ if (isset($_POST["workout_to_fav"])){
         else{
             time++;
             localStorage.setItem(`SpendWorkoutTime`, time);
-
-            let IntervalTimer = setInterval(UpdateTime, 1000); 
         }
 
         submitTimerButton.addEventListener('click', function(){

@@ -66,7 +66,7 @@ if (isset($_POST["week_days"])){
 					<!-- Buttons edit and start -->
 					<div class="day-workouts__card-buttons day-workouts__card-buttons--c">
 						<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_exercises.php"><p>Добавить упражнение</p> <img src="../img/add.svg" alt=""></a>
-						<a href="clear.php" class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></a>
+						<a href="clear_workout.php" class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
 			</section>
@@ -181,49 +181,13 @@ if (isset($_POST["week_days"])){
             });
         }
 
-
-		// Popup exercises
-		let exercisesButtonsEdit = document.querySelectorAll('.c_workout .exercise_item .buttons .edit');
-		let popupExerciseItem = document.querySelector('.popup-exercise .exercise_item');
-		let popupExerciseWindow = document.querySelector('.popup-exercise');
-		let popupExerciseReps = document.querySelector('#c_exercise_reps');
-		let popupExerciseCircles = document.querySelector('#c_exercise_circles');
-
-		for(let i = 0; i < exercisesButtonsEdit.length; i++){
-			exercisesButtonsEdit[i].addEventListener('click', function(){
-				let item = exercisesButtonsEdit[i].parentElement.parentElement;
-				popupExerciseItem.innerHTML = '';
-				popupExerciseItem.innerHTML = item.innerHTML;
-				popupExerciseItem.removeChild(popupExerciseItem.lastElementChild);
-				
-				let caption = item.children[7].children[0].innerHTML;
-				popupExerciseReps.value = caption.split(" x ")[0];
-				popupExerciseCircles.value = caption.split(" x ")[1];
-
-
-				popupExerciseWindow.classList.add("open");
-			});
-		}
-
-		// Popup exercise window
-		const closeBtn = document.querySelector('.popup-exercise .close');
-		closeBtn.addEventListener('click', function(){
-			popupExerciseWindow.classList.remove("open");
-		});
-
-		window.addEventListener('keydown', (e) => {
-		if(e.key == "Escape"){
-			popupExerciseWindow.classList.remove("open");
-		}
-		});
-
-		document.querySelector('.popup-exercise .content').addEventListener('click', event => {
-			event.isClickWithInModal = true;
-		});
-
-		popupExerciseWindow.addEventListener('click', event =>{
-		if(event.isClickWithInModal) return;
-			event.currentTarget.classList.remove('open');
+		// Button submit
+		let addToPragramButton = document.querySelector('.c-workout__days-add');
+		let workoutNameInput = document.querySelector('.c-workout__info-name');
+		addToPragramButton.addEventListener('click', function(){
+			if(workoutNameInput.value == ''){
+				workoutNameInput.value = "Без названия";
+			}
 		});
 
 	</script>

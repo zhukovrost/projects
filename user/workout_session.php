@@ -146,16 +146,17 @@ $cnt_apps = 0;
 
         let IntervalTimer = setInterval(UpdateTime, 1000);
 
-        time++;
         workoutSessionInputTime.value = time;
         localStorage.setItem(`SpendWorkoutTime`, time);
 
         FinsishButton.addEventListener('click', function(){
-            clearInterval(IntervalTimer);
             localStorage.setItem("TimeForWork", -1);
             localStorage.setItem("TimeForRest", -1);
+            localStorage.removeItem(`currentRepetsLeft`);
+            localStorage.removeItem(`allRepetsNumber`);
             time = 0;
             localStorage.setItem(`SpendWorkoutTime`, -1);
+            clearInterval(IntervalTimer);
         });
 
         
@@ -194,7 +195,7 @@ $cnt_apps = 0;
         let repetDoneButtons = document.querySelectorAll('.exercise-item__done');
         let exercisesLeft = document.querySelectorAll('.workout-session-footer__item span')[0];
         let allrepetsLeft = document.querySelectorAll('.workout-session-footer__item span')[1];
-        let currentRepetsLeft = document.querySelectorAll('.exercise-item__repetitions-title span');
+        let currentRepetsLeft = document.querySelectorAll('.workout-session-footer__item span');
         let exerciseTitle = document.querySelectorAll('.exercise-item__repetitions-title');
 
         let progressLine = document.querySelector('.workout-session__finish-line');
@@ -278,6 +279,7 @@ $cnt_apps = 0;
             }
 
 
+            // Exercise cards height
             let maximunExerciseCardHeight = 0;
             let exerciseCards = document.querySelectorAll('.exercise-item');
             for(let i = 0; i < exerciseCards.length; i++){

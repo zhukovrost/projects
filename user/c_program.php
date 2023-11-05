@@ -84,20 +84,17 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 					<section class="c-program__workouts-list">
                         <?php
                         if (count($workout_array) == 0){?>
-                            <p>Список тренировок пуст</p>
+                            <p class="c-program__workouts-list-none">Список тренировок пуст</p>
                         <?php }
                         for ($i = 0; $i < count($workout_array); $i++){ ?>
 						<div class="c-program__workouts-item">
 							<p class="c-program__workouts-name"><?php echo $i + 1 . ". " .  ($workout_array[$i])->name; ?></p>
-							<!-- <button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button> -->
 							<a href="delete_workout.php?id=<?php echo ($workout_array[$i])->get_id(); ?>" class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></a>
-							<!-- <button class="c-program__workouts-favorite"><img src="../img/favorite.svg" alt=""></button> -->
 						</div>
                         <?php } ?>
 					</section>
 					<div class="c-program__workouts-buttons">
 						<a class="button-text c-program__workouts-button c-program__workouts-button--create" href="c_workout.php"><p>Создать тренировку</p> <img src="../img/add.svg" alt=""></a>
-						<!-- <a class="button-text c-program__workouts-button day-workouts__card-button--favorite" href="c_exercises.php"><p>Избранные тренировки</p> <img src="../img/add.svg" alt=""></a>-->
 						<a class="button-text c-program__workouts-button" href="clear.php"><p>Очистить программу</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
@@ -106,7 +103,6 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 					    <h4 class="c-program__duration-title">Выберите спортсменов<br></h4>
                     <?php }?>
 					<?php if ($user_data->get_status() == "user"){ ?>
-					    <button type="button" class="button-text c-program__add-button"><p>Начать программу для спортсменов</p><img src="../img/add.svg" alt=""></button>
 						<h4 class="c-program__duration-title">Укажите продолжительность программы<br></h4>
 						<div class="c-program__duration-date">
 							<input class="c-program__duration-weeks" type="number" placeholder="Количество недель" name="weeks">

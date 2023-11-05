@@ -10,12 +10,6 @@ include "../templates/settings.php";
 
     <main class="other-block">
         <div class="container">
-			<section class="other-feedback">
-				<a class="other-feedback__link" href="reports.php">
-					<img src="../img/feedback_background.jpg" alt="">
-					<p class="other-feedback__link-title">ОТЗЫВЫ</p>
-				</a>
-			</section>
 			<section class="other-links">
 				<section class="other-links__email">
 					<p>Вопросы и пожелания:</p>
@@ -30,12 +24,5 @@ include "../templates/settings.php";
     </main>
 
     <?php include "../templates/footer.html" ?>
-
-	<script>
-		let feedbackBlock = document.querySelector('.other-feedback');
-		let otherLinksBlock = document.querySelector('.other-links');
-
-		otherLinksBlock.style.cssText = `height: ${feedbackBlock.clientHeight}px;`;
-	</script>
 </body>
 </html>

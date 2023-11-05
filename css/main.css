@@ -1760,6 +1760,11 @@
     border-right: 1px solid #9b9b9b;
 }
 
+.c-program__workouts-list-none{
+    font-size: 20px;
+    font-weight: 500;
+}
+
 .c-program__workouts-item{
     display: flex;
     align-items: start;
@@ -3045,57 +3050,6 @@
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-}
-
-.other-feedback{
-    position: relative;
-    height: fit-content;
-    width: fit-content;
-    border-radius: 3px;
-    border: 1px solid #CCCCCC;
-    box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-}
-
-.other-feedback__link{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.other-feedback__link::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 0.1);
-    transition: .2s ease-in-out;
-}
-
-.other-feedback__link:hover::after{
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-.other-feedback__link-title{
-    opacity: 0;
-    position: absolute;
-    color: #ffffff;
-    top: 49%;
-    left: 43%;
-    font-size: 27px;
-    font-weight: 500;
-    z-index: 2;
-    transition: .2s ease-in-out;
-}
-
-.other-feedback__link:hover .other-feedback__link-title{
-    opacity: 1;
-}
-
-.other-feedback__link img{
-    max-width: 40vw;
 }
 
 
