@@ -60,6 +60,7 @@ $cnt_apps = 0;
     let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
     let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
     let infoBlock = document.querySelectorAll('.exercise-item__info-content');
+    let FinsishButton = document.querySelector('.workout-session-footer__button');
 
     for(let i = 0; i < infoExerciseButton.length; i++){
         infoExerciseButton[i].addEventListener('click', function(){
@@ -166,6 +167,14 @@ $cnt_apps = 0;
         });
     }
 
+
+    FinsishButton.addEventListener('click', function(){
+        localStorage.removeItem('repetDoneArray');
+        localStorage.removeItem('repetDoneInputs');
+    });
+
+
+    // Exercise height
     let maximunExerciseCardHeight = 0;
     let exerciseCards = document.querySelectorAll('.exercise-item');
     for(let i = 0; i < exerciseCards.length; i++){
