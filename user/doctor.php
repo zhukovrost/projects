@@ -81,7 +81,7 @@ if ($is_selected){
 						</div>
 						<div class="staff-block__buttons">
                             <?php if ($user->vk != NULL) { ?>
-							<a href=<?php echo $user->vk; ?>"" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
+							<a href=<?php echo $user->vk; ?> class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
                             <?php } if ($user->tg != NULL) { ?>
 							<a href="<?php echo $user->tg; ?>" class="staff-block__button staff-block__button--img"><img src="../img/tg.svg" alt=""></a>
                             <?php } ?>
@@ -133,7 +133,7 @@ if ($is_selected){
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
                         <h1 class="friends-block__header-title">Другие спортсмены</h1>
-                        <a class="friends-block__header-button" href=""><img src="../img/search.svg" alt=""></a>
+                        <a class="friends-block__header-button" href="search_users.php"><img src="../img/search.svg" alt=""></a>
                     </div>
                     <!-- Friends' workout swiper -->
                    <section class="friends-block__cover" navigation="true">
@@ -144,9 +144,6 @@ if ($is_selected){
                            </a>
                        <?php } ?>
 					</section>
-			</section>
-			<section class="staff-other__buttons">
-				<button class="button-text staff-other__button"><p>Группы</p> <img src="../img/my_programm.svg" alt=""></button>
 			</section>
 		</div>
 

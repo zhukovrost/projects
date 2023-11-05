@@ -110,8 +110,8 @@ if ($is_valid1 && $is_valid2){
 				<button type="button" type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
                     <?php foreach ($sportsmen_advanced as $sportsman){ ?>
                     <div class="popup-exercise--add-users__item">
-                        <input class="popup-exercise--add-users__input" type="radio" id="users-list1" name="user1" value="<?php echo $sportsman->get_id(); ?>"/>
-                        <label class="popup-exercise--add-users__label" for="users-list1"><?php echo $sportsman->name. " " . $sportsman->surname; ?></label>
+                        <input class="popup-exercise--add-users__input" type="radio" id="users-list1-<?php echo $sportsman->get_id(); ?>" name="user1" value="<?php echo $sportsman->get_id(); ?>"/>
+                        <label class="popup-exercise--add-users__label" for="users-list1-<?php echo $sportsman->get_id(); ?>"><?php echo $sportsman->name. " " . $sportsman->surname; ?></label>
                     </div>
                     <?php }
                     if ($is_valid2){ ?>
@@ -129,8 +129,8 @@ if ($is_valid1 && $is_valid2){
                 <?php }
                 foreach ($sportsmen_advanced as $sportsman){ ?>
                 <div class="popup-exercise--add-users__item">
-					<input class="popup-exercise--add-users__input" type="radio" id="users-list2" name="user2" value="<?php echo $sportsman->get_id(); ?>"/>
-					<label class="popup-exercise--add-users__label" for="users-list2"><?php echo $sportsman->name. " " . $sportsman->surname; ?></label>
+					<input class="popup-exercise--add-users__input" type="radio" id="users-list2-<?php echo $sportsman->get_id(); ?>" name="user2" value="<?php echo $sportsman->get_id(); ?>"/>
+					<label class="popup-exercise--add-users__label" for="users-list2-<?php echo $sportsman->get_id(); ?>"><?php echo $sportsman->name. " " . $sportsman->surname; ?></label>
 				</div>
                 <?php } ?>
 				<button type="submit" class="button-text popup-exercise--add-users__button-add" type="submit"><p>Добавить</p><img src="../img/add.svg" alt=""></button>
@@ -177,6 +177,40 @@ if ($is_valid1 && $is_valid2){
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
 		});
+
+
+        // Button to see exercise info
+        let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
+
+        for(let i = 0; i < infoExerciseButton.length; i++){
+            infoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -1%;`;
+            });
+        }
+        for(let i = 0; i < closeInfoExerciseButton.length; i++){
+            closeInfoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -101%;`;
+            });
+        }
+
+
+		//Difficult
+		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
+		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
+
+		for(let i = 0; i < difficultCountArr.length; i++){
+			difficultBlockArr[i].innerHTML = '';
+            for(let j = 0; j < 5; j++){
+				let newElem = document.createElement('div');
+				newElem.classList.add('exercise-item__difficult-item');
+				if(j > Number(difficultCountArr[i].innerHTML) - 1){
+					newElem.classList.add('exercise-item__difficult-item--disabled');
+				}
+				difficultBlockArr[i].appendChild(newElem);
+			}
+        }
     </script>
 </body>
 </html>

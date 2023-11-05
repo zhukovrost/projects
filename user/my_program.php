@@ -75,10 +75,6 @@ foreach ($user->program->workouts as $workout){
     <main class="my-program">
         <div class="container">
             <section class="day-workouts">
-                <section class="day-workouts__date">
-                    <h1 class="day-workouts__date-title">Выберите дату:</h1>
-                    <form method="post" class="day-workouts__date-form"><input class="day-workouts__date-input" type="week"></form>
-                </section>
                 <swiper-container class="day-workouts__swiper" navigation="true">
                     <?php if ($weekday_start){ ?>
                     <!-- first slide -->
@@ -221,15 +217,6 @@ foreach ($user->program->workouts as $workout){
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
 		});
-
-
-        // Choose date of workouts
-        let chooseDateInput = document.querySelector('.day-workouts__date-input');
-        let chooseDateForm = document.querySelector('.day-workouts__date-form');
-
-        chooseDateInput.addEventListener('change', function(){
-            chooseDateForm.submit();
-        });
 
 
         // Workout items

@@ -38,10 +38,11 @@
 
 /* Welcome header */
 .welcome-header{
+    display: flex;
+    justify-content: space-between;
     color: #ffffff;
-    justify-content: space-around;
     border-bottom: 1px solid #3a3a3a;
-    padding: 0px 0px 10px;
+    padding: 0px 50px 10px;
 }
 
 /* hedaer item */
@@ -53,12 +54,16 @@
     transition: .05s ease;
 }
 
+.welcome-header__item--log{
+    color: #000000;
+}
+
 .welcome-header__item:hover{
     opacity: 1;
 }
 
 .welcome-header__item p{
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .welcome-header__item:last-child{
@@ -2767,6 +2772,8 @@
 }
 
 .staff-block__treatment-recommendation{
+    word-break: break-all;
+    text-align: center;
     font-size: 21px;
     margin: 10px 15px;
 }
@@ -3015,8 +3022,8 @@
     margin-right: 15px;
 }
 
-.comparison-block__exercises{
-    width: 80%;
+.comparison-block__physics .exercise-item{
+    width: 70%;
     margin:  20px auto;
 }
 

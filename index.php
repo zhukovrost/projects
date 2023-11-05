@@ -17,21 +17,9 @@ $conn->close();
                 <img src="img/logo.svg" alt="">
                 <p>Training</p>
             </a>
-            <a class="welcome-header__item" href="reg_log.php">
-                <img src="img/workout.svg" alt="">
-                <p>Тренировки</p>
-            </a>
-            <a class="welcome-header__item" href="reg_log.php">
-                <img src="img/progress.svg" alt="">
-                <p>Прогресс</p>
-            </a>
-            <a class="welcome-header__item" href="reg_log.php">
-                <img src="img/exercises.svg" alt="">
-                <p>Упражнения</p>
-            </a>
-            <a class="welcome-header__item" href="reg_log.php">
+            <a class="welcome-header__item" href="user/other.php">
                 <img class="other_img" src="img/other.svg" alt="">
-                <p>Другое</p>
+                <p>Подробнее об этом сайте</p>
             </a>
             <a class="welcome-header__item" href="reg_log.php">Войти</a>
         </header>
