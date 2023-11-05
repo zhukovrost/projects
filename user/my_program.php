@@ -7,6 +7,8 @@ if (isset($_GET["user"]) && is_numeric($_GET["user"]))
         $user = $user_data;
     else
         $user = new User($conn, $_GET["user"]);
+ else
+     $user = $user_data;
 
 if (!$user->set_program($conn)){
     if ($user->get_auth())
