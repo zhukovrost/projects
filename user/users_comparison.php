@@ -13,6 +13,29 @@ if ($is_valid2)
     $user2 = new User($conn, $_GET["user2"]);
 
 $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
+$flag_main = false;
+if ($is_valid1 && $is_valid2){
+    $user1_workouts = $user1->get_control_workouts($conn, NULL, 1);
+    $user2_workouts = $user2->get_control_workouts($conn, NULL, 1);
+    if (count($user1_workouts) > 0 && count($user2_workouts) > 0){
+        $last_1 = $user1_workouts[0]->exercises;
+        $last_2 = $user2_workouts[0]->exercises;
+        $flag_main = true;
+        foreach ($last_1 as $item1){
+            $flag = false;
+            foreach ($last_2 as $item2){
+                if ($item1->get_id() == $item2->get_id()){
+                    $flag = true;
+                    break;
+                }
+            }
+            if (!$flag){
+                $flag_main = false;
+                break;
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +56,21 @@ $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
                             $reps = get_reps_for_comparison($user1, $conn, 1, $_GET["user2"]);
                         else
                             $reps = get_reps_for_comparison($user1, $conn, 1, NULL);
+                        $reps["{{ exercises }}"] = '';
+                        if ($flag_main){
+                            foreach ($last_1 as $item){
+                                $replaces = array(
+                                    "{{ image }}" => $item->get_image($conn),
+                                    "{{ name }}" => $item->name,
+                                    "{{ rating }}" => $item->get_rating(),
+                                    "{{ difficulty }}" => $item->difficulty,
+                                    "{{ muscle }}" => '',
+                                    "{{ description }}" => '',
+                                    "{{ input }}" => $item->reps
+                                );
+                                $reps["{{ exercises }}"] .= render($replaces, "../templates/control_exercise.html");
+                            }
+                        }
                         echo render($reps, "../templates/comparison_block.html");
                     } ?>
 			</section>
@@ -47,6 +85,21 @@ $sportsmen_advanced = $user_data->get_sportsmen_advanced($conn);
                             $reps = get_reps_for_comparison($user2, $conn, 2, $_GET["user1"]);
                         else
                             $reps = get_reps_for_comparison($user2, $conn, 2, NULL);
+                        $reps["{{ exercises }}"] = '';
+                        if ($flag_main){
+                            foreach ($last_2 as $item){
+                                $replaces = array(
+                                    "{{ image }}" => $item->get_image($conn),
+                                    "{{ name }}" => $item->name,
+                                    "{{ rating }}" => $item->get_rating(),
+                                    "{{ difficulty }}" => $item->difficulty,
+                                    "{{ muscle }}" => '',
+                                    "{{ description }}" => '',
+                                    "{{ input }}" => $item->reps
+                                );
+                                $reps["{{ exercises }}"] .= render($replaces, "../templates/control_exercise.html");
+                            }
+                        }
                         echo render($reps, "../templates/comparison_block.html");
                     } ?>
 			</section>

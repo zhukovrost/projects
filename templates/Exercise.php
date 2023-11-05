@@ -178,7 +178,7 @@ class User_Exercise extends Exercise {
             "{{ button_featured }}" => $button_featured,
             "{{ image }}" => $this->get_image($conn),
             "{{ name }}" => $this->name,
-            "{{ rating }}" => $this->rating,
+            "{{ rating }}" => $this->get_rating(),
             "{{ difficulty }}" => $this->difficulty,
             "{{ id }}" => $this->get_id(),
             "{{ muscle }}" => $muscle_list,
@@ -212,7 +212,7 @@ class User_Exercise extends Exercise {
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),
             "{{ name }}" => $this->name,
-            "{{ rating }}" => $this->rating,
+            "{{ rating }}" => $this->get_rating(),
             "{{ difficulty }}" => $this->difficulty,
             "{{ muscle }}" => $muscle_list,
             "{{ description }}" => $description,
