@@ -308,14 +308,23 @@ if (count($user->phys_updates) != 0){
 
         // Muscle groups chart
         const ctx2 = document.getElementById('muscleGroupsChart');
+        let allXerciseCount = 0;
+        let currentExerciseCountArray = <?php echo json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>;
+        for(let i = 0; i < currentExerciseCountArray.length; i++){
+            allXerciseCount += currentExerciseCountArray[i];
+        }
+        for(let i = 0; i < currentExerciseCountArray.length; i++){
+            currentExerciseCountArray[i] = Math.round(currentExerciseCountArray[i] / allXerciseCount * 100);
+        }
+        
 
         new Chart(ctx2, {
             type: 'pie',
             data: {
                 labels: ['Руки', 'Ноги', 'Грудь', 'Спина', 'Пресс', 'Кардио'],
                 datasets: [{
-                    label: 'Кол-во упражнений',
-                    data: <?php echo json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>,
+                    label: 'Процент упражнений',
+                    data: currentExerciseCountArray,
                     borderWidth: 1,
                     color: '#000000',
                 }]

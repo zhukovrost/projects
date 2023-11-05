@@ -178,11 +178,13 @@ $cnt_apps = 0;
             localStorage.setItem(`SpendWorkoutTime`, time);
 
             if(TimeForWork >= 0 && TimeForRest >= 0){
-                if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) == TimeForWork){
+                if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) - 1 == TimeForWork){
+                    console.log(time)
                     timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
                     localStorage.setItem(`Period`, 'Rest');
                 }
-                else if (time % (TimeForWork + TimeForRest) == 0){
+                else if ((time - 1) % (TimeForWork + TimeForRest) == 0){
+                    console.log(time)
                     timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
                     localStorage.setItem(`Period`, 'Work');
                 }
