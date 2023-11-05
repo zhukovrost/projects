@@ -169,10 +169,8 @@ class Control_Workout extends Workout{
             if ($select_result = $conn->query($select_sql)){
                 foreach ($select_result as $item){
                     $this->id = $item['id'];
-                    $this->loops = $item['loops'];
                     $exercises = json_decode($item['exercises']);
                     $reps = json_decode($item['reps']);
-                    $approaches = json_decode($item['approaches']);
                     $this->name = $item['name'];
                     $this->creator = $item["creator"];
                     $this->is_done = $item["is_done"];
@@ -180,10 +178,10 @@ class Control_Workout extends Workout{
                     $this->weekday = date("N", $item["date"]);
                     if ($this->is_done)
                         for ($i = 0; $i < count($exercises); $i++)
-                            array_push($this->exercises, new User_Exercise($conn, $exercises[$i], $reps[$i], $approaches[$i]));
+                            array_push($this->exercises, new User_Exercise($conn, $exercises[$i], $reps[$i]));
                     else
                         for ($i = 0; $i < count($exercises); $i++)
-                            array_push($this->exercises, new User_Exercise($conn, $exercises[$i], 0, $approaches[$i]));
+                            array_push($this->exercises, new User_Exercise($conn, $exercises[$i], 0));
 
                 }
             }else{
