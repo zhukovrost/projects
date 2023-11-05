@@ -1,7 +1,7 @@
 <?php
 include "../templates/func.php";
 include "../templates/settings.php";
-
+$user_data->set_subscriptions($conn);
 if ($_GET["id"] && $user_data->get_auth() && !in_array($_GET["id"], $user_data->subscriptions)){
     $user = $_GET["id"];
     $subscriber = $user_data->get_id();
