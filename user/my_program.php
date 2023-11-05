@@ -164,10 +164,26 @@ foreach ($user->program->workouts as $workout){
                     <input type="hidden" name="end" value="1">
                     <button type="submit" class="button-text my-program__finish">Завершить досрочно</button>
                 <?php } else if (!$user->get_auth() && !$user_data->set_program($conn)) { ?>
-                    <button type="button">Начать эту программу</button>
+                    <button class="button-text my-program__friend-program" type="button">Начать эту программу</button>
                 <?php } ?>
             </form>
         </div>
+
+        <!-- Start program popup window-->
+		<section class="popup-exercise popup-exercise__program-add">
+			<form method="post" class="popup-exercise__content">
+				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
+				<div class="popup-exercise__content-item">
+                    <label class="popup-exercise__info-label" for="week">Количество недель</label>
+                    <input class="popup-exercise__info-input" type="number" id="date">
+                </div>
+                <div class="popup-exercise__content-item">
+                    <label class="popup-exercise__info-label" for="week">Дата начала</label>
+                    <input class="popup-exercise__info-input" type="date" id="date">
+                </div>
+				<button class="button-text popup-exercise__submit-button">Начать</button>
+			</form>
+		</section>
     </main>
 
     <?php include "../templates/footer.html" ?>
@@ -175,6 +191,32 @@ foreach ($user->program->workouts as $workout){
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        // Add friend program
+        let programAddButton = document.querySelector('.my-program__friend-program');
+        let programAddPopup = document.querySelector('.popup-exercise__program-add');
+
+        programAddButton.addEventListener('click', function(){
+			programAddPopup.classList.add("open");
+		});
+
+		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
+		for(let i = 0; i < closeBtn.length; i++){
+			closeBtn[i].addEventListener('click', function(){
+				programAddPopup.classList.remove("open");
+			});
+		}
+
+		window.addEventListener('keydown', (e) => {
+            if(e.key == "Escape"){
+                programAddPopup.classList.remove("open");
+            }
+		});
+
+		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
+			event.isClickWithInModal = true;
+		});
+
+
         // Choose date of workouts
         let chooseDateInput = document.querySelector('.day-workouts__date-input');
         let chooseDateForm = document.querySelector('.day-workouts__date-form');

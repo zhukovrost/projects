@@ -1092,6 +1092,10 @@ body {
     max-width: 25vw;
 }
 
+.popup-exercise__content-item{
+    margin-right: 25px;
+}
+
 .popup-exercise__close-button{
     position: absolute;
     right: 0.5%;

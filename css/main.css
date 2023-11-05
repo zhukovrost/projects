@@ -607,6 +607,13 @@
     margin: 10px auto 20px;
 }
 
+.my-program__friend-program{
+    width: fit-content;
+    font-size: 30px;
+    padding: 7px 30px;
+    margin: 10px auto 20px;
+}
+
 /* ======================================== */
 
 
