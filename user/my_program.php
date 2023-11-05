@@ -26,6 +26,24 @@ if (isset($_POST['end']) && $user->get_auth()){
     }
 }
 
+if (isset($_POST["weeks"]) && $_POST["weeks"] > 0 && !$user->get_auth()){
+    if (empty($_POST["date_start"]))
+        $date_start = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
+    else
+        $date_start = strtotime($_POST["date_start"]);
+
+    $program_id = $user->program->get_id();
+
+    $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user_data->get_id().", $program_id, $date_start, ".$_POST['weeks'].")";
+    $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу друга.', ".$user_data->get_id().", ".time().", 0)";
+
+    if ($conn->query($sql2) && $conn->query($sql3)){
+        header("Location: my_program.php");
+    }else{
+        echo $conn->error;
+    }
+}
+
 $user->program->set_workouts($conn);
 $user->program->set_additional_data($conn, $user->get_id());
 $cnt_workouts_done = 0;
@@ -175,18 +193,18 @@ foreach ($user->program->workouts as $workout){
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<div class="popup-exercise__content-item">
                     <label class="popup-exercise__info-label" for="week">Количество недель</label>
-                    <input class="popup-exercise__info-input" type="number" id="date">
+                    <input class="popup-exercise__info-input" type="number" id="date" name="weeks">
                 </div>
                 <div class="popup-exercise__content-item">
                     <label class="popup-exercise__info-label" for="week">Дата начала</label>
-                    <input class="popup-exercise__info-input" type="date" id="date">
+                    <input class="popup-exercise__info-input" type="date" id="date" name="date_start">
                 </div>
 				<button class="button-text popup-exercise__submit-button">Начать</button>
 			</form>
 		</section>
     </main>
 
-    <?php include "../templates/footer.html" ?>
+    <?php include "../templates/footer.html"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
