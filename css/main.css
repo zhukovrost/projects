@@ -1790,6 +1790,12 @@
     margin-left: auto;
 }
 
+.c-program__workouts-choose{
+    margin-left: auto;
+    padding: 3px 10px;
+    font-size: 21px;
+}
+
 .c-program__workouts-more img,
 .c-program__workouts-delete img{
     width: 25px;
@@ -1995,6 +2001,15 @@
     border-radius: 5px;
     border: 1px solid #C6C6C6;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.c-workout__info-header--control{
+    flex-direction: column;
+}
+
+.c-workout__info-header-item{
+    display: flex;
+    margin: 10px 0px;
 }
 
 .c-workout__info-header--circle{
@@ -2225,6 +2240,7 @@
 .session-exercises__swiper{
     width: 40%;
     margin: 0 0 0 50px;
+    height: fit-content;
 }
 
 

@@ -159,7 +159,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
             if (count($user_data->my_exercises) > 0){
                 echo "<section class='exercise-block'>";
                 foreach ($user_data->my_exercises as $exercise_id){
-                    echo "<form method='post'>";
+                    echo "<form method='post' class='exercise-form'>";
                     $exercise = new User_Exercise($conn, $exercise_id);
                     $is_featured = $exercise->is_featured($user_data);
                     $exercise->print_control_exercise($conn, false, true);
@@ -174,7 +174,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
             if ($select_result = $conn->query($select_sql)){
                 echo "<section class='exercise-block'>";
                 foreach ($select_result as $item){
-                    echo "<form method='post'>";
+                    echo "<form method='post' class='exercise-form'>";
                     $exercise = new User_Exercise($conn, $item['id']);
                     $is_featured = $exercise->is_featured($user_data);
                     $is_mine = $exercise->is_mine($user_data);

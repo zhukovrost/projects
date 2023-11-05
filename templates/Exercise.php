@@ -179,7 +179,7 @@ class User_Exercise extends Exercise {
         }
 
         if ($construct)
-            $inp = "<input type='hidden' name='exercise' value='".$this->get_id()."'><button>Добавить</button>";
+            $inp = "<div class='exercise-item__buttons'><input type='hidden' name='exercise' value='".$this->get_id()."'><button class='button-text exercise-item__add'><p>Добавить</p><img src='../img/add.svg' alt=''></button></div>";
 
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),

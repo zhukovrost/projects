@@ -170,7 +170,7 @@ if (isset($_POST["workout_to_fav"])){
 
 
         // Info slide items' spans width
-        let infoItemsSpans = document.querySelectorAll('.workouts-card__info-item span');
+        let infoItemsSpans = document.querySelectorAll('.workouts-card__item span');
         let maxSpanWidth = 0;
 
         for(let i = 0; i < infoItemsSpans.length; i++){
@@ -179,7 +179,6 @@ if (isset($_POST["workout_to_fav"])){
 
         for(let i = 0; i < infoItemsSpans.length; i++){
             infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
-            console.log(infoItemsSpans[i].clientWidth)
         }
 
 

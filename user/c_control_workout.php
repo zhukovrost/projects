@@ -2,6 +2,10 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
+if (empty($_SESSION['c_workout']))
+    $_SESSION['c_workout'] = array();
+
+
 if ($user_data->get_status() != "coach" || empty($_GET["for"]) || !is_numeric($_GET["for"]))
     header("Location: coach.php");
 
@@ -60,18 +64,22 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
 					<!-- Decorative line -->
 					<div class="workouts-card__info-line"></div>
 					<!-- Buttons edit and start -->
-					<div class="day-workouts__card-buttons">
-						<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_control_exercises.php?for=<?php echo $user_id; ?>"><p>Добавить</p> <img src="../img/add.svg" alt=""></a>
+					<div class="day-workouts__card-buttons day-workouts__card-buttons--c">
+						<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_control_exercises.php?for=<?php echo $user_id; ?>"><p>Добавить упражнение</p> <img src="../img/add.svg" alt=""></a>
 						<a href="c_clear.php?for=<?php echo $user_id; ?>" class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></a>
 					</div>
 				</section>
 			</section>
 			<form method="post" class="c-workout__info">
-				<section class="c-workout__info-header">
-					<h1 class="c-workout__info-title">Название:</h1>
-                    <input class="c-workout__info-name" type="text" placeholder="Название тренировки" name="name">
-                    <h1 class="c-workout__info-title">Дата:</h1>
-                    <input class="c-workout__info-name" type="date" placeholder="Название тренировки" name="date">
+				<section class="c-workout__info-header c-workout__info-header--control">
+					<div class="c-workout__info-header-item">
+						<h1 class="c-workout__info-title">Название:</h1>
+						<input class="c-workout__info-name" type="text" placeholder="Название тренировки" name="name">
+					</div>
+					<div class="c-workout__info-header-item">
+						<h1 class="c-workout__info-title">Дата:</h1>
+						<input class="c-workout__info-name" type="date" placeholder="Название тренировки" name="date">
+					</div>
 				</section>
 				<button class="button-text c-workout__days-add" type="submit"><p>Добавить тренировку</p> <img src="../img/add.svg" alt=""></button>
                 <a class="button-text c-workout__back-button" href="control_workouts.php?user=<?php echo $user_id; ?>">Назад</a>
@@ -81,6 +89,22 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
 	</main>
 
     <?php include "../templates/footer.html" ?>
+	<script>
+		// Button to see exercise info
+        let	InfoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
 
+        for(let i = 0; i < InfoExerciseButton.length; i++){
+            InfoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -1%;`;
+            });
+        }
+        for(let i = 0; i < closeInfoExerciseButton.length; i++){
+            closeInfoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -101%;`;
+            });
+        }
+	</script>
 </body>
 </html>

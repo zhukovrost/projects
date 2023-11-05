@@ -47,7 +47,7 @@ $cnt_apps = 0;
 <footer class="workout-session-footer workout-session-footer--с">
     <div class="workout-session-footer-cover">
         <h1 class="workout-session-footer__title">Осталось:</h1>
-        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений(ия)</h2>
+        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений(я)</h2>
     </div>
     <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>">
     <button type="submit" class="button-text workout-session-footer__button">Завершить</button>
@@ -97,31 +97,71 @@ $cnt_apps = 0;
     let progressLine = document.querySelector('.workout-session__finish-line');
     let progressPercents = document.querySelector('.workout-session__percents-number');
 
-    let completedExercises = [];
-    for(let i = 0; i < repetDoneInputs.length; i++){
-        completedExercises.push(0);
+    currentArray = [];
+    let currentInputValues = [];
+    if(localStorage.getItem('repetDoneArray') && localStorage.getItem('repetDoneInputs')){
+        let currentArray = localStorage.getItem('repetDoneArray').split(',');
+        let currentInputValues = localStorage.getItem('repetDoneInputs').split(',');
+        let completedCount = 0;
+        let allCount = currentArray.length;
+
+        for(let i = 0; i < currentArray.length; i++){
+            if(currentArray[i] == '1'){
+                completedCount += 1;
+            }
+        }
+
+        for(let i = 0; i < repetDoneInputs.length; i++){
+            repetDoneInputs[i].value = currentInputValues[i];
+        }
+
+        progressPercents.innerHTML = `${Math.round(completedCount / allCount * 100)}%`;
+        progressLine.style.cssText = `width:${Math.round(completedCount / allCount * 100)}%`;
+        exercisesLeft.innerHTML = allCount - completedCount;
+
+        if(progressPercents.innerHTML == '100%'){
+            progressPercents.style.cssText = `color: #ffffff;`;
+        }
+        else{
+            progressPercents.style.cssText = `color: #000000;`;
+        }
     }
+    else{
+        for(let i = 0; i < repetDoneInputs.length; i++){
+            currentArray.push(0);
+            currentInputValues.push('');
+        }
+        localStorage.setItem('repetDoneArray', currentArray);
+        localStorage.setItem('repetDoneInputs', currentInputValues);
+    }
+
 
     for(let i = 0; i < repetDoneInputs.length; i++){
         repetDoneInputs[i].addEventListener('input', function(){
-            if(repetDoneInputs[i].value != ''){
-                completedExercises[i] = 1;
-            }
-            else{
-                completedExercises[i] = 0;
-            }
-            
             let completedCount = 0;
-            let allCount = completedExercises.length;
-            for(let i = 0; i < completedExercises.length; i++){
-                completedCount += completedExercises[i];
+            let allCount = repetDoneInputs.length;
+            for(let i = 0; i < repetDoneInputs.length; i++){
+                if(repetDoneInputs[i].value != ''){
+                    completedCount += 1;
+                    currentArray[i] = 1;
+                }
+                else{
+                    currentArray[i] = 0;
+                }
+                currentInputValues[i] = repetDoneInputs[i].value;
             }
+            localStorage.setItem('repetDoneArray', currentArray);
+            localStorage.setItem('repetDoneInputs', currentInputValues);
 
             progressPercents.innerHTML = `${Math.round(completedCount / allCount * 100)}%`;
             progressLine.style.cssText = `width:${Math.round(completedCount / allCount * 100)}%`;
+            exercisesLeft.innerHTML = allCount - completedCount;
 
             if(progressPercents.innerHTML == '100%'){
                 progressPercents.style.cssText = `color: #ffffff;`;
+            }
+            else{
+                progressPercents.style.cssText = `color: #000000;`;
             }
         });
     }

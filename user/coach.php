@@ -202,7 +202,7 @@ if ($is_selected){
                        <?php foreach ($sportsmen as $sportsman) { ?>
                            <a href="../user/coach.php?user=<?php echo $sportsman->get_id(); ?>" class="friends-block__item">
                                <img class="friends-block__avatar" src="<?php echo $sportsman->get_avatar($conn); ?>" alt="">
-                               <p class="friends-block__name"><?php echo $sportsman->name." ".$sportsman->surname; ?></p>
+                               <p class="friends-block__name"><?php echo $sportsman->name?></p>
                            </a>
                        <?php } ?>
 					</section>

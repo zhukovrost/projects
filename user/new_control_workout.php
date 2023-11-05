@@ -65,17 +65,17 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 					<section class="c-program__workouts-list">
 						<div class="c-program__workouts-item">
 							<p class="c-program__workouts-name">1. День рук</p>
-							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
+							<button class="button-text c-program__workouts-choose">Выбрать</button>
 							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
 						</div>
 						<div class="c-program__workouts-item">
 						<p class="c-program__workouts-name">2. ффффффя</p>
-							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
+                            <button class="button-text c-program__workouts-choose">Выбрать</button>
 							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
 						</div>
 						<div class="c-program__workouts-item">
 							<p class="c-program__workouts-name">3. Без названия</p>
-							<button class="button-img c-program__workouts-more"><img src="../img/more_white.svg" alt=""></button>
+							<button class="button-text c-program__workouts-choose">Выбрать</button>
 							<button class="button-img c-program__workouts-delete"><img src="../img/delete.svg" alt=""></button>
 						</div>
 					</section>
@@ -90,13 +90,12 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 						<p class="c-program__duration-date-text c-program__duration-date-text--control">Дата:</p>
                         <input class="c-program__duration-date-start" type="date" name="date_start">
 					</div>
-					<a href="" class="button-text c-program__duration-button">Далее <img src="../img/arrow_white.svg" alt=""></a>
+					<a href="" class="button-text c-program__duration-button">Начать <img src="../img/arrow_white.svg" alt=""></a>
 				</form>
 			</section>
 		</div>
 	</main>
 
-	
 	<?php include "../templates/footer.html" ?>
 </body>
 </html>

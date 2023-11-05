@@ -44,7 +44,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                 </section>
                                 <!-- Info about day workout -->
                                 <?php $workout->print_workout_info(); ?>
-                                <a href="control_workout_session.php?id=<?php echo $workout->id; ?>">Начать</a>
+                                <a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id=<?php echo $workout->id; ?>"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
                             </section>
                         </section>
                     </section>
@@ -56,8 +56,8 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                     </div>
                 <?php } ?>
 
-            <section class="workout-other">
-			<section class="last-trainings last-trainings--coach">
+            <section class="workout-other coach-other">
+			    <section class="last-trainings">
 					<h1 class="last-trainings__title">Последние тренировки</h1>
 					<div class="last-trainings__content">
                         <?php if (count($done_workouts) != 0){
@@ -68,13 +68,13 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                 <div class="last-trainings__card-left">
                                     <!-- Time of training -->
                                     <div class="last-trainings__item">
-                                    <img class="last-trainings__item-img" src="../img/time.svg" alt="">
-                                    <p class="last-trainings__item-text"><span><?php echo date("d.m.Y", $done_workout->date); ?></span></p>
+                                        <img class="last-trainings__item-img" src="../img/time.svg" alt="">
+                                        <p class="last-trainings__item-text"><span><?php echo date("d.m.Y", $done_workout->date); ?></span></p>
                                     </div>
                                     <!-- Exercise count of training -->
                                     <div class="last-trainings__item">
-                                    <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
-                                    <p class="last-trainings__item-text"><span><?php echo count($done_workout->exercises) ?></span> упражнений</p>
+                                        <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
+                                        <p class="last-trainings__item-text"><span><?php echo count($done_workout->exercises) ?></span> упражнений</p>
                                     </div>
                                 </div>
                                 <!-- Right part of last exercise item -->
@@ -92,7 +92,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                             </section>
 						<?php }
                         } else { ?>
-                            <p>Нет тренировок</p>
+                            <p class="last-trainings__no-workout">Нет тренировок</p>
                         <?php } ?>
 					</div>
 				</section>
@@ -107,5 +107,35 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
     <?php include "../templates/footer.html" ?>
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
+    <script>
+        // Button to see exercise info
+        let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
+        let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
+        let infoBlock = document.querySelectorAll('.exercise-item__info-content');
+
+        for(let i = 0; i < infoExerciseButton.length; i++){
+            infoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -1%;`;
+            });
+        }
+        for(let i = 0; i < closeInfoExerciseButton.length; i++){
+            closeInfoExerciseButton[i].addEventListener('click', function(){
+                infoBlock[i].style.cssText = `top: -101%;`;
+            });
+        }
+
+
+        // Info slide items' spans width
+        let infoItemsSpans = document.querySelectorAll('.workouts-card__item span');
+        let maxSpanWidth = 0;
+
+        for(let i = 0; i < infoItemsSpans.length; i++){
+            maxSpanWidth = Math.max(maxSpanWidth, infoItemsSpans[i].clientWidth);
+        }
+
+        for(let i = 0; i < infoItemsSpans.length; i++){
+            infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
+        }
+    </script>
 </body>
 </html>
