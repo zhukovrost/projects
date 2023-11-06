@@ -32,8 +32,8 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                         <section class="workouts-card">
                             <!-- Title and button to add to favorite collection -->
                             <div class="workouts-card__header">
-                                <h2 class="workouts-card__date"><?php echo date("d.m.Y"); ?></h2>
-                                <button class="workouts-card__favorite-btn"><img src="../img/favorite.svg" alt=""></button>
+                                <h2 class="workouts-card__date"><?php echo date("d.m.Y", $workout->date); ?></h2>
+                                <!-- <button class="workouts-card__favorite-btn"><img src="../img/favorite.svg" alt=""></button> -->
                             </div>
                             <!-- Content of workout -->
                             <section class="workouts-card__content">
@@ -43,7 +43,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     <?php $workout->print_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
-                                <?php $workout->print_workout_info(date("N", $workout->date), 0, -1, false, '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$workout->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'); ?>
+                                <?php $workout->print_control_workout_info($conn); ?>
                             </section>
                         </section>
                     </section>
@@ -85,7 +85,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     </div>
                                     <!-- Button 'Подробнее' for more info about exercise -->
                                     <div class="last-trainings__item">
-                                    <a class="button-text last-trainings__item-button" href="{{ link }}">Подробнее <img src="../img/other.svg" alt=""></a>
+                                    <a class="button-text last-trainings__item-button" href="">Подробнее <img src="../img/other.svg" alt=""></a>
                                     </div>
                                 </div>
                             </section>

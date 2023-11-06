@@ -121,8 +121,7 @@ class Workout {
                         <button class="button-text day-workouts__card-button day-workouts__card-button--time"><p>Таймер</p><img src="../img/time.svg" alt=""></button>
                     <?php } ?>
                 </div>
-                <?php
-                if ($additional_info){ ?>
+                <?php if ($additional_info){ ?>
                     <a href="workout_session.php" class="button-text day-workouts__card-button day-workouts__card-button--start"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>
                 <?php } ?>
             <?php }
@@ -195,5 +194,25 @@ class Control_Workout extends Workout{
     public function get_is_done()
     {
         return $this->is_done;
+    }
+
+    public function print_control_workout_info($expand_buttons = 0, $user_id = -1, $additional_info = false)
+    {
+        ?>
+        <section class="workouts-card__info">
+                <h2 class="day-workouts__card-name"><?php echo $this->name; ?></h2>
+                <div class="workouts-card__info-line"></div>
+                <div class="workouts-card__muscle-groups">
+                    <p class="workouts-card__item">Руки: <span><?php echo $this->muscles["arms"]; ?>%</span></p>
+                    <p class="workouts-card__item">Ноги: <span><?php echo $this->muscles["legs"]; ?>%</span></p>
+                    <p class="workouts-card__item">Грудь: <span><?php echo $this->muscles["chest"]; ?>%</span></p>
+                    <p class="workouts-card__item">Спина: <span><?php echo $this->muscles["back"]; ?>%</span></p>
+                    <p class="workouts-card__item">Пресс: <span><?php echo $this->muscles["press"]; ?>%</span></p>
+                    <p class="workouts-card__item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
+                </div>
+            <div class="workouts-card__info-line"></div>
+            <?php if (!$this->is_done) echo '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$this->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'; ?>
+        </section>
+        <?php
     }
 }
