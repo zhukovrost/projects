@@ -453,17 +453,18 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
         let socialLinks = document.querySelectorAll('.popup-user__info-social a');
         let socialLinksEdit = document.querySelectorAll('.popup-user__input');
 
-        MoreInfoEditButton.addEventListener('click', function(){
-            UserInfoPopup.classList.remove("open");
-			UserInfoEditPopup.classList.add("open");
+        if(MoreInfoEditButton){
+            MoreInfoEditButton.addEventListener('click', function(){
+                UserInfoPopup.classList.remove("open");
+                UserInfoEditPopup.classList.add("open");
 
-            for(let i = 0; i < socialLinksEdit.length; i++){
-                if(socialLinks[i].href != ''){
-                    socialLinksEdit[i].value = socialLinks[i].href;
+                for(let i = 0; i < socialLinksEdit.length; i++){
+                    if(socialLinks[i].href != ''){
+                        socialLinksEdit[i].value = socialLinks[i].href;
+                    }
                 }
-            }
-		});
-
+            });
+        }
 
 
         // Изменение описания
@@ -471,10 +472,12 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 
         let DescriptionPopup = document.querySelector('.popup-exercise--description-edit');
 
-        DescriptionEditButton.addEventListener('click', function(){
-            document.querySelector('.popup-user__description-edit-text').value = document.querySelector('.user-about__description-text').innerHTML;
-			DescriptionPopup.classList.add("open");
-		});
+        if(DescriptionEditButton){
+            DescriptionEditButton.addEventListener('click', function(){
+                document.querySelector('.popup-user__description-edit-text').value = document.querySelector('.user-about__description-text').innerHTML;
+                DescriptionPopup.classList.add("open");
+            });
+        }
 
 
 

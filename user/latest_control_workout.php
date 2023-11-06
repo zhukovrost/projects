@@ -42,7 +42,6 @@ if ($is_valid1 && $is_valid2){
 <?php inc_head(); ?>
 <body>
     <?php include "../templates/header.php" ?>
-
 	<main class="user-comparison">
 		<div class="container">
 			<section class="comparison-block">
