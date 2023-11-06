@@ -3426,4 +3426,30 @@
     right: 4%;
 }
 
-/* ======================================== */
+/* ========================================= */
+
+
+/* ==========LAST CONTROL WORKOUTS========== */
+.last-control-cover{
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 5px 5px 0px 0px #9A9A9A;
+    border: 1px solid #C6C6C6;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+}
+
+.last-control__title{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.last-control-cover .staff-block__header{
+    flex-direction: column;
+    position: relative;
+}
+
+.last-control-cover .exercise-item{
+    width: 100%;
+}
