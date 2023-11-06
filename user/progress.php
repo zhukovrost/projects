@@ -167,7 +167,7 @@ if (count($user->phys_updates) != 0){
                                     $sql = "SELECT id FROM workout_history WHERE user=".$user->get_id()." AND date_completed>=".$user->program->date_start;
                                     if ($result = $conn->query($sql)){
                                         foreach ($result as $item) $cnt_done++;
-                                        echo round($cnt_done / $cnt_all_workouts, 0);
+                                        echo round(($cnt_done / $cnt_all_workouts) * 100, 0);
                                     } else
                                         echo 0;
                                 }
