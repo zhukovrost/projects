@@ -2,26 +2,11 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
-$users_array = array();
-if (isset($_POST['search']) && trim($_POST['search']) != ""){
-    $searches = explode(' ', $_POST['search']);
-    foreach ($searches as $search){
-        $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.id!=".$user_data->get_id()." AND (users.login LIKE '%$search%' OR users.name LIKE '%$search%' OR users.surname LIKE '%$search%')";
-        $result = $conn->query($sql);
-        foreach ($result as $item){
-            if (!in_array($item, $users_array))
-                array_push($users_array, $item);
-        }
-    }
-}else {
-    $sql = "SELECT users.name, users.surname, users.id, avatars.file FROM users INNER JOIN avatars ON users.avatar=avatars.id WHERE users.id!=".$user_data->get_id();
-    $result = $conn->query($sql);
-    foreach ($result as $item){
-        array_push($users_array, $item);
-    }
-}
+if ($user_data->get_status() != "coach" && $user_data->get_status() != "doctor")
+    header("Location: ../index.php");
 
-$user_data->set_subscriptions($conn);
+$sportsmen = $user_data->get_sportsmen_advanced($conn);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,32 +17,23 @@ $user_data->set_subscriptions($conn);
 	<nav class="users-search-nav">
 		<div class="container">
 			<!-- Buttons to (sub / unsub) users -->
-            <?php if ($user_data->get_status() == "coach" || $user_data->get_status() == "doctor"){ ?>
             <a class="button-text users-search-nav__item" href="requests.php">Новые заявки (<?php echo count($user_data->get_requests()); ?>)<img src="../img/application.svg" alt=""></a>
-            <?php } ?>
-			<a class="button-text users-search-nav__item" href="c_exercises.php?my=1"><p>Подписки</p><img src="../img/arrow_white.svg" alt=""></a>
 			<!-- Exercise search -->
+            <!--
 			<form method="post" class="users-search-nav__search">
 				<input class="users-search-nav__search-input" type="text" placeholder="Искать" name="search">
 				<button class="users-search-nav__search-button"><img src="../img/search_black.svg" alt=""></button>
 			</form>
+			-->
 		</div>
 	</nav>
 
 	<main class="users-list">
 		<div class="container">
-            <?php
-            if (count($users_array) != 0){
-                foreach ($users_array as $user){
-                    if ($user_data->get_auth())
-                        print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], in_array($user['id'], $user_data->subscriptions));
-                    else
-                        print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], false);
-                }
-            }?>
+            <?php foreach ($sportsmen as $sportsman) print_sportsman_block($conn, $sportsman); ?>
 		</div>
-        <?php if (count($users_array) == 0){ ?>
-            <p class="users-list__title-none">Пользователь не найден</p>
+        <?php if (count($sportsmen) == 0){ ?>
+            <p class="users-list__title-none">Пользователи не найдены</p>
         <?php } ?>
 
     <?php include "../templates/footer.html" ?>

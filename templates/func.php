@@ -331,3 +331,13 @@ function get_reps_for_comparison($user, $conn, $user_number, $second_user_id){
 
     return $reps;
 }
+
+function print_sportsman_block($conn, $sportsman){
+    $replacements = array(
+        "{{ name }}" => $sportsman->name,
+        "{{ image }}" => $sportsman->get_avatar($conn),
+        "{{ button }}" => "<a href='coach.php?user=".$sportsman->get_id()."'>Выбрать</a>",
+        "{{ link }}" => "profile.php?user=".$sportsman->get_id()
+    );
+    echo render($replacements, "../templates/user_block.html");
+}
