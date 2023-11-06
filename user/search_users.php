@@ -43,13 +43,13 @@ $user_data->set_subscriptions($conn);
 
 	<nav class="users-search-nav">
 		<div class="container">
-			<!-- Buttons to (sub / unsub) users -->
+			<!-- Buttons to (sub / all) users -->
             <?php if ($subs){ ?>
                 <a class="button-text users-search-nav__item" href="search_users.php?subs=0"><p>Все</p><img src="../img/arrow_white.svg" alt=""></a>
             <?php } else { ?>
                 <a class="button-text users-search-nav__item" href="search_users.php?subs=1"><p>Подписки</p><img src="../img/arrow_white.svg" alt=""></a>
             <?php } ?>
-			<!-- Exercise search -->
+			<!-- users search -->
 			<form method="post" class="users-search-nav__search">
 				<input class="users-search-nav__search-input" type="text" placeholder="Искать" name="search">
 				<p class="exercises-nav__search-img"><img src="../img/search_black.svg" alt=""></p>

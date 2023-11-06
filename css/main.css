@@ -2545,6 +2545,7 @@
     text-align: center;
     color: #929292;
     font-size: 19px;
+    margin-top: 20px;
 }
 
 .staff-block__item{
@@ -3009,6 +3010,7 @@
 .comparison-block__physics-content{
     display: flex;
     justify-content: space-around;
+    margin-bottom: 15px;
 }
 
 .comparison-block__physics-item{

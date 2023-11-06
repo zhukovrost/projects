@@ -144,7 +144,7 @@ if ($is_selected){
                        for ($i = 0; $i < $cnt_sportsmen; $i++) { ?>
                            <a href="../user/doctor.php?user=<?php echo $sportsmen[$i]->get_id(); ?>" class="friends-block__item">
                                <img class="friends-block__avatar" src="<?php echo $sportsmen[$i]->get_avatar($conn); ?>" alt="">
-                               <p class="friends-block__name"><?php echo $sportsmen[$i]->name." ".$sportsmen[$i]->surname; ?></p>
+                               <p class="friends-block__name"><?php echo $sportsmen[$i]->name?></p>
                            </a>
                        <?php } ?>
 					</section>

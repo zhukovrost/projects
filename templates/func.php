@@ -336,7 +336,7 @@ function print_sportsman_block($conn, $sportsman){
     $replacements = array(
         "{{ name }}" => $sportsman->name,
         "{{ image }}" => $sportsman->get_avatar($conn),
-        "{{ button }}" => "<a href='coach.php?user=".$sportsman->get_id()."'>Выбрать</a>",
+        "{{ button }}" => "<a class='button-text user-card__button' href='coach.php?user=".$sportsman->get_id()."'>Выбрать</a>",
         "{{ link }}" => "profile.php?user=".$sportsman->get_id()
     );
     echo render($replacements, "../templates/user_block.html");
