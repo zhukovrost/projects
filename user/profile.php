@@ -165,7 +165,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                                 <a href="delete_coach.php" class="user-block__staff-button"><img src="../img/delete_black.svg" alt=""></a>
                             <?php } ?>
                         <?php }else{ ?>
-                            <a href="search_users.php" class="user-block__staff-button"><img src="../img/add_black.svg" alt=""></a>
+                            <a href="search_users.php" class="user-block__staff-button user-block__staff-button--add"><img src="../img/add_black.svg" alt=""></a>
                         <?php } ?>
 					</div>
                     <!-- Doctor info -->
@@ -219,12 +219,27 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                     <p class="popup-user__info-item-name">Тип пользователя</p>
                     <p class="popup-user__info-item-info"><?php $user->print_status(); ?></p>
                 </div>
-
-                <!-- Люитель / профессионал / не указан -->
-				<div class="popup-user__info-item">
-                    <p class="popup-user__info-item-name">Тип спортсмена</p>
-                    <p class="popup-user__info-item-info"><?php $user->print_type(); ?></p>
-                </div>
+                <?php if ($user->get_status() == "user"){ ?>
+                    <!-- Люитель / профессионал / не указан -->
+                    <div class="popup-user__info-item">
+                        <p class="popup-user__info-item-name">Тип спортсмена</p>
+                        <p class="popup-user__info-item-info"><?php $user->print_type(); ?></p>
+                    </div>
+                <?php } ?>
+                <?php if ($user->get_status() == "coach"){ ?>
+                    <!-- Люитель / профессионал / не указан -->
+                    <div class="popup-user__info-item">
+                        <p class="popup-user__info-item-name">Тип тренера</p>
+                        <p class="popup-user__info-item-info"><?php $user->print_type(); ?></p>
+                    </div>
+                <?php } ?>
+                <?php if ($user->get_status() == "doctor"){ ?>
+                    <!-- Люитель / профессионал / не указан -->
+                    <div class="popup-user__info-item">
+                        <p class="popup-user__info-item-name">Тип доктора</p>
+                        <p class="popup-user__info-item-info"><?php $user->print_type(); ?></p>
+                    </div>
+                <?php } ?>
                 <?php if ($user->get_status() == "user"){ ?>
                     <!-- низкий / средний / высокий / не указан-->
                     <div class="popup-user__info-item">

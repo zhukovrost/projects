@@ -1496,7 +1496,7 @@
     background-color: #cccccc;
 }
 
-.user-block__staff-button:hover img{
+.user-block__staff-button--add:hover img{
     -webkit-animation: rotate-center 0.3s ease-in-out both;
 	animation: rotate-center 0.3s ease-in-out both;
 }
@@ -2740,6 +2740,10 @@
     margin: 10px auto 0px;
 }
 
+.staff-block .staff-block__medicine-item{
+    justify-content: center;
+}
+
 .staff-block__medicine-cover{
     display: flex;
 }
@@ -2756,6 +2760,10 @@
     font-size: 21px;
     margin-right: 50px;
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.staff-block .staff-block__medicine-dose{
+    margin-right: 0px;
 }
 
 .staff-block__treatment-date{
