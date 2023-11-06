@@ -19,12 +19,12 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn);
 			<!-- Buttons to (sub / unsub) users -->
             <a class="button-text users-search-nav__item" href="requests.php">Новые заявки (<?php echo count($user_data->get_requests()); ?>)<img src="../img/application.svg" alt=""></a>
 			<!-- Exercise search -->
-            <!--
+            
 			<form method="post" class="users-search-nav__search">
 				<input class="users-search-nav__search-input" type="text" placeholder="Искать" name="search">
 				<p class="exercises-nav__search-img"><img src="../img/search_black.svg" alt=""></p>
 			</form>
-			-->
+			
 		</div>
 	</nav>
 
