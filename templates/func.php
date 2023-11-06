@@ -341,3 +341,14 @@ function print_sportsman_block($conn, $sportsman){
     );
     echo render($replacements, "../templates/user_block.html");
 }
+
+function in_workout($workout, $id){
+    $flag = false;
+    foreach ($workout as $user_exercise){
+        if ($user_exercise->get_id() == $id){
+            $flag = true;
+            break;
+        }
+    }
+    return $flag;
+}
