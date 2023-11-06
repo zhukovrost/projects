@@ -137,10 +137,14 @@ if ($is_selected){
                     </div>
                     <!-- Friends' workout swiper -->
                    <section class="friends-block__cover" navigation="true">
-                       <?php foreach ($sportsmen as $sportsman) { ?>
-                           <a href="../user/doctor.php?user=<?php echo $sportsman->get_id(); ?>" class="friends-block__item">
-                               <img class="friends-block__avatar" src="<?php echo $sportsman->get_avatar($conn); ?>" alt="">
-                               <p class="friends-block__name"><?php echo $sportsman->name." ".$sportsman->surname; ?></p>
+                       <?php
+                       $cnt_sportsmen = count($sportsmen);
+                       if ($cnt_sportsmen > 4)
+                           $cnt_sportsmen = 4;
+                       for ($i = 0; $i < $cnt_sportsmen; $i++) { ?>
+                           <a href="../user/doctor.php?user=<?php echo $sportsmen[$i]->get_id(); ?>" class="friends-block__item">
+                               <img class="friends-block__avatar" src="<?php echo $sportsmen[$i]->get_avatar($conn); ?>" alt="">
+                               <p class="friends-block__name"><?php echo $sportsmen[$i]->name." ".$sportsmen[$i]->surname; ?></p>
                            </a>
                        <?php } ?>
 					</section>
