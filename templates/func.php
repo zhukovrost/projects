@@ -179,6 +179,23 @@ function get_graph_workout_data_year($history){
     return $result;
 }
 
+function get_graph_workout_data_month($timestamps) {
+    $currentMonth = date('n'); // Получаем текущий месяц
+    $weeksData = array_fill(0, 5, 0);
+    foreach ($timestamps as $timestamp) {
+        $timestamp = $timestamp["date_completed"];
+        $dateMonth = date('n', $timestamp);
+        if ($dateMonth == $currentMonth) {
+            $weekOfMonth = (int)date('W', $timestamp) - (int)date('W', strtotime(date('Y-m-01', $timestamp))) + 1;
+            if ($weekOfMonth >= 1 && $weekOfMonth <= 5) {
+                $weeksData[$weekOfMonth - 1]++;
+            }
+        }
+    }
+
+    return $weeksData;
+}
+
 function get_exercise_muscles($conn, $exercise_id){
     $sql = "SELECT muscles FROM exercises WHERE id=$exercise_id";
     if ($result = $conn->query($sql)){

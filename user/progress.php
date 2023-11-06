@@ -192,7 +192,7 @@ if (count($user->phys_updates) != 0){
 		</section>
 	</main>
 
-	<?php include "../templates/footer.html" ?>
+	<?php include "../templates/footer.html"; echo json_encode(get_graph_workout_data_month($user->workout_history)); ?>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -238,9 +238,11 @@ if (count($user->phys_updates) != 0){
         }
         if(periodSelects[0].value == 'month'){
             trainingPeriodArray = ['1ая неделя', '2ая неделя', '3я неделя', '4ая неделя', '5ая неделя'];
+            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_month($user->workout_history)); ?>;
         }
         if(periodSelects[0].value == 'week'){
             trainingPeriodArray = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+
         }
 
         new Chart(ctx1, {
