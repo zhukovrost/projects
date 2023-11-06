@@ -102,7 +102,7 @@ class Exercise {
 
     public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false, $is_current=false){
         if ($this->description == ""){
-            $description = "No description for this exercise";
+            $description = "Нет описания";
         }else{
             $description = $this->description;
         }
@@ -156,7 +156,7 @@ class User_Exercise extends Exercise {
 
     public function print_it($conn, $is_featured=false, $is_mine=false, $construct=false, $is_current=false){
         if ($this->description == ""){
-            $description = "No description for this exercise";
+            $description = "Нет описания";
         }else{
             $description = $this->description;
         }
@@ -192,7 +192,7 @@ class User_Exercise extends Exercise {
 
     public function print_control_exercise($conn, $current=false, $construct=false){
         if ($this->description == ""){
-            $description = "No description for this exercise";
+            $description = "Нет описания";
         }else{
             $description = $this->description;
         }
@@ -201,13 +201,16 @@ class User_Exercise extends Exercise {
             $muscle_list .= translate_group($muscle) . " ";
         }
         $muscle_list = str_replace(' ', '-', trim($muscle_list));
-        $inp = '';
+        $inp = 'Нет данных';
         if ($current) {
             $inp = '<input class="exercise-item__input" type="number" placeholder="результат" name="reps[]">';
         }
 
         if ($construct)
             $inp = "<div class='exercise-item__buttons'><input type='hidden' name='exercise' value='".$this->get_id()."'><button class='button-text exercise-item__add'><p>Добавить</p><img src='../img/add.svg' alt=''></button></div>";
+
+        if (!$construct && !$current && $this->reps > 0)
+            $inp =  $this->reps . "повторений";
 
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),

@@ -75,7 +75,7 @@ class Workout {
 
     public function print_exercises($conn){
         foreach ($this->exercises as $exercise){
-            $exercise->print_control_exercise($conn);
+            $exercise->print_it($conn);
         }
     }
 
@@ -214,5 +214,11 @@ class Control_Workout extends Workout{
             <?php if (!$this->is_done) echo '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$this->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'; ?>
         </section>
         <?php
+    }
+
+    public function print_control_exercises($conn){
+        foreach ($this->exercises as $exercise){
+            $exercise->print_control_exercise($conn);
+        }
     }
 }

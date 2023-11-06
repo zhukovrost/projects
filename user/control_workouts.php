@@ -40,7 +40,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                 <!-- Exercises array -->
                                 <section class="workouts-card__exercises-cover">
                                     <!-- Exercise items -->
-                                    <?php $workout->print_exercises($conn); ?>
+                                    <?php $workout->print_control_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
                                 <?php $workout->print_control_workout_info($conn); ?>
