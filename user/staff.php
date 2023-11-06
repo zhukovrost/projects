@@ -111,7 +111,7 @@ if ($has_doctor){
 							<h1 class="staff-block__name-text"><?php echo $user_data->doctor->name." ".$user_data->doctor->surname; ?></h1>
 							<a class="staff-block__profile-link" href="profile.php?user=<?php echo $user_data->doctor->get_id(); ?>"><img src="../img/profile_black.svg" alt=""></a>
 						</div>
-						<div class="staff-block__buttons">
+						<div class="staff-block__buttons">	
                             <?php if ($user_data->doctor->vk != NULL){ ?>
                                 <a href="<?php echo $user_data->doctor->vk; ?>" class="staff-block__button staff-block__button--img"><img src="../img/vk.svg" alt=""></a>
                             <?php }if ($user_data->doctor->tg != NULL){ ?>
@@ -123,7 +123,7 @@ if ($has_doctor){
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
-					<h2 class="staff-block__subtitle">Курс лечения</h2>
+					<h2 class="staff-block__subtitle">Приём лекарств</h2>
                     <?php if (count($doctor_data["medicines"]) > 0)
                         foreach ($doctor_data["medicines"] as $medicine)
                             print_medicine($conn, (int)$medicine, $user_data->get_id(), 0);

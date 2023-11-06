@@ -91,7 +91,7 @@ if ($is_selected){
 				</section>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
-					<h2 class="staff-block__subtitle">Прием лекарств</h2>
+					<h2 class="staff-block__subtitle">Приём лекарств</h2>
 					<div class="staff-block__medicines">
                         <?php if (count($data["medicines"]) > 0)
                             foreach ($data["medicines"] as $medicine)
