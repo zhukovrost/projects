@@ -153,16 +153,26 @@ if (count($user->phys_updates) != 0){
 						<p class="progress-block__programm-percents"><?php
                             if ($user->set_program($conn)){
                                 $user->program->set_additional_data($conn, $user->get_id());
+                                $cnt_workouts_per_week = 0;
+                                foreach ($user->program->program as $workout)
+                                    if ($workout != 0)
+                                        $cnt_workouts_per_week++;
+
+                                $cnt_all_workouts = $cnt_workouts_per_week * $user->program->weeks;
+                                $cnt_done = 0;
                                 $progress = (time() - $user->program->date_start) / ($user->program->weeks * 604800) * 100;
-                                if ($progress < 0){
-                                    echo '0';
-                                }else if ($progress > 100){
-                                    echo '100';
+                                if ($cnt_all_workouts == 0){
+                                    echo 0;
                                 }else{
-                                    echo round($progress);
+                                    $sql = "SELECT id FROM workout_history WHERE user=".$user->get_id()." AND date_completed>=".$user->program->date_start;
+                                    if ($result = $conn->query($sql)){
+                                        foreach ($result as $item) $cnt_done++;
+                                        echo round($cnt_done / $cnt_all_workouts, 0);
+                                    } else
+                                        echo 0;
                                 }
-                            }else{
-                                echo '0';
+                                }else{
+                                echo 0;
                             }
                             ?>%</p>
 						<div class="progress-block__programm-finish" class="finish"></div>
@@ -192,7 +202,7 @@ if (count($user->phys_updates) != 0){
 		</section>
 	</main>
 
-	<?php include "../templates/footer.html"; echo json_encode(get_graph_workout_data_month($user->workout_history)); ?>
+	<?php include "../templates/footer.html"; ?>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
