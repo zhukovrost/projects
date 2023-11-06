@@ -21,13 +21,13 @@ $requests = $user_data->get_requests();
                 foreach ($requests as $user_block){
                     $user = new User($conn, $user_block['user']);
                     print_user_block_request($user->name, $user->surname, $user->get_avatar($conn), $user->get_id(), $user_block["id"]);
-                    echo '</div>';
                 }
             }else{ ?>
                 </div>
                 <p class="users-list__no-users">Нет заявок</p>
             <?php }
             ?>
+        </div>
 	</main>
 
     <?php include "../templates/footer.html" ?>

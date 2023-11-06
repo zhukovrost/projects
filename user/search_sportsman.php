@@ -32,6 +32,9 @@ $user_data->set_subscriptions($conn);
 	<nav class="users-search-nav">
 		<div class="container">
 			<!-- Buttons to (sub / unsub) users -->
+            <?php if ($user_data->get_status() == "coach" || $user_data->get_status() == "doctor"){ ?>
+            <a class="button-text users-search-nav__item" href="requests.php">Новые заявки (<?php echo count($user_data->get_requests()); ?>)<img src="../img/application.svg" alt=""></a>
+            <?php } ?>
 			<a class="button-text users-search-nav__item" href="c_exercises.php?my=1"><p>Подписки</p><img src="../img/arrow_white.svg" alt=""></a>
 			<!-- Exercise search -->
 			<form method="post" class="users-search-nav__search">

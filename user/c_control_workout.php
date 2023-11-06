@@ -105,6 +105,16 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
                 infoBlock[i].style.cssText = `top: -101%;`;
             });
         }
+
+
+        // Button submit
+		let addToPragramButton = document.querySelector('.c-workout__days-add');
+		let workoutNameInput = document.querySelector('.c-workout__info-name');
+		addToPragramButton.addEventListener('click', function(){
+			if(workoutNameInput.value == ''){
+				workoutNameInput.value = "Без названия";
+			}
+		});
 	</script>
 </body>
 </html>
