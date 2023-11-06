@@ -14,12 +14,11 @@ $workout = new Control_Workout($conn, $_GET["id"]);
     <?php include "../templates/header.php" ?>
 	<main class="user-comparison">
 		<div class="container">
-			<section class="comparison-block">
-				<p class="staff-block__title">Спортсмен</p>
-                    <section class="staff-block__header">
-                        <button class="button-text comparison-block__add-button comparison-block__add-button--first"><p>Тренировки спортсмена</p></button>
-                        <?php $workout->print_control_exercises($conn); ?>
-                    </section>
+			<section class="last-control-cover">
+				<p class="last-control__title">Контрольная тренировка <?php echo date("d.m.Y", $workout->date); ?></p>
+                <section class="staff-block__header">
+                    <?php $workout->print_control_exercises($conn); ?>
+                </section>
 			</section>
 		</div>
 	</main>

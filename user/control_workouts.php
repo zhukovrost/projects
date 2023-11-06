@@ -85,7 +85,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     </div>
                                     <!-- Button 'Подробнее' for more info about exercise -->
                                     <div class="last-trainings__item">
-                                    <a class="button-text last-trainings__item-button" href="latest_control_workout.php?id=<?php echo $done_workout->id; ?>">Подробнее <img src="../img/other.svg" alt=""></a>
+                                    <a class="button-text last-trainings__item-button" href="last_control_workout.php?id=<?php echo $done_workout->id; ?>">Подробнее <img src="../img/other.svg" alt=""></a>
                                     </div>
                                 </div>
                             </section>
