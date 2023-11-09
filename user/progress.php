@@ -79,7 +79,6 @@ if (count($user->phys_updates) != 0){
                         <select class="progress-block__physical-data-select" name="" id="">
                             <option value="year">Год</option>
                             <option value="month">Месяц</option>
-                            <option value="week">Неделя</option>
                         </select>
                     </form>
 					<canvas id="trainingStatisticChart"></canvas>
@@ -110,8 +109,8 @@ if (count($user->phys_updates) != 0){
 					<!-- Current info -->
                     <div class="progress-block__line"></div>
 					<section class="progress-block__physical-info">
-						<p class="progress-block__physical-info-item">Вес: 80 кг</p>
-						<p class="progress-block__physical-info-item">Рост: 180 см</p>
+						<p class="progress-block__physical-info-item">Вес:  кг</p>
+						<p class="progress-block__physical-info-item">Рост: 0 см</p>
                         <?php if ($user->get_auth()){ ?>
 						    <button class="button-text progress-block__physical-info-button">Добавить данные<img src="../img/add.svg" alt=""></button>
                         <?php } ?>
@@ -121,16 +120,8 @@ if (count($user->phys_updates) != 0){
 				<section class="progress-block__physical-data">
 					<!-- Navigation -->
 					<nav class="progress-block__physical-data-navigation">
-						<!-- Year & month & week -->
-                        <form class="progress-block__physical-data-form" method="post">
-                            <select class="progress-block__physical-data-select" name="" id="">
-                                <option value="year">Год</option>
-                                <option value="month">Месяц</option>
-                                <option value="week">Неделя</option>
-                            </select>
-                        </form>
 						<!-- Button to other physic(weight or length) -->
-						<input type="button" value="РОСТ" class="button-text progress-block__physical-data-button">
+						<input type="button" value="ВЕС" class="button-text progress-block__physical-data-button">
 					</nav>
 					
 					<!-- Diagram swiper -->
@@ -202,6 +193,7 @@ if (count($user->phys_updates) != 0){
 		</section>
 	</main>
 
+
 	<?php include "../templates/footer.html"; ?>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -217,20 +209,10 @@ if (count($user->phys_updates) != 0){
             localStorage.setItem('trainingDataPeriod', periodSelects[0].value);
         }
 
-        if(localStorage.getItem('physicDataPeriod')){
-            periodSelects[1].value = localStorage.getItem('physicDataPeriod');
-        }
-        else{
-            localStorage.setItem('physicDataPeriod', periodSelects[1].value);
-        }
-
         for(let i = 0; i < periodSelects.length; i++) {
             periodSelects[i].addEventListener('change', function(){
                 if(i == 0){
                     localStorage.setItem('trainingDataPeriod', periodSelects[i].value);
-                }
-                if(i == 1){
-                    localStorage.setItem('physicDataPeriod', periodSelects[i].value);
                 }
                 periodForms[i].submit();
             });
@@ -249,10 +231,6 @@ if (count($user->phys_updates) != 0){
         if(periodSelects[0].value == 'month'){
             trainingPeriodArray = ['1ая неделя', '2ая неделя', '3я неделя', '4ая неделя', '5ая неделя'];
             trainingPeriodData = <?php echo json_encode(get_graph_workout_data_month($user->workout_history)); ?>;
-        }
-        if(periodSelects[0].value == 'week'){
-            trainingPeriodArray = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-
         }
 
         new Chart(ctx1, {
@@ -307,7 +285,7 @@ if (count($user->phys_updates) != 0){
                     },
                     title: {
                         display: true,
-                        text: 'Количество тренировок - 2023',
+                        text: 'Количество тренировок',
                         font: {
                             size: 20,
                             family: 'Open Sans',
@@ -366,23 +344,12 @@ if (count($user->phys_updates) != 0){
         // Physical data chart
         const ctx3 = document.getElementById('physicalDataChart_weight');
 
-        physicPeriodArray = [];
-        if(periodSelects[1].value == 'year'){
-            physicPeriodArray = ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д']
-        }
-        if(periodSelects[1].value == 'month'){
-            physicPeriodArray = ['1ая неделя', '2ая неделя', '3я неделя', '4ая неделя', '5ая неделя']
-        }
-        if(periodSelects[1].value == 'week'){
-            physicPeriodArray = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
-        }
-
         new Chart(ctx3, {
             type: 'line',
             data: {
-            labels: physicPeriodArray,
+            labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
             datasets: [{
-                label: 'Вес за неделю',
+                label: 'Вес за год',
                 data: <?php echo json_encode($weight_array); ?>,
                 borderWidth: 3,
                 backgroundColor: '#00C91D',
@@ -446,7 +413,7 @@ if (count($user->phys_updates) != 0){
         new Chart(ctx4, {
             type: 'line',
             data: {
-            labels: physicPeriodArray,
+            labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
             datasets: [{
                 label: 'Рост за неделю',
                 data: <?php echo json_encode($height_array); ?>,
@@ -511,10 +478,11 @@ if (count($user->phys_updates) != 0){
         let heightChart = document.querySelector('.progress-block__physical-data-chart--height');
         weightChart.style.cssText = `display: none;`;
 
+
         togglePhysicalDataButton.addEventListener('click', function(){
+            console.log(togglePhysicalDataButton.value)
             if(togglePhysicalDataButton.value == 'РОСТ'){
-                console.log(togglePhysicalDataButton.value)
-                togglePhysicalDataButton.value = 'ВЕС';
+                togglePhysicalDataButton.value = 'ВЕС'; 
                 weightChart.style.cssText = `display: none;`;
                 heightChart.style.cssText = `display: block;`;
             }
@@ -528,7 +496,6 @@ if (count($user->phys_updates) != 0){
         
 		// Height of last-trainings block
         let lastTrainingsBlock = document.querySelector('.last-trainings');
-        console.log(document.querySelector('.progress-block__trainings-chart').clientHeight)
         lastTrainingsBlock.style.cssText = `height: ${document.querySelector('.progress-block__trainings-chart').clientHeight}px;`;
     
     
@@ -540,6 +507,12 @@ if (count($user->phys_updates) != 0){
 
         let PhysicDataCurrent = document.querySelectorAll('.progress-block__physical-info-item');
 
+        let weightArray = <?php echo json_encode($weight_array) ?>;
+        let heightArray = <?php echo json_encode($height_array); ?>;
+
+        PhysicDataCurrent[0].innerHTML = `${weightArray[weightArray.length - 2]} кг`;
+        PhysicDataCurrent[1].innerHTML = `${heightArray[heightArray.length - 2]} см`;
+
         if(PhysicDataEditButton){
             PhysicDataEditButton.addEventListener('click', function(){
                 document.querySelector('.popup-physics-data__item-input--height').value = (PhysicDataCurrent[1].innerHTML).split(' ')[1];
@@ -547,6 +520,7 @@ if (count($user->phys_updates) != 0){
                 PhysicDataPopup.classList.add("open");
             });
         }
+        
         
 
 

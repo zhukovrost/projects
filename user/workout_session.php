@@ -141,7 +141,6 @@ $cnt_apps = 0;
         else{
             localStorage.setItem(`SpendWorkoutTime`, 0);
             localStorage.setItem(`Period`, 'Work');
-            time += 1;
         }
 
 
@@ -162,6 +161,24 @@ $cnt_apps = 0;
 
         
         function UpdateTime(){
+
+            time++;
+            workoutSessionInputTime.value = time;
+            localStorage.setItem(`SpendWorkoutTime`, time);
+
+            if(TimeForWork >= 0 && TimeForRest >= 0){
+                if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) == TimeForWork){
+                    console.log(time)
+                    timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
+                    localStorage.setItem(`Period`, 'Rest');
+                }
+                else if (time % (TimeForWork + TimeForRest) == 0){
+                    console.log(time)
+                    timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
+                    localStorage.setItem(`Period`, 'Work');
+                }
+            }
+
             let minutes = Math.floor(time / 60);
             let seconds = time % 60;
             if (seconds < 10){
@@ -172,23 +189,6 @@ $cnt_apps = 0;
             }
 
             timer.innerHTML = `${minutes}:${seconds}`;
-
-            time++;
-            workoutSessionInputTime.value = time;
-            localStorage.setItem(`SpendWorkoutTime`, time);
-
-            if(TimeForWork >= 0 && TimeForRest >= 0){
-                if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) - 1 == TimeForWork){
-                    console.log(time)
-                    timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
-                    localStorage.setItem(`Period`, 'Rest');
-                }
-                else if ((time - 1) % (TimeForWork + TimeForRest) == 0){
-                    console.log(time)
-                    timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
-                    localStorage.setItem(`Period`, 'Work');
-                }
-            }
             
         }
 
@@ -267,7 +267,7 @@ $cnt_apps = 0;
                 for(let i = 0; i < currentRepetsLeft.length; i++){
                     array.push(currentRepetsLeft[i].innerHTML);
                 }
-                localStorage.setItem('currentRepetsLeft', array);
+                localStorage.setItem('currentRepetsLeft', array); 
 
                 if(parseInt(exercisesLeft.innerHTML) == 0){
                     clearInterval(IntervalTimer);

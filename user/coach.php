@@ -215,7 +215,7 @@ if ($is_selected){
 				<?php if ($is_selected){ ?>
                     <a href="my_program.php?user=<?php echo $user->get_id(); ?>" class="button-text staff-other__button"><p>Программа</p> <img src="../img/my_programm.svg" alt=""></a>
                     <a href="progress.php?user=<?php echo $user->get_id(); ?>" class="button-text staff-other__button"><p>Прогресс спортсмена</p> <img src="../img/progress.svg" alt=""></a>
-                <?php } ?>
+                <?php }?>
                 <a href="users_comparison.php" class="button-text staff-other__button"><p>Сравнить спортсменов</p> <img src="../img/comparison.svg" alt=""></a>
 			</section>
 		</div>

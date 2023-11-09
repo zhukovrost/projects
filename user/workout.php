@@ -199,15 +199,10 @@ if (isset($_POST["workout_to_fav"])){
         let TimerEditInputs = document.querySelectorAll('.popup-exercise--timer-edit__item__input');
         let time = localStorage.getItem(`SpendWorkoutTime`);
 
-        let IntervalTimer = setInterval(UpdateTime, 1000); 
+        let IntervalTimer = 0;
 
-        if(localStorage.getItem("TimeForWork") == -1 && localStorage.getItem("TimeForRest") == -1){
-            localStorage.setItem("TimeForWork", -1);
-            localStorage.setItem("TimeForRest", -1);
-            clearInterval(IntervalTimer);
-        }
-        else{
-            time++;
+        if(localStorage.getItem(`SpendWorkoutTime`) && localStorage.getItem(`SpendWorkoutTime`) != -1){
+            IntervalTimer = setInterval(UpdateTime, 1000);
             localStorage.setItem(`SpendWorkoutTime`, time);
         }
 
@@ -225,6 +220,7 @@ if (isset($_POST["workout_to_fav"])){
 
 
         function UpdateTime(){
+            console.log(1)
             time++;
             localStorage.setItem(`SpendWorkoutTime`, time);
         }
