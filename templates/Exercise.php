@@ -36,7 +36,7 @@ class Exercise {
             $cnt++;
             $rating += $value;
         }
-        return round($rating/$cnt, 0);
+        return round($rating/$cnt, 1);
     }
 
     public function set_exercise_data($select_result){
