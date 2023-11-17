@@ -56,12 +56,12 @@ $cnt_apps = 0;
                 <?php } } ?>
             </swiper-container>
         </div>
-    </main>
+    </main> 
 
     <footer class="workout-session-footer">
         <h1 class="workout-session-footer__title">Осталось:</h1>
-        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений</h2>
-        <h2 class="workout-session-footer__item"><span><?php echo $cnt_apps; ?></span> подходов</h2>
+        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); ?></span> упражнений(ия)</h2>
+        <h2 class="workout-session-footer__item"><span><?php echo $cnt_apps; ?></span> подходов(a)</h2>
         <form method="post" action="end_workout.php">
             <input class="workout-session-footer__input" name="time" type="hidden" value="0">
             <button class="button-text workout-session-footer__button">Завершить</button>

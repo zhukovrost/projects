@@ -102,7 +102,7 @@
 }
 
 .welcome-block-1__title h2{
-    font-weight: medium;
+    font-weight: 400;
     font-size: 65px;
     transform: translateY(-15px);
 }
@@ -145,6 +145,7 @@
     background-size: cover;
     background-position: top center;
     backdrop-filter: blur(2px);
+    height: 100vh;
 }
 
 .log-reg .container{
@@ -154,6 +155,7 @@
     position: relative;
     max-width: 90%;
     min-height: 100vh;
+    height: 100%;
 }
 
 /* Log and reg logo */
@@ -766,6 +768,9 @@
 
 /* Physical block  */
 .progress-block__physical-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 50%;
     margin-left: 20px;
     background-color: rgb(255, 255, 255);
@@ -821,6 +826,7 @@
 
 .progress-block__programm-info{
     display: flex;
+    align-items: center;
 }
 
 .progress-block__programm-line{
@@ -1688,6 +1694,7 @@
 }
 
 .c-program-info__title{
+    text-align: center;
     font-size: 45px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 600;
@@ -1695,6 +1702,7 @@
 }
 
 .c-program-info__subtitle{
+    text-align: center;
     font-size: 27px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
@@ -2728,6 +2736,7 @@
 }
 
 .staff-block__medicines-none{
+    text-align: center;
     font-size: 21px;
     font-weight: 500;
 }
@@ -3080,10 +3089,14 @@
 
 .user-news__cover .container{
     max-width: 70%;
+    margin-bottom: 20px;
 }
 
 
 /* ============================================= */
+
+/* ================OTHER PAGE=================== */
+
 .other-block .container{
     display: flex;
     align-items: center;
@@ -3102,7 +3115,6 @@
     border: 1px solid #CCCCCC;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
     padding: 20px 40px;
-    margin-left: 30px;
 }
 
 .other-links__email{
@@ -3127,16 +3139,6 @@
 .other-links__about h2 a{
     margin-left: 10px;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

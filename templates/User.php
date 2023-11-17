@@ -443,8 +443,12 @@ class User {
                     if ($result = $conn->query($sql)){
                         if ($result->num_rows == 0){
                             echo "<p class='last-trainings__no-workout'>Нет тренировок</p>";
-                        }else{
-                            foreach ($result as $item){
+                        } else {
+                            $rows = $result->fetch_all(MYSQLI_ASSOC);
+                    
+                            $reversed_rows = array_reverse($rows);
+                    
+                            foreach ($reversed_rows as $item){
                                 $workout = new Workout($conn, $item['workout'], date("N", $item['date_completed']));
                                 $workout->set_muscles();
                                 $replacements = array(
@@ -456,7 +460,7 @@ class User {
                                 echo render($replacements, "../templates/workout_history_item.html");
                             }
                         }
-                    }else{
+                    } else {
                         echo "<p>".$conn->error."</p>";
                     }
                 ?>

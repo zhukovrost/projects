@@ -134,87 +134,6 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 			</section>
 		</div>
 
-		<section class="popup-exercise popup-exercise--c-workouts">
-			<section class="popup-exercise__content">
-				<button class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
-				<!-- Тренировка -->
-				<section class="workouts-card workouts-card--c">
-					<!-- Exercises array -->
-					<section class="workouts-card__exercises-cover">
-						<!-- Exercise items -->
-						<?php
-						if ($flag) {
-							foreach ($_SESSION["workout"] as $exercise){
-								$exercise->print_it($conn);
-							}
-						}
-						?>
-					</section>
-					<!-- Info about day workout -->
-					<section class="workouts-card__info">
-						<!-- Muscle groups -->
-						<?php print_workout_info_function($_SESSION["workout"]); ?>
-						<!-- Decorative line -->
-						<div class="workouts-card__info-line"></div>
-						<!-- Exercise info -->
-						<p class="workouts-card__item">Упражнений: <span><?php if ($flag) echo count($_SESSION["workout"]); else echo 0; ?></span></p>
-						<!-- Decorative line -->
-						<div class="workouts-card__info-line"></div>
-						<!-- Buttons edit and start -->
-						<div class="day-workouts__card-buttons">
-							<a class="button-text day-workouts__card-button day-workouts__card-button--add" href="c_exercises.php"><p>Добавить</p> <img src="../img/add.svg" alt=""></a>
-							<button class="button-text day-workouts__card-button"><p>Очистить</p> <img src="../img/delete.svg" alt=""></button>
-						</div>
-					</section>
-				</section>
-				<form method="post" class="c-workout__info">
-					<div class="c-workout__info-header">
-						<h1 class="c-workout__info-title">Название:</h1>
-						<input class="c-workout__info-name" type="text" placeholder="Название тренировки" value="" name="name">
-					</div>
-					<section class="c-workout__info-header">
-						<h2 class="c-workout__info-subtitle">Количество кругов</h2>
-						<input class="c-workout__info-circles" type="number" value="1" name="loops">
-					</section>
-					<section class="c-workout__days">
-						<h1 class="c-workout__days-title">ДНИ НЕДЕЛИ</h1>
-						<section class="c-workout__days-content">
-							<div class="c-workout__days-item">
-								<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days1" value="0">
-								<label class="<?php busy_or_free($_SESSION["program"][0]); ?>" for="week_days1">Понедельник</label>
-							</div>
-							<div class="c-workout__days-item">
-								<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days2" value="1">
-								<label class="<?php busy_or_free($_SESSION["program"][1]); ?>" for="week_days2">Вторник</label>
-							</div>
-							<div class="c-workout__days-item">
-								<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days3" value="2">
-								<label class="<?php busy_or_free($_SESSION["program"][2]); ?>" for="week_days3">Среда</label>
-							</div>
-							<div class="c-workout__days-item">
-								<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days4" value="3">
-								<label class="<?php busy_or_free($_SESSION["program"][3]); ?>"  for="week_days4">Четверг</label>
-							</div>
-							<div class="c-workout__days-item">
-								<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days5" value="4">
-								<label class="<?php busy_or_free($_SESSION["program"][4]); ?>" for="week_days5">Пятница</label>
-							</div>
-							<div class="c-workout__days-item">
-								<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days6" value="5">
-								<label class="<?php busy_or_free($_SESSION["program"][5]); ?>" for="week_days6">Суббота</label>
-							</div>
-							<div class="c-workout__days-item">
-								<input class="c-workout__days-checkbox" type="checkbox" name="week_days[]" id="week_days7" value="6">
-								<label class="<?php busy_or_free($_SESSION["program"][6]); ?>"  for="week_days7">Воскресенье</label>
-							</div>
-						</section>
-					</section>
-				</form>
-				<button class="button-text c-workout__days-add" type="submit"><p>Добавить в программу</p> <img src="../img/add.svg" alt=""></button>
-                <a class="button-text c-workout__back-button" href="c_program.php">Назад</a>
-			</section>
-		</section>
-
 		<!-- Popup form for add users (for coach) -->
         <section class="popup-exercise popup-exercise--add-users">
 			<form method="post" class="popup-exercise__content popup-exercise--add-users__form">
@@ -291,9 +210,11 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 		let StartProgramButton = document.querySelector('.c-program__add-button');
 		let UsersListPopup = document.querySelector('.popup-exercise--add-users');
 
-		StartProgramButton.addEventListener('click', function(){
-			UsersListPopup.classList.add("open");
-		});
+		if(StartProgramButton){
+			StartProgramButton.addEventListener('click', function(){
+				UsersListPopup.classList.add("open");
+			});
+		}
 
 
 

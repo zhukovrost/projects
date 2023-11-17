@@ -33,13 +33,6 @@ if (isset($_POST["workout_to_fav"])){
                             <form method="post" class="workouts-card__header">
                                 <h2 class="workouts-card__date"><?php echo date("d.m.Y"); ?></h2>
                                 <input type="hidden" name="workout_to_fav" value="<?php echo $workout->get_id(); ?>">
-                                <button type="submit" class="workouts-card__favorite-btn">
-                                    <?php if (array_search((string)$workout->get_id(), $user_data->featured_workouts)){ // fix ?>
-                                        <img src="../img/favorite_added.svg" alt="">
-                                    <?php }else{ ?>
-                                        <img src="../img/favorite.svg" alt="">
-                                    <?php } ?>
-                                </button>
                             </form>
                             <!-- Content of workout -->
                             <section class="workouts-card__content">
@@ -82,13 +75,6 @@ if (isset($_POST["workout_to_fav"])){
                         <div class="workouts-card__header">
                             <h2 class="workouts-card__date"><?php echo date("d.m.Y", time() + 86400); ?></h2>
                             <input type="hidden" name="workout_to_fav" value="<?php echo $workout->get_id(); ?>">
-                            <button type="submit" class="workouts-card__favorite-btn">
-                                <?php if (array_search((string)$workout->get_id(), $user_data->featured_workouts)){ ?>
-                                    <img src="../img/favorite_added.svg" alt="">
-                                <?php }else{ ?>
-                                    <img src="../img/favorite.svg" alt="">
-                                <?php } ?>
-                            </button>
                         </div>
                         <section class="workouts-card__content">
                             <section class="workouts-card__exercises-cover">
@@ -167,14 +153,32 @@ if (isset($_POST["workout_to_fav"])){
             infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
         }
 
+        //Difficult
+		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
+		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
+
+		for(let i = 0; i < difficultCountArr.length; i++){
+			difficultBlockArr[i].innerHTML = '';
+            for(let j = 0; j < 5; j++){
+				let newElem = document.createElement('div');
+				newElem.classList.add('exercise-item__difficult-item');
+				if(j > Number(difficultCountArr[i].innerHTML) - 1){
+					newElem.classList.add('exercise-item__difficult-item--disabled');
+				}
+				difficultBlockArr[i].appendChild(newElem);
+			}
+        }
+
 
         // Timer
         let TimerEditButton = document.querySelector('.day-workouts__card-button--time');
         let TimerEditPopup = document.querySelector('.popup-exercise--timer-edit');
 
-        TimerEditButton.addEventListener('click', function(){
-			TimerEditPopup.classList.add("open");
-		});
+        if(TimerEditButton){
+            TimerEditButton.addEventListener('click', function(){
+                TimerEditPopup.classList.add("open");
+            });
+        }
 
 		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
