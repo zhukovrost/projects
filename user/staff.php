@@ -25,7 +25,7 @@ $control_workouts = $user_data->get_control_workouts($conn, $user_data->get_id()
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body>
+<body class="staff-page">
     <?php include "../templates/header.php" ?>
 	<main class="staff-cover">
 		<div class="container">

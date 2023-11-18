@@ -2307,6 +2307,18 @@
     padding: 0px;
 }
 
+.workouts-card--c .exercise-item__repetitions-score{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+}
+
+.workouts-card .exercise-item__repetitions-score{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+}
+
 .workout-session-footer{
     display: flex;
     align-items: center;
