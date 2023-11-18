@@ -1,4 +1,160 @@
 @media (max-width: 1800px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts__card-title{
+		font-size: 17px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 20px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 20px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 20px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 20px;
+	}
+
+	.c-program__workouts{
+		padding: 20px 40px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 24px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 24px;
+	}
+
+	.c-program__workouts-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.c-program__duration-title{
+		font-size: 24px;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 19px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 17px;
+	}
+
+	.c-program__duration-button{
+		font-size: 24px;
+	}
+
+	.c-program__duration-button img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.c-program .friends-block{
+		width: 60%;
+	}
+
+	/* ================================================ */
+
+	/* ===========EXERCISES LIST PAGES=========== */
+
+	.exercises-nav__item{
+		font-size: 23px;
+	}
+
+	.exercises-nav__select{
+		font-size: 19px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 5px 0px 7px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 20px;
+	}
+
+	.exercises-filter__button{
+		font-size: 19px;
+	}
+
+	.exercises-filter__item-input{
+		width: 16px;
+		height: 16px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 18px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 26px;
+		height: 26px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 140px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 25px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 22px;
+		padding: 5px 10px 7px 15px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 18px;
+		margin-left: 5px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 20px;
+	}
+
+	/* ========================================== */
 
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
@@ -53,7 +209,7 @@
 		font-size: 15px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 7px;
 	}
 
@@ -172,6 +328,167 @@
 
 
 @media (max-width: 1700px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts__card-title{
+		font-size: 16px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 19px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 19px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 19px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 19px;
+	}
+
+	.c-program__workouts{
+		padding: 20px 35px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 23px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 23px;
+	}
+
+	.c-program__workouts-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.c-program__duration-title{
+		font-size: 23px;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 18px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 17px;
+	}
+
+	.c-program__duration-button{
+		font-size: 23px;
+	}
+
+	.c-program__duration-button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.c-program .friends-block{
+		width: 60%;
+	}
+
+	/* ================================================ */
+
+	/* ===========EXERCISES LIST PAGES=========== */
+	.exercises__none{
+		font-size: 27px;
+	}
+
+	.exercises-nav__item{
+		font-size: 22px;
+	}
+
+	.exercises-nav__select{
+		font-size: 18px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 4px 0px 6px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 19px;
+	}
+
+	.exercises-filter__button{
+		font-size: 18px;
+	}
+
+	.exercises-filter__item-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 17px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 25px;
+		height: 25px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 25px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 130px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 17px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 18px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 24px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 17px;
+		height: 17px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 21px;
+		padding: 5px 10px 7px 15px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 17px;
+		margin-left: 5px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 18px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -226,7 +543,7 @@
 		font-size: 14px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -336,6 +653,99 @@
 
 
 @media (max-width: 1600px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts__card-title{
+		font-size: 15px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 18px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 18px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 18px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 18px;
+	}
+
+	.c-program__workouts{
+		padding: 20px 30px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 22px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 22px;
+	}
+
+	.c-program__workouts-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.c-program__duration-title{
+		font-size: 22px;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 17px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 16px;
+	}
+
+	.c-program__duration-button{
+		font-size: 22px;
+	}
+
+	.c-program__duration-button img{
+		width: 28px;
+		height: 28px;
+	}
+
+	.c-program .friends-block{
+		width: 60%;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+
+	.c-workout .container{
+		max-width: 90%;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 18px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 5px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	/* ========================================== */
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -389,7 +799,7 @@
 		font-size: 14px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide  .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -536,6 +946,262 @@
 
 
 @media (max-width: 1500px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts__card-title{
+		font-size: 14px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 16px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 16px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 16px;
+		padding: 1px 5px;
+		margin-left: 5px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 16px;
+	}
+
+	.c-program__workouts{
+		padding: 20px 25px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 20px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 20px;
+	}
+
+	.c-program__workouts-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.c-program__duration-title{
+		font-size: 20px;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 17px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 16px;
+	}
+
+	.c-program__duration-button{
+		font-size: 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.c-program .friends-block{
+		width: 70%;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+
+	.c-workout .container{
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 20px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 25px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 25px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 14px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 130px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 25px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 5px 50px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 23px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 19px;
+	}
+
+	.workouts-card__item span{
+		font-size: 20px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 3px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 16px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 48%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		width: 52%;
+	}
+
+	/* ========================================== */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+	.exercises__none{
+		font-size: 23px;
+	}
+
+	.exercises-nav__item{
+		font-size: 21px;
+	}
+
+	.exercises-nav__select{
+		font-size: 17px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 3px 0px 5px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 18px;
+	}
+
+	.exercises-filter__button{
+		font-size: 17px;
+	}
+
+	.exercises-filter__item-input{
+		width: 14px;
+		height: 14px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 16px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 23px;
+		height: 23px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 120px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 16px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 17px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 22px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 19px;
+		padding: 3px 8px 5px 12px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 15px;
+		margin-left: 3px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 16px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -593,7 +1259,7 @@
 		font-size: 14px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -745,6 +1411,307 @@
 
 
 @media (max-width: 1400px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts__card-title{
+		font-size: 13px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 14px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 14px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 14px;
+		padding: 1px 3px;
+		margin-left: 5px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 14px;
+	}
+
+	.c-program__workouts{
+		padding: 20px 25px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 18px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 18px;
+	}
+
+	.c-program__workouts-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-program__duration-title{
+		font-size: 18px;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 16px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 16px;
+	}
+
+	.c-program__duration-button{
+		font-size: 19px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.c-program .friends-block{
+		width: 70%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 18px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 32px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 130px;
+		max-width: 130px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+
+	.workouts-card--c{
+		width: 55%;
+	}
+
+	.c-workout .container{
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 20px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 25px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 25px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 14px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 130px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 25px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 5px 50px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 23px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 19px;
+	}
+
+	.workouts-card__item span{
+		font-size: 20px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 3px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 16px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 50%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		width: 50%;
+	}
+
+	.c-workout__info{
+		width: 45%;
+	}
+
+	.c-workout__info-header{
+		padding: 20px 30px;
+	}
+
+	.c-workout__info-title{
+		font-size: 30px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 22px;
+		margin-left: 15px;
+	}
+
+	/* ========================================== */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+	.exercises__none{
+		font-size: 20px;
+	}
+
+	.exercises-nav__item{
+		font-size: 21px;
+	}
+
+	.exercises-nav__select{
+		font-size: 17px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 3px 0px 5px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 18px;
+	}
+
+	.exercises-filter__button{
+		font-size: 17px;
+	}
+
+	.exercises-filter{
+		width: 20%;
+		max-width: 20%;
+	}
+
+	.exercises-filter__item-input{
+		width: 14px;
+		height: 14px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 16px;
+	}
+
+	.exercise-block{
+		max-width: 80%;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 25px;
+		height: 25px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 140px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 24px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 21px;
+		padding: 3px 10px 5px 15px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 18px;
+		margin-left: 5px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 18px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -804,7 +1771,7 @@
 		font-size: 13px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -993,6 +1960,196 @@
 
 
 @media (max-width: 1300px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts__card-title{
+		font-size: 12px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 13px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 13px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 13px;
+		padding: 1px 2px;
+		margin-left: 3px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 13px;
+	}
+
+	.c-program__workouts{
+		padding: 20px 20px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 17px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 16px;
+	}
+
+	.c-program__workouts-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.c-program__duration-title{
+		font-size: 17px;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 15px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 15px;
+	}
+
+	.c-program__duration-button{
+		font-size: 17px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.c-program .friends-block{
+		width: 70%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 17px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 30px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 120px;
+		max-width: 120px;
+	}
+
+	/* ================================================ */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+
+	.exercises-nav__item{
+		font-size: 19px;
+		padding: 5px 15px;
+	}
+
+	.exercises-nav__item img{
+		width: 30px;
+	}
+
+	.exercises-nav__select{
+		font-size: 15px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 3px 0px 5px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 16px;
+	}
+
+	.exercises-filter__button{
+		font-size: 16px;
+	}
+
+	.exercises-filter{
+		width: 20%;
+		max-width: 20%;
+	}
+
+	.exercises-filter__item-input{
+		width: 13px;
+		height: 13px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 15px;
+	}
+
+	.exercise-block{
+		max-width: 80%;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 23px;
+		height: 23px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 130px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 17px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 18px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 22px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 17px;
+		height: 17px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 19px;
+		padding: 3px 10px 5px 15px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 17px;
+		margin-left: 5px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 17px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -1050,7 +2207,7 @@
 		padding-top: 3px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -1289,6 +2446,362 @@
 
 
 @media (max-width: 1200px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 70%;
+		margin: 50px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 15px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 16px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 16px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 16px;
+		padding: 1px 5px;
+		margin-left: 5px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 16px;
+	}
+
+	.c-program__workouts{
+		padding: 20px 15px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 16px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 14px;
+	}
+
+	.c-program__workouts-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.c-program__duration-title{
+		font-size: 16px;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 14px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 14px;
+	}
+
+	.c-program__duration-button{
+		font-size: 16px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.c-program .friends-block{
+		width: 80%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 28px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 110px;
+		max-width: 110px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+
+	.workouts-card--c{
+		width: 60%;
+	}
+
+	.c-workout .container{
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 15px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 23px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 21px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 13px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 120px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 17px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 18px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 23px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 17px;
+		height: 17px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 5px 40px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 21px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 18px;
+	}
+
+	.workouts-card__item span{
+		font-size: 19px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 5px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 15px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 48%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		width: 52%;
+	}
+
+	.c-workout__info{
+		width: 40%;
+	}
+
+	.c-workout__info-header{
+		padding: 20px 15px;
+	}
+
+	.c-workout__info-title{
+		font-size: 23px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 20px;
+		margin-left: 10px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 30px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 23px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 10px 5px 15px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 23px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 23px;
+		padding: 5px 30px;
+	}
+
+	/* ========================================== */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+
+	.exercises-nav__item{
+		font-size: 17px;
+		padding: 5px 10px;
+	}
+
+	.exercises-nav__item img{
+		width: 20px;
+	}
+
+	.exercises-nav__select{
+		font-size: 14px;
+		padding: 3px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 3px 0px 5px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 15px;
+	}
+
+	.exercises-filter__button{
+		font-size: 16px;
+	}
+
+	.exercises-filter{
+		width: 20%;
+		max-width: 20%;
+	}
+
+	.exercises-filter__item-input{
+		width: 13px;
+		height: 13px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 15px;
+	}
+
+	.exercises-filter__clear-button, .exercises-filter__search-button{
+		font-size: 20px;
+	}
+
+	.exercise-block{
+		max-width: 80%;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.exercise-block .exercise-item--list{
+		padding: 8px 15px 15px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 21px;
+		height: 21px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 120px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 16px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 17px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 20px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 17px;
+		padding: 3px 8px 5px 12px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 16px;
+		margin-left: 3px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 16px;
+	}
+
+	/* ========================================== */
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -1346,7 +2859,7 @@
 		padding-top: 3px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -1586,6 +3099,220 @@
 
 
 @media (max-width: 1100px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 80%;
+		margin: 50px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 15px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 16px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 16px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 16px;
+		padding: 1px 5px;
+		margin-left: 5px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 16px;
+	}
+
+	.c-program__create{
+		flex-direction: column;
+		width: 80%;
+		margin-bottom: 20px;
+	}
+
+	.c-program__workouts{
+		justify-content: center;
+		padding: 20px 25px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 19px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 17px;
+	}
+
+	.c-program__workouts-button img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.c-program__duration{
+		margin-top: 10px;
+		margin-left: 0px;
+	}
+
+	.c-program__duration-title{
+		font-size: 19px;
+	}
+
+	.c-program__duration-date{
+		width: 80%;
+		margin: 10px auto 0;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 17px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 17px;
+	}
+
+	.c-program__duration-button{
+		font-size: 19px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.c-program .friends-block{
+		width: 80%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 28px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 110px;
+		max-width: 110px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+	.c-workout__info-header{
+		padding: 20px 10px;
+	}
+
+	.c-workout__info-title{
+		font-size: 21px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 19px;
+		margin-left: 8px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 27px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 15px;
+		height: 15px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 21px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 8px 5px 12px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 21px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 23px;
+		padding: 5px 30px;
+	}
+
+	/* ========================================= */
+
+	/* ===========EXERCISES LIST PAGES=========== */
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 50px;
+	}
+
+	.popup-exercise__info{
+		margin-left: 20px;
+	}
+
+	.popup-exercise__info-label{
+		font-size: 20px;
+		margin-right: 5px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 20px;
+	}
+
+	.popup-exercise__add-button p{
+		font-size: 25px;
+	}
+
+	.popup-exercise__add-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+
+	.exercises-filter{
+		width: 20%;
+		max-width: 20%;
+	}
+
+	.exercises-filter__button{
+		margin-right: 0px;
+	}
+
+	.exercise-block{
+		max-width: 80%;
+		grid-template-columns: repeat(3, 1fr);
+		grid-gap: 10px;
+		padding-left: 30px;
+	}
+
+	/* ========================================== */
+
+	
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -1643,7 +3370,7 @@
 		padding-top: 3px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 3px;
 	}
 
@@ -1862,6 +3589,419 @@
 
 
 @media (max-width: 1000px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 90%;
+		margin: 50px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 14px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 15px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 15px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 15px;
+		padding: 1px 5px;
+		margin-left: 5px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 15px;
+	}
+
+	.c-program__create{
+		flex-direction: column;
+		width: 90%;
+		margin-bottom: 20px;
+	}
+
+	.c-program__workouts{
+		justify-content: center;
+		padding: 20px 20px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 18px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 16px;
+	}
+
+	.c-program__workouts-button img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.c-program__duration{
+		margin-top: 10px;
+		margin-left: 0px;
+	}
+
+	.c-program__duration-title{
+		font-size: 18px;
+	}
+
+	.c-program__duration-date{
+		width: 80%;
+		margin: 10px auto 0;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 16px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 16px;
+	}
+
+	.c-program__duration-button{
+		font-size: 18px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.c-program .friends-block{
+		width: 90%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 28px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 110px;
+		max-width: 110px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+	.workouts-card--c{
+		width: 60%;
+	}
+
+	.c-workout .container{
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 10px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 21px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 19px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 10px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 11px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 100px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 16px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 17px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 21px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 5px 25px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 19px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 17px;
+	}
+
+	.workouts-card__item span{
+		font-size: 18px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 5px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 14px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 48%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		margin: 20px 0px 0px 10px;
+		width: 52%;
+	}
+
+	.c-workout__info{
+		width: 40%;
+	}
+
+	.c-workout__info-header{
+		padding: 15px 5px;
+	}
+
+	.c-workout__info-title{
+		font-size: 18px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 17px;
+		margin-left: 5px;
+	}
+
+	.c-workout__info-name{
+		padding: 2px 3px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 24px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 14px;
+		height: 14px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 19px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 8px 5px 12px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 18px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 21px;
+		padding: 5px 30px;
+	}
+
+	/* ========================================= */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 40px;
+	}
+
+	.popup-exercise__info{
+		margin-left: 20px;
+	}
+
+	.popup-exercise__info-label{
+		font-size: 18px;
+		margin-right: 5px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 18px;
+	}
+
+	.popup-exercise__add-button p{
+		font-size: 23px;
+	}
+
+	.popup-exercise__add-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.exercises-nav__item{
+		font-size: 15px;
+		padding: 5px 10px;
+	}
+
+	.exercises-nav__item img{
+		width: 18px;
+	}
+
+	.exercises-nav__select{
+		height: 35px;
+		font-size: 13px;
+		padding: 1px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 5px 0px 7px;
+		height: 35px;
+	}
+
+
+	.exercises-nav__search-img{
+		width: 14px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 15px;
+	}
+
+	.exercises-filter__button{
+		font-size: 18px;
+	}
+	.exercises-filter__item-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 17px;
+	}
+
+	.exercises-filter__clear-button, .exercises-filter__search-button{
+		font-size: 21px;
+		margin-right: 0px;
+	}
+
+	.exercises-filter{
+		width: 30%;
+		max-width: 30%;
+	}
+
+	.exercise-block{
+		max-width: 75%;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 20px;
+		padding-left: 30px;
+	}
+
+	.exercise-block .exercise-item--list{
+		padding: 8px 15px 15px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 23px;
+		height: 23px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 130px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 23px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 19px;
+		padding: 3px 10px 5px 15px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 18px;
+		margin-left: 3px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 18px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -1931,7 +4071,7 @@
 		padding-top: 3px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -2237,6 +4377,355 @@
 
 
 @media (max-width: 900px){
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+	.workouts-card--c{
+		width: 100%;
+	}
+
+	.c-workout .container{
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 15px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 24px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 22px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 14px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 140px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 19px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 20px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 24px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 20px;
+		height: 20px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 5px 30px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 22px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 20px;
+	}
+
+	.workouts-card__item span{
+		font-size: 21px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 7px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 17px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 50%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		margin: 20px 0px 0px 20px;
+		width: 50%;
+	}
+
+	.c-workout__info{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.c-workout__info-header{
+		padding: 15px 5px;
+		justify-content: center;
+	}
+
+	.c-workout__info-title{
+		font-size: 21px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 20px;
+		margin-left: 7px;
+	}
+
+	.c-workout__info-name{
+		padding: 3px 5px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 27px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 18px;
+		height: 18px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 22px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 10px 5px 15px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 21px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 24px;
+		padding: 5px 40px;
+		margin-bottom: 20px;
+	}
+
+	/* ========================================= */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+	.exercises__none{
+		font-size: 17px;
+	}
+
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 30px;
+	}
+
+	.popup-exercise__info{
+		margin-left: 15px;
+	}
+
+	.popup-exercise__info-label{
+		font-size: 17px;
+		margin-right: 5px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 17px;
+	}
+
+	.popup-exercise__add-button p{
+		font-size: 21px;
+	}
+
+	.popup-exercise__add-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.popup-exercise .exercise-item{
+		padding: 8px 20px 15px
+	}
+
+	.popup-exercise .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.popup-exercise .exercise-item__info-btn{
+		width: 25px;
+		height: 25px;
+	}
+
+	.popup-exercise .exercise-item__info-close{
+		width: 23px;
+		height: 23px;
+	}
+
+	.popup-exercise .exercise-item__info-content{
+		padding: 30px 15px;
+	}
+
+	.popup-exercise .exercise-item__info-text{
+		font-size: 12px;
+	}
+
+	.popup-exercise .exercise-item__img{
+		width: 130px;
+	}
+
+	.popup-exercise .exercise-item__title{
+		font-size: 17px;
+	}
+
+	.popup-exercise .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+
+	.exercises-nav__item{
+		font-size: 15px;
+		padding: 5px 8px;
+	}
+
+	.exercises-nav__item img{
+		width: 18px;
+	}
+
+	.exercises-nav__select{
+		height: 30px;
+		font-size: 13px;
+		padding: 1px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 5px 0px 7px;
+		height: 30px;
+	}
+
+
+	.exercises-nav__search-img{
+		width: 13px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 15px;
+	}
+
+	.exercises-filter__button{
+		font-size: 15px;
+		padding: 5px 10px 5px 15px;
+	}
+	.exercises-filter__item-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 15px;
+	}
+
+	.exercises-filter__clear-button, .exercises-filter__search-button{
+		font-size: 19px;
+		margin-right: 0px;
+	}
+
+	.exercises-filter{
+		width: 30%;
+		max-width: 30%;
+	}
+
+	.exercise-block{
+		max-width: 75%;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 10px;
+		padding-left: 30px;
+	}
+
+	.exercise-block .exercise-item--list{
+		padding: 8px 10px 15px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 21px;
+		height: 21px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 15px;
+	}
+
+	.exercise-item__info-text{
+		font-size: 14px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 120px;
+		margin-bottom: 10px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 17px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 18px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 21px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 17px;
+		padding: 3px 10px 5px 15px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 16px;
+		margin-left: 3px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 16px;
+	}
+
+	/* ========================================== */
+
+	
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info__title{
@@ -2305,7 +4794,7 @@
 		padding-top: 3px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 3px;
 	}
 
@@ -2619,6 +5108,323 @@
 
 
 @media (max-width: 800px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 100%;
+		margin: 40px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-content{
+		padding: 3px;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 14px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 15px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 15px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 15px;
+		padding: 1px 5px;
+		margin-left: 5px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 15px;
+	}
+
+	.c-program__create{
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.c-program__workouts{
+		justify-content: center;
+		padding: 20px 20px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 18px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 16px;
+	}
+
+	.c-program__workouts-button img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.c-program__duration{
+		margin-top: 10px;
+		margin-left: 0px;
+	}
+
+	.c-program__duration-title{
+		font-size: 18px;
+	}
+
+	.c-program__duration-date{
+		width: 90%;
+		margin: 10px auto 0;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 16px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 16px;
+	}
+
+	.c-program__duration-button{
+		font-size: 18px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.c-program .friends-block{
+		width: 100%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 28px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 110px;
+		max-width: 110px;
+	}
+
+	/* ================================================ */
+
+
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 20px;
+	}
+
+	.popup-exercise__info{
+		margin-left: 40px;
+	}
+
+	.popup-exercise__info-label{
+		font-size: 14px;
+		margin-right: 3px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 14px;
+		width: 30%;
+	}
+
+	.popup-exercise__add-button p{
+		font-size: 17px;
+	}
+
+	.popup-exercise__add-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.popup-exercise .exercise-item{
+		padding: 8px 20px 15px
+	}
+
+	.popup-exercise .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.popup-exercise .exercise-item__info-btn{
+		width: 25px;
+		height: 25px;
+	}
+
+	.popup-exercise .exercise-item__info-close{
+		width: 23px;
+		height: 23px;
+	}
+
+	.popup-exercise .exercise-item__info-content{
+		padding: 30px 15px;
+	}
+
+	.popup-exercise .exercise-item__info-text{
+		font-size: 12px;
+	}
+
+	.popup-exercise .exercise-item__img{
+		width: 130px;
+	}
+
+	.popup-exercise .exercise-item__title{
+		font-size: 17px;
+	}
+
+	.popup-exercise .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+
+	.exercises-nav__item{
+		font-size: 14px;
+		padding: 4px 6px;
+	}
+
+	.exercises-nav__item img{
+		width: 18px;
+	}
+
+	.exercises-nav__select{
+		height: 30px;
+		font-size: 13px;
+		padding: 1px;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 5px 0px 7px;
+		height: 30px;
+	}
+
+
+	.exercises-nav__search-img{
+		width: 13px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 15px;
+	}
+
+	.exercises-filter__button{
+		font-size: 14px;
+		padding: 5px 6px 5px 8px;
+	}
+	.exercises-filter__item-input{
+		width: 14px;
+		height: 14px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 14px;
+	}
+
+	.exercises-filter__clear-button, .exercises-filter__search-button{
+		font-size: 17px;
+		margin-right: 0px;
+	}
+
+	.exercises-filter{
+		width: 30%;
+		max-width: 30%;
+	}
+
+	.exercise-block{
+		max-width: 75%;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 10px;
+		padding-left: 15px;
+	}
+
+	.exercise-block .exercise-item--list{
+		padding: 8px 10px 15px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 19px;
+		height: 19px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 15px;
+	}
+
+	.exercise-item__info-text{
+		font-size: 13px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 110px;
+		margin-bottom: 10px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 15px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 16px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 19px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 15px;
+		height: 15px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 15px;
+		padding: 3px 8px 5px 12px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 14px;
+		margin-left: 3px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 14px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info .container{
@@ -2691,7 +5497,7 @@
 		padding-top: 5px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -3149,6 +5955,353 @@
 
 
 @media (max-width: 700px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 100%;
+		margin: 30px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-content{
+		padding: 2px;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 12px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 13px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 13px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 13px;
+		padding: 1px 3px;
+		margin-left: 3px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 13px;
+	}
+
+	.c-program__create{
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.c-program__workouts{
+		justify-content: center;
+		padding: 20px 15px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 17px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 15px;
+	}
+
+	.c-program__workouts-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-program__duration{
+		margin-top: 10px;
+		margin-left: 0px;
+	}
+
+	.c-program__duration-title{
+		font-size: 17px;
+	}
+
+	.c-program__duration-date{
+		width: 90%;
+		margin: 10px auto 0;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 15px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 15px;
+	}
+
+	.c-program__duration-button{
+		font-size: 17px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.c-program .friends-block{
+		width: 100%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 26px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 100px;
+		max-width: 100px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+	.workouts-card--c{
+		width: 100%;
+	}
+
+	.c-workout .container{
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 12px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 22px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 12px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 120px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 17px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 18px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 22px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 18px;
+		height: 18px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 5px 25px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 21px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 19px;
+	}
+
+	.workouts-card__item span{
+		font-size: 19px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 5px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 15px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 50%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		margin: 20px 0px 0px 20px;
+		width: 50%;
+	}
+
+	.c-workout__info{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.c-workout__info-header{
+		padding: 15px 5px;
+		justify-content: center;
+	}
+
+	.c-workout__info-title{
+		font-size: 20px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 19px;
+		margin-left: 7px;
+	}
+
+	.c-workout__info-name{
+		padding: 3px 5px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 25px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 17px;
+		height: 17px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 21px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 10px 5px 15px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 21px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 24px;
+		padding: 5px 40px;
+		margin-bottom: 20px;
+	}
+
+	/* ========================================= */
+
+
+	.exercises__none{
+		font-size: 15px;
+	}
+
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 10px;
+	}
+
+	.popup-exercise__info{
+		margin-left: 20px;
+	}
+
+	.popup-exercise__info-label{
+		font-size: 13px;
+		margin-right: 3px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 13px;
+		width: 30%;
+	}
+
+	.popup-exercise__add-button p{
+		font-size: 16px;
+	}
+
+	.popup-exercise__add-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.popup-exercise .exercise-item{
+		padding: 8px 10px 15px;
+		min-width: 40%;
+	}
+
+	.popup-exercise .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.popup-exercise .exercise-item__info-btn{
+		width: 23px;
+		height: 23px;
+	}
+
+	.popup-exercise .exercise-item__info-close{
+		width: 21px;
+		height: 21px;
+	}
+
+	.popup-exercise .exercise-item__info-content{
+		padding: 30px 15px;
+	}
+
+	.popup-exercise .exercise-item__info-text{
+		font-size: 10px;
+	}
+
+	.popup-exercise .exercise-item__img{
+		width: 110px;
+	}
+
+	.popup-exercise .exercise-item__title{
+		font-size: 15px;
+	}
+
+	.popup-exercise .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info .container{
@@ -3226,7 +6379,7 @@
 		padding-top: 5px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -3697,6 +6850,343 @@
 
 
 @media (max-width: 600px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 100%;
+		margin: 20px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-content{
+		padding: 1px;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 11px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 11px;
+	}
+
+	.workouts-card__muscle-groups{
+		padding: 0px 10px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 11px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 11px;
+		padding: 1px 2px;
+		margin-left: 2px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 11px;
+	}
+
+	.c-program__create{
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.c-program__workouts{
+		justify-content: center;
+		padding: 20px 15px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 16px;
+		margin-right: 3px;
+	}
+
+	.c-program__workouts-list{
+		margin-right: 10px;
+		padding-right: 10px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 14px;
+	}
+
+	.c-program__workouts-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.c-program__duration{
+		margin-top: 10px;
+		margin-left: 0px;
+		padding: 10px 20px;
+	}
+
+	.c-program__duration-title{
+		font-size: 16px;
+	}
+
+	.c-program__duration-date{
+		width: 100%;
+		margin: 10px auto 0;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 14px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 14px;
+		margin-left: 5px;
+		margin-right: 3px;
+	}
+
+	.c-program__duration-button{
+		font-size: 16px;
+		padding: 5px 20px;
+	}
+
+	.c-program__duration-button img{
+		width: 17px;
+		height: 18px;
+	}
+
+	.c-program .friends-block{
+		width: 100%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 14px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 25px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 80px;
+		max-width: 80px;
+	}
+
+	.c-program .friends-block__name{
+		font-size: 16px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+	.workouts-card--c{
+		width: 100%;
+	}
+
+	.c-workout .container{
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 8px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 20px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 18px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 10px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 11px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 100px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 15px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 16px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 20px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 3px 20px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 19px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 17px;
+	}
+
+	.workouts-card__item span{
+		font-size: 17px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 5px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 13px;
+		padding: 5px 8px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 13px;
+		height: 13px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 50%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		margin: 20px 0px 0px 20px;
+		width: 50%;
+	}
+
+	.c-workout__info{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.c-workout__info-header{
+		padding: 15px 5px;
+		justify-content: center;
+	}
+
+	.c-workout__info-title{
+		font-size: 19px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 18px;
+		margin-left: 5px;
+		padding: 2px 3px;
+	}
+
+	.c-workout__info-name{
+		padding: 2px 3px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 23px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 19px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 8px 5px 12px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 19px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 20px;
+		padding: 5px 30px;
+		margin-bottom: 20px;
+	}
+
+	/* ========================================= */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+
+	.popup-exercise .exercise-item{
+		min-width: 40%;
+	}
+
+	.exercises-nav .container{
+		justify-content: center;
+		max-width: 90%;
+	}
+
+	.exercises-block .container{
+		flex-direction: column;
+	}
+
+	.exercises-filter{
+		max-width: 50%;
+		width: 50%;
+		margin: 0 auto 20px;
+	}
+
+	.exercises-filter__button{
+		margin-top: 0px;
+	}
+
+	.exercises-filter__content{
+		margin: 5px 0 10px;
+	}
+
+	.exercises-filter__rating{
+		margin-bottom: 10px;
+	}
+
+	.exercise-block{
+		max-width: 100%;
+	}
+
+
+
+	/* ========================================== */
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info .container{
@@ -3770,7 +7260,7 @@
 		padding-top: 5px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 5px;
 	}
 
@@ -4208,6 +7698,513 @@
 
 
 @media (max-width: 500px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 100%;
+		margin: 10px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-content{
+		padding: 3px;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 9px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 9px;
+	}
+
+	.workouts-card__muscle-groups{
+		padding: 0px 5px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 9px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 9px;
+		padding: 1px 2px;
+		margin-left: 2px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 9px;
+		padding: 3px 5px;
+	}
+
+	.c-program__create{
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.c-program__workouts{
+		justify-content: center;
+		padding: 20px 15px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 14px;
+		margin-right: 3px;
+	}
+
+	.c-program__workouts-list{
+		margin-right: 5px;
+		padding-right: 5px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 12px;
+	}
+
+	.c-program__workouts-button img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.c-program__duration{
+		margin-top: 10px;
+		margin-left: 0px;
+		padding: 10px 5px;
+	}
+
+	.c-program__duration-title{
+		font-size: 16px;
+	}
+
+	.c-program__duration-date{
+		width: 100%;
+		margin: 10px auto 0;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 12px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 12px;
+		margin-left: 5px;
+		margin-right: 3px;
+	}
+
+	.c-program__duration-button{
+		font-size: 14px;
+		padding: 5px 15px;
+	}
+
+	.c-program__duration-button img{
+		width: 15px;
+		height: 18px;
+	}
+
+	.c-program .friends-block{
+		width: 100%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 12px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 22px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 60px;
+		max-width: 80px;
+	}
+
+	.c-program .friends-block__name{
+		font-size: 13px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+	.workouts-card--c{
+		width: 100%;
+	}
+
+	.c-workout .container{
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 5px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 18px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 16px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 8px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 10px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 80px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 13px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 14px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 18px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 14px;
+		height: 14px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 3px 15px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 17px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 15px;
+	}
+
+	.workouts-card__item span{
+		font-size: 15px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 3px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 11px;
+		padding: 3px 5px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 11px;
+		height: 11px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 50%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		margin: 20px 0px 0px 20px;
+		width: 50%;
+	}
+
+	.c-workout__info{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.c-workout__info-header{
+		padding: 15px 5px;
+		justify-content: center;
+	}
+
+	.c-workout__info-title{
+		font-size: 17px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 16px;
+		margin-left: 5px;
+		padding: 2px 3px;
+	}
+
+	.c-workout__info-name{
+		padding: 2px 3px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 21px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 14px;
+		height: 14px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 17px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 8px 5px 12px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 17px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 19px;
+		padding: 5px 25px;
+		margin-bottom: 20px;
+	}
+
+	/* ========================================= */
+
+	
+	/* ===========EXERCISES LIST PAGES=========== */
+
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 10px;
+	}
+
+	.popup-exercise__info{
+		margin-left: 20px;
+	}
+
+	.popup-exercise__info-label{
+		font-size: 12px;
+		margin-right: 3px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 12px;
+		width: 20%;
+	}
+
+	.popup-exercise__add-button{
+		padding: 5px 10px 5px 5px;
+	}
+
+	.popup-exercise__add-button p{
+		font-size: 13px;
+	}
+
+	.popup-exercise__add-button img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.popup-exercise .exercise-item{
+		padding: 8px 8px 15px;
+		min-width: 35%;
+	}
+
+	.popup-exercise .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+		font-size: 12px;
+	}
+
+	.popup-exercise .exercise-item__info-btn{
+		width: 21px;
+		height: 21px;
+	}
+
+	.popup-exercise .exercise-item__info-close{
+		width: 19px;
+		height: 19px;
+	}
+
+	.popup-exercise .exercise-item__info-content{
+		padding: 30px 5px;
+	}
+
+	.popup-exercise .exercise-item__info-text{
+		font-size: 9px;
+	}
+
+	.popup-exercise .exercise-item__img{
+		width: 90px;
+	}
+
+	.popup-exercise .exercise-item__title{
+		font-size: 12px;
+	}
+
+	.popup-exercise .exercise-item__difficult-item{
+		width: 14px;
+		height: 14px;
+	}
+
+	.exercises-nav__item{
+		font-size: 11px;
+		padding: 2px 4px;
+	}
+
+	.exercises-nav__item img{
+		width: 10px;
+	}
+
+	.exercises-nav .container{
+		max-width: 92%;
+		margin: 10px auto;
+	}
+
+	.exercises-nav__select{
+		height: 25px;
+		font-size: 11px;
+		padding: 1px;
+		max-width: 32%;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 3px 0px 5px;
+		height: 25px;
+		font-size: 11px;
+	}
+
+
+	.exercises-nav__search-img{
+		width: 12px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 13px;
+	}
+
+	.exercises-filter__button{
+		font-size: 12px;
+		padding: 5px 6px 5px 8px;
+	}
+	.exercises-filter__item-input{
+		width: 12px;
+		height: 12px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 12px;
+	}
+
+	.exercises-filter__clear-button, .exercises-filter__search-button{
+		font-size: 15px;
+		margin-right: 0px;
+	}
+
+	.exercises-filter{
+		width: 50%;
+		max-width: 50%;
+	}
+
+	.exercise-block{
+		max-width: 100%;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 10px;
+		padding-left: 15px;
+	}
+
+	.exercises-block .container{
+		max-width: 90%;
+	}
+
+	.exercise-block .exercise-item--list{
+		padding: 8px 6px 15px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 18px;
+		height: 18px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 10px;
+	}
+
+	.exercise-item__info-text{
+		font-size: 12px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 100px;
+		margin-bottom: 10px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 14px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 15px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 18px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 14px;
+		height: 14px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 14px;
+		padding: 3px 8px 5px 12px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 13px;
+		margin-left: 2px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 13px;
+	}
+
+	/* ========================================== */
+
+
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info .container{
@@ -4282,7 +8279,7 @@
 		padding-top: 3px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 3px;
 	}
 
@@ -4823,6 +8820,517 @@
 
 
 @media (max-width: 400px){
+	/* ============PROGRAM CONSTRUCTOR PAGE============ */
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 100%;
+		margin: 10px auto 0;
+	}
+
+	.day-workouts__block{
+		display: none;
+	}
+
+	.c-program .day-workouts__block--adaptive{
+		display: flex;
+	}
+
+	.c-program .day-workouts__card-content{
+		padding: 2px;
+	}
+
+	.c-program .day-workouts__card-title{
+		font-size: 9px;
+	}
+
+	.c-program .day-workouts__card-name{
+		font-size: 9px;
+	}
+
+	.workouts-card__muscle-groups{
+		padding: 0px 3px;
+	}
+
+	.c-program .workouts-card__item{
+		font-size: 9px;
+	}
+
+	.c-program .workouts-card__item span{
+		font-size: 9px;
+		padding: 1px 2px;
+		margin-left: 2px;
+	}
+
+	.c-program .day-workouts__card-day-off{
+		font-size: 9px;
+		padding: 3px 5px;
+	}
+
+	.c-program__create{
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.c-program__workouts{
+		justify-content: center;
+		padding: 10px 5px;
+	}
+
+	.c-program__workouts-name{
+		font-size: 12px;
+		margin-right: 3px;
+	}
+
+	.c-program__workouts-list{
+		margin-right: 5px;
+		padding-right: 5px;
+	}
+
+	.c-program__workouts-more img, .c-program__workouts-delete img{
+		width: 11px;
+		height: 11px;
+	}
+
+	.c-program__workouts-button{
+		padding: 3px 5px;
+	}
+
+	.c-program__workouts-button p{
+		font-size: 11px;
+	}
+
+	.c-program__workouts-button img{
+		width: 11px;
+		height: 11px;
+	}
+
+	.c-program__duration{
+		margin-top: 10px;
+		margin-left: 0px;
+		padding: 10px 5px;
+	}
+
+	.c-program__duration-title{
+		font-size: 14px;
+	}
+
+	.c-program__duration-date{
+		width: 100%;
+		margin: 10px auto 0;
+	}
+
+	.c-program__duration-weeks, .c-program__duration-date-start{
+		font-size: 11px;
+	}
+
+	.c-program__duration-date-text{
+		font-size: 11px;
+		margin-left: 5px;
+		margin-right: 3px;
+	}
+
+	.c-program__duration-button{
+		font-size: 12px;
+		padding: 5px 10px;
+	}
+
+	.c-program__duration-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.c-program .friends-block{
+		width: 100%;
+	}
+
+	.c-program .friends-block__header-title{
+		font-size: 11px;
+	}
+
+	.c-program .friends-block__header-button{
+		width: 20px;
+	}
+
+	.c-program .friends-block__avatar{
+		width: 50px;
+		max-width: 80px;
+	}
+
+	.c-program .friends-block__name{
+		font-size: 11px;
+	}
+
+	/* ================================================ */
+
+
+	/* =========WORKOUT CONSTRUCTOR PAGE========= */
+	.workouts-card--c{
+		width: 100%;
+	}
+
+	.c-workout .container{
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+	}
+
+	.c-workout .exercise-item{
+		padding: 8px 3px 10px;
+	}
+
+	.workouts-card--c .exercise-item__muscle-groups{
+		margin: 0px auto 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-btn{
+		width: 15px;
+	}
+
+	.workouts-card--c .exercise-item__info-close{
+		width: 13px;
+	}
+
+	.workouts-card--c .exercise-item__info-content{
+		padding: 30px 5px;
+	}
+
+	.workouts-card--c .exercise-item__info-text{
+		font-size: 9px;
+	}
+
+	.workouts-card--c .exercise-item__img{
+		width: 70px;
+		margin-bottom: 5px;
+	}
+
+	.workouts-card--c .exercise-item__title{
+		font-size: 11px;
+	}
+
+	.workouts-card--c .exercise-item__score{
+		font-size: 12px;
+	}
+
+	.workouts-card--c .exercise-item__star{
+		width: 15px;
+	}
+
+	.workouts-card--c .exercise-item__difficult-item{
+		width: 12px;
+		height: 12px;
+	}
+
+	.workouts-card--c  .exercise-item__repetitions{
+		margin: 10px auto 10px;
+		padding: 3px 12px;
+	}
+
+	.workouts-card--c .exercise-item__repetitions-title{
+		font-size: 14px;
+	}
+
+	.workouts-card--c .workouts-card__item{
+		font-size: 13px;
+	}
+
+	.workouts-card__item span{
+		font-size: 13px;
+		padding: 1px 3px;
+		margin-left: 5px;
+	}
+
+	.day-workouts__card-button p{
+		margin-right: 3px;
+	}
+
+	.workouts-card--c .day-workouts__card-button{
+		font-size: 10px;
+		padding: 3px 5px;
+	}
+
+	.workouts-card--c .day-workouts__card-button img{
+		width: 10px;
+		height: 10px;
+	}
+
+	.workouts-card--c .workouts-card__exercises-cover{
+		width: 50%;
+	}
+
+	.workouts-card--c .workouts-card__info{
+		margin: 20px 0px 0px 20px;
+		width: 50%;
+	}
+
+	.c-workout__info{
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.c-workout__info-header{
+		padding: 15px 5px;
+		justify-content: center;
+	}
+
+	.c-workout__info-title{
+		font-size: 15px;
+	}
+
+	.c-workout__info-name, .c-workout__info-circles{
+		font-size: 15px;
+		margin-left: 5px;
+		padding: 2px 3px;
+	}
+
+	.c-workout__info-name{
+		padding: 2px 3px;
+	}
+
+	.c-workout__info .c-workout__days-title{
+		font-size: 19px;
+	}
+
+	.c-workout__info .c-workout__days-checkbox{
+		width: 13px;
+		height: 13px;
+	}
+
+	.c-workout__info .c-workout__days-content label{
+		font-size: 15px;
+	}
+
+	.c-workout__info .c-workout__days-add{
+		padding: 5px 8px 5px 12px;
+	}
+
+	.c-workout__info .c-workout__days-add p{
+		font-size: 15px;
+	}
+
+	.c-workout__info .c-workout__days-add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.c-workout__info .c-workout__back-button{
+		font-size: 17px;
+		padding: 5px 20px;
+		margin-bottom: 20px;
+	}
+
+	/* ========================================= */
+
+
+	/* ===========EXERCISES LIST PAGES=========== */
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 5px;
+	}
+
+	.popup-exercise__info{
+		margin-left: 10px;
+	}
+
+	.popup-exercise__info-label{
+		font-size: 11px;
+		margin-right: 3px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 11px;
+		width: 20%;
+	}
+
+	.popup-exercise__add-button{
+		padding: 5px 8px 5px 5px;
+	}
+
+	.popup-exercise__add-button p{
+		font-size: 11px;
+	}
+
+	.popup-exercise__add-button img{
+		width: 11px;
+		height: 11px;
+	}
+
+	.popup-exercise .exercise-item{
+		padding: 8px 8px 15px;
+		min-width: 40%;
+	}
+
+	.popup-exercise .exercise-item__muscle-groups{
+		margin: 0px auto 10px;
+		font-size: 11px;
+	}
+
+	.popup-exercise .exercise-item__info-btn{
+		width: 19px;
+		height: 19px;
+	}
+
+	.popup-exercise .exercise-item__info-close{
+		width: 17px;
+		height: 17px;
+	}
+
+	.popup-exercise .exercise-item__info-content{
+		padding: 30px 5px;
+	}
+
+	.popup-exercise .exercise-item__info-text{
+		font-size: 9px;
+	}
+
+	.popup-exercise .exercise-item__img{
+		width: 70px;
+	}
+
+	.popup-exercise .exercise-item__title{
+		font-size: 11px;
+	}
+
+	.popup-exercise .exercise-item__difficult-item{
+		width: 12px;
+		height: 12px;
+	}
+
+
+
+	.exercises-nav__item{
+		font-size: 11px;
+		padding: 2px 4px;
+	}
+
+	.exercises-nav__item img{
+		width: 10px;
+	}
+
+	.exercises-nav .container{
+		max-width: 92%;
+		margin: 10px auto;
+	}
+
+	.exercises-nav__select{
+		height: 25px;
+		font-size: 11px;
+		padding: 1px;
+		max-width: 32%;
+	}
+
+	.exercises-nav__search{
+		padding: 0px 3px 0px 5px;
+		height: 25px;
+		font-size: 11px;
+	}
+
+
+	.exercises-nav__search-img{
+		width: 12px;
+	}
+
+	.exercises-nav__search-input{
+		font-size: 13px;
+	}
+
+	.exercises-filter__button{
+		font-size: 12px;
+		padding: 5px 6px 5px 8px;
+	}
+	.exercises-filter__item-input{
+		width: 12px;
+		height: 12px;
+	}
+
+	.exercises-filter__item-label{
+		font-size: 12px;
+	}
+
+	.exercises-filter__clear-button, .exercises-filter__search-button{
+		font-size: 15px;
+		margin-right: 0px;
+	}
+
+	.exercises-filter{
+		width: 50%;
+		max-width: 50%;
+	}
+
+	.exercise-block{
+		max-width: 100%;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 10px;
+		padding-left: 15px;
+	}
+
+	.exercises-block .container{
+		max-width: 90%;
+	}
+
+	.exercise-block .exercise-item--list{
+		padding: 8px 6px 15px;
+	}
+
+	.exercise-block .exercise-item__muscle-groups{
+		margin: 0px auto 10px;
+	}
+
+	.exercise-block .exercise-item__info-btn img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.exercise-block .exercise-item__info-close{
+		width: 16px;
+		height: 16px;
+	}
+
+	.exercise-block .exercise-item__info-content{
+		padding: 30px 5px;
+	}
+
+	.exercise-item__info-text{
+		font-size: 11px;
+	}
+
+	.exercise-block .exercise-item__img{
+		width: 100px;
+		margin-bottom: 10px;
+	}
+
+	.exercise-block .exercise-item__title{
+		font-size: 13px;
+	}
+
+	.exercise-block .exercise-item__score{
+		font-size: 14px;
+	}
+
+	.exercise-block .exercise-item__star{
+		width: 16px;
+	}
+
+	.exercise-block .exercise-item__difficult-item{
+		width: 13px;
+		height: 13px;
+	}
+
+	.exercise-block .exercise-item__add{
+		font-size: 12px;
+		padding: 3px 6px 5px 10px;
+	}
+
+	.exercise-block .exercise-item__add img{
+		width: 11px;
+		margin-left: 2px;
+	}
+
+	.exercise-block .exercise-item__favorite{
+		width: 12px;
+	}
+
 	/* ============PROGRAMS' CONCTRUCTOR INFO============ */
 
 	.c-program-info .container{
@@ -4897,7 +9405,7 @@
 		padding-top: 3px;
 	}
 
-	.day-workouts__card-content{
+	.day-workouts__slide .day-workouts__card-content{
 		padding: 3px;
 	}
 

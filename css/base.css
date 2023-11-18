@@ -442,6 +442,7 @@ body {
 /* Buttons of exercise */
 .exercise-item__buttons{
     display: flex;
+    align-items: center;
     justify-content: space-around;
     margin-top: auto;
 }
@@ -779,6 +780,7 @@ body {
 /* Title and button to search friends */
 .friends-block__header{
     font-size: 20px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -816,7 +818,7 @@ body {
 .friends-block__slide{
     position: relative;
     display: flex;
-    padding: 0px 20px;
+    padding: 0px 10px;
 }
 
 /* friend item */
@@ -827,6 +829,8 @@ body {
 }
 
 .friends-block__avatar{
+    max-width: 150px;
+    width: 150px;
     border-radius: 50%;
 }
 
@@ -1140,6 +1144,7 @@ body {
 .popup-exercise__content{
     position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
     background-color: #ffffff;
     border-radius: 5px;

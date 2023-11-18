@@ -60,24 +60,66 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 	<main class="c-program">
 		<div class="container">
 			<section class="day-workouts" navigation="true">
-				<?php
-                $workout_array = array();
-                    for($i = 0; $i < 7; $i++){
-						$workout = new Workout($conn, $_SESSION["program"][$i], $i);
-                        if ($_SESSION["program"][$i] != 0){
-                            $flag = true;
-                            foreach ($workout_array as $item){
-                                if ($item->get_id() == $workout->get_id()){
-                                    $flag = false;
-                                    break;
+                <section class="day-workouts__block--adaptive">
+                    <?php
+                    $workout_array = array();
+                        for($i = 0; $i < 4; $i++){
+                            $workout = new Workout($conn, $_SESSION["program"][$i], $i);
+                            if ($_SESSION["program"][$i] != 0){
+                                $flag = true;
+                                foreach ($workout_array as $item){
+                                    if ($item->get_id() == $workout->get_id()){
+                                        $flag = false;
+                                        break;
+                                    }
                                 }
+                                if ($flag)
+                                    array_push($workout_array, $workout);
                             }
-                            if ($flag)
-                                array_push($workout_array, $workout);
-                        }
-                        $workout->set_muscles();
-                        $workout->print_workout_info_block($i, 0, $user_data->get_id());
-                    } ?>
+                            $workout->set_muscles();
+                            $workout->print_workout_info_block($i, 0, $user_data->get_id());
+                        } ?>
+                </section>
+                <section class="day-workouts__block--adaptive">
+                    <?php
+                    $workout_array = array();
+                        for($i = 4; $i < 7; $i++){
+                            $workout = new Workout($conn, $_SESSION["program"][$i], $i);
+                            if ($_SESSION["program"][$i] != 0){
+                                $flag = true;
+                                foreach ($workout_array as $item){
+                                    if ($item->get_id() == $workout->get_id()){
+                                        $flag = false;
+                                        break;
+                                    }
+                                }
+                                if ($flag)
+                                    array_push($workout_array, $workout);
+                            }
+                            $workout->set_muscles();
+                            $workout->print_workout_info_block($i, 0, $user_data->get_id());
+                        } ?>
+                </section>
+                <section class="day-workouts__block">
+                    <?php
+                    $workout_array = array();
+                        for($i = 0; $i < 7; $i++){
+                            $workout = new Workout($conn, $_SESSION["program"][$i], $i);
+                            if ($_SESSION["program"][$i] != 0){
+                                $flag = true;
+                                foreach ($workout_array as $item){
+                                    if ($item->get_id() == $workout->get_id()){
+                                        $flag = false;
+                                        break;
+                                    }
+                                }
+                                if ($flag)
+                                    array_push($workout_array, $workout);
+                            }
+                            $workout->set_muscles();
+                            $workout->print_workout_info_block($i, 0, $user_data->get_id());
+                        } ?>
+                    </section>
 			</section>
 			<section class="c-program__create">
 				<section class="c-program__workouts">
@@ -184,6 +226,18 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 
         for(let i = 0; i < workoutItemArr.length; i++){
             workoutItemArr[i].style.cssText = `height: ${maxWorkoutItemHeight}px;`;
+        }
+
+        // Info slide items' spans width
+        let infoItemsSpans = document.querySelectorAll('.workouts-card__item span');
+        let maxSpanWidth = 0;
+
+        for(let i = 0; i < infoItemsSpans.length; i++){
+            maxSpanWidth = Math.max(maxSpanWidth, infoItemsSpans[i].clientWidth);
+        }
+
+        for(let i = 0; i < infoItemsSpans.length; i++){
+            infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
         }
 
 

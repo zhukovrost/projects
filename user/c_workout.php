@@ -181,6 +181,34 @@ if (isset($_POST["week_days"])){
             });
         }
 
+		//Difficult
+		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
+		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
+
+		for(let i = 0; i < difficultCountArr.length; i++){
+			difficultBlockArr[i].innerHTML = '';
+            for(let j = 0; j < 5; j++){
+				let newElem = document.createElement('div');
+				newElem.classList.add('exercise-item__difficult-item');
+				if(j > Number(difficultCountArr[i].innerHTML) - 1){
+					newElem.classList.add('exercise-item__difficult-item--disabled');
+				}
+				difficultBlockArr[i].appendChild(newElem);
+			}
+        }
+
+		// Info slide items' spans width
+        let infoItemsSpans = document.querySelectorAll('.workouts-card__item span');
+        let maxSpanWidth = 0;
+
+        for(let i = 0; i < infoItemsSpans.length; i++){
+            maxSpanWidth = Math.max(maxSpanWidth, infoItemsSpans[i].clientWidth);
+        }
+
+        for(let i = 0; i < infoItemsSpans.length; i++){
+            infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
+        }
+
 		// Button submit
 		let addToPragramButton = document.querySelector('.c-workout__days-add');
 		let workoutNameInput = document.querySelector('.c-workout__info-name');
