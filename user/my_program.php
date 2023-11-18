@@ -163,7 +163,7 @@ foreach ($user->program->workouts as $workout){
                 <?php if ($user->get_auth()){ ?>
                     <input type="hidden" name="end" value="1">
                     <button type="submit" class="button-text my-program__finish">Завершить досрочно</button>
-                <?php } else if (!$user->get_auth() && !$user_data->set_program($conn)) { ?>
+                <?php } else if (!$user->get_auth() && !$user_data->set_program($conn) && $user_data->get_status() != "user") { ?>
                     <button class="button-text my-program__friend-program" type="button">Начать эту программу</button>
                 <?php } ?>
             </form>

@@ -222,10 +222,11 @@ class User {
         }
 
         foreach ($log_result as $check_password){
-            $_SESSION["user"] = $check_password['id'];
             if ($check_password['password'] != md5($password)){
                 $error_array['log_incorrect_login_or_password'] = true;
                 return $error_array;
+            }else{
+                $_SESSION["user"] = $check_password["id"];
             }
         }
         header('Location: user/profile.php');
@@ -636,23 +637,9 @@ class User {
 
     public function get_closest_workout($conn){
         $this->program->set_additional_data($conn, $this->get_id());
-        for ($i = date("N"); $i <= 7; $i++){
-            $time = time() + ($i - 1) * 86400;
-            if ($time > ($this->program->date_start + $this->program->weeks * 604800))
-                return NULL;
-            if ($this->program->program[$i - 1] != 0)
-                return $time;
-        }
-
-        for ($i = 1; $i < date("N"); $i++){
-            $time = time() + ($i - 1) * 86400;
-            if ($time > ($this->program->date_start + $this->program->weeks * 604800))
-                return NULL;
-            if ($this->program->program[$i - 1] != 0){
-                return $time;
-            }
-        }
-
+        for ($i = 0; $i < 7; $i++)
+            if ($this->program->program[(date("N") + $i - 1) % 7] != 0 && ((time() + $i * 86400) < ($this->program->date_start * $this->program->weeks * 604800)))
+                return time() + $i * 86400;
         return NULL;
     }
 
