@@ -117,16 +117,24 @@ if ($is_selected){
 					</section>
 				</section>
 				<div class="staff-block__line"></div>
-                <?php if ($user->set_program($conn)){ ?>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Ближайшая тренировка</h2>
 					<div class="staff-block__nearest-workout-content">
-						<div class="staff-block__nearest-workout-date"><?php $cl_w = $user->get_closest_workout($conn);
-                        if ($cl_w != NULL) echo date("d.m.Y", $cl_w); else echo "Тренировок не будет" ?></div>
+						<div class="staff-block__nearest-workout-date">
+                        <?php
+                            $user->set_program($conn);
+                            if ($user->set_program($conn)) {
+                                $cl_w = $user->get_closest_workout($conn);
+                                if ($cl_w != NULL) {
+                                    echo date("d.m.Y", $cl_w);
+                                } else echo "Тренировок не будет";
+                            }else
+                                echo "Тренировок не будет";
+                        ?>
+                        </div>
 						<a href="my_program.php?user=<?php echo $user->get_id(); ?>" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
 					</div>
 				</section>
-                <?php } ?>
 				<div class="staff-block__line"></div>
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Цели</h2>

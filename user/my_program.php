@@ -10,12 +10,8 @@ if (isset($_GET["user"]) && is_numeric($_GET["user"]))
  else
      $user = $user_data;
 
-if (!$user->set_program($conn)){
-    if ($user->get_auth())
-        header("Location: c_program_info.php");
-    else
-        header("Location: profile.php");
-}
+if (!$user->set_program($conn))
+    header("Location: c_program_info.php");
 
 if (isset($_POST['end']) && $user->get_auth()){
     $sql = "UPDATE program_to_user SET date_start=0 WHERE user=".$user->get_id()."  AND date_start + weeks * 604800 >= ".time()." LIMIT 1";
