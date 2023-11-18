@@ -946,6 +946,19 @@
 
 
 @media (max-width: 1500px){
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 60px 10px;
+	}
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts__card-title{
@@ -1960,6 +1973,19 @@
 
 
 @media (max-width: 1300px){
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 40px 10px;
+	}
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts__card-title{
@@ -2446,6 +2472,83 @@
 
 
 @media (max-width: 1200px){
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 30px 10px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 150px;
+		height: 150px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 25px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 35px;
+		height: 35px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 23px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 18px;
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__button-more{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 5px;
+	}
+
+
+	/* ======================================== */
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{

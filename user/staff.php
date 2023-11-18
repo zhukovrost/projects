@@ -23,7 +23,7 @@ if ($has_doctor){
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body>
+<body class="staff-page">
     <?php include "../templates/header.php" ?>
 	<main class="staff-cover">
 		<div class="container">
