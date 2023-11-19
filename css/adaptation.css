@@ -379,6 +379,157 @@
 
 
 @media (max-width: 1700px){
+	/* =============COACH PAGE ============= */
+
+	.coach-page .staff-block{
+		padding: 40px 60px 10px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 150px;
+		height: 150px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 25px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 36px;
+		height: 36px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+		margin-right: 1px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		padding: 5px 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-item{
+		padding: 0px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.coach-page .staff-block__useful-links-item{
+		padding: 0px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 20px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 40px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 130px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 70%;
+	}
+
+
+	/* ====================================== */
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -799,6 +950,148 @@
 
 
 @media (max-width: 1600px){
+	/* =============COACH PAGE ============= */
+
+	.coach-page .staff-block{
+		padding: 40px 50px 10px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 18px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 18px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 18px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 18px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 18px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 120px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 80%;
+	}
+
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -1101,7 +1394,7 @@
 		font-size: 18px;
 	}
 
-	.day-workouts__card-button p{
+	.c-workout .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -1729,7 +2022,7 @@
 		font-size: 20px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 
@@ -2052,6 +2345,18 @@
 
 
 @media (max-width: 1400px){
+	/* =============COACH PAGE============= */
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 17px;
+	}
+
+	/* ====================================== */
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -2424,7 +2729,7 @@
 		font-size: 20px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 
@@ -2813,6 +3118,151 @@
 
 
 @media (max-width: 1300px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .staff-block{
+		padding: 40px 40px 10px;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 31px;
+		height: 31px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 27px;
+		height: 27px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 17px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 17px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 17px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 17px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 18px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 25px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 17px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 28px;
+		height: 28px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 100px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 90%;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -3589,6 +4039,151 @@
 
 
 @media (max-width: 1200px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .staff-block{
+		padding: 40px 30px 10px;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 28px;
+		height: 28px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 16px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 16px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 16px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 16px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 17px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 20px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 90px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 15px;
+	}
+
+	.coach-page .coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -4147,7 +4742,7 @@
 		font-size: 19px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -4626,6 +5221,155 @@
 
 
 @media (max-width: 1100px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .staff-block{
+		padding: 40px 20px 10px;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 15px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 15px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 15px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 14px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 16px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 15px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 80px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 23px;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -5352,6 +6096,166 @@
 
 
 @media (max-width: 1000px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 70%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 70%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -5941,7 +6845,7 @@
 		font-size: 18px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -6539,6 +7443,166 @@
 
 
 @media (max-width: 900px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 80%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 80%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -7028,7 +8092,7 @@
 		font-size: 21px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 7px;
 	}
 
@@ -7686,6 +8750,166 @@
 
 
 @media (max-width: 800px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 90%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 90%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .container{
@@ -8874,6 +10098,166 @@
 
 
 @media (max-width: 700px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 100px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .container{
@@ -9412,7 +10796,7 @@
 		font-size: 19px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -10111,6 +11495,175 @@
 
 
 @media (max-width: 600px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__goals-list{
+		margin: 0 auto;
+	}
+
+	.coach-page .staff-block__item-name{
+		margin-right: 5px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 17px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 17px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 17px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 23px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 18px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 20px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 17px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 80px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 24px;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__medicines-none{
@@ -10766,7 +12319,7 @@
 		font-size: 17px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -11401,6 +12954,193 @@
 
 
 @media (max-width: 500px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .container{
+		max-width: 88%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 10px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goals-list{
+		margin: 0 auto;
+	}
+
+	.coach-page .staff-block__item-name{
+		margin-right: 5px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 14px;
+		margin: 0px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 14px;
+		padding: 1px 3px;
+	}
+
+	.coach-page .staff-block__button-more{
+		font-size: 13px;
+		padding: 3px 8px;
+	}
+
+	.coach-page .staff-block__button-more img{
+		width: 22px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 15px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 15px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 20px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 16px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 15px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 70px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 12px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+		font-size: 20px;
+		padding: 7px 15px;
+	}
+
+	.coach-page .staff-other__button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 22px;
+	}
+
+	/* ====================================== */
+
+	
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -12069,7 +13809,7 @@
 		font-size: 15px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 
@@ -12977,6 +14717,193 @@
 
 
 @media (max-width: 400px){
+	/* ============COACH PAGE============ */
+
+	.coach-page .container{
+		max-width: 86%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 5px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 80px;
+		height: 80px;
+		margin-right: 10px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 12px;
+	}
+
+	.coach-page .staff-block__goals-list{
+		margin: 0 auto;
+	}
+
+	.coach-page .staff-block__item-name{
+		margin-right: 5px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 12px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 12px;
+		margin: 0px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 13px;
+		padding: 1px 3px;
+	}
+
+	.coach-page .staff-block__button-more{
+		font-size: 12px;
+		padding: 3px 8px;
+	}
+
+	.coach-page .staff-block__button-more img{
+		width: 18px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 14px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 14px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 18px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 15px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 15px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 14px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 60px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 11px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+		font-size: 17px;
+		padding: 5px 10px;
+	}
+
+	.coach-page .staff-other__button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 18px;
+	}
+
+	/* ====================================== */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__medicines-none{
@@ -13664,7 +15591,7 @@
 		margin-left: 5px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 

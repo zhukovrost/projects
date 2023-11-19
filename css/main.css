@@ -2747,6 +2747,7 @@
 .staff-block__item-buttons{
     display: flex;
     align-items: center;
+    min-width: 25%;
 }
 
 .staff-block__link-button img{
@@ -2774,6 +2775,7 @@
 .staff-block__useful-links-item{
     width: 100%;
     display: flex;
+    align-items: center;
     margin-top: 12px;
     padding: 0 30px;
     justify-content: space-between;
@@ -2783,7 +2785,7 @@
     max-width: 85%;
     word-wrap: break-word;
     font-size: 20px;
-    margin-right: 40px;
+    margin-right: 5px;
 }
 
 
