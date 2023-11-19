@@ -196,7 +196,7 @@ class Control_Workout extends Workout{
         return $this->is_done;
     }
 
-    public function print_control_workout_info($expand_buttons = 0, $user_id = -1, $additional_info = false)
+    public function print_control_workout_info($expand_buttons = 0, $user_id = -1, $additional_info = false, $is_coach = '')
     {
         ?>
         <section class="workouts-card__info">
@@ -211,8 +211,8 @@ class Control_Workout extends Workout{
                     <p class="workouts-card__item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
                 </div>
             <div class="workouts-card__info-line"></div>
-            <?php if (!$this->is_done) echo '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$this->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'; ?>
-        </section>
+                <?php if (!$this->is_done && $is_coach == 'coach') echo '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$this->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'; ?>
+            </section>
         <?php
     }
 

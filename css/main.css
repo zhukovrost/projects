@@ -1068,6 +1068,19 @@
     transform: translate(-2px, -2px);
 }
 
+.exercise-block .exercise-item__repetitions{
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    width: fit-content;
+    border: none;
+
+}
+
+.exercise-block .exercise-item__repetitions .exercise-item__add{
+    margin-right: 0px;
+}
+
 
 .popup-exercise__info--rating{
     display: flex;
@@ -1238,12 +1251,14 @@
 
 
 .user-block__avatar{
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .user-block__avatar-name{
+    text-align: center;
     font-size: 23px;
     font-weight: 600;
 }
@@ -1286,6 +1301,7 @@
 
 /* User info text */
 .user-about__description{
+    max-width: 65%;
     display: block;
     flex: 1;
     position: relative;
@@ -1294,7 +1310,11 @@
     border: 1px solid #C6C6C6;
     border-radius: 3px;
     margin-left: 30px;
-    padding: 20px 40px;
+    padding: 20px 40px 25px;
+}
+
+.user-about__description-text{
+    word-wrap: break-word;
 }
 
 /* button 'edit' */
@@ -2210,6 +2230,11 @@
     height: 75vh;
 }
 
+.session-exercises .exercise-item__repetitions{
+    background-color: transparent;
+    border: none;
+}
+
 .session-exercises__info-cover{
     display: flex;
     justify-content: center;
@@ -2314,6 +2339,12 @@
 }
 
 .workouts-card .exercise-item__repetitions-score{
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+}
+
+.last-control-cover .exercise-item__repetitions-score{
     background-color: transparent;
     border: none;
     padding: 0px;
@@ -2701,7 +2732,8 @@
 }
 
 .staff-block__competition-item{
-    width: 70%;
+    width: 100%;
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     margin-top: 12px;
@@ -2740,14 +2772,17 @@
 }
 
 .staff-block__useful-links-item{
+    width: 100%;
     display: flex;
     margin-top: 12px;
-
+    padding: 0 30px;
     justify-content: space-between;
 }
 
 .staff-block__useful-links-text{
-    font-size: 21px;
+    max-width: 85%;
+    word-wrap: break-word;
+    font-size: 20px;
     margin-right: 40px;
 }
 
@@ -2783,6 +2818,7 @@
 
 .staff-block__medicine-cover{
     display: flex;
+    align-items: center;
 }
 
 .staff-block__medicine-name{
@@ -2807,11 +2843,12 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 80%;
+    width: 100%;
     margin: 10px auto 20px;
 }
 
 .staff-block__treatment-date-item{
+    text-align: center;
     background-color: #ECECEC;
     height: fit-content;
     padding: 5px 10px;
@@ -2827,7 +2864,7 @@
 }
 
 .staff-block__treatment-recommendation{
-    word-break: break-all;
+    word-wrap: break-word;
     text-align: center;
     font-size: 21px;
     margin: 10px 15px;
@@ -3081,6 +3118,10 @@
 .comparison-block__physics .exercise-item{
     width: 70%;
     margin:  20px auto;
+}
+
+.user-comparison .exercise-item__repetitions{
+    font-size: 25px;
 }
 
 /* =========================================== */

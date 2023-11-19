@@ -319,39 +319,6 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		});
 
 
-		// Exercise search
-		const search_input = document.querySelector('.exercises-nav__search-input');
-		search_input.addEventListener('input', function(){
-			SearchItems(search_input.value);
-		});
-
-		// ===SEARCH===
-		let ExerciseNames = document.querySelectorAll('.exercise-item__title');
-
-		function SearchItems(val){
-			val = val.trim().replaceAll(' ', '').toUpperCase();
-			if(val != ''){
-				ExerciseNames.forEach(function(elem){
-					if(elem.innerText.trim().replaceAll(' ', '').toUpperCase().search(val) == -1){
-						let cur_exercise = elem.parentNode;
-						cur_exercise.classList.add('hide');
-					}
-					else{
-						let cur_exercise = elem.parentNode;
-						cur_exercise.classList.remove('hide');
-					}
-				});
-			}
-			//
-			else{
-				ExerciseNames.forEach(function(elem){
-					let cur_exercise = elem.parentNode;
-					cur_exercise.classList.remove('hide');
-				});
-			}
-		}
-
-
 		// ---Filters---
 		// Main
 		let MainFilter = document.querySelector('.exercises-nav__select');
@@ -610,6 +577,48 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				}
 				localStorage.setItem('c_allFilterInputsChecked', allFilterInputsChecked);
 			});
+		}
+
+
+		searchButton.click();
+
+		// Exercise search
+		const search_input = document.querySelector('.exercises-nav__search-input');
+		search_input.addEventListener('input', function(){
+			SearchItems(search_input.value);
+			searchButton.click();
+		});
+
+		// ===SEARCH===
+		let ExerciseNames = document.querySelectorAll('.exercise-item__title');
+
+		function SearchItems(val){
+			val = val.trim().replaceAll(' ', '').toUpperCase();
+			if(val != ''){
+				ExerciseNames.forEach(function(elem){
+					if(elem.innerText.trim().replaceAll(' ', '').toUpperCase().search(val) == -1){
+						let cur_exercise = elem.parentNode;
+						if(cur_exercise){
+							cur_exercise.classList.add('hide');
+						}
+					}
+					else{
+						let cur_exercise = elem.parentNode;
+						if(cur_exercise){
+							cur_exercise.classList.remove('hide');
+						}
+					}
+				});
+			}
+			//
+			else{
+				ExerciseNames.forEach(function(elem){
+					let cur_exercise = elem.parentNode;
+					if(cur_exercise){
+						cur_exercise.classList.remove('hide');
+					}
+				});
+			}
 		}
 	</script>
 </body>

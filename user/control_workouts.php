@@ -2,7 +2,7 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
-if ($user_data->get_status() != "coach" || empty($_GET["user"]) || !is_numeric($_GET["user"]))
+if ($user_data->get_status() == "doctor" || empty($_GET["user"]) || !is_numeric($_GET["user"]))
     header("Location: coach.php");
 
 $user = new User($conn, $_GET["user"]);
@@ -43,7 +43,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     <?php $workout->print_control_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
-                                <?php $workout->print_control_workout_info($conn); ?>
+                                <?php $workout->print_control_workout_info($conn, $user_data); ?>
                             </section>
                         </section>
                     </section>
@@ -97,8 +97,10 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 				</section>
                 <!-- Buttons favorite workouts and my program -->
                 <section class="workout-other__buttons">
-                    <a class="button-text workout-other__button" href="c_control_workout.php?for=<?php echo $user->get_id(); ?>"><p>Новая</p> <img src="../img/my_programm.svg" alt=""></a>
-                </section>
+                    <?php if ($user_data->get_status() == "coach"){ ?>
+                        <a class="button-text workout-other__button" href="c_control_workout.php?for=<?php echo $user->get_id(); ?>"><p>Новая</p> <img src="../img/my_programm.svg" alt=""></a>
+                    <?php } ?>
+                    </section>
             </section>
         </div>
     </main>
