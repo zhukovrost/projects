@@ -2,7 +2,7 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 $request_flag = false;
-if (isset($_GET["user"])){
+if (isset($_GET["user"]) && $_GET["user"] != $user_data->get_id()){
     $user = new User($conn, $_GET["user"]);
     $user_data->set_staff($conn);
     $request_flag = $user_data->check_request($conn, $user->get_id());
