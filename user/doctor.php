@@ -64,7 +64,7 @@ if ($is_selected){
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body>
+<body class="doctor-page">
     <?php include "../templates/header.php" ?>
 
 	<main class="staff-cover">

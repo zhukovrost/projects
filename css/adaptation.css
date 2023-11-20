@@ -1,4 +1,55 @@
 @media (max-width: 1800px){
+	/* ==============PROFILE PAGE============== */
+
+	.user-block .friends-block__avatar{
+		max-width: 120px;
+		width: 120px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 19px;
+	}
+
+	/* ======================================== */
+
+
+	/* ================STAFF PAGE================ */
+
+	.staff-page .staff-block__button-more{
+		font-size: 16px;
+		padding: 5px 12px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 25px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 20px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 90%;
+		font-size: 19px;
+		margin-right: 20px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 21px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 20px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts__card-title{
@@ -328,6 +379,252 @@
 
 
 @media (max-width: 1700px){
+	/* =============COACH PAGE ============= */
+
+	.coach-page .staff-block{
+		padding: 40px 60px 10px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 150px;
+		height: 150px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 25px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 36px;
+		height: 36px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+		margin-right: 1px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		padding: 5px 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-item{
+		padding: 0px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.coach-page .staff-block__useful-links-item{
+		padding: 0px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 20px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 40px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 130px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 70%;
+	}
+
+
+	/* ====================================== */
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 50px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 150px;
+		height: 150px;
+		margin-right: 20px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 25px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 23px;
+		margin-left: 10px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 21px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 21px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 23px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 8px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+
+	.doctor-page .friends-block__avatar{
+		width: 130px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.user-block .friends-block__avatar{
+		max-width: 110px;
+		width: 110px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 18px;
+	}
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts__card-title{
@@ -653,6 +950,421 @@
 
 
 @media (max-width: 1600px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 19px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 150px;
+		height: 150px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 25px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 35px;
+		height: 35px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 23px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 19px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 20px;
+	}
+
+	/* ======================================= */
+
+
+	/* =============COACH PAGE ============= */
+
+	.coach-page .staff-block{
+		padding: 40px 50px 10px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 18px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 18px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 18px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 18px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 18px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 120px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 80%;
+	}
+
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 40px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 23px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 22px;
+		margin-left: 8px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 22px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 8px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 19px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 120px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.user-block .avatar{
+		width: 170px;
+		height: 170px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 20px;
+	}
+
+	.user-block__avatar-more{
+		font-size: 16px;
+	}
+
+	.user-block__avatar-more img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-about__description{
+		padding: 20px 30px 25px;
+	}
+
+	.user-about__description-button{
+		font-size: 15px;
+	}
+
+	.user-about__description-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 65px;
+		height: 65px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 16px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 20px;
+		font-size: 15px;
+	}
+
+	.user-block .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.user-block .friends-block__header-button img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-block .friends-block__cover{
+		margin-top: 10px;
+	}
+
+	.user-block .friends-block__avatar{
+		max-width: 100px;
+		width: 100px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 17px;
+	}
+
+	.user-block__staff{
+		padding: 20px 30px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 19px;
+	}
+
+	.user-block .last-trainings__title{
+		font-size: 18px;
+	}
+
+	.user-block .last-trainings__item-img{
+		width: 20px;
+	}
+
+	.user-block .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.user-block__button{
+		font-size: 24px;
+	}
+
+	.user-block__button img{
+		width: 23px;
+	}
+
+	.user-block__button-logout{
+		font-size: 24px;
+	}
+
+	.user-block__button-logout img{
+		width: 23px;
+	}
+
+	/* ======================================== */
+
+
+	/* ================STAFF PAGE================ */
+
+	.staff-page .staff-block__button-more{
+		font-size: 16px;
+		padding: 5px 12px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 25px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 20px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 90%;
+		font-size: 19px;
+		margin-right: 20px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 21px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 20px;
+	}
+
+	/* ========================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts__card-title{
@@ -735,7 +1447,7 @@
 		font-size: 18px;
 	}
 
-	.day-workouts__card-button p{
+	.c-workout .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -946,6 +1658,262 @@
 
 
 @media (max-width: 1500px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 18px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 23px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 21px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 22px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 18px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 30px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 130px;
+		height: 130px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 22px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 28px;
+		height: 28px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 21px;
+		margin-left: 8px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 19px;
+		padding: 2px 7px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 21px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 18px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 8px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 18px;
+	}
+
+
+	.doctor-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.user-block .avatar{
+		width: 150px;
+		height: 150px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 19px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 14px;
+	}
+
+	.user-block__avatar-more{
+		font-size: 16px;
+	}
+
+	.user-block__avatar-more img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-about__description{
+		padding: 20px 15px 25px;
+	}
+
+	.user-about__description-button{
+		font-size: 14px;
+	}
+
+	.user-about__description-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 55px;
+		height: 55px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 15px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 14px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 15px;
+		font-size: 15px;
+	}
+
+	.user-block .friends-block__header-title{
+		font-size: 17px;
+	}
+
+	.user-block .friends-block__header-button img{
+		width: 28px;
+		height: 28px;
+	}
+
+	.user-block .friends-block__cover{
+		margin-top: 10px;
+	}
+
+	.user-block .friends-block__avatar{
+		max-width: 80px;
+		width: 80px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 15px;
+	}
+
+	.user-block__staff{
+		padding: 20px 15px;
+	}
+
+	.user-block__staff-button{
+		width: 35px;
+		height: 35px;
+	}
+
+	.user-block__staff-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 17px;
+	}
+
+	.user-block .last-trainings__title{
+		font-size: 16px;
+	}
+
+	.user-block .last-trainings__item-img{
+		width: 17px;
+	}
+
+	.user-block .last-trainings__item-text{
+		font-size: 18px;
+	}
+
+	.user-block__button{
+		font-size: 22px;
+	}
+
+	.user-block__button img{
+		width: 21px;
+	}
+
+	.user-block__button-logout{
+		font-size: 22px;
+	}
+
+	.user-block__button-logout img{
+		width: 21px;
+	}
+
+	/* ======================================== */
+
+
 	/* ===============STAFF PAGE=============== */
 
 	.staff-page .container{
@@ -954,6 +1922,65 @@
 
 	.staff-page .staff-block{
 		padding: 40px 60px 10px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 22px;
+		padding: 5px 15px;
+		margin-left: 10px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 8px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 32px;
+	}
+
+	.staff-page .staff-block__button-more{
+		font-size: 16px;
+		padding: 5px 10px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 23px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 25px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 90%;
+		font-size: 18px;
+		margin-right: 10px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 20px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 19px;
 	}
 
 	/* ======================================== */
@@ -1101,7 +2128,7 @@
 		font-size: 20px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 
@@ -1424,6 +2451,285 @@
 
 
 @media (max-width: 1400px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 17px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 130px;
+		height: 130px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 22px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 20px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 28px;
+		height: 28px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 21px;
+		margin-left: 8px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+
+	/* =============COACH PAGE============= */
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 17px;
+	}
+
+	/* ====================================== */
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 20px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 27px;
+		height: 27px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 20px;
+		margin-left: 8px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 18px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 18px;
+		padding: 2px 7px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 7px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 17px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 100px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+	
+	/* ==============PROFILE PAGE============== */
+
+	.user-block .avatar{
+		width: 140px;
+		height: 140px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 18px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 13px;
+	}
+
+	.user-block__avatar-more{
+		font-size: 15px;
+	}
+
+	.user-block__avatar-more img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.user-about__description{
+		padding: 20px 10px 25px;
+		font-size: 15px;
+		margin-left: 10px;
+	}
+
+	.user-about__description-button{
+		font-size: 14px;
+	}
+
+	.user-about__description-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 50px;
+		height: 50px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 14px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 14px;
+	}
+
+	.user-block .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.user-block .friends-block__header-button img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-block .friends-block__cover{
+		margin-top: 10px;
+	}
+
+	.user-block .friends-block__avatar{
+		max-width: 70px;
+		width: 70px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 14px;
+	}
+
+	.user-block__staff{
+		padding: 20px 12px;
+	}
+
+	.user-block__staff-button{
+		width: 35px;
+		height: 35px;
+	}
+
+	.user-block__staff-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 17px;
+	}
+
+	.user-block .last-trainings__title{
+		font-size: 15px;
+	}
+
+	.user-block .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.user-block .last-trainings__item-img{
+		width: 17px;
+	}
+
+	.user-block .last-trainings__item-text{
+		font-size: 18px;
+	}
+
+	.user-block__button{
+		font-size: 22px;
+	}
+
+	.user-block__button img{
+		width: 21px;
+	}
+
+	.user-block__button-logout{
+		font-size: 22px;
+	}
+
+	.user-block__button-logout img{
+		width: 21px;
+	}
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts__card-title{
@@ -1584,7 +2890,7 @@
 		font-size: 20px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 
@@ -1973,6 +3279,424 @@
 
 
 @media (max-width: 1300px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 28px;
+		height: 28px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 18px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 20px;
+		margin-left: 8px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.coach-page .staff-block{
+		padding: 40px 40px 10px;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 31px;
+		height: 31px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 27px;
+		height: 27px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 17px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 17px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 17px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 17px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 18px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 25px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 17px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 28px;
+		height: 28px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 100px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 90%;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 20px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 19px;
+		margin-left: 8px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 17px;
+		padding: 2px 7px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 7px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 17px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 90px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 18px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.user-block__avatar{
+		width: 35%;
+	}
+
+	.user-block .avatar{
+		width: 130px;
+		height: 130px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 17px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 13px;
+	}
+
+	.user-block__avatar-more{
+		font-size: 14px;
+	}
+
+	.user-block__avatar-more img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.user-about__description{
+		width: 65%;
+		padding: 15px 10px 25px;
+		font-size: 15px;
+		margin-left: 10px;
+	}
+
+	.user-about__description-button{
+		font-size: 14px;
+	}
+
+	.user-about__description-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 45px;
+		height: 45px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 13px;
+	}
+
+	.user-block .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.user-block .friends-block__header-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.user-block .friends-block__cover{
+		margin-top: 8px;
+	}
+
+	.user-block .friends-block__avatar{
+		max-width: 60px;
+		width: 60px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 13px;
+	}
+
+	.user-block__staff{
+		padding: 20px 12px;
+	}
+
+	.user-block__staff-button{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-block__staff-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 16px;
+	}
+
+	.user-block .last-trainings__title{
+		font-size: 14px;
+	}
+
+	.user-block .last-trainings__card-left{
+		margin-right: 20px;
+	}
+
+	.user-block .last-trainings__item-img{
+		width: 16px;
+	}
+
+	.user-block .last-trainings__item-text{
+		font-size: 17px;
+	}
+
+	.user-block__button{
+		font-size: 21px;
+	}
+
+	.user-block__button img{
+		width: 20px;
+	}
+
+	.user-block__button-logout{
+		font-size: 21px;
+	}
+
+	.user-block__button-logout img{
+		width: 20px;
+	}
+
+	/* ======================================== */
+
+
 	/* ===============STAFF PAGE=============== */
 
 	.staff-page .container{
@@ -1981,6 +3705,66 @@
 
 	.staff-page .staff-block{
 		padding: 40px 40px 10px;
+	}
+
+	.staff-page  .staff-block__button--delite{
+		font-size: 19px;
+		padding: 5px 10px;
+		margin-left: 10px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 7px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 30px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 15px;
+		padding: 5px 10px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 21px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 25px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 90%;
+		font-size: 17px;
+		margin-right: 10px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 18px;
 	}
 
 	/* ======================================== */
@@ -2472,6 +4256,473 @@
 
 
 @media (max-width: 1200px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .comparison-block{
+		padding: 60px 30px 30px;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 28px;
+		height: 28px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 18px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 20px;
+		margin-left: 8px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 85%;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--competitions-add .popup-exercise__input-item{
+		font-size: 22px;
+	}
+
+	.popup-exercise__submit-button{
+		font-size: 22px;
+		padding: 7px 20px;
+	}
+
+	.coach-page .staff-block{
+		padding: 40px 30px 10px;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 28px;
+		height: 28px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 16px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 16px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 16px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 16px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 17px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 20px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 90px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 15px;
+	}
+
+	.coach-page .coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 16px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 15px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 18px;
+		padding: 3px 15px;
+		margin-left: 6px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 16px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 16px;
+		padding: 2px 6px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 18px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 16px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 7px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 17px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 90px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 18px;
+	}
+
+	/* ======================================= */
+
+	.staff-block__title-none{
+		font-size: 25px;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 32px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 80px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 17px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.user-block .container{
+		padding: 20px 40px;
+	}
+
+	.user-block__info{
+		margin-right: 20px;
+	}
+
+	.user-block__avatar{
+		width: 40%;
+	}
+
+	.user-block .avatar{
+		width: 130px;
+		height: 130px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 17px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 13px;
+	}
+
+	.user-block__avatar-more{
+		font-size: 14px;
+	}
+
+	.user-block__avatar-more img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.user-about__description{
+		width: 60%;
+		padding: 15px 10px 25px;
+		font-size: 15px;
+		margin-left: 10px;
+	}
+
+	.user-about__description-button{
+		font-size: 14px;
+	}
+
+	.user-about__description-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 45px;
+		height: 45px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 13px;
+	}
+
+	.user-block .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.user-block .friends-block__header-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.user-block .friends-block__cover{
+		margin-top: 8px;
+	}
+
+	.user-block .friends-block__avatar{
+		max-width: 60px;
+		width: 60px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 13px;
+	}
+
+	.user-block__staff{
+		padding: 20px 12px;
+	}
+
+	.user-block__staff-button{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-block__staff-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 16px;
+	}
+
+	.user-block .last-trainings__title{
+		font-size: 14px;
+	}
+
+	.user-block .last-trainings__card-left{
+		margin-right: 20px;
+	}
+
+	.user-block .last-trainings__item-img{
+		width: 16px;
+	}
+
+	.user-block .last-trainings__item-text{
+		font-size: 17px;
+	}
+
+	.user-block__button{
+		font-size: 21px;
+	}
+
+	.user-block__button img{
+		width: 20px;
+	}
+
+	.user-block__button-logout{
+		font-size: 21px;
+	}
+
+	.user-block__button-logout img{
+		width: 20px;
+	}
+
+	/* ======================================== */
+
+
 	/* ===============STAFF PAGE=============== */
 
 	.staff-page .container{
@@ -2505,14 +4756,23 @@
 	}
 
 	.staff-page .staff-block__button--delite{
-		font-size: 23px;
+		font-size: 18px;
+		padding: 5px 8px;
+		margin-left: 8px;
 	}
 
 	.staff-page .staff-block__button--delite img{
-		width: 23px;
-		height: 23px;
+		width: 19px;
+		height: 19px;
 	}
 
+	.staff-page .staff-block__button--delite p{
+		margin-right: 6px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 27px;
+	}
 	.staff-page .staff-block__subtitle{
 		font-size: 18px;
 		margin-top: 5px;
@@ -2530,9 +4790,6 @@
 		font-size: 18px;
 	}
 
-	.staff-page .staff-block__button-more{
-		font-size: 15px;
-	}
 
 	.staff-page .staff-block__competitions{
 		margin-top: 5px;
@@ -2544,6 +4801,59 @@
 
 	.staff-page .staff-block__useful-links{
 		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 18px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 15px;
+		padding: 5px 8px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 19px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 20px
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 16px;
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 16px;
 	}
 
 
@@ -2723,7 +5033,7 @@
 		font-size: 19px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -3202,6 +5512,470 @@
 
 
 @media (max-width: 1100px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .comparison-block{
+		padding: 60px 20px 30px;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 16px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 18px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 17px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 18px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--competitions-add .popup-exercise__content{
+		flex-direction: column;
+	}
+
+	.popup-exercise--competitions-add .popup-exercise__input-item{
+		font-size: 22px;
+		margin: 5px 0px;
+	}
+
+	.popup-exercise__submit-button{
+		font-size: 22px;
+		padding: 7px 20px;
+	}
+
+	.coach-page .staff-block{
+		padding: 40px 20px 10px;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 15px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 15px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 15px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 14px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 16px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 15px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 80px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 23px;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 15px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 10px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 90px;
+		height: 90px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 18px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 17px;
+		padding: 3px 12px;
+		margin-left: 5px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		font-size: 16px;
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 15px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 15px;
+		padding: 2px 6px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 15px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 7px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 16px;
+	}
+
+
+	.staff-block__title-none{
+		font-size: 23px;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 18px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 30px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 75px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	/* ======================================= */
+
+
+	/* ===============STAFF PAGE=============== */
+
+	.popup-user__description-edit-text{
+		min-width: 60vw;
+	}
+
+	.staff-page .container{
+		max-width: 90%;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 20px 10px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 33px;
+		height: 33px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 21px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 17px;
+		padding: 5px 7px;
+		margin-left: 7px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 23px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 17px;
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 17px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 15px;
+		padding: 5px 8px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 18px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 15px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 16px;
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 15px;
+	}
+		
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{
@@ -3692,6 +6466,709 @@
 
 
 @media (max-width: 1000px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 40px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 16px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 18px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 17px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 18px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	/* ======================================= */
+
+
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .comparison-block{
+		padding: 60px 20px 30px;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 16px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 18px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 17px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 18px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+	}
+
+	.popup-exercise--links-add .popup-exercise__input-item{
+		font-size: 22px;
+	}
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 70%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 70%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 30px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 23px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 22px;
+		padding: 5px 20px;
+		margin-left: 15px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		font-size: 21px;
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 20px;
+		padding: 2px 6px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 22px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 10px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 21px;
+	}
+
+	.doctor-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.doctor-page .staff-block{
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.staff-block__title-none{
+		font-size: 27px;
+	}
+
+	.doctor-page .staff-other{
+		width: 100%;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 22px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 35px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 140px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 20px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.user-block__info{
+		min-width: 55%;
+		width: 55%;
+	}
+
+	.user-block__other{
+		min-width: 45%;
+		width: 45%;
+	}
+
+	.user-block .container{
+		padding: 20px 30px;
+		max-width: 90%;
+	}
+
+	.user-block__info{
+		margin-right: 20px;
+	}
+
+	.user-block__avatar{
+		width: 40%;
+	}
+
+	.user-block .avatar{
+		width: 130px;
+		height: 130px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 17px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 13px;
+	}
+
+	.user-block__avatar-more{
+		font-size: 14px;
+	}
+
+	.user-block__avatar-more img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.user-about__description{
+		width: 60%;
+		padding: 15px 10px 25px;
+		font-size: 15px;
+		margin-left: 10px;
+	}
+
+	.user-about__description-button{
+		font-size: 14px;
+	}
+
+	.user-about__description-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 45px;
+		height: 45px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 13px;
+	}
+
+	.user-block .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.user-block .friends-block__header-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.user-block .friends-block__cover{
+		margin-top: 8px;
+	}
+
+	.user-block .friends-block__avatar{
+		max-width: 60px;
+		width: 60px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 13px;
+	}
+
+	.user-block__staff{
+		padding: 20px 12px;
+	}
+
+	.user-block__staff-button{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-block__staff-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 16px;
+	}
+
+	.user-block .last-trainings__title{
+		font-size: 14px;
+	}
+
+	.user-block .last-trainings__card-left{
+		margin-right: 20px;
+	}
+
+	.user-block .last-trainings__item-img{
+		width: 16px;
+	}
+
+	.user-block .last-trainings__item-text{
+		font-size: 17px;
+	}
+
+	.user-block__button{
+		font-size: 21px;
+	}
+
+	.user-block__button img{
+		width: 20px;
+	}
+
+	.user-block__button-logout{
+		font-size: 21px;
+	}
+
+	.user-block__button-logout img{
+		width: 20px;
+	}
+
+	/* ======================================== */
+
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 10px 10px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 30px;
+		height: 30px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 19px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 16px;
+		padding: 5px 10px;
+		margin-left: 6px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 4px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 21px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 16px;
+		margin-top: 4px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 16px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 17px;
+		padding: 5px 15px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 21px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 35px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 18px;
+		margin-right: 7px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 17px;
+	}
+
+
+	/* ======================================== */
+	
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{
@@ -3882,7 +7359,7 @@
 		font-size: 18px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -4480,6 +7957,590 @@
 
 
 @media (max-width: 900px){
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+	}
+
+	.popup-exercise--links-add .popup-exercise__input-item{
+		font-size: 19px;
+	}
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 80%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 80%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 20px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 130px;
+		height: 130px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 20px;
+		padding: 5px 20px;
+		margin-left: 15px;
+	}
+
+	.doctor-page .staff-block__button--delite img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		font-size: 19px;
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 18px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 18px;
+		padding: 2px 6px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 7px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 19px;
+	}
+
+	.doctor-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.doctor-page .staff-block{
+		width: 100%;
+	}
+
+	.staff-block__title-none{
+		font-size: 25px;
+	}
+
+	.doctor-page .staff-other{
+		width: 100%;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 20px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 32px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 120px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.user-block__info{
+		min-width: 60%;
+		width: 60%;
+	}
+
+	.user-block__other{
+		min-width: 40%;
+		width: 40%;
+	}
+
+	.user-block .container{
+		padding: 20px 30px;
+		max-width: 90%;
+	}
+
+	.user-block__info{
+		margin-right: 10px;
+	}
+
+	.user-block__avatar{
+		width: 40%;
+	}
+
+	.user-block .avatar{
+		width: 110px;
+		height: 110px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 16px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 12px;
+		opacity: 0.8;
+	}
+
+	.user-block__avatar-more{
+		font-size: 13px;
+	}
+
+	.user-block__avatar-more img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.user-about__description{
+		width: 60%;
+		padding: 15px 8px 25px;
+		font-size: 14px;
+		margin-left: 5px;
+	}
+
+	.user-about__description-button{
+		font-size: 14px;
+	}
+
+	.user-about__description-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 40px;
+		height: 40px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 13px;
+	}
+
+	.user-block .friends-block__header-title{
+		font-size: 14px;
+	}
+
+	.user-block .friends-block__header-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.user-block .friends-block__cover{
+		margin-top: 8px;
+	}
+
+	.user-block .friends-block__avatar{
+		max-width: 45px;
+		width: 45px;
+	}
+
+	.user-block .friends-block__name{
+		font-size: 12px;
+	}
+
+	.user-block__staff{
+		padding: 20px 12px;
+	}
+
+	.user-block__staff-title{
+		font-size: 14px;
+	}
+
+	.user-block__staff-button{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-block__staff-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 14px;
+	}
+
+	.user-block .last-trainings__title{
+		font-size: 14px;
+	}
+
+	.user-block .last-trainings__card-left{
+		margin-right: 5px;
+	}
+
+	.user-block .last-trainings__item-img{
+		width: 13px;
+	}
+
+	.user-block .last-trainings__item-text{
+		font-size: 13px;
+	}
+
+	.user-block__button{
+		font-size: 19px;
+		padding: 7px 10px 5px 15px;
+	}
+
+	.user-block__button img{
+		width: 18px;
+	}
+
+	.user-block__button-logout{
+		font-size: 19px;
+		padding: 7px 10px 5px 15px;
+	}
+
+	.user-block__button-logout img{
+		width: 18px;
+	}
+
+	/* ======================================== */
+
+
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 10px 10px;
+		width: 80%;
+		margin-bottom: 20px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 35px;
+		height: 35px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 24px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 19px;
+		padding: 5px 15px;
+		margin-left: 10px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 7px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 30px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 19px;
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 20px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 6px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 6px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 19px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 16px;
+		padding: 5px 12px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 20px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 32px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 17px;
+		margin-right: 7px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 16px;
+	}
+
+
+	/* ======================================== */
+
+
 	/* =========WORKOUT CONSTRUCTOR PAGE========= */
 	.workouts-card--c{
 		width: 100%;
@@ -4553,7 +8614,7 @@
 		font-size: 21px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 7px;
 	}
 
@@ -5211,6 +9272,543 @@
 
 
 @media (max-width: 800px){
+	/* ======COMARISON BLOCK====== */
+
+	.comparison-block__add-button{
+		font-size: 24px;
+		padding: 10px 20px;
+	}
+
+	.comparison-block__add-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	/* ============================ */
+
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+		flex-direction: column;
+	}
+
+	.popup-exercise--links-add .popup-exercise__input-item{
+		font-size: 19px;
+		margin: 5px 0px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 30px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 22px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 22px;
+	}
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 90%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 90%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.doctor-page .staff-block{
+		width: 100%;
+	}
+
+	.staff-block__title-none{
+		font-size: 23px;
+	}
+
+	.doctor-page .staff-other{
+		width: 100%;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 18px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 30px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 110px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 18px;
+	}
+
+	/* ======================================= */
+	
+
+	/* ==============PROFILE PAGE============== */
+
+	.popup-exercise__content--user-info .popup-user__info-item-name{
+		font-size: 22px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-item-info{
+		font-size: 22px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__select{
+		font-size: 22px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__input{
+		font-size: 22px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social-name{
+		font-size: 22px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-block__info{
+		min-width: 60%;
+		width: 60%;
+	}
+
+	.user-block__other{
+		min-width: 40%;
+		width: 40%;
+	}
+
+	.user-block .container{
+		padding: 20px 30px;
+		max-width: 90%;
+	}
+
+	.user-block__info{
+		margin-right: 10px;
+	}
+
+	.user-block__avatar{
+		width: 40%;
+	}
+
+	.user-block .avatar{
+		width: 100px;
+		height: 100px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 15px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 11px;
+		opacity: 0.8;
+	}
+
+	.user-block__avatar-more{
+		font-size: 13px;
+	}
+
+	.user-block__avatar-more img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.user-about__description{
+		width: 60%;
+		padding: 15px 8px 25px;
+		font-size: 13px;
+		margin-left: 5px;
+	}
+
+	.user-about__description-button{
+		font-size: 13px;
+	}
+
+	.user-about__description-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.user-block .user-news{
+		margin-top: 10px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 40px;
+		height: 40px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 13px;
+	}
+
+	.user-block .friends-block{
+		display: none;
+	}
+
+	.user-block__staff{
+		padding: 20px 12px;
+	}
+
+	.user-block__staff-title{
+		font-size: 14px;
+	}
+
+	.user-block__staff-button{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-block__staff-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 14px;
+	}
+
+	.user-block .last-trainings{
+		display: none;
+	}
+
+	.user-block__button{
+		font-size: 17px;
+		padding: 7px 8px 5px 12px;
+	}
+
+	.user-block__button img{
+		width: 16px;
+	}
+
+	.user-block__button-logout{
+		font-size: 17px;
+		padding: 7px 10px 5px 15px;
+	}
+
+	.user-block__button-logout img{
+		width: 16px;
+	}
+
+	/* ======================================== */
+
+	
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 10px 10px;
+		width: 80%;
+		margin-bottom: 20px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 130px;
+		height: 130px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 23px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 33px;
+		height: 33px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 22px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 18px;
+		padding: 5px 12px;
+		margin-left: 10px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 6px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 28px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 18px;
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 18px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 16px;
+		padding: 5px 10px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 18px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 25px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 16px;
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 15px;
+	}
+
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{
@@ -6058,6 +10656,611 @@
 
 
 @media (max-width: 700px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.comparison-block__add-button{
+		font-size: 21px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__add-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 40px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 18px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 23px;
+		height: 23px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 14px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 16px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 15px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 16px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 20px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 30px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 19px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 19px;
+	}
+
+	.coach-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+		margin-right: 20px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 24px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 34px;
+		height: 34px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 19px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 19px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 19px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 25px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 20px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 30px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 19px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 100px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 26px;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.doctor-page .staff-block{
+		width: 100%;
+	}
+
+	.staff-block__title-none{
+		font-size: 21px;
+	}
+
+	.doctor-page .staff-other{
+		width: 100%;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 17px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 28px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 100px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 17px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.popup-exercise__content--user-info .popup-user__info-item-name{
+		font-size: 20px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-item-info{
+		font-size: 20px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__select{
+		font-size: 20px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__input{
+		font-size: 20px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social-name{
+		font-size: 20px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social img{
+		width: 27px;
+		height: 27px;
+	}
+
+	#saveAvatar{
+		font-size: 25px;
+	}
+
+	.user-block__info{
+		min-width: 65%;
+		width: 65%;
+	}
+
+	.user-block__other{
+		min-width: 35%;
+		width: 35%;
+	}
+
+	.user-block .container{
+		padding: 20px 20px;
+		max-width: 90%;
+	}
+
+	.user-block__info{
+		margin-right: 10px;
+	}
+
+	.user-block__avatar{
+		width: 40%;
+	}
+
+	.user-block .avatar{
+		width: 90px;
+		height: 90px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 14px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 11px;
+		opacity: 0.8;
+	}
+
+	.user-block__avatar-more{
+		font-size: 12px;
+	}
+
+	.user-block__avatar-more img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.user-about__description{
+		width: 60%;
+		padding: 15px 6px 25px;
+		font-size: 12px;
+		margin-left: 0px;
+	}
+
+	.user-about__description-button{
+		font-size: 13px;
+	}
+
+	.user-about__description-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.user-block .user-news{
+		margin-top: 10px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 40px;
+		height: 40px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 13px;
+	}
+
+	.user-block__staff{
+		padding: 20px 8px;
+	}
+
+	.user-block__staff-title{
+		font-size: 13px;
+	}
+
+	.user-block__staff-button{
+		width: 25px;
+		height: 25px;
+	}
+
+	.user-block__staff-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 11px;
+	}
+
+	.user-block__buttons{
+		margin-top: 10px;
+	}
+
+	.user-block__button{
+		font-size: 13px;
+		padding: 7px 8px 5px 10px;
+	}
+
+	.user-block__button img{
+		width: 15px;
+	}
+
+	.user-block__button-logout{
+		font-size: 13px;
+		padding: 7px 8px 5px 12px;
+	}
+
+	.user-block__button-logout img{
+		width: 15px;
+	}
+
+	/* ======================================== */
+
+	
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 10px 10px;
+		width: 80%;
+		margin-bottom: 20px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 10px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 30px;
+		height: 30px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 20px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 17px;
+		padding: 5px 10px;
+		margin-left: 10px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 26px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 17px;
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 17px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 15px;
+		padding: 5px 8px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 16px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 20px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 15px;
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 14px;
+	}
+
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{
@@ -6254,7 +11457,7 @@
 		font-size: 19px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -6953,6 +12156,725 @@
 
 
 @media (max-width: 600px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.comparison-block__add-button{
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__add-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 20px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 14px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 80px;
+		height: 80px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 17px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 14px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 15px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 13px;
+		height: 13px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 14px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 15px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 19px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 30px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 16px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 16px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__close-button{
+		width: 23px;
+		right: 2%;
+	}
+
+	.coach-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 20px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 15px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 22px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 21px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__goals-list{
+		margin: 0 auto;
+	}
+
+	.coach-page .staff-block__item-name{
+		margin-right: 5px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 17px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 17px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 17px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 23px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 18px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 20px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 17px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 35px;
+		height: 35px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 80px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 24px;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__medicines-none{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__treatment-date-line{
+		width: 25%;
+	}
+
+	.doctor-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 15px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 18px;
+		padding: 5px 15px;
+		margin-left: 15px;
+	}
+
+	.doctor-page .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		font-size: 17px;
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 17px;
+		padding: 2px 6px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 18px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 6px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 18px;
+	}
+
+	.doctor-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.doctor-page .staff-block{
+		width: 100%;
+	}
+
+	.staff-block__title-none{
+		font-size: 20px;
+	}
+
+	.doctor-page .staff-other{
+		width: 100%;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 16px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 26px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 80px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 16px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.popup-exercise__content--user-info .popup-user__info-item-name{
+		font-size: 18px;
+		margin-right: 10px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-item-info{
+		font-size: 18px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__select{
+		font-size: 18px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__input{
+		font-size: 18px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social-name{
+		font-size: 18px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.popup-user__description-edit-text{
+		min-width: 65vw;
+	}
+
+	.popup-exercise--description-edit .popup-exercise__submit-button{
+		font-size: 23px;
+	}
+
+	#saveAvatar{
+		font-size: 20px;
+		padding: 10px 20px;
+	}
+
+	.user-block__info{
+		min-width: 55%;
+		width: 55%;
+	}
+
+	.user-block__other{
+		min-width: 45%;
+		width: 45%;
+	}
+
+	.user-block .container{
+		padding: 20px 20px;
+		max-width: 90%;
+	}
+
+	.user-about{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.user-block__info{
+		margin-right: 10px;
+	}
+
+	.user-block__avatar{
+		width: 100%;
+	}
+
+	.user-block .avatar{
+		width: 90px;
+		height: 90px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 14px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 11px;
+		opacity: 0.8;
+	}
+
+	.user-block__avatar-more{
+		font-size: 12px;
+		margin-bottom: 5px;
+	}
+
+	.user-block__avatar-more img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.user-about__description{
+		width: 100%;
+		max-width: 100%;
+		padding: 15px 6px 25px;
+		font-size: 12px;
+		margin-left: 0px;
+	}
+
+	.user-about__description-button{
+		font-size: 13px;
+	}
+
+	.user-about__description-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.user-block .user-news{
+		margin-top: 10px;
+		padding: 15px 20px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 40px;
+		height: 40px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 13px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 15px 10px;
+		font-size: 13px;
+	}
+
+	.user-block__staff{
+		padding: 20px 8px;
+	}
+
+	.user-block__staff-title{
+		font-size: 12px;
+	}
+
+	.user-block__staff-button{
+		width: 23px;
+		height: 23px;
+		margin: 0 3px;
+	}
+
+	.user-block__staff-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 11px;
+	}
+
+	.user-block__buttons{
+		margin-top: 10px;
+	}
+
+	.user-block__button{
+		font-size: 12px;
+		padding: 5px 8px 5px 10px;
+	}
+
+	.user-block__button img{
+		width: 14px;
+	}
+
+	.user-block__button-logout{
+		font-size: 12px;
+		padding: 7px 8px 5px 12px;
+	}
+
+	.user-block__button-logout img{
+		width: 14px;
+	}
+
+	/* ======================================== */
+
+	
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 10px 10px;
+		width: 86%;
+		margin-bottom: 20px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 19px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 27px;
+		height: 27px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 17px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 16px;
+		padding: 5px 10px;
+		margin-left: 10px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 24px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 16px;
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 16px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 14px;
+		padding: 3px 6px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 15px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 15px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 14px;
+		margin-right: 3px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 13px;
+	}
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{
@@ -6970,7 +12892,7 @@
 	}
 
 	.c-program .day-workouts__card-content{
-		padding: 1px;
+		padding: 5px;
 	}
 
 	.c-program .day-workouts__card-title{
@@ -6997,6 +12919,7 @@
 
 	.c-program .day-workouts__card-day-off{
 		font-size: 11px;
+		padding: 3px 5px;
 	}
 
 	.c-program__create{
@@ -7166,7 +13089,7 @@
 		font-size: 17px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 5px;
 	}
 
@@ -7326,6 +13249,23 @@
 
 
 	/* ==============MY PROGRAM PAGE============== */
+
+	.c-program__workouts-list-none{
+		font-size: 17px
+	}
+
+	.popup-exercise--add-users__label{
+		font-size: 22px;
+	}
+
+	.popup-exercise--add-users__button-add{
+		font-size: 22px;
+	}
+
+	.popup-exercise--add-users__button-add img{
+		width: 18px;
+		height: 18px;
+	}
 
 	.my-program .container{
 		max-width: 94%;
@@ -7801,6 +13741,780 @@
 
 
 @media (max-width: 500px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 10px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 13px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 70px;
+		height: 70px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 13px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 14px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		font-size: 15px;
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 13px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 14px;
+	}
+
+	.user-comparison .exercise-item__img{
+		width: 120px;
+	}
+
+	.user-comparison .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.user-comparison .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.user-comparison .exercise-item__star{
+		width: 25px;
+	}
+
+	.user-comparison .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .exercise-item__repetitions{
+		font-size: 22px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 95%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.coach-page .staff-block__goals-item{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__control-none{
+		font-size: 18px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 40px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 14px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 14px;
+		padding: 5px 10px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__close-button{
+		width: 20px;
+		right: 3%;
+	}
+
+	.coach-page .container{
+		max-width: 88%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 10px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 19px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__goals-list{
+		margin: 0 auto;
+	}
+
+	.coach-page .staff-block__item-name{
+		margin-right: 5px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 14px;
+		margin: 0px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 14px;
+		padding: 1px 3px;
+	}
+
+	.coach-page .staff-block__button-more{
+		font-size: 13px;
+		padding: 3px 8px;
+	}
+
+	.coach-page .staff-block__button-more img{
+		width: 22px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 15px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 15px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 20px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 16px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 15px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 70px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 12px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+		font-size: 20px;
+		padding: 7px 15px;
+	}
+
+	.coach-page .staff-other__button img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 22px;
+	}
+
+	/* ====================================== */
+
+	
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__title{
+		font-size: 15px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 10px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block__profile-link{
+		width: 30px;
+		height: 30px;
+	}
+
+	.doctor-page .staff-block__profile-link img{
+		width: 20px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 16px;
+		padding: 5px 10px;
+		margin-left: 5px;
+	}
+
+	.doctor-page .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		font-size: 15px;
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 15px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 15px;
+		padding: 2px 5px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 16px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 5px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 17px;
+	}
+
+	.doctor-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.doctor-page .staff-block{
+		width: 100%;
+	}
+
+	.staff-block__title-none{
+		font-size: 19px;
+	}
+
+	.doctor-page .staff-other{
+		width: 100%;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 15px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 24px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 60px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 15px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.popup-exercise__content--user-info .popup-user__info-item-name{
+		font-size: 14px;
+		margin-right: 5px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-item-info{
+		font-size: 14px;
+		padding: 3px 5px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__select{
+		font-size: 14px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__input{
+		font-size: 14px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social-name{
+		font-size: 14px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.popup-user__description-edit-text{
+		min-width: 65vw;
+		font-size: 18px;
+	}
+
+	.popup-exercise--description-edit .popup-exercise__submit-button{
+		font-size: 21px;
+	}
+
+	#saveAvatar{
+		font-size: 18px;
+		padding: 10px 20px;
+	}
+
+
+	.user-block__info{
+		min-width: 55%;
+		width: 55%;
+	}
+
+	.user-block__other{
+		min-width: 45%;
+		width: 45%;
+	}
+
+	.user-block .container{
+		padding: 20px 20px;
+		max-width: 90%;
+	}
+
+	.user-about{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.user-block__info{
+		margin-right: 10px;
+	}
+
+	.user-block__avatar{
+		width: 100%;
+	}
+
+	.user-block .avatar{
+		width: 80px;
+		height: 80px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 13px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 10px;
+		opacity: 0.8;
+	}
+
+	.user-block__avatar-more{
+		font-size: 11px;
+		margin-bottom: 5px;
+	}
+
+	.user-block__avatar-more img{
+		width: 13px;
+		height: 13px;
+	}
+
+	.user-about__description{
+		width: 100%;
+		max-width: 100%;
+		padding: 15px 6px 25px;
+		font-size: 11px;
+		margin-left: 0px;
+	}
+
+	.user-about__description-button{
+		font-size: 12px;
+	}
+
+	.user-about__description-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.user-block .user-news{
+		margin-top: 10px;
+		padding: 15px 10px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 35px;
+		height: 35px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 12px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 11px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 10px 5px;
+	}
+
+	.user-block .user-news__item-message{
+		font-size: 11px;
+	}
+
+	.user-block__staff{
+		padding: 10px 5px;
+	}
+
+	.user-block__staff-title{
+		font-size: 10px;
+	}
+
+	.user-block__staff-button{
+		width: 20px;
+		height: 20px;
+		margin: 0 1px;
+	}
+
+	.user-block__staff-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.user-block__sub-count{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 12px;
+	}
+
+	.user-block__buttons{
+		margin-top: 10px;
+	}
+
+	.user-block__button{
+		font-size: 11px;
+		padding: 3px 5px 3px 5px;
+	}
+
+	.user-block__button img{
+		width: 12px;
+	}
+
+	.user-block__button-logout{
+		font-size: 11px;
+		padding: 3px 5px 3px 5px;
+	}
+
+	.user-block__button-logout img{
+		width: 12px;
+	}
+
+	/* ======================================== */
+
+	
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 10px 10px;
+		width: 90%;
+		margin-bottom: 15px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 90px;
+		height: 90px;
+		margin-right: 8px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 18px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 25px;
+		height: 25px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 16px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 15px;
+		padding: 5px 10px;
+		margin-left: 10px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 5px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 22px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 15px;
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 16px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 5px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 15px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 15px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 13px;
+		padding: 3px 6px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 13px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 13px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 10px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 13px;
+		margin-right: 3px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 13px;
+	}
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{
@@ -8015,7 +14729,7 @@
 		font-size: 15px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 
@@ -8345,6 +15059,42 @@
 
 
 	/* ==============MY PROGRAM PAGE============== */
+
+	.c-program__workouts-list-none{
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.popup-exercise--add-users__form{
+		padding: 45px 20px;
+	}
+
+	.c-program__add-button{
+		font-size: 18px;
+		padding: 5px 15px;
+	}
+
+	.c-program__add-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.popup-exercise--add-users__label{
+		font-size: 17px;
+	}
+
+	.popup-exercise--add-users__button-add{
+		font-size: 17px;
+	}
+
+	.popup-exercise--add-users__button-add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.friends-block__no-friends{
+		font-size: 20px;
+	}
 
 	.my-program .container{
 		max-width: 96%;
@@ -8923,6 +15673,810 @@
 
 
 @media (max-width: 400px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 10px 30px;
+		width: 100%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 13px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 70px;
+		height: 70px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 13px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 14px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		font-size: 15px;
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 13px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 14px;
+	}
+
+	.user-comparison .exercise-item__img{
+		width: 120px;
+	}
+
+	.user-comparison .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.user-comparison .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.user-comparison .exercise-item__star{
+		width: 25px;
+	}
+
+	.user-comparison .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .exercise-item__repetitions{
+		font-size: 22px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 95%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	/* ======================================= */
+
+
+	/* ============COACH PAGE============ */
+
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+	}
+
+	.popup-exercise--links-add .popup-exercise__submit-button{
+		font-size: 15px;
+		padding: 5px 10px;
+	}
+	.popup-exercise--links-add
+
+
+	.popup-exercise--competitions-add .popup-exercise__content{
+		flex-direction: column;
+		padding: 40px 20px;
+	}
+
+	.popup-exercise--competitions-add .popup-exercise__input-item{
+		font-size: 18px;
+		margin: 5px 0px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 15px;
+		padding: 5px 10px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 40px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 13px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 13px;
+		padding: 5px 10px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__close-button{
+		width: 18px;
+		right: 2%;
+	}
+
+	.coach-page .container{
+		max-width: 86%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.coach-page .staff-block{
+		width: 100%;
+		padding: 40px 5px 10px;
+		margin-bottom: 20px;
+	}
+
+	.coach-page .coach-other{
+		width: 100%;
+	}
+
+	.coach-page .staff-block__title{
+		font-size: 14px;
+	}
+
+	.coach-page .staff-block__avatar{
+		width: 80px;
+		height: 80px;
+		margin-right: 10px;
+	}
+
+	.coach-page .staff-block__name-text{
+		font-size: 17px;
+	}
+
+	.coach-page .staff-block__profile-link{
+		width: 20px;
+		height: 20px;
+	}
+
+	.coach-page .staff-block__profile-link img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.coach-page .staff-block__button--img img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.coach-page .staff-block__button--delite{
+		font-size: 16px;
+	}
+
+	.coach-page .staff-block__button--delite img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.coach-page .staff-block__subtitle{
+		margin-top: 0px;
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__nearest-workout-date{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__button-more p{
+		font-size: 12px;
+	}
+
+	.coach-page .staff-block__goals-list{
+		margin: 0 auto;
+	}
+
+	.coach-page .staff-block__item-name{
+		margin-right: 5px;
+	}
+
+	.coach-page .staff-block__goal-text{
+		font-size: 12px;
+	}
+
+	.coach-page .staff-block__item-cover img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__goal-button--text{
+		font-size: 12px;
+		margin: 0px;
+	}
+
+	.coach-page .staff-block__item-button--add p{
+		font-size: 15px;
+	}
+
+	.coach-page .staff-block__item-button--add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__control-workout-text{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__control-workouts-date{
+		font-size: 13px;
+		padding: 1px 3px;
+	}
+
+	.coach-page .staff-block__button-more{
+		font-size: 12px;
+		padding: 3px 8px;
+	}
+
+	.coach-page .staff-block__button-more img{
+		width: 18px;
+	}
+
+	.coach-page .day-workouts__card-button--start-c{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__competition-text{
+		font-size: 13px;
+	}
+
+	.coach-page .staff-block__link-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.coach-page .staff-block__useful-links-text{
+		font-size: 14px;
+	}
+
+
+	.coach-page .last-trainings__title{
+		font-size: 14px;
+	}
+
+	.coach-page .last-trainings__item-img{
+		width: 18px;
+	}
+
+	.coach-page .last-trainings__item-text{
+		font-size: 15px;
+	}
+
+	.coach-page .last-trainings__card-left{
+		margin-right: 15px;
+	}
+
+	.coach-page .friends-block__header-title{
+		font-size: 14px;
+	}
+
+	.coach-page .friends-block__header-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .friends-block__avatar{
+		width: 60px;
+	}
+
+	.coach-page .friends-block__name{
+		font-size: 11px;
+	}
+
+	.coach-page .staff-other__button{
+		width: 100%;
+		font-size: 17px;
+		padding: 5px 10px;
+	}
+
+	.coach-page .staff-other__button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	.coach-page .staff-other__button p{
+		font-size: 18px;
+	}
+
+	/* ====================================== */
+
+
+	/* ==============DOCTOR PAGE============== */
+
+	.doctor-page .staff-block__medicines-none{
+		font-size: 16px;
+	}
+
+	.doctor-page .staff-block__title{
+		font-size: 13px;
+	}
+
+	.doctor-page .staff-block{
+		padding: 40px 10px 10px;
+	}
+
+	.doctor-page .staff-block__avatar{
+		width: 90px;
+		height: 90px;
+		margin-right: 8px;
+	}
+
+	.doctor-page .staff-block__name-text{
+		font-size: 15px;
+	}
+
+	.doctor-page .staff-block__profile-link{
+		width: 28px;
+		height: 28px;
+	}
+
+	.doctor-page .staff-block__profile-link img{
+		width: 18px;
+	}
+
+	.doctor-page .staff-block__button--img img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.doctor-page .staff-block__button--delite{
+		font-size: 15px;
+		padding: 5px 8px;
+		margin-left: 5px;
+	}
+
+	.doctor-page .staff-block__button--delite img{
+		width: 15px;
+		height: 15px;
+	}
+
+	.doctor-page .staff-block__subtitle{
+		font-size: 13px;
+		margin-top: 0px;
+	}
+
+	.doctor-page .staff-block__medicine-name{
+		font-size: 13px;
+	}
+
+	.doctor-page .staff-block__medicine-dose{
+		font-size: 13px;
+		padding: 2px 5px;
+	}
+
+	.doctor-page .staff-block__item-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.doctor-page .staff-block__item-button--add{
+		font-size: 15px;
+	}
+
+	.doctor-page .staff-block__item-button--add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.doctor-page .staff-block__treatment-date-item{
+		font-size: 14px;
+	}
+
+	.doctor-page .staff-block__item-button--date, .staff-block__item-button--recommendation{
+		padding: 5px;
+	}
+
+	.doctor-page .staff-block__treatment-recommendation{
+		font-size: 15px;
+	}
+
+
+	.doctor-page .container{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.doctor-page .staff-block{
+		width: 100%;
+	}
+
+	.staff-block__title-none{
+		font-size: 17px;
+	}
+
+	.doctor-page .staff-other{
+		width: 100%;
+	}
+
+	.doctor-page .friends-block__header-title{
+		font-size: 14px;
+	}
+
+	.doctor-page .friends-block__header-button{
+		width: 22px;
+	}
+
+	.doctor-page .friends-block__avatar{
+		width: 50px;
+	}
+
+	.doctor-page .friends-block__name{
+		font-size: 14px;
+	}
+
+	/* ======================================= */
+
+
+	/* ==============PROFILE PAGE============== */
+
+	.popup-exercise__content--user-info .popup-user__info-item-name{
+		font-size: 13px;
+		margin-right: 3px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-item-info{
+		font-size: 13px;
+		padding: 3px 3px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__select{
+		font-size: 13px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__input{
+		font-size: 13px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social-name{
+		font-size: 13px;
+	}
+
+	.popup-exercise__content--user-info .popup-user__info-social img{
+		width: 22px;
+		height: 22px;
+	}
+
+	.popup-user__description-edit-text{
+		min-width: 65vw;
+		font-size: 16px;
+	}
+
+	.popup-exercise--description-edit .popup-exercise__submit-button{
+		font-size: 20px;
+		padding: 10px 30px;
+	}
+
+	#saveAvatar{
+		font-size: 18px;
+		padding: 10px 20px;
+	}
+
+
+	#saveAvatar{
+		font-size: 17px;
+		padding: 10px 20px;
+	}
+
+	.user-block__info{
+		min-width: 55%;
+		width: 55%;
+	}
+
+	.user-block__other{
+		min-width: 45%;
+		width: 45%;
+	}
+
+	.user-block .container{
+		padding: 20px 20px;
+		max-width: 90%;
+	}
+
+	.user-about{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.user-block__info{
+		margin-right: 7px;
+	}
+
+	.user-block__avatar{
+		width: 100%;
+	}
+
+	.user-block .avatar{
+		width: 70px;
+		height: 70px;
+	}
+
+	.user-block__avatar-name{
+		font-size: 12px;
+	}
+
+	.user-block .avatar .uppload_button{
+		font-size: 9px;
+		opacity: 0.8;
+	}
+
+	.user-block__avatar-more{
+		font-size: 10px;
+		margin-bottom: 5px;
+	}
+
+	.user-block__avatar-more img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.user-about__description{
+		width: 100%;
+		max-width: 100%;
+		padding: 15px 6px 25px;
+		font-size: 10px;
+		margin-left: 0px;
+	}
+
+	.user-about__description-button{
+		font-size: 11px;
+	}
+
+	.user-about__description-button img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.user-block .user-news{
+		margin-top: 10px;
+		padding: 15px 5px;
+	}
+
+	.user-block .user-news__item-avatar{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-block .user-news__item-name{
+		font-size: 11px;
+	}
+
+	.user-block .user-news__item-surname{
+		font-size: 10px;
+	}
+
+	.user-block .user-news__item-content{
+		padding: 8px 3px;
+	}
+
+	.user-block .user-news__item-message{
+		font-size: 10px;
+	}
+
+	.user-block__staff{
+		padding: 10px 5px;
+	}
+
+	.user-block__staff-title{
+		font-size: 9px;
+	}
+
+	.user-block__staff-button{
+		width: 16px;
+		height: 16px;
+		margin: 0 1px;
+	}
+
+	.user-block__staff-button img{
+		width: 11px;
+		height: 11px;
+	}
+
+	.user-block__sub-count{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.user-block__sub-count-item{
+		font-size: 11px;
+	}
+
+	.user-block__buttons{
+		margin-top: 10px;
+	}
+
+	.user-block__button{
+		font-size: 10px;
+		padding: 2px 3px 2px 3px;
+	}
+
+	.user-block__button img{
+		width: 10px;
+	}
+
+	.user-block__button-logout{
+		font-size: 10px;
+		padding: 2px 3px 2px 3px;
+	}
+
+	.user-block__button-logout img{
+		width: 10px;
+	}
+
+	/* ======================================== */
+
+
+	/* ===============STAFF PAGE=============== */
+
+	.staff-page .container{
+		max-width: 90%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.staff-page .staff-block{
+		padding: 40px 10px 10px;
+		width: 90%;
+		margin-bottom: 15px;
+	}
+
+	.staff-page .staff-block__title{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__avatar{
+		width: 80px;
+		height: 80px;
+		margin-right: 8px;
+	}
+
+	.staff-page .staff-block__name-text{
+		font-size: 17px;
+	}
+
+	.staff-page .staff-block__profile-link{
+		width: 23px;
+		height: 23px;
+	}
+
+	.staff-page .staff-block__profile-link img{
+		width: 14px;
+	}
+
+	.staff-page .staff-block__button--delite{
+		font-size: 14px;
+		padding: 3px 8px;
+		margin-left: 8px;
+	}
+
+	.staff-page .staff-block__button--delite img{
+		width: 13px;
+		height: 13px;
+	}
+
+	.staff-page .staff-block__button--delite p{
+		margin-right: 4px;
+	}
+
+	.staff-page .staff-block__button--img img{
+		width: 19px;
+	}
+
+	.staff-page .staff-block__subtitle{
+		font-size: 14px;
+		margin-top: 3px;
+	}
+
+	.staff-page .staff-block__goals-item{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__control-workout-text{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__control-workouts-date{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__competitions{
+		margin-top: 3px;
+	}
+
+	.staff-page .staff-block__control-none{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__useful-links{
+		margin-top: 3px;
+	}
+
+	.staff-page .staff-block__medicines-none{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__treatment-date-item{
+		font-size: 14px;
+	}
+
+	.staff-page .staff-block__treatment-recommendation{
+		font-size: 14px;
+	}
+
+
+	.staff-page .staff-block__button-more{
+		font-size: 12px;
+		padding: 3px 5px;
+	}
+
+	.staff-page .staff-block__button-more img{
+		width: 12px;
+	}
+
+	.staff-page .staff-block__goal-text{
+		font-size: 12px;
+	}
+
+	.staff-page .staff-block__competition-item{
+		 padding: 0 6px;
+	}
+
+	.staff-page .staff-block__competition-text{
+		font-size: 13px;
+	}
+
+	.staff-page .staff-block__link-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.staff-page .staff-block__useful-links-text{
+		width: 100%;
+		font-size: 12px;
+		margin-right: 2px;
+	}
+
+	.staff-page .staff-block__medicine-name{
+		font-size: 13px;
+	}
+
+	.staff-page .staff-block .staff-block__medicine-dose{
+		font-size: 12px;
+	}
+
+
+	/* ======================================== */
+
+
 	/* ============PROGRAM CONSTRUCTOR PAGE============ */
 
 	.c-program .day-workouts{
@@ -9144,7 +16698,7 @@
 		margin-left: 5px;
 	}
 
-	.day-workouts__card-button p{
+	.workouts-card--c .day-workouts__card-button p{
 		margin-right: 3px;
 	}
 
@@ -9471,6 +17025,47 @@
 
 
 	/* ==============MY PROGRAM PAGE============== */
+	
+	.c-program__workouts-list-none{
+		font-size: 12px;
+		text-align: center;
+	}
+
+	.c-program__add-button{
+		font-size: 16px;
+		padding: 5px 15px;
+	}
+
+	.c-program__add-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.popup-exercise--add-users__form{
+		padding: 45px 15px;
+	}
+
+	.popup-exercise--add-users__label{
+		font-size: 16px;
+	}
+
+	.popup-exercise--add-users__input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.popup-exercise--add-users__button-add{
+		font-size: 16px;
+	}
+
+	.popup-exercise--add-users__button-add img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.friends-block__no-friends{
+		font-size: 17px;
+	}
 
 	.my-program .container{
 		max-width: 96%;

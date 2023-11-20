@@ -69,6 +69,7 @@ $control_workouts = $user_data->get_control_workouts($conn, $user_data->get_id()
                                 <p class="staff-block__control-workout-text">Ближайшая:</p>
                                 <div class="staff-block__control-workouts-date"><?php echo date("d.m.Y", ($control_workouts[0])->date); ?></div>
                             </div>
+							<a href="control_workouts.php?user=<?php echo $user_data->get_id(); ?>" class="staff-block__button-more"><p>Подробнее</p> <img src="../img/more_white.svg" alt=""></a>
                         </div>
                     <?php } else { ?>
                         <p class="staff-block__control-none">Нет назначенных контрольных тренировок</p>

@@ -2,7 +2,7 @@
 include "../templates/func.php";
 include "../templates/settings.php";
 
-if ($user_data->get_status() != "coach" || empty($_GET["user"]) || !is_numeric($_GET["user"]))
+if ($user_data->get_status() == "doctor" || empty($_GET["user"]) || !is_numeric($_GET["user"]))
     header("Location: coach.php");
 
 $user = new User($conn, $_GET["user"]);
@@ -14,7 +14,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body> 
+<body class="control-workouts-page"> 
     <?php include "../templates/header.php" ?>
 
 	<main class="workouts-block">
@@ -97,8 +97,10 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 				</section>
                 <!-- Buttons favorite workouts and my program -->
                 <section class="workout-other__buttons">
-                    <a class="button-text workout-other__button" href="c_control_workout.php?for=<?php echo $user->get_id(); ?>"><p>Новая</p> <img src="../img/my_programm.svg" alt=""></a>
-                </section>
+                    <?php if ($user_data->get_status() == "coach"){ ?>
+                        <a class="button-text workout-other__button" href="c_control_workout.php?for=<?php echo $user->get_id(); ?>"><p>Новая</p> <img src="../img/my_programm.svg" alt=""></a>
+                    <?php } ?>
+                    </section>
             </section>
         </div>
     </main>
@@ -107,6 +109,10 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script>
+        if(localStorage.getItem('profileType') && localStorage.getItem('profileType') != 'Тренер'){
+            document.querySelector('.control-workouts-page .day-workouts__card-button--start').style.cssText = 'display: none;';
+        }
+
         // Button to see exercise info
         let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
         let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');

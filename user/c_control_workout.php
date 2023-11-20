@@ -115,6 +115,23 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
 				workoutNameInput.value = "Без названия";
 			}
 		});
+
+
+		//Difficult
+		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
+		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
+
+		for(let i = 0; i < difficultCountArr.length; i++){
+			difficultBlockArr[i].innerHTML = '';
+			for(let j = 0; j < 5; j++){
+				let newElem = document.createElement('div');
+				newElem.classList.add('exercise-item__difficult-item');
+				if(j > Number(difficultCountArr[i].innerHTML) - 1){
+					newElem.classList.add('exercise-item__difficult-item--disabled');
+				}
+				difficultBlockArr[i].appendChild(newElem);
+			}
+		}
 	</script>
 </body>
 </html>

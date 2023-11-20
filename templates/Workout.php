@@ -211,8 +211,8 @@ class Control_Workout extends Workout{
                     <p class="workouts-card__item">Кардио: <span><?php echo $this->muscles["cardio"]; ?>%</span></p>
                 </div>
             <div class="workouts-card__info-line"></div>
-            <?php if (!$this->is_done) echo '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$this->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'; ?>
-        </section>
+                <?php if (!$this->is_done) echo '<a class="button-text day-workouts__card-button day-workouts__card-button--start" href="control_workout_session.php?id='.$this->id.'"><p>Начать</p><img src="../img/arrow_white.svg" alt=""></a>'; ?>
+            </section>
         <?php
     }
 

@@ -91,7 +91,7 @@ if ($is_selected){
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body>
+<body class="coach-page">
     <?php include "../templates/header.php"; ?>
 
 	<main class="staff-cover">
@@ -293,19 +293,23 @@ if ($is_selected){
 		let InfoLinkText = document.querySelectorAll('.staff-block__link-button--info-link');
 
 
-		GoalsAddButton.addEventListener('click', function(){
-			GoalsAddPopup.classList.add("open");
-		});
+        if(GoalsAddButton){
+            GoalsAddButton.addEventListener('click', function(){
+                GoalsAddPopup.classList.add("open");
+            });
+        }
 
-
-		CompetitionsAddButton.addEventListener('click', function(){
+        if(CompetitionsAddButton){
+            CompetitionsAddButton.addEventListener('click', function(){
 			CompetitionsAddPopup.classList.add("open");
 		});
+        }
 
-
-		LinksAddButton.addEventListener('click', function(){
-			LinksAddPopup.classList.add("open");
-		});
+        if(LinksAddButton){
+            LinksAddButton.addEventListener('click', function(){
+                LinksAddPopup.classList.add("open");
+            });
+        }
 
 		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
