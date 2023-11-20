@@ -4,7 +4,6 @@ class User {
     private $id;
     public $login='';
     private $status="user";
-    public $online=0;
     public $name="Guest";
     public $surname='';
     public $description='';
@@ -94,7 +93,6 @@ class User {
                     $this->avatar = $item['avatar'];
                     $this->password = $item['password'];
                     $this->description = $item['description'];
-                    $this->online = $item['online'];
                     $this->featured_exercises = json_decode($item['featured_exercises']);
                     $this->my_exercises = json_decode($item['my_exercises']);
                     $this->featured_workouts = json_decode($item['featured_workouts']);

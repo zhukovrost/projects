@@ -59,14 +59,25 @@ if ($is_valid1 && $is_valid2){
                         $reps["{{ exercises }}"] = '';
                         if ($flag_main){
                             foreach ($last_1 as $item){
+                                if ($item->description == '')
+                                    $description = "Нет описания";
+                                else
+                                    $description = $item->description;
+
+                                $muscle_list = "";
+                                foreach ($item->muscles as $muscle){
+                                    $muscle_list .= translate_group($muscle) . " ";
+                                }
+                                $muscle_list = str_replace(' ', '-', trim($muscle_list));
+
                                 $replaces = array(
                                     "{{ image }}" => $item->get_image($conn),
                                     "{{ name }}" => $item->name,
                                     "{{ rating }}" => $item->get_rating(),
                                     "{{ difficulty }}" => $item->difficulty,
-                                    "{{ muscle }}" => '',
-                                    "{{ description }}" => '',
-                                    "{{ input }}" => $item->reps
+                                    "{{ muscle }}" => $muscle_list,
+                                    "{{ description }}" => $description,
+                                    "{{ input }}" => '<div class="exercise-item__repetitions">'. $item->reps . '</div>'
                                 );
                                 $reps["{{ exercises }}"] .= render($replaces, "../templates/control_exercise.html");
                             }
@@ -88,14 +99,23 @@ if ($is_valid1 && $is_valid2){
                         $reps["{{ exercises }}"] = '';
                         if ($flag_main){
                             foreach ($last_2 as $item){
+                                if ($item->description == '')
+                                    $description = "Нет описания";
+                                else
+                                    $description = $item->description;
+                                $muscle_list = "";
+                                foreach ($item->muscles as $muscle){
+                                    $muscle_list .= translate_group($muscle) . " ";
+                                }
+                                $muscle_list = str_replace(' ', '-', trim($muscle_list));
                                 $replaces = array(
                                     "{{ image }}" => $item->get_image($conn),
                                     "{{ name }}" => $item->name,
                                     "{{ rating }}" => $item->get_rating(),
                                     "{{ difficulty }}" => $item->difficulty,
-                                    "{{ muscle }}" => '',
-                                    "{{ description }}" => '',
-                                    "{{ input }}" => $item->reps
+                                    "{{ muscle }}" => $muscle_list,
+                                    "{{ description }}" => $description,
+                                    "{{ input }}" => '<div class="exercise-item__repetitions">'. $item->reps . '</div>'
                                 );
                                 $reps["{{ exercises }}"] .= render($replaces, "../templates/control_exercise.html");
                             }

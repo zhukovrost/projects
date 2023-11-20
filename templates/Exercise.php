@@ -201,7 +201,7 @@ class User_Exercise extends Exercise {
             $muscle_list .= translate_group($muscle) . " ";
         }
         $muscle_list = str_replace(' ', '-', trim($muscle_list));
-        $inp = '<p class="exercise-item__repetitions-score">Нет данных</p>';
+        $inp = '<div class="exercise-item__repetitions"><p class="exercise-item__repetitions-score">Нет данных</p></div>';
         if ($current) {
             $inp = '<p class="exercise-item__repetitions-score"><input class="exercise-item__input" type="number" placeholder="результат" name="reps[]"></p>';
         }
@@ -210,7 +210,7 @@ class User_Exercise extends Exercise {
             $inp = "<div class='exercise-item__buttons'><input type='hidden' name='exercise' value='".$this->get_id()."'><button class='button-text exercise-item__add'><p>Добавить</p><img src='../img/add.svg' alt=''></button></div>";
 
         if (!$construct && !$current && $this->reps > 0)
-            $inp =  '<p class="exercise-item__repetitions-score">'.$this->reps.'</p>';
+            $inp =  '<div class="exercise-item__repetitions"><p class="exercise-item__repetitions-score">'.$this->reps.'</p></div>';
 
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),
