@@ -906,7 +906,8 @@
 
 /* =================EXERCISES & C_EXERCISES PAGE================= */
 .exercises__none{
-    margin: 15px 0px 0px 30px;
+    text-align: center;
+    margin: 15px auto 0px;
     font-size: 30px;
     font-weight: 500;
     font-family: 'Ubuntu', sans-serif;
@@ -987,6 +988,7 @@
 
 .exercises-filter{
     min-width: 15%;
+    margin-right: 5px;
 }
 
 /* Filter buttons */
@@ -1958,6 +1960,7 @@
 }
 
 .c-program__duration-date-text{
+    text-align: center;
     font-size: 18px;
     margin-left: 35px;
     margin-right: 7px;
@@ -2510,7 +2513,7 @@
 
 .staff-block__title{
     position: absolute;
-    top: 1%;
+    top: 0.5%;
     left: 2%;
     color: #828282;
     font-size: 20px;
@@ -2612,6 +2615,7 @@
     color: #929292;
     font-size: 19px;
     margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .staff-block__item{
@@ -3052,7 +3056,7 @@
     border-radius: 3px;
     border: 1px solid #CCCCCC;
     box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.25);
-    padding: 50px 70px 30px;
+    padding: 60px 70px 30px;
 }
 
 

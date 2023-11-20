@@ -241,24 +241,6 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
         }
 
 
-		// Popup workouts
-		let popupExerciseWindow = document.querySelector('.popup-exercise--c-workouts');
-		let workoutButtonMoreArr = document.querySelectorAll('.c-program__workouts-more');
-
-		for(let i = 0; i < workoutButtonMoreArr.length; i++){
-			workoutButtonMoreArr[i].addEventListener('click', function(){
-				let item = workoutButtonMoreArr[i].parentElement.children[0];
-				let WorkoutName = (item.innerHTML).split(' ');
-				WorkoutName[0] = '';
-				WorkoutName = WorkoutName.join(' ');
-
-				let PopupWorkoutName = document.querySelector('.c-workout__info-name');
-				PopupWorkoutName.value = WorkoutName;
-
-				popupExerciseWindow.classList.add("open");
-			});
-		}
-
 
 		// Popup window to add users for coach
 		let StartProgramButton = document.querySelector('.c-program__add-button');
@@ -275,14 +257,12 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){
-				popupExerciseWindow.classList.remove("open");
 				UsersListPopup.classList.remove("open");
 			});
 		}
 
 		window.addEventListener('keydown', (e) => {
             if(e.key == "Escape"){
-                popupExerciseWindow.classList.remove("open");
 				UsersListPopup.classList.remove("open");
             }
 		});

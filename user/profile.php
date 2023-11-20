@@ -274,7 +274,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                 <!-- Спортсмен / тренер / врач -->
                 <div class="popup-user__info-item">
                 <p class="popup-user__info-item-name">Тип пользователя</p>
-                    <p class="popup-user__info-item-info"><?php $user->print_status(); ?></p>
+                    <p class="popup-user__info-item-info popup-user__info-item-info--status"><?php $user->print_status(); ?></p>
                 </div>
                <?php switch ($user->get_status()){
                    case "coach":
@@ -358,6 +358,9 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script>
+        let profileType = document.querySelector('.popup-user__info-item-info--status');
+        localStorage.setItem('profileType', profileType.innerHTML);
+
         avatar_file.addEventListener('click', function(){
             document.querySelector('.preview_cover').style.cssText = `display: flex;`;
         });

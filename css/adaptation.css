@@ -950,6 +950,59 @@
 
 
 @media (max-width: 1600px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 19px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 150px;
+		height: 150px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 25px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 35px;
+		height: 35px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 23px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 23px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 23px;
+		height: 23px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 19px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 20px;
+	}
+
+	/* ======================================= */
+
+
 	/* =============COACH PAGE ============= */
 
 	.coach-page .staff-block{
@@ -1605,6 +1658,59 @@
 
 
 @media (max-width: 1500px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 18px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 140px;
+		height: 140px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 23px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 32px;
+		height: 32px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 21px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 22px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+
 	/* ==============DOCTOR PAGE============== */
 
 	.doctor-page .staff-block__title{
@@ -2345,6 +2451,61 @@
 
 
 @media (max-width: 1400px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 17px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 130px;
+		height: 130px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 22px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 30px;
+		height: 30px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 20px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 28px;
+		height: 28px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 21px;
+		margin-left: 8px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+
 	/* =============COACH PAGE============= */
 
 	.coach-page .friends-block__avatar{
@@ -3118,6 +3279,62 @@
 
 
 @media (max-width: 1300px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .staff-block__title{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 28px;
+		height: 28px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 18px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 20px;
+		margin-left: 8px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
 
 	.coach-page .staff-block{
@@ -4039,7 +4256,81 @@
 
 
 @media (max-width: 1200px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .comparison-block{
+		padding: 60px 30px 30px;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 120px;
+		height: 120px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 21px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 28px;
+		height: 28px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 18px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 20px;
+		margin-left: 8px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 18px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 19px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 85%;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
+
+	.popup-exercise--competitions-add .popup-exercise__input-item{
+		font-size: 22px;
+	}
+
+	.popup-exercise__submit-button{
+		font-size: 22px;
+		padding: 7px 20px;
+	}
 
 	.coach-page .staff-block{
 		padding: 40px 30px 10px;
@@ -5221,7 +5512,86 @@
 
 
 @media (max-width: 1100px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .comparison-block{
+		padding: 60px 20px 30px;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 16px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 18px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 17px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 18px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
+
+	.popup-exercise--competitions-add .popup-exercise__content{
+		flex-direction: column;
+	}
+
+	.popup-exercise--competitions-add .popup-exercise__input-item{
+		font-size: 22px;
+		margin: 5px 0px;
+	}
+
+	.popup-exercise__submit-button{
+		font-size: 22px;
+		padding: 7px 20px;
+	}
 
 	.coach-page .staff-block{
 		padding: 40px 20px 10px;
@@ -6096,7 +6466,151 @@
 
 
 @media (max-width: 1000px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 40px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 16px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 18px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 17px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 18px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	/* ======================================= */
+
+
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .comparison-block{
+		padding: 60px 20px 30px;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 110px;
+		height: 110px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 20px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 26px;
+		height: 26px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 16px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 24px;
+		height: 24px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 18px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 17px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 18px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
+
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+	}
+
+	.popup-exercise--links-add .popup-exercise__input-item{
+		font-size: 22px;
+	}
 
 	.coach-page .container{
 		flex-direction: column;
@@ -7445,6 +7959,14 @@
 @media (max-width: 900px){
 	/* ============COACH PAGE============ */
 
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+	}
+
+	.popup-exercise--links-add .popup-exercise__input-item{
+		font-size: 19px;
+	}
+
 	.coach-page .container{
 		flex-direction: column;
 		align-items: center;
@@ -8750,7 +9272,43 @@
 
 
 @media (max-width: 800px){
+	/* ======COMARISON BLOCK====== */
+
+	.comparison-block__add-button{
+		font-size: 24px;
+		padding: 10px 20px;
+	}
+
+	.comparison-block__add-button img{
+		width: 25px;
+		height: 25px;
+	}
+
+	/* ============================ */
+
 	/* ============COACH PAGE============ */
+
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+		flex-direction: column;
+	}
+
+	.popup-exercise--links-add .popup-exercise__input-item{
+		font-size: 19px;
+		margin: 5px 0px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 30px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 22px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 22px;
+	}
 
 	.coach-page .container{
 		flex-direction: column;
@@ -10098,7 +10656,110 @@
 
 
 @media (max-width: 700px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.comparison-block__add-button{
+		font-size: 21px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__add-button img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 40px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 15px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 18px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 23px;
+		height: 23px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 14px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 16px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 15px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 16px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 20px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 23px;
+		height: 23px;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 30px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 19px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 19px;
+	}
 
 	.coach-page .container{
 		flex-direction: column;
@@ -11495,7 +12156,115 @@
 
 
 @media (max-width: 600px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.comparison-block__add-button{
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__add-button img{
+		width: 18px;
+		height: 18px;
+	}
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 20px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 14px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 80px;
+		height: 80px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 17px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 21px;
+		height: 21px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 14px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 15px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 13px;
+		height: 13px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 14px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 15px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 90%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 19px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 21px;
+		height: 21px;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 30px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 16px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 16px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__close-button{
+		width: 23px;
+		right: 2%;
+	}
 
 	.coach-page .container{
 		max-width: 90%;
@@ -12123,7 +12892,7 @@
 	}
 
 	.c-program .day-workouts__card-content{
-		padding: 1px;
+		padding: 5px;
 	}
 
 	.c-program .day-workouts__card-title{
@@ -12150,6 +12919,7 @@
 
 	.c-program .day-workouts__card-day-off{
 		font-size: 11px;
+		padding: 3px 5px;
 	}
 
 	.c-program__create{
@@ -12479,6 +13249,23 @@
 
 
 	/* ==============MY PROGRAM PAGE============== */
+
+	.c-program__workouts-list-none{
+		font-size: 17px
+	}
+
+	.popup-exercise--add-users__label{
+		font-size: 22px;
+	}
+
+	.popup-exercise--add-users__button-add{
+		font-size: 22px;
+	}
+
+	.popup-exercise--add-users__button-add img{
+		width: 18px;
+		height: 18px;
+	}
 
 	.my-program .container{
 		max-width: 94%;
@@ -12954,7 +13741,140 @@
 
 
 @media (max-width: 500px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 10px 30px;
+		width: 80%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 13px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 70px;
+		height: 70px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 13px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 14px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		font-size: 15px;
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 13px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 14px;
+	}
+
+	.user-comparison .exercise-item__img{
+		width: 120px;
+	}
+
+	.user-comparison .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.user-comparison .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.user-comparison .exercise-item__star{
+		width: 25px;
+	}
+
+	.user-comparison .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .exercise-item__repetitions{
+		font-size: 22px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 95%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
+
+	.coach-page .staff-block__goals-item{
+		font-size: 18px;
+	}
+
+	.coach-page .staff-block__control-none{
+		font-size: 18px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 40px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 14px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 14px;
+		padding: 5px 10px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__close-button{
+		width: 20px;
+		right: 3%;
+	}
 
 	.coach-page .container{
 		max-width: 88%;
@@ -14140,6 +15060,42 @@
 
 	/* ==============MY PROGRAM PAGE============== */
 
+	.c-program__workouts-list-none{
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.popup-exercise--add-users__form{
+		padding: 45px 20px;
+	}
+
+	.c-program__add-button{
+		font-size: 18px;
+		padding: 5px 15px;
+	}
+
+	.c-program__add-button img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.popup-exercise--add-users__label{
+		font-size: 17px;
+	}
+
+	.popup-exercise--add-users__button-add{
+		font-size: 17px;
+	}
+
+	.popup-exercise--add-users__button-add img{
+		width: 16px;
+		height: 16px;
+	}
+
+	.friends-block__no-friends{
+		font-size: 20px;
+	}
+
 	.my-program .container{
 		max-width: 96%;
 	}
@@ -14717,7 +15673,158 @@
 
 
 @media (max-width: 400px){
+	/* =========USERS COMPARISON PAGE========= */
+
+	.user-comparison .container{
+		flex-direction: column;
+	}
+
+	.user-comparison .comparison-block{
+		padding: 60px 10px 30px;
+		width: 100%;
+		margin: 10px auto;
+	}
+
+	.user-comparison .staff-block__title{
+		font-size: 13px;
+	}
+
+	.user-comparison .staff-block__avatar{
+		width: 70px;
+		height: 70px;
+		margin-right: 10px;
+	}
+
+	.user-comparison .staff-block__name-text{
+		font-size: 16px;
+	}
+
+	.user-comparison .staff-block__profile-link{
+		width: 19px;
+		height: 19px;
+	}
+
+	.user-comparison .staff-block__profile-link img{
+		width: 13px;
+	}
+
+	.user-comparison .staff-block__button--img img{
+		width: 17px;
+		height: 17px;
+	}
+
+	.user-comparison .staff-block__button--delite{
+		font-size: 14px;
+		margin-left: 6px;
+		padding: 3px 10px;
+	}
+
+	.user-comparison .staff-block__button--delite img{
+		width: 12px;
+		height: 12px;
+	}
+
+	.user-comparison .staff-block__subtitle{
+		font-size: 15px;
+		margin-top: 5px;
+	}
+
+	.user-comparison .comparison-block__physics-name{
+		font-size: 13px;
+	}
+
+	.user-comparison .comparison-block__physics-number{
+		font-size: 14px;
+	}
+
+	.user-comparison .exercise-item__img{
+		width: 120px;
+	}
+
+	.user-comparison .exercise-item__title{
+		font-size: 18px;
+	}
+
+	.user-comparison .exercise-item__score{
+		font-size: 19px;
+	}
+
+	.user-comparison .exercise-item__star{
+		width: 25px;
+	}
+
+	.user-comparison .exercise-item__difficult-item{
+		width: 16px;
+		height: 16px;
+	}
+
+	.user-comparison .exercise-item__repetitions{
+		font-size: 22px;
+	}
+
+
+	.comparison-block__physics .exercise-item{
+		width: 95%;
+	}
+
+	.comparison-block__statistic-button{
+		font-size: 18px;
+		padding: 5px 10px;
+	}
+
+	.comparison-block__statistic-button img{
+		width: 19px;
+		height: 19px;
+	}
+
+	/* ======================================= */
+
+
 	/* ============COACH PAGE============ */
+
+	.popup-exercise--links-add .popup-exercise__content{
+		padding: 45px 20px;
+	}
+
+	.popup-exercise--links-add .popup-exercise__submit-button{
+		font-size: 15px;
+		padding: 5px 10px;
+	}
+	.popup-exercise--links-add
+
+
+	.popup-exercise--competitions-add .popup-exercise__content{
+		flex-direction: column;
+		padding: 40px 20px;
+	}
+
+	.popup-exercise--competitions-add .popup-exercise__input-item{
+		font-size: 18px;
+		margin: 5px 0px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 15px;
+		padding: 5px 10px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__content{
+		padding: 40px 25px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__input-item{
+		font-size: 13px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__submit-button{
+		font-size: 13px;
+		padding: 5px 10px;
+	}
+
+	.popup-exercise--goals-add .popup-exercise__close-button{
+		width: 18px;
+		right: 2%;
+	}
 
 	.coach-page .container{
 		max-width: 86%;
@@ -15918,6 +17025,47 @@
 
 
 	/* ==============MY PROGRAM PAGE============== */
+	
+	.c-program__workouts-list-none{
+		font-size: 12px;
+		text-align: center;
+	}
+
+	.c-program__add-button{
+		font-size: 16px;
+		padding: 5px 15px;
+	}
+
+	.c-program__add-button img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.popup-exercise--add-users__form{
+		padding: 45px 15px;
+	}
+
+	.popup-exercise--add-users__label{
+		font-size: 16px;
+	}
+
+	.popup-exercise--add-users__input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.popup-exercise--add-users__button-add{
+		font-size: 16px;
+	}
+
+	.popup-exercise--add-users__button-add img{
+		width: 14px;
+		height: 14px;
+	}
+
+	.friends-block__no-friends{
+		font-size: 17px;
+	}
 
 	.my-program .container{
 		max-width: 96%;

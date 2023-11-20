@@ -352,7 +352,27 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		
 		let exerciseBlock = document.querySelector('.exercise-block');
 
+
+		// side panel
+		let searchButton = document.querySelector('.exercises-filter__search-button');
+		let clearButton = document.querySelector('.exercises-filter__clear-button');
+		
+		let MuscleGroupInputs = document.querySelectorAll('.exercises-filter__item-input[name="muscle_groups_search"]');
+		let DifficultInputs = document.querySelectorAll('.exercises-filter__item-input[name="difficult_search"]');
+		let RatingInputs = document.querySelectorAll('.exercises-filter__item-input[name="rating_search"]');
+
+		let MuscleGroupLabels = document.querySelectorAll('.exercises-filter__muscle-groups .exercises-filter__item-label');
+		let DifficultLabels = document.querySelectorAll('.exercises-filter__difficult .exercises-filter__item-label');
+		let RatingLabels = document.querySelectorAll('.exercises-filter__rating .exercises-filter__item-label');
+
+		RatingInputs[RatingInputs.length - 1].checked = true;
+
+		let ExercisesMuscleGroups = document.querySelectorAll('.exercise-item__muscle-groups');
+
+
 		MainFilter.addEventListener('change', function(){
+			clearButton.click();
+
 			ExercisesArray.forEach(function(elem){
 				elem.classList.remove('hide');
 			});
@@ -432,24 +452,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		});
 
 
-		// side panel
-		let searchButton = document.querySelector('.exercises-filter__search-button');
-		let clearButton = document.querySelector('.exercises-filter__clear-button');
-		
-		let MuscleGroupInputs = document.querySelectorAll('.exercises-filter__item-input[name="muscle_groups_search"]');
-		let DifficultInputs = document.querySelectorAll('.exercises-filter__item-input[name="difficult_search"]');
-		let RatingInputs = document.querySelectorAll('.exercises-filter__item-input[name="rating_search"]');
-
-		let MuscleGroupLabels = document.querySelectorAll('.exercises-filter__muscle-groups .exercises-filter__item-label');
-		let DifficultLabels = document.querySelectorAll('.exercises-filter__difficult .exercises-filter__item-label');
-		let RatingLabels = document.querySelectorAll('.exercises-filter__rating .exercises-filter__item-label');
-
-		RatingInputs[RatingInputs.length - 1].checked = true;
-
-		let ExercisesMuscleGroups = document.querySelectorAll('.exercise-item__muscle-groups');
-
-
 		searchButton.addEventListener('click', function(){
+			MainFilter.value = 'default';
+
 			if(exerciseBlock){
 				exerciseBlock.innerHTML = '';
 			}
@@ -578,9 +583,6 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				localStorage.setItem('c_allFilterInputsChecked', allFilterInputsChecked);
 			});
 		}
-
-
-		searchButton.click();
 
 		// Exercise search
 		const search_input = document.querySelector('.exercises-nav__search-input');

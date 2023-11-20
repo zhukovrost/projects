@@ -14,7 +14,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 <!DOCTYPE html>
 <html lang="en">
 <?php inc_head(); ?>
-<body> 
+<body class="control-workouts-page"> 
     <?php include "../templates/header.php" ?>
 
 	<main class="workouts-block">
@@ -43,7 +43,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     <?php $workout->print_control_exercises($conn); ?>
                                 </section>
                                 <!-- Info about day workout -->
-                                <?php $workout->print_control_workout_info($conn, $user_data); ?>
+                                <?php $workout->print_control_workout_info($conn); ?>
                             </section>
                         </section>
                     </section>
@@ -109,6 +109,10 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script>
+        if(localStorage.getItem('profileType') && localStorage.getItem('profileType') != 'Тренер'){
+            document.querySelector('.control-workouts-page .day-workouts__card-button--start').style.cssText = 'display: none;';
+        }
+
         // Button to see exercise info
         let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
         let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
