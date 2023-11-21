@@ -5,6 +5,10 @@ include "../templates/settings.php";
 $user_data->check_the_login();
 $flag = isset($_SESSION["workout"]);
 
+if (empty($_SESSION['workout']))
+    $_SESSION['workout'] = array();
+
+
 if (isset($_POST["week_days"])){
     $name = $_POST["name"];
     $loops = $_POST["loops"];

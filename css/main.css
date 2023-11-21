@@ -2090,6 +2090,8 @@
 }
 
 .c-workout__info-title{
+    display: flex;
+    align-items: center;
     font-size: 33px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;

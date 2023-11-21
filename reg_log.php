@@ -108,7 +108,6 @@ if (isset($_POST['log'])){
                 if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Error: " . $conn->error); }
                 $conn->close();
                 ?>
-                <p class='reg-form__warning'></p>
             </form>
         </section>
     </div>
@@ -141,7 +140,7 @@ if (isset($_POST['log'])){
             document.querySelector('.reg-form__input[name="reg_password"]').value = localStorage.getItem('regPassword');
         }
 
-        // Registration checks and warnings
+        // Registration checks
         document.querySelector('.reg-form__input[name="reg_name"]').addEventListener('input', function() {
             this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
             localStorage.setItem('regName', this.value);
@@ -189,7 +188,7 @@ if (isset($_POST['log'])){
                 regButton.classList.remove('log-reg__switch-button--active');
                 logForm.style.cssText = `display: flex;`;
                 regForm.style.cssText = `display: none;`;
-                localStorage.setItem('SwitchRegLogButton', 'log')
+                localStorage.setItem('SwitchRegLogButton', 'log');
             }
         });
 
@@ -199,11 +198,11 @@ if (isset($_POST['log'])){
                 regButton.classList.add('log-reg__switch-button--active');
                 regForm.style.cssText = `display: flex;`;
                 logForm.style.cssText = `display: none;`;
-                localStorage.setItem('SwitchRegLogButton', 'reg')
+                localStorage.setItem('SwitchRegLogButton', 'reg');
             }
         });
 
-        if(regDoneButton && regDoneButton.length == 0){
+        if(!regDoneButton){
             localStorage.setItem('SwitchRegLogButton', 'log');
         }
 
