@@ -6,7 +6,10 @@ $user_data->redirect_logged();
 $error_array = array(
     "reg_fill_all_input_fields" => false,
     "reg_login_is_used" => false,
+    "reg_login_too_short" => false,
     "reg_passwords_are_not_the_same" => false,
+    "reg_password_not_fit" => false,
+    "reg_password_too_short" => false,
     "reg_conn_error" => false,
     "reg_success" => false,
     "too_long_string" => false,
@@ -95,6 +98,9 @@ if (isset($_POST['log'])){
                 <button class="button-text reg-form__submit" type="submit" name="reg" value="1">Зарегистрироваться</button>
                 <?php
                 // Registration warnings
+                reg_warning($error_array["reg_login_too_short"], "Слишком короткий логин");
+                reg_warning($error_array["reg_password_too_short"], "Слишком короткий пароль");
+                reg_warning($error_array["reg_password_not_fit"], "Пароль должен содержать буквы");
                 reg_warning($error_array['reg_login_is_used'], "Логин занят");
                 reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают");
                 reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
@@ -120,7 +126,6 @@ if (isset($_POST['log'])){
         }
         if(localStorage.getItem('regProfileInputs')){
             let regProfileInputs = localStorage.getItem('regProfileInputs').split(',')
-
             for(let i = 0; i < 3; i++){
                 if(regProfileInputs[i] == 'true'){
                     regProfileInputsCheked[i].checked = true;
@@ -136,8 +141,7 @@ if (isset($_POST['log'])){
             document.querySelector('.reg-form__input[name="reg_password"]').value = localStorage.getItem('regPassword');
         }
 
-
-        // Registration warnings
+        // Registration checks and warnings
         document.querySelector('.reg-form__input[name="reg_name"]').addEventListener('input', function() {
             this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
             localStorage.setItem('regName', this.value);
@@ -151,26 +155,11 @@ if (isset($_POST['log'])){
         const containsLetters = /^.*[a-zA-Z]+.*$/;
 
         document.querySelector('.reg-form__input[name="reg_login"]').addEventListener('input', function() {
-            localStorage.setItem('regPassword', this.value)
-            if(this.value.length < 3){
-                document.querySelector('.reg-form__warning').innerHTML = 'Слишком короткий логин';
-            }
-            else if(document.querySelector('.reg-form__warning')){
-                document.querySelector('.reg-form__warning').innerHTML = '';
-            }
+            localStorage.setItem('regLogin', this.value);
         });
 
         document.querySelector('.reg-form__input[name="reg_password"]').addEventListener('input', function() {
             localStorage.setItem('regPassword', this.value);
-            if(this.value.length < 8){
-                document.querySelector('.reg-form__warning').innerHTML = 'Пароль короткий логин';
-            }
-            if(!containsLetters.test(this.value)){
-                document.querySelector('.reg-form__warning').innerHTML = 'Пароль должен содержать буквы';
-            }
-            else if(document.querySelector('.reg-form__warning')){
-                document.querySelector('.reg-form__warning').innerHTML = '';
-            }
         });
 
         // check profile inputs changes
@@ -189,8 +178,8 @@ if (isset($_POST['log'])){
         // Switch buttons (login or registration)
         let logButton = document.querySelector('.log-reg__switch-button--log');
         let regButton = document.querySelector('.log-reg__switch-button--reg');
-        let logForm = document.querySelector('.log-form');
         let regForm = document.querySelector('.reg-form');
+        let logForm = document.querySelector('.log-form');
         let regDoneButton = document.querySelector('.reg-form__warning');
 
 
