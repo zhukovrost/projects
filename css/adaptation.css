@@ -5514,6 +5514,11 @@
 @media (max-width: 1100px){
 	/* =========USERS COMPARISON PAGE========= */
 
+	.comparison-block__add-button{
+		font-size: 23px;
+		padding: 10px 20px;
+	}
+
 	.user-comparison .comparison-block{
 		padding: 60px 20px 30px;
 	}

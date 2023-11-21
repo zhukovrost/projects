@@ -100,11 +100,43 @@ if (isset($_POST['log'])){
                 if ($error_array['reg_conn_error']){ reg_warning($error_array['reg_conn_error'], "Error: " . $conn->error); }
                 $conn->close();
                 ?>
+                <p class='reg-form__warning'></p>
             </form>
         </section>
     </div>
 
     <script>
+        document.querySelector('.reg-form__input[name="reg_name"]').addEventListener('input', function() {
+            this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
+        });
+
+        document.querySelector('.reg-form__input[name="reg_surname"]').addEventListener('input', function() {
+            this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
+        });
+
+        document.querySelector('.reg-form__input[name="reg_login"]').addEventListener('input', function() {
+            if(this.value.length < 3){
+                document.querySelector('.reg-form__warning').innerHTML = 'Слишком короткий логин';
+            }
+            else if(document.querySelector('.reg-form__warning')){
+                document.querySelector('.reg-form__warning').innerHTML = '';
+            }
+        });
+
+// через кнопку чтоб вылетало + локасторэдж
+        const containsLetters = /^.*[a-zA-Z]+.*$/;
+
+        document.querySelector('.reg-form__input[name="reg_password"]').addEventListener('input', function() {
+            if(this.value.length < 8){
+                document.querySelector('.reg-form__warning').innerHTML = 'Пароль короткий логин';
+            }
+            if(!containsLetters.test(this.value)){
+                document.querySelector('.reg-form__warning').innerHTML = 'Пароль должен содержать буквы';
+            }
+            else if(document.querySelector('.reg-form__warning')){
+                document.querySelector('.reg-form__warning').innerHTML = '';
+            }
+        });
 
         // Switch buttons (login or registration)
         let logButton = document.querySelector('.log-reg__switch-button--log');
@@ -134,7 +166,7 @@ if (isset($_POST['log'])){
             }
         });
 
-        if(regDoneButton.length == 0){
+        if(regDoneButton && regDoneButton.length == 0){
             localStorage.setItem('SwitchRegLogButton', 'log');
         }
 
