@@ -141,11 +141,11 @@
 .log-reg{
     position: relative;
     background-image: url('../img/background_reg.png');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     background-position: top center;
     backdrop-filter: blur(2px);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .log-reg .container{
@@ -179,6 +179,7 @@
     border-radius: 10px;
     border: 1px solid rgba(161, 161, 161, 1);
     padding: 50px 80px 30px;
+    margin-top: 17vh;
 }
 
 /* title */
