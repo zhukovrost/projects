@@ -2330,6 +2330,10 @@
     width: 100%;
 }
 
+.exercise-item__repetitions-score{
+    text-align: center;
+}
+
 .session-exercises__slide .exercise-item__repetitions-score{
     background-color: transparent;
     border: none;

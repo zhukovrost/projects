@@ -1514,6 +1514,11 @@
 
 	/* =========WORKOUT CONSTRUCTOR PAGE========= */
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 22px;
+		padding: 5px 30px;
+	}
+
 	.c-workout .container{
 		max-width: 90%;
 	}
@@ -2233,6 +2238,11 @@
 
 	.workouts-card--c .exercise-item__repetitions-title{
 		font-size: 23px;
+	}
+
+	.c-workout .exercise-item__repetitions{
+		font-size: 22px;
+		padding: 5px 30px;
 	}
 
 	.workouts-card--c .workouts-card__item{
@@ -2979,7 +2989,6 @@
 
 
 	/* =========WORKOUT CONSTRUCTOR PAGE========= */
-
 	.workouts-card--c{
 		width: 55%;
 	}
@@ -3041,6 +3050,16 @@
 	.workouts-card--c .exercise-item__repetitions-title{
 		font-size: 23px;
 	}
+
+	.c-workout .exercise-item__repetitions{
+		font-size: 20px;
+		padding: 5px 20px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 20px;
+	}
+
 
 	.workouts-card--c .workouts-card__item{
 		font-size: 19px;
@@ -3313,6 +3332,10 @@
 
 	.workout-session-footer{
 		width: 80%;
+	}
+
+	.session-exercises .exercise-item__input{
+		font-size: 23px;
 	}
 
 	/* ==================================== */
@@ -4321,6 +4344,16 @@
 		width: 85%;
 	}
 
+	.session-exercises .exercise-item__repetitions-score{
+		display: flex;
+		align-items: center;
+	}
+
+	.session-exercises .exercise-item__input{
+		font-size: 21px;
+		width: 80%;
+	}
+
 	/* ==================================== */
 
 
@@ -5275,6 +5308,15 @@
 		font-size: 21px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 19px;
+		padding: 5px 20px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 19px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 18px;
 	}
@@ -5356,6 +5398,16 @@
 
 
 	/* ===========EXERCISES LIST PAGES=========== */
+
+	.popup-exercise__content{
+		width: 90%;
+		padding: 30px 60px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 23px;
+		max-width: 35%;
+	}
 
 	.exercises-nav__item{
 		font-size: 17px;
@@ -5711,7 +5763,12 @@
 	}
 
 	.workouts-block .last-trainings__item{
-		font-size: 20px;
+		font-size: 19px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 18px;
+		padding: 3px 7px;
 	}
 
 	.workouts-block .last-trainings__item-img{
@@ -7700,6 +7757,15 @@
 		font-size: 19px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 18px;
+		padding: 5px 15px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 18px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 17px;
 	}
@@ -8241,11 +8307,20 @@
 	}
 
 	.workouts-block .last-trainings__title{
-		font-size: 18px;
+		font-size: 16px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 16px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 20px;
 	}
 
 	.workouts-block .last-trainings__item{
-		font-size: 19px;
+		font-size: 17px;
 	}
 
 	.workouts-block .last-trainings__item-img{
@@ -9004,6 +9079,15 @@
 		font-size: 22px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 18px;
+		padding: 5px 20px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 18px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 20px;
 	}
@@ -9587,11 +9671,20 @@
 	}
 
 	.workouts-block .last-trainings__title{
-		font-size: 17px;
+		font-size: 16px;
 	}
 
 	.workouts-block .last-trainings__item{
-		font-size: 18px;
+		font-size: 14px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 14px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 18px;
 	}
 
 	.workouts-block .last-trainings__item-img{
@@ -11850,6 +11943,15 @@
 		font-size: 21px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 17px;
+		padding: 5px 15px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 17px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 19px;
 	}
@@ -12341,6 +12443,7 @@
 
 	/* ============WORKOUT PAGE============ */
 
+
 	.workouts-block .workouts-swiper{
 		width: 100%;
 		margin-bottom: 20px;
@@ -12381,11 +12484,16 @@
 	}
 
 	.workouts-block .exercise-item__repetitions{
-		padding: 5px 30px;
+		padding: 5px 20px;
+		font-size: 21px;
 	}
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 17px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 20px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -13482,6 +13590,15 @@
 		font-size: 19px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 16px;
+		padding: 5px 12px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 16px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 17px;
 	}
@@ -13914,7 +14031,7 @@
 	}
 
 	.workouts-block .workouts-swiper{
-		width: 110%;
+		width: 100%;
 		margin-bottom: 20px;
 	}
 
@@ -13958,6 +14075,10 @@
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 15px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 18px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -14021,6 +14142,19 @@
 	.workouts-block .day-workouts__card-button img{
 		width: 16px;
 		height: 16px;
+	}
+
+	.workouts-block .last-trainings__item{
+		font-size: 15px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 14px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 18px;
 	}
 
 	/* ==================================== */
@@ -15122,6 +15256,15 @@
 		font-size: 17px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 15px;
+		padding: 5px 12px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 15px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 15px;
 	}
@@ -15829,7 +15972,7 @@
 	}
 
 	.workouts-block .workouts-swiper{
-		width: 110%;
+		width: 100%;
 		margin-bottom: 10px;
 	}
 
@@ -15877,6 +16020,10 @@
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 13px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 14px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -15933,6 +16080,15 @@
 
 	.workouts-block .last-trainings__item-img{
 		width: 12px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 12px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 16px;
 	}
 
 	.workouts-block .workout-other__button{
@@ -17089,6 +17245,15 @@
 		font-size: 14px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 13px;
+		padding: 3px 8px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 13px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 13px;
 	}
@@ -17794,7 +17959,7 @@
 	}
 
 	.workouts-block .workouts-swiper{
-		width: 110%;
+		width: 100%;
 		margin-bottom: 8px;
 	}
 
@@ -17838,6 +18003,10 @@
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 11px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 12px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -17894,6 +18063,15 @@
 
 	.workouts-block .last-trainings__item-img{
 		width: 10px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 10px;
+		padding: 2px 5px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 12px;
 	}
 
 	.workouts-block .workout-other__button{
