@@ -271,7 +271,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		FilterButtonsArr[0].click();
 
 
-		//Difficult
+		//Difficult of exercises
 		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
 		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
@@ -289,7 +289,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 
 
-		// Popup exercises
+		// Popup wondow for exercises
 		let exercisesButtons = document.querySelectorAll('.exercise-item__rating');
 		let deliteButtons = document.querySelectorAll('.exercise-item__buttons .button-text');
 		let popupExerciseItem = document.querySelector('.popup-exercise .exercise-item');
@@ -324,8 +324,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		}
 
 		
-		
-
+		// Buttons to close popup window
 		const closeBtn = document.querySelector('.popup-exercise__close-button');
 		closeBtn.addEventListener('click', function(){
 			popupExerciseWindow.classList.remove("open");
@@ -344,8 +343,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 
 
-		// ---Filters---
-		// Main
+		// Main filter (select)
 		let MainFilter = document.querySelector('.exercises-nav__select');
 		let ExercisesArray = document.querySelectorAll('.exercise-item--list');
 		let FavoritesExercises = document.querySelectorAll('.exercise-item__favorite--selected');
@@ -372,13 +370,14 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			ExercisesDifficultSorted.push(item);
 		}
 
+		// sort ratings and difficult of exercises
 		ExercisesRatingSorted.sort((a, b) => a.rate > b.rate ? 1 : -1);
 		ExercisesDifficultSorted.sort((a, b) => a.difficult > b.difficult ? 1 : -1);
 		
 		let exerciseBlock = document.querySelector('.exercise-block');
 
 
-		// side panel
+		// side panel filter
 		let searchButton = document.querySelector('.exercises-filter__search-button');
 		let clearButton = document.querySelector('.exercises-filter__clear-button');
 		
@@ -395,6 +394,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		let ExercisesMuscleGroups = document.querySelectorAll('.exercise-item__muscle-groups');
 
 
+		// Main filter logic
 		MainFilter.addEventListener('change', function(){
 			clearButton.click();
 
@@ -410,7 +410,6 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			}
 
 			
-
 			if(MainFilter.value == 'default'){
 				ExercisesArray.forEach(function(elem){
 					elem.classList.remove('hide');
@@ -474,6 +473,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		});
 
 
+		// filter search logic
 		searchButton.addEventListener('click', function(){
 			MainFilter.value = 'default';
 
@@ -542,7 +542,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		let allFilterInputs = document.querySelectorAll('.exercises-filter__item-input');
 		let allFilterInputsChecked = [];
 
-		// clear filters
+		// clear filters button logic
 		clearButton.addEventListener('click', function(){
 			for(let i = 0; i < MuscleGroupInputs.length; i++){
 				MuscleGroupInputs[i].checked = false;
@@ -576,6 +576,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		});
 
 
+		// get values of filters from localstorage
 		if(localStorage.getItem('allFilterInputsChecked')){
 			allFilterInputsChecked = localStorage.getItem('allFilterInputsChecked').split(',');
 			for(let i = 0; i < allFilterInputsChecked.length; i++){
@@ -598,6 +599,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 			localStorage.setItem('allFilterInputsChecked', allFilterInputsChecked);
 		}
 
+		// if filter's inputs change localstorage save data
 		for(let i = 0; i < allFilterInputs.length; i++){
 			allFilterInputs[i].addEventListener('change', function(){
 				for(let i = 0; i < allFilterInputsChecked.length; i++){
@@ -608,19 +610,19 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		}
 
 
-		// Exercise search
+		// Exercises search
 		const search_input = document.querySelector('.exercises-nav__search-input');
 		search_input.addEventListener('input', function(){
 			SearchItems(search_input.value);
 			searchButton.click();
 		});
 
-		// ===SEARCH===
 		let ExerciseNames = document.querySelectorAll('.exercise-item__title');
 
+		// search logic
 		function SearchItems(val){
-			val = val.trim().replaceAll(' ', '').toUpperCase();
-			if(val != ''){
+			val = val.trim().replaceAll(' ', '').toUpperCase(); // get value of search's input
+			if(val != ''){ // if value not none
 				ExerciseNames.forEach(function(elem){
 					if(elem.innerText.trim().replaceAll(' ', '').toUpperCase().search(val) == -1){
 						let cur_exercise = elem.parentNode;
@@ -628,7 +630,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 							cur_exercise.classList.add('hide');
 						}
 					}
-					else{
+					else{ // if name matches print block
 						let cur_exercise = elem.parentNode;
 						if(cur_exercise){
 							cur_exercise.classList.remove('hide');
@@ -637,7 +639,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				});
 			}
 
-			else{
+			else{ // if value none print all cards
 				ExerciseNames.forEach(function(elem){
 					let cur_exercise = elem.parentNode;
 					if(cur_exercise){

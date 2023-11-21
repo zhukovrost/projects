@@ -191,12 +191,14 @@ foreach ($user->program->workouts as $workout){
         let programAddButton = document.querySelector('.my-program__friend-program');
         let programAddPopup = document.querySelector('.popup-exercise__program-add');
 
+        // popup window for duration of program values
         if(programAddButton){
             programAddButton.addEventListener('click', function(){
                 programAddPopup.classList.add("open");
             });
         }
 
+        // buttons to close popup windows
 		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){
@@ -226,6 +228,7 @@ foreach ($user->program->workouts as $workout){
             }
         }
 
+        // height of workout items
         for(let i = 0; i < workoutItemArr.length; i++){
             workoutItemArr[i].style.cssText = `height: ${maxWorkoutItemHeight}px;`;
         }
@@ -235,6 +238,7 @@ foreach ($user->program->workouts as $workout){
         // Muscle groups chart
         const ctx2 = document.getElementById('muscleGroupsChart');
 
+        // create muscle groups chart
         new Chart(ctx2, {
             type: 'pie',
             data: {

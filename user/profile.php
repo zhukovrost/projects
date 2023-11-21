@@ -358,22 +358,25 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script>
+        // set profile type in localstorage
         let profileType = document.querySelector('.popup-user__info-item-info--status');
         localStorage.setItem('profileType', profileType.innerHTML);
 
+        // choose photo event listener
         avatar_file.addEventListener('click', function(){
             document.querySelector('.preview_cover').style.cssText = `display: flex;`;
         });
 
+        // choose avatar photo logic
         $(document).ready(function () {
-          var croppedImageDataURL; // Переменная для хранения Data URL обрезанного изображения
+          var croppedImageDataURL; // variable Data URL of cropped image
       
-          // При выборе файла для загрузки
+          // When selecting a file to download
           $("#avatar_file").on("change", function (e) {
             var file = e.target.files[0];
             var reader = new FileReader();
       
-            // Чтение файла и отображение его в элементе img#preview
+            // Reading a file and displaying it in the #preview element
             reader.onload = function (event) {
               $("#preview").attr("src", event.target.result);
               initCropper();
@@ -382,27 +385,27 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
             reader.readAsDataURL(file);
           });
       
-          // Инициализация Cropper.js
+          // Initialization Cropper.js
           function initCropper() {
             var image = document.getElementById("preview");
             var cropper = new Cropper(image, {
-                aspectRatio: 1, // Соотношение сторон 1:1 для круглой области обрезки
-                viewMode: 2,    // Позволяет обрезать изображение внутри области обрезки
+                aspectRatio: 1, // The aspect ratio is 1:1 for a circular cropping area
+                viewMode: 2,    // Allows you to crop the image inside the cropping area
 
 
-                // Позиционируем область обрезки в центре
+                // Positioning the cropping area in the center
                 autoCropArea: 0.6,
 
 
-                // Обработка обрезки изображения
+                // Image Cropping Processing
                 crop: function (event) {
-                    // Получение координат и размеров обрезанной области
+                    // Getting the coordinates and dimensions of the cropped area
                     var x = event.detail.x;
                     var y = event.detail.y;
                     var width = event.detail.width;
                     var height = event.detail.height;
 
-                    // Создание canvas с обрезанным изображением
+                    // Creating a canvas with a cropped image
                     var canvas = cropper.getCroppedCanvas({
                         width: width,
                         height: height,
@@ -410,13 +413,13 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                         top: y,
                     });
 
-                    // Преобразование canvas в Data URL изображения
+                    // Converting canvas to Image Data URL
                     croppedImageDataURL = canvas.toDataURL("png");
                 },
             });
         }
       
-          // Обработка сохранения обновленной аватарки
+          // Processing of saving an updated avatar
           $("#saveAvatar").on("click", function () {
             if (croppedImageDataURL) {
                 location.reload()
@@ -429,6 +432,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
           });
         });
 
+        // Event listener for save avatar button
         saveAvatar.addEventListener('click', function(){
             document.querySelector('.preview_cover').style.cssText = `display: none;`;
         });
@@ -437,18 +441,19 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 
 
 
-        // =========Подробная информация=========
+        // More information(about user) blocks
         let MoreInfoButton = document.querySelector('.user-block__avatar-more');
 
         let UserInfoPopup = document.querySelector('.popup-exercise--user-info');
 
+        // Open popup for editting 
         MoreInfoButton.addEventListener('click', function(){
 			UserInfoPopup.classList.add("open");
 		});
 
 
 
-        // Подробная информация (изменение)
+        // More information(about user) blocks (edit)
         let MoreInfoEditButton = document.querySelector('.popup-user__edit-button');
 
         let UserInfoEditPopup = document.querySelector('.popup-exercise--user-info-edit');
@@ -470,11 +475,12 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
         }
 
 
-        // Изменение описания
+        // change user's description
         let DescriptionEditButton = document.querySelector('.user-about__description-button');
 
         let DescriptionPopup = document.querySelector('.popup-exercise--description-edit');
 
+        // open popup window to edit user's description
         if(DescriptionEditButton){
             DescriptionEditButton.addEventListener('click', function(){
                 document.querySelector('.popup-user__description-edit-text').value = document.querySelector('.user-about__description-text').innerHTML;
@@ -483,7 +489,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
         }
 
 
-
+        // buttons to close popup windows
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){

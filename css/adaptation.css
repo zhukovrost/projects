@@ -4233,8 +4233,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 32%;
-		width: 33vw;
+		left: 35%;
+		width: 30vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -6448,8 +6448,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 28%;
-		width: 40vw;
+		left: 33%;
+		width: 36vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -7939,8 +7939,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 26%;
-		width: 44vw;
+		left: 30%;
+		width: 36vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -9245,8 +9245,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 24%;
-		width: 46vw;
+		left: 28%;
+		width: 40vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -9266,11 +9266,11 @@
 	}
 
 
-	.other-cover .main-header{
+	.welcome-page .main-header{
 		display: flex;
 	}
 
-	.other-cover .sub-header{
+	.welcome-page .sub-header{
 		display: none;
 	}
 }
@@ -10616,8 +10616,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 22%;
-		width: 50vw;
+		left: 29%;
+		width: 40vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -12112,8 +12112,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 18%;
-		width: 55vw;
+		left: 29%;
+		width: 42vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -13697,8 +13697,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 12%;
-		width: 65vw;
+		left: 26%;
+		width: 44vw;
 	}
 
 	.welcome-block-1__biceps-right{

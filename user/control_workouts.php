@@ -109,6 +109,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script>
+        // check type of profile for start button style
         if(localStorage.getItem('profileType') && localStorage.getItem('profileType') != 'Тренер'){
             document.querySelector('.control-workouts-page .day-workouts__card-button--start').style.cssText = 'display: none;';
         }

@@ -272,7 +272,7 @@ if ($is_selected){
     <?php include "../templates/footer.html" ?>
 
 	<script>
-		// Popup workouts
+		// variables for coach page
 		let GoalsEditPopup = document.querySelector('.popup-exercise--goals-edit');
 		let GoalsAddPopup = document.querySelector('.popup-exercise--goals-add');
 		let CompetitionsEditPopup = document.querySelector('.popup-exercise--competitions-edit');
@@ -293,24 +293,28 @@ if ($is_selected){
 		let InfoLinkText = document.querySelectorAll('.staff-block__link-button--info-link');
 
 
+        // open popup window to edit goals' list
         if(GoalsAddButton){
             GoalsAddButton.addEventListener('click', function(){
                 GoalsAddPopup.classList.add("open");
             });
         }
 
+        // open popup window to edit competitions' list
         if(CompetitionsAddButton){
             CompetitionsAddButton.addEventListener('click', function(){
 			CompetitionsAddPopup.classList.add("open");
 		});
         }
 
+        // open popup window to edit usefil links' list
         if(LinksAddButton){
             LinksAddButton.addEventListener('click', function(){
                 LinksAddPopup.classList.add("open");
             });
         }
 
+        // buttons to close popup windows
 		const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){

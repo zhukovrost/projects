@@ -43,7 +43,7 @@ $workout = new Control_Workout($conn, $_GET["id"]);
         }
 
 
-		//Difficult
+		//Difficult of exercises
 		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
 		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 

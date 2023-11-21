@@ -209,6 +209,7 @@ if (count($user->phys_updates) != 0){
             localStorage.setItem('trainingDataPeriod', periodSelects[0].value);
         }
 
+        // choose periods event
         for(let i = 0; i < periodSelects.length; i++) {
             periodSelects[i].addEventListener('change', function(){
                 if(i == 0){
@@ -219,11 +220,12 @@ if (count($user->phys_updates) != 0){
         }
 
 
-        // Count of training chart
+        // training chart
         const ctx1 = document.getElementById('trainingStatisticChart');
 
         trainingPeriodArray = [];
         trainingPeriodData = [];
+        // period values
         if(periodSelects[0].value == 'year'){
             trainingPeriodArray = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
             trainingPeriodData = <?php echo json_encode(get_graph_workout_data_year($user->workout_history)); ?>;
@@ -233,6 +235,7 @@ if (count($user->phys_updates) != 0){
             trainingPeriodData = <?php echo json_encode(get_graph_workout_data_month($user->workout_history)); ?>;
         }
 
+        // create training chart
         new Chart(ctx1, {
             type: 'line',
             data: {
@@ -300,6 +303,7 @@ if (count($user->phys_updates) != 0){
         const ctx2 = document.getElementById('muscleGroupsChart');
         let allXerciseCount = 0;
         let currentExerciseCountArray = <?php echo json_encode(array($muscles['arms'], $muscles['legs'], $muscles['chest'], $muscles['back'], $muscles['press'], $muscles['cardio'])); ?>;
+        // set percents to muscle groups chart
         for(let i = 0; i < currentExerciseCountArray.length; i++){
             allXerciseCount += currentExerciseCountArray[i];
         }
@@ -308,6 +312,7 @@ if (count($user->phys_updates) != 0){
         }
         
 
+        // create muscle groups chart
         new Chart(ctx2, {
             type: 'pie',
             data: {
@@ -341,9 +346,10 @@ if (count($user->phys_updates) != 0){
         });
 
 
-        // Physical data chart
+        // Physical data chart (weight)
         const ctx3 = document.getElementById('physicalDataChart_weight');
 
+        // create physical data chart (weight)
         new Chart(ctx3, {
             type: 'line',
             data: {
@@ -407,9 +413,10 @@ if (count($user->phys_updates) != 0){
         });
 
 
-        // Physical data chart
+        // Physical data chart (height)
         const ctx4 = document.getElementById('physicalDataChart_height');
 
+        // create physical data chart (height)
         new Chart(ctx4, {
             type: 'line',
             data: {
@@ -473,12 +480,14 @@ if (count($user->phys_updates) != 0){
         });
 
 
+        // toggle buttons between height and weight
         let togglePhysicalDataButton = document.querySelector('.progress-block__physical-data-button');
         let weightChart = document.querySelector('.progress-block__physical-data-chart--weight');
         let heightChart = document.querySelector('.progress-block__physical-data-chart--height');
         weightChart.style.cssText = `display: none;`;
 
 
+        // toggle buttons between height and weight (logic)
         togglePhysicalDataButton.addEventListener('click', function(){
             console.log(togglePhysicalDataButton.value)
             if(togglePhysicalDataButton.value == 'РОСТ'){
@@ -510,9 +519,11 @@ if (count($user->phys_updates) != 0){
         let weightArray = <?php echo json_encode($weight_array) ?>;
         let heightArray = <?php echo json_encode($height_array); ?>;
 
+        // set current values of physic
         PhysicDataCurrent[0].innerHTML = `${weightArray[weightArray.length - 2]} кг`;
         PhysicDataCurrent[1].innerHTML = `${heightArray[heightArray.length - 2]} см`;
 
+        // edit event to edit physical data
         if(PhysicDataEditButton){
             PhysicDataEditButton.addEventListener('click', function(){
                 document.querySelector('.popup-physics-data__item-input--height').value = (PhysicDataCurrent[1].innerHTML).split(' ')[1];
@@ -522,8 +533,7 @@ if (count($user->phys_updates) != 0){
         }
         
         
-
-
+        // close popup physic edit
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){
@@ -542,6 +552,7 @@ if (count($user->phys_updates) != 0){
 		});
 
 
+        // width of progress line
         let progressProgrammLine = document.querySelector('.progress-block__programm-finish');
         let progressProgrammPercents = document.querySelector('.progress-block__programm-percents');
 

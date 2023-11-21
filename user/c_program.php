@@ -253,7 +253,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 		}
 
 
-
+        // buttons to close popup windows
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){

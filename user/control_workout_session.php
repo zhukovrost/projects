@@ -74,7 +74,7 @@ $cnt_apps = 0;
     }
 
 
-    //Difficult
+    //Difficult of exercises
     let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
     let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
@@ -92,7 +92,7 @@ $cnt_apps = 0;
 
 
 
-    // Progress
+    // Progress of workout
     let repetDoneInputs = document.querySelectorAll('.exercise-item__input');
     let exercisesLeft = document.querySelector('.workout-session-footer__item span');
     let progressLine = document.querySelector('.workout-session__finish-line');
@@ -100,6 +100,7 @@ $cnt_apps = 0;
 
     currentArray = [];
     let currentInputValues = [];
+    // get workout data from localstorage
     if(localStorage.getItem('repetDoneArray') && localStorage.getItem('repetDoneInputs')){
         let currentArray = localStorage.getItem('repetDoneArray').split(',');
         let currentInputValues = localStorage.getItem('repetDoneInputs').split(',');
@@ -137,6 +138,7 @@ $cnt_apps = 0;
     }
 
 
+    // workout logic when reperts' input edit
     for(let i = 0; i < repetDoneInputs.length; i++){
         repetDoneInputs[i].addEventListener('input', function(){
             let completedCount = 0;
@@ -168,13 +170,14 @@ $cnt_apps = 0;
     }
 
 
+    // Button to finish workout
     FinsishButton.addEventListener('click', function(){
         localStorage.removeItem('repetDoneArray');
         localStorage.removeItem('repetDoneInputs');
     });
 
 
-    // Exercise height
+    // Exercises card height
     let maximunExerciseCardHeight = 0;
     let exerciseCards = document.querySelectorAll('.exercise-item');
     for(let i = 0; i < exerciseCards.length; i++){

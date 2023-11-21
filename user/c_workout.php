@@ -181,7 +181,7 @@ if (isset($_POST["week_days"])){
             });
         }
 
-		//Difficult
+		//Difficult of exercises
 		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
 		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
@@ -209,7 +209,7 @@ if (isset($_POST["week_days"])){
             infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
         }
 
-		// Button submit
+		// set name 'Без названия' if input == ''
 		let addToPragramButton = document.querySelector('.c-workout__days-add');
 		let workoutNameInput = document.querySelector('.c-workout__info-name');
 		addToPragramButton.addEventListener('click', function(){

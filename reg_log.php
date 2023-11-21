@@ -56,6 +56,7 @@ if (isset($_POST['log'])){
                 <input class="log-form__input" name="log_password" type="password" id="password_entry">
                 <button class="button-text log-form__submit" type="submit" name="log" value="1">Войти</button>
                 <?php
+                // Login warnings
                 log_warning($error_array['log_incorrect_login_or_password'], "Неправильный логин или пароль");
                 log_warning($error_array['log_fill_all_input_fields'], "Заполните все поля");
                 if ($error_array['log_conn_error']){ log_warning($error_array['log_conn_error'], "Ошибка: " . $conn->error); };
@@ -93,6 +94,7 @@ if (isset($_POST['log'])){
                 <input class="reg-form__input" name="reg_password2" type="password" id="check_password">
                 <button class="button-text reg-form__submit" type="submit" name="reg" value="1">Зарегистрироваться</button>
                 <?php
+                // Registration warnings
                 reg_warning($error_array['reg_login_is_used'], "Логин занят");
                 reg_warning($error_array['reg_passwords_are_not_the_same'], "Пароли не совпадают");
                 reg_warning($error_array['reg_fill_all_input_fields'], "Заполните все поля");
@@ -106,15 +108,50 @@ if (isset($_POST['log'])){
     </div>
 
     <script>
+        // profile inputs
+        let regProfileInputsCheked = document.querySelectorAll('.reg-form__profile-input');
+
+        // localstorage data (all values of registrtion)
+        if(localStorage.getItem('regName')){
+            document.querySelector('.reg-form__input[name="reg_name"]').value = localStorage.getItem('regName');
+        }
+        if(localStorage.getItem('regSurname')){
+            document.querySelector('.reg-form__input[name="reg_surname"]').value = localStorage.getItem('regSurname')
+        }
+        if(localStorage.getItem('regProfileInputs')){
+            let regProfileInputs = localStorage.getItem('regProfileInputs').split(',')
+
+            for(let i = 0; i < 3; i++){
+                if(regProfileInputs[i] == 'true'){
+                    regProfileInputsCheked[i].checked = true;
+                }
+            }
+        }
+
+        if(localStorage.getItem('regLogin')){
+            document.querySelector('.reg-form__input[name="reg_login"]').value = localStorage.getItem('regLogin');
+        }
+
+        if(localStorage.getItem('regPassword')){
+            document.querySelector('.reg-form__input[name="reg_password"]').value = localStorage.getItem('regPassword');
+        }
+
+
+        // Registration warnings
         document.querySelector('.reg-form__input[name="reg_name"]').addEventListener('input', function() {
             this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
+            localStorage.setItem('regName', this.value);
         });
 
         document.querySelector('.reg-form__input[name="reg_surname"]').addEventListener('input', function() {
             this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
+            localStorage.setItem('regSurname', this.value);
         });
 
+        const containsLetters = /^.*[a-zA-Z]+.*$/;
+
         document.querySelector('.reg-form__input[name="reg_login"]').addEventListener('input', function() {
+            localStorage.setItem('regPassword', this.value)
             if(this.value.length < 3){
                 document.querySelector('.reg-form__warning').innerHTML = 'Слишком короткий логин';
             }
@@ -123,10 +160,8 @@ if (isset($_POST['log'])){
             }
         });
 
-// через кнопку чтоб вылетало + локасторэдж
-        const containsLetters = /^.*[a-zA-Z]+.*$/;
-
         document.querySelector('.reg-form__input[name="reg_password"]').addEventListener('input', function() {
+            localStorage.setItem('regPassword', this.value);
             if(this.value.length < 8){
                 document.querySelector('.reg-form__warning').innerHTML = 'Пароль короткий логин';
             }
@@ -137,6 +172,19 @@ if (isset($_POST['log'])){
                 document.querySelector('.reg-form__warning').innerHTML = '';
             }
         });
+
+        // check profile inputs changes
+        for(let i = 0; i < regProfileInputsCheked.length; i++){
+            regProfileInputsCheked[i].addEventListener('change', function(){
+                let regProfileInputs = [false, false, false];
+                for(let j = 0; j < 3; j++){
+                    if(regProfileInputsCheked[j].checked){
+                        regProfileInputs[i] = true;
+                    }
+                }
+                localStorage.setItem('regProfileInputs', regProfileInputs);
+            })
+        }
 
         // Switch buttons (login or registration)
         let logButton = document.querySelector('.log-reg__switch-button--log');
@@ -170,7 +218,7 @@ if (isset($_POST['log'])){
             localStorage.setItem('SwitchRegLogButton', 'log');
         }
 
-        //local storage buttons data
+        //local storage buttons' data
         if(localStorage.getItem('SwitchRegLogButton')){
             if(localStorage.getItem('SwitchRegLogButton') == 'reg'){
                 regButton.click();

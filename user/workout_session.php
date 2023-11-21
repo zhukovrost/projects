@@ -88,7 +88,7 @@ $cnt_apps = 0;
         }
 
 
-        //Difficult
+        //Difficult for exercises
 		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
 		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
@@ -106,7 +106,7 @@ $cnt_apps = 0;
 
 
     
-        // Timer
+        // Timer logic
         let TimeForWork = localStorage.getItem('TimeForWork') * 60;
         let TimeForRest = localStorage.getItem('TimeForRest') * 60;
         let currentWorkTime = 0;
@@ -149,6 +149,7 @@ $cnt_apps = 0;
         workoutSessionInputTime.value = time;
         localStorage.setItem(`SpendWorkoutTime`, time);
 
+        // finish button event listener
         FinsishButton.addEventListener('click', function(){
             localStorage.setItem("TimeForWork", -1);
             localStorage.setItem("TimeForRest", -1);
@@ -160,25 +161,26 @@ $cnt_apps = 0;
         });
 
         
+        // Update value if timer
         function UpdateTime(){
-
-            time++;
-            workoutSessionInputTime.value = time;
-            localStorage.setItem(`SpendWorkoutTime`, time);
+            time++; // add one second for timer
+            workoutSessionInputTime.value = time; // set value for data base
+            localStorage.setItem(`SpendWorkoutTime`, time); // set value of timer to localstorage
 
             if(TimeForWork >= 0 && TimeForRest >= 0){
+                // If time has come to rest
                 if (time - (Math.floor(time / (TimeForWork + TimeForRest)) * (TimeForWork + TimeForRest)) == TimeForWork){
-                    console.log(time)
                     timer.style.cssText = 'background-color: rgb(1, 221, 34); box-shadow: 0px 3px 0px rgba(0, 94, 13, 1);';
                     localStorage.setItem(`Period`, 'Rest');
                 }
+                // If time has come to work
                 else if (time % (TimeForWork + TimeForRest) == 0){
-                    console.log(time)
                     timer.style.cssText = 'color: #ffffff; background-color: rgba(0, 94, 13, 1); box-shadow: 0px 3px 0px rgb(1, 221, 34);';
                     localStorage.setItem(`Period`, 'Work');
                 }
             }
 
+            // set value(minutes and seconds) to visual block
             let minutes = Math.floor(time / 60);
             let seconds = time % 60;
             if (seconds < 10){
@@ -194,7 +196,7 @@ $cnt_apps = 0;
 
 
 
-        // Progress
+        // Progress of workout
         let repetDoneButtons = document.querySelectorAll('.exercise-item__done');
         let exercisesLeft = document.querySelectorAll('.workout-session-footer__item span')[0];
         let allrepetsLeft = document.querySelectorAll('.workout-session-footer__item span')[1];
@@ -207,12 +209,13 @@ $cnt_apps = 0;
         let allRepetsNumber = parseInt(allrepetsLeft.innerHTML);
 
 
-        // save data to local storage
+        // save data of workout to local storage
         if(localStorage.getItem('currentRepetsLeft') && localStorage.getItem('allRepetsNumber')){
             let array = localStorage.getItem('currentRepetsLeft').split(',');
             let exercisesLeftNumber = 0;
             let doneRepetsNumber = parseInt(allrepetsLeft.innerHTML);
 
+            // repets of exercises logic
             for(let i = 0; i < array.length; i++){
                 if(array[i] == '0'){
                     exerciseTitle[i].innerHTML = `сделанно`;
@@ -223,6 +226,7 @@ $cnt_apps = 0;
                 doneRepetsNumber -= parseInt(array[i]);
             }
 
+            // visual blocks' progress logic
             allRepetsNumber = parseInt(localStorage.getItem('allRepetsNumber'));
             
             allrepetsLeft.innerHTML = `${parseInt(allrepetsLeft.innerHTML) - doneRepetsNumber}`;
@@ -235,6 +239,7 @@ $cnt_apps = 0;
 
         }
         else{
+            // set data of repets to localstorage
             let array = [];
             for(let i = 0; i < currentRepetsLeft.length; i++){
                 array.push(currentRepetsLeft[i].innerHTML);
@@ -243,7 +248,7 @@ $cnt_apps = 0;
             localStorage.setItem('allRepetsNumber', parseInt(allrepetsLeft.innerHTML));
         }
 
-            
+            // workout values logic
         for(let i = 0; i < repetDoneButtons.length; i++){
             repetDoneButtons[i].addEventListener('click', function(){
                 let Count = parseInt(currentRepetsLeft[i].innerHTML) - 1;
