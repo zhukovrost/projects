@@ -2402,6 +2402,15 @@
 		max-width: 90%;
 	}
 
+	.popup-exercise__program-add .popup-exercise__content{
+		flex-direction: column;
+		padding: 50px 20px;
+	}
+
+	.popup-exercise__program-add .popup-exercise__content-item{
+		margin-bottom: 10px;
+	}
+
 	.day-workouts__slide .day-workouts__card-name{
 		font-size: 15px;
 	}
@@ -4054,6 +4063,7 @@
 
 	.c-program__duration-date-text{
 		font-size: 15px;
+		margin-left: 20px;
 	}
 
 	.c-program__duration-button{
@@ -5146,8 +5156,12 @@
 
 	.c-program .day-workouts{
 		flex-direction: column;
-		width: 70%;
+		width: 80%;
 		margin: 50px auto 0;
+	}
+
+	.day-workouts__card-content{
+		max-width: 18vw;
 	}
 
 	.day-workouts__block{
@@ -5310,7 +5324,7 @@
 
 	.c-workout .exercise-item__repetitions{
 		font-size: 19px;
-		padding: 5px 20px;
+		padding: 5px 15px;
 	}
 
 	.c-workout .exercise-item__repetitions-score{
@@ -6339,6 +6353,10 @@
 		flex-direction: column;
 		width: 80%;
 		margin: 50px auto 0;
+	}
+
+	.day-workouts__card-content{
+		max-width: 17vw;
 	}
 
 	.day-workouts__block{
@@ -7581,6 +7599,10 @@
 		flex-direction: column;
 		width: 90%;
 		margin: 50px auto 0;
+	}
+
+	.day-workouts__card-content{
+		max-width: 20vw;
 	}
 
 	.day-workouts__block{
@@ -9759,6 +9781,18 @@
 	.welcome-page .sub-header{
 		display: none;
 	}
+
+
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 100%;
+		margin: 40px auto 0;
+	}
+
+	.day-workouts__card-content{
+		max-width: 22vw;
+	}
 }
 
 
@@ -10311,6 +10345,10 @@
 		margin: 40px auto 0;
 	}
 
+	.day-workouts__card-content{
+		max-width: 22vw;
+	}
+
 	.day-workouts__block{
 		display: none;
 	}
@@ -10337,7 +10375,7 @@
 
 	.c-program .workouts-card__item span{
 		font-size: 15px;
-		padding: 1px 5px;
+		padding: 1px 2px;
 		margin-left: 5px;
 	}
 
@@ -11763,6 +11801,10 @@
 		margin: 30px auto 0;
 	}
 
+	.day-workouts__card-content{
+		max-width: 22vw;
+	}
+
 	.day-workouts__block{
 		display: none;
 	}
@@ -11780,16 +11822,16 @@
 	}
 
 	.c-program .day-workouts__card-name{
-		font-size: 13px;
+		font-size: 12px;
 	}
 
 	.c-program .workouts-card__item{
-		font-size: 13px;
+		font-size: 12px;
 	}
 
 	.c-program .workouts-card__item span{
-		font-size: 13px;
-		padding: 1px 3px;
+		font-size: 12px;
+		padding: 1px 2px;
 		margin-left: 3px;
 	}
 
@@ -13391,6 +13433,11 @@
 		width: 100%;
 		margin: 20px auto 0;
 	}
+
+	.day-workouts__card-content{
+		max-width: 22vw;
+	}
+
 
 	.day-workouts__block{
 		display: none;
@@ -17071,9 +17118,9 @@
 	}
 
 	.c-program .workouts-card__item span{
-		font-size: 9px;
+		font-size: 8px;
 		padding: 1px 2px;
-		margin-left: 2px;
+		margin-left: 1px;
 	}
 
 	.c-program .day-workouts__card-day-off{

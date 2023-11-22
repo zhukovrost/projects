@@ -202,7 +202,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 						<input class="popup-exercise__info-input" type="number" id="c_exercise_reps" name="reps">
 					</div>
                     <input class="exercise_id" name="id" type="hidden" value="">
-					<button class="button-text popup-exercise__add-button"><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
+					<button type="button" class="button-text popup-exercise__add-button"><p>Добавить в тренировку</p> <img src="../img/add.svg" alt=""></button>
 				</form>
 			</section>
 		</section>
@@ -211,6 +211,29 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 	<?php include "../templates/footer.html" ?>
 
 	<script>
+		let exerciseAddButton = document.querySelector('.popup-exercise__add-button');
+		let popupExerciseInputs = document.querySelectorAll('.popup-exercise__info-input');
+
+		for(let i = 0; i < popupExerciseInputs.length; i++){
+			
+			popupExerciseInputs[i].addEventListener('input', function(){
+				if(popupExerciseInputs[0].value.length == 0){
+					exerciseAddButton.type = 'button';
+				}
+				if(popupExerciseInputs[1].value.length == 0){
+					exerciseAddButton.type = 'button';
+				}
+				else{
+					exerciseAddButton.type = 'submit';
+				}
+
+				if (this.value.length > 5) {
+					this.value = this.value.slice(0, 5);
+				}
+			});
+		}
+
+
         // Button to see exercise info
         let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
         let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
@@ -598,9 +621,10 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 		let ExerciseNames = document.querySelectorAll('.exercise-item__title');
 
+		// search logic
 		function SearchItems(val){
-			val = val.trim().replaceAll(' ', '').toUpperCase();
-			if(val != ''){
+			val = val.trim().replaceAll(' ', '').toUpperCase(); // get value of search's input
+			if(val != ''){ // if value not none
 				ExerciseNames.forEach(function(elem){
 					if(elem.innerText.trim().replaceAll(' ', '').toUpperCase().search(val) == -1){
 						let cur_exercise = elem.parentNode;
@@ -608,7 +632,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 							cur_exercise.classList.add('hide');
 						}
 					}
-					else{
+					else{ // if name matches print block
 						let cur_exercise = elem.parentNode;
 						if(cur_exercise){
 							cur_exercise.classList.remove('hide');
@@ -616,8 +640,8 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 					}
 				});
 			}
-			//
-			else{
+
+			else{ // if value none print all cards
 				ExerciseNames.forEach(function(elem){
 					let cur_exercise = elem.parentNode;
 					if(cur_exercise){

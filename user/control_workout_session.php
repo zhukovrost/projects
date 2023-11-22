@@ -20,7 +20,7 @@ $cnt_apps = 0;
     <!-- Progress of test(in percents) -->
     <section class="workout-session__progress">
         <!-- Progress line and count of percent -->
-        <h2 class="workout-session__progress-title">Progress</h2>
+        <h2 class="workout-session__progress-title">Прогресс</h2>
         <div class="workout-session__progress-percents">
             <p class="workout-session__percents-number">0%</p>
             <div class="workout-session__finish-line"></div>

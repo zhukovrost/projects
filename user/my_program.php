@@ -177,7 +177,7 @@ foreach ($user->program->workouts as $workout){
                     <label class="popup-exercise__info-label" for="week">Дата начала</label>
                     <input class="popup-exercise__info-input" type="date" id="date" name="date_start">
                 </div>
-				<button class="button-text popup-exercise__submit-button">Начать</button>
+				<button type="button" class="button-text popup-exercise__submit-button">Начать</button>
 			</form>
 		</section>
     </main>
@@ -187,6 +187,41 @@ foreach ($user->program->workouts as $workout){
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        let friendProgramAddButton = document.querySelector('.popup-exercise__program-add .popup-exercise__submit-button');
+        let dateWokoutInput = document.querySelector('.popup-exercise__program-add .popup-exercise__info-input[type="date"]');
+
+        document.querySelector('.popup-exercise__program-add .popup-exercise__info-input[type="number"]').addEventListener('input', function(){
+            if(this.value.length == 0){
+                friendProgramAddButton.type = 'button';
+            }
+            else{
+                friendProgramAddButton.type = 'submit';
+            }
+        });
+
+        friendProgramAddButton.addEventListener('click', function(){
+            if (!dateWokoutInput.value) {
+				// set today's date
+				const todayDate = new Date();
+				let year = todayDate.getFullYear();
+				let month = todayDate.getMonth() + 1;
+				let day = todayDate.getDate();
+
+				if (month < 10) {
+					month = `0${month}`;
+				}
+				if (day < 10) {
+					day = `0${day}`;
+				}
+
+				const formattedDate = `${year}-${month}-${day}`;
+
+				// set today's date in input
+				dateWokoutInput.value = formattedDate;
+			}
+        });
+
+
         // Add friend program
         let programAddButton = document.querySelector('.my-program__friend-program');
         let programAddPopup = document.querySelector('.popup-exercise__program-add');
@@ -274,7 +309,9 @@ foreach ($user->program->workouts as $workout){
 
         // Height of friends block
         let friendsBlock = document.querySelector('.friends-block');
-        friendsBlock.style.cssText = `height: ${document.querySelector('.my-program__statistic').clientHeight}px;`;
+        if(friendsBlock){
+            friendsBlock.style.cssText = `height: ${document.querySelector('.my-program__statistic').clientHeight}px;`;
+        }
     </script>
 </body>
 </html>

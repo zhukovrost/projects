@@ -203,6 +203,17 @@ if (isset($_POST["workout_to_fav"])){
         let TimerEditInputs = document.querySelectorAll('.popup-exercise--timer-edit__item__input');
         let time = localStorage.getItem(`SpendWorkoutTime`);
 
+        for(let i = 0; i < TimerEditInputs.length; i++){
+            TimerEditInputs[i].addEventListener('input', function(){
+                if (this.value < 0) {
+					this.value = 0;
+				}
+                else if(this.value != 0 && this.value < 0.1){
+                    this.value = 0.1;
+                }
+            });
+        }
+
         let IntervalTimer = 0;
 
         if(localStorage.getItem(`SpendWorkoutTime`) && localStorage.getItem(`SpendWorkoutTime`) != -1){

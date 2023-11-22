@@ -169,6 +169,16 @@ if (isset($_POST["week_days"])){
     <?php include "../templates/footer.html" ?>
 
 	<script>
+		let exerciseCardsArray = document.querySelectorAll('.exercise-item--workout');
+		let addWorkoutButton = document.querySelector('.c-workout__days-add');
+
+		if(exerciseCardsArray.length == 0){
+			addWorkoutButton.type = 'button';
+		}
+		else{
+			addWorkoutButton.type = 'submit';
+		}
+
         // Button to see exercise info
         let	InfoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
         let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
@@ -219,6 +229,13 @@ if (isset($_POST["week_days"])){
 		addToPragramButton.addEventListener('click', function(){
 			if(workoutNameInput.value == ''){
 				workoutNameInput.value = "Без названия";
+			}
+		});
+
+
+		workoutNameInput.addEventListener('input', function() {
+			if (this.value.length > 16) {
+				this.value = this.value.slice(0, 16);
 			}
 		});
 

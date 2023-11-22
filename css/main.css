@@ -483,6 +483,10 @@
     padding-top: 50px;
 }
 
+.popup-exercise__program-add{
+    padding: 50px;
+}
+
 
 /* Info about program */
 .my-program__info{
