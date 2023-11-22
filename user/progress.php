@@ -198,6 +198,21 @@ if (count($user->phys_updates) != 0){
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+
+        let physicEditInputs = document.querySelectorAll('.popup-physics-data__item-input');
+
+        for(let i = 0; i < physicEditInputs.length; i++){
+            physicEditInputs[i].addEventListener('input', function(){
+                if (this.value < 0) {
+					this.value = 0;
+				}
+                if(this.value > 1000){
+                    this.value = 1000;
+                }
+                this.value = this.value.replace(/-/g, '');
+            });
+        }
+
         // Choose period to see progress data
         let periodSelects = document.querySelectorAll('.progress-block__physical-data-select');
         let periodForms = document.querySelectorAll('.progress-block__physical-data-form');
@@ -355,7 +370,7 @@ if (count($user->phys_updates) != 0){
             data: {
             labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
             datasets: [{
-                label: 'Вес за год',
+                label: 'Вес в этом месяце',
                 data: <?php echo json_encode($weight_array); ?>,
                 borderWidth: 3,
                 backgroundColor: '#00C91D',
@@ -422,7 +437,7 @@ if (count($user->phys_updates) != 0){
             data: {
             labels: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
             datasets: [{
-                label: 'Рост за неделю',
+                label: 'Рост в этом месяце',
                 data: <?php echo json_encode($height_array); ?>,
                 borderWidth: 3,
                 backgroundColor: '#00C91D',

@@ -246,11 +246,11 @@ if ($is_selected){
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<input class="popup-exercise__input-item competitions-add__name" type="text" placeholder="название соревнования" name="name">
-				<input class="popup-exercise__input-item popup-exercise__input-item--file competitions-add__file" type="date" name="date">
+				<input class="popup-exercise__input-item competitions-add__date" type="date" name="date">
 				<input class="popup-exercise__input-item competitions-add__link" type="text" placeholder="вставьте ссылку" name="link">
                 <input type="hidden" name="request_name" value="add_competition">
                 <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
-				<button class="button-text popup-exercise__submit-button">Добавить</button>
+				<button class="button-text popup-exercise__submit-button popup-exercise__submit-button--competition">Добавить</button>
 			</form>
 		</section>
 
@@ -260,11 +260,10 @@ if ($is_selected){
 			<form method="post" class="popup-exercise__content">
 				<button type="button" class="popup-exercise__close-button"><img src="../img/close.svg" alt=""></button>
 				<input class="popup-exercise__input-item links-add__name" type="text" placeholder="название" name="name">
-				<!--<input class="popup-exercise__input-item popup-exercise__input-item--file links-add__file" type="file">-->
 				<input class="popup-exercise__input-item links-add__link" type="text" placeholder="вставьте ссылку" name="link">
                 <input type="hidden" name="request_name" value="add_info">
                 <input type="hidden" name="user_med" value="<?php if (isset($_GET["user"])) echo $_GET["user"]; ?>">
-				<button class="button-text popup-exercise__submit-button">Добавить</button>
+				<button class="button-text popup-exercise__submit-button popup-exercise__submit-button--useful">Добавить</button>
 			</form>
 		</section>
 	</main>
@@ -272,6 +271,85 @@ if ($is_selected){
     <?php include "../templates/footer.html" ?>
 
 	<script>
+        let goalAddNameInput = document.querySelector('.goals-add__name');
+        let competetionAddNameInput = document.querySelector('.competitions-add__name');
+        let competetionAddDateInput = document.querySelector('.competitions-add__date');
+        let competetionAddLinkInput = document.querySelector('.competitions-add__link');
+        let addUsefulLinkInput = document.querySelector('.links-add__link');
+        let addUsefulTextInput = document.querySelector('.links-add__name');
+        let competetionAddSubmitButton = document.querySelector('.popup-exercise__submit-button--competition');
+        let usefulTextAddSubmitButton = document.querySelector('.popup-exercise__submit-button--useful');
+
+        goalAddNameInput.addEventListener('input', function(){
+			if(this.value.length > 250){
+				this.value = this.value.slice(0, 250);
+			}
+		});
+
+        competetionAddNameInput.addEventListener('input', function(){
+			if(this.value.length > 250){
+				this.value = this.value.slice(0, 250);
+			}
+		});
+
+        competetionAddSubmitButton.addEventListener('click', function(){
+            if (!competetionAddDateInput.value) {
+				// set today's date
+				const todayDate = new Date();
+				let year = todayDate.getFullYear();
+				let month = todayDate.getMonth() + 1;
+				let day = todayDate.getDate();
+
+				if (month < 10) {
+					month = `0${month}`;
+				}
+				if (day < 10) {
+					day = `0${day}`;
+				}
+
+				const formattedDate = `${year}-${month}-${day}`;
+
+				// set today's date in input
+				competetionAddDateInput.value = formattedDate;
+			}
+		});
+
+
+        addUsefulLinkInput.addEventListener('input', function(){
+			const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+            if (!urlRegex.test(this.value) && this.value.length > 0) {
+                usefulTextAddSubmitButton.type = 'button';
+                addUsefulLinkInput.style.cssText = 'border: 1px solid #ff2323';
+            }
+            else{
+                usefulTextAddSubmitButton.type = 'submit';
+                addUsefulLinkInput.style.cssText = 'border: 1px solid #7D7D7D;';
+            }
+		});
+
+        addUsefulTextInput.addEventListener('input', function(){
+			if(this.value.length > 250){
+				this.value = this.value.slice(0, 250);
+			}
+		});
+
+
+        competetionAddLinkInput.addEventListener('input', function(){
+			const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
+            if (!urlRegex.test(this.value) && this.value.length > 0) {
+                competetionAddSubmitButton.type = 'button';
+                competetionAddLinkInput.style.cssText = 'border: 1px solid #ff2323';
+            }
+            else{
+                competetionAddSubmitButton.type = 'submit';
+                competetionAddLinkInput.style.cssText = 'border: 1px solid #7D7D7D;';
+            }
+		});
+
+
+
 		// variables for coach page
 		let GoalsEditPopup = document.querySelector('.popup-exercise--goals-edit');
 		let GoalsAddPopup = document.querySelector('.popup-exercise--goals-add');

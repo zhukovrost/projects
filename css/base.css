@@ -900,6 +900,10 @@ body {
     top: 5%;
 }
 
+.staff-cover .last-trainings__title{
+    top: 5%;
+}
+
 /* Trainings content */
 .last-trainings__content{
     position: relative;
@@ -1154,7 +1158,7 @@ body {
     align-items: center;
     background-color: #ffffff;
     border-radius: 5px;
-    padding: 30px 70px;
+    padding: 40px 70px;
 }
 
 .popup-exercise__content .exercise-item{

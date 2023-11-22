@@ -5415,7 +5415,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 60px;
+		padding: 40px 60px;
 	}
 
 	.popup-exercise__info-input{
@@ -6520,7 +6520,7 @@
 	/* ===========EXERCISES LIST PAGES=========== */
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 50px;
+		padding: 40px 50px;
 	}
 
 	.popup-exercise__info{
@@ -7876,7 +7876,7 @@
 	/* ===========EXERCISES LIST PAGES=========== */
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 40px;
+		padding: 40px 40px;
 	}
 
 	.popup-exercise__info{
@@ -9205,7 +9205,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 30px;
+		padding: 40px 30px;
 	}
 
 	.popup-exercise__info{
@@ -9827,7 +9827,7 @@
 	}
 
 	.popup-exercise--goals-add .popup-exercise__content{
-		padding: 30px 25px;
+		padding: 40px 25px;
 	}
 
 	.popup-exercise--goals-add .popup-exercise__input-item{
@@ -10145,7 +10145,7 @@
 		font-size: 13px;
 	}
 
-	.user-block .friends-block{
+	.friends-block__cover{
 		display: none;
 	}
 
@@ -10466,7 +10466,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 20px;
+		padding: 40px 20px;
 	}
 
 	.popup-exercise__info{
@@ -11282,7 +11282,7 @@
 	/* ============COACH PAGE============ */
 
 	.popup-exercise--goals-add .popup-exercise__content{
-		padding: 30px 25px;
+		padding: 40px 25px;
 	}
 
 	.popup-exercise--goals-add .popup-exercise__input-item{
@@ -12088,7 +12088,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 10px;
+		padding: 40px 10px;
 	}
 
 	.popup-exercise__info{
@@ -12801,7 +12801,7 @@
 	/* ============COACH PAGE============ */
 
 	.popup-exercise--goals-add .popup-exercise__content{
-		padding: 30px 25px;
+		padding: 40px 25px;
 	}
 
 	.popup-exercise--goals-add .popup-exercise__input-item{
@@ -13105,6 +13105,10 @@
 
 
 	/* ==============PROFILE PAGE============== */
+
+	.user-block .friends-block__header-title{
+		font-size: 12px;
+	}
 
 	.popup-exercise__content--user-info .popup-user__info-item-name{
 		font-size: 18px;
@@ -14608,6 +14612,10 @@
 		margin-right: 15px;
 	}
 
+	.user-block .friends-block__header-title{
+		font-size: 10px;
+	}
+
 	.coach-page .friends-block__header-title{
 		font-size: 15px;
 	}
@@ -15406,7 +15414,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 10px;
+		padding: 40px 10px;
 	}
 
 	.popup-exercise__info{
@@ -16580,6 +16588,15 @@
 		margin-right: 15px;
 	}
 
+	.user-block .friends-block__header-title{
+		font-size: 9px;
+	}
+
+	.user-block .friends-block__header-button{
+		width: 20px;
+		height: 20px;
+	}
+
 	.coach-page .friends-block__header-title{
 		font-size: 14px;
 	}
@@ -17396,7 +17413,7 @@
 	/* ===========EXERCISES LIST PAGES=========== */
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 5px;
+		padding: 40px 5px;
 	}
 
 	.popup-exercise__info{

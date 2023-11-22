@@ -200,6 +200,30 @@ if ($is_selected){
     <?php include "../templates/footer.html" ?>
 
 	<script>
+		let medicineAddNameInput = document.querySelector('.add-medicine__name');
+		let medicineAddDoseInput = document.querySelector('.add-medicine__dose');
+		
+		medicineAddNameInput.addEventListener('input', function(){
+			if(this.value.length > 90){
+				this.value = this.value.slice(0, 90);
+			}
+		});
+
+		medicineAddDoseInput.addEventListener('input', function(){
+			if(this.value.length > 70){
+				this.value = this.value.slice(0, 70);
+			}
+		});
+
+
+		let recommendationTextarea = document.querySelector('.treatment-recommendation__edit');
+		recommendationTextarea.addEventListener('input', function(){
+			if(this.value.length > 5000){
+				this.value = this.value.slice(0, 5000);
+			}
+		});
+
+
 		// Popup window for doctor page
 		let MedicineEditPopup = document.querySelector('.popup-exercise--edit-medicine');
 		let MedicineAddPopup = document.querySelector('.popup-exercise--add-medicine');

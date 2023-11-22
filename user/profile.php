@@ -358,6 +358,45 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script>
+        let userDescriptionEditBlock = document.querySelector('.popup-user__description-edit-text');
+        if(userDescriptionEditBlock){
+            userDescriptionEditBlock.addEventListener('input', function(){
+                if(this.value.length > 500){
+                    this.value = this.value.slice(0, 500);
+                }
+            });
+        }
+
+
+        let socialLinksInputs = document.querySelectorAll('.popup-user__input');
+        let editSubmitButton = document.querySelector('.popup-user__save-button');
+
+        if(socialLinksInputs){
+            const telegramRegex = /^(https?:\/\/)?(www\.)?(t\.me|telegram\.me)\/[a-zA-Z0-9_]{5,}$/;
+            socialLinksInputs[0].addEventListener('input', function(){
+                if (!telegramRegex.test(socialLinksInputs[0].value.trim()) && !(socialLinksInputs[0].value.trim().length == 0)) {
+                    editSubmitButton.type = 'button';
+                    socialLinksInputs[0].style.cssText = 'border: 1px solid #ff2323';
+                }
+                else{
+                    editSubmitButton.type = 'submit';
+                    socialLinksInputs[0].style.cssText = 'border: 1px solid #7D7D7D;';
+                }
+            });
+
+            const vkRegex = /^(https?:\/\/)?(www\.)?(vk\.com)\/(id[0-9]+|[a-zA-Z0-9_\.]+)$/;
+            socialLinksInputs[1].addEventListener('input', function(){
+                if (!vkRegex.test(socialLinksInputs[1].value.trim()) && !(socialLinksInputs[1].value.trim().length == 0)) {
+                    editSubmitButton.type = 'button';
+                    socialLinksInputs[1].style.cssText = 'border: 1px solid #ff2323';
+                }
+                else{
+                    editSubmitButton.type = 'submit';
+                    socialLinksInputs[1].style.cssText = 'border: 1px solid #7D7D7D;';
+                }
+            });
+        }
+
         // set profile type in localstorage
         let profileType = document.querySelector('.popup-user__info-item-info--status');
         localStorage.setItem('profileType', profileType.innerHTML);
@@ -467,7 +506,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                 UserInfoEditPopup.classList.add("open");
 
                 for(let i = 0; i < socialLinksEdit.length; i++){
-                    if(socialLinks[i].href != ''){
+                    if(socialLinks[i] && socialLinks[i].href != ''){
                         socialLinksEdit[i].value = socialLinks[i].href;
                     }
                 }
