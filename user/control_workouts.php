@@ -5,6 +5,9 @@ include "../templates/settings.php";
 if ($user_data->get_status() == "doctor" || empty($_GET["user"]) || !is_numeric($_GET["user"]))
     header("Location: coach.php");
 
+if (isset($_POST['featured']))
+    $user_data->change_featured($conn, $_POST['featured']);
+
 $user = new User($conn, $_GET["user"]);
 
 $not_done_workouts = $user->get_control_workouts($conn, NULL, 0);
@@ -38,10 +41,10 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                             <!-- Content of workout -->
                             <section class="workouts-card__content">
                                 <!-- Exercises array -->
-                                <section class="workouts-card__exercises-cover">
+                                <form method="post" class="workouts-card__exercises-cover">
                                     <!-- Exercise items -->
-                                    <?php $workout->print_control_exercises($conn); ?>
-                                </section>
+                                    <?php $workout->print_control_exercises($conn, $user_data); ?>
+                                </form>
                                 <!-- Info about day workout -->
                                 <?php $workout->print_control_workout_info($conn); ?>
                             </section>
