@@ -342,7 +342,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
             for(let i = 0; i < FavoritesExercises.length; i++){
                 let cur_exercise = FavoritesExercises[i].parentNode;
-                cur_exercise = cur_exercise.parentNode;
+                cur_exercise = cur_exercise.parentNode.parentNode;
                 cur_exercise.classList.remove('hide');
             }
         }
