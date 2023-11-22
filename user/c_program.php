@@ -309,7 +309,9 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
 		});
-
 	</script>
+
+    <!-- Test for clear workout buttons -->
+    <!-- <script src="../tests/test_clear_program_contructor.js"></script> -->
 </body>
 </html>

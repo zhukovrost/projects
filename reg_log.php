@@ -112,6 +112,14 @@ if (isset($_POST['log'])){
         </section>
     </div>
 
+
+    <!-- TESTS -->
+    <!-- data for testing resistration -->
+    <!-- <script src="tests/test_registration.js"></script> -->
+    <!-- data for testing login -->
+    <!-- <script src="tests/test_login.js"></script> -->
+
+
     <script>
         // profile inputs
         let regProfileInputsCheked = document.querySelectorAll('.reg-form__profile-input');
@@ -221,5 +229,7 @@ if (isset($_POST['log'])){
 
         
     </script>
+    <!-- Registration tests -->
+    
 </body>
 </html>

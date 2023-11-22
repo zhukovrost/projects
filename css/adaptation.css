@@ -6113,6 +6113,14 @@
 
 	/* ==============DOCTOR PAGE============== */
 
+	.popup-exercise--edit-medicine .popup-exercise__content{
+		flex-direction: column;
+	}
+
+	.popup-exercise--edit-medicine .popup-exercise__input-item{
+		margin: 3px 0px;
+	}
+
 	.doctor-page .staff-block__title{
 		font-size: 15px;
 	}
@@ -14653,6 +14661,14 @@
 	
 	/* ==============DOCTOR PAGE============== */
 
+	.popup-exercise--edit-medicine .popup-exercise__input-item{
+		font-size: 18px;
+	}
+
+	.popup-exercise--edit-medicine .popup-exercise__submit-button{
+		font-size: 16px;
+	}
+
 	.doctor-page .staff-block__title{
 		font-size: 15px;
 	}
@@ -16633,6 +16649,14 @@
 
 
 	/* ==============DOCTOR PAGE============== */
+
+	.popup-exercise--edit-medicine .popup-exercise__input-item{
+		font-size: 15px;
+	}
+
+	.popup-exercise--edit-medicine .popup-exercise__submit-button{
+		font-size: 14px;
+	}
 
 	.doctor-page .staff-block__medicines-none{
 		font-size: 16px;

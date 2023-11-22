@@ -231,6 +231,9 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 
 	<?php include "../templates/footer.html" ?>
 
+	<!-- TESTS FOR SEARCH FUNCTION -->
+	<!-- <script src="../tests/test_search_input.js"></script> -->
+
 	<script>
         // Button to see exercise info
         let infoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
@@ -392,7 +395,6 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 		RatingInputs[RatingInputs.length - 1].checked = true;
 
 		let ExercisesMuscleGroups = document.querySelectorAll('.exercise-item__muscle-groups');
-
 
 		// Main filter logic
 		MainFilter.addEventListener('change', function(){
@@ -648,7 +650,6 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
 				});
 			}
 		}
-
 	</script>
 </body>
 </html>

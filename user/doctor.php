@@ -290,8 +290,6 @@ if ($is_selected){
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
 		});
-
-
 	</script>
 </body>
 </html>

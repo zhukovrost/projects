@@ -541,8 +541,6 @@ if (count($user->phys_updates) != 0){
         // edit event to edit physical data
         if(PhysicDataEditButton){
             PhysicDataEditButton.addEventListener('click', function(){
-                document.querySelector('.popup-physics-data__item-input--height').value = (PhysicDataCurrent[1].innerHTML).split(' ')[1];
-                document.querySelector('.popup-physics-data__item-input--weight').value = (PhysicDataCurrent[0].innerHTML).split(' ')[1];
                 PhysicDataPopup.classList.add("open");
             });
         }
@@ -572,7 +570,10 @@ if (count($user->phys_updates) != 0){
         let progressProgrammPercents = document.querySelector('.progress-block__programm-percents');
 
         progressProgrammLine.style.cssText = `width: ${progressProgrammPercents.innerHTML};`;
-    
     </script>
+
+
+    <!-- test for adding physical parameters 
+    <script src="../tests/test_physic_data_add.js"></script> -->
 </body>
 </html>

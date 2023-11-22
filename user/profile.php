@@ -551,4 +551,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 		});
 
     </script>
+
+
+    <script src="../tests/test_profile_edit_description.js"></script>
 </body>
