@@ -211,12 +211,13 @@ class User_Exercise extends Exercise {
 
         if (!$construct && !$current && $this->reps > 0)
             $inp =  '<div class="exercise-item__repetitions"><p class="exercise-item__repetitions-score">'.$this->reps.'</p></div>';
-
-        if ($is_featured)
-            $button_featured = '<button class="exercise-item__favorite exercise-item__favorite--selected" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
+        if (!$current)
+            if ($is_featured)
+                $button_featured = '<button class="exercise-item__favorite exercise-item__favorite--selected" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
+            else
+                $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
         else
-            $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
-
+            $button_featured = ';';
 
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),

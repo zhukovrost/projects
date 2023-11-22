@@ -36,7 +36,7 @@ $cnt_apps = 0;
                 <swiper-slide class="session-exercises__slide">
                     <?php
                     $cnt_apps += $exercise->approaches;
-                    $exercise->print_control_exercise($conn, 1);
+                    $exercise->print_control_exercise($conn, 0, 1);
                     ?>
                 </swiper-slide>
             <?php } ?>
