@@ -13,6 +13,9 @@ $user_id = $_GET["for"];
 
 $flag = isset($_SESSION["c_workout"]);
 
+if (isset($_POST['featured']))
+    $user_data->change_featured($conn, $_POST['featured']);
+
 if (isset($_POST["name"]) && isset($_POST["date"])){
     $name = $_POST["name"];
     $loops = $_POST["loops"];
@@ -43,16 +46,17 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
 			<!-- Content of workout -->
 			<section class="workouts-card workouts-card--c">
 				<!-- Exercises array -->
-				<section class="workouts-card__exercises-cover">
+				<form method="post" class="workouts-card__exercises-cover">
 					<!-- Exercise items -->
                     <?php
                     if ($flag) {
                         foreach ($_SESSION["c_workout"] as $exercise){
-                            $exercise->print_control_exercise($conn, false);
+                            $is_featured = $exercise->is_featured($user_data);
+                            $exercise->print_control_exercise($conn, $is_featured, false);
                         }
                     }
                     ?>
-				</section>
+				</form>
 				<!-- Info about day workout -->
 				<section class="workouts-card__info">
 					<!-- Muscle groups -->

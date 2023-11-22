@@ -14,7 +14,7 @@ if (empty($_SESSION['c_workout'])){
 if (isset($_POST['featured']))
     $user_data->change_featured($conn, $_POST['featured']);
 
-if (isset($_POST['exercise'])){
+else if (isset($_POST['exercise'])){
     $user_exercise = new User_Exercise($conn, $_POST["exercise"]);
     array_push($_SESSION['c_workout'], $user_exercise);
 }
@@ -163,7 +163,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
                         echo "<form method='post' class='exercise-form'>";
                         $exercise = new User_Exercise($conn, $exercise_id);
                         $is_featured = $exercise->is_featured($user_data);
-                        $exercise->print_control_exercise($conn, false, true);
+                        $exercise->print_control_exercise($conn, $is_featured, false, true);
                         echo "</form>";
                     }
                 }
@@ -180,8 +180,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
                         echo "<form method='post' class='exercise-form'>";
                         $exercise = new User_Exercise($conn, $item['id']);
                         $is_featured = $exercise->is_featured($user_data);
-                        $is_mine = $exercise->is_mine($user_data);
-                        $exercise->print_control_exercise($conn, false, true);
+                        $exercise->print_control_exercise($conn, $is_featured, false, true);
                         echo "</form>";
                     }
                 }

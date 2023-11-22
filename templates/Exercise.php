@@ -190,7 +190,7 @@ class User_Exercise extends Exercise {
         echo render($replaces, "../templates/user_exercise.html");
     }
 
-    public function print_control_exercise($conn, $current=false, $construct=false){
+    public function print_control_exercise($conn, $is_featured=false, $current=false, $construct=false){
         if ($this->description == ""){
             $description = "Нет описания";
         }else{
@@ -212,6 +212,12 @@ class User_Exercise extends Exercise {
         if (!$construct && !$current && $this->reps > 0)
             $inp =  '<div class="exercise-item__repetitions"><p class="exercise-item__repetitions-score">'.$this->reps.'</p></div>';
 
+        if ($is_featured)
+            $button_featured = '<button class="exercise-item__favorite exercise-item__favorite--selected" name="featured" value="'.$this->get_id().'"><img src="../img/favorite_added.svg" alt=""></button>';
+        else
+            $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
+
+
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),
             "{{ name }}" => $this->name,
@@ -219,7 +225,8 @@ class User_Exercise extends Exercise {
             "{{ difficulty }}" => $this->difficulty,
             "{{ muscle }}" => $muscle_list,
             "{{ description }}" => $description,
-            "{{ input }}" => $inp
+            "{{ input }}" => $inp,
+            "{{ button_featured }}" => $button_featured
         );
         echo render($replaces, "../templates/control_exercise.html");
     }
