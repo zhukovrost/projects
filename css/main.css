@@ -2240,10 +2240,6 @@
     height: 75vh;
 }
 
-.session-exercises .exercise-item__repetitions{
-    background-color: transparent;
-    border: none;
-}
 
 .session-exercises__info-cover{
     display: flex;

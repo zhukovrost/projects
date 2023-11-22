@@ -474,6 +474,7 @@ body {
 .exercise-item__favorite{
     background-color: transparent;
     box-shadow: none;
+    margin-left: 5px;
 }
 
 .exercise-item__favorite:hover{
