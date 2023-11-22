@@ -76,10 +76,13 @@ class User {
         return $this->sportsmen;
     }
     public function get_sportsmen_advanced($conn){
-        $return_val = array();
+        $return_val = array(); // Initialize an empty array to store advanced sportsmen data
+
+        // Iterate through the list of sportsmen using the get_sportsmen() method
         foreach ($this->get_sportsmen() as $sportsman)
-            array_push($return_val, new User($conn, $sportsman));
-        return $return_val;
+            array_push($return_val, new User($conn, $sportsman)); // Create a new User object for each sportsman using the provided database connection ($conn)
+
+        return $return_val; // Return an array containing advanced User objects for each sportsman
     }
 
     public function __construct($conn, $id=-1, $auth=false){
@@ -378,17 +381,6 @@ class User {
             array_splice($this->featured_exercises, $index, 1);
         }else{
             array_push($this->featured_exercises, $exercise_id);
-        }
-
-        $this->update($conn);
-    }
-
-    public function change_featured_workouts($conn, $workout_id){
-        $index = array_search($workout_id, $this->featured_workouts);
-        if (is_numeric($index)) {
-            array_splice($this->featured_workouts, $index, 1);
-        }else{
-            array_push($this->featured_workouts, $workout_id);
         }
 
         $this->update($conn);
