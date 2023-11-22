@@ -217,7 +217,7 @@ class User_Exercise extends Exercise {
             else
                 $button_featured = '<button class="exercise-item__favorite" name="featured" value="'.$this->get_id().'"><img src="../img/favorite.svg" alt=""></button>';
         else
-            $button_featured = ';';
+            $button_featured = '';
 
         $replaces = array(
             "{{ image }}" => $this->get_image($conn),

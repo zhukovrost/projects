@@ -60,7 +60,8 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
 					<h1 class="last-trainings__title">Последние тренировки</h1>
 					<div class="last-trainings__content">
                         <?php if (count($done_workouts) != 0){
-                            foreach ($done_workouts as $done_workout) { $done_workout->set_muscles(); ?>
+                            $reversedDoneWorkouts = array_reverse($done_workouts);
+                            foreach ($reversedDoneWorkouts as $done_workout) { $done_workout->set_muscles(); ?>
 						    <!-- Item -->
                             <section class="last-trainings__card">
                                 <!-- Left part of last exercise item -->
@@ -81,7 +82,7 @@ $done_workouts = $user->get_control_workouts($conn, NULL, 1);
                                     <!-- Muscle groups count of training -->
                                     <div class="last-trainings__item">
                                     <img class="last-trainings__item-img" src="../img/cards.svg" alt="">
-                                    <p class="last-trainings__item-text"><span><?php echo $done_workout->get_groups_amount(); ?></span> группы мышц</p>
+                                    <p class="last-trainings__item-text"><span><?php echo $done_workout->get_groups_amount() - 1; ?></span> группы мышц</p>
                                     </div>
                                     <!-- Button 'Подробнее' for more info about exercise -->
                                     <div class="last-trainings__item">

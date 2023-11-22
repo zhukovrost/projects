@@ -121,10 +121,10 @@ if (isset($_POST['log'])){
 
 
     <script>
-        // profile inputs
+        // profile type inputs
         let regProfileInputsCheked = document.querySelectorAll('.reg-form__profile-input');
 
-        // localstorage data (all values of registrtion)
+        // get localstorage data (all values of registrtion)
         if(localStorage.getItem('regName')){
             document.querySelector('.reg-form__input[name="reg_name"]').value = localStorage.getItem('regName');
         }
@@ -148,19 +148,19 @@ if (isset($_POST['log'])){
             document.querySelector('.reg-form__input[name="reg_password"]').value = localStorage.getItem('regPassword');
         }
 
-        // Registration checks
+        // checking that the name contains only letters
         document.querySelector('.reg-form__input[name="reg_name"]').addEventListener('input', function() {
-            this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
+            this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, ''); // if the value is not a letter, then we change it to an empty string
             localStorage.setItem('regName', this.value);
         });
 
+        // checking that the surname contains only letters
         document.querySelector('.reg-form__input[name="reg_surname"]').addEventListener('input', function() {
-            this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, '');
+            this.value = this.value.replace(/[^А-Яа-яЁёA-Za-z]/g, ''); // if the value is not a letter, then we change it to an empty string
             localStorage.setItem('regSurname', this.value);
         });
 
-        const containsLetters = /^.*[a-zA-Z]+.*$/;
-
+        // 
         document.querySelector('.reg-form__input[name="reg_login"]').addEventListener('input', function() {
             localStorage.setItem('regLogin', this.value);
         });
@@ -226,10 +226,6 @@ if (isset($_POST['log'])){
         else{
             localStorage.setItem('SwitchRegLogButton', 'log');
         }
-
-        
     </script>
-    <!-- Registration tests -->
-    
 </body>
 </html>
