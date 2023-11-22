@@ -161,12 +161,14 @@ if ($is_valid1 && $is_valid2){
     <?php include "../templates/footer.html" ?>
 
     <script>
+        // blocks of comarison
         let FirstUserAddPopup = document.querySelector('.popup-exercise--user-first');
         let SecondUserAddPopup = document.querySelector('.popup-exercise--user-second');
 
         let userAddButtonFirst = document.querySelector('.comparison-block__add-button--first');
         let userAddButtonSecond = document.querySelector('.comparison-block__add-button--second');
 
+        // event listeners for add buttons(if click open popup windows)
         if(userAddButtonFirst){
             userAddButtonFirst.addEventListener('click', function(){
                 FirstUserAddPopup.classList.add("open");
@@ -179,6 +181,7 @@ if ($is_valid1 && $is_valid2){
         }
         
 
+        // close popup windows
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){
@@ -216,7 +219,7 @@ if ($is_valid1 && $is_valid2){
         }
 
 
-		//Difficult
+		//Difficult for exercises
 		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
 		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 

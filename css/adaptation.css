@@ -379,6 +379,41 @@
 
 
 @media (max-width: 1700px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 30px 60px 20px;
+	}
+
+	.reg-form__input{
+		font-size: 21px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 27px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 22px;
+	}
+
+	.reg-form__profile-input{
+		width: 18px;
+		height: 18px;
+	}
+
+	.reg-form__submit{
+		font-size: 25px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 23px;
+	}
+
+	/* =========================== */
+
 	/* =============COACH PAGE ============= */
 
 	.coach-page .staff-block{
@@ -950,6 +985,46 @@
 
 
 @media (max-width: 1600px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 50px 10px;
+	}
+
+	.reg-form__input{
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 26px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 21px;
+	}
+
+	.reg-form__profile-input{
+		width: 16px;
+		height: 16px;
+	}
+
+	.reg-form__submit{
+		font-size: 24px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 22px;
+	}
+
+	.log-reg__title{
+		font-size: 37px;
+	}
+
+	/* =========================== */
+
+
 	/* =========USERS COMPARISON PAGE========= */
 
 	.user-comparison .staff-block__title{
@@ -1439,6 +1514,11 @@
 
 	/* =========WORKOUT CONSTRUCTOR PAGE========= */
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 22px;
+		padding: 5px 30px;
+	}
+
 	.c-workout .container{
 		max-width: 90%;
 	}
@@ -1658,6 +1738,46 @@
 
 
 @media (max-width: 1500px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 40px 10px;
+	}
+
+	.reg-form__input{
+		font-size: 19px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 25px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 20px;
+	}
+
+	.reg-form__profile-input{
+		width: 16px;
+		height: 16px;
+	}
+
+	.reg-form__submit{
+		font-size: 23px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 21px;
+	}
+
+	.log-reg__title{
+		font-size: 35px;
+	}
+
+	/* =========================== */
+
+
 	/* =========USERS COMPARISON PAGE========= */
 
 	.user-comparison .staff-block__title{
@@ -2120,6 +2240,11 @@
 		font-size: 23px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 22px;
+		padding: 5px 30px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 19px;
 	}
@@ -2275,6 +2400,15 @@
 
 	.my-program .container{
 		max-width: 90%;
+	}
+
+	.popup-exercise__program-add .popup-exercise__content{
+		flex-direction: column;
+		padding: 50px 20px;
+	}
+
+	.popup-exercise__program-add .popup-exercise__content-item{
+		margin-bottom: 10px;
 	}
 
 	.day-workouts__slide .day-workouts__card-name{
@@ -2451,6 +2585,51 @@
 
 
 @media (max-width: 1400px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 30px 10px;
+	}
+
+	.reg-form__input{
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 24px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 19px;
+	}
+
+	.reg-form__profile-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.reg-form__submit{
+		font-size: 22px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 20px;
+	}
+
+	.log-reg__title{
+		font-size: 33px;
+	}
+
+	.log-reg__switch-button{
+		font-size: 27px;
+		padding: 8px 35px;
+	}
+
+	/* =========================== */
+
+
 	/* =========USERS COMPARISON PAGE========= */
 
 	.user-comparison .staff-block__title{
@@ -2819,7 +2998,6 @@
 
 
 	/* =========WORKOUT CONSTRUCTOR PAGE========= */
-
 	.workouts-card--c{
 		width: 55%;
 	}
@@ -2881,6 +3059,16 @@
 	.workouts-card--c .exercise-item__repetitions-title{
 		font-size: 23px;
 	}
+
+	.c-workout .exercise-item__repetitions{
+		font-size: 20px;
+		padding: 5px 20px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 20px;
+	}
+
 
 	.workouts-card--c .workouts-card__item{
 		font-size: 19px;
@@ -3155,6 +3343,10 @@
 		width: 80%;
 	}
 
+	.session-exercises .exercise-item__input{
+		font-size: 23px;
+	}
+
 	/* ==================================== */
 
 	/* ============WORKOUT PAGE============ */
@@ -3279,6 +3471,51 @@
 
 
 @media (max-width: 1300px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 30px 10px;
+	}
+
+	.reg-form__input{
+		font-size: 17px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 23px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 18px;
+	}
+
+	.reg-form__profile-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.reg-form__submit{
+		font-size: 21px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 19px;
+	}
+
+	.log-reg__title{
+		font-size: 31px;
+	}
+
+	.log-reg__switch-button{
+		font-size: 25px;
+		padding: 8px 35px;
+	}
+
+	/* =========================== */
+
+
 	/* =========USERS COMPARISON PAGE========= */
 
 	.user-comparison .staff-block__title{
@@ -3826,6 +4063,7 @@
 
 	.c-program__duration-date-text{
 		font-size: 15px;
+		margin-left: 20px;
 	}
 
 	.c-program__duration-button{
@@ -4116,6 +4354,16 @@
 		width: 85%;
 	}
 
+	.session-exercises .exercise-item__repetitions-score{
+		display: flex;
+		align-items: center;
+	}
+
+	.session-exercises .exercise-item__input{
+		font-size: 21px;
+		width: 80%;
+	}
+
 	/* ==================================== */
 
 
@@ -4233,8 +4481,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 32%;
-		width: 33vw;
+		left: 35%;
+		width: 30vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -4256,6 +4504,51 @@
 
 
 @media (max-width: 1200px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 30px 10px;
+	}
+
+	.reg-form__input{
+		font-size: 17px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 22px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 18px;
+	}
+
+	.reg-form__profile-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.reg-form__submit{
+		font-size: 21px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 19px;
+	}
+
+	.log-reg__title{
+		font-size: 29px;
+	}
+
+	.log-reg__switch-button{
+		font-size: 23px;
+		padding: 8px 35px;
+	}
+
+	/* =========================== */
+
+	
 	/* =========USERS COMPARISON PAGE========= */
 
 	.user-comparison .comparison-block{
@@ -4863,8 +5156,12 @@
 
 	.c-program .day-workouts{
 		flex-direction: column;
-		width: 70%;
+		width: 80%;
 		margin: 50px auto 0;
+	}
+
+	.day-workouts__card-content{
+		max-width: 18vw;
 	}
 
 	.day-workouts__block{
@@ -5025,6 +5322,15 @@
 		font-size: 21px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 19px;
+		padding: 5px 15px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 19px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 18px;
 	}
@@ -5106,6 +5412,16 @@
 
 
 	/* ===========EXERCISES LIST PAGES=========== */
+
+	.popup-exercise__content{
+		width: 90%;
+		padding: 40px 60px;
+	}
+
+	.popup-exercise__info-input{
+		font-size: 23px;
+		max-width: 35%;
+	}
 
 	.exercises-nav__item{
 		font-size: 17px;
@@ -5461,7 +5777,12 @@
 	}
 
 	.workouts-block .last-trainings__item{
-		font-size: 20px;
+		font-size: 19px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 18px;
+		padding: 3px 7px;
 	}
 
 	.workouts-block .last-trainings__item-img{
@@ -5512,7 +5833,57 @@
 
 
 @media (max-width: 1100px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 20px 10px;
+	}
+
+	.reg-form__input{
+		font-size: 17px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 22px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 18px;
+	}
+
+	.reg-form__profile-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.reg-form__submit{
+		font-size: 21px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 19px;
+	}
+
+	.log-reg__title{
+		font-size: 27px;
+	}
+
+	.log-reg__switch-button{
+		font-size: 21px;
+		padding: 8px 35px;
+	}
+
+	/* =========================== */
+
+
 	/* =========USERS COMPARISON PAGE========= */
+
+	.comparison-block__add-button{
+		font-size: 23px;
+		padding: 10px 20px;
+	}
 
 	.user-comparison .comparison-block{
 		padding: 60px 20px 30px;
@@ -5741,6 +6112,14 @@
 
 
 	/* ==============DOCTOR PAGE============== */
+
+	.popup-exercise--edit-medicine .popup-exercise__content{
+		flex-direction: column;
+	}
+
+	.popup-exercise--edit-medicine .popup-exercise__input-item{
+		margin: 3px 0px;
+	}
 
 	.doctor-page .staff-block__title{
 		font-size: 15px;
@@ -5984,6 +6363,10 @@
 		margin: 50px auto 0;
 	}
 
+	.day-workouts__card-content{
+		max-width: 17vw;
+	}
+
 	.day-workouts__block{
 		display: none;
 	}
@@ -6145,7 +6528,7 @@
 	/* ===========EXERCISES LIST PAGES=========== */
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 50px;
+		padding: 40px 50px;
 	}
 
 	.popup-exercise__info{
@@ -6443,8 +6826,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 28%;
-		width: 40vw;
+		left: 33%;
+		width: 36vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -6466,6 +6849,55 @@
 
 
 @media (max-width: 1000px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 20px 10px;
+	}
+
+	.reg-form{
+		margin-top: 10px;
+	}
+
+	.reg-form__input{
+		font-size: 17px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 21px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 18px;
+	}
+
+	.reg-form__profile-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.reg-form__submit{
+		font-size: 20px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 18px;
+	}
+
+	.log-reg__title{
+		font-size: 25px;
+	}
+
+	.log-reg__switch-button{
+		font-size: 20px;
+		padding: 8px 35px;
+	}
+
+	/* =========================== */
+
+
 	/* =========USERS COMPARISON PAGE========= */
 
 	.user-comparison .container{
@@ -7177,6 +7609,10 @@
 		margin: 50px auto 0;
 	}
 
+	.day-workouts__card-content{
+		max-width: 20vw;
+	}
+
 	.day-workouts__block{
 		display: none;
 	}
@@ -7351,6 +7787,15 @@
 		font-size: 19px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 18px;
+		padding: 5px 15px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 18px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 17px;
 	}
@@ -7439,7 +7884,7 @@
 	/* ===========EXERCISES LIST PAGES=========== */
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 40px;
+		padding: 40px 40px;
 	}
 
 	.popup-exercise__info{
@@ -7892,11 +8337,20 @@
 	}
 
 	.workouts-block .last-trainings__title{
-		font-size: 18px;
+		font-size: 16px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 16px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 20px;
 	}
 
 	.workouts-block .last-trainings__item{
-		font-size: 19px;
+		font-size: 17px;
 	}
 
 	.workouts-block .last-trainings__item-img{
@@ -7934,8 +8388,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 26%;
-		width: 44vw;
+		left: 30%;
+		width: 36vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -7957,6 +8411,55 @@
 
 
 @media (max-width: 900px){
+	/* =====REGISTRATION PAGE===== */
+
+	.log-reg__content{
+		padding: 20px 10px 10px;
+	}
+
+	.reg-form{
+		margin-top: 10px;
+	}
+
+	.reg-form__input{
+		font-size: 16px;
+		margin-bottom: 10px;
+	}
+
+	.reg-form__profile-title{
+		font-size: 20px;
+	}
+
+	.reg-form__profile-label{
+		font-size: 17px;
+	}
+
+	.reg-form__profile-input{
+		width: 15px;
+		height: 15px;
+	}
+
+	.reg-form__submit{
+		font-size: 19px;
+		padding: 8px 25px;
+	}
+
+	.reg-form__warning{
+		font-size: 17px;
+	}
+
+	.log-reg__title{
+		font-size: 24px;
+	}
+
+	.log-reg__switch-button{
+		font-size: 19px;
+		padding: 8px 35px;
+	}
+
+	/* =========================== */
+
+
 	/* ============COACH PAGE============ */
 
 	.popup-exercise--links-add .popup-exercise__content{
@@ -8606,6 +9109,15 @@
 		font-size: 22px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 18px;
+		padding: 5px 20px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 18px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 20px;
 	}
@@ -8701,7 +9213,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 30px;
+		padding: 40px 30px;
 	}
 
 	.popup-exercise__info{
@@ -9189,11 +9701,20 @@
 	}
 
 	.workouts-block .last-trainings__title{
-		font-size: 17px;
+		font-size: 16px;
 	}
 
 	.workouts-block .last-trainings__item{
-		font-size: 18px;
+		font-size: 14px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 14px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 18px;
 	}
 
 	.workouts-block .last-trainings__item-img{
@@ -9240,8 +9761,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 24%;
-		width: 46vw;
+		left: 28%;
+		width: 40vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -9261,17 +9782,32 @@
 	}
 
 
-	.other-cover .main-header{
+	.welcome-page .main-header{
 		display: flex;
 	}
 
-	.other-cover .sub-header{
+	.welcome-page .sub-header{
 		display: none;
+	}
+
+
+
+	.c-program .day-workouts{
+		flex-direction: column;
+		width: 100%;
+		margin: 40px auto 0;
+	}
+
+	.day-workouts__card-content{
+		max-width: 22vw;
 	}
 }
 
 
 @media (max-width: 800px){
+
+
+
 	/* ======COMARISON BLOCK====== */
 
 	.comparison-block__add-button{
@@ -9299,7 +9835,7 @@
 	}
 
 	.popup-exercise--goals-add .popup-exercise__content{
-		padding: 30px 25px;
+		padding: 40px 25px;
 	}
 
 	.popup-exercise--goals-add .popup-exercise__input-item{
@@ -9617,7 +10153,7 @@
 		font-size: 13px;
 	}
 
-	.user-block .friends-block{
+	.friends-block__cover{
 		display: none;
 	}
 
@@ -9817,6 +10353,10 @@
 		margin: 40px auto 0;
 	}
 
+	.day-workouts__card-content{
+		max-width: 22vw;
+	}
+
 	.day-workouts__block{
 		display: none;
 	}
@@ -9843,7 +10383,7 @@
 
 	.c-program .workouts-card__item span{
 		font-size: 15px;
-		padding: 1px 5px;
+		padding: 1px 2px;
 		margin-left: 5px;
 	}
 
@@ -9934,7 +10474,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 20px;
+		padding: 40px 20px;
 	}
 
 	.popup-exercise__info{
@@ -10583,15 +11123,15 @@
 	/* ==================LOGIN PAGE================== */
 
 	.log-reg__content{
-		padding: 40px 60px 30px;
+		padding: 20px 40px 10px;
 	}
 
 	.log-reg__title{
-		font-size: 35px;
+		font-size: 26px;
 	}
 
 	.log-reg__switch-button{
-		font-size: 25px;
+		font-size: 22px;
 	}
 
 	.log-form__input{
@@ -10611,8 +11151,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 22%;
-		width: 50vw;
+		left: 29%;
+		width: 40vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -10750,7 +11290,7 @@
 	/* ============COACH PAGE============ */
 
 	.popup-exercise--goals-add .popup-exercise__content{
-		padding: 30px 25px;
+		padding: 40px 25px;
 	}
 
 	.popup-exercise--goals-add .popup-exercise__input-item{
@@ -11269,6 +11809,10 @@
 		margin: 30px auto 0;
 	}
 
+	.day-workouts__card-content{
+		max-width: 22vw;
+	}
+
 	.day-workouts__block{
 		display: none;
 	}
@@ -11286,16 +11830,16 @@
 	}
 
 	.c-program .day-workouts__card-name{
-		font-size: 13px;
+		font-size: 12px;
 	}
 
 	.c-program .workouts-card__item{
-		font-size: 13px;
+		font-size: 12px;
 	}
 
 	.c-program .workouts-card__item span{
-		font-size: 13px;
-		padding: 1px 3px;
+		font-size: 12px;
+		padding: 1px 2px;
 		margin-left: 3px;
 	}
 
@@ -11449,6 +11993,15 @@
 		font-size: 21px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 17px;
+		padding: 5px 15px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 17px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 19px;
 	}
@@ -11543,7 +12096,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 10px;
+		padding: 40px 10px;
 	}
 
 	.popup-exercise__info{
@@ -11940,6 +12493,7 @@
 
 	/* ============WORKOUT PAGE============ */
 
+
 	.workouts-block .workouts-swiper{
 		width: 100%;
 		margin-bottom: 20px;
@@ -11980,11 +12534,16 @@
 	}
 
 	.workouts-block .exercise-item__repetitions{
-		padding: 5px 30px;
+		padding: 5px 20px;
+		font-size: 21px;
 	}
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 17px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 20px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -12107,8 +12666,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 18%;
-		width: 55vw;
+		left: 29%;
+		width: 42vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -12250,7 +12809,7 @@
 	/* ============COACH PAGE============ */
 
 	.popup-exercise--goals-add .popup-exercise__content{
-		padding: 30px 25px;
+		padding: 40px 25px;
 	}
 
 	.popup-exercise--goals-add .popup-exercise__input-item{
@@ -12554,6 +13113,10 @@
 
 
 	/* ==============PROFILE PAGE============== */
+
+	.user-block .friends-block__header-title{
+		font-size: 12px;
+	}
 
 	.popup-exercise__content--user-info .popup-user__info-item-name{
 		font-size: 18px;
@@ -12883,6 +13446,11 @@
 		margin: 20px auto 0;
 	}
 
+	.day-workouts__card-content{
+		max-width: 22vw;
+	}
+
+
 	.day-workouts__block{
 		display: none;
 	}
@@ -13079,6 +13647,15 @@
 
 	.workouts-card--c .exercise-item__repetitions-title{
 		font-size: 19px;
+	}
+
+	.c-workout .exercise-item__repetitions{
+		font-size: 16px;
+		padding: 5px 12px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 16px;
 	}
 
 	.workouts-card--c .workouts-card__item{
@@ -13513,7 +14090,7 @@
 	}
 
 	.workouts-block .workouts-swiper{
-		width: 110%;
+		width: 100%;
 		margin-bottom: 20px;
 	}
 
@@ -13557,6 +14134,10 @@
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 15px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 18px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -13620,6 +14201,19 @@
 	.workouts-block .day-workouts__card-button img{
 		width: 16px;
 		height: 16px;
+	}
+
+	.workouts-block .last-trainings__item{
+		font-size: 15px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 14px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 18px;
 	}
 
 	/* ==================================== */
@@ -13692,8 +14286,8 @@
 
 	/* ================WELCOME PAGE================ */
 	.welcome-block-1__hand-img{
-		left: 12%;
-		width: 65vw;
+		left: 26%;
+		width: 44vw;
 	}
 
 	.welcome-block-1__biceps-right{
@@ -14026,6 +14620,10 @@
 		margin-right: 15px;
 	}
 
+	.user-block .friends-block__header-title{
+		font-size: 10px;
+	}
+
 	.coach-page .friends-block__header-title{
 		font-size: 15px;
 	}
@@ -14062,6 +14660,14 @@
 
 	
 	/* ==============DOCTOR PAGE============== */
+
+	.popup-exercise--edit-medicine .popup-exercise__input-item{
+		font-size: 18px;
+	}
+
+	.popup-exercise--edit-medicine .popup-exercise__submit-button{
+		font-size: 16px;
+	}
 
 	.doctor-page .staff-block__title{
 		font-size: 15px;
@@ -14721,6 +15327,15 @@
 		font-size: 17px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 15px;
+		padding: 5px 12px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 15px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 15px;
 	}
@@ -14815,7 +15430,7 @@
 
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 10px;
+		padding: 40px 10px;
 	}
 
 	.popup-exercise__info{
@@ -15428,7 +16043,7 @@
 	}
 
 	.workouts-block .workouts-swiper{
-		width: 110%;
+		width: 100%;
 		margin-bottom: 10px;
 	}
 
@@ -15476,6 +16091,10 @@
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 13px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 14px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -15532,6 +16151,15 @@
 
 	.workouts-block .last-trainings__item-img{
 		width: 12px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 12px;
+		padding: 3px 7px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 16px;
 	}
 
 	.workouts-block .workout-other__button{
@@ -15976,6 +16604,15 @@
 		margin-right: 15px;
 	}
 
+	.user-block .friends-block__header-title{
+		font-size: 9px;
+	}
+
+	.user-block .friends-block__header-button{
+		width: 20px;
+		height: 20px;
+	}
+
 	.coach-page .friends-block__header-title{
 		font-size: 14px;
 	}
@@ -16012,6 +16649,14 @@
 
 
 	/* ==============DOCTOR PAGE============== */
+
+	.popup-exercise--edit-medicine .popup-exercise__input-item{
+		font-size: 15px;
+	}
+
+	.popup-exercise--edit-medicine .popup-exercise__submit-button{
+		font-size: 14px;
+	}
 
 	.doctor-page .staff-block__medicines-none{
 		font-size: 16px;
@@ -16514,9 +17159,9 @@
 	}
 
 	.c-program .workouts-card__item span{
-		font-size: 9px;
+		font-size: 8px;
 		padding: 1px 2px;
-		margin-left: 2px;
+		margin-left: 1px;
 	}
 
 	.c-program .day-workouts__card-day-off{
@@ -16688,6 +17333,15 @@
 		font-size: 14px;
 	}
 
+	.c-workout .exercise-item__repetitions{
+		font-size: 13px;
+		padding: 3px 8px;
+	}
+
+	.c-workout .exercise-item__repetitions-score{
+		font-size: 13px;
+	}
+
 	.workouts-card--c .workouts-card__item{
 		font-size: 13px;
 	}
@@ -16783,7 +17437,7 @@
 	/* ===========EXERCISES LIST PAGES=========== */
 	.popup-exercise__content{
 		width: 90%;
-		padding: 30px 5px;
+		padding: 40px 5px;
 	}
 
 	.popup-exercise__info{
@@ -17393,7 +18047,7 @@
 	}
 
 	.workouts-block .workouts-swiper{
-		width: 110%;
+		width: 100%;
 		margin-bottom: 8px;
 	}
 
@@ -17437,6 +18091,10 @@
 
 	.workouts-block .exercise-item__repetitions-title{
 		font-size: 11px;
+	}
+
+	.workouts-block .exercise-item__repetitions-score{
+		font-size: 12px;
 	}
 
 	.workouts-block .exercise-item__info-btn{
@@ -17493,6 +18151,15 @@
 
 	.workouts-block .last-trainings__item-img{
 		width: 10px;
+	}
+
+	.workouts-block .last-trainings__item-button{
+		font-size: 10px;
+		padding: 2px 5px;
+	}
+
+	.workouts-block .last-trainings__item-button img{
+		width: 12px;
 	}
 
 	.workouts-block .workout-other__button{

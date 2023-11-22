@@ -141,11 +141,11 @@
 .log-reg{
     position: relative;
     background-image: url('../img/background_reg.png');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     background-position: top center;
     backdrop-filter: blur(2px);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .log-reg .container{
@@ -179,6 +179,7 @@
     border-radius: 10px;
     border: 1px solid rgba(161, 161, 161, 1);
     padding: 50px 80px 30px;
+    margin-top: 17vh;
 }
 
 /* title */
@@ -480,6 +481,10 @@
 /* ==============MY PROGRAM PAGE============== */
 .my-program .container{
     padding-top: 50px;
+}
+
+.popup-exercise__program-add{
+    padding: 50px;
 }
 
 
@@ -2089,6 +2094,8 @@
 }
 
 .c-workout__info-title{
+    display: flex;
+    align-items: center;
     font-size: 33px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 400;
@@ -2329,6 +2336,10 @@
     width: 100%;
 }
 
+.exercise-item__repetitions-score{
+    text-align: center;
+}
+
 .session-exercises__slide .exercise-item__repetitions-score{
     background-color: transparent;
     border: none;
@@ -2358,7 +2369,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 60px;
-    margin: 0 auto;
+    margin: 10px auto 0px;
     width: 70%;
     background-color: #FAFAFA;
     border-radius: 3px;
@@ -2681,10 +2692,14 @@
 
 .staff-block__item-cover{
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 .staff-block__goal-text{
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     margin-right: 5px;
 }
 
@@ -2744,6 +2759,9 @@
 }
 
 .staff-block__competition-text{
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     font-size: 21px;
     margin-right: 10px;
 }
@@ -2827,12 +2845,25 @@
     align-items: center;
 }
 
+.staff-block__medicine-cover a{
+    min-width: 40px;
+    width: 100%;
+}
+
 .staff-block__medicine-name{
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
     font-size: 23px;
     margin-right: 15px;
 }
 
 .staff-block__medicine-dose{
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: center;
     background-color: #ECECEC;
     height: fit-content;
     padding: 5px 10px;
@@ -2879,6 +2910,7 @@
 
 /* ========FOR COACH======== */
 .staff-block__item-name{
+    position: relative;
     display: flex;
     align-items: center;
     margin-right: 30px;
@@ -2889,6 +2921,8 @@
 }
 
 .staff-block__item-button{
+    min-width: 40px;
+    height: fit-content;
     width: fit-content;
     padding: 5px;
     margin: 0 5px;
@@ -2901,6 +2935,7 @@
 }
 
 .staff-block__goal-button--text{
+    text-align: center;
     color: #5a5a5a;
     padding: 5px;
     margin: 0 5px;

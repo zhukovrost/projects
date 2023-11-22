@@ -424,6 +424,7 @@ body {
 }
 
 .exercise-item__repetitions-title{
+    text-align: center;
     font-size: 25px;
 }
 
@@ -692,6 +693,7 @@ body {
 
 /* Workout title */
 .day-workouts__card-name{
+    text-align: center;
     font-size: 21px;
     font-weight: 600;
 }
@@ -894,6 +896,14 @@ body {
     color: rgba(130, 130, 130, 1);
 }
 
+.workouts-block .container .last-trainings__title{
+    top: 5%;
+}
+
+.staff-cover .last-trainings__title{
+    top: 5%;
+}
+
 /* Trainings content */
 .last-trainings__content{
     position: relative;
@@ -1027,7 +1037,7 @@ body {
     text-align: center;
     font-size: 22px;
     background-color: rgba(236, 236, 236, 1);
-    padding: 1px 7px;
+    padding: 1px 3px;
     box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.25);
     float: right;
     margin-left: 10px;
@@ -1148,7 +1158,7 @@ body {
     align-items: center;
     background-color: #ffffff;
     border-radius: 5px;
-    padding: 30px 70px;
+    padding: 40px 70px;
 }
 
 .popup-exercise__content .exercise-item{

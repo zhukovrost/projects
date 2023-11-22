@@ -1,5 +1,7 @@
 <?php
 
+
+
 class User {
     private $id;
     public $login='';
@@ -190,16 +192,19 @@ class User {
 
     public function authenticate($conn, $login, $password){
         $error_array = array(
-            "log_conn_error" => false,
-            "log_fill_all_input_fields" => false,
-            "log_incorrect_login_or_password" => false,
             "reg_fill_all_input_fields" => false,
             "reg_login_is_used" => false,
+            "reg_login_too_short" => false,
             "reg_passwords_are_not_the_same" => false,
+            "reg_password_not_fit" => false,
+            "reg_password_too_short" => false,
             "reg_conn_error" => false,
             "reg_success" => false,
             "too_long_string" => false,
-            "adding_stats" => false
+            "adding_stats" => false,
+            "log_conn_error" => false,
+            "log_fill_all_input_fields" => false,
+            "log_incorrect_login_or_password" => false
         );
 
         $login = trim($login);
@@ -234,16 +239,19 @@ class User {
     {
         # ---------- collecting errors ---------------
         $error_array = array(
-            "log_conn_error" => false,
-            "log_fill_all_input_fields" => false,
-            "log_incorrect_login_or_password" => false,
             "reg_fill_all_input_fields" => false,
             "reg_login_is_used" => false,
+            "reg_login_too_short" => false,
             "reg_passwords_are_not_the_same" => false,
+            "reg_password_not_fit" => false,
+            "reg_password_too_short" => false,
             "reg_conn_error" => false,
             "reg_success" => false,
             "too_long_string" => false,
-            "adding_stats" => false
+            "adding_stats" => false,
+            "log_conn_error" => false,
+            "log_fill_all_input_fields" => false,
+            "log_incorrect_login_or_password" => false
         );
         # --------- deleting spaces --------------
 
@@ -257,6 +265,18 @@ class User {
 
         if ($login == '' || $password == '' || $name == '' || $surname == '' || $status == NULL) { # checking blank fields
             $error_array['reg_fill_all_input_fields'] = true;
+            return $error_array;
+        }
+        if (mb_strlen($login) < 3){
+            $error_array['reg_login_too_short'] = true;
+            return $error_array;
+        }
+        if (mb_strlen($password) < 8){
+            $error_array['reg_password_too_short'] = true;
+            return $error_array;
+        }
+        if (preg_match('/^[^\p{L}]+$/u', $password)){
+            $error_array['reg_password_not_fit'] = true;
             return $error_array;
         }
         if ($password != $password2) { # checking password equality

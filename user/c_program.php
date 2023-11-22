@@ -213,6 +213,45 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-element-bundle.min.js"></script>
 	<script>
+        let programAddButton = document.querySelector('.c-program__duration-button');
+        let dateWokoutInput = document.querySelector('.c-program__duration-date-start');
+
+        document.querySelector('.c-program__duration-weeks').addEventListener('input', function(){
+            if(this.value.length == 0){
+                programAddButton.type = 'button';
+            }
+            else{
+                programAddButton.type = 'submit';
+            }
+
+            if (this.value > 16) {
+                this.value = 16;
+            }
+        });
+
+        programAddButton.addEventListener('click', function(){
+            if (!dateWokoutInput.value) {
+				// set today's date
+				const todayDate = new Date();
+				let year = todayDate.getFullYear();
+				let month = todayDate.getMonth() + 1;
+				let day = todayDate.getDate();
+
+				if (month < 10) {
+					month = `0${month}`;
+				}
+				if (day < 10) {
+					day = `0${day}`;
+				}
+
+				const formattedDate = `${year}-${month}-${day}`;
+
+				// set today's date in input
+				dateWokoutInput.value = formattedDate;
+			}
+        });
+
+
 		// Workout items
         let workoutItemArr = document.querySelectorAll('.day-workouts__card-content');
 
@@ -253,7 +292,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 		}
 
 
-
+        // buttons to close popup windows
         const closeBtn = document.querySelectorAll('.popup-exercise__close-button');
 		for(let i = 0; i < closeBtn.length; i++){
 			closeBtn[i].addEventListener('click', function(){
@@ -270,7 +309,9 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){
 		document.querySelector('.popup-exercise__content').addEventListener('click', event => {
 			event.isClickWithInModal = true;
 		});
-
 	</script>
+
+    <!-- Test for clear workout buttons -->
+    <!-- <script src="../tests/test_clear_program_contructor.js"></script> -->
 </body>
 </html>

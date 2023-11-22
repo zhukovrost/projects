@@ -141,7 +141,7 @@ if (isset($_POST["workout_to_fav"])){
         }
 
 
-        // Info slide items' spans width
+        // items' spans width for info slide
         let infoItemsSpans = document.querySelectorAll('.workouts-card__item span');
         let maxSpanWidth = 0;
 
@@ -153,7 +153,7 @@ if (isset($_POST["workout_to_fav"])){
             infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
         }
 
-        //Difficult
+        //Difficult for exercises
 		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
 		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
@@ -170,7 +170,7 @@ if (isset($_POST["workout_to_fav"])){
         }
 
 
-        // Timer
+        // Timer (set time for work and rest)
         let TimerEditButton = document.querySelector('.day-workouts__card-button--time');
         let TimerEditPopup = document.querySelector('.popup-exercise--timer-edit');
 
@@ -203,6 +203,17 @@ if (isset($_POST["workout_to_fav"])){
         let TimerEditInputs = document.querySelectorAll('.popup-exercise--timer-edit__item__input');
         let time = localStorage.getItem(`SpendWorkoutTime`);
 
+        for(let i = 0; i < TimerEditInputs.length; i++){
+            TimerEditInputs[i].addEventListener('input', function(){
+                if (this.value < 0) {
+					this.value = 0;
+				}
+                else if(this.value != 0 && this.value < 0.1){
+                    this.value = 0.1;
+                }
+            });
+        }
+
         let IntervalTimer = 0;
 
         if(localStorage.getItem(`SpendWorkoutTime`) && localStorage.getItem(`SpendWorkoutTime`) != -1){
@@ -223,10 +234,10 @@ if (isset($_POST["workout_to_fav"])){
         });
 
 
+        // Update value if timer
         function UpdateTime(){
-            console.log(1)
-            time++;
-            localStorage.setItem(`SpendWorkoutTime`, time);
+            time++; // add one second for timer
+            localStorage.setItem(`SpendWorkoutTime`, time); // set value of timer to localstorage
         }
     </script>
 </body>

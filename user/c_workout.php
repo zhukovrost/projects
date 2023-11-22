@@ -5,6 +5,10 @@ include "../templates/settings.php";
 $user_data->check_the_login();
 $flag = isset($_SESSION["workout"]);
 
+if (empty($_SESSION['workout']))
+    $_SESSION['workout'] = array();
+
+
 if (isset($_POST["week_days"])){
     $name = $_POST["name"];
     $loops = $_POST["loops"];
@@ -165,6 +169,16 @@ if (isset($_POST["week_days"])){
     <?php include "../templates/footer.html" ?>
 
 	<script>
+		let exerciseCardsArray = document.querySelectorAll('.exercise-item--workout');
+		let addWorkoutButton = document.querySelector('.c-workout__days-add');
+
+		if(exerciseCardsArray.length == 0){
+			addWorkoutButton.type = 'button';
+		}
+		else{
+			addWorkoutButton.type = 'submit';
+		}
+
         // Button to see exercise info
         let	InfoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
         let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
@@ -181,7 +195,7 @@ if (isset($_POST["week_days"])){
             });
         }
 
-		//Difficult
+		//Difficult of exercises
 		let difficultCountArr = document.querySelectorAll('.exercise-item__difficult-number');
 		let difficultBlockArr = document.querySelectorAll('.exercise-item__difficult');
 
@@ -209,12 +223,19 @@ if (isset($_POST["week_days"])){
             infoItemsSpans[i].style.cssText = `width: ${maxSpanWidth}px;`;
         }
 
-		// Button submit
+		// set name 'Без названия' if input == ''
 		let addToPragramButton = document.querySelector('.c-workout__days-add');
 		let workoutNameInput = document.querySelector('.c-workout__info-name');
 		addToPragramButton.addEventListener('click', function(){
 			if(workoutNameInput.value == ''){
 				workoutNameInput.value = "Без названия";
+			}
+		});
+
+
+		workoutNameInput.addEventListener('input', function() {
+			if (this.value.length > 16) {
+				this.value = this.value.slice(0, 16);
 			}
 		});
 

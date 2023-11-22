@@ -82,7 +82,7 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
 					</div>
 					<div class="c-workout__info-header-item">
 						<h1 class="c-workout__info-title">Дата:</h1>
-						<input class="c-workout__info-name" type="date" placeholder="Название тренировки" name="date">
+						<input class="c-workout__info-name" type="date" name="date">
 					</div>
 				</section>
 				<button class="button-text c-workout__days-add" type="submit"><p>Добавить тренировку</p> <img src="../img/add.svg" alt=""></button>
@@ -94,6 +94,8 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
 
     <?php include "../templates/footer.html" ?>
 	<script>
+
+
 		// Button to see exercise info
         let	InfoExerciseButton = document.querySelectorAll('.exercise-item__info-btn');
         let closeInfoExerciseButton = document.querySelectorAll('.exercise-item__info-close');
@@ -112,11 +114,38 @@ if (isset($_POST["name"]) && isset($_POST["date"])){
 
 
         // Button submit
-		let addToPragramButton = document.querySelector('.c-workout__days-add');
 		let workoutNameInput = document.querySelector('.c-workout__info-name');
+		let dateWokoutInput = document.querySelector('.c-workout__info-name[type=date]');
+		let addToPragramButton = document.querySelector('.c-workout__days-add');
+
+		let exerciseItemsArray = document.querySelectorAll('.exercise-item');
+		if(!exerciseItemsArray.length){
+			addToPragramButton.type = 'button';
+		}
+
+		// if values are empty and button is clicked
 		addToPragramButton.addEventListener('click', function(){
 			if(workoutNameInput.value == ''){
 				workoutNameInput.value = "Без названия";
+			}
+			if (!dateWokoutInput.value) {
+				// set today's date
+				const todayDate = new Date();
+				let year = todayDate.getFullYear();
+				let month = todayDate.getMonth() + 1;
+				let day = todayDate.getDate();
+
+				if (month < 10) {
+					month = `0${month}`;
+				}
+				if (day < 10) {
+					day = `0${day}`;
+				}
+
+				const formattedDate = `${year}-${month}-${day}`;
+
+				// set today's date in input
+				dateWokoutInput.value = formattedDate;
 			}
 		});
 
