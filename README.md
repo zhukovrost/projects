@@ -1,3 +1,4 @@
 # projects
-### Rostik and Vanya corporation
-sport
+
+## **Это старая версия проекта!!!**
+### Новую можно посмотреть на ветке *new_sport*
