@@ -1,4 +1,3 @@
 # projects
-### Rostik and Vanya corporation
-yep yep leight weight
-BOOOOOOOOOOOOOOOOOOOOOOOO
+
+### Здесь вы можете посмотреть мои старые проекты, они выложены на разных ветках.
