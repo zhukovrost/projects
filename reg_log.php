@@ -1,7 +1,6 @@
 <?php
-// 
-include "templates/func.php"; // Include functions file
-include "templates/settings.php"; // Include settings file
+require_once 'config/settings.php'; // Подключение файла с настройками
+require_once 'src/Helpers/func.php'; // Подключение файла с функциями
 
 // Redirect the user if already logged in
 $user_data->redirect_logged();
@@ -40,12 +39,12 @@ if (isset($_POST['log'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php inc_head("OpenDoor", true); // print head.php ?>
+<?php inc_head(0); // print head.php ?>
 <body class="log-reg">
     <div class="container">
         <!-- Log and reg logo -->
         <a href="index.php" class="header__item--logo reg-log__logo">
-            <img src="img/logo_reg_log.svg" alt="">
+            <img src="assets/img/logo_reg_log.svg" alt="">
             <p>Training</p>
         </a>
 
