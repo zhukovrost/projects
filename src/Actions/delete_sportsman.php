@@ -1,11 +1,10 @@
 <?php
+require_once '../../config/settings.php'; // Подключение файла с настройками
 require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение файла с функциями
- // Include functions file
-require_once BASE_PATH . 'config/settings.php'; // Подключение файла с настройками
- // Include settings file
+
 
 if (!$user_data->get_auth() || ($user_data->get_status() != "coach" && $user_data->get_status() != "doctor") || empty($_GET["user"]) || $_GET["user"] == ''){ // Check user authentication and status (coach or doctor) and presence of required parameters
-    header("Location: profile.php");
+    header("Location: ../Pages/profile.php");
 }
 // Define SQL queries to delete relationships based on the user's status
 $sql2 = "DELETE FROM user_to_coach WHERE coach=".$user_data->get_id()." AND user=".$_GET["user"];
@@ -18,13 +17,13 @@ switch ($user_data->get_status()){
     case "coach":
         $conn->query($sql2);
         $conn->query($sql4);
-        header("Location: coach.php");
+        header("Location: ../Pages/coach.php");
         break;
     case "doctor":
         $conn->query($sql1);
         $conn->query($sql3);
-        header("Location: doctor.php");
+        header("Location: ../Pages/doctor.php");
         break;
     default:
-        header("Location: profile.php");
+        header("Location: ../Pages/profile.php");
 }

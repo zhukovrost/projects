@@ -1,5 +1,6 @@
 <?php
 require_once '../../config/settings.php'; // Подключение файла с настройками
+require_once '../../config/settings.php'; // Подключение файла с настройками
 require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение файла с функциями
 
 // Redirect if the user is not a doctor
@@ -147,7 +148,7 @@ if ($is_selected){ // If a user is selected, fetch and process the doctor's data
                        if ($cnt_sportsmen > 4) // If there are more than 4 sportsmen, limit the count to 4
                            $cnt_sportsmen = 4;
                        for ($i = 0; $i < $cnt_sportsmen; $i++) { // Loop through the sportsmen (maximum of 4) and generate HTML elements ?>
-                           <a href="/doctor.php?user=<?php echo $sportsmen[$i]->get_id(); ?>" class="friends-block__item">
+                           <a href="doctor.php?user=<?php echo $sportsmen[$i]->get_id(); ?>" class="friends-block__item">
                                <img class="friends-block__avatar" src="<?php echo $sportsmen[$i]->get_avatar($conn); ?>" alt="">
                                <p class="friends-block__name"><?php echo $sportsmen[$i]->name?></p>
                            </a>

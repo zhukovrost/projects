@@ -1,9 +1,10 @@
 <?php
-require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение файла с функциями
+require_once '../../config/settings.php'; // Подключение файла с настройками
+require_once '../Helpers/func.php'; // Подключение файла с функциями
 
 
 if (empty($_GET["id"]) || $_GET["id"] == ""){ // Redirect if the ID is empty or not provided
-    header("Location: requests.php"); 
+    header("Location: ../Pages/requests.php");
 }
 // Construct a SQL query to select the user associated with the provided ID and the current user's receiver ID
 $sql = "SELECT user FROM requests WHERE id=".$_GET["id"]." AND receiver=".$user_data->get_id();
@@ -33,4 +34,4 @@ if ($result = $conn->query($sql)){ // Execute the SQL query
     echo $conn->error; // Output any database errors
 }
 
-header("Location: requests.php"); // Redirect to the requests page after processing the request
+header("Location: ../Pages/requests.php"); // Redirect to the requests page after processing the request

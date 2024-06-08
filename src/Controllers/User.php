@@ -541,7 +541,7 @@ class User {
                     echo "Любитель";
                     return;
                 case 2:
-                    echo "Проффесионал";
+                    echo "Профессионал";
                     return;
             }
         }

@@ -1,11 +1,9 @@
 <?php
+require_once '../../config/settings.php'; // Подключение файла с настройками
 require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение файла с функциями
- // Include functions file
-require_once BASE_PATH . 'config/settings.php'; // Подключение файла с настройками
- // Include settings file
 
 if (!$user_data->get_auth() || $user_data->get_status() != "doctor") // Check user authentication and status
-    header("Location: profile.php"); // Redirect if not authenticated or not a doctor
+    header("Location: ../Pages/profile.php"); // Redirect if not authenticated or not a doctor
 
 $sportsmen = $user_data->get_sportsmen();
 $item = $_GET["option"];
@@ -13,18 +11,18 @@ $id = $_GET["id"];
 $user = $_GET["user"];
 
 if (!is_numeric($user) || !is_numeric($id) || !in_array($id, $sportsmen)) // Check the validity of parameters
-    header("Location: profile.php"); // Redirect if parameters are invalid
+    header("Location: ../Pages/profile.php"); // Redirect if parameters are invalid
 
 $doctor_data = $user_data->get_doctor_data($conn, $user);
 if ($coach_data == NULL) // Redirect if doctor data is not found
-    header("Location: profile.php");
+    header("Location: ../Pages/profile.php");
 
 switch ($item){
     case "update": // get update functionality
         break;
     case "delete": // get delete functionality for medicines
         if ($doctor_data["medicines"] == NULL)
-            header("Location: profile.php");
+            header("Location: ../Pages/profile.php");
 
         // update medicines data
         $doctor_data["medicines"] = json_decode($doctor_data["medicines"]);
@@ -38,9 +36,9 @@ switch ($item){
         break;
 }
 if ($conn->query($sql)){ // Execute the SQL query and get redirection or error
-    header("Location: doctor.php?user=$user");
+    header("Location: ../Pages/doctor.php?user=$user");
 }else{
     echo $conn->error; // Output error if query execution fails
     sleep(3);
-    header("Location: profile.php"); // Redirect to profile page after an error
+    header("Location: ../Pages/profile.php"); // Redirect to profile page after an error
 }

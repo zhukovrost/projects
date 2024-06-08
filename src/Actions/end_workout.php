@@ -1,8 +1,6 @@
 <?php
+require_once '../../config/settings.php'; // Подключение файла с настройками
 require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение файла с функциями
- // Include functions file
-require_once BASE_PATH . 'config/settings.php'; // Подключение файла с настройками
- // Include settings file
 
 $user_data->check_the_login(); // Checking user login status
 // Getting the current weekday and setting the user's program
@@ -21,7 +19,7 @@ else
 // SQL query to insert workout history into the database
 $sql = "INSERT INTO workout_history (user, workout, date_completed, time_spent) VALUES ($user_id, $workout_id, $date_completed, $time)";
 if ($conn->query($sql)){ // Executing the SQL query and redirecting based on success
-    header("Location: my_program.php");
+    header("Location: ../Pages/my_program.php");
 }else{
     echo $conn->error;
 }

@@ -1,10 +1,10 @@
 <?php
 date_default_timezone_set("Europe/Moscow");
-require_once BASE_PATH . 'src/Controllers/User.php';
-require_once BASE_PATH . 'src/Controllers/Report.php';
-require_once BASE_PATH . 'src/Controllers/Exercise.php';
-require_once BASE_PATH . 'src/Controllers/Program.php';
-require_once BASE_PATH . 'src/Controllers/Workout.php';
+require_once __DIR__ . '/../Controllers/User.php';
+require_once __DIR__ . '/../Controllers/Report.php';
+require_once __DIR__ . '/../Controllers/Exercise.php';
+require_once __DIR__ . '/../Controllers/Program.php';
+require_once __DIR__ . '/../Controllers/Workout.php';
 
 function conn_check($conn){
     if ($conn->connect_error) {
@@ -211,9 +211,9 @@ function get_exercise_muscles($conn, $exercise_id){
 
 function print_user_block($name, $surname, $file, $id, $is_subscribed=false){
     if ($is_subscribed){
-        $button = '<a class="button-text user-block__sub-button" href="unsub.php?header=0&id='.$id.'">Отписаться</a>';
+        $button = '<a class="button-text user-block__sub-button" href="../Actions/unsub.php?header=0&id='.$id.'">Отписаться</a>';
     }else {
-        $button = '<a class="button-text user-block__sub-button" href="sub.php?header=0&id='.$id. '"><p>Подписаться</p><img src="../../assets/img/add.svg" alt=""></a>';
+        $button = '<a class="button-text user-block__sub-button" href="../Actions/sub.php?header=0&id='.$id. '"><p>Подписаться</p><img src="../../assets/img/add.svg" alt=""></a>';
     }
     $replacements = array(
         "{{ name }}" => $name." ".$surname,
@@ -229,8 +229,8 @@ function print_user_block_request($name, $surname, $file, $id, $request_id){
         "{{ name }}" => $name." ".$surname,
         "{{ image }}" => $file,
         "{{ link }}" => "profile.php?user=".$id,
-        "{{ button_accept }}" => "<a class='button-text user-card__button user-card__button--except' href='accept_request.php?id=$request_id'>Принять</a>",
-        "{{ button_deny }}" => "<a class='button-text user-card__button user-card__button--reject' href='deny_request.php?id=$request_id'>Отклонить</a>"
+        "{{ button_accept }}" => "<a class='button-text user-card__button user-card__button--except' href='../Actions/accept_request.php?id=$request_id'>Принять</a>",
+        "{{ button_deny }}" => "<a class='button-text user-card__button user-card__button--reject' href='../Actions/deny_request.php?id=$request_id'>Отклонить</a>"
     );
     echo render($replacements, BASE_PATH . "templates/user_block_request.html");
 }
@@ -241,7 +241,7 @@ function print_medicine($conn, $id, $user_id, $edit=true){
         foreach ($result as $item){
             $update = '';
             if ($edit)
-                $delete = '<a href="delete_medicine.php?option=delete&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
+                $delete = '<a href="../Actions/delete_medicine.php?option=delete&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
             else
                 $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ caption }}" => $item["caption"], "{{ update }}" => $update, "{{ delete }}" => $delete);
@@ -257,20 +257,20 @@ function print_goal($conn, $id, $user_id, $edit=true){
     if ($result = $conn->query($sql)){
         foreach ($result as $item){
             if ((int)$item["done"]){
-                $checkmark = "../img/green_check_mark.svg";
+                $checkmark = "../../assets/img/green_check_mark.svg";
                 if ($edit)
-                    $done = '<a class="staff-block__goal-button--text" href="goal_done.php?id='.$id.'&val=0&user='.$user_id.'">Не выполнена</a>';
+                    $done = '<a class="staff-block__goal-button--text" href="../Actions/goal_done.php?id='.$id.'&val=0&user='.$user_id.'">Не выполнена</a>';
                 else
                     $done = '';
             }else{
-                $checkmark = "../img/blue_question_mark.svg";
+                $checkmark = "../../assets/img/blue_question_mark.svg";
                 if ($edit)  
-                    $done = '<a class="staff-block__goal-button--text" href="goal_done.php?id='.$id.'&val=1&user='.$user_id.'">Выполнена</a>';
+                    $done = '<a class="staff-block__goal-button--text" href="../Actions/goal_done.php?id='.$id.'&val=1&user='.$user_id.'">Выполнена</a>';
                 else
                     $done = '';
             }
             if ($edit)
-                $delete = '<a href="delete_coach_info.php?item=goal&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src=BASE_PATH . "assets/img/delete.svg" alt=""></a>';
+                $delete = '<a href="delete_coach_info.php?item=goal&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
             else
                 $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ done }}" => $done, "{{ checkmark }}" => $checkmark, "{{ delete }}" => $delete);
@@ -295,7 +295,7 @@ function print_competition($conn, $id, $user_id, $edit=true){
             else
                 $date = date("d.m.Y", $item["date"]);
             if ($edit)
-                $delete = '<a href="delete_coach_info.php?item=competition&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src=BASE_PATH . "assets/img/delete.svg" alt=""></a>';
+                $delete = '<a href="../Actions/delete_coach_info.php?item=competition&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
             else
                 $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ date }}" => $date, "{{ delete }}" => $delete);
@@ -315,7 +315,7 @@ function print_advice($conn, $id, $user_id, $edit=true){
             else
                 $link = '<a class="staff-block__link-button staff-block__link-button--info-link" href="'.$item["link"]. '"><img src="../../assets/img/link.svg" alt=""></a>';
             if ($edit)
-                $delete = '<a href="delete_coach_info.php?item=info&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src=BASE_PATH . "assets/img/delete.svg" alt=""></a>';
+                $delete = '<a href="../Actions/delete_coach_info.php?item=info&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
             else
                 $delete = '';
             $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ delete }}" => $delete);

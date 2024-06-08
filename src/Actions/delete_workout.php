@@ -9,4 +9,4 @@ if (isset($_SESSION["program"]) && isset($_GET["id"])){
     }
 }
 
-header("Location: c_program.php"); // Redirect the user to 'c_program.php' page after modifying session data
+header("Location: ../Pages/c_program.php"); // Redirect the user to 'c_program.php' page after modifying session data
