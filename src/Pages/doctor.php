@@ -139,7 +139,7 @@ if ($is_selected){ // If a user is selected, fetch and process the doctor's data
                     <!-- Title and button to search friends -->
                     <div class="friends-block__header">
                         <h1 class="friends-block__header-title">Другие спортсмены</h1>
-                        <a class="friends-block__header-button" href="search_sportsman.php"><img src="../../assets/img/search.svg" alt=""></a>
+                        <a class="friends-block__header-button" href="search_sportsman.php">ЗАЯВКИ</a>
                     </div>
                     <!-- Friends' workout swiper -->
                    <section class="friends-block__cover" navigation="true">

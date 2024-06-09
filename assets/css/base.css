@@ -797,14 +797,17 @@ body {
     margin-right: 10px;
 }
 
-.friends-block__header-button img{
-    width: 35px;
-    height: 35px;
-    opacity: 0.8;
+.friends-block__header-button{
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px 0px #00CD1E;
+    padding: 5px 10px;
+    transition: .1s ease-in-out;
 }
 
-.friends-block__header-button img:hover{
-    opacity: 1;
+.friends-block__header-button:hover{
+    color: #dbdbdb;
+    box-shadow: 3px 3px 0px 0px #00CD1E;
 }
 
 
