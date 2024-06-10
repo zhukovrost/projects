@@ -20,19 +20,29 @@ if (isset($_POST['featured'])) // Check if 'featured' value is set in POST data,
 
 if (isset($_POST["name"]) && isset($_POST["date"])){ // If 'name' and 'date' values are set in POST data, prepare and execute an SQL query to insert control workout data
     $name = $_POST["name"];
-    $loops = $_POST["loops"];
     $exercises = [];
     $date = strtotime($_POST["date"]);
     foreach ($_SESSION["c_workout"] as $exercise){// Collect exercises from $_SESSION["c_workout"]
-        array_push($exercises, $exercise->get_id());
+        $exercises[] = $exercise->get_id();
     }
 
 	// Prepare and execute SQL query to insert control workout data
-    $sql = "INSERT INTO control_workouts (creator, user, name, exercises, date) VALUES (".$user_data->get_id().", $user_id, '$name', '".json_encode($exercises)."', $date)";
-    echo $sql;
+    $sql = "INSERT INTO workouts (creator, name, loops) VALUES (".$user_data->get_id().", '$name', 1)";
     if ($conn->query($sql)){
-        $_SESSION["c_workout"] = array();
-        header("Location: control_workouts.php?user=".$user_id);
+        $lid = mysqli_insert_id($conn);
+        $sql = "INSERT INTO control_workouts (id, user, date) VALUES ($lid, $user_id, FROM_UNIXTIME($date))";
+        if ($conn->query($sql)){
+            foreach ($exercises as $exercise){
+                $sql = "INSERT INTO workout_exercises(workout_id, exercise_id, creator, sets, reps) VALUES ($lid, $exercise, {$user_data->get_id()}, 1, 1)";
+                if (!$conn->query($sql)){
+                    echo $conn->error;
+                }
+            }
+            $_SESSION["c_workout"] = array();
+            header("Location: control_workouts.php?user=".$user_id);
+        }else{
+            echo $conn->error;
+        }
     }else{
         echo $conn->error;
     }
@@ -54,7 +64,7 @@ if (isset($_POST["name"]) && isset($_POST["date"])){ // If 'name' and 'date' val
                     <?php
                     if ($flag) { // Checks if $flag is set; iterates through the exercises in $_SESSION["c_workout"]
                         foreach ($_SESSION["c_workout"] as $exercise){ // For each exercise print control details
-                            $is_featured = $exercise->is_featured($user_data);
+                            $is_featured = $exercise->is_featured($user_data, $conn);
                             $exercise->print_control_exercise($conn, $is_featured, false);
                         }
                     }

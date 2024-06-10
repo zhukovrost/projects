@@ -16,13 +16,21 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){ // Check if form data is sub
     }
 
     // insert_program and user_to_program and news
-    $sql = "INSERT INTO programs (name, program, creator) VALUES ('".$_POST["name"]."', '".json_encode($_SESSION["program"])."', ".$user_data->get_id().")";
+    $sql = "INSERT INTO programs (name, creator) VALUES ('{$_POST["name"]}', {$user_data->get_id()})";
     if ($conn->query($sql)){
         $program_id = mysqli_insert_id($conn);
+        for ($i = 0; $i < 7; $i++){
+            $workout_id = $_SESSION["program"][$i];
+            $sql = "INSERT INTO program_workouts(program_id, workout_id, week_day) VALUES ($program_id, $workout_id, $i)";
+            if (!$conn->query($sql)){
+                echo $conn->error;
+            }
+        }
+
         if ($user_data->get_status() == "user") { // If the user is a regular user
-            $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user_data->get_id().", $program_id, $date_start, ".$_POST['weeks'].")";
+            $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user_data->get_id().", $program_id, FROM_UNIXTIME($date_start), ".$_POST['weeks'].")";
             $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу.', ".$user_data->get_id().", ".time().", 0)";
-            if ($conn->query($sql2) && $conn->query($sql3)){ // Insert program details, create news entry, and redirect to my_program.php
+            if ($conn->query($sql2)){ // Insert program details, create news entry, and redirect to my_program.php
                 $_SESSION["workout"] = array();
                 $_SESSION["program"] = array();
                 header("Location: my_program.php");
@@ -33,7 +41,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){ // Check if form data is sub
             $users = $_POST["users"];
             if (count($users) > 0){ // If users are selected
                 foreach ($users as $user){
-                    $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user.", $program_id, $date_start, ".$_POST['weeks'].")";
+                    $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user.", $program_id, FROM_UNIXTIME($date_start), ".$_POST['weeks'].")";
                     $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу. (Тренер).', ".$user.", ".time().", 0)";
                     if (!$conn->query($sql2) || !$conn->query($sql3)){ // Insert program details for selected users, create news entries, and redirect to profile.php
                         echo $conn->error;
@@ -114,7 +122,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){ // Check if form data is sub
                                     }
                                 }
                                 if ($flag)
-                                    array_push($workout_array, $workout);
+                                    $workout_array[] = $workout;
                             }
                             $workout->set_muscles();
                             $workout->print_workout_info_block($i, 0, $user_data->get_id());
@@ -130,7 +138,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){ // Check if form data is sub
                         <?php }
                         for ($i = 0; $i < count($workout_array); $i++){ // print workouts' names list ?>
 						<div class="c-program__workouts-item">
-							<p class="c-program__workouts-name"><?php echo $i + 1 . ". " .  ($workout_array[$i])->name; ?></p>
+							<p class="c-program__workouts-name"><?php echo $i + 1 . ". " .  ($workout_array[$i])->get_name(); ?></p>
 							<a href="../Actions/delete_workout.php?id=<?php echo ($workout_array[$i])->get_id(); ?>" class="button-img c-program__workouts-delete"><img src="../../assets/img/delete.svg" alt=""></a>
 						</div>
                         <?php } ?>
@@ -170,7 +178,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){ // Check if form data is sub
 					<!-- slide -->
                     <?php
                     $user_data->set_subscriptions($conn); // Set user subscriptions
-                    print_user_list($conn, $user_data->subscriptions); // Print the list of users from subscriptions
+                    print_user_list($conn, $user_data->get_subscriptions()); // Print the list of users from subscriptions
                     ?>
 				</swiper-container>
 			</section>
@@ -195,7 +203,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0){ // Check if form data is sub
                         $cnt++; ?>
                 <div class="popup-exercise--add-users__item">
 					<input class="popup-exercise--add-users__input" type="checkbox" id="users-list1" name="users[]" value="<?php echo $sportsman_id; ?>"/>
-					<label class="popup-exercise--add-users__label" for="users-list1"><?php echo $sportsman->name." ".$sportsman->surname; ?></label>
+					<label class="popup-exercise--add-users__label" for="users-list1"><?php echo $sportsman->get_full_name(); ?></label>
 				</div>
                 <?php }
                     }

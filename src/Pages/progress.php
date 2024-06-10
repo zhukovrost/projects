@@ -16,7 +16,7 @@ if ($user->get_auth() && isset($_POST["height"]) && isset($_POST["weight"]) && i
 }
 
 // Get workout history for the user and initialize muscle-related variables
-$user->get_workout_history($conn);
+$workout_history = $user->get_workout_history($conn);
 $muscles = array(
     "arms" => 0,
     "legs" => 0,
@@ -31,15 +31,12 @@ $muscles = array(
 $exercise_cnt = 0;
 $time_cnt = 0;
 
-foreach ($user->workout_history as $item){
-    $exercises = json_decode($item["exercises"]);
-    $time_cnt += $item["time_spent"];
-    foreach ($exercises as $exercise){
-        foreach (get_exercise_muscles($conn, $exercise) as $muscle){
-            $muscles["cnt"]++;
-            $muscles[$muscle]++;
-        }
-        $exercise_cnt++;
+foreach ($workout_history as $item){
+    $workout = new Workout($conn, $item["workout"]);
+    $workout->set_muscles();
+    foreach ($workout->muscles as $key=>$value) {
+        $muscles[$key] += $value;
+        $exercise_cnt += $value;
     }
 }
 $time_cnt = round($time_cnt/60, 0); // Convert time spent to minutes
@@ -49,13 +46,14 @@ $user->get_phys_updates($conn);
 $height_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 $weight_array = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 $date_start = mktime(0, 0, 0, 1, 1, date("Y"));
+$updates = $user->get_phys_updates($conn);
 
-if (count($user->phys_updates) != 0){ // Checking if there are physical updates for the user
+if (count($updates) > 0){ // Checking if there are physical updates for the user
     $month_array = array($date_start); // Creating an array to hold month timestamps starting from January 1st of the current year
     for ($i = 2; $i <= 13; $i++){
-        array_push($month_array, mktime(0, 0, 0, $i, 1, date("Y"))); // Generating timestamps for the 1st day of each month
+        $month_array[] = mktime(0, 0, 0, $i, 1, date("Y")); // Generating timestamps for the 1st day of each month
     }
-    foreach ($user->phys_updates as $key=>$value){ // Iterating through the user's physical updates
+    foreach ($updates as $key=>$value){ // Iterating through the user's physical updates
         if ((int)$key < $month_array[0]) // Checking if the timestamp is earlier than the first month, exiting loop if so
             break;
         for ($i = 0; $i < 12; $i++){ // Looping through the month_array to check for matching months
@@ -106,7 +104,7 @@ if (count($user->phys_updates) != 0){ // Checking if there are physical updates 
 						<!-- Statistic info -->
 						<section class="progress-block__workouts-statistic">
                             <h3 class="progress-block__workouts-statistic-title">Всего:</h3>
-							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo count($user->workout_history); ?></span></p>
+							<p class="progress-block__workouts-statistic-item">Тренировок: <span><?php echo $workout_history->num_rows; ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Программ: <span><?php echo $user->get_program_amount($conn); ?></span></p>
 							<p class="progress-block__workouts-statistic-item">Упражнений: <span><?php echo $exercise_cnt; ?></span></p>
                             <p class="progress-block__workouts-statistic-item">Затрачено минут:<span><?php echo $time_cnt; ?></span></p>
@@ -149,23 +147,25 @@ if (count($user->phys_updates) != 0){ // Checking if there are physical updates 
 					<div class="progress-block__programm-line">
 						<p class="progress-block__programm-percents"><?php
                             if ($user->set_program($conn)){ // Checking if the user's program is set
-                                $user->program->set_additional_data($conn, $user->get_id()); // Setting additional data for the user's program
+                                $user->set_additional_program_data($conn); // Setting additional data for the user's program
+                                $program = $user->get_program();
                                 // Initializing variables
                                 $cnt_workouts_per_week = 0;
-                                foreach ($user->program->program as $workout) // Counting the number of workouts per week in the program
-                                    if ($workout != 0)
+                                foreach ($user->get_workouts() as $workout) // Counting the number of workouts per week in the program
+                                    if ($workout->get_id() != 0)
                                         $cnt_workouts_per_week++;
 
-                                $cnt_all_workouts = $cnt_workouts_per_week * $user->program->weeks; // Calculating total workouts in the program
+                                $cnt_all_workouts = $cnt_workouts_per_week * $user->get_program()->get_weeks(); // Calculating total workouts in the program
                                 $cnt_done = 0;
 
                                 // Calculating progress percentage based on completed workouts
-                                $progress = (time() - $user->program->date_start) / ($user->program->weeks * 604800) * 100;
+                                $date = new DateTime($program->get_date_start());
+                                $progress = (time() - $date->getTimestamp()) / ($program->get_weeks() * 604800) * 100;
                                 if ($cnt_all_workouts == 0){
                                     echo 0; // Outputting 0 if there are no workouts in the program
                                 }else{
                                     // Querying completed workouts for the user's program
-                                    $sql = "SELECT id FROM workout_history WHERE user=".$user->get_id()." AND date_completed>=".$user->program->date_start;
+                                    $sql = "SELECT id FROM workout_history WHERE user=".$user->get_id()." AND date_completed>=".$program->get_date_start();
                                     if ($result = $conn->query($sql)){
                                         foreach ($result as $item) $cnt_done++;
                                         echo round(($cnt_done / $cnt_all_workouts) * 100, 0); // Outputting the progress percentage
@@ -257,11 +257,11 @@ if (count($user->phys_updates) != 0){ // Checking if there are physical updates 
         // period values(year or month)
         if(periodSelects[0].value == 'year'){
             trainingPeriodArray = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_year($user->workout_history)); ?>;
+            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_year($workout_history)); ?>;
         }
         if(periodSelects[0].value == 'month'){
             trainingPeriodArray = ['1ая неделя', '2ая неделя', '3я неделя', '4ая неделя', '5ая неделя'];
-            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_month($user->workout_history)); ?>;
+            trainingPeriodData = <?php echo json_encode(get_graph_workout_data_month($workout_history)); ?>;
         }
 
         // create training chart

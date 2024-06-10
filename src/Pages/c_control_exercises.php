@@ -17,7 +17,7 @@ if (isset($_POST['featured']))
 
 else if (isset($_POST['exercise'])){
     $user_exercise = new User_Exercise($conn, $_POST["exercise"]); // Add exercise to $_SESSION['c_workout']
-    array_push($_SESSION['c_workout'], $user_exercise);
+    $_SESSION['c_workout'][] = $user_exercise;
 }
 
 if (isset($_GET['my']) && is_numeric($_GET['my'])){
@@ -157,13 +157,13 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
         <!-- Exercises array -->
         <?php
         if ($my){ // Checking the value of $my
-            if (count($user_data->my_exercises) > 0){  // Displaying user's exercises in a form
+            if (count($user_data->get_my_exercises($conn)) > 0){  // Displaying user's exercises in a form
                 echo "<section class='exercise-block'>";
-                foreach ($user_data->my_exercises as $exercise_id){
+                foreach ($user_data->get_my_exercises($conn) as $exercise_id){
                     if (!in_workout($_SESSION["c_workout"], $exercise_id)) {  // getting and printing user's exercise details
                         echo "<form method='post' class='exercise-form'>";
                         $exercise = new User_Exercise($conn, $exercise_id);
-                        $is_featured = $exercise->is_featured($user_data);
+                        $is_featured = $exercise->is_featured($user_data, $conn);
                         $exercise->print_control_exercise($conn, $is_featured, false, true);
                         echo "</form>";
                     }
@@ -180,7 +180,7 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){
                     if (!in_workout($_SESSION["c_workout"], $item["id"])){
                         echo "<form method='post' class='exercise-form'>";
                         $exercise = new User_Exercise($conn, $item['id']);
-                        $is_featured = $exercise->is_featured($user_data);
+                        $is_featured = $exercise->is_featured($user_data, $conn);
                         $exercise->print_control_exercise($conn, $is_featured, false, true);
                         echo "</form>";
                     }

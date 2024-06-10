@@ -99,7 +99,7 @@ function print_user_list($conn, $id_list){
         $replacements = array(
             "{{ id }}" => $user->get_id(),
             "{{ avatar }}" => $user->get_avatar($conn),
-            "{{ name }}" => $user->name
+            "{{ name }}" => $user->get_surname()
         );
         echo render($replacements, BASE_PATH . "templates/user_card.html");
         echo "</section>";
@@ -137,10 +137,8 @@ function print_workout_info_function($workout){
         "cnt" => 0
     );
     foreach ($workout as $exercise){
-        foreach ($exercise->muscles as $muscle){
-            $muscles[$muscle]++;
-            $muscles['cnt']++;
-        }
+        $muscles[$exercise->get_muscles()]++;
+        $muscles['cnt']++;
     }
     foreach ($muscles as $muscle=>$value){
         if ($value != 0){
@@ -171,7 +169,8 @@ function get_graph_workout_data_year($history){
     $result = array_fill(0, 12, 0); // Initialize an array with 12 zeros for each month
 
     foreach ($history as $workout) {
-        $timestamp = $workout["date_completed"];
+        $datetime = $workout["date_completed"];
+        $timestamp = strtotime($datetime);
         $month = date("n", $timestamp); // Get the month (1 to 12) of the timestamp
 
         // Check if the workout is in the current year
@@ -183,14 +182,15 @@ function get_graph_workout_data_year($history){
     return $result;
 }
 
-function get_graph_workout_data_month($timestamps) {
+function get_graph_workout_data_month($datetimes) {
     $currentMonth = date('n'); // Получаем текущий месяц
     $weeksData = array_fill(0, 5, 0);
-    foreach ($timestamps as $timestamp) {
-        $timestamp = $timestamp["date_completed"];
-        $dateMonth = date('n', $timestamp);
+    foreach ($datetimes as $datetime) {
+        $datetime = $datetime["date_completed"];
+        $datetime = strtotime($datetime);
+        $dateMonth = date('n', $datetime);
         if ($dateMonth == $currentMonth) {
-            $weekOfMonth = (int)date('W', $timestamp) - (int)date('W', strtotime(date('Y-m-01', $timestamp))) + 1;
+            $weekOfMonth = (int)date('W', $datetime) - (int)date('W', strtotime(date('Y-m-01', $datetime))) + 1;
             if ($weekOfMonth >= 1 && $weekOfMonth <= 5) {
                 $weeksData[$weekOfMonth - 1]++;
             }
@@ -224,123 +224,97 @@ function print_user_block($name, $surname, $file, $id, $is_subscribed=false){
     echo render($replacements, BASE_PATH . "templates/user_block.html");
 }
 
-function print_user_block_request($name, $surname, $file, $id, $request_id){
+function print_user_block_request($full_name, $file, $user){
     $replacements = array(
-        "{{ name }}" => $name." ".$surname,
+        "{{ name }}" => $full_name,
         "{{ image }}" => $file,
-        "{{ link }}" => "profile.php?user=".$id,
-        "{{ button_accept }}" => "<a class='button-text user-card__button user-card__button--except' href='../Actions/accept_request.php?id=$request_id'>Принять</a>",
-        "{{ button_deny }}" => "<a class='button-text user-card__button user-card__button--reject' href='../Actions/deny_request.php?id=$request_id'>Отклонить</a>"
+        "{{ link }}" => "profile.php?user=".$user,
+        "{{ button_accept }}" => "<a class='button-text user-card__button user-card__button--except' href='../Actions/accept_request.php?id=$user'>Принять</a>",
+        "{{ button_deny }}" => "<a class='button-text user-card__button user-card__button--reject' href='../Actions/deny_request.php?id=$user'>Отклонить</a>"
     );
     echo render($replacements, BASE_PATH . "templates/user_block_request.html");
 }
 
-function print_medicine($conn, $id, $user_id, $edit=true){
-    $sql = "SELECT name, caption FROM medicines WHERE id=$id";
-    if ($result = $conn->query($sql)){
-        foreach ($result as $item){
-            $update = '';
-            if ($edit)
-                $delete = '<a href="../Actions/delete_medicine.php?option=delete&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
-            else
-                $delete = '';
-            $reps = array("{{ name }}" => $item["name"], "{{ caption }}" => $item["caption"], "{{ update }}" => $update, "{{ delete }}" => $delete);
-            echo render($reps, BASE_PATH . "templates/medicine.html");
-        }
-    }else{
-        echo $conn->error;
-    }
+function print_medicine($medicine, $user_id, $edit=true){
+    $update = '';
+    if ($edit)
+        $delete = '<a href="../Actions/delete_medicine.php?option=delete&user='.$user_id.'&id='.$medicine["id"].'" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
+    else
+        $delete = '';
+    $reps = array("{{ name }}" => $medicine["name"], "{{ caption }}" => $medicine["caption"], "{{ update }}" => $update, "{{ delete }}" => $delete);
+    echo render($reps, BASE_PATH . "templates/medicine.html");
+
+
 }
 
-function print_goal($conn, $id, $user_id, $edit=true){
-    $sql = "SELECT name, done FROM goals WHERE id=$id";
-    if ($result = $conn->query($sql)){
-        foreach ($result as $item){
-            if ((int)$item["done"]){
-                $checkmark = "../../assets/img/green_check_mark.svg";
-                if ($edit)
-                    $done = '<a class="staff-block__goal-button--text" href="../Actions/goal_done.php?id='.$id.'&val=0&user='.$user_id.'">Не выполнена</a>';
-                else
-                    $done = '';
-            }else{
-                $checkmark = "../../assets/img/blue_question_mark.svg";
-                if ($edit)  
-                    $done = '<a class="staff-block__goal-button--text" href="../Actions/goal_done.php?id='.$id.'&val=1&user='.$user_id.'">Выполнена</a>';
-                else
-                    $done = '';
-            }
-            if ($edit)
-                $delete = '<a href="delete_coach_info.php?item=goal&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
-            else
-                $delete = '';
-            $reps = array("{{ name }}" => $item["name"], "{{ done }}" => $done, "{{ checkmark }}" => $checkmark, "{{ delete }}" => $delete);
-            echo render($reps, BASE_PATH . "templates/goal.html");
-        }
+function print_goal($item, $edit=true){
+    if ((int)$item["done"]){
+        $checkmark = "../../assets/img/green_check_mark.svg";
+        if ($edit)
+            $done = '<a class="staff-block__goal-button--text" href="../Actions/goal_done.php?id='.$item["id"].'&val=0&user='.$item["user"].'">Не выполнена</a>';
+        else
+            $done = '';
     }else{
-        echo $conn->error;
+        $checkmark = "../../assets/img/blue_question_mark.svg";
+        if ($edit)
+            $done = '<a class="staff-block__goal-button--text" href="../Actions/goal_done.php?id='.$item["id"].'&val=1&user='.$item["user"].'">Выполнена</a>';
+        else
+            $done = '';
     }
+    if ($edit)
+        $delete = '<a href="../Actions/delete_coach_info.php?item=goal&id='.$item["id"]. '&user='.$item["user"].'" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
+    else
+        $delete = '';
+    $reps = array("{{ name }}" => $item["name"], "{{ done }}" => $done, "{{ checkmark }}" => $checkmark, "{{ delete }}" => $delete);
+    echo render($reps, BASE_PATH . "templates/goal.html");
 }
 
-function print_competition($conn, $id, $user_id, $edit=true){
-    $sql = "SELECT name, link, date FROM competitions WHERE id=$id";
-    if ($result = $conn->query($sql)){
-        foreach ($result as $item){
-            if ($item["link"] == NULL)
-                $link = "";
-            else
-                $link = '<a class="staff-block__link-button staff-block__link-button--competitions-link" href="'.$item["link"]. '"><img src="../../assets/img/link.svg" alt=""></a>';
+function print_competition($item, $edit=true) {
+    if ($item["link"] == NULL)
+        $link = "";
+    else
+        $link = '<a class="staff-block__link-button staff-block__link-button--competitions-link" href="' . $item["link"] . '"><img src="../../assets/img/link.svg" alt=""></a>';
 
-            if ($item["date"] == NULL)
-                $date = "Дата не указана";
-            else
-                $date = date("d.m.Y", $item["date"]);
-            if ($edit)
-                $delete = '<a href="../Actions/delete_coach_info.php?item=competition&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
-            else
-                $delete = '';
-            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ date }}" => $date, "{{ delete }}" => $delete);
-            echo render($reps, BASE_PATH . "templates/competition.html");
-        }
-    }else{
-        echo $conn->error;
-    }
+    if ($item["date"] == NULL)
+        $date = "Дата не указана";
+    else
+        $date = $item["date"];
+    if ($edit)
+        $delete = '<a href="../Actions/delete_coach_info.php?item=competition&id=' . $item["id"] . '&user='.$item["user"].'" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
+    else
+        $delete = '';
+    $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ date }}" => $date, "{{ delete }}" => $delete);
+    echo render($reps, BASE_PATH . "templates/competition.html");
 }
 
-function print_advice($conn, $id, $user_id, $edit=true){
-    $sql = "SELECT name, link FROM coach_advice WHERE id=$id";
-    if ($result = $conn->query($sql)){
-        foreach ($result as $item){
-            if ($item["link"] == NULL)
-                $link = "";
-            else
-                $link = '<a class="staff-block__link-button staff-block__link-button--info-link" href="'.$item["link"]. '"><img src="../../assets/img/link.svg" alt=""></a>';
-            if ($edit)
-                $delete = '<a href="../Actions/delete_coach_info.php?item=info&user='.$user_id.'&id='.$id. '" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
-            else
-                $delete = '';
-            $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ delete }}" => $delete);
-            echo render($reps, BASE_PATH . "templates/advice.html");
-        }
-    }else{
-        echo $conn->error;
-    }
+function print_advice($item, $edit=true){
+    if ($item["link"] == NULL)
+        $link = "";
+    else
+        $link = '<a class="staff-block__link-button staff-block__link-button--info-link" href="'.$item["link"]. '"><img src="../../assets/img/link.svg" alt=""></a>';
+    if ($edit)
+        $delete = '<a href="../Actions/delete_coach_info.php?item=info&id='. $item["id"]. '&user='.$item["user"].'" class="button-img staff-block__item-button"><img src="../../assets/img/delete.svg" alt=""></a>';
+    else
+        $delete = '';
+    $reps = array("{{ name }}" => $item["name"], "{{ link }}" => $link, "{{ delete }}" => $delete);
+    echo render($reps, BASE_PATH . "templates/advice.html");
 }
 
 function get_reps_for_comparison($user, $conn, $user_number, $second_user_id){
     $phys_data = $user->get_current_phys_data($conn);
     $tg = '';
-    if ($user->vk != NULL)
-        $tg = '<a href="'.$user->vk. '" class="staff-block__button staff-block__button--img"><img src="../../assets/img/vk.svg" alt=""></a>';
+    if ($user->get_vk() != NULL)
+        $tg = '<a href="'.$user->get_vk(). '" class="staff-block__button staff-block__button--img"><img src="../../assets/img/vk.svg" alt=""></a>';
     $vk = '';
-    if ($user->tg != NULL)
-        $vk = '<a href="'.$user->tg. '" class="staff-block__button staff-block__button--img"><img src="../../assets/img/tg.svg" alt=""></a>';
+    if ($user->get_tg() != NULL)
+        $vk = '<a href="'.$user->get_tg(). '" class="staff-block__button staff-block__button--img"><img src="../../assets/img/tg.svg" alt=""></a>';
     if ($user_number == 1)
         $delete = "users_comparison.php?user1=&user2=$second_user_id";
     else
         $delete = "users_comparison.php?user1=$second_user_id&user2=";
     $reps = array(
-        "{{ name }}" => $user->name,
-        "{{ surname }}" => $user->surname,
+        "{{ name }}" => $user->get_name(),
+        "{{ surname }}" => $user->get_surname(),
         "{{ avatar }}" => $user->get_avatar($conn),
         "{{ vk_button }}" => $vk,
         "{{ tg_button }}" => $tg,

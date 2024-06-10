@@ -23,48 +23,47 @@ if (isset($_POST["request_name"])){
         case "add_medicine": // Add medicine
             if (empty($_POST["name"]) || $_POST["name"] == "")
                 break;
-            $sql = "INSERT INTO medicines (name, caption) VALUES ('".$_POST["name"]."', '".$_POST["caption"]."')"; // Insert medicine into the database and update user's medical data
-            if ($conn->query($sql)){
-                $id = mysqli_insert_id($conn); // Get the ID of the inserted medicine
-                if ($data != NULL){ // Update the user's medicines data and save it
-                    $medicines = json_decode($data["medicines"]);
-                    array_push($medicines, $id);
-                    $medicines = json_encode($medicines, 256);
-                    $data["medicines"] = $medicines;
-                    $user_data->update_doctor_data($conn, $data);
-                }else{
-                    echo "NULL";
-                }
-            }else{
+            $sql = "INSERT INTO medicines (user, name, caption) VALUES ({$user->get_id()}, '".$_POST["name"]."', '".$_POST["caption"]."')"; // Insert medicine into the database and update user's medical data
+            if (!$conn->query($sql)){
                 echo $conn->error;
             }
             break;
         case "update_period": // Update period
 			// Update the intake start and end date in the doctor's data for the user
-            $start = strtotime($_POST["start"]);
-            $end = strtotime($_POST["end"]);
+            $start = (int)strtotime($_POST["start"]);
+            $end = (int)strtotime($_POST["end"]);
+            if (!$start && !$end){
+                break;
+            }
             if (!$start)
-                $start = NULL;
+                $start = $end;
             if (!$end)
-                $end = NULL;
-            $data["intake_start"] = $start;
-            $data["intake_end"] = $end;
-            $user_data->update_doctor_data($conn, $data);
+                $end = $start;
+            $sql = "INSERT INTO treatment_period (user, intake_start, intake_end) VALUES ({$_GET["user"]}, FROM_UNIXTIME($start), FROM_UNIXTIME($end))"; // Insert medicine into the database and update user's medical data
+            if (!$conn->query($sql)){
+                $sql = "UPDATE treatment_period SET intake_start=FROM_UNIXTIME($start), intake_end=FROM_UNIXTIME($end) WHERE user={$user->get_id()}"; // Insert medicine into the database and update user's medical data
+                if (!$conn->query($sql)){
+                    echo $conn->error;
+                }
+            }
             break;
         case "update_recommendations": // Update recommendations
 			// Update the recommendations in the doctor's data for the user
             if ($_POST["text"] == "")
-                $data["recommendations"] = NULL;
-            else
-                $data["recommendations"] = $_POST["text"];
-            $user_data->update_doctor_data($conn, $data);
+                break;
+            $sql = "INSERT INTO recommendations (user, recommendation) VALUES ({$user->get_id()}, '{$_POST["text"]}')"; // Insert medicine into the database and update user's medical data
+            if (!$conn->query($sql)){
+                $sql = "UPDATE recommendations SET recommendation='{$_POST["text"]}' WHERE user={$user->get_id()}"; // Insert medicine into the database and update user's medical data
+                if (!$conn->query($sql)){
+                    echo $conn->error;
+                }
+            }
             break;
     }
+    header("Refresh: 0");
 }
-
 if ($is_selected){ // If a user is selected, fetch and process the doctor's data for that user
     $data = $user_data->get_doctor_data($conn, $user->get_id());
-    $data["medicines"] = json_decode($data["medicines"]);
 }
 ?>
 <!DOCTYPE html>
@@ -82,14 +81,14 @@ if ($is_selected){ // If a user is selected, fetch and process the doctor's data
 					<img class="staff-block__avatar" src="<?php echo $user->get_avatar($conn); // get avatar ?>" alt="">
 					<section class="staff-block__info">
 						<div class="staff-block__name">
-							<h1 class="staff-block__name-text"><?php echo $user->name." ".$user->surname; ?></h1>
+							<h1 class="staff-block__name-text"><?php echo $user->get_full_name(); ?></h1>
 							<a class="staff-block__profile-link" href="profile.php?user=<?php echo $user->get_id(); // link to profile ?>"><img src="../../assets/img/profile_black.svg" alt=""></a>
 						</div>
 						<div class="staff-block__buttons">
-                            <?php if ($user->vk != NULL) { ?>
-							<a href=<?php echo $user->vk; // vk link ?> class="staff-block__button staff-block__button--img"><img src="../../assets/img/vk.svg" alt=""></a>
-                            <?php } if ($user->tg != NULL) { ?>
-							<a href="<?php echo $user->tg; // tg link ?>" class="staff-block__button staff-block__button--img"><img src="../../assets/img/tg.svg" alt=""></a>
+                            <?php if ($user->get_vk() != NULL) { ?>
+							<a href=<?php echo $user->get_vk(); // get_vk() link ?> class="staff-block__button staff-block__button--img"><img src="../../assets/img/get_vk().svg" alt=""></a>
+                            <?php } if ($user->get_tg() != NULL) { ?>
+							<a href="<?php echo $user->get_tg(); // get_tg() link ?>" class="staff-block__button staff-block__button--img"><img src="../../assets/img/get_tg().svg" alt=""></a>
                             <?php } ?>
 							<a href="../Actions/delete_sportsman.php?user=<?php echo $user->get_id(); // link to delite sportsman ?>" class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../../assets/img/delete.svg" alt=""></a>
 						</div>
@@ -99,9 +98,9 @@ if ($is_selected){ // If a user is selected, fetch and process the doctor's data
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Приём лекарств</h2>
 					<div class="staff-block__medicines">
-                        <?php if (count($data["medicines"]) > 0) // if medicines > 0
+                        <?php if ($data["medicines"]->num_rows > 0) // if medicines > 0
                             foreach ($data["medicines"] as $medicine) // print medicines' items
-                                print_medicine($conn, (int)$medicine, $user->get_id());
+                                print_medicine($medicine, $user->get_id());
                         else{ ?>
                             <p class="staff-block__medicines-none">Нет назначенных лекарств</p>
                         <?php } ?>
@@ -112,9 +111,9 @@ if ($is_selected){ // If a user is selected, fetch and process the doctor's data
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Период лечения</h2>
 					<div class="staff-block__treatment-date">
-						<div class="staff-block__treatment-date-item"><?php if ($data["intake_start"] == NULL) echo "Не выбрано"; else echo date("d.m.Y", $data["intake_start"]) // print start date ?></div>
+						<div class="staff-block__treatment-date-item"><?php if ($data["intake_start"] == NULL) echo "Не выбрано"; else echo $data["intake_start"] // print start date ?></div>
 						<div class="staff-block__treatment-date-line"></div>
-						<div class="staff-block__treatment-date-item"><?php if ($data["intake_end"] == NULL) echo "Не выбрано"; else echo date("d.m.Y", $data["intake_end"]) // print end date ?></div>
+						<div class="staff-block__treatment-date-item"><?php if ($data["intake_end"] == NULL) echo "Не выбрано"; else echo $data["intake_end"] // print end date ?></div>
 					</div>
 					<div class="staff-block__treatment-buttons">
 						<button class="button-img staff-block__item-button staff-block__item-button--date"><img src="../../assets/img/edit.svg" alt=""></button>

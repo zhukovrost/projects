@@ -6,7 +6,7 @@ if (isset($_POST['featured'])) // Check if 'featured' field is sent to change th
     $user_data->change_featured($conn, $_POST['featured']);
 
 if ((empty($_GET["id"]) || !is_numeric($_GET["id"])) && empty($_POST['featured'])) // Validate the ID in the URL and check for the 'featured' field in POST; if not valid or no 'featured' field, redirect to the index page
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
 
 $workout = new Control_Workout($conn, $_GET["id"]); // Initialize a new Control_Workout object using the provided ID from the GET parameter
 ?>
@@ -18,7 +18,7 @@ $workout = new Control_Workout($conn, $_GET["id"]); // Initialize a new Control_
 	<main class="user-comparison">
 		<div class="container">
 			<section class="last-control-cover">
-				<p class="last-control__title">Контрольная тренировка <?php echo date("d.m.Y", $workout->date); // print date of control workout ?></p>
+				<p class="last-control__title">Контрольная тренировка <?php echo $workout->get_date(); // print date of control workout ?></p>
                 <form method="post" class="staff-block__header">
                     <?php $workout->print_control_exercises($conn, $user_data); // print exercises list ?>
                 </form>

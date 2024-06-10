@@ -19,6 +19,5 @@ if ($conn->query($sql)){
     header("Location: ../Pages/coach.php?user=$user"); // If successful, redirect to coach.php with the user parameter in the URL
 }else{ // If query fails, display error, wait for 3 seconds, then redirect to profile.php
     echo $conn->error;
-    sleep(3);
     header("Location: ../Pages/profile.php");
 }

@@ -165,11 +165,12 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){ // Checking and setting the 
 			<!-- Exercises array -->
 			<?php
 			if ($my){ // Checking the value of $my
-				if (count($user_data->my_exercises) > 0){ // Displaying user's exercises in a form
+                $my_exercises = $user_data->get_my_exercises($conn);
+				if (count($my_exercises) > 0){ // Displaying user's exercises in a form
 					echo "<form method='post' class='exercise-block'>";
-					foreach ($user_data->my_exercises as $exercise_id){ // getting and printing user's exercise details
+					foreach ($my_exercises as $exercise_id){ // getting and printing user's exercise details
 						$exercise = new Exercise($conn, $exercise_id);
-						$is_featured = $exercise->is_featured($user_data);
+						$is_featured = $exercise->is_featured($user_data, $conn);
 						$exercise->print_it($conn, $is_featured, 1);
 					}
 					echo "</form>";
@@ -182,8 +183,8 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){ // Checking and setting the 
 					echo "<form method='post' class='exercise-block'>";
 					foreach ($select_result as $item){ // getting and printing all exercises from the database
 						$exercise = new Exercise($conn, $item['id']);
-						$is_featured = $exercise->is_featured($user_data);
-						$is_mine = $exercise->is_mine($user_data);
+						$is_featured = $exercise->is_featured($user_data, $conn);
+						$is_mine = $exercise->is_mine($user_data, $conn);
 						$exercise->print_it($conn, $is_featured, $is_mine);
 					}
 					echo "</form>";

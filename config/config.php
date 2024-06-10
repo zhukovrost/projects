@@ -4,4 +4,4 @@
 define("HOSTNAME", "localhost");
 define("HOSTUSER", "root");
 define("HOSTPASSWORD", "");
-define("HOSTDB", "sport");
+define("HOSTDB", "new_sport");

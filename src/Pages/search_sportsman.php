@@ -17,7 +17,7 @@ $sportsmen = $user_data->get_sportsmen_advanced($conn); // Fetching advanced spo
 	<nav class="users-search-nav">
 		<div class="container">
 			<!-- Buttons to (sub / unsub) users -->
-            <a class="button-text users-search-nav__item" href="requests.php">Новые заявки (<?php echo count($user_data->get_requests()); // print number of new applications ?>)<img src="../../assets/img/application.svg" alt=""></a>
+            <a class="button-text users-search-nav__item" href="requests.php">Новые заявки (<?php echo $user_data->get_requests($conn)->num_rows; // print number of new applications ?>)<img src="../../assets/img/application.svg" alt=""></a>
 			<!-- Exercise search -->
             
 			<form method="post" class="users-search-nav__search">

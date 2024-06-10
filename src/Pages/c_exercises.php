@@ -7,7 +7,6 @@ if (empty($_SESSION["c_workout"])){
 }
 
 $user_data->check_the_login(); // Check user login status
-
 if (empty($_SESSION['workout'])){ // Initialize $_SESSION['workout'] array
     $_SESSION['workout'] = array();
 }
@@ -18,7 +17,7 @@ if (isset($_POST['featured'])){ // Check if 'featured' value is set in POST data
 
 if (isset($_POST['reps']) && isset($_POST['approaches'])){ // If 'reps' and 'approaches' values are set in POST data, create a User_Exercise object and add it to the session
     $user_exercise = new User_Exercise($conn, $_POST["id"], $_POST['reps'], $_POST['approaches']);
-    array_push($_SESSION['workout'], $user_exercise);
+    $_SESSION['workout'][] = $user_exercise;
 }
 
 if (isset($_GET['my']) && is_numeric($_GET['my'])){ // Determine the value of 'my' variable based on the GET parameter 'my' or set a default value
@@ -158,12 +157,12 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){ // Determine the value of 'm
 			<!-- Exercises array -->
 			<?php
 			if ($my){ // Checking the value of $my
-				if (count($user_data->my_exercises) > 0){ // Displaying user's exercises in a form
+				if (count($user_data->get_my_exercises($conn)) > 0){ // Displaying user's exercises in a form
 					echo "<form method='post' class='exercise-block'>";
-					foreach ($user_data->my_exercises as $exercise_id){
+					foreach ($user_data->get_my_exercises($conn) as $exercise_id){
                         if (!in_workout($_SESSION["c_workout"], $exercise_id)) { // getting and printing user's exercise details
                             $exercise = new Exercise($conn, $exercise_id);
-                            $is_featured = $exercise->is_featured($user_data);
+                            $is_featured = $exercise->is_featured($user_data, $conn);
                             $exercise->print_it($conn, $is_featured, 1, 1);
                         }
 					}
@@ -178,8 +177,8 @@ if (isset($_GET['my']) && is_numeric($_GET['my'])){ // Determine the value of 'm
                     foreach ($select_result as $item) {
                         if (!in_workout($_SESSION["workout"], $item["id"])) {
                             $exercise = new Exercise($conn, $item['id']);
-                            $is_featured = $exercise->is_featured($user_data);
-                            $is_mine = $exercise->is_mine($user_data);
+                            $is_featured = $exercise->is_featured($user_data, $conn);
+                            $is_mine = $exercise->is_mine($user_data, $conn);
                             $exercise->print_it($conn, $is_featured, $is_mine, 1);
                         }
                     }

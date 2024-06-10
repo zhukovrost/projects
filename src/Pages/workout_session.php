@@ -4,8 +4,8 @@ require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение фа�
 
 $weekday = date("N") - 1; // Getting the current day of the week as a number (1 for Monday, 7 for Sunday)
 $user_data->set_program($conn); // Setting the program for the user based on the connection to the database
-$workout_id = $user_data->program->program[$weekday]; // Getting the workout ID for the current weekday from the user's program
-$workout = new Workout($conn, $workout_id, $weekday); // Creating a new Workout object based on the fetched workout ID and the weekday
+$weekday = date("N") - 1;
+$workout = $user_data->get_workout_by_day($weekday);
 $cnt_apps = 0; // count of approaches
 ?>
 <!DOCTYPE html>
@@ -44,10 +44,10 @@ $cnt_apps = 0; // count of approaches
                 </section>
             </div>
             <swiper-container class="session-exercises__swiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30" loop="true">
-                <?php for ($i = 0; $i < $workout->loops; $i++) { foreach ($workout->exercises as $exercise){ // for each exercise, we output a slide ?>
+                <?php for ($i = 0; $i < $workout->get_loops(); $i++) { foreach ($workout->get_exercises() as $exercise){ // for each exercise, we output a slide ?>
                 <swiper-slide class="session-exercises__slide">
                     <?php
-                    $cnt_apps += $exercise->approaches; // increasing the number of approaches
+                    $cnt_apps += $exercise->get_sets(); // increasing the number of approaches
                     $exercise->print_it($conn, false, false, false, true); // Printing the exercise details
                     ?>
                 </swiper-slide>
@@ -58,7 +58,7 @@ $cnt_apps = 0; // count of approaches
 
     <footer class="workout-session-footer">
         <h1 class="workout-session-footer__title">Осталось:</h1>
-        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); //number of exercises ?></span> упражнений(ия)</h2>
+        <h2 class="workout-session-footer__item"><span><?php echo count($workout->get_exercises()); //number of exercises ?></span> упражнений(ия)</h2>
         <h2 class="workout-session-footer__item"><span><?php echo $cnt_apps; //number of approaches ?></span> подходов(a)</h2>
         <form method="post" action="../Actions/end_workout.php">
             <input class="workout-session-footer__input" name="time" type="hidden" value="0">

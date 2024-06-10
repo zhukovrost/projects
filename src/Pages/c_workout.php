@@ -3,7 +3,7 @@ require_once '../../config/settings.php'; // Подключение файла �
 require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение файла с функциями
 
 
-$user_data->check_the_login(); // Check user login status
+$user_data->check_the_login("../../"); // Check user login status
 $flag = isset($_SESSION["workout"]);
 
 if (empty($_SESSION['workout'])) // Check if $_SESSION['workout'] is set; if not, initialize it as an empty array
@@ -14,20 +14,14 @@ if (isset($_POST["week_days"])){ // Check if form data is submitted
 	// get form data
     $name = $_POST["name"];
     $loops = $_POST["loops"];
-	// Initialize arrays to store exercise-related information
-    $exercises = [];
-    $reps = [];
-    $approaches = [];
-    foreach ($_SESSION["workout"] as $exercise){ // Extract exercise details from $_SESSION["workout"]
-        array_push($exercises, $exercise->get_id());
-        array_push($reps, $exercise->reps);
-        array_push($approaches, $exercise->approaches);
-    }
     $user_id = $user_data->get_id(); // Get user ID
-    $sql = "INSERT INTO workouts (creator, name, exercises, reps, approaches, loops) VALUES ($user_id, '$name', '".json_encode($exercises)."', '".json_encode($reps)."', '".json_encode($approaches)."', $loops)"; // Create SQL query to insert workout details into the database
+    $sql = "INSERT INTO workouts (creator, name, loops) VALUES ($user_id, '$name', $loops)"; // Create SQL query to insert workout details into the database
     if ($conn->query($sql)){
         $lid = mysqli_insert_id($conn); // Get the last inserted ID
-
+        foreach ($_SESSION["workout"] as $exercise){
+            $sql = "INSERT INTO workout_exercises (workout_id, exercise_id, creator, sets, reps) VALUES ($lid, {$exercise->get_id()}, $user_id, {$exercise->get_sets()}, {$exercise->get_reps()})";
+            if (!$conn->query($sql)) echo $conn->error; // Insert workout-exercise relations into the database
+        }
         foreach ($_POST["week_days"] as $week_day) { // Update $_SESSION["program"] with workout IDs for selected week days
             $_SESSION["program"][(int)$week_day] = $lid;
         }

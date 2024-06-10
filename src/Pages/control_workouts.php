@@ -14,7 +14,6 @@ $user = new User($conn, $_GET["user"]); // Create a new User object based on the
 // get not-done and done workouts for the user
 $not_done_workouts = $user->get_control_workouts($conn, 0, NULL);
 $done_workouts = $user->get_control_workouts($conn, 1, NULL);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +26,7 @@ $done_workouts = $user->get_control_workouts($conn, 1, NULL);
                 <?php
                 if (count($not_done_workouts) > 0){ // Check if there are pending workouts
                     $workout = $not_done_workouts[0]; // Retrieve the first pending workout
-                    if ($workout->holiday){ // Check if it's a holiday
+                    if ($workout->is_holiday()){ // Check if it's a holiday
                         include BASE_PATH . "/templates/holiday.html"; // Include holiday template
                     }else{ $workout->set_muscles(); // Set muscles for the workout ?>
                     <!-- Day's workout swiper -->
@@ -37,7 +36,7 @@ $done_workouts = $user->get_control_workouts($conn, 1, NULL);
                         <section class="workouts-card">
                             <!-- Title and button to add to favorite collection -->
                             <div class="workouts-card__header">
-                                <h2 class="workouts-card__date"><?php echo date("d.m.Y", $workout->date); // print date of workout ?></h2>
+                                <h2 class="workouts-card__date"><?php echo $workout->get_date(); // print date of workout ?></h2>
                                 <!-- <button class="workouts-card__favorite-btn"><img src="../img/favorite.svg" alt=""></button> -->
                             </div>
                             <!-- Content of workout -->
@@ -74,12 +73,12 @@ $done_workouts = $user->get_control_workouts($conn, 1, NULL);
                                     <!-- Time of training -->
                                     <div class="last-trainings__item">
                                         <img class="last-trainings__item-img" src="../../assets/img/time.svg" alt="">
-                                        <p class="last-trainings__item-text"><span><?php echo date("d.m.Y", $done_workout->date); // print date ?></span></p>
+                                        <p class="last-trainings__item-text"><span><?php echo $done_workout->get_date(); // print date ?></span></p>
                                     </div>
                                     <!-- Exercise count of training -->
                                     <div class="last-trainings__item">
                                         <img class="last-trainings__item-img" src="../../assets/img/cards.svg" alt="">
-                                        <p class="last-trainings__item-text"><span><?php echo count($done_workout->exercises) // print number of exercises ?></span> упражнений</p>
+                                        <p class="last-trainings__item-text"><span><?php echo count($done_workout->get_exercises()) // print number of exercises ?></span> упражнений</p>
                                     </div>
                                 </div>
                                 <!-- Right part of last exercise item -->
@@ -87,11 +86,11 @@ $done_workouts = $user->get_control_workouts($conn, 1, NULL);
                                     <!-- Muscle groups count of training -->
                                     <div class="last-trainings__item">
                                     <img class="last-trainings__item-img" src="../../assets/img/cards.svg" alt="">
-                                    <p class="last-trainings__item-text"><span><?php echo $done_workout->get_groups_amount() - 1; // print number of muscle groups ?></span> группы мышц</p>
+                                    <p class="last-trainings__item-text"><span><?php echo $done_workout->get_groups_amount(); // print number of muscle groups ?></span> группы мышц</p>
                                     </div>
                                     <!-- Button 'Подробнее' for more info about exercise -->
                                     <div class="last-trainings__item">
-                                    <a class="button-text last-trainings__item-button" href="last_control_workout.php?id=<?php echo $done_workout->id; // more info link ?>">Подробнее <img src="../../assets/img/other.svg" alt=""></a>
+                                    <a class="button-text last-trainings__item-button" href="last_control_workout.php?id=<?php echo $done_workout->get_id(); // more info link ?>">Подробнее <img src="../../assets/img/other.svg" alt=""></a>
                                     </div>
                                 </div>
                             </section>

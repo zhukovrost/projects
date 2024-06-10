@@ -12,12 +12,9 @@ if (isset($_GET["user"]) && $_GET["user"] != $user_data->get_id()){ // Check if 
     $user = $user_data;
 }
 
-// Set user subscriptions, subscribers, and staff details
-$user->set_subscriptions($conn);
-$user->set_subscribers($conn);
-$user->set_staff($conn);
-
 # ---------------- avatar upload ------------------------
+
+$flag = False;
 
 if(isset($_POST['image_to_php']) && $user->get_auth()) { // check user avatar upload
     $user->update_avatar($conn, $_POST['image_to_php']); // update user avatar
@@ -29,7 +26,7 @@ if (isset($_POST["change_disc"]) && $user->get_auth()){
     if ($new_disc == ''){
         $new_disc = "Нет описания";
     }
-    $user->description = $new_disc; // Update description in the database
+    $flag = true;
     $sql = "UPDATE users SET description='$new_disc' WHERE id=".$user->get_id();
     if (!$conn->query($sql)){
         echo $conn->error;
@@ -40,7 +37,7 @@ if (isset($_POST["change_disc"]) && $user->get_auth()){
 if (isset($_POST["type"])){
     // Fetch new user type and update user data
     $type = (int)$_POST["type"];
-    $user->type = $type;
+    $flag = true;
     // Update user type in the database
     $sql = "UPDATE users SET type=$type WHERE id=".$user->get_id();
     if (!$conn->query($sql)){
@@ -52,34 +49,42 @@ if (isset($_POST["type"])){
 if (isset($_POST["prep"])){
     // Fetch new preparation status and update user data
     $preparation = $_POST["prep"];
-    $user->preparation = $preparation;
+    $flag = true;
     // Update user preparation status in the database
-    $sql = "UPDATE users SET preparation=$preparation WHERE id=".$user->get_id();
+    $sql = "UPDATE users SET preparation_level=$preparation WHERE id=".$user->get_id();
     if (!$conn->query($sql)){
         echo $conn->error;
     }
 }
 
 // Update user's Telegram link if submitted
-if (isset($_POST["tg"]) && $_POST["tg"] != $user->tg){
+if (isset($_POST["tg"]) && $_POST["tg"] != $user->get_tg()){
     $tg=$_POST["tg"];
     $sql = "UPDATE users SET tg='$tg' WHERE id=".$user->get_id();
-    if ($conn->query($sql))
-        $user->tg = $tg;
-    else
+    $flag = true;
+    if (!$conn->query($sql))
         echo $conn->error;
 
 }
 
 // Update user's VKontakte link if submitted
-if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
+if (isset($_POST["vk"]) && $_POST["vk"] != $user->get_vk()){
     $vk=$_POST["vk"];
     $sql = "UPDATE users SET vk='$vk' WHERE id=".$user->get_id();
-    if ($conn->query($sql))
-        $user->vk = $vk;
-    else
+    $flag = true;
+    if (!$conn->query($sql))
         echo $conn->error;
 }
+
+if ($flag) {
+    $user_data->update($conn);
+    header("Refresh: 0");
+}
+// Set user subscriptions, subscribers, and staff details
+$user->set_subscriptions($conn);
+$user->set_subscribers($conn);
+$user->set_staff($conn);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,10 +116,10 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                             <input type="hidden" id="image_to_php" name="image_to_php" value="">
                         </form>
                         <div class="user-block__avatar-name">
-                            <h1><?php echo $user->name . " " . $user->surname; // print user' mame and surname ?></h1>
+                            <h1><?php echo $user->get_full_name(); // print user' mame and surname ?></h1>
                         </div>
                         <button class="user-block__avatar-more"><img src="../../assets/img/info.svg" alt=""><p>Подробнее</p></button>
-                        <?php if (!$user->get_auth() && in_array($user_data->get_id(), $user->subscribers)){ // Subscription button based on authentication status ?>
+                        <?php if (!$user->get_auth() && in_array($user_data->get_id(), $user->get_subscribers())){ // Subscription button based on authentication status ?>
                             <a class="button-text user-block__sub-button" href="../Actions/unsub.php?id=<?php echo $user->get_id(); // unsub link ?>">Отписаться</a>
                         <?php }else if (!$user->get_auth()){ ?>
                             <a class="button-text user-block__sub-button" href="../Actions/sub.php?id=<?php echo $user->get_id(); // sub link ?>"><p>Подписаться</p><img src="../../assets/img/add.svg" alt=""></a>
@@ -123,8 +128,8 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                     
                     <!-- User info text -->
 					<div class="user-about__description">
-                        <?php if ($user->description){ // Check if the user has a description ?>
-						    <p class="user-about__description-text"><?php echo $user->description; // Display the user's description ?></p>
+                        <?php if ($user->get_desc()){ // Check if the user has a description ?>
+						    <p class="user-about__description-text"><?php echo $user->get_desc(); // Display the user's description ?></p>
                         <?php } else{ //  If no description exists, display this message ?>
                             <p class="user-about__description-text">Нет описания</p>
                         <?php } ?>
@@ -137,18 +142,23 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 				<section class="user-news">
 					<!-- News item -->
                     <?php
-                    if ($news = $user->get_my_news($conn)) { // Fetch the user's news items from the database
-                        foreach ($news as $new){ // Iterate through the user's news items
-                            $date = date("d.m.Y", $new['date']); // Format the date for display
-                            // Define data to replace placeholders in the news item template
-                            $replacements = array(
-                                "{{ user_name }}" => $new['name'].' '.$new['surname'],
-                                "{{ link }}" => '',
-                                "{{ date }}" => $date,
-                                "{{ message }}" => $new['message'],
-                                "{{ avatar }}" => $new['file']
-                            );
-                            echo render($replacements, BASE_PATH . "templates/news_item.html"); // Render each news item using the provided template and replaced data
+                    if ($news = $user->get_my_news($conn)) {
+                        if ($news->num_rows > 0){
+                            // Fetch the user's news items from the database
+                            foreach ($news as $new){ // Iterate through the user's news items
+                                $date = date("d.m.Y", $new['date']); // Format the date for display
+                                // Define data to replace placeholders in the news item template
+                                $replacements = array(
+                                    "{{ user_name }}" => $new['name'].' '.$new['surname'],
+                                    "{{ link }}" => '',
+                                    "{{ date }}" => $date,
+                                    "{{ message }}" => $new['message'],
+                                    "{{ avatar }}" => $new['file']
+                                );
+                                echo render($replacements, BASE_PATH . "templates/news_item.html"); // Render each news item using the provided template and replaced data
+                            }
+                        }else{
+                            echo "<p>Нет новостей</p>";
                         }
                     }?>
 				</section>
@@ -162,7 +172,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                     </div>
                     <!-- Friends swiper -->
                     <section class="friends-block__cover" navigation="true">
-                        <?php print_user_list($conn, $user->subscriptions); // print user's subscriptions ?>
+                        <?php print_user_list($conn, $user->get_subscriptions()); // print user's subscriptions ?>
 					</section>
                 </section>
                 <?php if ($user->get_status() == "user"){ // if staus is user ?>
@@ -170,11 +180,11 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 				<section class="user-block__staff">
                     <!-- Coach info and buttons to chat, ptofile and delete -->
 					<div class="user-block__coach">
-                        <?php $has_coach = $user->coach != NULL; // Check if the user has a coach ?>
-						<p class="user-block__staff-title">Тренер: <span><?php if ($has_coach){ echo $user->coach->surname; }else{ echo "нет"; } // if user has coach print it ?></span></p>
+                        <?php $has_coach = $user->get_coach() != NULL; // Check if the user has a coach ?>
+						<p class="user-block__staff-title">Тренер: <span><?php if ($has_coach){ echo $user->get_coach()->get_surname(); }else{ echo "нет"; } // if user has coach print it ?></span></p>
                         <?php if ($has_coach){ ?>
                             <!-- <button class="user-block__staff-button"><img src="../img/message.svg" alt=""></button> -->
-                            <a href="profile.php?user=<?php echo $user->coach->get_id(); ?>" class="user-block__staff-button"><img src="../../assets/img/profile_black.svg" alt=""></a>
+                            <a href="profile.php?user=<?php echo $user->get_coach()->get_id(); ?>" class="user-block__staff-button"><img src="../../assets/img/profile_black.svg" alt=""></a>
                             <?php if ($user->get_auth()){ // if user is authenticated ?>
                                 <a href="../Actions/delete_coach.php" class="user-block__staff-button"><img src="../../assets/img/delete_black.svg" alt=""></a>
                             <?php } ?>
@@ -184,11 +194,11 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 					</div>
                     <!-- Doctor info -->
 					<div class="user-block__doctor">
-                        <?php $has_doctor = $user->doctor != NULL; // Check if the user has a doctor ?>
-						<p class="user-block__staff-title">Врач: <span><?php if ($has_doctor){ echo $user->doctor->surname; }else{ echo "нет"; } // if user has doctor print it ?></span></p>
+                        <?php $has_doctor = $user->get_doctor() != NULL; // Check if the user has a doctor ?>
+						<p class="user-block__staff-title">Врач: <span><?php if ($has_doctor){ echo $user->get_doctor()->get_surname(); }else{ echo "нет"; } // if user has doctor print it ?></span></p>
                         <?php if ($has_doctor){ ?>
                             <!-- <button class="user-block__staff-button"><img src="../img/message.svg" alt=""></button> -->
-                            <a href="profile.php?user=<?php echo $user->doctor->get_id(); ?>" class="user-block__staff-button"><img src="../../assets/img/profile_black.svg" alt=""></a>
+                            <a href="profile.php?user=<?php echo $user->get_doctor()->get_id(); ?>" class="user-block__staff-button"><img src="../../assets/img/profile_black.svg" alt=""></a>
                             <?php if ($user->get_auth()){ // if user is authenticated ?>
                                 <a href="../Actions/delete_doctor.php" class="user-block__staff-button"><img src="../../assets/img/delete_black.svg" alt=""></a>
                             <?php } ?>
@@ -198,8 +208,8 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
 					</div>
                     <!-- Count of subscribers and subscriptions -->
 					<div class="user-block__sub-count">
-						<p class="user-block__sub-count-item" href=""><span>Подписчики: <?php echo count($user->subscribers); // print count of subscribers ?></span></p>
-						<p class="user-block__sub-count-item" href=""><span>Подписки: <?php echo count($user->subscriptions); // print count of subscriptions ?></span></p>
+						<p class="user-block__sub-count-item" href=""><span>Подписчики: <?php echo count($user->get_subscribers()); // print count of subscribers ?></span></p>
+						<p class="user-block__sub-count-item" href=""><span>Подписки: <?php echo count($user->get_subscriptions()); // print count of subscriptions ?></span></p>
 					</div>
 				</section>
 
@@ -209,7 +219,7 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                 <!-- Buttons to edit profile, search sportsmen and logout -->
 				<section class="user-block__buttons">
                     <!-- Display 'Send Request' button under specific conditions -->
-                    <?php if (!$user->get_auth() && $user_data->get_status() == "user" && (($user->get_status() == "coach" && $user_data->coach == NULL) || ($user->get_status() == "doctor" && $user_data->doctor == NULL)) && !$request_flag){ ?>
+                    <?php if (!$user->get_auth() && $user_data->get_status() == "user" && (($user->get_status() == "coach" && $user_data->get_coach() == NULL) || ($user->get_status() == "doctor" && $user_data->get_doctor() == NULL)) && !$request_flag){ ?>
                         <a href="../Actions/send_request.php?id=<?php echo $user->get_id();?>" class="button-text user-block__button"><p>Отправить заявку</p> <img src="../../assets/img/send.svg" alt=""></a>
                     <?php }
                     // Display options for authenticated users
@@ -264,16 +274,16 @@ if (isset($_POST["vk"]) && $_POST["vk"] != $user->vk){
                     </div>
                 <?php } ?>
                 <div class="popup-user__info-item">
-                    <?php if ($user->tg != NULL){ ?>
+                    <?php if ($user->get_tg() != NULL){ ?>
                     <div class="popup-user__info-social">
                         <p class="popup-user__info-item-name popup-user__info-social-name">Телеграм:</p>
-                        <a href="<?php echo $user->tg; // print tg link ?>"><img src="../../assets/img/tg.svg" alt=""></a>
+                        <a href="<?php echo $user->get_tg(); // print tg link ?>"><img src="../../assets/img/tg.svg" alt=""></a>
                     </div>
                     <?php }
-                    if ($user->vk != NULL){ ?>
+                    if ($user->get_vk() != NULL){ ?>
                     <div class="popup-user__info-social popup-user__info-social-name">
                         <p class="popup-user__info-item-name popup-user__info-social-name">Вконтакте:</p>
-                        <a href="<?php echo $user->vk; // print vk link ?>"><img src="../../assets/img/vk.svg" alt=""></a>
+                        <a href="<?php echo $user->get_vk(); // print vk link ?>"><img src="../../assets/img/vk.svg" alt=""></a>
                     </div>
                     <?php } ?>
                 </div>

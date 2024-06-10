@@ -4,7 +4,7 @@ require_once BASE_PATH . 'src/Helpers/func.php'; // Подключение фа�
 
 $user_data->set_program($conn); // Setting the program for the user based on the connection to the database
 $weekday = date("N") - 1; // Getting the current day of the week
-
+$program = $user_data->get_program();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,14 +14,14 @@ $weekday = date("N") - 1; // Getting the current day of the week
 
     <main class="workouts-block">
         <div class="container">
-            <?php if ($user_data->program->get_id() > 0){ // Checks if the id is greater than zero ?>
+            <?php if ($program->get_id() > 0){ // Checks if the id is greater than zero ?>
             <!-- Day's workout swiper -->
             <swiper-container class="workouts-swiper" navigation="true">
                 <swiper-slide class="workouts-slide">
                 <!-- Slide -->
                 <?php
-                    $workout = new Workout($conn, $user_data->program->program[$weekday], $weekday); // Creating a new Workout object based on the user's program for the current weekday
-                    if ($workout->holiday){ // Checking if it's a holiday workout
+                $workout = $user_data->get_workout_by_day($weekday); // Creating a new Workout object based on the user's program for the current weekday
+                if ($workout->is_holiday()){ // Checking if it's a holiday workout
                         include BASE_PATH . "/templates/holiday.html"; // print holiday template
                     }else{ $workout->set_muscles(); // If it's not a holiday workout setting muscles for the workout ?>
                         <!-- slide(no arrows) -->
@@ -40,9 +40,10 @@ $weekday = date("N") - 1; // Getting the current day of the week
                                 <!-- Info about day workout -->
                                 <?php
                                 // Calculating timestamps for the current day (if the training is today, then we will allow the passage)
-                                $date1 = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
-                                $date2 = mktime(23, 59, 59, date("m"), date("d"), date("Y"));
-                                $sql = "SELECT id FROM workout_history WHERE date_completed > $date1 AND date_completed < $date2 AND user=".$user_data->get_id();
+                                $date1 = date("Y-m-d 00:00:00");
+                                $date2 = date("Y-m-d 23:59:59");
+                                $sql = "SELECT id FROM workout_history WHERE date_completed BETWEEN '$date1' AND '$date2' AND user=" . $user_data->get_id();
+
                                 if ($result = $conn->query($sql)){
                                     if ($result->num_rows == 0){ // If no workout completed for the day
                                         $workout->print_workout_info(2, $user_data->get_id(), 1);
@@ -65,8 +66,8 @@ $weekday = date("N") - 1; // Getting the current day of the week
                     }else{
                         $weekday++;
                     }
-                    $workout = new Workout($conn, $user_data->program->program[$weekday], $weekday); // Creating a new Workout object based on the incremented weekday
-                    if ($workout->holiday){ // Checking if it's a holiday
+                    $workout = $user_data->get_workout_by_day($weekday); // Creating a new Workout object based on the user's program for the current weekday
+                    if ($workout->is_holiday()){ // Checking if it's a holiday
                         include BASE_PATH . "/templates/holiday.html"; // Including a holiday template
                     }else{ $workout->set_muscles(); // Setting muscles for the workout ?>
                     <section class="workouts-card">

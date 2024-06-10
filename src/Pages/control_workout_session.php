@@ -32,10 +32,10 @@ $cnt_apps = 0; // Initializing a variable for counting approaches
     <div class="container">
         <swiper-container class="session-exercises__swiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30" loop="true">
             <!-- for loop -->
-            <?php foreach ($workout->exercises as $exercise){ //Loop through each exercise in the Control_Workout object ?>
+            <?php foreach ($workout->get_exercises() as $exercise){ //Loop through each exercise in the Control_Workout object ?>
                 <swiper-slide class="session-exercises__slide">
                     <?php
-                    $cnt_apps += $exercise->approaches; // Increment the count of approaches by the number of approaches for the current exercise
+                    $cnt_apps += $exercise->get_sets(); // Increment the count of approaches by the number of approaches for the current exercise
                     $exercise->print_control_exercise($conn, 0, 1); // Print details of the current exercise
                     ?>
                 </swiper-slide>
@@ -47,9 +47,9 @@ $cnt_apps = 0; // Initializing a variable for counting approaches
 <footer class="workout-session-footer workout-session-footer--с">
     <div class="workout-session-footer-cover">
         <h1 class="workout-session-footer__title">Осталось:</h1>
-        <h2 class="workout-session-footer__item"><span><?php echo count($workout->exercises); // exercises number left ?></span> упражнений(я / е)</h2>
+        <h2 class="workout-session-footer__item"><span><?php echo count($workout->get_exercises()); // exercises number left ?></span> упражнений(я / е)</h2>
     </div>
-    <input type="hidden" name="id" value="<?php echo $_GET["id"];?>">
+    <input type="hidden" name="id" value="<?php echo $workout->get_id();?>">
     <button type="submit" class="button-text workout-session-footer__button">Завершить</button>
 
 </footer>

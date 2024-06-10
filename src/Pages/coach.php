@@ -22,69 +22,33 @@ if (isset($_POST["request_name"])) { // Process form submissions
             if (!$date = strtotime($_POST["date"])){
                 $date = NULL;
             }
-            $sql = "INSERT INTO competitions (name, link, date) VALUES ('" . $_POST["name"] . "', '" . $_POST["link"] . "', '$date')"; // Insert into competitions table
-            if ($conn->query($sql)) { // Update coach's competitions data in JSON format
-                $id = mysqli_insert_id($conn);
-                if ($data != NULL) {
-                    $competitions = json_decode($data["competitions"]);
-                    array_push($competitions, $id);
-                    $competitions = json_encode($competitions, 256);
-                    $data["competitions"] = $competitions;
-                    $user_data->update_coach_data($conn, $data);
-                } else {
-                    echo "NULL";
-                }
-            } else {
+            $sql = "INSERT INTO competitions (user, name, link, date) VALUES ({$user->get_id()}, '" . $_POST["name"] . "', '" . $_POST["link"] . "', FROM_UNIXTIME($date))"; // Insert into competitions table
+            if (!$conn->query($sql)){
                 echo $conn->error;
             }
             break;
         case "add_info": // Handling addition of advice
             if (empty($_POST["name"]) || $_POST["name"] == "")
                 break;
-            $sql = "INSERT INTO coach_advice (name, link) VALUES ('" . $_POST["name"] . "', '" . $_POST["link"] . "')";
-            if ($conn->query($sql)) {
-                $id = mysqli_insert_id($conn);
-                if ($data != NULL) {
-                    $info = json_decode($data["info"]);
-                    array_push($info, $id);
-                    $info = json_encode($info, 256);
-                    $data["info"] = $info;
-                    $user_data->update_coach_data($conn, $data);
-                } else {
-                    echo "NULL";
-                }
-            } else {
+            $sql = "INSERT INTO coach_advice (user, name, link) VALUES ({$user->get_id()}, '" . $_POST["name"] . "', '" . $_POST["link"] . "')"; // Insert into competitions table
+            if (!$conn->query($sql)){
                 echo $conn->error;
             }
             break;
         case "add_goal": // Handling addition of goals
             if (empty($_POST["name"]) || $_POST["name"] == "")
                 break;
-            $sql = "INSERT INTO goals (name) VALUES ('" . $_POST["name"] . "')";
-            if ($conn->query($sql)) {
-                $id = mysqli_insert_id($conn);
-                if ($data != NULL) {
-                    $goals = json_decode($data["goals"]);
-                    array_push($goals, $id);
-                    $goals = json_encode($goals, 256);
-                    $data["goals"] = $goals;
-                    $user_data->update_coach_data($conn, $data);
-                } else {
-                    echo "NULL";
-                }
-            } else {
+            $sql = "INSERT INTO goals (user, name) VALUES ({$user->get_id()}, '" . $_POST["name"] . "')";
+            if (!$conn->query($sql)){
                 echo $conn->error;
             }
             break;
     }
+    header("Refresh: 0");
 }
 
 if ($is_selected){ // If a user is selected, fetch their data
     $data = $user_data->get_coach_data($conn, $user->get_id());
-    $data["competitions"] = json_decode($data["competitions"]);
-    $data["goals"] = json_decode($data["goals"]);
-    $data["info"] = json_decode($data["info"]);
-    $user->set_program($conn);
     $control_workouts = $user_data->get_control_workouts($conn, 0, $user->get_id());
 }
 ?>
@@ -103,14 +67,14 @@ if ($is_selected){ // If a user is selected, fetch their data
 					<img class="staff-block__avatar" src="<?php echo $user->get_avatar($conn);//print avatar ?>" alt="">
 					<section class="staff-block__info">
 						<div class="staff-block__name">
-							<h1 class="staff-block__name-text"><?php echo $user->name." ".$user->surname; ?></h1>
+							<h1 class="staff-block__name-text"><?php echo $user->get_full_name(); ?></h1>
 							<a class="staff-block__profile-link" href="profile.php?user=<?php echo $user->get_id(); // link to profile ?>"><img src="../../assets/img/profile_black.svg" alt=""></a>
 						</div>
 						<div class="staff-block__buttons">
-                            <?php if ($user->vk != NULL) { ?>
-                                <a href=<?php echo $user->vk; ?> class="staff-block__button staff-block__button--img"><img src="../../assets/img/vk.svg" alt=""></a>
-                            <?php } if ($user->tg != NULL) { ?>
-                                <a href="<?php echo $user->tg; ?>" class="staff-block__button staff-block__button--img"><img src="../../assets/img/tg.svg" alt=""></a>
+                            <?php if ($user->get_vk() != NULL) { ?>
+                                <a href=<?php echo $user->get_vk(); ?> class="staff-block__button staff-block__button--img"><img src="../../assets/img/vk.svg" alt=""></a>
+                            <?php } if ($user->get_tg() != NULL) { ?>
+                                <a href="<?php echo $user->get_tg(); ?>" class="staff-block__button staff-block__button--img"><img src="../../assets/img/tg.svg" alt=""></a>
                             <?php } ?>
 							<a href="../Actions/delete_sportsman.php?user=<?php echo $user->get_id(); // link to delite sportsman ?>" class="button-text staff-block__button staff-block__button--delite"><p>Удалить</p> <img src="../../assets/img/delete.svg" alt=""></a>
 						</div>
@@ -139,9 +103,9 @@ if ($is_selected){ // If a user is selected, fetch their data
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Цели</h2>
 					<ul class="staff-block__goals-list">
-                        <?php if (count($data["goals"]) > 0) // if goals > 0 print list of goals
+                        <?php if ($data["goals"]->num_rows > 0) // if goals > 0 print list of goals
                             foreach ($data["goals"] as $goal)
-                                print_goal($conn, (int)$goal, $user->get_id());
+                                print_goal($goal);
                         else{ ?>
                             <li class="staff-block__goals-item">Нет назначенных целей</li>
                         <?php } ?>
@@ -155,11 +119,11 @@ if ($is_selected){ // If a user is selected, fetch their data
                         <div class="staff-block__control-workout-nearest">
                             <div class="staff-block__control-workout-info">
                                 <p class="staff-block__control-workout-text">Ближайшая:</p>
-                                <div class="staff-block__control-workouts-date"><?php echo date("d.m.Y", ($control_workouts[0])->date); // print date ?></div>
+                                <div class="staff-block__control-workouts-date"><?php echo $control_workouts[0]->get_date(); // print date ?></div>
                             </div>
                             <a href="control_workouts.php?user=<?php echo $user->get_id(); ?>" class="staff-block__button-more"><p>Подробнее</p> <img src="../../assets/img/more_white.svg" alt=""></a>
                         </div>
-                        <a href="control_workout_session.php?id=<?php echo $control_workouts[0]->id; ?>" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../../assets/img/arrow_white.svg" alt=""></a>
+                        <a href="control_workout_session.php?id=<?php echo $control_workouts[0]->get_id(); ?>" class="button-text day-workouts__card-button day-workouts__card-button--start-c"><p>Начать</p><img src="../../assets/img/arrow_white.svg" alt=""></a>
 				    <?php } else { ?>
                         <p class="staff-block__control-none">Нет назначенных контрольных тренировок</p>
                         <a class="staff-block__button-more staff-block__button-more--control" href="control_workouts.php?user=<?php echo $user->get_id(); // link to more info ?>"><p>Подробнее</p> <img src="../../assets/img/more_white.svg" alt=""></a>
@@ -169,9 +133,9 @@ if ($is_selected){ // If a user is selected, fetch their data
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Турниры и соревнования</h2>
 					<div class="staff-block__competitions">
-                        <?php if (count($data["competitions"]) > 0)
+                        <?php if ($data["competitions"])
                             foreach ($data["competitions"] as $competition) // print competitions list
-                                print_competition($conn, (int)$competition, $user->get_id());
+                                print_competition($competition);
                         else{ ?>
                             <p class="staff-block__control-none">Нет назначенных соревнований</p>
                         <?php } ?>
@@ -182,9 +146,9 @@ if ($is_selected){ // If a user is selected, fetch their data
 				<section class="staff-block__item">
 					<h2 class="staff-block__subtitle">Полезная информация</h2>
 					<div class="staff-block__useful-links">
-                        <?php if (count($data["info"]) > 0)
+                        <?php if ($data["info"])
                             foreach ($data["info"] as $advice) // print advices list
-                                print_advice($conn, (int)$advice, $user->get_id());
+                                print_advice($advice);
                         else{ ?>
                             <p class="staff-block__control-none">Нет полезной информации</p>
                         <?php } ?>

@@ -20,9 +20,9 @@ if (isset($_POST['search']) && trim($_POST['search']) != ""){ // Check if a sear
         foreach ($result as $item){
             // Check and add unique user information based on subscription status and duplicates
             if (!in_array($item, $users_array) && $subs == 0)
-                array_push($users_array, $item);
-            else if (!in_array($item, $users_array) && $subs == 1 && in_array($item["id"], $user_data->subscriptions))
-                array_push($users_array, $item);
+                $users_array[] = $item;
+            else if (!in_array($item, $users_array) && $subs == 1 && in_array($item["id"], $user_data->get_subscriptions()))
+                $users_array[] = $item;
         }
     }
 }else {
@@ -32,9 +32,9 @@ if (isset($_POST['search']) && trim($_POST['search']) != ""){ // Check if a sear
     foreach ($result as $item){
         // Check and add unique user information based on subscription status
         if (!$subs)
-            array_push($users_array, $item);
-        else if ($subs == 1 && in_array($item["id"], $user_data->subscriptions))
-            array_push($users_array, $item);
+            $users_array[] = $item;
+        else if ($subs == 1 && in_array($item["id"], $user_data->get_subscriptions()))
+            $users_array[] = $item;
     }
 }
 
@@ -71,7 +71,7 @@ $user_data->set_subscriptions($conn); // Refresh user subscriptions data based o
                         if ($subs)
                             print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], 1); // Print user block with subscription status
                         else
-                            print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], in_array($user['id'], $user_data->subscriptions)); // Print user block based on subscription existence
+                            print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], in_array($user['id'], $user_data->get_subscriptions() )); // Print user block based on subscription existence
                     else // Print user block without subscription status (unauthenticated user)
                         print_user_block($user['name'], $user['surname'], $user['file'], $user['id'], false);
                 }

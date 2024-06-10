@@ -25,37 +25,16 @@ switch ($item){
     case "goal": // Code to handle deletion of a goal
         if ($coach_data["goals"] == NULL)
             header("Location: ../Pages/profile.php");
-        $coach_data["goals"] = json_decode($coach_data["goals"]);
-        $new_goals = array();
-        foreach ($coach_data["goals"] as $goal_id)
-            if ($goal_id != $id)
-                array_push($new_goals, $goal_id);
-        $coach_data["goals"] = json_encode($new_goals, 256);
-        $user_data->update_coach_data($conn, $coach_data);
         $sql = "DELETE FROM goals WHERE id=$id";
         break;
     case "competition": // Code to handle deletion of a competition
         if ($coach_data["competitions"] == NULL)
             header("Location: ../Pages/profile.php");
-        $coach_data["competitions"] = json_decode($coach_data["competitions"]);
-        $new_competitions = array();
-        foreach ($coach_data["competitions"] as $competition_id)
-            if ($competition_id != $id)
-                array_push($new_competitions, $competition_id);
-        $coach_data["competitions"] = json_encode($new_competitions, 256);
-        $user_data->update_coach_data($conn, $coach_data);
         $sql = "DELETE FROM competitions WHERE id=$id";
         break;
     case "info": // Code to handle deletion of coach advice or information
         if ($coach_data["info"] == NULL)
             header("Location: ../Pages/profile.php");
-        $coach_data["info"] = json_decode($coach_data["info"]);
-        $new_info = array();
-        foreach ($coach_data["info"] as $info_id)
-            if ($info_id != $id)
-                array_push($new_info, $info_id);
-        $coach_data["info"] = json_encode($new_info, 256);
-        $user_data->update_coach_data($conn, $coach_data);
         $sql = "DELETE FROM coach_advice WHERE id=$id";
         break;
 }
@@ -63,6 +42,5 @@ if ($conn->query($sql)){ // Execute the SQL query to delete the specified item
     header("Location: ../Pages/coach.php?user=$user");
 }else{
     echo $conn->error; // Output error message if query execution fails
-    sleep(3);
     header("Location: ../Pages/profile.php"); // Redirect to profile page after an error
 }

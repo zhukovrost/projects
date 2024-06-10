@@ -16,14 +16,14 @@ if (!$user->set_program($conn)) // Redirect if the user does not have a set prog
 
 if (isset($_POST['end']) && $user->get_auth()){ // get the 'end program' action for authenticated users
     // Update the program start date to 0 to signify program completion
-    $sql = "UPDATE program_to_user SET date_start=0 WHERE user=".$user->get_id()."  AND date_start + weeks * 604800 >= ".time()." LIMIT 1";
+    $sql = "UPDATE program_to_user SET date_start=FROM_UNIXTIME(0) WHERE user=".$user->get_id()." AND date_start + INTERVAL weeks WEEK >= NOW() LIMIT 1";
     if ($conn->query($sql)){
         header("Refresh: 0"); // Refresh the page after the program end
     }else{
         echo $conn->error; // Display an error if encountered
     }
 }
-
+$program = $user->get_program();
 // get starting a program for another user (non-authenticated)
 if (isset($_POST["weeks"]) && $_POST["weeks"] > 0 && !$user->get_auth()){
     // Determine the program start date based on user input or current date
@@ -33,7 +33,7 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0 && !$user->get_auth()){
         $date_start = strtotime($_POST["date_start"]);
 
     // Insert program information into the database for the authenticated user
-    $program_id = $user->program->get_id();
+    $program_id = $program->get_id();
 
     $sql2 = "INSERT INTO program_to_user (user, program, date_start, weeks) VALUES (".$user_data->get_id().", $program_id, $date_start, ".$_POST['weeks'].")";
     $sql3 = "INSERT INTO news (message, user, date, personal) VALUES ('Пользователь начал программу друга.', ".$user_data->get_id().", ".time().", 0)";
@@ -46,12 +46,15 @@ if (isset($_POST["weeks"]) && $_POST["weeks"] > 0 && !$user->get_auth()){
 }
 
 // Fetch user's program workouts and additional data
-$user->program->set_workouts($conn);
-$user->program->set_additional_data($conn, $user->get_id());
+
+//$program->set_workouts($conn);
+$program->set_additional_data($conn, $user->get_id());
 // Initialize variables for workout statistics
 $cnt_workouts_done = 0;
 $cnt_workouts_all = 0;
-$weekday_start = date("N", $user->program->date_start) - 1;
+$date_start = new DateTime($program->get_date_start());
+$weekday_start = $date_start->format("N") - 1;
+
 
 // Initialize an array to count muscles trained during the program
 $muscles = array(
@@ -65,9 +68,10 @@ $muscles = array(
 );
 
 //Counting muscles trained in the program's workouts
-foreach ($user->program->workouts as $workout){
+$workouts = $program->get_workouts();
+foreach ($workouts as $workout){
     foreach ($workout->set_muscles() as $key=>$value){
-        $muscles[$key] += $value * $user->program->weeks;
+        $muscles[$key] += $value * $program->get_weeks();
     }
 }
 ?>
@@ -86,16 +90,18 @@ foreach ($user->program->workouts as $workout){
                         <?php
                             // Display placeholder for days before the first workout of the week
                             for ($j = 0; $j < $weekday_start; $j++){
-                                echo render(array("{{ day }}" => get_day($j)), "../templates/out_of_workout.html");
+                                echo render(array("{{ day }}" => get_day($j)), "../../templates/out_of_workout.html");
                             }
                             // Display workout information for the current week
                             for ($j = $weekday_start; $j < 7; $j++){
                                 // get workout information and check if it's completed
-                                $workout = $user->program->workouts[$j];
-                                $is_done = $workout->is_done($conn, $user->get_id(), $user->program->date_start - $weekday_start * 86400 + $j * 86400);
+                                $workout = $workouts[$j];
+                                $is_done = $workout->is_done($conn, $user->get_id(), $date_start->getTimestamp() - $weekday_start * 86400 + $j * 86400);
                                 $is_workout = $workout->print_workout_info_block($j, 1, $user->get_id(), $is_done);
                                 // Update counters for total and completed workouts
-                                $cnt_workouts_all += (int)!$workout->holiday;
+                                if (!$workout->is_holiday()){
+                                    $cnt_workouts_all += 1;
+                                }
                                 $cnt_workouts_done += (int)$is_done;
                             }
                         ?>
@@ -104,15 +110,19 @@ foreach ($user->program->workouts as $workout){
 
                     $from = 0;
                     if ($weekday_start) $from = 1;
-                    for ($i = $from; $i < $user->program->weeks; $i++){ // Slides for next weeks ?>
+                    for ($i = $from; $i < $program->get_weeks(); $i++){ // Slides for next weeks
+                        ?>
                     <swiper-slide class="day-workouts__slide">
                         <?php
                         for ($j = 0; $j < 7; $j ++){
-                            $workout = $user->program->workouts[$j];
-                            $is_done = $workout->is_done($conn, $user->get_id(), $user->program->date_start - $weekday_start * 86400 + $j * 86400 + $i * 604800);
+                            $workout = $workouts[$j];
+                            $is_done = $workout->is_done($conn, $user->get_id(), $date_start->getTimestamp() - $weekday_start * 86400 + $j * 86400 + $i * 604800);
                             $is_workout = $workout->print_workout_info_block($j, 1, $user->get_id(), $is_done);
-                            $cnt_workouts_all += (int)!$workout->holiday;
-                            $cnt_workouts_done += (int)$is_done;                        }
+                            if (!$workout->is_holiday()){
+                                $cnt_workouts_all += 1;
+                            }
+                            $cnt_workouts_done += (int)$is_done;
+                        }
                         ?>
                     </swiper-slide>
                     <?php }
@@ -122,14 +132,16 @@ foreach ($user->program->workouts as $workout){
                         <swiper-slide class="day-workouts__slide">
                             <?php
                             for ($j = 0; $j < $weekday_start; $j++){ // Display workouts for days after the last workout of the week
-                                $workout = $user->program->workouts[$j];
-                                $is_done = $workout->is_done($conn, $user->get_id(), $user->program->date_start - $weekday_start * 86400 + $j * 86400 + ($user->program->weeks - 1) * 604800);
+                                $workout = $workouts[$j];
+                                $is_done = $workout->is_done($conn, $user->get_id(), $date_start->getTimestamp() - $weekday_start * 86400 + $j * 86400 + ($program->get_weeks() - 1) * 604800);
                                 $is_workout = $workout->print_workout_info_block($j, 1, $user->get_id(), $is_done);
-                                $cnt_workouts_all += (int)!$workout->holiday;
+                                if (!$workout->is_holiday()){
+                                    $cnt_workouts_all += 1;
+                                }
                                 $cnt_workouts_done += (int)$is_done;                            }
 
                             for ($j = $weekday_start; $j < 7; $j++){ // Display placeholder for days without workouts at the end of the last week
-                                echo render(array("{{ day }}" => get_day($j)), "../templates/out_of_workout.html");
+                                echo render(array("{{ day }}" => get_day($j)), "../../templates/out_of_workout.html");
                             }
                             ?>
                         </swiper-slide>
@@ -145,8 +157,8 @@ foreach ($user->program->workouts as $workout){
                     </section>
                     <section class="my-program__statistic-content">
                         <section class="my-program__statistic-all">
-                            <p class="my-program__statistic-all-item">Всего тренировок: <span><?php echo $user->program->count_workouts(); // number of all trainings ?></span></p>
-                            <p class="my-program__statistic-all-item">Всего упражнений: <span><?php echo $user->program->count_exercises(); // number of all exercices ?></span></p>
+                            <p class="my-program__statistic-all-item">Всего тренировок: <span><?php echo $program->count_workouts(); // number of all trainings ?></span></p>
+                            <p class="my-program__statistic-all-item">Всего упражнений: <span><?php echo $program->count_exercises(); // number of all exercices ?></span></p>
                         </section>
                         <section class="my-program__progress">
                             <div class="my-program__progress-item">

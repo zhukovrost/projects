@@ -8,7 +8,7 @@ else
     $header = 1;
 
 // Check for 'id' parameter in URL, user authentication, and subscription
-if ($_GET["id"] && $user_data->get_auth() && !in_array($_GET["id"], $user_data->subscriptions)){
+if ($_GET["id"] && $user_data->get_auth() && !in_array($_GET["id"], $user_data->get_subscriptions())){
     $user = $_GET["id"]; // Assign 'id' from URL to $user
     $subscriber = $user_data->get_id(); // Get current user's ID and assign to $subscriber
     $sql = "DELETE FROM subs WHERE (user=$user AND subscriber=$subscriber)"; // SQL query to delete subscription entry from 'subs' table
