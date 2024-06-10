@@ -1,0 +1,34 @@
+----------------------- git --------------------------------
+
+git push --set-upstream origin branch --- push a new branch
+
+git checkout --track origin/branch --- pull an existing branch
+
+git config credential.helper cache --- cache the password
+
+------------------------ lampp ----------------------------
+
+sudo /opt/lampp/lampp start --- start xampp
+
+------------------------ exercises.json ------------------------------
+
+"": [
+
+	"",
+
+	"../img/exercises/",
+
+	[
+		false,
+		"",
+		30,
+		"../img/exercises/"
+	]
+
+]
+
+--- exercise pattern
+
+------------------------- construct.php ----------------------------
+
+$result_array = [question, num of questions, num of right answer, answers, form type, img]
