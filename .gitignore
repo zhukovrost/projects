@@ -1,1 +1,6 @@
 .idea/
+notes.txt
+sp.sh
+st.sh
+.venv/
+config/config.php
